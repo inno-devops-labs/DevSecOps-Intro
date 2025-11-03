@@ -39,3 +39,18 @@ It Provides a Tamper-Proof Audit Trail for Compliance and Forensics
 For organizations in regulated industries (finance, healthcare, government), demonstrating who changed what and when is a compliance requirement (e.g., SOC 2, ISO 27001). Signed commits create an immutable audit trail. If a security incident occurs, forensic teams can trace the vulnerable code back to a specific, verified individual with high confidence, drastically speeding up root cause analysis and remediation.
 
 Integrating commit signing is a low-friction, high-impact security control. It directly addresses the "I" in the CIA Triad (Integrity) for your development process and is a pragmatic implementation of the Zero-Trust principle applied to code. By verifying every single change, it moves security from a reactive, scanning-based model to a proactive, identity-centric one, making it an indispensable component of a robust and resilient DevSecOps workflow.
+
+## Task 2
+
+Setup config hook by creating the hook file:
+
+```
+vim .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+Evidence of detected commit:
+![](./assets/blocked-commit.png)
+
+Analysis:
+Automated secret scanning transforms a reactive security problem (responding to a leak after it's discovered in the wild) into a proactive, preventative control. It systematically eliminates the most common vector for credential-based attacks by ensuring secrets never make it to a public-facing environment in the first place.
