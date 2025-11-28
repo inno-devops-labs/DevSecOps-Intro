@@ -1,0 +1,1 @@
+model name	: 13th Gen Intel(R) Core(TM) i7-13700H

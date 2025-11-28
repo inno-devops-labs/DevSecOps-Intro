@@ -1,0 +1,18 @@
+=== Startup Time Comparison ===
+runc:
+time="2025-11-28T21:44:25+03:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers: [nameserver 8.8.8.8 nameserver 8.8.4.4]"
+time="2025-11-28T21:44:25+03:00" level=info msg="IPv6 enabled; Adding default IPv6 external servers: [nameserver 2001:4860:4860::8888 nameserver 2001:4860:4860::8844]"
+test
+
+real	0m1.239s
+user	0m0.007s
+sys	0m0.009s
+Kata:
+time="2025-11-28T21:44:27+03:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers: [nameserver 8.8.8.8 nameserver 8.8.4.4]"
+time="2025-11-28T21:44:27+03:00" level=info msg="IPv6 enabled; Adding default IPv6 external servers: [nameserver 2001:4860:4860::8888 nameserver 2001:4860:4860::8844]"
+time="2025-11-28T21:44:27+03:00" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+test
+
+real	0m3.127s
+user	0m0.004s
+sys	0m0.007s
