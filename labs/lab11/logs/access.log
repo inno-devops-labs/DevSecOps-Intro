@@ -1,0 +1,30 @@
+172.18.0.1 - - [21/Nov/2025:20:28:33 +0000] "GET / HTTP/1.1" 308 164 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:28:48 +0000] "GET / HTTP/1.1" 308 164 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:37:57 +0000] "HEAD / HTTP/1.1" 308 0 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:38:11 +0000] "HEAD / HTTP/2.0" 200 0 "-" "curl/8.5.0" rt=0.009 uct=0.001 urt=0.010
+172.18.0.1 - - [21/Nov/2025:20:44:39 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.004 uct=0.000 urt=0.004
+172.18.0.1 - - [21/Nov/2025:20:45:10 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.000 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:45:11 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.001 uct=0.000 urt=0.001
+172.18.0.1 - - [21/Nov/2025:20:45:18 +0000] "GET / HTTP/1.1" 200 11904 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.003 uct=0.000 urt=0.003
+172.18.0.1 - - [21/Nov/2025:20:45:19 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.000 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:45:20 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.001 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:45:21 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.001 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:46:46 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.003 uct=0.000 urt=0.003
+172.18.0.1 - - [21/Nov/2025:20:47:18 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.000 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:47:19 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.001 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:47:26 +0000] "GET / HTTP/1.1" 200 11904 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.000 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:47:27 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.000 urt=0.002
+172.18.0.1 - - [21/Nov/2025:20:47:28 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.001 uct=0.000 urt=0.001
+172.18.0.1 - - [21/Nov/2025:20:47:29 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.001 uct=0.000 urt=0.001
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.5.0" rt=0.024 uct=0.000 urt=0.024
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.5.0" rt=0.018 uct=0.001 urt=0.019
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.5.0" rt=0.009 uct=0.001 urt=0.009
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.5.0" rt=0.011 uct=0.000 urt=0.011
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.5.0" rt=0.010 uct=0.000 urt=0.010
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.5.0" rt=0.009 uct=0.000 urt=0.009
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [21/Nov/2025:20:49:04 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.5.0" rt=0.000 uct=- urt=-
