@@ -1,0 +1,4 @@
+=== Kernel Version Comparison ===
+
+Host kernel (runc uses this): 6.15.4-200.fc42.x86_64
+Kata guest kernel: Linux version 6.12.47 (@4bcec8f4443d) (gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #1 SMP Fri Nov 14 15:34:06 UTC 2025
