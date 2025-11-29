@@ -17,7 +17,7 @@ OUT_DIR="${ROOT_DIR}/lab12/setup/kata-out"
 mkdir -p "${WORK_DIR}" "${OUT_DIR}"
 
 echo "Building Kata runtime in Docker..." >&2
-docker run --rm \
+nerdctl run --rm \
   -e CARGO_NET_GIT_FETCH_WITH_CLI=true \
   -v "${WORK_DIR}":/work \
   -v "${OUT_DIR}":/out \

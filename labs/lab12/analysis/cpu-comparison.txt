@@ -1,0 +1,5 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name	: Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz
+Kata VM CPU:
+model name	: Intel(R) Xeon(R) Processor @ 1.80GHz
