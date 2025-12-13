@@ -1,0 +1,12 @@
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define livenessProbe
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define readinessProbe
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set allowPrivilegeEscalation: false
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set readOnlyRootFilesystem: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set runAsNonRoot: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" uses disallowed :latest tag
+
+[31m30 tests, 20 passed, 2 warnings, 8 failures, 0 exceptions[0m
