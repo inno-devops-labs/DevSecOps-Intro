@@ -1,0 +1,216 @@
+
+
+
+Violation Details -
+    
+	Description    :	Security Groups - Unrestricted Specific Ports - remote desktop port (TCP,3389)
+	File           :	security_groups.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	31
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure that your RDS database instances encrypt the underlying storage. Encrypted RDS instances use the industry standard AES-256 encryption algorithm to encrypt data on the server that hosts RDS DB instances. After data is encrypted, RDS handles authentication of access and description of data transparently with minimal impact on performance.
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	5
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	RDS Instance Auto Minor Version Upgrade flag disabled
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	40
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure DynamoDb is encrypted at rest
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	72
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure Point In Time Recovery is enabled for DynamoDB Tables
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	72
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure that your RDS database has IAM Authentication enabled.
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	5
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure that your RDS database has IAM Authentication enabled.
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	40
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure no security groups is wide open to public, that is, allows traffic from 0.0.0.0/0 to ALL ports and protocols
+	File           :	security_groups.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	5
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure S3 buckets do not have, a both public ACL on the bucket and a public access block.
+	File           :	main.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	13
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Misconfigured S3 buckets can leak private information to the entire internet or allow unauthorized data tampering / deletion
+	File           :	main.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	13
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure IAM policies are attached only to groups or roles
+	File           :	iam.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	67
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	RDS Instance publicly_accessible flag is true
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	5
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Security Groups - Unrestricted Specific Ports - Postgres SQL (TCP,5432)
+	File           :	security_groups.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	65
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure automated backups are enabled for AWS RDS instances
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	5
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure automated backups are enabled for AWS RDS instances
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	40
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure CloudWatch logging is enabled for AWS DB instances
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	5
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure CloudWatch logging is enabled for AWS DB instances
+	File           :	database.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	40
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Security Groups - Unrestricted Specific Ports - MySQL (TCP,3306)
+	File           :	security_groups.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	65
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Security Groups - Unrestricted Specific Ports - (SSH,22)
+	File           :	security_groups.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	31
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Ensure that there are no exposed Amazon IAM access keys in order to protect your AWS resources against unapproved access
+	File           :	iam.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	88
+	Severity       :	MEDIUM
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Enabling S3 versioning will enable easy recovery from both unintended user actions, like deletes and overwrites
+	File           :	main.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	13
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+	Description    :	Enabling S3 versioning will enable easy recovery from both unintended user actions, like deletes and overwrites
+	File           :	main.tf
+	Module Name    :	root
+	Plan Root      :	./
+	Line           :	24
+	Severity       :	HIGH
+	
+	-----------------------------------------------------------------------
+	
+
+Scan Summary -
+
+	File/Folder         :	/iac
+	IaC Type            :	terraform
+	Scanned At          :	2025-12-13 00:01:54.343529158 +0000 UTC
+	Policies Validated  :	167
+	Violated Policies   :	22
+	Low                 :	0
+	Medium              :	8
+	High                :	14
+	
+

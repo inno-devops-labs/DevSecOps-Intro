@@ -1,0 +1,202 @@
+{
+	"kics_version": "v2.1.17",
+	"files_scanned": 1,
+	"lines_scanned": 280,
+	"files_parsed": 1,
+	"lines_parsed": 261,
+	"lines_ignored": 19,
+	"files_failed_to_scan": 0,
+	"queries_total": 21,
+	"queries_failed_to_execute": 0,
+	"queries_failed_to_compute_similarity_id": 0,
+	"scan_id": "console",
+	"severity_counters": {
+		"CRITICAL": 1,
+		"HIGH": 2,
+		"INFO": 2,
+		"LOW": 0,
+		"MEDIUM": 1,
+		"TRACE": 0
+	},
+	"total_counter": 6,
+	"total_bom_resources": 0,
+	"start": "2025-12-13T06:54:01.582159227Z",
+	"end": "2025-12-13T06:54:03.98479517Z",
+	"paths": [
+		"/src"
+	],
+	"queries": [
+		{
+			"query_name": "RDS DB Instance Publicly Accessible",
+			"query_id": "647de8aa-5a42-41b5-9faf-22136f117380",
+			"query_url": "https://www.pulumi.com/registry/packages/aws/api-docs/rds/instance/#publiclyaccessible_yaml",
+			"severity": "CRITICAL",
+			"platform": "Pulumi",
+			"cwe": "284",
+			"risk_score": "8.7",
+			"cloud_provider": "AWS",
+			"category": "Insecure Configurations",
+			"experimental": false,
+			"description": "RDS must not be defined with public interface, which means the attribute 'PubliclyAccessible' must be set to false.",
+			"description_id": "be6d13f0",
+			"files": [
+				{
+					"file_name": "../../src/Pulumi-vulnerable.yaml",
+					"similarity_id": "d5a823d6c65082cd99457a40fbabdf497078bce057628d51e5ec141537ee5d53",
+					"line": 104,
+					"resource_type": "aws:rds:Instance",
+					"resource_name": "unencryptedDb",
+					"issue_type": "IncorrectValue",
+					"search_key": "resources[unencryptedDb].properties.publiclyAccessible",
+					"search_line": 104,
+					"search_value": "",
+					"expected_value": "'resources.unencryptedDb.properties.publiclyAccessible' should be set to 'false'",
+					"actual_value": "'resources.unencryptedDb.properties.publiclyAccessible' is set to 'true'"
+				}
+			]
+		},
+		{
+			"query_name": "DynamoDB Table Not Encrypted",
+			"query_id": "b6a7e0ae-aed8-4a19-a993-a95760bf8836",
+			"query_url": "https://www.pulumi.com/registry/packages/aws/api-docs/dynamodb/table/#serversideencryption_yaml",
+			"severity": "HIGH",
+			"platform": "Pulumi",
+			"cwe": "311",
+			"risk_score": "7.1",
+			"cloud_provider": "AWS",
+			"category": "Encryption",
+			"experimental": false,
+			"description": "AWS DynamoDB Tables should have serverSideEncryption enabled",
+			"description_id": "fb6a0c51",
+			"files": [
+				{
+					"file_name": "../../src/Pulumi-vulnerable.yaml",
+					"similarity_id": "15376a569938e2989eb0e9db7ff05213e04607ad547e550bbc579aaa5f64e8ce",
+					"line": 205,
+					"resource_type": "aws:dynamodb:Table",
+					"resource_name": "Unencrypted Table",
+					"issue_type": "MissingAttribute",
+					"search_key": "resources[unencryptedTable].properties",
+					"search_line": 205,
+					"search_value": "",
+					"expected_value": "Attribute 'serverSideEncryption' should be defined",
+					"actual_value": "Attribute 'serverSideEncryption' is not defined"
+				}
+			]
+		},
+		{
+			"query_name": "Passwords And Secrets - Generic Password",
+			"query_id": "487f4be7-3fd9-4506-a07a-eae252180c08",
+			"query_url": "https://docs.kics.io/latest/secrets/",
+			"severity": "HIGH",
+			"platform": "Common",
+			"cwe": "798",
+			"risk_score": "7.8",
+			"cloud_provider": "COMMON",
+			"category": "Secret Management",
+			"experimental": false,
+			"description": "Query to find passwords and secrets in infrastructure code.",
+			"description_id": "d69d8a89",
+			"files": [
+				{
+					"file_name": "../../src/Pulumi-vulnerable.yaml",
+					"similarity_id": "1d73d5dae3d1a4824830f1a423473d36b79973a15ca9d23f1348c3dc8a30c7e4",
+					"line": 16,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				}
+			]
+		},
+		{
+			"query_name": "EC2 Instance Monitoring Disabled",
+			"query_id": "daa581ef-731c-4121-832d-cf078f67759d",
+			"query_url": "https://www.pulumi.com/registry/packages/aws/api-docs/ec2/instance/#monitoring_yaml",
+			"severity": "MEDIUM",
+			"platform": "Pulumi",
+			"cwe": "778",
+			"risk_score": "5.1",
+			"cloud_provider": "AWS",
+			"category": "Observability",
+			"experimental": false,
+			"description": "EC2 Instance should have detailed monitoring enabled. With detailed monitoring enabled data is available in 1-minute periods",
+			"description_id": "7f96d3ac",
+			"files": [
+				{
+					"file_name": "../../src/Pulumi-vulnerable.yaml",
+					"similarity_id": "4d692568cdae89e9d5e0ebef040401e6b922b9ac9a51a09554ba9629b730ad7c",
+					"line": 157,
+					"resource_type": "aws:ec2:Instance",
+					"resource_name": "Unencrypted Instance",
+					"issue_type": "MissingAttribute",
+					"search_key": "resources[unencryptedInstance].properties",
+					"search_line": 157,
+					"search_value": "",
+					"expected_value": "Attribute 'monitoring' should be defined and set to true",
+					"actual_value": "Attribute 'monitoring' is not defined"
+				}
+			]
+		},
+		{
+			"query_name": "DynamoDB Table Point In Time Recovery Disabled",
+			"query_id": "327b0729-4c5c-4c44-8b5c-e476cd9c7290",
+			"query_url": "https://www.pulumi.com/registry/packages/aws/api-docs/dynamodb/table/#pointintimerecovery_yaml",
+			"severity": "INFO",
+			"platform": "Pulumi",
+			"cwe": "459",
+			"risk_score": "0.0",
+			"cloud_provider": "AWS",
+			"category": "Best Practices",
+			"experimental": false,
+			"description": "It's considered a best practice to have point in time recovery enabled for DynamoDB Table",
+			"description_id": "6ff56c6e",
+			"files": [
+				{
+					"file_name": "../../src/Pulumi-vulnerable.yaml",
+					"similarity_id": "7b5c72142600d0995c06ae3634f4776b5565be2c0323d509b9b51e9d915b03e8",
+					"line": 213,
+					"resource_type": "aws:dynamodb:Table",
+					"resource_name": "Unencrypted Table",
+					"issue_type": "IncorrectValue",
+					"search_key": "resources[unencryptedTable].properties.pointInTimeRecovery.enabled",
+					"search_line": 213,
+					"search_value": "",
+					"expected_value": "Attribute 'enabled' in 'pointInTimeRecovery' should be set to true",
+					"actual_value": "Attribute 'enabled' in 'pointInTimeRecovery'  is set to false"
+				}
+			]
+		},
+		{
+			"query_name": "EC2 Not EBS Optimized",
+			"query_id": "d991e4ae-42ab-429b-ab43-d5e5fa9ca633",
+			"query_url": "https://www.pulumi.com/registry/packages/aws/api-docs/ec2/instance/#ebsoptimized_yaml",
+			"severity": "INFO",
+			"platform": "Pulumi",
+			"cwe": "459",
+			"risk_score": "0.0",
+			"cloud_provider": "AWS",
+			"category": "Best Practices",
+			"experimental": false,
+			"description": "It's considered a best practice for an EC2 instance to use an EBS optimized instance. This provides the best performance for your EBS volumes by minimizing contention between Amazon EBS I/O and other traffic from your instance",
+			"description_id": "81a001dd",
+			"files": [
+				{
+					"file_name": "../../src/Pulumi-vulnerable.yaml",
+					"similarity_id": "9d46c3011c910cf43e7d99575a291f05b1b4f701f62e99c132837e16f7ee27a4",
+					"line": 157,
+					"resource_type": "aws:ec2:Instance",
+					"resource_name": "unencryptedInstance",
+					"issue_type": "MissingAttribute",
+					"search_key": "resources[unencryptedInstance].properties",
+					"search_line": 157,
+					"search_value": "",
+					"expected_value": "Attribute 'ebsOptimized' should be defined and set to true",
+					"actual_value": "Attribute 'ebsOptimized' is not defined"
+				}
+			]
+		}
+	]
+}

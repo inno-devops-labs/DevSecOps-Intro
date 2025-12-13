@@ -1,0 +1,4 @@
+=== Terraform Security Analysis ===
+tfsec findings: 53
+Checkov findings: 78
+Terrascan findings: 22
