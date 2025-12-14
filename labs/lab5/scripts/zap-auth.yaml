@@ -1,0 +1,75 @@
+env:
+  contexts:
+    - name: juice-shop-auth
+      urls:
+        - http://localhost:3000
+      includePaths:
+        - http://localhost:3000.*
+      excludePaths: []
+  parameters:
+    failOnError: true
+    progressToStdout: true
+
+jobs:
+  # Add the auth script into ZAP
+  - type: script
+    parameters:
+      action: add          # REQUIRED: add/enable/disable/loaddir/run/remove
+      type: httpsender     # Script type
+      engine: ECMAScript
+      name: auth-json
+      file: /zap/wrk/scripts/auth-json.js
+
+  # Configure passive scan
+  - type: passiveScan-config
+    parameters:
+      enableTags: false
+      maxAlertsPerRule: 10
+
+  # Traditional spider (auth via HTTP Sender script)
+  - type: spider
+    parameters:
+      context: juice-shop-auth
+      maxDuration: 10
+      url: http://localhost:3000
+
+  # Ajax spider
+  - type: spiderAjax
+    parameters:
+      context: juice-shop-auth
+      maxDuration: 10
+      url: http://localhost:3000
+
+  # Wait for passive scan to complete
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 0
+
+  # Active scan
+  - type: activeScan
+    parameters:
+      context: juice-shop-auth
+      policy: Default Policy
+      threadPerHost: 2
+      maxRuleDurationInMins: 10
+      maxScanDurationInMins: 35
+      addQueryParam: true
+
+  # HTML report
+  - type: report
+    parameters:
+      template: traditional-html
+      reportTitle: ZAP Authenticated Scan Report
+      reportDescription: Authenticated scan of OWASP Juice Shop
+      reportDir: /zap/wrk/
+      reportFile: report-auth.html
+
+  # JSON report
+  - type: report
+    parameters:
+      template: traditional-json
+      reportTitle: ZAP Authenticated Scan Report
+      reportDescription: Authenticated scan of OWASP Juice Shop
+      reportDir: /zap/wrk/
+      reportFile: zap-report-auth.json
+

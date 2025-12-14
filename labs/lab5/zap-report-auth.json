@@ -1,0 +1,1345 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.16.1",
+	"@generated": "Sun, 14 Dec 2025 11:49:29",
+	"created": "2025-12-14T11:49:29.448579275Z",
+	"site":[ 
+		{
+			"@name": "https://firefox-settings-attachments.cdn.mozilla.net",
+			"@host": "firefox-settings-attachments.cdn.mozilla.net",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+			]
+		},
+		{
+			"@name": "http://cdnjs.cloudflare.com",
+			"@host": "cdnjs.cloudflare.com",
+			"@port": "80",
+			"@ssl": "false",
+			"alerts": [ 
+			]
+		},
+		{
+			"@name": "http://localhost:3000",
+			"@host": "localhost",
+			"@port": "3000",
+			"@ssl": "false",
+			"alerts": [ 
+				{
+					"pluginid": "40018",
+					"alertRef": "40018",
+					"alert": "SQL Injection",
+					"name": "SQL Injection",
+					"riskcode": "3",
+					"confidence": "1",
+					"riskdesc": "High (Low)",
+					"desc": "<p>SQL injection may be possible.</p>",
+					"instances":[ 
+						{
+							"id": "142",
+							"uri": "http://localhost:3000/rest/products/search?q=%27%28",
+							"nodeName": null,
+							"method": "GET",
+							"param": "q",
+							"attack": "'(",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"id": "141",
+							"uri": "http://localhost:3000/rest/languages?query=query%22+AND+%221%22%3D%221%22+--+",
+							"nodeName": null,
+							"method": "GET",
+							"param": "query",
+							"attack": "query\" AND \"1\"=\"1\" -- ",
+							"evidence": "",
+							"otherinfo": "The page results were successfully manipulated using the boolean conditions [query\" AND \"1\"=\"1\" -- ] and [query\" AND \"1\"=\"2\" -- ]\nThe parameter value being modified was stripped from the HTML output for the purposes of the comparison.\nData was returned for the original parameter.\nThe vulnerability was detected by successfully restricting the data originally returned, by manipulating the parameter."
+						}
+					],
+					"count": "2",
+					"systemic": false,
+					"solution": "<p>Do not trust client side input, even if there is client side validation in place.</p><p>In general, type check all data on the server side.</p><p>If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'</p><p>If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.</p><p>If database Stored Procedures can be used, use them.</p><p>Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!</p><p>Do not create dynamic SQL queries using simple string concatenation.</p><p>Escape all data received from the client.</p><p>Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.</p><p>Apply the principle of least privilege by using the least privileged database user possible.</p><p>In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.</p><p>Grant the minimum database access that is necessary for the application.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</p>",
+					"cweid": "89",
+					"wascid": "19",
+					"sourceid": "11080"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "5",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "59",
+							"uri": "http://localhost:3000/",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "49",
+							"uri": "http://localhost:3000/ftp",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "50",
+							"uri": "http://localhost:3000/ftp/coupons_2013.md.bak",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "53",
+							"uri": "http://localhost:3000/ftp/eastere.gg",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "57",
+							"uri": "http://localhost:3000/ftp/encrypt.pyc",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "56",
+							"uri": "http://localhost:3000/ftp/package-lock.json.bak",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "55",
+							"uri": "http://localhost:3000/ftp/package.json.bak",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "58",
+							"uri": "http://localhost:3000/ftp/suspicious_errors.yml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "60",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "7",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"systemic": false,
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10098",
+					"alertRef": "10098",
+					"alert": "Cross-Domain Misconfiguration",
+					"name": "Cross-Domain Misconfiguration",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
+					"instances":[ 
+						{
+							"id": "8",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "0",
+							"uri": "http://localhost:3000/assets/public/favicon_js.ico",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "51",
+							"uri": "http://localhost:3000/ftp",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "52",
+							"uri": "http://localhost:3000/ftp/acquisitions.md",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "54",
+							"uri": "http://localhost:3000/ftp/coupons_2013.md.bak",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "45",
+							"uri": "http://localhost:3000/main.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "4",
+							"uri": "http://localhost:3000/polyfills.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "1",
+							"uri": "http://localhost:3000/robots.txt",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "2",
+							"uri": "http://localhost:3000/runtime.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "10",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "3",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "47",
+							"uri": "http://localhost:3000/vendor.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						}
+					],
+					"count": "12",
+					"systemic": false,
+					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+					"reference": "<p>https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy</p>",
+					"cweid": "264",
+					"wascid": "14",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10020",
+					"alertRef": "10020-1",
+					"alert": "Missing Anti-clickjacking Header",
+					"name": "Missing Anti-clickjacking Header",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+					"instances":[ 
+						{
+							"id": "89",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6jY&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "96",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7ZS&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "109",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8eb&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "125",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa97g&sid=CblW4Xd3WJrYSk25AAH9",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "127",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa9sc&sid=MpArWjLEU40AARIsAAH_",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "129",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSaAqE&sid=iL0qdf3YhJnfztCnAAIB",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "133",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSaAtY&sid=X24wr3JmgyHFdyAMAAIC",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "131",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSaAw9&sid=t2HWxrU5isKMMHggAAID",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "135",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSaC0C&sid=_wjt4hx1FHOZZ63mAAIH",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "137",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSaCqy&sid=q8U5KShiKJX44Qg2AAIJ",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "139",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSaD8G&sid=OYdrUMPiF3OTPDNLAAIL",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "140",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSaDAj&sid=u_fdh_jFxY68U7AGAAIM",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"systemic": false,
+					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options</p>",
+					"cweid": "1021",
+					"wascid": "15",
+					"sourceid": "209"
+				},
+				{
+					"pluginid": "3",
+					"alertRef": "3-1",
+					"alert": "Session ID in URL Rewrite",
+					"name": "Session ID in URL Rewrite",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>URL rewrite is used to track user session ID. The session ID may be disclosed via cross-site referer header. In addition, the session ID might be stored in browser history or server logs.</p>",
+					"instances":[ 
+						{
+							"id": "83",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6jc&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "axvjXXdgu1tIH9v0AAH3",
+							"otherinfo": ""
+						},
+						{
+							"id": "94",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6nZ&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "axvjXXdgu1tIH9v0AAH3",
+							"otherinfo": ""
+						},
+						{
+							"id": "105",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7ao&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "IbVqPPgh3RLqfO8YAAH5",
+							"otherinfo": ""
+						},
+						{
+							"id": "101",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7ZW&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "IbVqPPgh3RLqfO8YAAH5",
+							"otherinfo": ""
+						},
+						{
+							"id": "110",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8ef&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "4O8_HbWnblLs1wo7AAH7",
+							"otherinfo": ""
+						},
+						{
+							"id": "115",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8gd&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "4O8_HbWnblLs1wo7AAH7",
+							"otherinfo": ""
+						},
+						{
+							"id": "116",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8je&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "4O8_HbWnblLs1wo7AAH7",
+							"otherinfo": ""
+						},
+						{
+							"id": "108",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=websocket&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "4O8_HbWnblLs1wo7AAH7",
+							"otherinfo": ""
+						},
+						{
+							"id": "84",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=websocket&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "axvjXXdgu1tIH9v0AAH3",
+							"otherinfo": ""
+						},
+						{
+							"id": "99",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=websocket&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "GET",
+							"param": "sid",
+							"attack": "",
+							"evidence": "IbVqPPgh3RLqfO8YAAH5",
+							"otherinfo": ""
+						},
+						{
+							"id": "91",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6jY&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "POST",
+							"param": "sid",
+							"attack": "",
+							"evidence": "axvjXXdgu1tIH9v0AAH3",
+							"otherinfo": ""
+						},
+						{
+							"id": "97",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7ZS&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "POST",
+							"param": "sid",
+							"attack": "",
+							"evidence": "IbVqPPgh3RLqfO8YAAH5",
+							"otherinfo": ""
+						},
+						{
+							"id": "114",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8eb&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "POST",
+							"param": "sid",
+							"attack": "",
+							"evidence": "4O8_HbWnblLs1wo7AAH7",
+							"otherinfo": ""
+						}
+					],
+					"count": "13",
+					"systemic": false,
+					"solution": "<p>For secure content, put session ID in a cookie. To be even more secure consider using a combination of cookie and URL rewrite.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://seclists.org/webappsec/2002/q4/111</p>",
+					"cweid": "598",
+					"wascid": "13",
+					"sourceid": "210"
+				},
+				{
+					"pluginid": "10017",
+					"alertRef": "10017",
+					"alert": "Cross-Domain JavaScript Source File Inclusion",
+					"name": "Cross-Domain JavaScript Source File Inclusion",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
+					"instances":[ 
+						{
+							"id": "13",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "15",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "61",
+							"uri": "http://localhost:3000/",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "62",
+							"uri": "http://localhost:3000/",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "65",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "67",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "63",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "64",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "16",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "19",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "10",
+					"systemic": false,
+					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "829",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "2",
+					"alertRef": "2",
+					"alert": "Private IP Disclosure",
+					"name": "Private IP Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.</p>",
+					"instances":[ 
+						{
+							"id": "85",
+							"uri": "http://localhost:3000/rest/admin/application-configuration",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "192.168.99.100:3000",
+							"otherinfo": "192.168.99.100:3000\n192.168.99.100:4200\n"
+						}
+					],
+					"count": "1",
+					"systemic": false,
+					"solution": "<p>Remove the private IP address from the HTTP response body. For comments, use JSP/ASP/PHP comment instead of HTML/JavaScript comment which can be seen by client browsers.</p>",
+					"otherinfo": "<p>192.168.99.100:3000</p><p>192.168.99.100:4200</p><p></p>",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc1918</p>",
+					"cweid": "497",
+					"wascid": "13",
+					"sourceid": "197"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
+					"instances":[ 
+						{
+							"id": "31",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1650485437",
+							"otherinfo": "1650485437, which evaluates to: 2022-04-20 20:10:37."
+						},
+						{
+							"id": "38",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1981395349",
+							"otherinfo": "1981395349, which evaluates to: 2032-10-14 19:35:49."
+						},
+						{
+							"id": "35",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2038834951",
+							"otherinfo": "2038834951, which evaluates to: 2034-08-10 15:02:31."
+						},
+						{
+							"id": "34",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1650485437",
+							"otherinfo": "1650485437, which evaluates to: 2022-04-20 20:10:37."
+						},
+						{
+							"id": "40",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1981395349",
+							"otherinfo": "1981395349, which evaluates to: 2032-10-14 19:35:49."
+						},
+						{
+							"id": "36",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2038834951",
+							"otherinfo": "2038834951, which evaluates to: 2034-08-10 15:02:31."
+						},
+						{
+							"id": "32",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1650485437",
+							"otherinfo": "1650485437, which evaluates to: 2022-04-20 20:10:37."
+						},
+						{
+							"id": "20",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680327869",
+							"otherinfo": "1680327869, which evaluates to: 2023-04-01 05:44:29."
+						},
+						{
+							"id": "11",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1701244813",
+							"otherinfo": "1701244813, which evaluates to: 2023-11-29 08:00:13."
+						},
+						{
+							"id": "29",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1818181818",
+							"otherinfo": "1818181818, which evaluates to: 2027-08-13 18:30:18."
+						},
+						{
+							"id": "17",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1839622642",
+							"otherinfo": "1839622642, which evaluates to: 2028-04-17 22:17:22."
+						},
+						{
+							"id": "21",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1863874346",
+							"otherinfo": "1863874346, which evaluates to: 2029-01-23 14:52:26."
+						},
+						{
+							"id": "26",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1917098446",
+							"otherinfo": "1917098446, which evaluates to: 2030-10-01 15:20:46."
+						},
+						{
+							"id": "41",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1981395349",
+							"otherinfo": "1981395349, which evaluates to: 2032-10-14 19:35:49."
+						},
+						{
+							"id": "14",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2033195021",
+							"otherinfo": "2033195021, which evaluates to: 2034-06-06 08:23:41."
+						},
+						{
+							"id": "37",
+							"uri": "http://localhost:3000/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2038834951",
+							"otherinfo": "2038834951, which evaluates to: 2034-08-10 15:02:31."
+						}
+					],
+					"count": "16",
+					"systemic": false,
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1650485437, which evaluates to: 2022-04-20 20:10:37.</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "497",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"id": "82",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6cs",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "86",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6jc&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "95",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6nZ&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "106",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7ao&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "102",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7SK",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "104",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7ZW&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "112",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8ef&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "119",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8gd&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "120",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8je&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "107",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8ZV",
+							"nodeName": null,
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "92",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa6jY&sid=axvjXXdgu1tIH9v0AAH3",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "98",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa7ZS&sid=IbVqPPgh3RLqfO8YAAH5",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "117",
+							"uri": "http://localhost:3000/socket.io/?EIO=4&transport=polling&t=PiSa8eb&sid=4O8_HbWnblLs1wo7AAH7",
+							"nodeName": null,
+							"method": "POST",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						}
+					],
+					"count": "13",
+					"systemic": false,
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "198"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
+					"instances":[ 
+						{
+							"id": "46",
+							"uri": "http://localhost:3000/main.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//owasp.org' target='_blank'>Open Worldwide Application Security Project (OWASP)</a> and is developed and maintained by voluntee\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "134",
+							"uri": "http://localhost:3000/tutorial.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/771984076&amp;color=%23ff5500&amp;auto&lowbar;play=true&amp;h\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "48",
+							"uri": "http://localhost:3000/vendor.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M0 256C0 397.4 114.6 512 256 512s256-114.6 256-256S397.4 0 256 0S0 114.6 0\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "3",
+					"systemic": false,
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//owasp.org' target='_blank'>Open Worldwide Application Security Project (OWASP)</a> and is developed and maintained by voluntee\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "615",
+					"wascid": "13",
+					"sourceid": "22"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"id": "22",
+							"uri": "http://localhost:3000",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "66",
+							"uri": "http://localhost:3000/",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "79",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/favicon_js.ico",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "76",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/runtime.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "74",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/styles.css",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "69",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "68",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "70",
+							"uri": "http://localhost:3000/juice-shop/build/routes/polyfills.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "72",
+							"uri": "http://localhost:3000/juice-shop/build/routes/runtime.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "73",
+							"uri": "http://localhost:3000/juice-shop/build/routes/vendor.js",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "78",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:286:9",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "77",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:328:13",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "80",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:365:14",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "75",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:376:14",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "71",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "27",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"nodeName": null,
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "16",
+					"systemic": false,
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				}
+			]
+		}
+	],
+	"sequences":[
+	]
+
+}
