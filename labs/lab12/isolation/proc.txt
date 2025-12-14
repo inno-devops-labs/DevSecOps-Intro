@@ -1,3 +1,0 @@
-=== /proc Entries Count ===
-Host: 122
-Kata VM: 52

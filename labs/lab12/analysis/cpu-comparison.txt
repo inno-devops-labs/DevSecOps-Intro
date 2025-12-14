@@ -1,5 +1,0 @@
-=== CPU Model Comparison ===
-Host CPU:
-model name	: AMD Ryzen 7 5700U with Radeon Graphics
-Kata VM CPU:
-model name	: AMD EPYC

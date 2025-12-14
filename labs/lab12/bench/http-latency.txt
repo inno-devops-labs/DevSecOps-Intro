@@ -1,3 +1,0 @@
-=== HTTP Latency Test (juice-runc) ===
-Results for port 3012 (juice-runc):
-avg=0.0046s min=0.0032s max=0.0165s n=50
