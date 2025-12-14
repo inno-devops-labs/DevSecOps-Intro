@@ -1,0 +1,12 @@
+# Detect new writable file under /usr/local/bin inside any container
+- rule: Write Binary Under UsrLocalBin
+  desc: Detects writes under /usr/local/bin inside any container
+  condition: evt.type in (open, openat, openat2, creat) and 
+             evt.is_open_write=true and 
+             fd.name startswith /usr/local/bin/ and 
+             container.id != host
+  output: >
+    Falco Custom: File write in /usr/local/bin (container=%container.name user=%user.name file=%fd.name flags=%evt.arg.flags)
+  priority: WARNING
+  tags: [container, compliance, drift]
+

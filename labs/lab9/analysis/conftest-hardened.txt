@@ -1,0 +1,2 @@
+
+[32m30 tests, 30 passed, 0 warnings, 0 failures, 0 exceptions[0m
