@@ -1,0 +1,1 @@
+Linux ba75e9e9fba8 6.12.47 #1 SMP Fri Nov 14 15:34:06 UTC 2025 x86_64 Linux

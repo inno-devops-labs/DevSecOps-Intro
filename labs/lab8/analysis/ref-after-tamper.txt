@@ -1,1 +1,0 @@
-After tamper digest ref: localhost:5000/juice-shop@sha256:be49435f6288f9c5cce0357c2006cc266cb5c450dbd6dc8e3a3baec10c46b065
