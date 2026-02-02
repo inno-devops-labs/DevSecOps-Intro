@@ -1,0 +1,176 @@
+{
+	"kics_version": "v2.1.14",
+	"files_scanned": 3,
+	"lines_scanned": 309,
+	"files_parsed": 3,
+	"lines_parsed": 260,
+	"lines_ignored": 49,
+	"files_failed_to_scan": 0,
+	"queries_total": 287,
+	"queries_failed_to_execute": 0,
+	"queries_failed_to_compute_similarity_id": 0,
+	"scan_id": "console",
+	"severity_counters": {
+		"CRITICAL": 0,
+		"HIGH": 8,
+		"INFO": 0,
+		"LOW": 1,
+		"MEDIUM": 0,
+		"TRACE": 0
+	},
+	"total_counter": 9,
+	"total_bom_resources": 0,
+	"start": "2025-10-17T13:40:02.454787468Z",
+	"end": "2025-10-17T13:40:05.156024115Z",
+	"paths": [
+		"/src"
+	],
+	"queries": [
+		{
+			"query_name": "Passwords And Secrets - Generic Password",
+			"query_id": "487f4be7-3fd9-4506-a07a-eae252180c08",
+			"query_url": "https://docs.kics.io/latest/secrets/",
+			"severity": "HIGH",
+			"platform": "Common",
+			"cwe": "798",
+			"cloud_provider": "COMMON",
+			"category": "Secret Management",
+			"experimental": false,
+			"description": "Query to find passwords and secrets in infrastructure code.",
+			"description_id": "d69d8a89",
+			"files": [
+				{
+					"file_name": "../../src/inventory.ini",
+					"similarity_id": "33738570f6448f344b956896d42f75b6216ace7814a46c8b6002d483c70c25b8",
+					"line": 19,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				},
+				{
+					"file_name": "../../src/configure.yml",
+					"similarity_id": "2a8df5710fcdceeff811ec6532d6bcba17d9b6c603d0fecdfecc87f3b128aac5",
+					"line": 16,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				},
+				{
+					"file_name": "../../src/inventory.ini",
+					"similarity_id": "21ca21d14467d66a7b83bdc36e6292b114d13bde377021c0ca107078a8afa0d4",
+					"line": 5,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				},
+				{
+					"file_name": "../../src/inventory.ini",
+					"similarity_id": "97e89fa95681e604d1c4504858554eef5df45cee2055fe4505a1e6c1baf30aa8",
+					"line": 18,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				},
+				{
+					"file_name": "../../src/inventory.ini",
+					"similarity_id": "369901d122f4a6d8adec4bec409dc25e92c96ff37c26a145b681702f7971a6a1",
+					"line": 10,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				},
+				{
+					"file_name": "../../src/deploy.yml",
+					"similarity_id": "d6fbd659326192fbd0bfcc010d5fc97f5db716570596efd8b730ce20e6606683",
+					"line": 12,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				}
+			]
+		},
+		{
+			"query_name": "Passwords And Secrets - Password in URL",
+			"query_id": "c4d3b58a-e6d4-450f-9340-04f1e702eaae",
+			"query_url": "https://docs.kics.io/latest/secrets/",
+			"severity": "HIGH",
+			"platform": "Common",
+			"cwe": "798",
+			"cloud_provider": "COMMON",
+			"category": "Secret Management",
+			"experimental": false,
+			"description": "Query to find passwords and secrets in infrastructure code.",
+			"description_id": "d69d8a89",
+			"files": [
+				{
+					"file_name": "../../src/deploy.yml",
+					"similarity_id": "895e407b4fb7371dee128429969964f297da99fed47494dbb55bb0627fb8b7ff",
+					"line": 16,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				},
+				{
+					"file_name": "../../src/deploy.yml",
+					"similarity_id": "8c1dd50d50bac18f0c169f282f8af8782dfbc8f0c3271edb415981a73d6e5af5",
+					"line": 72,
+					"issue_type": "RedundantAttribute",
+					"search_key": "",
+					"search_line": 0,
+					"search_value": "",
+					"expected_value": "Hardcoded secret key should not appear in source",
+					"actual_value": "Hardcoded secret key appears in source"
+				}
+			]
+		},
+		{
+			"query_name": "Unpinned Package Version",
+			"query_id": "c05e2c20-0a2c-4686-b1f8-5f0a5612d4e8",
+			"query_url": "https://ansible.readthedocs.io/projects/lint/rules/package-latest/",
+			"severity": "LOW",
+			"platform": "Ansible",
+			"cwe": "706",
+			"cloud_provider": "COMMON",
+			"category": "Supply-Chain",
+			"experimental": false,
+			"description": "Setting state to latest performs an update and installs additional packages possibly resulting in performance degradation or loss of service",
+			"description_id": "43e877b3",
+			"files": [
+				{
+					"file_name": "../../src/deploy.yml",
+					"similarity_id": "314c76114114e1e23377a262e72590a75327039d9d6137b44fdb17922fe5f990",
+					"line": 99,
+					"resource_type": "apt",
+					"resource_name": "Install application",
+					"issue_type": "IncorrectValue",
+					"search_key": "name={{Install application}}.{{apt}}.state",
+					"search_line": -1,
+					"search_value": "",
+					"expected_value": "State's task when installing a package should not be defined as 'latest' or should have set 'update_only' to 'true'",
+					"actual_value": "State's task is set to 'latest'"
+				}
+			]
+		}
+	]
+}

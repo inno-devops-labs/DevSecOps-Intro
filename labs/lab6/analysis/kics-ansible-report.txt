@@ -1,0 +1,51 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.14
+
+
+Preparing Scan Assets: Done
+
+
+
+
+[38;2;237;213;126mUnpinned Package Version[0m, Severity: [38;2;237;213;126mLOW[0m, Results: 1
+	[38;2;237;213;126m[1]:[0m ../../src/deploy.yml:[38;2;34;187;51m99[0m
+[38;2;187;33;36mPasswords And Secrets - Password in URL[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 2
+	[38;2;187;33;36m[1]:[0m ../../src/deploy.yml:[38;2;34;187;51m16[0m
+	[38;2;187;33;36m[2]:[0m ../../src/deploy.yml:[38;2;34;187;51m72[0m
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 6
+	[38;2;187;33;36m[1]:[0m ../../src/inventory.ini:[38;2;34;187;51m5[0m
+	[38;2;187;33;36m[2]:[0m ../../src/inventory.ini:[38;2;34;187;51m10[0m
+	[38;2;187;33;36m[3]:[0m ../../src/configure.yml:[38;2;34;187;51m16[0m
+	[38;2;187;33;36m[4]:[0m ../../src/inventory.ini:[38;2;34;187;51m18[0m
+	[38;2;187;33;36m[5]:[0m ../../src/inventory.ini:[38;2;34;187;51m19[0m
+	[38;2;187;33;36m[6]:[0m ../../src/deploy.yml:[38;2;34;187;51m12[0m
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 8
+[38;2;255;114;19mMEDIUM[0m: 0
+[38;2;237;213;126mLOW[0m: 1
+[38;2;91;192;222mINFO[0m: 0
+TOTAL: 9
+
