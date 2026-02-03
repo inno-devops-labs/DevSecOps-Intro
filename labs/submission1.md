@@ -16,7 +16,45 @@
 - Network exposure: 127.0.0.1 only [x] Yes  [ ] No
 
 ## Health Check
-- Page load: [Скриншот прикреплен в PR]
+- Page load: ![Home Page](img/lab1.jpg)
 - API check: 
 ```json
-<Сюда вставь тот JSON, который мы обсуждали выше>
+[
+  {
+    "id": 1,
+    "name": "Apple Juice (1000ml)",
+    "description": "The all-time classic.",
+    "price": 1.99,
+    "image": "apple_juice.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Orange Juice (1000ml)",
+    "description": "Made from world-famous Oranges.",
+    "price": 2.99,
+    "image": "orange_juice.jpg"
+  }
+]
+
+```
+
+Surface Snapshot (Triage)
+Login/Registration visible: [x] Yes — Accessible via the navbar.
+
+Product listing/search present: [x] Yes — Main page shows various products.
+
+Admin or account area discoverable: [x] Yes — Potential routes like /admin are often discoverable in such apps.
+
+Client-side errors in console: [ ] Yes [x] No
+
+Risks Observed (Top 3)
+Injection Vulnerabilities: High risk due to input fields like search and login that may lack sanitization.
+
+Broken Access Control: Potential for unauthorized access to administrative functions.
+
+Sensitive Data Exposure: Risk of leaking internal API data or logs to unauthenticated users.
+
+GitHub Community
+Starring repositories helps promote open-source projects and signals their value to the developer community.
+
+Following developers fosters professional networking and enables staying up-to-date with industry trends and collaborative work.
