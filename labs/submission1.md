@@ -95,7 +95,7 @@
 ### 2.2 Process
 - Created and pushed template file on `main` so GitHub auto-loads it for PRs.
 - Opened PR from `feature/lab1` → firstly to my fork `main`
-- Verification screenshot: ![Screenshot of auto filling PR template]()
+- Verification screenshot: ![Screenshot of auto filling PR template](/DevSecOps-Intro/labs/lab_images/lab1_pr_template.png)
 
 
 ### 2.3 Reflection — How Templates Improve Workflow
@@ -114,8 +114,8 @@ Templates improve collaboration workflow in several key ways:
 
 ## Challenges & Solutions
 
-- **Challenge**: 
-  **Solution**: 
+- **Challenge**: get familiar with possible security flags and what do they mean
+  **Solution**: studied in google, and then answered questions about them
 
 ---
 
