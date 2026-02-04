@@ -1,0 +1,867 @@
+{
+  "version": "2.5.0",
+  "summary": {
+    "title": "Juice Shop Lab",
+    "owner": "KuchukbaevaRegina",
+    "description": "Local OWASP Juice Shop deployment in a Docker container. \nUsers connect via browser on port 3000 or through an optional reverse proxy with TLS and security headers. \nThe app may persist logs/files on a host volume and send outbound requests to Email/SMS or webhook providers.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "KuchukbaevaRegina"
+      }
+    ],
+    "diagrams": [
+      {
+        "id": 1,
+        "title": "Juice Shop Data Flow Diagram",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.5.0",
+        "cells": [
+          {
+            "position": {
+              "x": 260,
+              "y": -480
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User (Browser)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "46039821-4199-474f-a787-451a4964dad7"
+                },
+                {
+                  "group": "right",
+                  "id": "b2d1ac3f-b91f-4d45-b647-ae09cbb3f421"
+                },
+                {
+                  "group": "bottom",
+                  "id": "57ff4026-8f33-4931-b332-367be4a07fc2"
+                },
+                {
+                  "group": "left",
+                  "id": "ad2749d9-501b-4784-8dc2-245eb055cb04"
+                }
+              ]
+            },
+            "id": "f8ddebf2-8eff-4971-a361-f5825bf51da5",
+            "data": {
+              "type": "tm.Actor",
+              "name": "User (Browser)",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "98980d9a-87c7-46b2-a639-220aa1a643fd",
+                  "title": "Spoofed user identity",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "An attacker could impersonate a legitimate user by forging session cookies or tokens.",
+                  "mitigation": "Enforce strong authentication (JWT with signatures, session expiry, TLS).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "repudiation": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 460,
+              "y": -480
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Attacker (Internet)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "46039821-4199-474f-a787-451a4964dad7"
+                },
+                {
+                  "group": "right",
+                  "id": "b2d1ac3f-b91f-4d45-b647-ae09cbb3f421"
+                },
+                {
+                  "group": "bottom",
+                  "id": "57ff4026-8f33-4931-b332-367be4a07fc2"
+                },
+                {
+                  "group": "left",
+                  "id": "ad2749d9-501b-4784-8dc2-245eb055cb04"
+                }
+              ]
+            },
+            "id": "54d1e5e5-68f6-4e90-b994-64a504e24403",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Attacker (Internet)",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "dfde60b8-0141-4e18-be79-b78600edd0c0",
+                  "title": "Malicious attacker activity",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker could pose as a legitimate client and send crafted requests to exploit the application.",
+                  "mitigation": "Use rate limiting, WAF rules, IP reputation lists, TLS mutual authentication (optional).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "repudiation": 0
+              }
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "HTTP 3000/tcp",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "64a533de-47b8-42d8-b7d1-4744693d3773",
+                  "title": "Unencrypted traffic tampering",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Data between browser and server could be intercepted or modified if TLS is not enforced.",
+                  "mitigation": "Require HTTPS via reverse proxy, set HSTS headers, block plaintext connections.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "HTTP 3000/tcp"
+            ],
+            "id": "02794966-3cd5-4f47-8937-2a3938b66d21",
+            "source": {
+              "cell": "f8ddebf2-8eff-4971-a361-f5825bf51da5",
+              "port": "57ff4026-8f33-4931-b332-367be4a07fc2"
+            },
+            "target": {
+              "cell": "439ec858-5847-4a74-bca5-02768877c370",
+              "port": "b0c45bd0-adae-4e60-abfc-8b6794d0a62c"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "malicious traffic",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "1da22c01-326e-442a-b4de-f756127c6d1a",
+                  "title": "Injection and crafted payloads",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Attacker may inject SQL, XSS, or malicious payloads through crafted HTTP requests.",
+                  "mitigation": "Input validation, parameterized queries, sanitization, WAF filters.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "malicious traffic"
+            ],
+            "id": "43a2806c-ea26-4dc5-964f-43db414ac57c",
+            "source": {
+              "cell": "54d1e5e5-68f6-4e90-b994-64a504e24403",
+              "port": "57ff4026-8f33-4931-b332-367be4a07fc2"
+            },
+            "target": {
+              "cell": "439ec858-5847-4a74-bca5-02768877c370",
+              "port": "6ea80795-fc71-4ff5-854b-38d726181625"
+            },
+            "vertices": [
+              {
+                "x": 516,
+                "y": -210
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Internet ⇢ Host",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Internet ⇢ Host"
+            ],
+            "id": "b9c9bbda-3023-4a09-a71c-acb5601d9e63",
+            "source": {
+              "x": 20,
+              "y": -310
+            },
+            "target": {
+              "x": 820,
+              "y": -310
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "reading/writing data",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "50fef4d2-8fe3-48de-88ea-f715975a623d",
+                  "title": "Unauthorized modification of stored data",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Attacker could manipulate or overwrite files/logs in the storage volume.",
+                  "mitigation": "Apply least-privilege access to volumes, use file integrity monitoring, encrypt sensitive data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                },
+                {
+                  "id": "ec4ddf74-254f-440d-9e6b-0d6303bdac8d",
+                  "title": "Data leakage from storage",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Sensitive logs or user data could be exposed if volumes are world-readable or misconfigured.",
+                  "mitigation": "Restrict storage access, enforce encryption at rest, audit log access.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "reading/writing data"
+            ],
+            "id": "e9c6f815-6274-4ccb-bfe9-15cd7adc2684",
+            "source": {
+              "cell": "439ec858-5847-4a74-bca5-02768877c370",
+              "port": "84f18c5a-886e-4824-a007-476c355272ac"
+            },
+            "target": {
+              "cell": "a1007f42-6aeb-44b8-92a5-b8d85b452c23",
+              "port": "a8551c8f-4d94-4308-8a65-50aebb307f0a"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Host ⇢ Container Network",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Host ⇢ Container Network"
+            ],
+            "id": "ff11fb12-5efb-4868-bbb6-874864db79b8",
+            "source": {
+              "x": 30,
+              "y": -90
+            },
+            "target": {
+              "x": 820,
+              "y": -90
+            },
+            "vertices": []
+          },
+          {
+            "position": {
+              "x": 320,
+              "y": -60
+            },
+            "size": {
+              "width": 200,
+              "height": 140
+            },
+            "attrs": {
+              "text": {
+                "text": "Juice Shop Container"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 11,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "84f18c5a-886e-4824-a007-476c355272ac"
+                },
+                {
+                  "group": "right",
+                  "id": "6ea80795-fc71-4ff5-854b-38d726181625"
+                },
+                {
+                  "group": "bottom",
+                  "id": "b36e1f20-08ec-4671-bc89-f9e030b58e7b"
+                },
+                {
+                  "group": "left",
+                  "id": "b0c45bd0-adae-4e60-abfc-8b6794d0a62c"
+                }
+              ]
+            },
+            "id": "439ec858-5847-4a74-bca5-02768877c370",
+            "data": {
+              "type": "tm.Process",
+              "name": "Juice Shop Container",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "e7e425ce-cac0-48ce-bd64-e837319f7e69",
+                  "title": "Denial of Service attack",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Attacker could overload the container by sending a flood of requests, consuming CPU/memory.",
+                  "mitigation": "Rate limiting, autoscaling, resource quotas in Docker/Kubernetes.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 620,
+              "y": -260
+            },
+            "size": {
+              "width": 190,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "Persistent Storage (Volume)"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 12,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "08599482-1255-42d6-bdec-32b217b30d4b"
+                },
+                {
+                  "group": "right",
+                  "id": "5c94941c-fbc6-4069-b54f-95850756ba09"
+                },
+                {
+                  "group": "bottom",
+                  "id": "ae93cb35-88f3-4283-aa75-b55af1dfef6a"
+                },
+                {
+                  "group": "left",
+                  "id": "a8551c8f-4d94-4308-8a65-50aebb307f0a"
+                }
+              ]
+            },
+            "id": "a1007f42-6aeb-44b8-92a5-b8d85b452c23",
+            "data": {
+              "type": "tm.Store",
+              "name": "Persistent Storage (Volume)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "80387c6d-ea9c-44a2-8c96-703cb61b4c3b",
+                  "title": "Storage tampering by attacker",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Files or logs stored in container volumes may be altered to hide traces or inject backdoors.",
+                  "mitigation": "Enforce filesystem permissions, mount volumes read-only where possible, enable backups.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
+            }
+          }
+        ],
+        "description": "Data flow diagram showing User, Attacker, Juice Shop container, optional Reverse Proxy, Persistent Storage, and outbound flows to Email/SMS provider or webhook endpoints. Trust boundaries: Internet → Host → Container Network."
+      }
+    ],
+    "diagramTop": 2,
+    "reviewer": "",
+    "threatTop": 15
+  }
+}
