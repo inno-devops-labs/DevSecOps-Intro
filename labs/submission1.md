@@ -73,7 +73,8 @@ Note: `/rest/products` returned an error response. Verified the API via `/api/Pr
 - Verify the PR description auto-fills with the template.
 
 ## Verification Evidence
-- Screenshot or link to PR description showing auto-filled template: <path or link>
+- Screenshot or link to PR description showing auto-filled template: `labs/assets/lab1-pr-template.png`
+  - Embed: ![PR Template Auto-Fill](assets/lab1-pr-template.png)
 
 ## Collaboration Analysis
 Using a PR template standardizes the information reviewers need, reduces back-and-forth on missing context, and encourages basic hygiene checks (docs updates, no secrets) before review.
