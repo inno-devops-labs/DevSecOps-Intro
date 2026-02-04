@@ -128,7 +128,7 @@ Templates improve collaboration workflow in several key ways:
 - [x] Followed `@Cre-eD`
 - [x] Followed `@marat-biriushev`
 - [x] Followed `@pierrepicaud`
-- [x] Followed 3 classmates (usernames: )
+- [x] Followed 3 classmates (usernames: idio4, Aleliya, FaritSharafutdinov)
 
 ### Why This Matters
 
