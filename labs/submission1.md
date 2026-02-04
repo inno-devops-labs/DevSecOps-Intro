@@ -69,8 +69,8 @@ Note: `/rest/products` returned an error response. Verified the API via `/api/Pr
 
 ## Process
 - Created template file on `main` so GitHub auto-loads it for PRs.
-- Opened PR from `feature/lab1` → course repo `main`.
-- Verified the PR description auto-filled with the template.
+- Open PR from `feature/lab1` → course repo `main`.
+- Verify the PR description auto-fills with the template.
 
 ## Verification Evidence
 - Screenshot or link to PR description showing auto-filled template: <path or link>
