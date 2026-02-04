@@ -84,3 +84,4 @@ Using a PR template standardizes the information reviewers need, reduces back-an
 
 # GitHub Community
 Starring repositories helps bookmark useful projects and signals community interest, which improves discoverability. Following developers keeps you aware of their work and makes collaboration easier over time.
+Completed required stars and follows (course repo, simple-container-com/api, professor/TAs, and 3 classmates).
