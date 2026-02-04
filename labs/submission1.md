@@ -36,8 +36,8 @@
                      "description":  "The all-time classic.",
                      "price":  1.99,
                      "deluxePrice":  0.99,
-                        "image":  "apple_juice.jpg"
-                        ...
+                     "image":  "apple_juice.jpg"
+                     ...
 ```
 
 #### Surface Snapshot (Triage)
@@ -70,6 +70,7 @@
                          "price":  1.99,
                          "deluxePrice":  0.99,
                          "image":  "apple_juice.jpg"
+                         ...
     ```
   - Headers snippet:
     ```text
@@ -95,8 +96,8 @@
 - Added artifacts and API snippet in `labs/submission1.md`.
 
 #### Evidence
-- PR URL: <REPLACE: link to your PR>
-- Screenshot or note: <REPLACE: brief confirmation that template auto-fills>
+- PR URL: https://github.com/Vlad1mirZhidkov/DevSecOps-Intro/pull/1
+- Screenshot or note: ![PR-template](../screenshots/lab1/PR-template.png)
 
 ### Why This Helps
 - The template standardizes context (goal, changes, tests), so reviewers can scan PRs quickly.
