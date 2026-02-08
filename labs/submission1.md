@@ -61,3 +61,25 @@ Keep-Alive: timeout=5
 1) **SQL Injection** — allows attackers to manipulate database queries and access sensitive data.
 2) **Cross-Site Scripting (XSS)** — enables execution of malicious scripts in users’ browsers.
 3) **Broken Authentication** — weak authentication mechanisms allow unauthorized access to user accounts.
+
+## PR Template Setup
+
+### Process:
+- Created `.github/pull_request_template.md` with required sections
+- Committed to main branch: `git commit -m "docs: add PR template"`
+- Created feature branch and opened PR from `feature/lab1`
+
+### Verification:
+- PR description auto-filled with template sections ✓
+- All sections (Goal, Changes, Testing, Artifacts & Screenshots) present ✓
+- Checklist with 3 items visible ✓
+
+### Evidence:
+![PR](./screenshots/PR_template.png)
+
+### Analysis of how templates improve collaboration workflow
+PR templates improve collaboration workflow by ensuring that every pull request follows a consistent structure, making it easier for reviewers to find key information quickly. They help contributors remember to include important details (such as testing steps and screenshots), reduce the chance of missing documentation or including sensitive files, and streamline the review and approval process. This leads to clearer communication, fewer mistakes, and a more efficient and professional team workflow.
+
+## GitHub Community
+
+Starring repositories helps highlight valuable open source projects, making them more visible and encouraging further development and support from the community. Following developers fosters collaboration, keeps you updated on their work, and helps build professional connections that are valuable for teamwork and career growth.
