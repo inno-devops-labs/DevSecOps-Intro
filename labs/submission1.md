@@ -8,7 +8,7 @@
 
 ## Environment
 - Host OS: macOS
-- Docker: (check with `docker --version`)
+- Docker: 28.2.2
 
 ## Deployment Details
 - Run command used: `docker run -d --name juice-shop -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v19.0.0`
@@ -17,8 +17,10 @@
 
 ## Health Check
 - Page load: ![Juice Shop Home Page](photo_2026-02-08_13-51-46.jpg)
-- API check: 
-- ![API Response](photo_2026-02-08_13-53-18.jpg)
+- API check: `curl -s http://127.0.0.1:3000/api/Products | head -30`
+```json
+{"status":"success","data":[{"id":1,"name":"Apple Juice (1000ml)","description":"The all-time classic.","price":1.99,"deluxePrice":0.99,"image":"apple_juice.jpg","createdAt":"2026-02-08T11:54:32.964Z","updatedAt":"2026-02-08T11:54:32.964Z","deletedAt":null},{"id":2,"name":"Orange Juice (1000ml)","description":"Made from oranges hand-picked by Uncle Dittmeyer.","price":2.99,"deluxePrice":2.49,"image":"orange_juice.jpg","createdAt":"2026-02-08T11:54:32.964Z","updatedAt":"2026-02-08T11:54:32.964Z","deletedAt":null},...]}
+```
 
 
 ## Surface Snapshot (Triage)
