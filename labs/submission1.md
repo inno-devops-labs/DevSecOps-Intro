@@ -15,7 +15,7 @@
 - Access URL: http://127.0.0.1:3000
 - Network exposure: 127.0.0.1 only
 
-## Health Check
+## Health Check 
 - Page load: ![Home page](home_page.png)
 - API check: first 5–10 lines from `curl -s http://127.0.0.1:3000/rest/products | head`
 
