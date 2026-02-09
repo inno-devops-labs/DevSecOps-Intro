@@ -19,7 +19,7 @@
 
 ## Health Check
 - Page load: application successfully loaded in browser  
-  Screenshot: screenshots/juice-shop-home.png
+  Screenshot: `screenshots/juice-shop-home.png`
 
 - API check:
 ```bash
