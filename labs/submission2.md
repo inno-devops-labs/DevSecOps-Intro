@@ -153,7 +153,7 @@ The Reverse Proxy to Application link operates without authentication, creating 
 
 
 **Data Flow Diagram (Baseline):**
-- **Location:** `labs/lab2/baseline/data-flow.png`
+- **Location:** `labs/lab2/baseline/data-flow-diagram.png`
 
 ![data-flow](./lab2/baseline/data-flow-diagram.png)
 
@@ -256,12 +256,14 @@ The Reverse Proxy to Application link operates without authentication, creating 
 - **Location:** `labs/lab2/secure/data-flow-diagram.png`
 
 ![secure-data-flow](./lab2/secure/data-flow-diagram.png)
-- Shows 2 encrypted HTTPS links (secured, no longer highlighted as risks)
-- Shows encrypted database storage
-- Remaining risk annotations focus only on application logic gaps (XSS, CSRF, Auth)
 
 **Secure Data Asset**: 
 - **Location:** `labs/lab2/secure/data-flow-diagram.png`
 ![](./lab2/secure/data-asset-diagram.png)
+
+- Shows 2 encrypted HTTPS links (secured, no longer highlighted as risks)
+- Shows encrypted database storage
+- Remaining risk annotations focus only on application logic gaps (XSS, CSRF, Auth)
+
 
 **Visual Impact:** The secure variant clearly reduces the number of red/orange risk indicators on communication paths, making the architecture appear more hardened despite application-level vulnerabilities remaining.
