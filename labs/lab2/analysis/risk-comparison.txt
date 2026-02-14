@@ -1,0 +1,17 @@
+﻿| Category | Baseline | Secure | Δ |
+|---|---:|---:|---:|
+| container-baseimage-backdooring | 1 | 1 | 0 |
+| cross-site-request-forgery | 2 | 2 | 0 |
+| cross-site-scripting | 1 | 1 | 0 |
+| missing-authentication | 1 | 1 | 0 |
+| missing-authentication-second-factor | 2 | 2 | 0 |
+| missing-build-infrastructure | 1 | 1 | 0 |
+| missing-hardening | 2 | 2 | 0 |
+| missing-identity-store | 1 | 1 | 0 |
+| missing-vault | 1 | 1 | 0 |
+| missing-waf | 1 | 1 | 0 |
+| server-side-request-forgery | 2 | 2 | 0 |
+| unencrypted-asset | 2 | 1 | -1 |
+| unencrypted-communication | 2 | 0 | -2 |
+| unnecessary-data-transfer | 2 | 2 | 0 |
+| unnecessary-technical-asset | 2 | 2 | 0 |
