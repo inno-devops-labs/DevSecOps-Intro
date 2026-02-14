@@ -258,7 +258,7 @@ The Reverse Proxy to Application link operates without authentication, creating 
 ![secure-data-flow](./lab2/secure/data-flow-diagram.png)
 
 **Secure Data Asset**: 
-- **Location:** `labs/lab2/secure/data-flow-diagram.png`
+- **Location:** `labs/lab2/secure/data-asset-diagram.png`
 ![](./lab2/secure/data-asset-diagram.png)
 
 - Shows 2 encrypted HTTPS links (secured, no longer highlighted as risks)
