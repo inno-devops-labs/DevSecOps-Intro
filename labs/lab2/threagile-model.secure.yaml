@@ -1,0 +1,429 @@
+threagile_version: 1.0.0
+
+title: OWASP Juice Shop — Local Lab Threat Model (Secure Variant)
+date: 2025-09-18
+
+author:
+  name: Student Name
+  homepage: https://example.edu
+
+management_summary_comment: >
+  Threat model for a local OWASP Juice Shop setup with security controls applied. Users access the app
+  via HTTPS (secure protocol) and persistent storage is encrypted. This demonstrates how
+  security controls reduce the threat landscape compared to the baseline model.
+
+business_criticality: important # archive, operational, important, critical, mission-critical
+
+business_overview:
+  description: >
+    Training environment for DevSecOps - SECURE VARIANT. This model covers a deliberately vulnerable
+    web application (OWASP Juice Shop) running locally in a Docker container with enhanced security
+    controls: HTTPS encryption for all communication links and transparent encryption for persistent storage.
+
+  images:
+    # - dfd.png: Data Flow Diagram (if exported from tool)
+
+technical_overview:
+  description: >
+    A user's web browser connects to Juice Shop application (Node.js/Express server) via **HTTPS** (secure protocol).
+    The reverse proxy terminates TLS and forwards via **HTTPS** internally. The Juice Shop server may issue
+    outbound requests to external services (e.g., a configured **WebHook** for solved challenge notifications).
+    All application data (the SQLite database, file uploads, logs) is stored on the host's filesystem via
+    a mounted volume with **transparent encryption**. Key trust boundaries include **Internet** (user & external services)
+    → **Host** (local machine/VM) → **Container Network** (isolated app container).
+  images: []
+
+questions:
+  Do you expose port 3000 beyond localhost?: ""
+  Do you use a reverse proxy with TLS and security headers?: ""
+  Are any outbound integrations (webhooks) configured?: ""
+  Is any sensitive data stored in logs or files?: ""
+
+abuse_cases:
+  Credential Stuffing / Brute Force: >
+    Attackers attempt repeated login attempts to guess credentials or exhaust system resources.
+  Stored XSS via Product Reviews: >
+    Malicious scripts are inserted into product reviews, getting stored and executed in other users' browsers.
+  SSRF via Outbound Requests: >
+    Server-side requests (e.g. profile image URL fetch or WebHook callback) are abused to access internal network resources.
+
+security_requirements:
+  TLS in transit: Enforce HTTPS for user traffic via a TLS-terminating reverse proxy with strong ciphers and certificate management.
+  AuthZ on sensitive routes: Implement strict server-side authorization checks (role/permission) on admin or sensitive functionalities.
+  Rate limiting & lockouts: Apply rate limiting and account lockout policies to mitigate brute-force and automated attacks on authentication and expensive operations.
+  Secure headers: Add security headers (HSTS, CSP, X-Frame-Options, X-Content-Type-Options, etc.) at proxy or app to mitigate client-side attacks.
+  Secrets management: Protect secret keys and credentials (JWT signing keys, OAuth client secrets) – keep them out of code repos and avoid logging them.
+
+tags_available:
+  # Relevant technologies and environment tags
+  - docker
+  - nodejs
+  # Data and asset tags
+  - pii
+  - auth
+  - tokens
+  - logs
+  - public
+  - actor
+  - user
+  - optional
+  - proxy
+  - app
+  - storage
+  - volume
+  - saas
+  - webhook
+  # Communication tags
+  - primary
+  - direct
+  - egress
+
+# =========================
+# DATA ASSETS
+# =========================
+data_assets:
+  User Accounts:
+    id: user-accounts
+    description: "User profile data, credential hashes, emails."
+    usage: business
+    tags: ["pii", "auth"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Contains personal identifiers and authentication data. High confidentiality is required to protect user privacy, and integrity is critical to prevent account takeovers.
+
+  Orders:
+    id: orders
+    description: "Order history, addresses, and payment metadata (no raw card numbers)."
+    usage: business
+    tags: ["pii"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: important
+    availability: important
+    justification_cia_rating: >
+      Contains users' personal data and business transaction records. Integrity and confidentiality are important to prevent fraud or privacy breaches.
+
+  Product Catalog:
+    id: product-catalog
+    description: "Product information (names, descriptions, prices) available to all users."
+    usage: business
+    tags: ["public"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: public
+    integrity: important
+    availability: important
+    justification_cia_rating: >
+      Product data is intended to be public, but its integrity is important (to avoid defacement or price manipulation that could mislead users).
+
+  Tokens & Sessions:
+    id: tokens-sessions
+    description: "Session identifiers, JWTs for authenticated sessions, CSRF tokens."
+    usage: business
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: important
+    availability: important
+    justification_cia_rating: >
+      If session tokens are compromised, attackers can hijack user sessions. They must be kept confidential and intact; availability is less critical (tokens can be reissued).
+
+  Logs:
+    id: logs
+    description: "Application and access logs (may inadvertently contain PII or secrets)."
+    usage: devops
+    tags: ["logs"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: >
+      Logs are for internal use (troubleshooting, monitoring). They should not be exposed publicly, and sensitive data should be sanitized to protect confidentiality.
+
+# =========================
+# TECHNICAL ASSETS
+# =========================
+technical_assets:
+  User Browser:
+    id: user-browser
+    description: "End-user web browser (client)."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    justification_out_of_scope:
+    size: system
+    technology: browser
+    tags: ["actor", "user"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: External User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Client controlled by end user (potentially an attacker)."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      To Reverse Proxy (preferred):
+        target: reverse-proxy
+        description: "User browser to reverse proxy (HTTPS on 443)."
+        protocol: https
+        authentication: session-id
+        authorization: enduser-identity-propagation
+        tags: ["primary"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - tokens-sessions
+        data_assets_received:
+          - product-catalog
+      Direct to App (no proxy):
+        target: juice-shop
+        description: "Direct browser access to app (HTTPS on 3000)."
+        protocol: https
+        authentication: session-id
+        authorization: enduser-identity-propagation
+        tags: ["direct"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - tokens-sessions
+        data_assets_received:
+          - product-catalog
+
+  Reverse Proxy:
+    id: reverse-proxy
+    description: "Optional reverse proxy (e.g., Nginx) for TLS termination and adding security headers."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: reverse-proxy
+    tags: ["optional", "proxy"]
+    internet: false
+    machine: virtual
+    encryption: transparent
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "Not exposed to internet directly; improves security of inbound traffic."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - product-catalog
+      - tokens-sessions
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      To App:
+        target: juice-shop
+        description: "Proxy forwarding to app (HTTPS on 3000 internally)."
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - tokens-sessions
+        data_assets_received:
+          - product-catalog
+
+  Juice Shop Application:
+    id: juice-shop
+    description: "OWASP Juice Shop server (Node.js/Express, v19.0.0)."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-server
+    tags: ["app", "nodejs"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "In-scope web application (contains all business logic and vulnerabilities by design)."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - user-accounts
+      - orders
+      - product-catalog
+      - tokens-sessions
+    data_assets_stored:
+      - logs
+    data_formats_accepted:
+      - json
+    communication_links:
+      To Challenge WebHook:
+        target: webhook-endpoint
+        description: "Optional outbound callback (HTTP POST) to external WebHook when a challenge is solved."
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: ["egress"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - orders
+
+  Persistent Storage:
+    id: persistent-storage
+    description: "Host-mounted volume for database, file uploads, and logs with transparent encryption."
+    type: datastore
+    usage: devops
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: file-server
+    tags: ["storage", "volume"]
+    internet: false
+    machine: virtual
+    encryption: transparent
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "Local disk storage for container with transparent encryption – protects data at rest."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - logs
+      - user-accounts
+      - orders
+      - product-catalog
+    data_formats_accepted:
+      - file
+    communication_links: {}
+
+  Webhook Endpoint:
+    id: webhook-endpoint
+    description: "External WebHook service (3rd-party, if configured for integrations)."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: true
+    justification_out_of_scope: "Third-party service to receive notifications (not under our control)."
+    size: system
+    technology: web-service-rest
+    tags: ["saas", "webhook"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: Third-Party
+    confidentiality: internal
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "External service that receives data (like order or challenge info). Treated as a trusted integration point but could be abused if misconfigured."
+    multi_tenant: true
+    redundant: true
+    custom_developed_parts: false
+    data_assets_processed:
+      - orders
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+# =========================
+# TRUST BOUNDARIES
+# =========================
+trust_boundaries:
+  Internet:
+    id: internet
+    description: "Untrusted public network (Internet)."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - user-browser
+      - webhook-endpoint
+    trust_boundaries_nested:
+      - host
+
+  Host:
+    id: host
+    description: "Local host machine / VM running Docker environment."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - reverse-proxy
+      - persistent-storage
+    trust_boundaries_nested:
+      - container-network
+
+  Container Network:
+    id: container-network
+    description: "Docker container network (isolated internal network for containers)."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - juice-shop
+    trust_boundaries_nested: []
+
+# =========================
+# SHARED RUNTIMES
+# =========================
+shared_runtimes:
+  Docker Host:
+    id: docker-host
+    description: "Docker Engine and default bridge network on host."
+    tags: ["docker"]
+    technical_assets_running:
+      - juice-shop
+      # If reverse proxy is containerized, include it:
+      # - reverse-proxy
+
+# =========================
+# INDIVIDUAL RISK CATEGORIES (optional)
+# =========================
+individual_risk_categories: {}
+
+# =========================
+# RISK TRACKING (optional)
+# =========================
+risk_tracking: {}
+
+# (Optional diagram layout tweaks can be added here)
+#diagram_tweak_edge_layout: spline
+#diagram_tweak_layout_left_to_right: true
