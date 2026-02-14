@@ -1,5 +1,7 @@
 ## Lab 2 — Threat Modeling with Threagile
 
+## Task 1 — Threagile Baseline Model 
+
 ### Risk Ranking Methodology
 
 Composite score is calculated using the formula:
