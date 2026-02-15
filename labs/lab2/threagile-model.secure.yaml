@@ -198,8 +198,8 @@ technical_assets:
           - product-catalog
       Direct to App (no proxy):
         target: juice-shop
-        description: "Direct browser access to app (HTTP on 3000)."
-        protocol: http
+        description: "Direct browser access to app (HTTPS on 3000)."
+        protocol: https
         authentication: session-id
         authorization: enduser-identity-propagation
         tags: ["direct"]
@@ -243,8 +243,8 @@ technical_assets:
     communication_links:
       To App:
         target: juice-shop
-        description: "Proxy forwarding to app (HTTP on 3000 internally)."
-        protocol: http
+        description: "Proxy forwarding to app (HTTPS on 3000 internally)."
+        protocol: https
         authentication: none
         authorization: none
         tags: []
@@ -316,7 +316,7 @@ technical_assets:
     tags: ["storage", "volume"]
     internet: false
     machine: virtual
-    encryption: none
+    encryption: transparent
     owner: Lab Owner
     confidentiality: internal
     integrity: important
