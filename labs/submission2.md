@@ -85,4 +85,92 @@ Key security concerns:
 
 ## Task 2 - HTTPS Variant and Risk Comparison
 
-Pending completion in the next step.
+### 2.1 Create Secure Model Variant
+
+Created `labs/lab2/threagile-model.secure.yaml` from baseline model with these changes:
+- `User Browser -> communication_links -> Direct to App (no proxy) -> protocol: https`
+- `Reverse Proxy -> communication_links -> To App -> protocol: https`
+- `Persistent Storage -> encryption: transparent`
+
+### 2.2 Generate Secure Variant Analysis
+
+Executed command:
+
+```bash
+docker run --rm -v "$(pwd)":/app/work threagile/threagile \
+  -model /app/work/labs/lab2/threagile-model.secure.yaml \
+  -output /app/work/labs/lab2/secure \
+  -generate-risks-excel=false -generate-tags-excel=false
+```
+
+Artifacts created in `labs/lab2/secure/`:
+- `report.pdf`
+- `data-flow-diagram.png`
+- `data-asset-diagram.png`
+- `risks.json`
+- `stats.json`
+- `technical-assets.json`
+
+Verification output:
+
+```bash
+$ ls -la labs/lab2/secure
+total 3232
+drwxr-xr-x@ 8 a89088  staff      256 Feb 16 16:18 .
+drwxr-xr-x@ 6 a89088  staff      192 Feb 16 16:17 ..
+-rw-r--r--  1 a89088  staff   112898 Feb 16 16:18 data-asset-diagram.png
+-rw-r--r--  1 a89088  staff   233353 Feb 16 16:18 data-flow-diagram.png
+-rw-r--r--  1 a89088  staff  1276729 Feb 16 16:18 report.pdf
+-rw-r--r--  1 a89088  staff    13634 Feb 16 16:18 risks.json
+-rw-r--r--  1 a89088  staff      536 Feb 16 16:18 stats.json
+-rw-r--r--  1 a89088  staff     5692 Feb 16 16:18 technical-assets.json
+```
+
+### 2.3 Risk Category Delta Table
+
+Used the provided `jq` command from the lab instructions to compare `baseline/risks.json` and `secure/risks.json`.
+
+| Category | Baseline | Secure | Δ |
+|---|---:|---:|---:|
+| container-baseimage-backdooring | 1 | 1 | 0 |
+| cross-site-request-forgery | 2 | 2 | 0 |
+| cross-site-scripting | 1 | 1 | 0 |
+| missing-authentication | 1 | 1 | 0 |
+| missing-authentication-second-factor | 2 | 2 | 0 |
+| missing-build-infrastructure | 1 | 1 | 0 |
+| missing-hardening | 2 | 2 | 0 |
+| missing-identity-store | 1 | 1 | 0 |
+| missing-vault | 1 | 1 | 0 |
+| missing-waf | 1 | 1 | 0 |
+| server-side-request-forgery | 2 | 2 | 0 |
+| unencrypted-asset | 2 | 1 | -1 |
+| unencrypted-communication | 2 | 0 | -2 |
+| unnecessary-data-transfer | 2 | 2 | 0 |
+| unnecessary-technical-asset | 2 | 2 | 0 |
+
+### 2.4 Delta Run Explanation
+
+Specific model changes:
+- Enforced HTTPS on direct browser-to-app link.
+- Enforced HTTPS on reverse-proxy-to-app link.
+- Enabled transparent encryption for persistent storage.
+
+Observed impact:
+- Total risks reduced from **23** (baseline) to **20** (secure).
+- Elevated risks reduced from **4** to **2**.
+- `unencrypted-communication` category reduced from **2** to **0**.
+- `unencrypted-asset` category reduced from **2** to **1**.
+
+Why these changes reduced risks:
+- Switching both relevant communication links to HTTPS removes plaintext transport exposure for credentials/session data and internal proxy-app traffic, directly eliminating unencrypted communication findings.
+- Enabling transparent storage encryption mitigates the unencrypted-at-rest issue for persistent storage, removing one unencrypted asset finding.
+- Most other categories remain unchanged because they are driven by application security controls (e.g., XSS/CSRF/auth hardening) rather than transport/storage encryption settings.
+
+### 2.5 Baseline vs Secure Diagram Comparison
+
+- Baseline data-flow diagram: `labs/lab2/baseline/data-flow-diagram.png`
+- Secure data-flow diagram: `labs/lab2/secure/data-flow-diagram.png`
+- Baseline data-asset diagram: `labs/lab2/baseline/data-asset-diagram.png`
+- Secure data-asset diagram: `labs/lab2/secure/data-asset-diagram.png`
+- Baseline report: `labs/lab2/baseline/report.pdf`
+- Secure report: `labs/lab2/secure/report.pdf`
