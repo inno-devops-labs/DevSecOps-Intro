@@ -31,3 +31,45 @@ Impact: These elevated risks create multiple attack vectors for token theft, ses
 
 ### Task 2 — HTTPS Variant & Risk Comparison
 
+### Risk Category Delta Table
+
+| Category | Baseline | Secure | Δ |
+|---|---:|---:|---:|
+| container-baseimage-backdooring | 1 | 1 | 0 |
+| cross-site-request-forgery | 2 | 2 | 0 |
+| cross-site-scripting | 1 | 1 | 0 |
+| missing-authentication | 1 | 1 | 0 |
+| missing-authentication-second-factor | 2 | 2 | 0 |
+| missing-build-infrastructure | 1 | 1 | 0 |
+| missing-hardening | 2 | 2 | 0 |
+| missing-identity-store | 1 | 1 | 0 |
+| missing-vault | 1 | 1 | 0 |
+| missing-waf | 1 | 1 | 0 |
+| server-side-request-forgery | 2 | 2 | 0 |
+| **unencrypted-asset** | **2** | **1** | **-1** |
+| **unencrypted-communication** | **2** | **0** | **-2** |
+| unnecessary-data-transfer | 2 | 2 | 0 |
+| unnecessary-technical-asset | 2 | 2 | 0 |
+
+Observed Results:
+- Гnencrypted-communication: 2 => 0 (-2) - Both HTTP links fixed
+- Гnencrypted-asset: 2 => 1 (-1) - Storage encrypted, Juice Shop app remains unencrypted
+- Total risk reduction: 3 risks eliminated (13.0% of total baseline risks)
+
+Why Changes Reduced Risks:
+- Unencrypted communication risks had highest composite scores (434, 432) due to token/session exposure over public HTTP
+- Encryption directly addresses CIA triad Confidentiality requirements for data-at-rest (persistent storage)
+- Changes target root causes: protocol configuration and asset encryption flags in Threagile YAML
+
+### Diagram Comparison
+- Baseline Diagram shows:
+![Baseline](./baseline/data-flow-diagram.png)
+
+- Secure diagram:
+![Secure](./secure/data-flow-diagram.png)
+
+We can observe that `https` communication is used between:
+- `user browser` and `reverse proxy`
+- AND `reverse proxy` and `app container`
+
+This enforces security, making MiTM attacks useless
