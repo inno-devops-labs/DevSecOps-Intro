@@ -1,6 +1,8 @@
 # Lab 2 Submission — Threat Modeling with Threagile
 
 ## Student / Context
+- Name: `Danil Fishchenko`
+- Email: `ppepegaa@yandex.com`
 - Target app: `bkimminich/juice-shop:v19.0.0`
 - Baseline model: `labs/lab2/threagile-model.yaml`
 - Secure model: `labs/lab2/threagile-model.secure.yaml`
