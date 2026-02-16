@@ -92,10 +92,3 @@ Stars in open source act as both a bookmark for yourself and a signal to the com
 **How following developers helps in teamwork and growth:**  
 Following instructors, TAs, and classmates lets you see their activity, commits, and projects in your feed. That makes it easier to find common ground, learn from others’ code, and stay in touch with people you may collaborate with later. For career growth, it helps to follow people working in stacks or domains you care about.
 
----
-
-## PR Submission Checklist (for Moodle)
-
-- [x] Task 1 done — OWASP Juice Shop deployment + triage report
-- [x] Task 2 done — PR template setup + verification
-- [x] Task 6 done — GitHub community engagement
