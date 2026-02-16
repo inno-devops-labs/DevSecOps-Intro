@@ -18,27 +18,29 @@ For DevSecOps, this reduces supply-chain risks such as forged commits, impersona
 
 ### 1.2 SSH signing setup
 
-Global Git signing configuration:
+Repository signing configuration:
 
 ```bash
-git config --global --get gpg.format
-git config --global --get user.signingkey
-git config --global --get commit.gpgsign
+git config --get gpg.format
+git config --get user.signingkey
+git config --get commit.gpgsign
+git config --get user.email
 ```
 
 Output:
 
 ```text
 ssh
-/Users/pepega/.ssh/id_ed25519.pub
+/Users/pepega/.ssh/id_ed25519_github.pub
 true
+150794989+pepegx@users.noreply.github.com
 ```
 
 Evidence that recent commits contain SSH signature data:
 
 ```bash
-git log --oneline -2
-for c in $(git log --format=%H -2); do
+git log --oneline -1
+for c in $(git log --format=%H -1); do
   echo "commit:$c"
   git cat-file -p "$c" | sed -n '1,12p' | rg '^gpgsig|^author|^committer'
 done
@@ -47,18 +49,19 @@ done
 Output excerpt:
 
 ```text
-5b1bb7b test: remove test secret after hook block
-be4c931 test: should be blocked by pre-commit
+6a72b87 chore: sign with github identity key
 
-commit:5b1bb7bd8bc2c402b2ffa96ef6278c7b793c295b
-author Danil Fishchenko <ppepegaa@yandex.com> ...
-committer Danil Fishchenko <ppepegaa@yandex.com> ...
+commit:6a72b87cc9f8fb45e92701dabc6968f7088f9163
+author Danil Fishchenko <150794989+pepegx@users.noreply.github.com> ...
+committer Danil Fishchenko <150794989+pepegx@users.noreply.github.com> ...
 gpgsig -----BEGIN SSH SIGNATURE-----
+```
 
-commit:be4c931f3c4663964f1e71fff77d6a00631e9c1d
-author Danil Fishchenko <ppepegaa@yandex.com> ...
-committer Danil Fishchenko <ppepegaa@yandex.com> ...
-gpgsig -----BEGIN SSH SIGNATURE-----
+GitHub verification result for commit `6a72b87`:
+
+```text
+verified: true
+reason: valid
 ```
 
 ### 1.3 Why commit signing is critical in DevSecOps workflows
