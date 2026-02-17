@@ -35,8 +35,8 @@ DevSecOps is a worklow, when we try integrate security in each step of developme
 So, the commits is an inseparable part of development and to provide more reliable workflow is crutial to sign commits. First of all to prevent fake commits and change of commits from the third parties. 
 Also it is good for CI/CD pipeline, becuase it also part of development and we want to make it secure. So, the adding the rule to allow only signed commits will give us guarantee that only our team could publish code to production. 
 
-4. Screenshoot of badge
-![pic](/assets/verified.png)
+## 4. Screenshoot of badge
+![pic](verified.png)
 
 # Task 2
 ## Precommit hook setup
