@@ -88,4 +88,11 @@ First lines:
 ## GitHub Community
 - Starring repositories improves discoverability and signals which projects the community finds useful and trustworthy.
 - Following professors, TAs, and classmates helps track real development activity, improves collaboration awareness, and supports long-term professional growth.
+- Completed by API:
+  - [x] Starred `inno-devops-labs/DevSecOps-Intro`
+  - [x] Starred `simple-container-com/api`
+- Follow actions attempted for `@Cre-eD`, `@marat-biriushev`, and `@pierrepicaud` returned API `404` with current credential scope (insufficient follow permissions on this token), so follow operations require interactive GitHub session/manual completion.
 
+## Submission Metadata
+- Feature branch: `feature/lab1`
+- Open PR: https://github.com/inno-devops-labs/DevSecOps-Intro/pull/408
