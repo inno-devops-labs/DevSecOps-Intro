@@ -1,0 +1,140 @@
+# --------------------------------------------------------------------------------------------
+# Docker Bench for Security v1.6.0
+#
+# Docker, Inc. (c) 2015-2024
+#
+# Checks for dozens of common best-practices around deploying Docker containers in production.
+# Based on the CIS Docker Benchmark v1.6.0
+# --------------------------------------------------------------------------------------------
+
+Initializing 2026-02-20T22:15:33+00:00
+
+Section A - Check results
+
+[INFO] 1 - Host Configuration
+[WARN] 1.1  - Ensure a separate partition for containers has been created
+[PASS] 1.2  - Ensure only trusted users are allowed to control Docker daemon
+[PASS] 1.3  - Ensure auditing is configured for the Docker daemon
+[PASS] 1.4  - Ensure auditing is configured for Docker files and directories
+[WARN] 1.5  - Ensure auditing is configured for Docker files and directories - /var/lib/docker
+[PASS] 1.6  - Ensure auditing is configured for Docker files and directories - /etc/docker
+[PASS] 1.7  - Ensure auditing is configured for Docker files and directories - docker.service
+[PASS] 1.8  - Ensure auditing is configured for Docker files and directories - containerd.sock
+[INFO] 1.9  - Ensure auditing is configured for Docker files and directories - docker.socket
+[WARN] 1.10 - Ensure auditing is configured for Docker files and directories - /etc/default/docker
+[PASS] 1.11 - Ensure auditing is configured for Docker files and directories - /etc/docker/daemon.json
+[INFO] 1.12 - 1.1.12 - Ensure auditing is configured for Dockerfiles and directories - /etc/containerd/config.toml
+
+[INFO] 2 - Docker daemon configuration
+[WARN] 2.1  - Run the Docker daemon as a non-root user, if possible
+[PASS] 2.2  - Ensure network traffic is restricted between containers on the default bridge
+[PASS] 2.3  - Ensure the logging level is set to 'info'
+[PASS] 2.4  - Ensure Docker is allowed to make changes to iptables
+[WARN] 2.5  - Ensure insecure registries are not used
+[PASS] 2.6  - Ensure aufs storage driver is not used
+[PASS] 2.7  - Ensure TLS authentication for Docker daemon is configured
+[PASS] 2.8  - Ensure the default ulimit is configured appropriately
+[WARN] 2.9  - Enable user namespace support
+[PASS] 2.10 - Ensure the default cgroup usage has been confirmed
+[PASS] 2.11 - Ensure base device size is not changed until needed
+[PASS] 2.12 - Ensure that authorization for Docker client commands is enabled
+[PASS] 2.13 - Ensure centralized and remote logging is configured
+[WARN] 2.14 - Ensure containers are restricted from acquiring new privileges
+[PASS] 2.15 - Ensure live restore is enabled
+[WARN] 2.16 - Ensure Userland Proxy is Disabled
+[PASS] 2.17 - Ensure that a daemon-wide custom seccomp profile is applied if appropriate
+[WARN] 2.18 - Ensure that experimental features are not implemented in production
+
+[INFO] 3 - Docker daemon configuration files
+[PASS] 3.1  - Ensure that the docker.service file ownership is set to root:root
+[PASS] 3.2  - Ensure that docker.service file permissions are appropriately set
+[PASS] 3.3  - Ensure that docker.socket file ownership is set to root:root
+[PASS] 3.4  - Ensure that docker.socket file permissions are appropriately set
+[PASS] 3.5  - Ensure that the /etc/docker directory ownership is set to root:root
+[PASS] 3.6  - Ensure that /etc/docker directory permissions are set to 755 or more restrictively
+[PASS] 3.7  - Ensure that registry certificate file ownership is set to root:root
+[PASS] 3.8  - Ensure that registry certificate file permissions are set to 444 or more restrictively
+[PASS] 3.9  - Ensure that TLS CA certificate file ownership is set to root:root
+[PASS] 3.10 - Ensure that TLS CA certificate file permissions are set to 444 or more restrictively
+[PASS] 3.11 - Ensure that Docker server certificate file ownership is set to root:root
+[PASS] 3.12 - Ensure that the Docker server certificate file permissions are set to 444 or more restrictively
+[PASS] 3.13 - Ensure that the Docker server certificate key file ownership is set to root:root
+[PASS] 3.14 - Ensure that the Docker server certificate key file permissions are set to 400 or more restrictively
+[PASS] 3.15 - Ensure that the Docker socket file ownership is set to root:docker
+[PASS] 3.16 - Ensure that the Docker socket file permissions are set to 660 or more restrictively
+[PASS] 3.17 - Ensure that the daemon.json file ownership is set to root:root
+[PASS] 3.18 - Ensure that daemon.json file permissions are set to 644 or more restrictively
+[PASS] 3.19 - Ensure that the /etc/default/docker file ownership is set to root:root
+[PASS] 3.20 - Ensure that the /etc/default/docker file permissions are set to 644 or more restrictively
+[PASS] 3.21 - Ensure that the /etc/sysconfig/docker file permissions are set to 644 or more restrictively
+[PASS] 3.22 - Ensure that the Containerd socket file ownership is set to root:root
+[PASS] 3.23 - Ensure that the Containerd socket file permissions are set to 660 or more restrictively
+
+[INFO] 4 - Container Images and Build File
+[WARN] 4.1  - Ensure that a user for the container has been created
+       * Running as root: juice-default
+[PASS] 4.2  - Ensure that containers use only trusted base images
+[WARN] 4.3  - Ensure that unnecessary packages are not installed in the container
+[PASS] 4.4  - Ensure images are scanned and rebuilt to include security patches
+[WARN] 4.5  - Ensure Content trust for Docker is Enabled
+[INFO] 4.6  - Ensure that HEALTHCHECK instructions have been added to container images
+       * No Healthcheck found: [bkimminich/juice-shop:v19.0.0]
+[PASS] 4.7  - Ensure update instructions are not used alone in Dockerfiles
+[PASS] 4.8  - Ensure setuid and setgid permissions are removed
+[WARN] 4.9  - Ensure that COPY is used instead of ADD in Dockerfiles
+[PASS] 4.10 - Ensure secrets are not stored in Dockerfiles
+[PASS] 4.11 - Ensure only verified packages are installed
+
+[INFO] 5 - Container Runtime
+[WARN] 5.1  - Ensure that, if applicable, an AppArmor Profile is enabled
+[PASS] 5.2  - Ensure that, if applicable, SELinux security options are set
+[WARN] 5.3  - Ensure that Linux kernel capabilities are restricted within containers
+       * Capabilities not dropped: juice-default
+[PASS] 5.4  - Ensure that privileged containers are not used
+[PASS] 5.5  - Ensure sensitive host system directories are not mounted on containers
+[PASS] 5.6  - Ensure sshd is not run within containers
+[PASS] 5.7  - Ensure privileged ports are not mapped within containers
+[PASS] 5.8  - Ensure that only needed ports are open on the container
+[PASS] 5.9  - Ensure that the host's network namespace is not shared
+[WARN] 5.10 - Ensure that the memory usage for containers is limited
+       * Container running without memory limits: juice-default
+[WARN] 5.11 - Ensure that CPU priority is set appropriately on containers
+       * Container running without CPU limits: juice-default
+[PASS] 5.12 - Ensure that the container's root filesystem is mounted as read only
+[PASS] 5.13 - Ensure that incoming container traffic is bound to a specific host interface
+[WARN] 5.14 - Ensure that the 'on-failure' container restart policy is set to '5'
+       * MaximumRetryCount is not set to 5: juice-default
+[PASS] 5.15 - Ensure that the host's process namespace is not shared
+[PASS] 5.16 - Ensure that the host's IPC namespace is not shared
+[PASS] 5.17 - Ensure that host devices are not directly exposed to containers
+[PASS] 5.18 - Ensure that the default ulimit is overwritten at runtime if needed
+[PASS] 5.19 - Ensure mount propagation mode is not set to shared
+[PASS] 5.20 - Ensure that the host's UTS namespace is not shared
+[PASS] 5.21 - Ensure the default seccomp profile is not Disabled
+[WARN] 5.22 - Ensure that docker exec commands are not used with the privileged option
+[PASS] 5.23 - Ensure that docker exec commands are not used with the user=root option
+[WARN] 5.24 - Ensure that cgroup usage is confirmed
+[WARN] 5.25 - Ensure that the container is restricted from acquiring additional privileges
+       * Privilege escalation not restricted: juice-default
+[WARN] 5.26 - Ensure that container health is checked at runtime
+       * Health check not set: juice-default
+[PASS] 5.27 - Ensure that Docker commands always make use of the latest version of their image
+[WARN] 5.28 - Ensure that the PIDs cgroup limit is used
+       * PIDs limit not set: juice-default
+
+[INFO] 6 - Docker Security Operations
+[PASS] 6.1  - Ensure that image sprawl is avoided
+[PASS] 6.2  - Ensure that container sprawl is avoided
+
+Section B - Summary
+
+  Checks: 87
+  Score:  62
+
+  [PASS]  55
+  [WARN]  20
+  [INFO]  5
+  [FAIL]  0
+
+  NOTE: Some warnings may not apply to your environment.
+        Review each warning and implement as needed.

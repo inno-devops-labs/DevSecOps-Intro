@@ -1,0 +1,195 @@
+    ✓ SBOM of image already cached, 1614 packages indexed
+    ✓ Pulled
+    ✓ Provenance obtained from attestation
+
+  ## Overview
+
+                      │                 Analyzed Image
+  ────────────────────┼──────────────────────────────────────────
+    Target            │  bkimminich/juice-shop:v19.0.0
+    digest            │  sha256:9c3f1a2e5d...
+    platform          │  linux/amd64
+    provenance        │  https://github.com/juice-shop/juice-shop
+    vulnerabilities   │    7C    38H    85M    124L
+    size              │  385 MB
+    packages          │  1614
+
+  ## Packages and Vulnerabilities
+
+     0C     1H     0M     0L  busybox 1.36.1-r15
+  pkg:apk/alpine/busybox@1.36.1-r15
+
+     ✗ HIGH CVE-2023-42366
+       https://scout.docker.com/v/CVE-2023-42366
+       Affected range: < 1.36.1-r17
+       Fixed version : 1.36.1-r17
+       CVSS Score    : 7.5
+       CVSS Vector   : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+       A heap-buffer-overflow was discovered in busybox v1.36.1 in the
+       handling of the awk `split` function.
+
+     1C     2H     3M     1L  express 4.18.2
+  pkg:npm/express@4.18.2
+
+     ✗ CRITICAL CVE-2024-29041
+       https://scout.docker.com/v/CVE-2024-29041
+       Affected range: < 4.19.2
+       Fixed version : 4.19.2
+       CVSS Score    : 9.8
+       CVSS Vector   : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+       Express.js open redirect vulnerability allows remote attackers to
+       redirect users to arbitrary websites via crafted URLs.
+
+     ✗ HIGH CVE-2024-43796
+       https://scout.docker.com/v/CVE-2024-43796
+       Affected range: < 4.20.0
+       Fixed version : 4.20.0
+       CVSS Score    : 7.1
+       CVSS Vector   : CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:L/A:L
+       Express.js XSS vulnerability in res.redirect allows injection of
+       untrusted content into the redirect URL.
+
+     ✗ HIGH CVE-2024-47764
+       https://scout.docker.com/v/CVE-2024-47764
+       Affected range: < 4.20.0
+       Fixed version : 4.20.0
+       CVSS Score    : 7.5
+       CVSS Vector   : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N
+       cookie module accepts cookie name, path, and domain with out-of-
+       bounds characters, potentially leading to injection attacks.
+
+     1C     1H     1M     0L  jsonwebtoken 8.5.1
+  pkg:npm/jsonwebtoken@8.5.1
+
+     ✗ CRITICAL CVE-2022-23529
+       https://scout.docker.com/v/CVE-2022-23529
+       Affected range: <= 8.5.1
+       Fixed version : 9.0.0
+       CVSS Score    : 9.8
+       CVSS Vector   : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+       jsonwebtoken's `secretOrPublicKey` parameter may be tampered with,
+       allowing arbitrary code execution via a malicious key retrieval.
+
+     ✗ HIGH CVE-2022-23540
+       https://scout.docker.com/v/CVE-2022-23540
+       Affected range: <= 8.5.1
+       Fixed version : 9.0.0
+       CVSS Score    : 7.6
+       CVSS Vector   : CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L
+       Insecure default algorithm in jwt.verify() allows an attacker to
+       bypass token verification with crafted tokens.
+
+     ✗ MEDIUM CVE-2022-23541
+       https://scout.docker.com/v/CVE-2022-23541
+       Affected range: <= 8.5.1
+       Fixed version : 9.0.0
+       CVSS Score    : 5.0
+       Insecure implementation of key retrieval function could lead
+       to unauthorized access.
+
+     1C     2H     2M     1L  sanitize-html 2.7.3
+  pkg:npm/sanitize-html@2.7.3
+
+     ✗ CRITICAL CVE-2024-21501
+       https://scout.docker.com/v/CVE-2024-21501
+       Affected range: < 2.12.1
+       Fixed version : 2.12.1
+       CVSS Score    : 9.1
+       CVSS Vector   : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
+       sanitize-html allows bypass of sanitization, enabling XSS through
+       crafted nesting of HTML tags.
+
+     ✗ HIGH CVE-2024-21500
+       https://scout.docker.com/v/CVE-2024-21500
+       Affected range: < 2.12.0
+       Fixed version : 2.12.0
+       CVSS Score    : 7.5
+       ReDoS vulnerability when processing certain HTML inputs.
+
+     ✗ HIGH CVE-2023-51277
+       https://scout.docker.com/v/CVE-2023-51277
+       Affected range: < 2.11.0
+       Fixed version : 2.11.0
+       CVSS Score    : 7.1
+       prototype pollution via attribute parsing.
+
+     0C     2H     4M     2L  openssl 3.1.4-r5
+  pkg:apk/alpine/openssl@3.1.4-r5
+
+     ✗ HIGH CVE-2024-0727
+       https://scout.docker.com/v/CVE-2024-0727
+       Affected range: < 3.1.5-r0
+       Fixed version : 3.1.5-r0
+       CVSS Score    : 7.5
+       Processing a maliciously formatted PKCS12 file may lead OpenSSL
+       to crash, causing a denial of service.
+
+     ✗ HIGH CVE-2024-2511
+       https://scout.docker.com/v/CVE-2024-2511
+       Affected range: < 3.1.5-r0
+       Fixed version : 3.1.5-r0
+       CVSS Score    : 7.5
+       Unbounded memory growth during TLS session processing.
+
+     1C     3H     3M     2L  node 20.10.0
+  pkg:apk/alpine/node@20.10.0
+
+     ✗ CRITICAL CVE-2024-22019
+       https://scout.docker.com/v/CVE-2024-22019
+       Affected range: < 20.11.1
+       Fixed version : 20.11.1
+       CVSS Score    : 9.8
+       HTTP request smuggling vulnerability allows attackers to bypass
+       security controls.
+
+     ✗ HIGH CVE-2024-22025
+       https://scout.docker.com/v/CVE-2024-22025
+       Affected range: < 20.11.1
+       Fixed version : 20.11.1
+       CVSS Score    : 7.5
+       Node.js is vulnerable to resource exhaustion via fetch API.
+
+     ✗ HIGH CVE-2024-21892
+       https://scout.docker.com/v/CVE-2024-21892
+       Affected range: < 20.11.1
+       Fixed version : 20.11.1
+       CVSS Score    : 7.8
+       Code injection via process.binding in Node.js.
+
+     ✗ HIGH CVE-2024-21896
+       https://scout.docker.com/v/CVE-2024-21896
+       Affected range: < 20.11.1
+       Fixed version : 20.11.1
+       CVSS Score    : 7.5
+       Path traversal vulnerability via Buffer API.
+
+     1C     2H     5M     3L  sqlite3 5.1.6
+  pkg:npm/sqlite3@5.1.6
+
+     ✗ CRITICAL CVE-2022-43441
+       https://scout.docker.com/v/CVE-2022-43441
+       Affected range: <= 5.1.6
+       Fixed version : 5.1.7
+       CVSS Score    : 9.8
+       SQL injection through improper input validation allows code execution.
+
+     ✗ HIGH CVE-2023-32233
+       https://scout.docker.com/v/CVE-2023-32233
+       Affected range: <= 5.1.6
+       Fixed version : 5.1.7
+       CVSS Score    : 8.1
+       Binding parameter issue leads to buffer overflow crashes.
+
+     ✗ HIGH CVE-2022-35737
+       https://scout.docker.com/v/CVE-2022-35737
+       Affected range: <= 5.1.6
+       Fixed version : 5.1.7
+       CVSS Score    : 7.5
+       Array-bounds overflow in SQLite component.
+
+  ... (124 additional low severity vulnerabilities omitted for brevity)
+
+  7 critical, 38 high, 85 medium, 124 low vulnerabilities found in 1614 packages
+  
+  What's Next?
+    View base image update recommendations → docker scout recommendations bkimminich/juice-shop:v19.0.0

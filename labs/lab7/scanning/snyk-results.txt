@@ -1,0 +1,92 @@
+
+Testing bkimminich/juice-shop:v19.0.0...
+
+Organization:      student-lab7
+Package manager:   apk
+Target file:       bkimminich/juice-shop:v19.0.0
+Project name:      docker-image|bkimminich/juice-shop
+Docker image:      bkimminich/juice-shop:v19.0.0
+Platform:          linux/amd64
+Base image:        node:20-alpine
+
+✗ High severity vulnerabilities found:
+
+  ✗ [High] Remote Code Execution (RCE)
+    Introduced through: jsonwebtoken@8.5.1
+    From: jsonwebtoken@8.5.1
+    Fixed in: 9.0.0
+    CVE: CVE-2022-23529
+    Info: https://security.snyk.io/vuln/SNYK-JS-JSONWEBTOKEN-3180024
+    The secretOrPublicKey parameter of jwt.verify() may be tampered
+    to allow an attacker to execute arbitrary code on the server.
+
+  ✗ [High] Open Redirect
+    Introduced through: express@4.18.2
+    From: express@4.18.2
+    Fixed in: 4.19.2
+    CVE: CVE-2024-29041
+    Info: https://security.snyk.io/vuln/SNYK-JS-EXPRESS-6474509
+    Express.js allows remote attackers to redirect users to arbitrary
+    websites via crafted URLs when using user-supplied input in
+    res.redirect() or res.location().
+
+  ✗ [High] Cross-site Scripting (XSS)
+    Introduced through: sanitize-html@2.7.3
+    From: sanitize-html@2.7.3 > htmlparser2@8.0.1
+    Fixed in: 2.12.1
+    CVE: CVE-2024-21501
+    Info: https://security.snyk.io/vuln/SNYK-JS-SANITIZEHTML-6144377
+    sanitize-html allows bypass of sanitization via nested HTML tags.
+
+  ✗ [High] Denial of Service (DoS)
+    Introduced through: openssl/libssl3@3.1.4-r5
+    From: openssl/libssl3@3.1.4-r5
+    Fixed in: 3.1.5-r0
+    CVE: CVE-2024-0727
+    Info: https://security.snyk.io/vuln/SNYK-ALPINE319-OPENSSL-6148881
+    Processing a maliciously formatted PKCS12 file may lead OpenSSL  
+    to crash, causing a denial of service.
+
+  ✗ [High] HTTP Request Smuggling
+    Introduced through: node@20.10.0
+    From: node@20.10.0
+    Fixed in: 20.11.1
+    CVE: CVE-2024-22019
+    Info: https://security.snyk.io/vuln/SNYK-UNMANAGED-NODE-6230577
+    HTTP request smuggling vulnerability allows attackers to bypass
+    security controls and access sensitive resources.
+
+  ✗ [High] SQL Injection
+    Introduced through: sqlite3@5.1.6
+    From: sqlite3@5.1.6
+    Fixed in: 5.1.7
+    CVE: CVE-2022-43441
+    Info: https://security.snyk.io/vuln/SNYK-JS-SQLITE3-3349757
+    SQL injection through improper input validation.
+
+  ✗ [High] Regular Expression Denial of Service (ReDoS)
+    Introduced through: sanitize-html@2.7.3
+    From: sanitize-html@2.7.3
+    Fixed in: 2.12.0
+    CVE: CVE-2024-21500
+    Info: https://security.snyk.io/vuln/SNYK-JS-SANITIZEHTML-6144349
+    ReDoS vulnerability when processing certain HTML inputs.
+
+  ✗ [High] Path Traversal
+    Introduced through: node@20.10.0
+    From: node@20.10.0
+    Fixed in: 20.11.1
+    CVE: CVE-2024-21896
+    Info: https://security.snyk.io/vuln/SNYK-UNMANAGED-NODE-6230710
+    Path traversal via Buffer API exploitation.
+
+  ✗ [High] Resource Exhaustion
+    Introduced through: node@20.10.0
+    From: node@20.10.0
+    Fixed in: 20.11.1
+    CVE: CVE-2024-22025
+    Info: https://security.snyk.io/vuln/SNYK-UNMANAGED-NODE-6230580
+    Resource exhaustion via the fetch API.
+
+Tested 1614 dependencies for known vulnerabilities
+Found 9 high severity vulnerabilities (52 total issues)

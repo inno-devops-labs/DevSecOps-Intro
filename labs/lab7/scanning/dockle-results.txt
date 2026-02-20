@@ -1,0 +1,25 @@
+WARN  - CIS-DI-0001: Create a user for the container
+       * Last user should not be root
+WARN  - CIS-DI-0005: Enable Content trust for Docker
+       * export DOCKER_CONTENT_TRUST=1 before docker pull/build
+WARN  - CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+       * not found HEALTHCHECK statement
+WARN  - CIS-DI-0008: Confirm safety of setuid/setgid files
+       * setuid file found: usr/bin/sudo
+       * setgid file found: usr/bin/wall
+       * setuid file found: bin/su
+       * setgid file found: usr/bin/expiry
+       * setgid file found: usr/bin/chage
+FATAL - CIS-DI-0010: Do not store secrets in environment variables
+       * SECRET_KEY=SecretKeyForJuiceShop found in environment
+WARN  - DKL-DI-0001: Avoid sudo command
+       * sudo found in layer sha256:a3ed95caeb02...
+PASS  - DKL-DI-0002: Avoid sensitive directory mounting
+PASS  - DKL-DI-0003: Avoid apt-get/apk dist-upgrade
+WARN  - DKL-DI-0004: Avoid credentials in Dockerfile
+       * Possible credential leak on ENV instruction
+PASS  - DKL-DI-0005: Clear apt-get caches
+WARN  - DKL-LI-0001: Avoid empty password
+       * No password for node user (UID: 1000)
+PASS  - DKL-LI-0002: Be unique UID/GIDs
+PASS  - DKL-LI-0003: Only necessary files
