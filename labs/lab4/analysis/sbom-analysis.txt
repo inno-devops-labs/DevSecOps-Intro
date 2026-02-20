@@ -1,0 +1,44 @@
+=== SBOM Component Analysis ===
+
+Syft Package Counts:
+ 1128 npm
+   10 deb
+    1 binary
+Total: 1139
+
+Trivy Package Counts:
+   10 bkimminich/juice-shop:v19.0.0 (debian 12.11) - os-pkgs
+ 1125 Node.js - lang-pkgs
+Total: 1135
+
+=== License Analysis ===
+
+Syft Licenses (top):
+  890 MIT
+  143 ISC
+   19 LGPL-3.0
+   16 BSD-3-Clause
+   15 Apache-2.0
+   12 BSD-2-Clause
+    6 GPL-2
+    5 Artistic
+    5 BlueOak-1.0.0
+    5 GPL
+    4 GPL-3
+    4 GFDL-1.2
+    4 LGPL
+
+Trivy Licenses (top):
+  878 MIT
+  143 ISC
+   19 LGPL-3.0-only
+   14 BSD-3-Clause
+   13 Apache-2.0
+   12 BSD-2-Clause
+    5 BlueOak-1.0.0
+    4 GPL-2.0-only
+    2 MPL-2.0
+    2 MIT/X11
+
+Syft found 32 unique license types
+Trivy found 28 unique license types
