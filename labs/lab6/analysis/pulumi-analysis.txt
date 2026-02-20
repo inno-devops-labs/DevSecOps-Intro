@@ -1,0 +1,15 @@
+=== Pulumi Security Analysis (KICS) ===
+KICS Pulumi findings: 6
+  CRITICAL severity: 1
+  HIGH severity: 2
+  MEDIUM severity: 1
+  LOW severity: 0
+  INFO severity: 2
+
+Findings detail:
+1. [CRITICAL] RDS DB Instance Publicly Accessible (Pulumi-vulnerable.yaml:104)
+2. [HIGH] Passwords And Secrets - Generic Password (Pulumi-vulnerable.yaml:16)
+3. [HIGH] DynamoDB Table Not Encrypted (Pulumi-vulnerable.yaml:205)
+4. [MEDIUM] EC2 Instance Monitoring Disabled (Pulumi-vulnerable.yaml:157)
+5. [INFO] EC2 Not EBS Optimized (Pulumi-vulnerable.yaml:157)
+6. [INFO] DynamoDB Table Point In Time Recovery Disabled (Pulumi-vulnerable.yaml:213)

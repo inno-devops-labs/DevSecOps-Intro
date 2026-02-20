@@ -1,0 +1,13 @@
+=== Ansible Security Analysis (KICS) ===
+KICS Ansible findings: 10
+  CRITICAL severity: 0
+  HIGH severity: 9
+  MEDIUM severity: 0
+  LOW severity: 1
+  INFO severity: 0
+
+Findings detail:
+1. [HIGH] Passwords And Secrets - Generic Password (deploy.yml:12, configure.yml:16, inventory.ini:5,10,18,19) - 6 instances
+2. [HIGH] Passwords And Secrets - Password in URL (deploy.yml:16, deploy.yml:72) - 2 instances
+3. [HIGH] Passwords And Secrets - Generic Secret (inventory.ini:20) - 1 instance
+4. [LOW] Unpinned Package Version (deploy.yml:99) - 1 instance

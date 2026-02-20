@@ -1,0 +1,24 @@
+=== Terraform Security Analysis ===
+tfsec findings: 53
+Checkov findings: 78
+Terrascan findings: 22
+
+Breakdown by severity:
+
+tfsec:
+  CRITICAL: 8
+  HIGH: 25
+  MEDIUM: 10
+  LOW: 7
+  (3 unassigned)
+
+Checkov:
+  Failed checks: 78
+  Passed checks: 48
+  Resource count: 16
+
+Terrascan:
+  HIGH: 14
+  MEDIUM: 8
+  LOW: 0
+  Policies validated: 167
