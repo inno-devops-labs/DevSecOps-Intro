@@ -31,7 +31,7 @@ Commit signing helps ensure code changes are authentic and not injected by unaut
 - Behavior: blocks commits if secrets are detected in non-lectures files
 
 ### Test: Blocked Commit (Secret Detected)
-Attempted commit with a fake AWS key in `labs/lab3/secret-test.txt`.
+Attempted commit with a private key block in `labs/lab3/secret-test.txt`.
 
 ```text
 [pre-commit] scanning staged files for secrets...
@@ -39,8 +39,13 @@ Attempted commit with a fake AWS key in `labs/lab3/secret-test.txt`.
 [pre-commit] Non-lectures files: labs/lab3/secret-test.txt
 [pre-commit] Lectures files: none
 [pre-commit] TruffleHog scan on non-lectures files...
+[pre-commit] ok TruffleHog found no secrets in non-lectures files
+[pre-commit] Gitleaks scan on staged files...
+[pre-commit] Scanning labs/lab3/secret-test.txt with Gitleaks...
+Gitleaks found secrets in labs/lab3/secret-test.txt:
+Finding:     -----BEGIN RSA PRIVATE KEY-----
 ...
-[pre-commit] x TruffleHog detected potential secrets in non-lectures files
+RuleID:      private-key
 ...
 ERROR: COMMIT BLOCKED: Secrets detected in non-excluded files.
 ```
@@ -54,7 +59,10 @@ Replaced secret with safe placeholder and retried.
 [pre-commit] Non-lectures files: labs/lab3/secret-test.txt
 [pre-commit] Lectures files: none
 [pre-commit] TruffleHog scan on non-lectures files...
-[pre-commit] WARN: TruffleHog skipped (Docker not available)
+[pre-commit] ok TruffleHog found no secrets in non-lectures files
+[pre-commit] Gitleaks scan on staged files...
+[pre-commit] Scanning labs/lab3/secret-test.txt with Gitleaks...
+[pre-commit] No secrets found in labs/lab3/secret-test.txt
 ...
 OK: No secrets detected in non-excluded files; proceeding with commit.
 ```
