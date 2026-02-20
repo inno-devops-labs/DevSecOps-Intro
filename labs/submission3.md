@@ -17,6 +17,8 @@ Signed commits prove who authored a change and protect integrity by preventing t
   - `git log -1 --show-signature` shows a **Good "git" signature** for the latest signed commit.
 - Commit used:
   - `docs: add commit signing summary` (signed via SSH)
+- GitHub Verified badge screenshot:
+  - `labs/lab3/verified.png`
 
 ### Why Commit Signing Is Critical in DevSecOps
 Commit signing helps ensure code changes are authentic and not injected by unauthorized parties. It strengthens software supply chain integrity, supports compliance requirements, and reduces the risk of impersonation or compromised developer identities.
