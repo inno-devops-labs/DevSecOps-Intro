@@ -29,6 +29,7 @@
 ### 1.2: SSH Key Configuration
 
 **SSH Key Details:**
+- I used an existing SSH key
 - Algorithm: Ed25519 (modern, secure, recommended)
 - Public key: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOACNAKwtYjr/2m87LNJmaelK3dUf4AG751gy1miTKVG kostikova658@gmail.com`
 - Private key location: `~/.ssh/id_ed25519`
@@ -110,10 +111,6 @@ PS D:\INNOPOLIS\DEVSECOPS\DevSecOps-Intro>
 - Prevents unauthorized code from reaching production
 - Integrates with SLSA Level 3+ for supply chain security
 - Enables automated enforcement of "all commits must be signed" policies
-
-### Conclusion
-In DevSecOps, commit signing is a **foundational control** that ensures every code change is authenticated, authorized, and auditable. It protects against both external attacks and insider threats, making it critical for secure software supply chains.
-
 ---
 
 ## Task 2 — Pre-commit Secret Scanning
