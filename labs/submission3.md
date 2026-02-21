@@ -118,7 +118,149 @@ In DevSecOps, commit signing is a **foundational control** that ensures every co
 
 ## Task 2 — Pre-commit Secret Scanning
 
-### Status: In Progress
-Pre-commit hook setup to be completed in next iteration.
+### 2.1: Pre-commit Hook Setup
+
+**Hook Location:** `.git/hooks/pre-commit`
+
+**Configuration Details:**
+- Tool 1: **TruffleHog** — scans for high-entropy strings and known secret patterns
+- Tool 2: **Gitleaks** — detects hardcoded API keys, tokens, credentials
+- Exclusion: Secrets in `lectures/*` files are allowed (educational content)
+- Non-lectures files: Any detected secrets block the commit
+
+**Hook Installation:**
+```bash
+chmod +x .git/hooks/pre-commit
+```
+
+### 2.2: Secret Detection Testing
+
+**Test 1: Blocked Commit (with secrets)**
+
+File created: `labs/test-secret.env`
+```env
+AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+```
+
+**Attempt to commit:**
+```bash
+git add labs/test-secret.env
+git commit -m "test: add test secret"
+```
+
+**Result:**
+```
+[pre-commit] scanning staged files for secrets…
+[pre-commit] Files to scan: labs/test-secret.env
+[pre-commit] Non-lectures files: labs/test-secret.env
+[pre-commit] Lectures files: none
+[pre-commit] TruffleHog scan on non-lectures files…
+Found unverified result 🐷🔑❓
+Detector Type: AWS
+Raw result: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+File: labs/test-secret.env
+[pre-commit] ✖ TruffleHog detected potential secrets in non-lectures files
+[pre-commit] Scanning labs/test-secret.env with Gitleaks...
+Gitleaks found secrets in labs/test-secret.env:
+Finding:     AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Secret:      wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+RuleID:      aws-access-token
+File:        labs/test-secret.env
+---
+✖ Secrets found in non-excluded file: labs/test-secret.env
+
+[pre-commit] === SCAN SUMMARY ===
+TruffleHog found secrets in non-lectures files: true
+Gitleaks found secrets in non-lectures files: true
+Gitleaks found secrets in lectures files: false
+
+✖ COMMIT BLOCKED: Secrets detected in non-excluded files.
+Fix or unstage the offending files and try again.
+```
+
+**Status:**  **BLOCKED as expected**
 
 ---
+
+**Test 2: Successful Commit (without secrets)**
+
+File created: `labs/test-clean.env`
+```env
+APPLICATION_NAME=MyApp
+VERSION=1.0.0
+```
+
+**Attempt to commit:**
+```bash
+git add labs/test-clean.env
+git commit -m "test: add clean test file"
+```
+
+**Result:**
+```
+[pre-commit] scanning staged files for secrets…
+[pre-commit] Files to scan: labs/test-clean.env
+[pre-commit] Non-lectures files: labs/test-clean.env
+[pre-commit] Lectures files: none
+[pre-commit] TruffleHog scan on non-lectures files…
+[pre-commit] ✓ TruffleHog found no secrets in non-lectures files
+[pre-commit] Gitleaks scan on staged files…
+[pre-commit] Scanning labs/test-clean.env with Gitleaks...
+[pre-commit] No secrets found in labs/test-clean.env
+
+[pre-commit] === SCAN SUMMARY ===
+TruffleHog found secrets in non-lectures files: false
+Gitleaks found secrets in non-lectures files: false
+Gitleaks found secrets in lectures files: false
+
+✓ No secrets detected in non-excluded files; proceeding with commit.
+[feature/lab3 9be8345] test: add clean test file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 labs/test-clean.env
+```
+
+**Status:** **ALLOWED as expected**
+
+---
+
+### Analysis: How Pre-commit Secret Scanning Prevents Security Incidents
+
+#### 1. **Early Detection at Developer Level**
+- Secrets are caught **before they reach Git history**
+- Once pushed to remote, secrets are very hard to remove completely
+- Pre-commit hook acts as the **first line of defense**
+
+#### 2. **Prevents Supply Chain Attacks**
+- Hardcoded credentials could be exploited by internal/external attackers
+- If a repository is compromised, attackers gain immediate access to:
+  - Database credentials
+  - API keys for third-party services
+  - Cloud provider credentials (AWS, Azure, GCP)
+  - Private encryption keys
+
+#### 3. **Compliance & Audit Trail**
+- Automated scanning creates **evidence** of security controls
+- Meets requirements for ISO 27001, SOC2, HIPAA compliance
+- Demonstrates organization takes secrets management seriously
+
+#### 4. **Developer Education**
+- Developers learn **not to hardcode secrets** through immediate feedback
+- Over time, teams adopt better security practices:
+  - Use environment variables for local development
+  - Use secrets vaults (HashiCorp Vault, AWS Secrets Manager) for production
+  - Never commit `.env` or `credentials.json` files
+
+#### 5. **Cost of Prevention vs. Incident**
+- **Prevention cost:** 5-10 seconds per commit for scanning
+- **Incident cost:** Credential rotation, audit investigation, potential data breach, reputation damage
+- ROI is extremely high
+
+#### Key Incident Prevention Scenarios
+
+| Scenario | Without Hook | With Hook |
+|----------|-------------|-----------|
+| Developer accidentally commits AWS key |  Secret in Git history forever |  Commit blocked, developer fixes it |
+| Contractor with access pushes credentials |  Access to production systems exposed |  Hook prevents push, enforces secure practices |
+| CI/CD pipeline leaks API key in logs |  Secret visible in build history |  Hook catches it before it reaches logs |
+| Repository accidentally made public |  All historical secrets exposed |  No secrets in history to expose |
