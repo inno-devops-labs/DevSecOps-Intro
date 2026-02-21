@@ -60,14 +60,22 @@ git commit -S -m "docs: add commit signing summary"
 ```
 
 **Local Verification:**
-```bash
-$ git log -1 --format="%H %G? %GS"
-<commit-hash> G kostikova658@gmail.com
+```
+PS D:\INNOPOLIS\DEVSECOPS\DevSecOps-Intro> git log -1 --format="%H %G? %GS"
+8be815905c7f3a4490e28a57592e07119c3e7ab9 G kostikova658@gmail.com
+PS D:\INNOPOLIS\DEVSECOPS\DevSecOps-Intro> git log --show-signature -1
+commit 8be815905c7f3a4490e28a57592e07119c3e7ab9 (HEAD -> feature/lab3)
+Good "git" signature for kostikova658@gmail.com with ED25519 key SHA256:T2a86HuJ6HCVmxHl1qswf1IWZ4H0ivf5u7mZsIk7wGE
+Author: polina193535 <kostikova658@gmail.com>
+Date:   Sat Feb 21 16:17:48 2026 +0300
+
+    docs: add commit signing summary
+PS D:\INNOPOLIS\DEVSECOPS\DevSecOps-Intro> 
 ```
 
-- **G** = Good signature (signed and valid)
-- Signature verified with SSH key
+**GitHub Verified Commit Evidence:**
 
+![Verified commit screenshot](/labs/screenshots/verified.png)
 ---
 
 ## Why is Commit Signing Critical in DevSecOps Workflows?
