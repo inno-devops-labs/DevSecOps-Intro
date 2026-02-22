@@ -55,25 +55,25 @@ Created a signed commit for this submission:
 
 ```bash
 $ git commit -S -m "docs(lab3): add secure git submission"
-# commit SHA: f853a192e52212b5fa053e7c8a1714cb10c5cd43
+# commit SHA: d18c1eb39d5d8072a0247d50c847576bb991e308
 ```
 
 Signature verification output:
 
 ```bash
-$ git show --pretty=raw -s f853a192e52212b5fa053e7c8a1714cb10c5cd43
-commit f853a192e52212b5fa053e7c8a1714cb10c5cd43
+$ git show --pretty=raw -s d18c1eb39d5d8072a0247d50c847576bb991e308
+commit d18c1eb39d5d8072a0247d50c847576bb991e308
 ...
 gpgsig -----BEGIN SSH SIGNATURE-----
  U1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAg96fv71WnPV4ruednJYvGMdSVWi...
  -----END SSH SIGNATURE-----
 
-$ git show --show-signature --no-patch f853a192e52212b5fa053e7c8a1714cb10c5cd43
+$ git show --show-signature --no-patch d18c1eb39d5d8072a0247d50c847576bb991e308
 Good "git" signature for e.torshin@innopolis.university with ED25519 key SHA256:[redacted-for-scanner]
 ```
 
 GitHub "Verified" badge evidence:
-- Commit URL: `https://github.com/egorTorshin/DevSecOps-Intro/commit/f853a192e52212b5fa053e7c8a1714cb10c5cd43`
+- Commit URL: `https://github.com/egorTorshin/DevSecOps-Intro/commit/d18c1eb39d5d8072a0247d50c847576bb991e308`
 - Verification status from GitHub API:
 
 ```text
