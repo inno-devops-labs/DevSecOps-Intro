@@ -1,6 +1,6 @@
 # Lab 3 Submission — Secure Git
 
-**Student:** lutfullin.sarmat@mail.ru  
+**Student:** 1sarmatt
 **Date:** February 22, 2026
 
 ---
