@@ -47,7 +47,7 @@ Study why commit signing is crucial for verifying the integrity and authenticity
    ```sh
    git config --global user.signingkey <YOUR_SSH_KEY>
    git config --global commit.gpgSign true
-   git config --global gpg.format ssh
+
    ```
 
 #### 1.3: Create Signed Commit
