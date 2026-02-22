@@ -5,6 +5,7 @@ Signing commits provides cryptographic proof of the author's identity. It ensure
 
 ## Evidence of Successful SSH Key Setup and Configuration
 I used already generated SSH key:
+
 ![Using the signing key](./screenshots/submission3/signing-key.png)
 
 ## Analysis: Why is commit signing critical in DevSecOps workflows?
