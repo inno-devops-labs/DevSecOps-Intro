@@ -90,6 +90,9 @@ git commit -m "clean commit"
 
 Commit passed successfully.
 
+![[verified.png]]
+
+
 ### Security impact
 
 Pre‑commit secret scanning:
