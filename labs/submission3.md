@@ -30,6 +30,8 @@ I've staged the .env file containing a `SLACK_TOKEN` and attempted to commit it.
 - **Blocked Commit:** As shown in the output above, adding a `.env` file with a `SLACK_TOKEN` triggered Gitleaks, resulting in a `COMMIT BLOCKED` message. The commit was aborted before any sensitive data could be written to the local Git history.
 - **Successful Commit:** After removing the offending `.env` file (or removing the secret from it) and staging the clean files, the pre-commit hook scans the files, finds no secrets, and allows the commit to proceed normally.
 
+![ successful commit](./screenshots/submission3/success-commit.png)
+
 ## Analysis: How Automated Secret Scanning Prevents Security Incidents
 Automated secret scanning acts as a crucial preventative control in the software development lifecycle (SDLC). Developers often use real credentials during local testing and may accidentally stage them for commit. If these secrets are pushed to a remote repository (especially a public one), they can be scraped by malicious bots within seconds, leading to unauthorized access, data breaches, and compromised infrastructure.
 
