@@ -35,3 +35,5 @@ Commit was blocked because secrets are exposed!
 When I added this file to `.gitignore` commit are successfully created:
 
 ![alt text](./lab3/screenshots/success-commit.png)
+
+Automated secret scanning prevents security incidents by catching credentials before they reach production or public repositories.
