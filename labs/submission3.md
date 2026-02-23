@@ -24,11 +24,11 @@ gpg.format=ssh
 user.signingkey=/home/a/.ssh/id_ed25519.pub
 ```
 3. SSH Key Added to GitHub as a Signing Key\
-![SSH Key](/home/a/Desktop/devsecops/DevSecOps-Intro/labs/images/key)
+![SSH Key](/labs/images/key)
 4. Signed Commit\
 git commit -S -m "docs: add commit signing summary"
 5. Verified Badge on GitHub\
-![Verified Badge](/home/a/Desktop/devsecops/DevSecOps-Intro/labs/images/verif)
+![Verified Badge](/DevSecOps-Intro/labs/images/verif)
 
 **Analysis**\
 In DevSecOps, trust in the software supply chain is paramount. Automated pipelines pull code from repositories and deploy it to production. If an attacker manages to inject malicious code under a trusted identity, the entire pipeline becomes compromised. Signed commits act as a cryptographic seal, allowing CI/CD systems to reject any change that lacks a valid signature from an authorised developer. This enforces non‑repudiation, simplifies audit trails, and ensures that every line of code can be traced back to its legitimate author. Combined with branch protection rules that require signatures, commit signing becomes a cornerstone of secure software delivery.
