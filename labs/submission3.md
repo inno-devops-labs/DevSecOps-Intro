@@ -33,3 +33,4 @@ It verifies that commits come from trusted developers via cryptographic signatur
 
 Commit was blocked because secrets are exposed!
 When I added this file to `.gitignore` commit are successfully created:
+
