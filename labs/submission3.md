@@ -47,16 +47,17 @@ Commit signing provides critical security guarantees for software development:
 
 **Existing SSH Key Used:**
 ```
-Type: ed25519 (recommended modern algorithm)
-Path: ~/.ssh/id_ed25519
-Public Key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGI4Qe7ARla55twYax5c8vdwEbID4M4WvPXgyMH7CaF pish_i@mzr.su
+Type: RSA (4096-bit)
+Path: ~/.ssh/keys/linka_github
+Public Key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChUH5HgSc3mahvAaAuVThZmJ47Wm6FFZZlzORH+AooMioVOgRo8GC3RCk5RY4lQs1jeX2MuuqrSs+mVxKJbgZ/AAiNohSDJ8sLLfxctRPXLrxZBjfVXSlJdK0a9+wpkGKuAwmeweQIG8KJDOKu5plRiEKfo7JC89REhacuShT1vx7kUyot+6jeWADJVJI7IGKbSZA6IjU2RE+Yv8QkwKa94KdSwzYOEGr/hQdtHLfhGTd0RPkPQc9rgpC/L9UvbmxvfnCo662itfl6Yh7G1Hdcv8h7BLnGJAba7UhGnQ+cM1vDG1X60quFzpgrl4ACk+iiVh1jTiuwryC6JNQL2P9F6JKgIX7Xi4LA0QjMwXlDhLJK5cAA56w87ngHJdv4gV/Z3Ohp2/sND5fnzhpU9cOoI5ZBcnDYCZbNQT1XOXlrrLWlyZXCeHANkAwODSz8iuok92+k4y1kBI6rfm1pGiF24bYzqztByaSFvrRymnsIwiNPkSXKAuZYVHsZ4n1KmpSw4jUb50HE46ubcifoXLaxwW2NmzRg3xsmRYIDIdWJMFIc9/nriKZeuqtQn3Z7PzHuoOjmi2/vxAjqoAWBCl2/wvCcHmNahfmvyOS9k/+u1CzekBSs12/2TxIa8dBr94eSECGH+SqYLdBSAmwgIuoM8ZFP96q1ddDY4VLGOlUk0w== elechka.ku@gmail.com
+Email: elechka.ku@gmail.com
 ```
 
-**Why ed25519?**
-- Modern, fast, and cryptographically strong
-- Smaller key size compared to RSA
-- Recommended by GitHub and OpenSSH maintainers
-- Resistant to timing attacks
+**Key Details:**
+- Dedicated GitHub key (stored in `~/.ssh/keys/linka_github`)
+- RSA 4096-bit - industry standard with strong security
+- Already added to GitHub account
+- Email matches GitHub account for proper verification
 
 #### Git Configuration
 
@@ -67,7 +68,10 @@ Applied the following global Git configuration:
 git config --global gpg.format ssh
 
 # Configure the signing key (private key path)
-git config --global user.signingkey ~/.ssh/id_ed25519
+git config --global user.signingkey ~/.ssh/keys/linka_github
+
+# Set email to match GitHub account
+git config --global user.email "elechka.ku@gmail.com"
 
 # Enable automatic commit signing
 git config --global commit.gpgSign true
@@ -75,33 +79,20 @@ git config --global commit.gpgSign true
 
 **Verification:**
 ```bash
-$ git config --global --list | grep -E "(gpg|signing)"
+$ git config --global --list | grep -E "(gpg|signing|user\.email)"
 gpg.format=ssh
-user.signingkey=/Users/mazzz3r/.ssh/id_ed25519
+user.signingkey=/Users/mazzz3r/.ssh/keys/linka_github
+user.email=elechka.ku@gmail.com
 commit.gpgsign=true
 ```
 
 ### 1.3 SSH Key Setup for GitHub
 
-**Action Required:** To enable commit verification on GitHub, the SSH public key must be added to the GitHub account.
-
-**Public Key to Add:**
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
-
-Output:
-```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGI4Qe7ARla55twYax5c8vdwEbID4M4WvPXgyMH7CaF pish_i@mzr.su
-```
-
-**Steps to Complete:**
-1. Copy the public key above
-2. Go to GitHub → Settings → SSH and GPG keys
-3. Click "New SSH key"
-4. Paste the public key
-5. Ensure commit email matches GitHub account email
-6. Add SSH key to SSH agent: `ssh-add ~/.ssh/id_ed25519`
+**Key Configuration:**
+- Key stored in: `~/.ssh/keys/linka_github`
+- Public key on GitHub: Already configured
+- Email matches: elechka.ku@gmail.com
+- Added to SSH agent: Configured
 
 ### 1.4 Creating Signed Commits
 
@@ -398,7 +389,8 @@ Using both provides **defense in depth**:
 ### Git Configuration (Applied)
 ```bash
 gpg.format=ssh
-user.signingkey=/Users/mazzz3r/.ssh/id_ed25519
+user.signingkey=/Users/mazzz3r/.ssh/keys/linka_github
+user.email=elechka.ku@gmail.com
 commit.gpgsign=true
 ```
 
@@ -409,68 +401,6 @@ commit.gpgsign=true
 ### Docker Images Used
 - `trufflesecurity/trufflehog:latest` - Secret scanning via entropy analysis
 - `zricethezav/gitleaks:latest` - Pattern-based secret detection
-
----
-
-## Acceptance Criteria Verification
-
-- ✅ **Branch** `feature/lab3` exists with commits for each task
-- ✅ **File** `labs/submission3.md` contains required analysis for both tasks
-- ⚠️ **Commit** shows "Verified" badge - **ACTION REQUIRED**: Add SSH key to GitHub and run `ssh-add`
-- ✅ **Local** `.git/hooks/pre-commit` runs TruffleHog and Gitleaks via Docker
-- ✅ **Hook** is executable: `chmod +x .git/hooks/pre-commit` ✅
-- ⏳ **PR** from `feature/lab3` → course repo main branch - **ACTION REQUIRED**: After review
-
----
-
-## Next Steps for User
-
-### To Complete Task 1 (SSH Commit Signing):
-
-1. **Add SSH key to GitHub:**
-   ```bash
-   cat ~/.ssh/id_ed25519.pub
-   # Copy output and add to: https://github.com/settings/ssh/new
-   ```
-
-2. **Add key to SSH agent:**
-   ```bash
-   ssh-add ~/.ssh/id_ed25519
-   ```
-
-3. **Verify email matches GitHub account:**
-   ```bash
-   git config --global user.email
-   # Should match your GitHub account email
-   ```
-
-4. **Create a signed commit:**
-   ```bash
-   git commit -S -m "docs: add lab3 submission"
-   ```
-
-5. **Push and verify on GitHub:**
-   ```bash
-   git push -u origin feature/lab3
-   # Visit GitHub PR and look for "Verified" badge
-   ```
-
-### To Test Task 2 (Pre-commit Hook):
-
-The hook is already configured. Test it:
-
-```bash
-# Test 1: Normal commit (should succeed)
-echo "console.log('test');" > test.js
-git add test.js
-git commit -m "test: normal commit"
-
-# Test 2: Secret detection (should be blocked)
-echo "AKIAIOSFODNN7EXAMPLE" > test.txt
-git add test.txt
-git commit -m "test: secret commit"
-# Should be blocked by TruffleHog or Gitleaks
-```
 
 ---
 
