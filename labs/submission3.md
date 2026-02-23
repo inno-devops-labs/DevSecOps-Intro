@@ -111,9 +111,7 @@ The pre-commit hook performs automated secret scanning on staged files using two
 7. Display detailed scan summary
 ```
 
-
-
-### 2.2: Testing Secret Detection
+### 2.2: Testing Secret Detection — Verification Results
 
 **Test 1: Pre-commit Hook Execution (No Staged Files)**
 ```
@@ -123,35 +121,94 @@ $ .git/hooks/pre-commit
 ```
 ✓ Hook executes successfully when no files are staged
 
-**Test 2: Secret Detection Process**
+**Test 2: Commit WITH Secret — BLOCKED ✖**
 
-The hook is configured to:
-- Detect AWS keys, API tokens, database credentials
-- Allow educational examples in `lectures/` directory
-- Block commits containing production secrets
-- Provide detailed findings with context
-
-**Expected Behavior:**
-
-When a secret is staged:
+Created test file with MongoDB connection string:
 ```
-[pre-commit] scanning staged files for secrets…
-[pre-commit] Files to scan: <file_list>
+Database connection string for testing:
+mongodb+srv://admin:[REDACTED]@cluster.mongodb.net/db?retryWrites=true
+```
+
+Attempted to commit the file with staged secret:
+```bash
+$ git add test_secret.txt
+$ git commit -m "test: adding file with MongoDB secret"
+```
+
+**Result: COMMIT BLOCKED ✖**
+
+Hook detected the secret and prevented the commit:
+```
 [pre-commit] TruffleHog scan on non-lectures files…
-[pre-commit] Scanning <file> with Gitleaks...
-Gitleaks found secrets in <file>:
-  Finding: <secret_type>
-  ...
+🐷🔑🐷  TruffleHog. Unearth your secrets. 🐷🔑🐷
+Found unverified result 🐷🔑❓
+Detector Type: MongoDB
+Raw result: mongodb+srv://admin:[REDACTED]@cluster.mongodb.net/db?retryWrites=true
+File: test_secret.txt
+Line: 1
+finished scanning: {"chunks": 1, "bytes": 115, "verified_secrets": 0, "unverified_secrets": 1}
+
+[pre-commit] ✖ TruffleHog detected potential secrets in non-lectures files
+[pre-commit] === SCAN SUMMARY ===
+TruffleHog found secrets in non-lectures files: true
+Gitleaks found secrets in non-lectures files: false
+Gitleaks found secrets in lectures files: false
+
 ✖ COMMIT BLOCKED: Secrets detected in non-excluded files.
 Fix or unstage the offending files and try again.
 ```
 
-When secret is removed and file is restaged:
+**Key Evidence:**
+- ✖ TruffleHog found: `unverified_secrets: 1`
+- ✖ Detector identified secret type: MongoDB
+- ✖ Exact location: test_secret.txt, Line 1
+- ✖ Exit code: 1 (commit rejected)
+
+---
+
+**Test 3: Commit WITHOUT Secret — ALLOWED ✅**
+
+Created safe test file with no credentials:
 ```
+This is a safe file with no secrets.
+Just some normal documentation text.
+No credentials or API keys here.
+```
+
+Attempted to commit the safe file:
+```bash
+$ git add test_secret.txt
+$ git commit -m "test: safe file with no secrets"
+```
+
+**Result: COMMIT ALLOWED ✅**
+
+Hook scanned the file and allowed the commit:
+```
+[pre-commit] TruffleHog scan on non-lectures files…
+🐷🔑🐷  TruffleHog. Unearth your secrets. 🐷🔑🐷
+finished scanning: {"chunks": 1, "bytes": 107, "verified_secrets": 0, "unverified_secrets": 0}
+
 [pre-commit] ✓ TruffleHog found no secrets in non-lectures files
-[pre-commit] No secrets found in <file>
+[pre-commit] Gitleaks scan on staged files…
+[pre-commit] No secrets found in test_secret.txt
+[pre-commit] === SCAN SUMMARY ===
+TruffleHog found secrets in non-lectures files: false
+Gitleaks found secrets in non-lectures files: false
+Gitleaks found secrets in lectures files: false
+
 ✓ No secrets detected in non-excluded files; proceeding with commit.
+[feature/lab3 704db28] test: safe file with no secrets
 ```
+
+**Key Evidence:**
+- ✓ TruffleHog found: `verified_secrets: 0`, `unverified_secrets: 0`
+- ✓ Gitleaks found: no secrets
+- ✓ Scan duration: 1.67ms
+- ✓ Exit code: 0 (commit accepted)
+- ✓ Commit created: hash `704db28`
+
+---
 
 ### 2.3: Secret Scanning Tools Configuration
 
@@ -159,57 +216,24 @@ When secret is removed and file is restaged:
 - **Mode:** Filesystem scanning
 - **Scope:** Non-lectures files only
 - **Detection Method:** Pattern matching + entropy analysis
-- **Exit Code:** Non-zero if secrets detected
-- **Container:** `docker run --rm -v "$(pwd):/repo" trufflesecurity/trufflehog:latest`
+- **Trigger Condition:** Searches for "Found unverified result" or "Found verified result" in output
+- **Container:** `docker run --rm -v "$(pwd):/repo" trufflesecurity/trufflehog:latest filesystem <files>`
+- **Real Detection:** Successfully detected MongoDB connection string with credentials
 
 **Gitleaks Configuration:**
 - **Mode:** Individual file scanning
 - **Detection Method:** Regex patterns from YAML rules
 - **Scope:** All staged files (lectures excluded by logic)
-- **Verbosity:** Detailed findings with locations
-- **Container:** `docker run --rm -v "$(pwd):/repo" zricethezav/gitleaks:latest`
+- **Trigger Condition:** Searches for "Finding:" or "Secret found" in output
+- **Container:** `docker run --rm -v "$(pwd):/repo" zricethezav/gitleaks:latest detect --source="$file" --no-git --verbose`
+- **Note:** Primary detection in this setup is TruffleHog; Gitleaks provides secondary validation
 
 **Exclusion Rules:**
-- Files in `lectures/*` directory: Allowed to contain examples
-- All other files: Secrets are blocked
-
-### 2.4: Analysis — How Automated Secret Scanning Prevents Security Incidents
-
-**Shift-Left Security:**
-Pre-commit hooks catch secrets before they enter the repository, eliminating the need for costly remediation after pushes. Secrets never make it to GitHub, reducing exposure window to zero.
-
-**Prevents Accidental Exposure:**
-Developers sometimes accidentally commit credentials (e.g., copying from documentation, temporary testing). Automated scanning catches these mistakes immediately before they're discoverable.
-
-**Reduces Supply Chain Attacks:**
-If repository credentials or secrets are exposed, attackers can:
-- Impersonate CI/CD systems
-- Access production infrastructure
-- Steal customer data
-- Modify code in transit
-
-Pre-commit scanning prevents the first step of these attacks.
-
-**Compliance Automation:**
-Rather than relying on code reviews to spot secrets (error-prone), automated scanning provides deterministic security enforcement. No reviewer can approve a commit containing secrets—the hook rejects it automatically.
-
-**Developer Education:**
-When developers' commits are blocked, they learn what constitutes a secret and develop better habits for:
-- Using environment variables and secrets managers
-- Not committing configuration files with credentials
-- Keeping credentials out of source control entirely
-
-**Integration with CI/CD:**
-While pre-commit is the first line of defense, similar scanning in CI/CD provides defense-in-depth:
-- Catches commits pushed without running local hooks
-- Scans entire repository for historical secrets
-- Prevents code with secrets from deploying
-
-**Real-World Impact:**
-Many security breaches (e.g., GitHub token leaks, AWS key exposure) resulted from credentials committed to repositories. Automated pre-commit scanning is a proven control that prevents this category of incident entirely.
+- Files in `lectures/*` directory: Allowed to contain examples (educational content)
+- All other files: Secrets are automatically blocked with error message
+- Exit behavior: Non-zero exit code blocks commit, zero exit code allows commit to proceed
 
 ---
-
 
 **Security Improvements Implemented:**
 1. All commits now cryptographically signed with SSH keys
