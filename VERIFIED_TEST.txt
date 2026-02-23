@@ -1,3 +1,0 @@
-This is a test file to verify SSH commit signing works end-to-end.
-If this commit shows as "Verified" on GitHub, the SSH signing is working correctly.
-Created: February 23, 2026
