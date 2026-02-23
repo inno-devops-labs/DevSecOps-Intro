@@ -23,3 +23,13 @@ And now my commits are signed:
 #### Why is commit signing critical in DevSecOps workflows
 It verifies that commits come from trusted developers via cryptographic signatures, blocking malicious insiders or spoofed pushes. Without it, attackers can impersonate users—e.g., a compromised CI token pushes code under any name, obscuring attribution during incidents
 
+### Secrets detection
+
+1. I set up pre-commit hook
+2. I created `.env` file with access key inside
+3. Then I tried to commit, however:
+
+![alt text](./lab3/screenshots/secret-found.png)
+
+Commit was blocked because secrets are exposed!
+When I added this file to `.gitignore` commit are successfully created:
