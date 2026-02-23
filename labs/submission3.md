@@ -1,5 +1,4 @@
-
-
+# Lab 3 — Secure Git
 
 #### Why signing commits?
 1. Signed commits authenticate the author, preventing identity spoofing, and ensure **code integrity**. Any post-signature changes invalidate it
@@ -19,5 +18,8 @@ git config --global gpg.format ssh
 ```
 
 And now my commits are signed:
+![alt text](./lab3/screenshots/signed.png)
 
-#### 
+#### Why is commit signing critical in DevSecOps workflows
+It verifies that commits come from trusted developers via cryptographic signatures, blocking malicious insiders or spoofed pushes. Without it, attackers can impersonate users—e.g., a compromised CI token pushes code under any name, obscuring attribution during incidents
+
