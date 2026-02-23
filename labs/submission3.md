@@ -39,7 +39,9 @@ Together, this reduces the risk of impersonation, malicious commits from comprom
    ```
    Expected: signing key path or key, `true`, `ssh`.
 
-**Evidence:** After pushing a signed commit (e.g. `git commit -S -m "docs: add lab3 submission"`), the commit on GitHub shows a **Verified** badge next to the commit message. *(Add a screenshot of the commit on GitHub showing the "Verified" badge here.)*
+**Evidence:** After pushing a signed commit (e.g. `git commit -S -m "docs: add lab3 submission"`), the commit on GitHub shows a **Verified** badge next to the commit message.
+
+![Verified commit on GitHub](devsec3-1.png)
 
 ### 1.3 Analysis: Why Is Commit Signing Critical in DevSecOps Workflows?
 
