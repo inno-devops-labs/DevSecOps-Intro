@@ -1,84 +1,71 @@
-# Lab 4 — SBOM Generation & SCA Analysis
+# Lab 4 — SBOM Generation & SCA
 
-## Task 1 — SBOM Generation
+Target: `bkimminich/juice-shop:v19.0.0`
 
-### Syft Results
-Syft successfully generated SBOM for Juice Shop container image.
+## Task 1 — SBOM Generation (Syft vs Trivy)
 
-Artifacts generated:
-- juice-shop-syft-native.json
-- juice-shop-syft-table.txt
+### Artifacts
+**Syft**
+- `labs/lab4/syft/juice-shop-syft-native.json`
+- `labs/lab4/syft/juice-shop-syft-table.txt`
 
-Syft provides detailed dependency metadata and license information.
+**Trivy**
+- `labs/lab4/trivy/juice-shop-trivy-detailed.json`
+- `labs/lab4/trivy/juice-shop-trivy-table.txt`
 
-### Trivy Results
-Trivy successfully generated SBOM.
+### Package type distribution + licenses
+See generated analysis:
+- `labs/lab4/analysis/sbom-analysis.txt`
 
-Artifacts generated:
-- juice-shop-trivy-detailed.json
-- juice-shop-trivy-table.txt
+Key notes:
+- Syft provides a detailed SBOM with artifact types and license fields in the native JSON format.
+- Trivy provides package listing grouped by scan targets/classes and can list all packages with `--list-all-pkgs`.
 
-Trivy provides integrated SBOM and vulnerability scanning.
+## Task 2 — SCA (Grype vs Trivy)
 
-### Comparison
-Syft:
-- More detailed SBOM
-- Better dependency graph
-- Specialized SBOM tool
+### Artifacts
+**Grype**
+- `labs/lab4/syft/grype-vuln-results.json`
+- `labs/lab4/syft/grype-vuln-table.txt`
 
-Trivy:
-- Faster execution
-- Integrated security scanning
-- Easier workflow
+**Trivy**
+- `labs/lab4/trivy/trivy-vuln-detailed.json`
 
----
+### Vulnerability summary
+See generated analysis:
+- `labs/lab4/analysis/vulnerability-analysis.txt`
 
-## Task 2 — SCA Analysis
+Key notes:
+- Grype scans vulnerabilities from the Syft SBOM (SBOM-driven workflow).
+- Trivy scans the container image directly (integrated scanner).
 
-### Grype Results
-Grype detected vulnerabilities from SBOM.
+## Task 3 — Toolchain Comparison (Syft+Grype vs Trivy)
 
-Strengths:
-- Accurate SBOM-based scanning
-- Detailed vulnerability mapping
+### Quantitative overlap
+See generated comparison:
+- `labs/lab4/comparison/accuracy-analysis.txt`
+- `labs/lab4/comparison/common-packages.txt`
+- `labs/lab4/comparison/syft-only.txt`
+- `labs/lab4/comparison/trivy-only.txt`
 
-### Trivy Results
-Trivy detected vulnerabilities directly from container image.
+### Practical comparison
 
-Strengths:
-- All-in-one scanner
-- Includes secrets and license scanning
-
----
-
-## Task 3 — Toolchain Comparison
-
-Syft + Grype:
+**Syft + Grype**
 Pros:
-- More accurate SBOM
-- Modular architecture
-- Better for enterprise pipelines
+- Strong SBOM generation and detailed metadata (good for SBOM-first pipelines)
+- Modular: SBOM generation and vuln scanning are separable
 
 Cons:
-- Requires multiple tools
+- Requires multiple tools and artifacts to manage
 
-Trivy:
+**Trivy**
 Pros:
-- All-in-one solution
-- Easy setup
-- Fast scanning
+- All-in-one: SBOM-ish package inventory + vulnerability scanning in one tool
+- Simple CI/CD integration
 
 Cons:
-- Slightly less detailed SBOM
+- SBOM detail/structure can be less explicit than Syft native JSON for deeper SBOM analysis
 
----
-
-## Conclusion
-
-Both toolchains successfully performed SBOM generation and vulnerability scanning.
-
-Recommendation:
-
-Use Syft + Grype for enterprise SBOM workflows.
-
-Use Trivy for simple and fast CI/CD integration.
+## Conclusion / Recommendation
+- Use **Syft + Grype** when you want SBOM-first workflows, more detailed SBOM metadata, and modular scanning stages.
+- Use **Trivy** when you want a fast, all-in-one scanner for CI/CD with minimal setup.
