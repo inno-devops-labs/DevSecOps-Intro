@@ -28,6 +28,7 @@ CVE-2026-0915
 CVE-2026-21637
 CVE-2026-22795
 CVE-2026-22796
+GHSA-23c5-xmqv-rm74
 GHSA-25hc-qcg6-38wj
 GHSA-2p57-rm9w-gvfp
 GHSA-34x7-hfp2-rc4v
@@ -44,6 +45,7 @@ GHSA-5mrr-rgp6-x4gr
 GHSA-6g6m-m6h5-w9gf
 GHSA-6rw7-vpxm-498p
 GHSA-73rr-hh4g-fpgx
+GHSA-7r86-cg39-jmmj
 GHSA-83g3-92jg-28cx
 GHSA-869p-cjfg-cm3x
 GHSA-87vv-r9j6-g5qv
@@ -75,6 +77,7 @@ GHSA-pfrx-2q88-qq97
 GHSA-pxg6-pf52-xh8x
 GHSA-qhxp-v273-g94h
 GHSA-qwph-4952-7xr6
+GHSA-r5mx-6wc6-7h9w
 GHSA-r6q2-hw4h-h46w
 GHSA-r7qp-cfhv-p84w
 GHSA-rc47-6667-2j5j

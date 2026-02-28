@@ -52,7 +52,7 @@
 | Severity | Grype | Trivy |
 |---|---:|---:|
 | Critical | 11 | 10 |
-| High | 60 | 81 |
+| High | 86 | 81 |
 | Medium | 31 | 34 |
 | Low | 3 | 18 |
 | Negligible | 12 | 0 |
@@ -86,7 +86,7 @@
 | Common packages | 1126 |
 | Syft-only packages | 13 |
 | Trivy-only packages | 9 |
-| Grype CVEs | 90 |
+| Grype CVEs | 93 |
 | Trivy CVEs | 91 |
 | Common CVEs | 26 |
 
@@ -113,7 +113,7 @@
   - Use overlap metrics (common/unique CVEs) to tune triage confidence.
 
 ## Challenges and Resolutions
-- Challenge: `anchore/grype` DB update endpoint (`toolbox-data.anchore.io`) was not reachable in this environment.
-- Resolution: used a DB-bundled Grype image (`stianovrevage/grype-with-db`) to complete required Grype outputs while keeping scan logic and output format Grype-compatible.
+- Challenge: initial Grype DB refresh was unstable due temporary DNS/connectivity issues.
+- Resolution: rechecked endpoint availability and reran scans with official `anchore/grype`, successfully updating DB (`v6.1.4`) and regenerating `labs/lab4/syft/grype-vuln-results.json` + `labs/lab4/syft/grype-vuln-table.txt`.
 - Challenge: Trivy DB downloads are slow on first run.
 - Resolution: persisted Trivy cache under `labs/lab4/trivy/cache` and used `--skip-db-update` for subsequent scans.
