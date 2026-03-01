@@ -86,6 +86,7 @@ Severity distribution is similar (Critical/High counts nearly equal), but CVE ov
 #### Conclusion
 Running both tools improves coverage
 
+### Toolchain Comparison: Syft+Grype vs Trivy All-in-One
 #### Tool Strengths and Weaknesses
 ##### Syft + Grype
 
@@ -111,7 +112,7 @@ Weaknesses:
 - Limited CVE overlap with Grype
 - Use Case Recommendations
 
-#### SUmmary
+#### Summary
 - Syft + Grype: Best for compliance-focused environments requiring persistent SBOMs and detailed metadata
 - Trivy: Best for fast CI/CD scanning with minimal setup.
 - **Combined**: Recommended for critical images to maximize vulnerability coverage.
