@@ -1,0 +1,9 @@
+=== SBOM Component Analysis ===
+
+Syft Package Counts:
+ 1128  npm
+   10  deb
+    1  binary
+
+Trivy Package Counts:
+ 1135  
