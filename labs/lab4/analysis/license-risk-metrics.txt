@@ -1,0 +1,25 @@
+=== License Risk Metrics (from trivy-licenses.json) ===
+
+Data source: labs/lab4/trivy/trivy-licenses.json
+Count semantics: number of license entries (.Results[].Licenses[]), not unique license names.
+
+Queries:
+- GPL-family: ^(AGPL|GPL)
+- LGPL-family: ^LGPL
+- WTFPL strict: ^WTFPL$
+- WTFPL contains: /WTFPL/
+- ad-hoc strict: ^ad-hoc$
+
+Results:
+- Total license entries: 1114
+- GPL-family entries: 9
+- LGPL-family entries: 21
+- WTFPL strict entries: 1
+- WTFPL-containing entries: 4
+- ad-hoc entries: 1
+
+WTFPL-containing records (Name|PkgName):
+- (MIT OR WTFPL)|expand-template
+- WTFPL OR ISC|sanitize-filename
+- WTFPL|truncate-utf8-bytes
+- (WTFPL OR MIT)|utf8-byte-length

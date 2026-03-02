@@ -1,0 +1,17 @@
+=== CVE Overlap Methodology Comparison ===
+
+Raw method (lab baseline):
+- Grype CVEs (primary IDs only): 95
+- Trivy CVEs: 91
+- Common CVEs: 26
+- Jaccard overlap: 0.1625
+
+Expanded method (bonus):
+- Grype CVEs (primary + relatedVulnerabilities): 93
+- Trivy CVEs: 91
+- Common CVEs: 85
+- Jaccard overlap: 0.8586
+
+Interpretation:
+- Raw overlap underestimates agreement due to GHSA-vs-CVE identifier mismatch.
+- Expanded overlap is better for fair cross-tool comparison.
