@@ -17,6 +17,8 @@ In this lab you will practice:
 - **Comprehensive feature comparison** between **Syft+Grype** vs **Trivy all-in-one** approaches
 - **License analysis**, **vulnerability management**, and **supply chain security assessment**
 
+These skills are essential for supply chain security, vulnerability management, and regulatory compliance (Executive Order 14028, EU Cyber Resilience Act).
+
 > Continue using the OWASP Juice Shop from previous labs (`bkimminich/juice-shop:v19.0.0`) as your target application.
 
 ---
@@ -29,83 +31,98 @@ In this lab you will practice:
 
 #### 1.1: Setup SBOM Generation Environment
 
-```bash
-# Prepare working directory
-mkdir -p labs/lab4/{syft,trivy,comparison,analysis}
+1. **Prepare Working Directory:**
 
-# Pull required Docker images
-docker pull anchore/syft:latest
-docker pull aquasec/trivy:latest
-docker pull anchore/grype:latest
-```
+   ```bash
+   mkdir -p labs/lab4/{syft,trivy,comparison,analysis}
+   ```
+
+2. **Pull Required Docker Images:**
+
+   ```bash
+   docker pull anchore/syft:latest
+   docker pull aquasec/trivy:latest
+   docker pull anchore/grype:latest
+   ```
 
 #### 1.2: Comprehensive SBOM Generation with Syft
 
-```bash
-# Syft native JSON format (most detailed)
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp anchore/syft:latest \
-  bkimminich/juice-shop:v19.0.0 -o syft-json=/tmp/labs/lab4/syft/juice-shop-syft-native.json
+1. **Generate Multiple SBOM Formats:**
 
-# Human-readable table
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp anchore/syft:latest \
-  bkimminich/juice-shop:v19.0.0 -o table=/tmp/labs/lab4/syft/juice-shop-syft-table.txt
-
-# Extract licenses from the native JSON format
-echo "Extracting licenses from Syft SBOM..." > labs/lab4/syft/juice-shop-licenses.txt
-jq -r '.artifacts[] | select(.licenses != null and (.licenses | length > 0)) | "\(.name) | \(.version) | \(.licenses | map(.value) | join(", "))"' \
-  labs/lab4/syft/juice-shop-syft-native.json >> labs/lab4/syft/juice-shop-licenses.txt
-```
+   ```bash
+   # Syft native JSON format (most detailed)
+   docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+     -v "$(pwd)":/tmp anchore/syft:latest \
+     bkimminich/juice-shop:v19.0.0 -o syft-json=/tmp/labs/lab4/syft/juice-shop-syft-native.json
+   
+   # Human-readable table
+   docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+     -v "$(pwd)":/tmp anchore/syft:latest \
+     bkimminich/juice-shop:v19.0.0 -o table=/tmp/labs/lab4/syft/juice-shop-syft-table.txt
+   
+   # Extract licenses directly from the native JSON format
+   echo "Extracting licenses from Syft SBOM..." > labs/lab4/syft/juice-shop-licenses.txt
+   jq -r '.artifacts[] | select(.licenses != null and (.licenses | length > 0)) | "\(.name) | \(.version) | \(.licenses | map(.value) | join(", "))"' \
+     labs/lab4/syft/juice-shop-syft-native.json >> labs/lab4/syft/juice-shop-licenses.txt
+   ```
 
 #### 1.3: Comprehensive SBOM Generation with Trivy
 
-```bash
-# SBOM with license information
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp aquasec/trivy:latest image \
-  --format json --output /tmp/labs/lab4/trivy/juice-shop-trivy-detailed.json \
-  --list-all-pkgs bkimminich/juice-shop:v19.0.0
+1. **Generate Multiple SBOM Formats:**
 
-# Human-readable table with package details
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp aquasec/trivy:latest image \
-  --format table --output /tmp/labs/lab4/trivy/juice-shop-trivy-table.txt \
-  --list-all-pkgs bkimminich/juice-shop:v19.0.0
-```
+   ```bash
+   # SBOM with license information
+   docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+     -v "$(pwd)":/tmp aquasec/trivy:latest image \
+     --format json --output /tmp/labs/lab4/trivy/juice-shop-trivy-detailed.json \
+     --list-all-pkgs bkimminich/juice-shop:v19.0.0
+   
+   # Human-readable table with package details
+   docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+     -v "$(pwd)":/tmp aquasec/trivy:latest image \
+     --format table --output /tmp/labs/lab4/trivy/juice-shop-trivy-table.txt \
+     --list-all-pkgs bkimminich/juice-shop:v19.0.0
+   ```
 
 #### 1.4: SBOM Analysis and Extraction
 
-```bash
-# Component Analysis
-echo "=== SBOM Component Analysis ===" > labs/lab4/analysis/sbom-analysis.txt
-echo "" >> labs/lab4/analysis/sbom-analysis.txt
-echo "Syft Package Counts:" >> labs/lab4/analysis/sbom-analysis.txt
-jq -r '.artifacts[] | .type' labs/lab4/syft/juice-shop-syft-native.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt   
+1. **Component Analysis:**
 
-echo "" >> labs/lab4/analysis/sbom-analysis.txt
-echo "Trivy Package Counts:" >> labs/lab4/analysis/sbom-analysis.txt
-jq -r '.Results[] as $result | $result.Packages[]? | "\($result.Target // "Unknown") - \(.Type // "unknown")"' \
-  labs/lab4/trivy/juice-shop-trivy-detailed.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
+   ```bash
+   # Count total packages by type
+   echo "=== SBOM Component Analysis ===" > labs/lab4/analysis/sbom-analysis.txt
+   echo "" >> labs/lab4/analysis/sbom-analysis.txt
+   echo "Syft Package Counts:" >> labs/lab4/analysis/sbom-analysis.txt
+   jq -r '.artifacts[] | .type' labs/lab4/syft/juice-shop-syft-native.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt   
+   
+   echo "" >> labs/lab4/analysis/sbom-analysis.txt
+   echo "Trivy Package Counts:" >> labs/lab4/analysis/sbom-analysis.txt
+   # Better approach: combine Target info with Package type
+   jq -r '.Results[] as $result | $result.Packages[]? | "\($result.Target // "Unknown") - \(.Type // "unknown")"' \
+     labs/lab4/trivy/juice-shop-trivy-detailed.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
+   ```
 
-# License Extraction
-echo "" >> labs/lab4/analysis/sbom-analysis.txt
-echo "=== License Analysis ===" >> labs/lab4/analysis/sbom-analysis.txt
-echo "" >> labs/lab4/analysis/sbom-analysis.txt
-echo "Syft Licenses:" >> labs/lab4/analysis/sbom-analysis.txt
-jq -r '.artifacts[]? | select(.licenses != null) | .licenses[]? | .value' \
-  labs/lab4/syft/juice-shop-syft-native.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
+2. **License Extraction:**
 
-echo "" >> labs/lab4/analysis/sbom-analysis.txt
-echo "Trivy Licenses (OS Packages):" >> labs/lab4/analysis/sbom-analysis.txt
-jq -r '.Results[] | select(.Class // "" | contains("os-pkgs")) | .Packages[]? | select(.Licenses != null) | .Licenses[]?' \
-  labs/lab4/trivy/juice-shop-trivy-detailed.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
-
-echo "" >> labs/lab4/analysis/sbom-analysis.txt  
-echo "Trivy Licenses (Node.js):" >> labs/lab4/analysis/sbom-analysis.txt
-jq -r '.Results[] | select(.Class // "" | contains("lang-pkgs")) | .Packages[]? | select(.Licenses != null) | .Licenses[]?' \
-  labs/lab4/trivy/juice-shop-trivy-detailed.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
-```
+   ```bash
+   # Extract license information
+   echo "" >> labs/lab4/analysis/sbom-analysis.txt
+   echo "=== License Analysis ===" >> labs/lab4/analysis/sbom-analysis.txt
+   echo "" >> labs/lab4/analysis/sbom-analysis.txt
+   echo "Syft Licenses:" >> labs/lab4/analysis/sbom-analysis.txt
+   jq -r '.artifacts[]? | select(.licenses != null) | .licenses[]? | .value' \
+     labs/lab4/syft/juice-shop-syft-native.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
+   
+   echo "" >> labs/lab4/analysis/sbom-analysis.txt
+   echo "Trivy Licenses (OS Packages):" >> labs/lab4/analysis/sbom-analysis.txt
+   jq -r '.Results[] | select(.Class // "" | contains("os-pkgs")) | .Packages[]? | select(.Licenses != null) | .Licenses[]?' \
+     labs/lab4/trivy/juice-shop-trivy-detailed.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
+   
+   echo "" >> labs/lab4/analysis/sbom-analysis.txt  
+   echo "Trivy Licenses (Node.js):" >> labs/lab4/analysis/sbom-analysis.txt
+   jq -r '.Results[] | select(.Class // "" | contains("lang-pkgs")) | .Packages[]? | select(.Licenses != null) | .Licenses[]?' \
+     labs/lab4/trivy/juice-shop-trivy-detailed.json | sort | uniq -c >> labs/lab4/analysis/sbom-analysis.txt
+   ```
 
 In `labs/submission4.md`, document:
 - **Package Type Distribution** comparison between Syft and Trivy
@@ -120,68 +137,82 @@ In `labs/submission4.md`, document:
 
 #### 2.1: SCA with Grype (Anchore)
 
-```bash
-# Scan using the Syft-generated SBOM
-docker run --rm -v "$(pwd)":/tmp anchore/grype:latest \
-  sbom:/tmp/labs/lab4/syft/juice-shop-syft-native.json \
-  -o json > labs/lab4/syft/grype-vuln-results.json
+1. **Vulnerability Scanning Using Syft SBOM:**
 
-# Human-readable vulnerability report
-docker run --rm -v "$(pwd)":/tmp anchore/grype:latest \
-  sbom:/tmp/labs/lab4/syft/juice-shop-syft-native.json \
-  -o table > labs/lab4/syft/grype-vuln-table.txt
-```
+   ```bash
+   # Scan using the Syft-generated SBOM
+   docker run --rm -v "$(pwd)":/tmp anchore/grype:latest \
+     sbom:/tmp/labs/lab4/syft/juice-shop-syft-native.json \
+     -o json > labs/lab4/syft/grype-vuln-results.json
+
+   # Human-readable vulnerability report
+   docker run --rm -v "$(pwd)":/tmp anchore/grype:latest \
+     sbom:/tmp/labs/lab4/syft/juice-shop-syft-native.json \
+     -o table > labs/lab4/syft/grype-vuln-table.txt
+   ```
 
 #### 2.2: SCA with Trivy (All-in-One)
 
-```bash
-# Full vulnerability scan with detailed output
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp aquasec/trivy:latest image \
-  --format json --output /tmp/labs/lab4/trivy/trivy-vuln-detailed.json \
-  bkimminich/juice-shop:v19.0.0
+1. **Comprehensive Vulnerability Scanning:**
 
-# Secrets scanning
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp aquasec/trivy:latest image \
-  --scanners secret --format table \
-  --output /tmp/labs/lab4/trivy/trivy-secrets.txt \
-  bkimminich/juice-shop:v19.0.0
+   ```bash
+   # Full vulnerability scan with detailed output
+   docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+     -v "$(pwd)":/tmp aquasec/trivy:latest image \
+     --format json --output /tmp/labs/lab4/trivy/trivy-vuln-detailed.json \
+     bkimminich/juice-shop:v19.0.0
+   ```
 
-# License compliance scanning
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp aquasec/trivy:latest image \
-  --scanners license --format json \
-  --output /tmp/labs/lab4/trivy/trivy-licenses.json \
-  bkimminich/juice-shop:v19.0.0
-```
+2. **Advanced Trivy Features:**
+
+   ```bash
+   # Secrets scanning
+   docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+     -v "$(pwd)":/tmp aquasec/trivy:latest image \
+     --scanners secret --format table \
+     --output /tmp/labs/lab4/trivy/trivy-secrets.txt \
+     bkimminich/juice-shop:v19.0.0
+   
+   # License compliance scanning
+   docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+     -v "$(pwd)":/tmp aquasec/trivy:latest image \
+     --scanners license --format json \
+     --output /tmp/labs/lab4/trivy/trivy-licenses.json \
+     bkimminich/juice-shop:v19.0.0
+   ```
 
 #### 2.3: Vulnerability Analysis and Risk Assessment
 
-```bash
-# Count vulnerabilities by severity
-echo "=== Vulnerability Analysis ===" > labs/lab4/analysis/vulnerability-analysis.txt
-echo "" >> labs/lab4/analysis/vulnerability-analysis.txt
-echo "Grype Vulnerabilities by Severity:" >> labs/lab4/analysis/vulnerability-analysis.txt
-jq -r '.matches[]? | .vulnerability.severity' labs/lab4/syft/grype-vuln-results.json | sort | uniq -c >> labs/lab4/analysis/vulnerability-analysis.txt
+1. **Comparative Vulnerability Analysis:**
 
-echo "" >> labs/lab4/analysis/vulnerability-analysis.txt
-echo "Trivy Vulnerabilities by Severity:" >> labs/lab4/analysis/vulnerability-analysis.txt
-jq -r '.Results[]?.Vulnerabilities[]? | .Severity' labs/lab4/trivy/trivy-vuln-detailed.json | sort | uniq -c >> labs/lab4/analysis/vulnerability-analysis.txt
+   ```bash
+   # Count vulnerabilities by severity
+   echo "=== Vulnerability Analysis ===" > labs/lab4/analysis/vulnerability-analysis.txt
+   echo "" >> labs/lab4/analysis/vulnerability-analysis.txt
+   echo "Grype Vulnerabilities by Severity:" >> labs/lab4/analysis/vulnerability-analysis.txt
+   jq -r '.matches[]? | .vulnerability.severity' labs/lab4/syft/grype-vuln-results.json | sort | uniq -c >> labs/lab4/analysis/vulnerability-analysis.txt
+   
+   echo "" >> labs/lab4/analysis/vulnerability-analysis.txt
+   echo "Trivy Vulnerabilities by Severity:" >> labs/lab4/analysis/vulnerability-analysis.txt
+   jq -r '.Results[]?.Vulnerabilities[]? | .Severity' labs/lab4/trivy/trivy-vuln-detailed.json | sort | uniq -c >> labs/lab4/analysis/vulnerability-analysis.txt
+   ```
 
-# License comparison summary
-echo "" >> labs/lab4/analysis/vulnerability-analysis.txt
-echo "=== License Analysis Summary ===" >> labs/lab4/analysis/vulnerability-analysis.txt
-echo "Tool Comparison:" >> labs/lab4/analysis/vulnerability-analysis.txt
-if [ -f labs/lab4/syft/juice-shop-syft-native.json ]; then
-  syft_licenses=$(jq -r '.artifacts[] | select(.licenses != null) | .licenses[].value' labs/lab4/syft/juice-shop-syft-native.json 2>/dev/null | sort | uniq | wc -l)
-  echo "- Syft found $syft_licenses unique license types" >> labs/lab4/analysis/vulnerability-analysis.txt
-fi
-if [ -f labs/lab4/trivy/trivy-licenses.json ]; then
-  trivy_licenses=$(jq -r '.Results[].Licenses[]?.Name' labs/lab4/trivy/trivy-licenses.json 2>/dev/null | sort | uniq | wc -l)
-  echo "- Trivy found $trivy_licenses unique license types" >> labs/lab4/analysis/vulnerability-analysis.txt
-fi
-```
+2. **License Risk Analysis:**
+
+   ```bash
+   # License comparison summary
+   echo "" >> labs/lab4/analysis/vulnerability-analysis.txt
+   echo "=== License Analysis Summary ===" >> labs/lab4/analysis/vulnerability-analysis.txt
+   echo "Tool Comparison:" >> labs/lab4/analysis/vulnerability-analysis.txt
+   if [ -f labs/lab4/syft/juice-shop-syft-native.json ]; then
+     syft_licenses=$(jq -r '.artifacts[] | select(.licenses != null) | .licenses[].value' labs/lab4/syft/juice-shop-syft-native.json 2>/dev/null | sort | uniq | wc -l)
+     echo "- Syft found $syft_licenses unique license types" >> labs/lab4/analysis/vulnerability-analysis.txt
+   fi
+   if [ -f labs/lab4/trivy/trivy-licenses.json ]; then
+     trivy_licenses=$(jq -r '.Results[].Licenses[]?.Name' labs/lab4/trivy/trivy-licenses.json 2>/dev/null | sort | uniq | wc -l)
+     echo "- Trivy found $trivy_licenses unique license types" >> labs/lab4/analysis/vulnerability-analysis.txt
+   fi
+   ```
 
 In `labs/submission4.md`, document:
 - **SCA Tool Comparison** - vulnerability detection capabilities
@@ -197,43 +228,64 @@ In `labs/submission4.md`, document:
 
 #### 3.1: Accuracy and Coverage Analysis
 
-```bash
-# Compare package detection
-echo "=== Package Detection Comparison ===" > labs/lab4/comparison/accuracy-analysis.txt
+1. **Package Detection Accuracy:**
 
-# Extract unique packages from each tool
-jq -r '.artifacts[] | "\(.name)@\(.version)"' labs/lab4/syft/juice-shop-syft-native.json | sort > labs/lab4/comparison/syft-packages.txt
-jq -r '.Results[]?.Packages[]? | "\(.Name)@\(.Version)"' labs/lab4/trivy/juice-shop-trivy-detailed.json | sort > labs/lab4/comparison/trivy-packages.txt
+   ```bash
+   # Compare package detection
+   echo "=== Package Detection Comparison ===" > labs/lab4/comparison/accuracy-analysis.txt
+   
+   # Extract unique packages from each tool
+   jq -r '.artifacts[] | "\(.name)@\(.version)"' labs/lab4/syft/juice-shop-syft-native.json | sort > labs/lab4/comparison/syft-packages.txt
+   jq -r '.Results[]?.Packages[]? | "\(.Name)@\(.Version)"' labs/lab4/trivy/juice-shop-trivy-detailed.json | sort > labs/lab4/comparison/trivy-packages.txt
+   
+   # Find packages detected by both tools
+   comm -12 labs/lab4/comparison/syft-packages.txt labs/lab4/comparison/trivy-packages.txt > labs/lab4/comparison/common-packages.txt
+   
+   # Find packages unique to each tool
+   comm -23 labs/lab4/comparison/syft-packages.txt labs/lab4/comparison/trivy-packages.txt > labs/lab4/comparison/syft-only.txt
+   comm -13 labs/lab4/comparison/syft-packages.txt labs/lab4/comparison/trivy-packages.txt > labs/lab4/comparison/trivy-only.txt
+   
+   echo "Packages detected by both tools: $(wc -l < labs/lab4/comparison/common-packages.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
+   echo "Packages only detected by Syft: $(wc -l < labs/lab4/comparison/syft-only.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
+   echo "Packages only detected by Trivy: $(wc -l < labs/lab4/comparison/trivy-only.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
+   ```
 
-# Find packages detected by both tools
-comm -12 labs/lab4/comparison/syft-packages.txt labs/lab4/comparison/trivy-packages.txt > labs/lab4/comparison/common-packages.txt
+2. **Vulnerability Detection Overlap:**
 
-# Find packages unique to each tool
-comm -23 labs/lab4/comparison/syft-packages.txt labs/lab4/comparison/trivy-packages.txt > labs/lab4/comparison/syft-only.txt
-comm -13 labs/lab4/comparison/syft-packages.txt labs/lab4/comparison/trivy-packages.txt > labs/lab4/comparison/trivy-only.txt
+   ```bash
+   # Compare vulnerability findings
+   echo "" >> labs/lab4/comparison/accuracy-analysis.txt
+   echo "=== Vulnerability Detection Overlap ===" >> labs/lab4/comparison/accuracy-analysis.txt
+   
+   # Extract CVE IDs
+   jq -r '.matches[]? | .vulnerability.id' labs/lab4/syft/grype-vuln-results.json | sort | uniq > labs/lab4/comparison/grype-cves.txt
+   jq -r '.Results[]?.Vulnerabilities[]? | .VulnerabilityID' labs/lab4/trivy/trivy-vuln-detailed.json | sort | uniq > labs/lab4/comparison/trivy-cves.txt
+   
+   echo "CVEs found by Grype: $(wc -l < labs/lab4/comparison/grype-cves.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
+   echo "CVEs found by Trivy: $(wc -l < labs/lab4/comparison/trivy-cves.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
+   echo "Common CVEs: $(comm -12 labs/lab4/comparison/grype-cves.txt labs/lab4/comparison/trivy-cves.txt | wc -l)" >> labs/lab4/comparison/accuracy-analysis.txt
+   ```
 
-echo "Packages detected by both tools: $(wc -l < labs/lab4/comparison/common-packages.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
-echo "Packages only detected by Syft: $(wc -l < labs/lab4/comparison/syft-only.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
-echo "Packages only detected by Trivy: $(wc -l < labs/lab4/comparison/trivy-only.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
-
-# Compare vulnerability findings
-echo "" >> labs/lab4/comparison/accuracy-analysis.txt
-echo "=== Vulnerability Detection Overlap ===" >> labs/lab4/comparison/accuracy-analysis.txt
-
-# Extract CVE IDs
-jq -r '.matches[]? | .vulnerability.id' labs/lab4/syft/grype-vuln-results.json | sort | uniq > labs/lab4/comparison/grype-cves.txt
-jq -r '.Results[]?.Vulnerabilities[]? | .VulnerabilityID' labs/lab4/trivy/trivy-vuln-detailed.json | sort | uniq > labs/lab4/comparison/trivy-cves.txt
-
-echo "CVEs found by Grype: $(wc -l < labs/lab4/comparison/grype-cves.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
-echo "CVEs found by Trivy: $(wc -l < labs/lab4/comparison/trivy-cves.txt)" >> labs/lab4/comparison/accuracy-analysis.txt
-echo "Common CVEs: $(comm -12 labs/lab4/comparison/grype-cves.txt labs/lab4/comparison/trivy-cves.txt | wc -l)" >> labs/lab4/comparison/accuracy-analysis.txt
-```
+#### 3.2: Tool Evaluation and Recommendations
 
 In `labs/submission4.md`, document:
 - **Accuracy Analysis** - package detection and vulnerability overlap quantified
 - **Tool Strengths and Weaknesses** - practical observations from your testing
 - **Use Case Recommendations** - when to choose Syft+Grype vs Trivy
 - **Integration Considerations** - CI/CD, automation, and operational aspects
+
+---
+
+## Acceptance Criteria
+
+- ✅ Branch `feature/lab4` exists with commits for each task.
+- ✅ File `labs/submission4.md` contains required analysis for Tasks 1-3.
+- ✅ SBOM generation completed successfully with both Syft and Trivy.
+- ✅ Comprehensive SCA performed with both Grype and Trivy vulnerability scanning.
+- ✅ Quantitative toolchain comparison completed with accuracy analysis.
+- ✅ All generated SBOMs, vulnerability reports, and analysis files committed.
+- ✅ PR from `feature/lab4` → **course repo main branch** is open.
+- ✅ PR link submitted via Moodle before the deadline.
 
 ---
 
@@ -263,19 +315,6 @@ In `labs/submission4.md`, document:
 
 ---
 
-## Acceptance Criteria
-
-- ✅ Branch `feature/lab4` exists with commits for each task
-- ✅ File `labs/submission4.md` contains required analysis for Tasks 1-3
-- ✅ SBOM generation completed successfully with both Syft and Trivy
-- ✅ Comprehensive SCA performed with both Grype and Trivy vulnerability scanning
-- ✅ Quantitative toolchain comparison completed with accuracy analysis
-- ✅ All generated SBOMs, vulnerability reports, and analysis files committed
-- ✅ PR from `feature/lab4` → **course repo main branch** is open
-- ✅ PR link submitted via Moodle before the deadline
-
----
-
 ## Rubric (10 pts)
 
 | Criterion                                                        | Points |
@@ -289,37 +328,25 @@ In `labs/submission4.md`, document:
 
 ## Guidelines
 
-- Use clear Markdown headers to organize sections in `submission4.md`
-- Include both quantitative metrics and qualitative analysis for each task
-- Document all Docker commands used and any issues encountered
-- Provide actionable security recommendations based on findings
-- Focus on practical insights over theoretical comparisons
+- Use clear Markdown headers to organize sections in `submission4.md`.
+- Include both quantitative metrics and qualitative analysis for each task.
+- Document all Docker commands used and any issues encountered.
+- Provide actionable security recommendations based on findings.
+- Focus on practical insights over theoretical comparisons.
 
-<details>
-<summary>SBOM Quality Notes</summary>
+> **SBOM Quality Notes**  
+> 1. NYU research (SBOMit project) shows metadata-based SBOM generation has accuracy limitations.  
+> 2. Pay attention to packages detected by one tool but not the other - document these discrepancies.  
+> 3. Consider the "lying SBOM" problem when evaluating tool accuracy.
 
-- NYU research (SBOMit project) shows metadata-based SBOM generation has accuracy limitations
-- Pay attention to packages detected by one tool but not the other - document these discrepancies
-- Consider the "lying SBOM" problem when evaluating tool accuracy
+> **SCA Best Practices**  
+> 1. Always cross-reference critical vulnerabilities between tools before taking action.  
+> 2. Evaluate both direct and transitive dependency risks in your analysis.  
+> 3. Consider CVSS scores, exploitability, and context when prioritizing vulnerabilities.  
+> 4. Document false positives and tool-specific detection patterns.
 
-</details>
-
-<details>
-<summary>SCA Best Practices</summary>
-
-- Always cross-reference critical vulnerabilities between tools before taking action
-- Evaluate both direct and transitive dependency risks in your analysis
-- Consider CVSS scores, exploitability, and context when prioritizing vulnerabilities
-- Document false positives and tool-specific detection patterns
-
-</details>
-
-<details>
-<summary>Comparison Methodology</summary>
-
-- Use consistent container image and execution environment for fair comparison
-- Focus on practical operational differences, not just feature checklists
-- Consider maintenance overhead and community support in your analysis
-- Provide specific use case recommendations based on quantitative findings
-
-</details>
+> **Comparison Methodology**  
+> 1. Use consistent container image and execution environment for fair comparison.  
+> 2. Focus on practical operational differences, not just feature checklists.  
+> 3. Consider maintenance overhead and community support in your analysis.  
+> 4. Provide specific use case recommendations based on quantitative findings.

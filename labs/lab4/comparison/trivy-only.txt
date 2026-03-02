@@ -1,0 +1,9 @@
+gcc-12-base@12.2.0
+libc6@2.36
+libgcc-s1@12.2.0
+libgomp1@12.2.0
+libssl3@3.0.17
+libstdc++6@12.2.0
+portscanner@2.2.0
+toposort-class@1.0.1
+tzdata@2025b
