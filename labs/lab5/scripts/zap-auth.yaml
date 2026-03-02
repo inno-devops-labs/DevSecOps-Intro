@@ -1,0 +1,68 @@
+env:
+  contexts:
+    - name: "juice-auth"
+      urls:
+        - "http://localhost:3000"
+      includePaths:
+        - "http://localhost:3000.*"
+      authentication:
+        method: "jsonBasedAuthentication"
+        parameters:
+          loginUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+      sessionManagement:
+        method: "cookieBasedSessionManagement"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+      forcedUserMode:
+        enabled: true
+        user: "admin"
+  parameters:
+    failOnError: false
+    progressToStdout: true
+
+jobs:
+  - type: spider
+    parameters:
+      context: "juice-auth"
+      user: "admin"
+      url: "http://localhost:3000"
+      maxDuration: 8
+  - type: spiderAjax
+    parameters:
+      context: "juice-auth"
+      user: "admin"
+      url: "http://localhost:3000"
+      maxDuration: 10
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 8
+  - type: activeScan
+    parameters:
+      context: "juice-auth"
+      user: "admin"
+      policy: "Default Policy"
+      maxRuleDurationInMins: 2
+      maxScanDurationInMins: 15
+  - type: report
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.html"
+      reportTitle: "ZAP Authenticated Scan - Juice Shop"
+    risks:
+      - low
+      - medium
+      - high
+      - info
+      - falsepositive
+      - confirmed
+  - type: report
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "zap-report-auth.json"
+      reportTitle: "ZAP Authenticated Scan - Juice Shop JSON"

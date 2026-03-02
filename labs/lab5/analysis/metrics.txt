@@ -1,0 +1,18 @@
+SEMGREP_FINDINGS=25
+SEMGREP_FILES_WITH_FINDINGS=20
+SEMGREP_SEV_ERROR=7
+SEMGREP_SEV_WARNING=18
+ZAP_NOAUTH_URLS=16
+ZAP_AUTH_URLS=24
+ZAP_AUTH_ADMIN=1
+NUCLEI_COUNT=0
+NIKTO_COUNT=82
+SQLMAP_COUNT=1
+TOP5_START
+3|ERROR|javascript.lang.security.audit.code-string-concat.code-string-concat|/src/routes/userProfile.ts|62|Found data from an Express or Next web request flowing to `eval`. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid `eval` whenever possible.
+3|ERROR|javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection|/src/data/static/codefixes/dbSchemaChallenge_1.ts|5|Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.
+3|ERROR|javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection|/src/data/static/codefixes/dbSchemaChallenge_3.ts|11|Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.
+3|ERROR|javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection|/src/data/static/codefixes/unionSqlInjectionChallenge_1.ts|6|Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.
+3|ERROR|javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection|/src/data/static/codefixes/unionSqlInjectionChallenge_3.ts|10|Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.
+TOP5_END
+AUTH_ADMIN_EXAMPLES=http://localhost:3000/rest/admin/application-configuration

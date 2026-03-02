@@ -1,0 +1,7 @@
+=== SAST Analysis Report ===
+
+Total Semgrep findings: 25
+Files with findings: 20
+Severity breakdown:
+- ERROR: 7
+- WARNING: 18
