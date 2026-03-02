@@ -130,26 +130,3 @@ Thus, commit signing is a baseline control for identity and integrity in the dev
 - **Complements other controls** — Pre-commit scanning works together with server-side secret scanning (e.g. GitHub secret scanning), CI secret detection, and SAST. Multiple layers reduce the chance that a secret reaches production or public history.
 
 Together, this pre-commit hook implements a practical, automated safeguard against one of the most common and high-impact mistakes in development: committing credentials or API keys.
-
----
-
-## PR Submission Checklist (for Moodle)
-
-- [x] Task 1 done — SSH commit signing setup + analysis
-- [x] Task 2 done — Pre-commit secrets scanning setup + tests and analysis
-
----
-
-## Notes
-
-- **Verified badge:** Ensure the email in `user.email` matches your GitHub account and that the SSH signing key is added in GitHub (Settings → SSH and GPG keys) so the **Verified** badge appears. Add a screenshot of the signed commit on GitHub to this document if required.
-- **Docker:** For pre-commit to work, Docker must be running; the hook uses `docker run` for TruffleHog and Gitleaks.
-- **Hook installation:** If you clone the repo on another machine, copy the hook again: `cp labs/lab3/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`.
-
----
-
-## Lab 3 acceptance (quick check)
-
-- Branch name must be **`feature/lab3`** (not `lab3`).
-- At least one commit on GitHub must show **Verified** (signed with SSH key added to your account).
-- PR: from your fork’s **feature/lab3** → course repo’s **main**.
