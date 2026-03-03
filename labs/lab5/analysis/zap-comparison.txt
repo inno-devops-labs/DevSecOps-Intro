@@ -1,0 +1,9 @@
+=== ZAP Comparison ===
+
+Unauthenticated scan unique URLs: 16
+Authenticated scan unique URLs: 23
+
+Admin endpoints seen in authenticated report:
+http://localhost:3000/rest/admin/application-configuration
+
+Sample basket/profile/account endpoints from authenticated report:

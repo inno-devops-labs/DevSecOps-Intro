@@ -1,0 +1,24 @@
+=== SAST/DAST Correlation ===
+
+1. SQL Injection
+- DAST evidence: SQLmap confirmed SQL injection in /rest/products/search?q=
+- Impact: exploitable remotely via HTTP request parameter
+- SAST relation: Semgrep did not explicitly flag this exact endpoint as SQLi, which shows why DAST is important for runtime validation
+
+2. Missing/Weak Security Headers
+- DAST evidence: ZAP reported missing CSP and cross-domain/header-related weaknesses
+- Nikto also reported unusual/exposed headers and permissive Access-Control-Allow-Origin
+- SAST relation: these issues are generally deployment/runtime misconfigurations, so they are better detected by DAST than by source scanning
+
+3. Exposed Sensitive/Interesting Endpoints
+- DAST evidence: Nuclei found /metrics, /api-docs/swagger.json, robots.txt, security.txt
+- ZAP authenticated scan discovered broader surface including /rest/admin/application-configuration
+- SAST relation: source code access helps explain why such routes exist, but DAST proves they are actually reachable in the running app
+
+4. Authenticated vs Unauthenticated Coverage
+- DAST evidence: authenticated ZAP saw 23 URLs vs 16 without auth
+- This demonstrates that scanning only as anonymous misses part of the attack surface
+- SAST relation: code contains all routes, but DAST shows which ones become reachable only after login
+
+Conclusion:
+SAST was useful for early code-level review and broad issue discovery, while DAST produced stronger evidence of runtime exposure, especially for SQLi, reachable admin functionality, and deployment/header weaknesses. The two approaches complement each other rather than replace each other.

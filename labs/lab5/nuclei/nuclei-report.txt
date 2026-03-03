@@ -1,0 +1,12 @@
+[swagger-api] [http] [info] http://localhost:3000/api-docs/swagger.json [paths="/api-docs/swagger.json"]
+[dameng-detect] [javascript] [info] localhost:3000
+[snmpv3-detect] [javascript] [info] localhost:3000 ["Enterprise: unknown"]
+[addeventlistener-detect] [http] [info] http://localhost:3000
+[deprecated-feature-policy] [http] [info] http://localhost:3000 ["payment 'self'"]
+[owasp-juice-shop-detect] [http] [info] http://localhost:3000
+[x-recruiting-header] [http] [info] http://localhost:3000 ["/#/jobs"]
+[fingerprinthub-web-fingerprints:qm-system] [http] [info] http://localhost:3000
+[prometheus-metrics] [http] [medium] http://localhost:3000/metrics
+[robots-txt-endpoint:endpoints] [http] [info] http://localhost:3000/robots.txt ["/ftp"]
+[robots-txt] [http] [info] http://localhost:3000/robots.txt
+[security-txt] [http] [info] http://localhost:3000/.well-known/security.txt ["mailto:donotreply@owasp-juice.shop"]

@@ -1,0 +1,1 @@
+http://localhost:3000/rest/products/search?q=test (GET)  # sqlmap-dev/sqlmap.py -u http://localhost:3000/rest/products/search?q=test --batch --level=2 --risk=1 --output-dir=/output

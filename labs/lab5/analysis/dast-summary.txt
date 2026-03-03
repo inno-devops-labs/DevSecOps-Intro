@@ -1,0 +1,18 @@
+=== DAST Summary ===
+
+Authenticated vs Unauthenticated ZAP:
+- Unauthenticated unique URLs: 16
+- Authenticated unique URLs: 23
+- Example authenticated/admin endpoint: /rest/admin/application-configuration
+
+Tool Comparison:
+- ZAP: authenticated web app scan; broader authenticated coverage
+- Nuclei: 1 matches; fast template-based detection
+- Nikto: 14 server/header/content findings
+- SQLmap: 1 confirmed SQL injection result(s)
+
+Examples:
+- ZAP: missing CSP / cross-domain issues / authenticated admin endpoint discovery
+- Nuclei: /metrics exposed, swagger.json, robots.txt, security.txt
+- Nikto: ETag inode leak, /ftp/ from robots.txt, uncommon security-related headers
+- SQLmap: q parameter injectable; boolean-based blind + time-based blind; backend DBMS SQLite

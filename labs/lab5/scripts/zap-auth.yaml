@@ -1,0 +1,53 @@
+env:
+  contexts:
+    - name: juice-shop
+      urls:
+        - http://localhost:3000
+      includePaths:
+        - http://localhost:3000.\*
+      authentication:
+        method: json
+        parameters:
+          loginPageUrl: http://localhost:3000/rest/user/login
+          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+        verification:
+          method: response
+          loggedInRegex: '"authentication"\s*:\s*"token"|eyJ[A-Za-z0-9._-]+'
+          loggedOutRegex: '"authentication"\s*:\s*null'
+      sessionManagement:
+        method: cookie
+      users:
+        - name: admin
+          credentials:
+            username: admin@juice-sh.op
+            password: admin123
+
+jobs:
+  - type: spider
+    parameters:
+      context: juice-shop
+      user: admin
+      url: http://localhost:3000
+
+  - type: spiderAjax
+    parameters:
+      context: juice-shop
+      user: admin
+      url: http://localhost:3000
+      maxDuration: 10
+
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 10
+
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: /zap/wrk/zap
+      reportFile: report-auth.html
+
+  - type: report
+    parameters:
+      template: traditional-json
+      reportDir: /zap/wrk/zap
+      reportFile: zap-report-auth.json
