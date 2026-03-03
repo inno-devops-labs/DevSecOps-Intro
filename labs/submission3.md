@@ -22,8 +22,11 @@ git config --global gpg.format ssh
 git config --global user.signingkey ~/.ssh/id_rsa.pub
 ```
 
-#### Screenshot of Verified Badge
-![Verified Badge](path/to/verified-badge-screenshot.png)
+#### Screenshots
+
+![SSH Key Added](ssh_added.png)
+![Verified Badge](commit_verified.png)
+
 
 ### 3. Analysis
 
@@ -55,3 +58,8 @@ Automated secret scanning prevents incidents by:
 - Stopping secrets before they enter history
 - Reducing risk of credential compromise
 - Supporting shift-left security
+
+### 4. Screenshots
+
+![File with secret blocked](secret_blocked.png)
+![File without secret not blocked](removed_secret_not_blocked.png)
