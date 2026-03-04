@@ -1,0 +1,13 @@
+=== ZAP Auth vs Unauth Comparison ===
+
+URL discovery:
+  - Unauthenticated: 95 URLs
+  - Authenticated:   1143 URLs (spider=112, ajax=1031)
+  - Coverage growth: 1103%
+
+Alert counts by risk:
+  - Unauthenticated: High=0, Medium=2, Low=6, Info=4
+  - Authenticated:   High=0, Medium=4, Low=4, Info=3
+
+Authenticated admin endpoint examples:
+  - http://localhost:3000/rest/admin/application-configuration

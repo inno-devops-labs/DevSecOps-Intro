@@ -1,0 +1,5 @@
+id,eta,name,icon,price,updatedAt,createdAt,deluxePrice
+1,1.0,One Day Delivery,fas fa-rocket,0.99,2026-03-04 18:14:17.371 +00:00,2026-03-04 18:14:17.371 +00:00,0.5
+2,3.0,Fast Delivery,fas fa-shipping-fast,0.5,2026-03-04 18:14:17.371 +00:00,2026-03-04 18:14:17.371 +00:00,0.0
+3,5.0,Standard Delivery,fas fa-truck,0.0,2026-03-04 18:14:17.371 +00:00,2026-03-04 18:14:17.371 +00:00,0.0
+

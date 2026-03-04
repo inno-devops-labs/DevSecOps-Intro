@@ -1,0 +1,39 @@
+Found Java version 17.0.18
+Available memory: 7836 MB
+Using JVM args: -Xmx1959m
+224 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to /home/zap/.ZAP/config.xml
+288 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/session
+288 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/dirbuster
+288 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/fuzzers
+288 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/plugin
+Job spider set context = juice-context
+Job spider set user = admin-user
+Job spider set url = http://localhost:3000
+Job spider set maxDuration = 10
+Job spiderAjax set context = juice-context
+Job spiderAjax set user = admin-user
+Job spiderAjax set url = http://localhost:3000
+Job spiderAjax set maxDuration = 20
+Job passiveScan-wait set maxDuration = 10
+Job report set template = traditional-html
+Job report set reportDir = /zap/wrk/zap
+Job report set reportFile = report-auth.html
+Job report set template = traditional-json
+Job report set reportDir = /zap/wrk/zap
+Job report set reportFile = zap-report-auth.json
+Job spider started
+Job spider requesting URL http://localhost:3000
+Job spider found 112 URLs
+Job spider finished, time taken: 00:00:18
+Job spiderAjax started
+Job spiderAjax found 1,031 URLs
+Job spiderAjax finished, time taken: 00:00:26
+Job passiveScan-wait started
+Job passiveScan-wait finished, time taken: 00:00:16
+Job report started
+Job report generated report /zap/wrk/zap/report-auth.html
+Job report finished, time taken: 00:00:00
+Job report started
+Job report generated report /zap/wrk/zap/zap-report-auth.json
+Job report finished, time taken: 00:00:00
+Automation plan succeeded!
