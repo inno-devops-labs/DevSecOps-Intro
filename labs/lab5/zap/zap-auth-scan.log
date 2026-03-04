@@ -1,0 +1,58 @@
+Found Java version 17.0.18
+Available memory: 7837 MB
+Using JVM args: -Xmx1959m
+305 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to /home/zap/.ZAP/config.xml
+372 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/session
+372 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/dirbuster
+372 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/fuzzers
+372 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/plugin
+Mar 04, 2026 6:36:58 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+Job spider set context = juice-shop-auth
+Job spider set user = admin
+Job spider set url = http://localhost:3000
+Job spider set maxDuration = 5
+Job spider set maxChildren = 0
+Job spider set parseSitemapXml = true
+Job spider set parseRobotsTxt = true
+Job spider set parseComments = true
+Job spider set parseGit = true
+Job spider set parseSVNEntries = true
+Job spiderAjax set context = juice-shop-auth
+Job spiderAjax set user = admin
+Job spiderAjax set maxDuration = 10
+Job spiderAjax set browserId = firefox-headless
+Job spiderAjax set numberOfBrowsers = 2
+Job passiveScan-wait set maxDuration = 15
+Job activeScan set context = juice-shop-auth
+Job activeScan set user = admin
+Job activeScan set maxRuleDurationInMins = 2
+Job activeScan set maxScanDurationInMins = 20
+Job activeScan set addQueryParam = false
+Job activeScan set scanHeadersAllRequests = true
+Job report set template = traditional-html
+Job report set reportDir = /zap/wrk/zap
+Job report set reportFile = report-auth.html
+Job report set reportTitle = Juice Shop Authenticated ZAP Report
+Job report set template = traditional-json
+Job report set reportDir = /zap/wrk/zap
+Job report set reportFile = zap-report-auth.json
+Job report set reportTitle = Juice Shop Authenticated ZAP Report
+Job spider started
+Job spider requesting URL http://localhost:3000
+Job spider found 145 URLs
+Job spider finished, time taken: 00:00:18
+Job spiderAjax started
+Job spiderAjax found 352 URLs
+Job spiderAjax finished, time taken: 00:00:20
+Job passiveScan-wait started
+Job passiveScan-wait finished, time taken: 00:00:00
+Job activeScan started
+Job activeScan finished, time taken: 00:04:54
+Job report started
+Job report generated report /zap/wrk/zap/report-auth.html
+Job report finished, time taken: 00:00:00
+Job report started
+Job report generated report /zap/wrk/zap/zap-report-auth.json
+Job report finished, time taken: 00:00:00
+Automation plan succeeded!

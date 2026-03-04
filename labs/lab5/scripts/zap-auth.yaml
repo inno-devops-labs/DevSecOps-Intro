@@ -1,0 +1,71 @@
+env:
+  contexts:
+    - name: "juice-shop-auth"
+      urls:
+        - "http://localhost:3000"
+      includePaths:
+        - "http://localhost:3000.*"
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://localhost:3000/#/login"
+          loginRequestUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: "{\"email\":\"{%username%}\",\"password\":\"{%password%}\"}"
+        verification:
+          method: "response"
+          loggedInRegex: "\"authentication\""
+          loggedOutRegex: "\"status\":\"failure\""
+      sessionManagement:
+        method: "cookie"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+  parameters:
+    failOnError: false
+    failOnWarning: false
+    progressToStdout: true
+jobs:
+  - type: "spider"
+    parameters:
+      context: "juice-shop-auth"
+      user: "admin"
+      url: "http://localhost:3000"
+      maxDuration: 5
+      maxChildren: 0
+      parseSitemapXml: true
+      parseRobotsTxt: true
+      parseComments: true
+      parseGit: true
+      parseSVNEntries: true
+  - type: "spiderAjax"
+    parameters:
+      context: "juice-shop-auth"
+      user: "admin"
+      maxDuration: 10
+      browserId: "firefox-headless"
+      numberOfBrowsers: 2
+  - type: "passiveScan-wait"
+    parameters:
+      maxDuration: 15
+  - type: "activeScan"
+    parameters:
+      context: "juice-shop-auth"
+      user: "admin"
+      maxRuleDurationInMins: 2
+      maxScanDurationInMins: 20
+      addQueryParam: false
+      scanHeadersAllRequests: true
+  - type: "report"
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.html"
+      reportTitle: "Juice Shop Authenticated ZAP Report"
+  - type: "report"
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "zap-report-auth.json"
+      reportTitle: "Juice Shop Authenticated ZAP Report"

