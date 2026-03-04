@@ -1,0 +1,15 @@
+=== ZAP Authenticated vs Unauthenticated Comparison ===
+
+URL Discovery:
+- Unauthenticated baseline URLs: 95
+- Authenticated spider URLs: 145
+- Authenticated AJAX spider URLs: 352
+- Authenticated combined discovery (spider + AJAX): 497
+- Relative increase vs baseline: 423%
+
+Alert Snapshot (estimated unique alerts from HTML reports):
+- Unauthenticated: high=0, medium=3
+- Authenticated: high=2, medium=8
+
+Sample authenticated admin endpoints:
+- http://localhost:3000/rest/admin/application-configuration

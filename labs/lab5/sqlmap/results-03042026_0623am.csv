@@ -1,0 +1,3 @@
+Target URL,Place,Parameter,Technique(s),Note(s)
+http://localhost:3000/rest/products/search?q=,URI,#1*,B,
+http://localhost:3000/rest/user/login,(custom) POST,JSON #1*,B,
