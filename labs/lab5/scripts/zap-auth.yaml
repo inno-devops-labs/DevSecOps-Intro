@@ -1,0 +1,56 @@
+env:
+  contexts:
+    - name: juice-shop
+      urls:
+        - http://host.docker.internal:3000
+      includePaths:
+        - http://host.docker.internal:3000.*
+      authentication:
+        method: json
+        parameters:
+          loginRequestUrl: http://host.docker.internal:3000/rest/user/login
+          loginRequestBody: '{"email":"${username}","password":"${password}"}'
+        verification:
+          method: response
+          loggedInRegex: '"token"\s*:\s*"'
+          loggedOutRegex: 'Invalid email or password'
+      sessionManagement:
+        method: cookie
+      users:
+        - name: admin
+          credentials:
+            username: admin@juice-sh.op
+            password: admin123
+
+jobs:
+  - type: spider
+    parameters:
+      context: juice-shop
+      user: admin
+      maxDuration: 5
+
+  - type: spiderAjax
+    parameters:
+      context: juice-shop
+      user: admin
+      maxDuration: 10
+      browserId: firefox-headless
+      inScopeOnly: true
+
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 10
+
+  - type: activeScan
+    parameters:
+      context: juice-shop
+      user: admin
+      maxScanDurationInMins: 10
+
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: /zap/wrk
+      reportFile: report-auth.html
+      reportTitle: "ZAP Auth Scan Report (Juice Shop v19.0.0)"
+      displayReport: false

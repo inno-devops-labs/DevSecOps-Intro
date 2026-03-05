@@ -1,0 +1,10 @@
+﻿=== DAST Summary ===
+
+ZAP (noauth): Total=26 High=0 Med=4 Low=10 Info=12
+ZAP (auth):   Total=0 High=0 Med=0 Low=0 Info=0
+
+Nuclei: Total matches=0
+
+Nikto: server issues=14
+SQLmap: findings(rows in results-*.csv)=1
+  CSV: C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab5\sqlmap\results-03052026_1101pm.csv

@@ -1,0 +1,12 @@
+﻿=== ZAP Auth vs No-Auth Comparison ===
+
+No-Auth:
+  URLs discovered (from log): 95
+  Alerts (HTML): Total=26 High=0 Med=4 Low=10 Info=12
+
+Auth:
+  Spider URLs (from log): 112
+  AJAX Spider URLs (from log): 545
+  Alerts (HTML): Total=0 High=0 Med=0 Low=0 Info=0
+
+Admin/authenticated endpoints examples: N/A
