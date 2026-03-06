@@ -193,8 +193,6 @@ Semgrep identified the following categories of vulnerabilities:
 
 ### 2.2 Multi-Tool DAST Comparison Matrix
 
-### 2.2 Multi-Tool DAST Comparison Matrix
-
 | **Tool** | **Total Findings** | **HIGH** | **MEDIUM** | **LOW** | **Scan Time** | **Best Use Case** |
 |----------|---|---|---|---|---|---|
 | **ZAP (Authenticated)** | 11 | 1 | 6 | 4 | ~20 min | Comprehensive web app assessment |
