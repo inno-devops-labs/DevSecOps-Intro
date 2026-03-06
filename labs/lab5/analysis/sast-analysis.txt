@@ -1,0 +1,43 @@
+﻿=== SAST Analysis Report ===
+
+Total findings: 25
+Files scanned with findings: 20
+
+Vulnerability Type Distribution (Top 10):
+  - javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection: 6 findings
+  - javascript.express.security.audit.express-res-sendfile.express-res-sendfile: 4 findings
+  - javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing: 4 findings
+  - generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var: 4 findings
+  - javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag: 2 findings
+  - javascript.lang.security.audit.code-string-concat.code-string-concat: 1 findings
+  - javascript.express.security.injection.raw-html-format.raw-html-format: 1 findings
+  - javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret: 1 findings
+  - javascript.express.security.audit.possible-user-input-redirect.unknown-value-in-redirect: 1 findings
+  - javascript.express.security.audit.express-open-redirect.express-open-redirect: 1 findings
+
+Top 5 Critical Findings:
+
+[WARNING] javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing
+  Location: /src/server.ts:269
+  Count: 4 occurrences
+  Message: Directory listing/indexing is enabled, which may lead to disclosure of sensitive directories and files. It is recommended to disable directory listing unless it is a public resource. If you need directory listing, ensure that sensitive files are inaccessible when querying the resource.
+
+[WARNING] generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var
+  Location: /src/frontend/src/app/navbar/navbar.component.html:17
+  Count: 4 occurrences
+  Message: Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: "{{ expr }}".
+
+[WARNING] javascript.express.security.audit.express-res-sendfile.express-res-sendfile
+  Location: /src/routes/fileServer.ts:33
+  Count: 4 occurrences
+  Message: The application processes user-input, this is passed to res.sendFile which can allow an attacker to arbitrarily read files on the system through path traversal. It is recommended to perform input validation in addition to canonicalizing the path. This allows you to validate the path against the intended directory it should be accessing.
+
+[WARNING] javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag
+  Location: /src/routes/videoHandler.ts:58
+  Count: 2 occurrences
+  Message: Cannot determine what 'subs' is and it is used with a '<script>' tag. This could be susceptible to cross-site scripting (XSS). Ensure 'subs' is not externally controlled, or sanitize this data.
+
+[WARNING] javascript.express.security.audit.express-open-redirect.express-open-redirect
+  Location: /src/routes/redirect.ts:19
+  Count: 1 occurrences
+  Message: The application redirects to a URL specified by user-supplied input `query` that is not validated. This could redirect users to malicious locations. Consider using an allow-list approach to validate URLs, or warn users they are being redirected to a third-party website.
