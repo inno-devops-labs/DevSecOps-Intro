@@ -1,4 +1,4 @@
-﻿env:
+env:
   contexts:
     - name: "Juice Shop Auth"
       urls:
