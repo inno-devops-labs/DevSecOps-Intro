@@ -1,0 +1,380 @@
+id,ChallengeId,text,order,unlocked,createdAt,updatedAt
+1,1,You need to work with the server-side API directly. Try different HTTP verbs on different entities exposed through the API.,NULL,0,2026-03-04 09:18:12.858 +00:00,2026-03-04 09:18:12.858 +00:00
+2,1,A matrix of known data entities and their supported HTTP verbs through the API can help you here.,NULL,0,2026-03-04 09:18:12.858 +00:00,2026-03-04 09:18:12.858 +00:00
+3,1,Careless developers might have exposed API methods that the client does not even need.,NULL,0,2026-03-04 09:18:12.858 +00:00,2026-03-04 09:18:12.858 +00:00
+4,2,Who would want a server access log to be accessible through a web application?,NULL,0,2026-03-04 09:18:12.860 +00:00,2026-03-04 09:18:12.860 +00:00
+5,2,"Normally, server log files are written to disk on server side and are not accessible from the outside.",NULL,0,2026-03-04 09:18:12.860 +00:00,2026-03-04 09:18:12.860 +00:00
+6,2,Which raises the question: Who would want a server access log to be accessible through a web application?,NULL,0,2026-03-04 09:18:12.860 +00:00,2026-03-04 09:18:12.860 +00:00
+7,2,"One particular file found in the folder you might already have found during the ""Access a confidential document"" challenge might give you an idea who is interested in such a public exposure.",NULL,0,2026-03-04 09:18:12.860 +00:00,2026-03-04 09:18:12.860 +00:00
+8,2,Drilling down one level into the file system might not be sufficient.,NULL,0,2026-03-04 09:18:12.860 +00:00,2026-03-04 09:18:12.860 +00:00
+9,3,You have to assign the unassignable.,NULL,0,2026-03-04 09:18:12.863 +00:00,2026-03-04 09:18:12.863 +00:00
+10,3,Register as an ordinary user to learn what API endpoints are involved in this use case.,NULL,0,2026-03-04 09:18:12.863 +00:00,2026-03-04 09:18:12.863 +00:00
+11,3,Think of the simplest possible implementations of a distinction between regular users and administrators.,NULL,0,2026-03-04 09:18:12.863 +00:00,2026-03-04 09:18:12.863 +00:00
+12,4,It is just slightly harder to find than the score board link.,NULL,0,2026-03-04 09:18:12.865 +00:00,2026-03-04 09:18:12.865 +00:00
+13,4,"Knowing it exists, you can simply guess what URL the admin section might have.",NULL,0,2026-03-04 09:18:12.865 +00:00,2026-03-04 09:18:12.865 +00:00
+14,4,"Alternatively, you can try to find a reference or clue within the parts of the application that are not usually visible in the browser.",NULL,0,2026-03-04 09:18:12.865 +00:00,2026-03-04 09:18:12.865 +00:00
+15,4,It is probably just slightly harder to find and gain access to than the score board link.,NULL,0,2026-03-04 09:18:12.865 +00:00,2026-03-04 09:18:12.865 +00:00
+16,4,"There is some access control in place, but there are at least three ways to bypass it.",NULL,0,2026-03-04 09:18:12.865 +00:00,2026-03-04 09:18:12.865 +00:00
+17,5,Look out for a tweet praising new functionality of the web shop. Then find a third party vulnerability associated with it.,NULL,0,2026-03-04 09:18:12.867 +00:00,2026-03-04 09:18:12.867 +00:00
+18,5,Find all places in the application where file uploads are possible.,NULL,0,2026-03-04 09:18:12.867 +00:00,2026-03-04 09:18:12.867 +00:00
+19,5,"For at least one of these, the Juice Shop is depending on a library that suffers from an arbitrary file overwrite vulnerability.",NULL,0,2026-03-04 09:18:12.867 +00:00,2026-03-04 09:18:12.867 +00:00
+20,5,You can find a hint toward the underlying vulnerability in the @owasp_juiceshop Twitter timeline.,NULL,0,2026-03-04 09:18:12.867 +00:00,2026-03-04 09:18:12.867 +00:00
+21,6,Hints to the answer to Bjoern’s question can be found by looking him up on the Internet.,NULL,0,2026-03-04 09:18:12.869 +00:00,2026-03-04 09:18:12.869 +00:00
+22,6,"More precisely, Bjoern might have accidentally (?) doxxed himself by mentioning his security answer on at least one occasion where a camera was running.",NULL,0,2026-03-04 09:18:12.869 +00:00,2026-03-04 09:18:12.869 +00:00
+23,6,Brute forcing the answer might be very well possible with a sufficiently extensive list of common pet names.,NULL,0,2026-03-04 09:18:12.869 +00:00,2026-03-04 09:18:12.869 +00:00
+24,7,"The developers truly believe in ""Security through Obscurity"" over actual access restrictions.",NULL,0,2026-03-04 09:18:12.871 +00:00,2026-03-04 09:18:12.871 +00:00
+25,7,Guessing or brute forcing the URL of the token sale page is very unlikely to succeed.,NULL,0,2026-03-04 09:18:12.871 +00:00,2026-03-04 09:18:12.871 +00:00
+26,7,You should closely investigate the place where all paths within the application are defined.,NULL,0,2026-03-04 09:18:12.871 +00:00,2026-03-04 09:18:12.871 +00:00
+27,7,Beating the employed obfuscation mechanism manually will take some time. Maybe there is an easier way to undo it?,NULL,0,2026-03-04 09:18:12.871 +00:00,2026-03-04 09:18:12.871 +00:00
+28,8,Find the seed phrase posted accidentally.,NULL,0,2026-03-04 09:18:12.873 +00:00,2026-03-04 09:18:12.873 +00:00
+29,9,Discover NFT wonders among the captivating visual memories.,NULL,0,2026-03-04 09:18:12.874 +00:00,2026-03-04 09:18:12.874 +00:00
+30,10,Try to exploit the contract of the wallet.,NULL,0,2026-03-04 09:18:12.876 +00:00,2026-03-04 09:18:12.876 +00:00
+31,11,It is just as easy as finding the Score Board.,NULL,0,2026-03-04 09:18:12.877 +00:00,2026-03-04 09:18:12.877 +00:00
+32,12,The feature you need to exploit for this challenge is not directly advertised anywhere.,NULL,0,2026-03-04 09:18:12.879 +00:00,2026-03-04 09:18:12.879 +00:00
+33,12,"As the Juice Shop is written in pure Javascript, there is one data format that is most probably used for serialization.",NULL,0,2026-03-04 09:18:12.879 +00:00,2026-03-04 09:18:12.879 +00:00
+34,12,You should try to make the server busy for all eternity.,NULL,0,2026-03-04 09:18:12.879 +00:00,2026-03-04 09:18:12.879 +00:00
+35,12,The challenge will be solved if you manage to trigger the protection of the application against a very specific DoS attack vector.,NULL,0,2026-03-04 09:18:12.879 +00:00,2026-03-04 09:18:12.879 +00:00
+36,12,"Similar to the ""Let the server sleep for some time"" challenge (which accepted nothing but NoSQL Injection as a solution) this challenge will only accept proper RCE as a solution. It cannot be solved by simply hammering the server with requests. That would probably just kill your server instance.",NULL,0,2026-03-04 09:18:12.879 +00:00,2026-03-04 09:18:12.879 +00:00
+37,13,"After finding a CAPTCHA bypass, write a script that automates feedback submission. Or open many browser tabs and be really quick.",NULL,0,2026-03-04 09:18:12.882 +00:00,2026-03-04 09:18:12.882 +00:00
+38,13,"You could prepare 10 browser tabs, solving every CAPTCHA and filling out the each feedback form. Then you’d need to very quickly switch through the tabs and submit the forms in under 20 seconds total.",NULL,0,2026-03-04 09:18:12.882 +00:00,2026-03-04 09:18:12.882 +00:00
+39,13,"Should the Juice Shop ever decide to change the challenge into ""Submit 100 or more customer feedbacks within 60 seconds"" or worse, you’d probably have a hard time keeping up with any tab-switching approach.",NULL,0,2026-03-04 09:18:12.882 +00:00,2026-03-04 09:18:12.882 +00:00
+40,13,Investigate closely how the CAPTCHA mechanism works and try to find either a bypass or some automated way of solving it dynamically.,NULL,0,2026-03-04 09:18:12.882 +00:00,2026-03-04 09:18:12.882 +00:00
+41,13,Wrap this into a script (in whatever programming language you prefer) that repeats this 10 times.,NULL,0,2026-03-04 09:18:12.882 +00:00,2026-03-04 09:18:12.882 +00:00
+42,14,In previous releases this challenge was wrongly accused of being based on CSRF.,NULL,0,2026-03-04 09:18:12.884 +00:00,2026-03-04 09:18:12.884 +00:00
+43,14,It might also have been put into the Improper Input Validation category.,NULL,0,2026-03-04 09:18:12.884 +00:00,2026-03-04 09:18:12.884 +00:00
+44,14,"Bender’s current password is so strong that brute force, rainbow table or guessing attacks will probably not work.",NULL,0,2026-03-04 09:18:12.884 +00:00,2026-03-04 09:18:12.884 +00:00
+45,15,Find out how the application handles unavailable products and try to find a loophole.,NULL,0,2026-03-04 09:18:12.886 +00:00,2026-03-04 09:18:12.886 +00:00
+46,15,Find out how the application hides deleted products from its customers.,NULL,0,2026-03-04 09:18:12.886 +00:00,2026-03-04 09:18:12.886 +00:00
+47,15,Try to craft an attack string that makes deleted products visible again.,NULL,0,2026-03-04 09:18:12.886 +00:00,2026-03-04 09:18:12.886 +00:00
+48,15,You need to get the deleted product into your shopping cart and trigger the Checkout.,NULL,0,2026-03-04 09:18:12.886 +00:00,2026-03-04 09:18:12.886 +00:00
+49,15,Neither of the above can be achieved through the application frontend and it might even require (half-)Blind SQL Injection.,NULL,0,2026-03-04 09:18:12.886 +00:00,2026-03-04 09:18:12.886 +00:00
+50,16,"What is even ""better"" than a legacy page with a homegrown RegEx sanitizer? Having CSP injection issues on the exact same page as well!",NULL,0,2026-03-04 09:18:12.888 +00:00,2026-03-04 09:18:12.888 +00:00
+51,16,Find a screen in the application that looks subtly odd and dated compared with all other screens.,NULL,0,2026-03-04 09:18:12.888 +00:00,2026-03-04 09:18:12.888 +00:00
+52,16,"Before trying any XSS attacks, you should understand how the page is setting its Content Security Policy.",NULL,0,2026-03-04 09:18:12.888 +00:00,2026-03-04 09:18:12.888 +00:00
+53,16,"For the subsequent XSS, make good use of the flaws in the homegrown sanitization based on a RegEx!",NULL,0,2026-03-04 09:18:12.888 +00:00,2026-03-04 09:18:12.888 +00:00
+54,17,There are only some input fields in the Juice Shop forms that validate their input.,NULL,0,2026-03-04 09:18:12.891 +00:00,2026-03-04 09:18:12.891 +00:00
+55,17,Even less of these fields are persisted in a way where their content is shown on another screen.,NULL,0,2026-03-04 09:18:12.891 +00:00,2026-03-04 09:18:12.891 +00:00
+56,17,Bypassing client-side security can typically be done by either disabling it on the client (i.e. in the browser by manipulating the DOM tree) or by ignoring it completely and interacting with the backend instead.,NULL,0,2026-03-04 09:18:12.891 +00:00,2026-03-04 09:18:12.891 +00:00
+57,18,Analyze and tamper with links in the application that deliver a file directly.,NULL,0,2026-03-04 09:18:12.894 +00:00,2026-03-04 09:18:12.894 +00:00
+58,18,The file you are looking for is not protected in any way. Once you found it you can also access it.,NULL,0,2026-03-04 09:18:12.894 +00:00,2026-03-04 09:18:12.894 +00:00
+59,19,Look for an input field where its content appears in the HTML when its form is submitted.,NULL,0,2026-03-04 09:18:12.896 +00:00,2026-03-04 09:18:12.896 +00:00
+60,19,"This challenge is almost indistinguishable from ""Perform a reflected XSS attack"" if you do not look ""under the hood"" to find out what the application actually does with the user input.",NULL,0,2026-03-04 09:18:12.896 +00:00,2026-03-04 09:18:12.896 +00:00
+61,20,Find out where this information could come from. Then craft an attack string against an endpoint that offers an unnecessary way to filter data.,NULL,0,2026-03-04 09:18:12.899 +00:00,2026-03-04 09:18:12.899 +00:00
+62,20,Find out which database system is in use and where it would usually store its schema definitions.,NULL,0,2026-03-04 09:18:12.899 +00:00,2026-03-04 09:18:12.899 +00:00
+63,20,Craft a UNION SELECT attack string to join the relevant data from any such identified system table into the original result.,NULL,0,2026-03-04 09:18:12.899 +00:00,2026-03-04 09:18:12.899 +00:00
+64,20,"You might have to tackle some query syntax issues step-by-step, basically hopping from one error to the next.",NULL,0,2026-03-04 09:18:12.899 +00:00,2026-03-04 09:18:12.899 +00:00
+65,20,"As with ""Order the Christmas special offer of 2014"" this cannot be achieved through the application frontend.",NULL,0,2026-03-04 09:18:12.899 +00:00,2026-03-04 09:18:12.899 +00:00
+66,21,The developers who disabled the interface think they could go invisible by just closing their eyes.,NULL,0,2026-03-04 09:18:12.902 +00:00,2026-03-04 09:18:12.902 +00:00
+67,21,The old B2B interface was replaced with a more modern version recently.,NULL,0,2026-03-04 09:18:12.902 +00:00,2026-03-04 09:18:12.902 +00:00
+68,21,"When deprecating the old interface, not all of its parts were cleanly removed from the code base.",NULL,0,2026-03-04 09:18:12.902 +00:00,2026-03-04 09:18:12.902 +00:00
+69,21,Simply using the deprecated interface suffices to solve this challenge. No attack or exploit is necessary.,NULL,0,2026-03-04 09:18:12.902 +00:00,2026-03-04 09:18:12.902 +00:00
+70,22,"If you solved one of the four file access challenges, you already know where to find the easter egg.",NULL,0,2026-03-04 09:18:12.904 +00:00,2026-03-04 09:18:12.904 +00:00
+71,22,Simply reuse the trick that already worked for the files above.,NULL,0,2026-03-04 09:18:12.904 +00:00,2026-03-04 09:18:12.904 +00:00
+72,23,Try to find and attack an endpoint that responds with user information. SQL Injection is not the solution here.,NULL,0,2026-03-04 09:18:12.906 +00:00,2026-03-04 09:18:12.906 +00:00
+73,23,What ways are there to access data from a web application cross-domain?,NULL,0,2026-03-04 09:18:12.906 +00:00,2026-03-04 09:18:12.906 +00:00
+74,23,This challenge uses an old way which is no longer recommended.,NULL,0,2026-03-04 09:18:12.906 +00:00,2026-03-04 09:18:12.906 +00:00
+75,24,Consider intercepting and playing with the request payload.,NULL,0,2026-03-04 09:18:12.908 +00:00,2026-03-04 09:18:12.908 +00:00
+76,25,"Try to create the needed user ""out of thin air"".",NULL,0,2026-03-04 09:18:12.910 +00:00,2026-03-04 09:18:12.910 +00:00
+77,25,"The user literally needs to be ephemeral as in ""lasting for only a short time"".",NULL,0,2026-03-04 09:18:12.910 +00:00,2026-03-04 09:18:12.910 +00:00
+78,25,"Registering normally with the user’s email address will then obviously not solve this challenge. The Juice Shop will not even let you register as acc0unt4nt@juice-sh.op, as this would make the challenge unsolvable for you.",NULL,0,2026-03-04 09:18:12.910 +00:00,2026-03-04 09:18:12.910 +00:00
+79,25,"Getting the user into the database some other way will also fail to solve this challenge. In case you somehow managed to do so, you need to restart the Juice Shop application in order to wipe the database and make the challenge solvable again.",NULL,0,2026-03-04 09:18:12.910 +00:00,2026-03-04 09:18:12.910 +00:00
+80,25,The fact that this challenge is in the Injection category should already give away the intended approach.,NULL,0,2026-03-04 09:18:12.910 +00:00,2026-03-04 09:18:12.910 +00:00
+81,26,Try to submit bad input to forms. Alternatively tamper with URL paths or parameters.,NULL,0,2026-03-04 09:18:12.913 +00:00,2026-03-04 09:18:12.913 +00:00
+82,26,This challenge actually triggers from various possible error conditions.,NULL,0,2026-03-04 09:18:12.913 +00:00,2026-03-04 09:18:12.913 +00:00
+83,26,You can try to submit bad input to forms to provoke an improper error handling.,NULL,0,2026-03-04 09:18:12.913 +00:00,2026-03-04 09:18:12.913 +00:00
+84,26,Tampering with URL paths or parameters might also trigger an unforeseen error.,NULL,0,2026-03-04 09:18:12.913 +00:00,2026-03-04 09:18:12.913 +00:00
+85,27,Try to identify past special event or holiday campaigns of the shop first.,NULL,0,2026-03-04 09:18:12.915 +00:00,2026-03-04 09:18:12.915 +00:00
+86,27,Look for clues about the past campaign or holiday event somewhere in the application.,NULL,0,2026-03-04 09:18:12.915 +00:00,2026-03-04 09:18:12.915 +00:00
+87,27,Solving this challenge does not require actual time traveling.,NULL,0,2026-03-04 09:18:12.915 +00:00,2026-03-04 09:18:12.915 +00:00
+88,28,First you should find out how the languages are technically changed in the user interface.,NULL,0,2026-03-04 09:18:12.918 +00:00,2026-03-04 09:18:12.918 +00:00
+89,28,Guessing will most definitely not work in this challenge.,NULL,0,2026-03-04 09:18:12.918 +00:00,2026-03-04 09:18:12.918 +00:00
+90,28,"Brute force is not the only option for this challenge, but a perfectly viable one.",NULL,0,2026-03-04 09:18:12.918 +00:00,2026-03-04 09:18:12.918 +00:00
+91,28,Investigate online what languages are actually available.,NULL,0,2026-03-04 09:18:12.918 +00:00,2026-03-04 09:18:12.918 +00:00
+92,29,"Once you found admin section of the application, this challenge is almost trivial.",NULL,0,2026-03-04 09:18:12.920 +00:00,2026-03-04 09:18:12.920 +00:00
+93,29,Nothing happens when you try to delete feedback entries? Check the JavaScript console for errors!,NULL,0,2026-03-04 09:18:12.920 +00:00,2026-03-04 09:18:12.920 +00:00
+94,30,Try either a) a knowledgeable brute force attack or b) reverse engineering or c) some research in the cloud.,NULL,0,2026-03-04 09:18:12.921 +00:00,2026-03-04 09:18:12.921 +00:00
+95,30,One viable solution would be to reverse-engineer how coupon codes are generated and craft your own 80% coupon by using the same (or at least similar) implementation.,NULL,0,2026-03-04 09:18:12.921 +00:00,2026-03-04 09:18:12.921 +00:00
+96,30,Another possible solution might be harvesting as many previous coupon as possible and look for patterns that might give you a leverage for a brute force attack.,NULL,0,2026-03-04 09:18:12.922 +00:00,2026-03-04 09:18:12.922 +00:00
+97,30,"If all else fails, you could still try to blindly brute force the coupon code field before checkout.",NULL,0,2026-03-04 09:18:12.922 +00:00,2026-03-04 09:18:12.922 +00:00
+98,31,You can solve this by tampering with the user interface or by intercepting the communication with the RESTful backend.,NULL,0,2026-03-04 09:18:12.924 +00:00,2026-03-04 09:18:12.924 +00:00
+99,31,"To find the client-side leverage point, closely analyze the HTML form used for feedback submission.",NULL,0,2026-03-04 09:18:12.924 +00:00,2026-03-04 09:18:12.924 +00:00
+100,31,The backend-side leverage point is similar to some of the XSS challenges found in OWASP Juice Shop.,NULL,0,2026-03-04 09:18:12.924 +00:00,2026-03-04 09:18:12.924 +00:00
+101,32,Observe the flow of product review posting and editing and see if you can exploit it.,NULL,0,2026-03-04 09:18:12.926 +00:00,2026-03-04 09:18:12.926 +00:00
+102,32,This challenge can be solved by using developers tool of your browser or with tools like postman.,NULL,0,2026-03-04 09:18:12.926 +00:00,2026-03-04 09:18:12.926 +00:00
+103,32,Analyze the form used for review submission and try to find a leverage point.,NULL,0,2026-03-04 09:18:12.926 +00:00,2026-03-04 09:18:12.926 +00:00
+104,32,"This challenge is pretty similar to ""Post some feedback in another user’s name"" challenge.",NULL,0,2026-03-04 09:18:12.926 +00:00,2026-03-04 09:18:12.926 +00:00
+105,33,This challenge is explicitly not about acquiring the RSA private key used for JWT signing.,NULL,0,2026-03-04 09:18:12.928 +00:00,2026-03-04 09:18:12.928 +00:00
+106,33,The three generic hints from Forge an essentially unsigned JWT token also help with this challenge.,NULL,0,2026-03-04 09:18:12.928 +00:00,2026-03-04 09:18:12.928 +00:00
+107,33,"Instead of enforcing no encryption to be applied, try to apply a more sophisticated exploit against the JWT libraries used in the Juice Shop.",NULL,0,2026-03-04 09:18:12.928 +00:00,2026-03-04 09:18:12.928 +00:00
+108,33,Getting your hands on the public RSA key the application employs for its JWTs is mandatory for this challenge.,NULL,0,2026-03-04 09:18:12.928 +00:00,2026-03-04 09:18:12.928 +00:00
+109,33,"Finding the corresponding private key should actually be impossible, but that obviously doesn’t make this challenge unsolvable.",NULL,0,2026-03-04 09:18:12.928 +00:00,2026-03-04 09:18:12.928 +00:00
+110,33,Make sure your JWT is URL safe!,NULL,0,2026-03-04 09:18:12.928 +00:00,2026-03-04 09:18:12.928 +00:00
+111,34,You need to trick a security mechanism into thinking that the file you want has a valid file type.,NULL,0,2026-03-04 09:18:12.933 +00:00,2026-03-04 09:18:12.933 +00:00
+112,34,Analyze and tamper with links in the application that deliver a file directly.,NULL,0,2026-03-04 09:18:12.933 +00:00,2026-03-04 09:18:12.933 +00:00
+113,34,The file is not directly accessible because a security mechanism prevents access to it.,NULL,0,2026-03-04 09:18:12.933 +00:00,2026-03-04 09:18:12.933 +00:00
+114,34,You need to trick the security mechanism into thinking that the file has a valid file type.,NULL,0,2026-03-04 09:18:12.933 +00:00,2026-03-04 09:18:12.933 +00:00
+115,34,For this challenge there is only one approach to pull this trick.,NULL,0,2026-03-04 09:18:12.933 +00:00,2026-03-04 09:18:12.933 +00:00
+116,35,You need to trick a security mechanism into thinking that the file you want has a valid file type.,NULL,0,2026-03-04 09:18:12.935 +00:00,2026-03-04 09:18:12.935 +00:00
+117,35,Analyze and tamper with links in the application that deliver a file directly.,NULL,0,2026-03-04 09:18:12.935 +00:00,2026-03-04 09:18:12.935 +00:00
+118,35,The file is not directly accessible because a security mechanism prevents access to it.,NULL,0,2026-03-04 09:18:12.935 +00:00,2026-03-04 09:18:12.935 +00:00
+119,35,You need to trick the security mechanism into thinking that the file has a valid file type.,NULL,0,2026-03-04 09:18:12.935 +00:00,2026-03-04 09:18:12.935 +00:00
+120,36,This challenge has nothing to do with mistyping web domains. There is no conveniently misplaced file helping you with this one either. Or is there?,NULL,0,2026-03-04 09:18:12.937 +00:00,2026-03-04 09:18:12.937 +00:00
+121,36,This challenge has nothing to do with URLs or domains.,NULL,0,2026-03-04 09:18:12.937 +00:00,2026-03-04 09:18:12.937 +00:00
+122,36,"Other than for its legacy companion, combing through the package.json.bak does not help for this challenge.",NULL,0,2026-03-04 09:18:12.937 +00:00,2026-03-04 09:18:12.937 +00:00
+123,37,"Turns out that something is technically and legally wrong with the implementation of the ""right to be forgotten"" for users.",NULL,0,2026-03-04 09:18:12.939 +00:00,2026-03-04 09:18:12.939 +00:00
+124,37,"Trying out the Request Data Erasure functionality might be interesting, but cannot help you solve this challenge in real time.",NULL,0,2026-03-04 09:18:12.939 +00:00,2026-03-04 09:18:12.939 +00:00
+125,37,"If you have solved the challenge Retrieve a list of all user credentials via SQL Injection you might have already retrieved some information about how the Juice Shop ""deletes"" users upon their request.",NULL,0,2026-03-04 09:18:12.939 +00:00,2026-03-04 09:18:12.939 +00:00
+126,37,What the Juice Shop does here is totally incompliant with GDPR. Luckily a 4% fine on a gross income of 0$ is still 0$.,NULL,0,2026-03-04 09:18:12.939 +00:00,2026-03-04 09:18:12.939 +00:00
+127,38,Trick the regular Data Export to give you more than actually belongs to you.,NULL,0,2026-03-04 09:18:12.941 +00:00,2026-03-04 09:18:12.941 +00:00
+128,38,"You should not try to steal data from a ""vanilla"" user who never even ordered something at the shop.",NULL,0,2026-03-04 09:18:12.941 +00:00,2026-03-04 09:18:12.941 +00:00
+129,38,"As everything about this data export functionality happens on the server-side, it won’t be possible to just tamper with some HTTP requests to solve this challenge.",NULL,0,2026-03-04 09:18:12.942 +00:00,2026-03-04 09:18:12.942 +00:00
+130,38,Inspecting various server responses which contain user-specific data might give you a clue about the mistake the developers made.,NULL,0,2026-03-04 09:18:12.942 +00:00,2026-03-04 09:18:12.942 +00:00
+131,39,Finding a piece of displayed information that could originate from an HTTP header is part of this challenge.,NULL,0,2026-03-04 09:18:12.944 +00:00,2026-03-04 09:18:12.944 +00:00
+132,39,You might have to look into less common or even proprietary HTTP headers to find the leverage point.,NULL,0,2026-03-04 09:18:12.944 +00:00,2026-03-04 09:18:12.944 +00:00
+133,39,"Adding insult to injury, the HTTP header you need will never be sent by the application on its own.",NULL,0,2026-03-04 09:18:12.944 +00:00,2026-03-04 09:18:12.944 +00:00
+134,40,You need to trick the hacking progress persistence feature into thinking you solved challenge #999.,NULL,0,2026-03-04 09:18:12.946 +00:00,2026-03-04 09:18:12.946 +00:00
+135,40,Find out how saving and restoring progress is done behind the scenes.,NULL,0,2026-03-04 09:18:12.946 +00:00,2026-03-04 09:18:12.946 +00:00
+136,40,Deduce from all available information (e.g. the package.json.bak) how the application encrypts and decrypts your hacking progress.,NULL,0,2026-03-04 09:18:12.946 +00:00,2026-03-04 09:18:12.946 +00:00
+137,40,"Other than the user’s passwords, the hacking progress involves an additional secret during its encryption.",NULL,0,2026-03-04 09:18:12.946 +00:00,2026-03-04 09:18:12.946 +00:00
+138,40,What would be a really stupid mistake a developer might make when choosing such a secret?,NULL,0,2026-03-04 09:18:12.946 +00:00,2026-03-04 09:18:12.946 +00:00
+139,41,"As the challenge name implies, your task is to find some leaked access logs which happen to have a fairly common format.",NULL,0,2026-03-04 09:18:12.948 +00:00,2026-03-04 09:18:12.948 +00:00
+140,41,A very popular help platform for developers might contain breadcrumbs towards solving this challenge.,NULL,0,2026-03-04 09:18:12.948 +00:00,2026-03-04 09:18:12.948 +00:00
+141,41,The actual log file was copied & paste onto a platform often used to share data quickly with externals or even just internal peers.,NULL,0,2026-03-04 09:18:12.948 +00:00,2026-03-04 09:18:12.948 +00:00
+142,41,"Once you found and harvested the important piece of information from the log, you could employ a technique called Password Spraying to solve this challenge.",NULL,0,2026-03-04 09:18:12.948 +00:00,2026-03-04 09:18:12.948 +00:00
+143,42,Your own SQLi and someone else's Ctrl-V will be your accomplices in this challenge!,NULL,0,2026-03-04 09:18:12.950 +00:00,2026-03-04 09:18:12.950 +00:00
+144,42,"You must first identify the ""unsafe product"" which ist not available any more in the shop.",NULL,0,2026-03-04 09:18:12.950 +00:00,2026-03-04 09:18:12.950 +00:00
+145,42,"Solving the ""Order the Christmas special offer of 2014"" challenge might give it to you as by-catch.",NULL,0,2026-03-04 09:18:12.950 +00:00,2026-03-04 09:18:12.950 +00:00
+146,42,"The actual data you need to solve this challenge was leaked on the same platform that was involved in the ""Dumpster dive the Internet for a leaked password and log in to the original user account it belongs to"" challenge.",NULL,0,2026-03-04 09:18:12.950 +00:00,2026-03-04 09:18:12.950 +00:00
+147,42,Google is a particularly good accomplice in this challenge.,NULL,0,2026-03-04 09:18:12.950 +00:00,2026-03-04 09:18:12.950 +00:00
+148,43,This challenge has nothing to do with mistyping web domains. Investigate the forgotten developer's backup file instead.,NULL,0,2026-03-04 09:18:12.952 +00:00,2026-03-04 09:18:12.952 +00:00
+149,43,Investigating the forgotten developer’s backup file might bring some insight.,NULL,0,2026-03-04 09:18:12.952 +00:00,2026-03-04 09:18:12.952 +00:00
+150,43,"""Malicious packages in npm"" is a worthwhile read on Ivan Akulov’s blog.",NULL,0,2026-03-04 09:18:12.952 +00:00,2026-03-04 09:18:12.952 +00:00
+151,44,The challenge description probably gave away what form you should attack.,NULL,0,2026-03-04 09:18:12.954 +00:00,2026-03-04 09:18:12.954 +00:00
+152,44,"If you happen to know the email address of the admin already, you can launch a targeted attack.",NULL,0,2026-03-04 09:18:12.954 +00:00,2026-03-04 09:18:12.954 +00:00
+153,44,You might be lucky with a dedicated attack pattern even if you have no clue about the admin email address.,NULL,0,2026-03-04 09:18:12.954 +00:00,2026-03-04 09:18:12.954 +00:00
+154,44,"If you harvested the admin’s password hash, you can of course try to attack that instead of using SQL Injection.",NULL,0,2026-03-04 09:18:12.954 +00:00,2026-03-04 09:18:12.954 +00:00
+155,44,Alternatively you can solve this challenge as a combo with the Log in with the administrator’s user credentials without previously changing them or applying SQL Injection challenge.,NULL,0,2026-03-04 09:18:12.954 +00:00,2026-03-04 09:18:12.954 +00:00
+156,45,This challenge will make you go after a needle in a haystack.,NULL,0,2026-03-04 09:18:12.956 +00:00,2026-03-04 09:18:12.956 +00:00
+157,45,As with so many other characters from Futurama this challenge is of course about logging in as Amy from that show.,NULL,0,2026-03-04 09:18:12.956 +00:00,2026-03-04 09:18:12.956 +00:00
+158,45,Did you know that Amy is married to an alien named Kif?,NULL,0,2026-03-04 09:18:12.956 +00:00,2026-03-04 09:18:12.956 +00:00
+159,45,The challenge description contains a few sentences which give away some information how Amy decided to strengthen her password.,NULL,0,2026-03-04 09:18:12.956 +00:00,2026-03-04 09:18:12.956 +00:00
+160,45,"Obviously, Amy - being a little dimwitted - did not put nearly enough effort and creativity into the password selection process.",NULL,0,2026-03-04 09:18:12.956 +00:00,2026-03-04 09:18:12.956 +00:00
+161,46,The challenge description probably gave away what form you should attack.,NULL,0,2026-03-04 09:18:12.958 +00:00,2026-03-04 09:18:12.958 +00:00
+162,46,You need to know (or smart-guess) Bender’s email address so you can launch a targeted attack.,NULL,0,2026-03-04 09:18:12.958 +00:00,2026-03-04 09:18:12.958 +00:00
+163,46,Bender's password hash might not help you very much.,NULL,0,2026-03-04 09:18:12.958 +00:00,2026-03-04 09:18:12.958 +00:00
+164,46,"In case you try some other approach than SQL Injection, you will notice that Bender’s password hash is not very useful.",NULL,0,2026-03-04 09:18:12.958 +00:00,2026-03-04 09:18:12.958 +00:00
+165,47,The security flaw behind this challenge is 100% OWASP Juice Shop's fault and 0% Google's.,NULL,0,2026-03-04 09:18:12.960 +00:00,2026-03-04 09:18:12.960 +00:00
+166,47,"One way to light up this challenge in green on the score board, is to be Bjoern Kimminich. In that case, just log in with your Google account to automatically solve this challenge! Congratulations!",NULL,0,2026-03-04 09:18:12.960 +00:00,2026-03-04 09:18:12.960 +00:00
+167,47,"Most likely you are not Bjoern Kimminich, so instead you might want to take detailed look into how the OAuth login with Google is implemented.",NULL,0,2026-03-04 09:18:12.960 +00:00,2026-03-04 09:18:12.960 +00:00
+168,47,It could bring you some insight to register with your own Google account and analyze closely what happens behind the scenes.,NULL,0,2026-03-04 09:18:12.960 +00:00,2026-03-04 09:18:12.960 +00:00
+169,48,The challenge description probably gave away what form you should attack.,NULL,0,2026-03-04 09:18:12.962 +00:00,2026-03-04 09:18:12.962 +00:00
+170,48,You need to know (or smart-guess) Jim’s email address so you can launch a targeted attack.,NULL,0,2026-03-04 09:18:12.963 +00:00,2026-03-04 09:18:12.963 +00:00
+171,48,"If you harvested Jim’s password hash, you can try to attack that instead of using SQL Injection.",NULL,0,2026-03-04 09:18:12.963 +00:00,2026-03-04 09:18:12.963 +00:00
+172,49,"MC SafeSearch is a rapper who produced the song ""Protect Ya' Passwordz"" which explains password & sensitive data protection very nicely.",NULL,0,2026-03-04 09:18:12.965 +00:00,2026-03-04 09:18:12.965 +00:00
+173,49,"After watching the music video of this song, you should agree that even ⭐⭐ is a slightly exaggerated difficulty rating for this challenge.",NULL,0,2026-03-04 09:18:12.965 +00:00,2026-03-04 09:18:12.965 +00:00
+174,50,The underlying flaw of this challenge is a lot more human error than technical weakness.,NULL,0,2026-03-04 09:18:12.966 +00:00,2026-03-04 09:18:12.966 +00:00
+175,50,The support team is located in a low-cost country and the team structure fluctuates a lot due to people leaving for jobs with even just slightly better wages.,NULL,0,2026-03-04 09:18:12.966 +00:00,2026-03-04 09:18:12.966 +00:00
+176,50,To prevent abuse the password for the support team account itself is actually very strong.,NULL,0,2026-03-04 09:18:12.966 +00:00,2026-03-04 09:18:12.966 +00:00
+177,50,"To allow easy access during an incident, the support team utilizes a 3rd party tool which every support engineer can access to get the current account password from.",NULL,0,2026-03-04 09:18:12.966 +00:00,2026-03-04 09:18:12.966 +00:00
+178,50,"While it is also possible to use SQL Injection to log in as the support team, this will not solve the challenge.",NULL,0,2026-03-04 09:18:12.966 +00:00,2026-03-04 09:18:12.966 +00:00
+179,51,Have an eye on the HTTP traffic while placing products in the shopping basket.,NULL,0,2026-03-04 09:18:12.970 +00:00,2026-03-04 09:18:12.970 +00:00
+180,51,Adding more instances of the same product to someone else’s basket does not qualify as a solution. The same goes for stealing from someone else’s basket.,NULL,0,2026-03-04 09:18:12.970 +00:00,2026-03-04 09:18:12.970 +00:00
+181,51,This challenge requires a bit more sophisticated tampering than others of the same ilk.,NULL,0,2026-03-04 09:18:12.970 +00:00,2026-03-04 09:18:12.970 +00:00
+182,52,You need to trick a security mechanism into thinking that the file you want has a valid file type.,NULL,0,2026-03-04 09:18:12.972 +00:00,2026-03-04 09:18:12.972 +00:00
+183,52,"If you solved one of the other four file access challenges, you already know where the SIEM signature file is located.",NULL,0,2026-03-04 09:18:12.972 +00:00,2026-03-04 09:18:12.972 +00:00
+184,52,Simply reuse the trick that already worked for the files above.,NULL,0,2026-03-04 09:18:12.973 +00:00,2026-03-04 09:18:12.973 +00:00
+185,53,Punctuality is the politeness of kings.,NULL,0,2026-03-04 09:18:12.974 +00:00,2026-03-04 09:18:12.974 +00:00
+186,53,"Every user is (almost) immediately associated with the review they ""liked"" to prevent abuse of that functionality.",NULL,0,2026-03-04 09:18:12.974 +00:00,2026-03-04 09:18:12.974 +00:00
+187,53,"Did you really think clicking the ""like"" button three times in a row really fast would be enough to solve a ⭐⭐⭐⭐⭐⭐ challenge?",NULL,0,2026-03-04 09:18:12.974 +00:00,2026-03-04 09:18:12.974 +00:00
+188,53,The underlying flaw of this challenge is a Race Condition.,NULL,0,2026-03-04 09:18:12.974 +00:00,2026-03-04 09:18:12.974 +00:00
+189,54,You might have to peel through several layers of tough-as-nails encryption for this challenge.,NULL,0,2026-03-04 09:18:12.977 +00:00,2026-03-04 09:18:12.977 +00:00
+190,54,Make sure you solve Find the hidden easter egg first.,NULL,0,2026-03-04 09:18:12.977 +00:00,2026-03-04 09:18:12.977 +00:00
+191,54,You might have to peel through several layers of tough-as-nails encryption for this challenge.,NULL,0,2026-03-04 09:18:12.977 +00:00,2026-03-04 09:18:12.977 +00:00
+192,55,This challenge is essentially a stripped-down Denial of Service (DoS) attack.,NULL,0,2026-03-04 09:18:12.979 +00:00,2026-03-04 09:18:12.979 +00:00
+193,55,"As stated in the Architecture overview, OWASP Juice Shop uses a MongoDB derivate as its NoSQL database.",NULL,0,2026-03-04 09:18:12.979 +00:00,2026-03-04 09:18:12.979 +00:00
+194,55,"The categorization into the NoSQL Injection category totally gives away the expected attack vector for this challenge. Trying any others will not solve the challenge, even if they might yield the same result.",NULL,0,2026-03-04 09:18:12.979 +00:00,2026-03-04 09:18:12.979 +00:00
+195,55,"In particular, flooding the application with requests will not solve this challenge. That would probably just kill your server instance.",NULL,0,2026-03-04 09:18:12.979 +00:00,2026-03-04 09:18:12.979 +00:00
+196,56,Take a close look on how the $where query operator works in MongoDB.,NULL,0,2026-03-04 09:18:12.981 +00:00,2026-03-04 09:18:12.981 +00:00
+197,56,This challenge requires a classic Injection attack.,NULL,0,2026-03-04 09:18:12.981 +00:00,2026-03-04 09:18:12.981 +00:00
+198,56,Find an API endpoint with the intent of delivering a single order to the user and work with that.,NULL,0,2026-03-04 09:18:12.981 +00:00,2026-03-04 09:18:12.981 +00:00
+199,56,Reading up on how MongoDB queries work is really helpful here.,NULL,0,2026-03-04 09:18:12.981 +00:00,2026-03-04 09:18:12.981 +00:00
+200,57,Take a close look on how the equivalent of UPDATE-statements in MongoDB work.,NULL,0,2026-03-04 09:18:12.983 +00:00,2026-03-04 09:18:12.983 +00:00
+201,57,This challenge requires another classic Injection attack.,NULL,0,2026-03-04 09:18:12.983 +00:00,2026-03-04 09:18:12.983 +00:00
+202,57,It is also worth looking into how Query Operators work in MongoDB.,NULL,0,2026-03-04 09:18:12.983 +00:00,2026-03-04 09:18:12.983 +00:00
+203,58,When removing references to those addresses from the code the developers have been a bit sloppy.,NULL,0,2026-03-04 09:18:12.985 +00:00,2026-03-04 09:18:12.985 +00:00
+204,58,"More particular, they have been sloppy in a way that even the Angular Compiler was not able to clean up after them automatically.",NULL,0,2026-03-04 09:18:12.985 +00:00,2026-03-04 09:18:12.985 +00:00
+205,58,It is of course not sufficient to just visit any of the crypto currency links directly to solve the challenge.,NULL,0,2026-03-04 09:18:12.985 +00:00,2026-03-04 09:18:12.985 +00:00
+206,59,This challenge can be solved with three different approaches.,NULL,0,2026-03-04 09:18:12.987 +00:00,2026-03-04 09:18:12.987 +00:00
+207,59,Guessing might work just fine.,NULL,0,2026-03-04 09:18:12.987 +00:00,2026-03-04 09:18:12.987 +00:00
+208,59,"If you harvested the admin’s password hash, you can try to attack that.",NULL,0,2026-03-04 09:18:12.987 +00:00,2026-03-04 09:18:12.987 +00:00
+209,59,"In case you use some hacker tool, you can also go for a brute force attack using a generic password list.",NULL,0,2026-03-04 09:18:12.987 +00:00,2026-03-04 09:18:12.987 +00:00
+210,60,You literally need to make the shop owe you any amount of money.,NULL,0,2026-03-04 09:18:12.989 +00:00,2026-03-04 09:18:12.989 +00:00
+211,60,Investigate the shopping basket closely to understand how it prevents you from creating orders that would fulfil the challenge.,NULL,0,2026-03-04 09:18:12.989 +00:00,2026-03-04 09:18:12.989 +00:00
+212,61,"You do not have to pay anything to unlock this challenge! Nonetheless, donations are very much appreciated.",NULL,0,2026-03-04 09:18:12.991 +00:00,2026-03-04 09:18:12.991 +00:00
+213,61,"There is no inappropriate, self-written or misconfigured cryptographic library to be exploited here.",NULL,0,2026-03-04 09:18:12.991 +00:00,2026-03-04 09:18:12.991 +00:00
+214,61,How much protection does a sturdy top-quality door lock add to your house if you put the key under the door mat? Or hide the key in the nearby plant pot? Or tape the key to the underside of the mailbox?,NULL,0,2026-03-04 09:18:12.991 +00:00,2026-03-04 09:18:12.991 +00:00
+215,61,Once more: You do not have to pay anything to unlock this challenge!,NULL,0,2026-03-04 09:18:12.991 +00:00,2026-03-04 09:18:12.991 +00:00
+216,62,We won't even ask you to confirm that you did. Just read it. Please. Pretty please.,NULL,0,2026-03-04 09:18:12.992 +00:00,2026-03-04 09:18:12.992 +00:00
+217,62,When you work with the application you will most likely solve this challenge in the process.,NULL,0,2026-03-04 09:18:12.992 +00:00,2026-03-04 09:18:12.992 +00:00
+218,62,Any automated crawling or spidering tool you use might solve this challenge for you.,NULL,0,2026-03-04 09:18:12.992 +00:00,2026-03-04 09:18:12.992 +00:00
+219,62,There is no real hacking involved here.,NULL,0,2026-03-04 09:18:12.992 +00:00,2026-03-04 09:18:12.992 +00:00
+220,63,Only by visiting a special URL you can confirm that you read it carefully.,NULL,0,2026-03-04 09:18:12.995 +00:00,2026-03-04 09:18:12.995 +00:00
+221,63,"First you should obviously solve the ""Read our privacy policy"" challenge.",NULL,0,2026-03-04 09:18:12.995 +00:00,2026-03-04 09:18:12.995 +00:00
+222,63,It is fine to use the mouse cursor to not lose sight of the paragraph you are currently reading.,NULL,0,2026-03-04 09:18:12.995 +00:00,2026-03-04 09:18:12.995 +00:00
+223,63,If you find some particularly hot sections in the policy you might want to melt them together similar to what you might have already uncovered in Apply some advanced cryptanalysis to find the real easter egg.,NULL,0,2026-03-04 09:18:12.995 +00:00,2026-03-04 09:18:12.995 +00:00
+224,64,"Theoretically there are three possible ways to beat this challenge: a) broken admin functionality, b) holes in RESTful API or c) possibility for SQL Injection.",NULL,0,2026-03-04 09:18:12.997 +00:00,2026-03-04 09:18:12.997 +00:00
+225,64,In practice two of these three ways should turn out to be dead ends.,NULL,0,2026-03-04 09:18:12.997 +00:00,2026-03-04 09:18:12.997 +00:00
+226,65,Look for a url parameter where its value appears in the page it is leading to.,NULL,0,2026-03-04 09:18:12.998 +00:00,2026-03-04 09:18:12.998 +00:00
+227,65,"Try probing for XSS vulnerabilities by submitting text wrapped in an HTML tag which is easy to spot on screen, e.g. <h1> or <strike>.",NULL,0,2026-03-04 09:18:12.998 +00:00,2026-03-04 09:18:12.998 +00:00
+228,66,You can solve this by cleverly interacting with the UI or bypassing it altogether.,NULL,0,2026-03-04 09:18:12.999 +00:00,2026-03-04 09:18:12.999 +00:00
+229,66,The obvious repetition in the User Registration form is the Repeat Password field.,NULL,0,2026-03-04 09:18:13.000 +00:00,2026-03-04 09:18:13.000 +00:00
+230,66,Try to register with either an empty or different value in Repeat Password.,NULL,0,2026-03-04 09:18:13.000 +00:00,2026-03-04 09:18:13.000 +00:00
+231,66,You can solve this challenge by cleverly interacting with the UI or bypassing it altogether.,NULL,0,2026-03-04 09:18:13.000 +00:00,2026-03-04 09:18:13.000 +00:00
+232,67,"If you have no idea who Bender is, please put down this book right now and watch the first episodes of Futurama before you come back.",NULL,0,2026-03-04 09:18:13.001 +00:00,2026-03-04 09:18:13.001 +00:00
+233,67,"Unexpectedly, Bender also chose to answer his chosen question truthfully.",NULL,0,2026-03-04 09:18:13.001 +00:00,2026-03-04 09:18:13.001 +00:00
+234,67,Hints to the answer to Bender’s question can be found in publicly available information on the Internet.,NULL,0,2026-03-04 09:18:13.002 +00:00,2026-03-04 09:18:13.002 +00:00
+235,67,"If a seemingly correct answer is not accepted, you might just need to try some alternative spelling.",NULL,0,2026-03-04 09:18:13.002 +00:00,2026-03-04 09:18:13.002 +00:00
+236,67,Brute forcing the answer should be next to impossible.,NULL,0,2026-03-04 09:18:13.002 +00:00,2026-03-04 09:18:13.002 +00:00
+237,68,Nothing a little bit of Facebook stalking couldn't reveal. Might involve a historical twist.,NULL,0,2026-03-04 09:18:13.004 +00:00,2026-03-04 09:18:13.004 +00:00
+238,68,"Other than with his OWASP account, Bjoern was a bit less careless with his choice of security and answer to his internal account.",NULL,0,2026-03-04 09:18:13.004 +00:00,2026-03-04 09:18:13.004 +00:00
+239,68,Bjoern chose to answer his chosen question truthfully but tried to make it harder for attackers by applying sort of a historical twist.,NULL,0,2026-03-04 09:18:13.004 +00:00,2026-03-04 09:18:13.004 +00:00
+240,68,"Again, hints to the answer to Bjoern’s question can be found by looking him up on the Internet.",NULL,0,2026-03-04 09:18:13.004 +00:00,2026-03-04 09:18:13.004 +00:00
+241,68,Brute forcing the answer should be next to impossible.,NULL,0,2026-03-04 09:18:13.004 +00:00,2026-03-04 09:18:13.004 +00:00
+242,69,The hardest part of this challenge is actually to find out who Jim actually is.,NULL,0,2026-03-04 09:18:13.006 +00:00,2026-03-04 09:18:13.006 +00:00
+243,69,Jim picked one of the worst security questions and chose to answer it truthfully.,NULL,0,2026-03-04 09:18:13.006 +00:00,2026-03-04 09:18:13.006 +00:00
+244,69,"As Jim is a celebrity, the answer to his question is quite easy to find in publicly available information on the internet.",NULL,0,2026-03-04 09:18:13.006 +00:00,2026-03-04 09:18:13.006 +00:00
+245,69,Even brute forcing the answer should be possible with the right kind of word list.,NULL,0,2026-03-04 09:18:13.006 +00:00,2026-03-04 09:18:13.006 +00:00
+246,70,"Finding out who Morty actually is, will help to reduce the solution space.",NULL,0,2026-03-04 09:18:13.007 +00:00,2026-03-04 09:18:13.007 +00:00
+247,70,You can assume that Morty answered his security question truthfully but employed some obfuscation to make it more secure.,NULL,0,2026-03-04 09:18:13.007 +00:00,2026-03-04 09:18:13.007 +00:00
+248,70,Morty’s answer is less than 10 characters long and does not include any special characters.,NULL,0,2026-03-04 09:18:13.007 +00:00,2026-03-04 09:18:13.007 +00:00
+249,70,"Unfortunately, Forgot your password? is protected by a rate limiting mechanism that prevents brute forcing. You need to beat this somehow.",NULL,0,2026-03-04 09:18:13.008 +00:00,2026-03-04 09:18:13.008 +00:00
+250,71,Check for products which seem like a natural fit for being based on a blueprint.,NULL,0,2026-03-04 09:18:13.009 +00:00,2026-03-04 09:18:13.009 +00:00
+251,71,You might want to pay attention to the images of the identified product candidates.,NULL,0,2026-03-04 09:18:13.009 +00:00,2026-03-04 09:18:13.009 +00:00
+252,71,For your inconvenience the blueprint was not misplaced into the same place like so many others forgotten files covered in this chapter.,NULL,0,2026-03-04 09:18:13.009 +00:00,2026-03-04 09:18:13.009 +00:00
+253,72,Reverse engineering something bad can make good things happen.,NULL,0,2026-03-04 09:18:13.012 +00:00,2026-03-04 09:18:13.012 +00:00
+254,72,Using whatever you find inside the malware directly will not do you any good.,NULL,0,2026-03-04 09:18:13.012 +00:00,2026-03-04 09:18:13.012 +00:00
+255,72,For this to count as an SSRF attack you need to make the Juice Shop server attack itself.,NULL,0,2026-03-04 09:18:13.012 +00:00,2026-03-04 09:18:13.012 +00:00
+256,72,Do not try to find the source code for the malware on GitHub. Take it apart with classic reverse-engineering techniques instead.,NULL,0,2026-03-04 09:18:13.012 +00:00,2026-03-04 09:18:13.012 +00:00
+257,73,"""SSTi"" is a clear indicator that this has nothing to do with anything Angular. Also, make sure to use only our non-malicious malware.",NULL,0,2026-03-04 09:18:13.013 +00:00,2026-03-04 09:18:13.013 +00:00
+258,73,You can find the juicy malware via a very obvious Google search or by stumbling into a very ill-placed quarantine folder with the necessary URLs in it.,NULL,0,2026-03-04 09:18:13.013 +00:00,2026-03-04 09:18:13.013 +00:00
+259,73,Making the server download and execute the malware is key to solving this challenge.,NULL,0,2026-03-04 09:18:13.013 +00:00,2026-03-04 09:18:13.013 +00:00
+260,73,"For this challenge you do not have to reverse engineer the malware in any way. That will be required later to solve the ""Request a hidden resource on server through server"" challenge.",NULL,0,2026-03-04 09:18:13.013 +00:00,2026-03-04 09:18:13.013 +00:00
+261,75,This challenge asks you to act like an ethical hacker.,NULL,0,2026-03-04 09:18:13.017 +00:00,2026-03-04 09:18:13.017 +00:00
+262,75,Undoubtedly you want to read our security policy before conducting any research on our application.,NULL,0,2026-03-04 09:18:13.017 +00:00,2026-03-04 09:18:13.017 +00:00
+263,75,"As one of the good guys, would you just start attacking an application without consent of the owner?",NULL,0,2026-03-04 09:18:13.017 +00:00,2026-03-04 09:18:13.017 +00:00
+264,75,You also might want to read the security policy or any bug bounty program that is in place.,NULL,0,2026-03-04 09:18:13.017 +00:00,2026-03-04 09:18:13.017 +00:00
+265,76,"The ""Comment"" field in the ""Customer Feedback"" screen is where you want to put your focus on.",NULL,0,2026-03-04 09:18:13.018 +00:00,2026-03-04 09:18:13.018 +00:00
+266,76,The Comment field in the Contact Us screen is where you want to put your focus on.,NULL,0,2026-03-04 09:18:13.018 +00:00,2026-03-04 09:18:13.018 +00:00
+267,76,"The attack payload <iframe src=""javascript:alert(`xss)"">` will not be rejected by any validator but stripped from the comment before persisting it.",NULL,0,2026-03-04 09:18:13.018 +00:00,2026-03-04 09:18:13.018 +00:00
+268,76,Look for possible dependencies related to input processing in the package.json.bak you harvested earlier.,NULL,0,2026-03-04 09:18:13.018 +00:00,2026-03-04 09:18:13.018 +00:00
+269,76,"If an XSS alert shows up but the challenge does not appear as solved on the Score Board, you might not have managed to put the exact attack string <iframe src=""javascript:alert(`xss)"">` into the database?",NULL,0,2026-03-04 09:18:13.019 +00:00,2026-03-04 09:18:13.019 +00:00
+270,77,There is not the slightest chance that you can spot the hidden character with the naked eye.,NULL,0,2026-03-04 09:18:13.021 +00:00,2026-03-04 09:18:13.021 +00:00
+271,77,You will need very specialized tool assistance for this challenge.,NULL,0,2026-03-04 09:18:13.021 +00:00,2026-03-04 09:18:13.021 +00:00
+272,77,The effective difficulty of this challenge depends a lot on what tools you pick to tackle it.,NULL,0,2026-03-04 09:18:13.021 +00:00,2026-03-04 09:18:13.021 +00:00
+273,77,"This challenge cannot be solved by just reading our ""Lorem Ipsum""-texts carefully.",NULL,0,2026-03-04 09:18:13.021 +00:00,2026-03-04 09:18:13.021 +00:00
+274,78,Your attack payload must not trigger the protection against too many iterations and infinite loops.,NULL,0,2026-03-04 09:18:13.022 +00:00,2026-03-04 09:18:13.022 +00:00
+275,78,"This challenge uses the same leverage point as the ""Perform a Remote Code Execution that would keep a less hardened application busy forever"" challenge.",NULL,0,2026-03-04 09:18:13.022 +00:00,2026-03-04 09:18:13.022 +00:00
+276,79,This vulnerability will not affect any customer of the shop. It is aimed exclusively at its developers.,NULL,0,2026-03-04 09:18:13.025 +00:00,2026-03-04 09:18:13.025 +00:00
+277,79,This is a research-heavy challenge which does not involve any actual hacking.,NULL,0,2026-03-04 09:18:13.025 +00:00,2026-03-04 09:18:13.025 +00:00
+278,79,"Solving ""Access a developer's forgotten backup file"" before attempting this challenge will save you from a lot of frustration.",NULL,0,2026-03-04 09:18:13.025 +00:00,2026-03-04 09:18:13.025 +00:00
+279,80,The 2FA implementation requires to store a secret for every user. You will need to find a way to access this secret in order to solve this challenge.,NULL,0,2026-03-04 09:18:13.026 +00:00,2026-03-04 09:18:13.026 +00:00
+280,80,"As always, first learn how the feature under attack is used and behaves under normal conditions.",NULL,0,2026-03-04 09:18:13.026 +00:00,2026-03-04 09:18:13.026 +00:00
+281,80,Make sure you understand how 2FA with TOTP (time-based one-time password) works and which part of it is the critically sensitive one.,NULL,0,2026-03-04 09:18:13.026 +00:00,2026-03-04 09:18:13.026 +00:00
+282,80,"Solving the challenge ""Retrieve a list of all user credentials via SQL Injection"" before tackling this one will definitely help. But it will not carry you all the way.",NULL,0,2026-03-04 09:18:13.026 +00:00,2026-03-04 09:18:13.026 +00:00
+283,81,This challenge exploits a weird option that is supported when signing tokens with JWT.,NULL,0,2026-03-04 09:18:13.029 +00:00,2026-03-04 09:18:13.029 +00:00
+284,81,You should begin with retrieving a valid JWT from the application’s Authorization request header.,NULL,0,2026-03-04 09:18:13.029 +00:00,2026-03-04 09:18:13.029 +00:00
+285,81,"A JWT is only given to users who have logged in. They have a limited validity, so better do not dawdle.",NULL,0,2026-03-04 09:18:13.029 +00:00,2026-03-04 09:18:13.029 +00:00
+286,81,Try to convince the site to give you a valid token with the required payload while downgrading to no encryption at all.,NULL,0,2026-03-04 09:18:13.029 +00:00,2026-03-04 09:18:13.029 +00:00
+287,81,Make sure your JWT is URL safe!,NULL,0,2026-03-04 09:18:13.029 +00:00,2026-03-04 09:18:13.029 +00:00
+288,82,"You can attach a small file to the ""Complaint"" form. Investigate how this upload actually works.",NULL,0,2026-03-04 09:18:13.031 +00:00,2026-03-04 09:18:13.031 +00:00
+289,82,First you should try to understand how the file upload is actually handled on the client and server side.,NULL,0,2026-03-04 09:18:13.031 +00:00,2026-03-04 09:18:13.031 +00:00
+290,82,"With this understanding you need to find a ""weak spot"" in the right place and have to craft an exploit for it.",NULL,0,2026-03-04 09:18:13.031 +00:00,2026-03-04 09:18:13.031 +00:00
+291,83,"You can attach a PDF or ZIP file to the ""Complaint"" form. Investigate how this upload actually works.",NULL,0,2026-03-04 09:18:13.032 +00:00,2026-03-04 09:18:13.032 +00:00
+292,83,"If you solved the ""Upload a file larger than 100 kB"" challenge, you should try to apply the same solution here",NULL,0,2026-03-04 09:18:13.032 +00:00,2026-03-04 09:18:13.032 +00:00
+293,84,Gather information on where user data is stored and how it is addressed. Then craft a corresponding UNION SELECT attack.,NULL,0,2026-03-04 09:18:13.034 +00:00,2026-03-04 09:18:13.034 +00:00
+294,84,Try to find an endpoint where you can influence data being retrieved from the server.,NULL,0,2026-03-04 09:18:13.034 +00:00,2026-03-04 09:18:13.034 +00:00
+295,84,Craft a UNION SELECT attack string to join data from another table into the original result.,NULL,0,2026-03-04 09:18:13.034 +00:00,2026-03-04 09:18:13.034 +00:00
+296,84,"You might have to tackle some query syntax issues step-by-step, basically hopping from one error to the next",NULL,0,2026-03-04 09:18:13.034 +00:00,2026-03-04 09:18:13.034 +00:00
+297,84,"As with ""Order the Christmas special offer of 2014"" and ""Exfiltrate the entire DB schema definition via SQL Injection"" this cannot be achieved through the application frontend.",NULL,0,2026-03-04 09:18:13.034 +00:00,2026-03-04 09:18:13.034 +00:00
+298,85,Without utilizing the vulnerability behind another ⭐⭐⭐⭐⭐⭐ challenge it is not possible to plant the XSS payload for this challenge.,NULL,0,2026-03-04 09:18:13.036 +00:00,2026-03-04 09:18:13.036 +00:00
+299,85,"The mentioned ""marketing collateral"" might have been publicly advertised by the Juice Shop but is not necessarily part of its sitemap yet.",NULL,0,2026-03-04 09:18:13.036 +00:00,2026-03-04 09:18:13.036 +00:00
+300,85,It might help to perform some online searches for structurally similar web projects once you get stuck.,NULL,0,2026-03-04 09:18:13.036 +00:00,2026-03-04 09:18:13.036 +00:00
+301,85,"This challenge will always partially keep you blindfolded, no matter how hard you do research and analysis.",NULL,0,2026-03-04 09:18:13.036 +00:00,2026-03-04 09:18:13.036 +00:00
+302,86,Try out all existing functionality involving the shopping basket while having an eye on the HTTP traffic.,NULL,0,2026-03-04 09:18:13.038 +00:00,2026-03-04 09:18:13.038 +00:00
+303,86,There might be a client-side association of user to basket that you can try to manipulate.,NULL,0,2026-03-04 09:18:13.038 +00:00,2026-03-04 09:18:13.038 +00:00
+304,86,"In case you manage to update the database via SQL Injection so that a user is linked to another shopping basket, the application will not notice this challenge as solved.",NULL,0,2026-03-04 09:18:13.038 +00:00,2026-03-04 09:18:13.038 +00:00
+305,87,"Report one of two possible answers via the ""Customer Feedback"" form. Do not forget to submit the library's version as well.",NULL,0,2026-03-04 09:18:13.040 +00:00,2026-03-04 09:18:13.040 +00:00
+306,87,Look for possible dependencies related to security in the package.json.bak you probably harvested earlier during the Access a developer’s forgotten backup file challenge.,NULL,0,2026-03-04 09:18:13.040 +00:00,2026-03-04 09:18:13.040 +00:00
+307,87,Do some research on the internet for known security issues in the most suspicious application dependencies.,NULL,0,2026-03-04 09:18:13.040 +00:00,2026-03-04 09:18:13.040 +00:00
+308,88,"Report one of five possible answers via the ""Customer Feedback"" form.",NULL,0,2026-03-04 09:18:13.042 +00:00,2026-03-04 09:18:13.042 +00:00
+309,88,"Cryptographic functions only used in the ""Apply some advanced cryptanalysis to find the real easter egg"" challenge do not count as they are only a developer’s prank and not a serious security problem.",NULL,0,2026-03-04 09:18:13.042 +00:00,2026-03-04 09:18:13.042 +00:00
+310,89,You have to find a way to beat the allowlist of allowed redirect URLs.,NULL,0,2026-03-04 09:18:13.044 +00:00,2026-03-04 09:18:13.044 +00:00
+311,89,You can find several places where redirects happen in the OWASP Juice Shop.,NULL,0,2026-03-04 09:18:13.044 +00:00,2026-03-04 09:18:13.044 +00:00
+312,89,The application will only allow you to redirect to allowlisted (previously referred to as whitelisted) URLs.,NULL,0,2026-03-04 09:18:13.044 +00:00,2026-03-04 09:18:13.044 +00:00
+313,89,Tampering with the redirect mechanism might give you some valuable information about how it works under to hood.,NULL,0,2026-03-04 09:18:13.044 +00:00,2026-03-04 09:18:13.044 +00:00
+314,90,The leverage point for this challenge is the deprecated B2B interface.,NULL,0,2026-03-04 09:18:13.046 +00:00,2026-03-04 09:18:13.046 +00:00
+315,90,"This challenge sounds a lot harder than it actually is, which amplifies how bad the underlying vulnerability is.",NULL,0,2026-03-04 09:18:13.046 +00:00,2026-03-04 09:18:13.046 +00:00
+316,90,Doing some research on typical XEE attack patterns basically gives away the solution for free.,NULL,0,2026-03-04 09:18:13.046 +00:00,2026-03-04 09:18:13.046 +00:00
+317,91,It is not as easy as sending a large amount of data directly to the deprecated B2B interface.,NULL,0,2026-03-04 09:18:13.047 +00:00,2026-03-04 09:18:13.047 +00:00
+318,91,The leverage point for this is obviously the same as for the XXE Data Access challenge.,NULL,0,2026-03-04 09:18:13.047 +00:00,2026-03-04 09:18:13.047 +00:00
+319,91,You can only solve this challenge by keeping the server busy for >2sec with your attack.,NULL,0,2026-03-04 09:18:13.047 +00:00,2026-03-04 09:18:13.047 +00:00
+320,91,The effectiveness of attack payloads for this challenge might depend on the operating system the Juice Shop is running on.,NULL,0,2026-03-04 09:18:13.047 +00:00,2026-03-04 09:18:13.047 +00:00
+321,92,This one is actually similar to the XXE DoS challenge in every way except the data format being (ab)used.,NULL,0,2026-03-04 09:18:13.049 +00:00,2026-03-04 09:18:13.049 +00:00
+322,92,You can only solve this challenge by keeping the server busy for >2sec with your attack.,NULL,0,2026-03-04 09:18:13.049 +00:00,2026-03-04 09:18:13.049 +00:00
+323,92,The effectiveness of attack payloads for this challenge might depend on the operating system the Juice Shop is running on.,NULL,0,2026-03-04 09:18:13.049 +00:00,2026-03-04 09:18:13.049 +00:00
+324,93,"Before you invest time bypassing the API, you might want to play around with the UI a bit.",NULL,0,2026-03-04 09:18:13.051 +00:00,2026-03-04 09:18:13.051 +00:00
+325,94,Check the Photo Wall for an image that could not be loaded correctly.,NULL,0,2026-03-04 09:18:13.052 +00:00,2026-03-04 09:18:13.052 +00:00
+326,94,You just have to (literally) inspect the problem to understand the basic issue.,NULL,0,2026-03-04 09:18:13.052 +00:00,2026-03-04 09:18:13.052 +00:00
+327,94,It can also help to try out the Tweet-button of the entry and observe what happens.,NULL,0,2026-03-04 09:18:13.052 +00:00,2026-03-04 09:18:13.052 +00:00
+328,95,This challenge would formally have to be in several categories as the developers made multiple gaffes for this to be possible.,NULL,0,2026-03-04 09:18:13.054 +00:00,2026-03-04 09:18:13.054 +00:00
+329,95,Loading this page with an empty browser cache and on a slow (or throttled) connection will give you an idea on what the delivery box image is made of. Of course inspecting the page source will tell you just as much.,NULL,0,2026-03-04 09:18:13.054 +00:00,2026-03-04 09:18:13.054 +00:00
+330,95,You need to dive deep into the actual Angular code to understand this one.,NULL,0,2026-03-04 09:18:13.054 +00:00,2026-03-04 09:18:13.054 +00:00
+331,95,This challenge requires the exploitation of another vulnerability which even has its own two challenges in its very own category,NULL,0,2026-03-04 09:18:13.054 +00:00,2026-03-04 09:18:13.054 +00:00
+332,95,"This challenge can only be solved by strictly using the mentioned ""cross-domain kittens"". No other kittens from anywhere else can solve this challenge.",NULL,0,2026-03-04 09:18:13.054 +00:00,2026-03-04 09:18:13.054 +00:00
+333,96,Try to guess what URL the endpoint might have.,NULL,0,2026-03-04 09:18:13.056 +00:00,2026-03-04 09:18:13.056 +00:00
+334,96,The Juice Shop serves its metrics on the default path expected by Prometheus,NULL,0,2026-03-04 09:18:13.056 +00:00,2026-03-04 09:18:13.056 +00:00
+335,96,Guessing the path is probably just as quick as taking the RTFM route via https://prometheus.io/docs/introduction/first_steps,NULL,0,2026-03-04 09:18:13.056 +00:00,2026-03-04 09:18:13.056 +00:00
+336,97,Look closely at what happens when you attempt to upgrade your account.,NULL,0,2026-03-04 09:18:13.058 +00:00,2026-03-04 09:18:13.058 +00:00
+337,97,Go to the payment page for a deluxe membership and try paying through different methods.,NULL,0,2026-03-04 09:18:13.058 +00:00,2026-03-04 09:18:13.058 +00:00
+338,97,"Try inspecting the requests that go out for each of these methods, using the browser’s developer tools.",NULL,0,2026-03-04 09:18:13.058 +00:00,2026-03-04 09:18:13.058 +00:00
+339,97,Maybe playing around with the parameters in these requests could reveal something interesting.,NULL,0,2026-03-04 09:18:13.058 +00:00,2026-03-04 09:18:13.058 +00:00
+340,98,Find a form which updates the username and then construct a malicious page in the online HTML editor. You probably need an older browser version for this.,NULL,0,2026-03-04 09:18:13.059 +00:00,2026-03-04 09:18:13.059 +00:00
+341,98,Take a look at what happens when you change the username within the profile page.,NULL,0,2026-03-04 09:18:13.059 +00:00,2026-03-04 09:18:13.059 +00:00
+342,98,Search for information about CSRF attacks and look out for examples that can be applied to this challenge.,NULL,0,2026-03-04 09:18:13.059 +00:00,2026-03-04 09:18:13.059 +00:00
+343,98,Write the code for the CSRF attack within http://htmledit.squarefree.com and verify that it changes your username.,NULL,0,2026-03-04 09:18:13.059 +00:00,2026-03-04 09:18:13.059 +00:00
+344,99,"First, solve the ""Perform a DOM XSS attack"" challenge.",NULL,0,2026-03-04 09:18:13.061 +00:00,2026-03-04 09:18:13.061 +00:00
+345,99,Now it is just a question of copying and pasting the payload into the same vulnerable field.,NULL,0,2026-03-04 09:18:13.061 +00:00,2026-03-04 09:18:13.061 +00:00
+346,99,Crank up the volume of your computer before submitting the payload! 🔊,NULL,0,2026-03-04 09:18:13.061 +00:00,2026-03-04 09:18:13.061 +00:00
+347,100,You might have to do some OSINT on his social media personas to find out his honest answer to the security question.,NULL,0,2026-03-04 09:18:13.063 +00:00,2026-03-04 09:18:13.063 +00:00
+348,100,People often reuse aliases online. You might be able to find something by looking online for Uvogin’s name or slight variations of it based on his unique writing habits.,NULL,0,2026-03-04 09:18:13.063 +00:00,2026-03-04 09:18:13.063 +00:00
+349,100,You might be able to find some existing OSINT tools to help you in this investigation.,NULL,0,2026-03-04 09:18:13.063 +00:00,2026-03-04 09:18:13.063 +00:00
+350,101,Take a look at the meta data of the corresponding photo.,NULL,0,2026-03-04 09:18:13.067 +00:00,2026-03-04 09:18:13.067 +00:00
+351,101,Make use of tools that can inspect the metadata of images.,NULL,0,2026-03-04 09:18:13.067 +00:00,2026-03-04 09:18:13.067 +00:00
+352,101,"Use this information to answer the security question of the John, who enjoys hiking in the park.",NULL,0,2026-03-04 09:18:13.067 +00:00,2026-03-04 09:18:13.067 +00:00
+353,102,Take a look at the details in the photo to determine the location of where it was taken.,NULL,0,2026-03-04 09:18:13.069 +00:00,2026-03-04 09:18:13.069 +00:00
+354,103,Think of a way to get a hold of the internal workings on the chatbot API.,NULL,0,2026-03-04 09:18:13.070 +00:00,2026-03-04 09:18:13.070 +00:00
+355,103,"In order to disable the chatbot for all users, you must first get an understanding of how it works under the hood.",NULL,0,2026-03-04 09:18:13.070 +00:00,2026-03-04 09:18:13.070 +00:00
+356,103,"The chatbot sure offers a lot of functionality. Could it be that juice-shop relies on a third party, possibly open source library for this?",NULL,0,2026-03-04 09:18:13.070 +00:00,2026-03-04 09:18:13.070 +00:00
+357,103,Maybe you can try to gather clues from around juice shop and then go dumpster dive the internet to get a hold of the bot’s source.,NULL,0,2026-03-04 09:18:13.070 +00:00,2026-03-04 09:18:13.070 +00:00
+358,104,Analyze and tamper with links in the application until you get to an unprotected directory listing.,NULL,0,2026-03-04 09:18:13.072 +00:00,2026-03-04 09:18:13.072 +00:00
+359,104,Some files in there are not directly accessible because a security mechanism prevents access.,NULL,0,2026-03-04 09:18:13.072 +00:00,2026-03-04 09:18:13.072 +00:00
+360,104,The Poison Null Byte can trick the security mechanism into thinking that the file you want has a valid file type.,NULL,0,2026-03-04 09:18:13.072 +00:00,2026-03-04 09:18:13.072 +00:00
+361,104,"Depending on the files you try to retrieve you will probably solve ""Access a developer’s forgotten backup file"", ""Access a salesman’s forgotten backup file"", ""Access a misplaced SIEM signature file, or ""Find the hidden easter egg"" along the way.",NULL,0,2026-03-04 09:18:13.072 +00:00,2026-03-04 09:18:13.072 +00:00
+362,105,The bot is reluctant to give you a coupon as it’s coming up with various excuses for not giving you one.,NULL,0,2026-03-04 09:18:13.074 +00:00,2026-03-04 09:18:13.074 +00:00
+363,105,Asking over and over again like a little kid might actually help you succeed in this case.,NULL,0,2026-03-04 09:18:13.074 +00:00,2026-03-04 09:18:13.074 +00:00
+364,105,"No seriously, just keep asking.",NULL,0,2026-03-04 09:18:13.074 +00:00,2026-03-04 09:18:13.074 +00:00
+365,106,You should read up on vulnerabilities in popular NodeJs template engines.,NULL,0,2026-03-04 09:18:13.075 +00:00,2026-03-04 09:18:13.075 +00:00
+366,106,You should read up on Local File Read (LFR) vulnerabilities in popular NodeJS template engines.,NULL,0,2026-03-04 09:18:13.075 +00:00,2026-03-04 09:18:13.075 +00:00
+367,106,Look for an easily forgettable endpoint in Juice Shop to test out the LFR attack.,NULL,0,2026-03-04 09:18:13.075 +00:00,2026-03-04 09:18:13.075 +00:00
+368,106,500 Internal Server Error is always an interesting status code.,NULL,0,2026-03-04 09:18:13.075 +00:00,2026-03-04 09:18:13.075 +00:00
+369,106,Fuzzing can also help with this challenge.,NULL,0,2026-03-04 09:18:13.075 +00:00,2026-03-04 09:18:13.075 +00:00
+370,107,Either check the official documentation or inspect a notification UI element directly.,NULL,0,2026-03-04 09:18:13.077 +00:00,2026-03-04 09:18:13.077 +00:00
+371,107,This challenge is most easily solvable immediately after a server restart.,NULL,0,2026-03-04 09:18:13.077 +00:00,2026-03-04 09:18:13.077 +00:00
+372,107,"Alternatively you can also inspect any ""Challenge solved""-notification in your browser to understand its convenience feature.",NULL,0,2026-03-04 09:18:13.077 +00:00,2026-03-04 09:18:13.077 +00:00
+373,108,Security Advisories are often listed in the security.txt,NULL,0,2026-03-04 09:18:13.079 +00:00,2026-03-04 09:18:13.079 +00:00
+374,109,Have a look at the client-side code in the dev console.,NULL,0,2026-03-04 09:18:13.081 +00:00,2026-03-04 09:18:13.081 +00:00
+375,110,"The API call is part of a scheduled process ""behind the scenes"", i.e. completely unrelated to the web application.",NULL,0,2026-03-04 09:18:13.082 +00:00,2026-03-04 09:18:13.082 +00:00
+376,110,"Check the Juice Shop’s social media channels for regularly scheduled content being posted, possibly even indicating that it was automatically created.",NULL,0,2026-03-04 09:18:13.082 +00:00,2026-03-04 09:18:13.082 +00:00
+377,110,Find out which part of the content might come from the response of an API call.,NULL,0,2026-03-04 09:18:13.082 +00:00,2026-03-04 09:18:13.082 +00:00
+378,110,"Find the place where the API call happens — as stated above, it is not in the web application — and then look for the API key itself.",NULL,0,2026-03-04 09:18:13.082 +00:00,2026-03-04 09:18:13.082 +00:00
+

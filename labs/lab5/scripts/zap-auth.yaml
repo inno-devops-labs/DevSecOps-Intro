@@ -1,0 +1,76 @@
+---
+env:
+  contexts:
+    - name: "juice-shop"
+      urls:
+        - "http://localhost:3000"
+      includePaths: []
+      excludePaths: []
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://localhost:3000/rest/user/login"
+          loginRequestUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: '{"email":"admin@juice-sh.op","password":"admin123"}'
+        verification:
+          method: "response"
+          loggedInRegex: '\Qauthentication\E'
+          loggedOutRegex: ''
+      sessionManagement:
+        method: "cookie"
+        parameters: {}
+      users:
+        - name: "admin-user"
+          credentials:
+            email: "admin@juice-sh.op"
+            password: "admin123"
+
+jobs:
+  - type: "spider"
+    parameters:
+      context: "juice-shop"
+      user: "admin-user"
+      maxDuration: 5
+      maxDepth: 5
+    name: "spider"
+
+  - type: "spiderAjax"
+    parameters:
+      context: "juice-shop"
+      user: "admin-user"
+      maxDuration: 10
+      maxCrawlDepth: 10
+      numberOfBrowsers: 2
+    name: "spiderAjax"
+
+  - type: "passiveScan-wait"
+    parameters:
+      maxDuration: 5
+    name: "passiveScan-wait"
+
+  - type: "activeScan"
+    parameters:
+      context: "juice-shop"
+      user: "admin-user"
+      maxRuleDurationInMins: 2
+      maxScanDurationInMins: 10
+      delayInMs: 0
+    name: "activeScan"
+
+  - type: "report"
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.html"
+      reportTitle: "ZAP Authenticated Scan Report - Juice Shop"
+      reportDescription: "Authenticated security scan of OWASP Juice Shop using admin credentials"
+    name: "report"
+
+  - type: "report"
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "zap-report-auth.json"
+      reportTitle: "ZAP Authenticated Scan Report - Juice Shop"
+      reportDescription: "Authenticated security scan of OWASP Juice Shop using admin credentials"
+    name: "report-json"

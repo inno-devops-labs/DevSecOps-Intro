@@ -1,0 +1,75 @@
+=== DAST Multi-Tool Summary ===
+
+This report aggregates findings from multiple DAST tools to provide
+comprehensive dynamic application security testing coverage.
+
+1. OWASP ZAP (Comprehensive Web Application Scanner)
+   Purpose: Full-featured scanner with authentication support
+
+   Findings:
+     - High:   0 alerts
+     - Medium: 2 alerts
+     - Low:    10 alerts
+     - Info:   5 alerts
+     - Total:  17 alerts
+
+   Sample Findings:
+     - Content Security Policy (CSP) Header Not Set
+     - Cross-Domain Misconfiguration
+     - Missing Anti-clickjacking Header
+
+2. Nuclei (Template-Based Vulnerability Scanner)
+   Purpose: Fast CVE and known vulnerability detection
+
+   Findings:
+     - Total template matches: 1
+
+   Sample Findings:
+     - Public Swagger API - Detect
+
+3. Nikto (Web Server Vulnerability Scanner)
+   Purpose: Server misconfiguration and outdated software detection
+
+   Findings:
+     - Total server issues: 14
+
+   Sample Findings:
+     - Target Host: localhost
+     - Target Port: 3000
+     - GET /: Server leaks inodes via ETags, header found with file /, fields: 0xW/124fa 0x19cb812a4c2 
+     - GET /: Uncommon header 'feature-policy' found, with contents: payment 'self'
+     - GET /: Uncommon header 'access-control-allow-origin' found, with contents: *
+
+4. SQLmap (SQL Injection Testing Specialist)
+   Purpose: Deep SQL injection vulnerability testing and exploitation
+
+   Findings:
+     - SQL injection vulnerabilities confirmed: 2 endpoints
+     - Database records extracted: 6
+
+   Vulnerable Endpoints:
+     - GET  /rest/products/search?q=* (Boolean-based blind)
+     - POST /rest/user/login (Boolean + Time-based blind)
+
+   Sample Extracted Data:
+     1,4,Uetersen,Schleswig-Holstein,Germany,25436,Bjoern Kimminich,2026-03-04 09:18:12.437 +00:00,4917000001,2026-03-04 09:18:12.437 +00:00,Am Lokalhorst 42
+     2,17,Mocktown,Testilvania,United Fakedom,12345,Tim Tester,2026-03-04 09:18:12.491 +00:00,4917000000,2026-03-04 09:18:12.491 +00:00,Dummystreet 42
+     3,1,Test,Test,Test,4711,Administrator,2026-03-04 09:18:12.496 +00:00,1234567890,2026-03-04 09:18:12.496 +00:00,0815 Test Street
+
+=== Tool Comparison Summary ===
+
+Tool Specialization:
+  - ZAP: Best for comprehensive web app testing with authentication
+  - Nuclei: Fastest for known CVE detection using community templates
+  - Nikto: Specialized in server misconfiguration and outdated components
+  - SQLmap: Deep SQL injection analysis with data extraction capabilities
+
+Coverage Analysis:
+  - ZAP provides broadest coverage (passive + active scanning)
+  - Nuclei complements with fast CVE checks
+  - Nikto adds server-specific security checks
+  - SQLmap validates and exploits SQL injection deeply
+
+Recommendation:
+  Use multiple DAST tools in combination for comprehensive security coverage.
+  Each tool has unique detection capabilities that complement the others.

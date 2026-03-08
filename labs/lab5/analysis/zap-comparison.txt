@@ -1,0 +1,47 @@
+=== ZAP Authenticated vs Unauthenticated Scan Comparison ===
+
+URL Discovery:
+  Unauthenticated scan: 112 unique URLs
+  Authenticated scan: 404 unique URLs
+  Difference: 292 additional URLs discovered with authentication
+
+Authenticated Endpoints Discovered:
+http://localhost:3000/rest/admin/application-configuration
+http://localhost:3000/rest/admin/application-version
+http://localhost:3000/api/Baskets/1
+http://localhost:3000/api/Orders
+http://localhost:3000/rest/user/whoami
+http://localhost:3000/rest/deluxe-membership
+http://localhost:3000/rest/user/data-export
+http://localhost:3000/rest/admin/challenge-settings
+http://localhost:3000/api/Complaints
+http://localhost:3000/api/Cards/1
+
+Alert Comparison:
+
+High Severity Alerts:
+  Unauthenticated: 0
+  Authenticated: 0
+
+Medium Severity Alerts:
+  Unauthenticated: 1
+  Authenticated: 2
+
+Low Severity Alerts:
+  Unauthenticated: 5
+  Authenticated: 10
+
+Total Alerts:
+  Unauthenticated: 6
+  Authenticated: 12
+  Additional alerts with authentication: 6
+
+Key Insights:
+  - Authenticated scanning discovers significantly more attack surface
+  - Admin endpoints and user-specific features only visible when authenticated
+  - AJAX spider finds dynamic endpoints by executing JavaScript
+  - Authentication enables testing of authorization flaws and privilege escalation
+
+Recommendation:
+  Always perform authenticated scanning for applications with login functionality
+  to ensure comprehensive security coverage of protected endpoints.

