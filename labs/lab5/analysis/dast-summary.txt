@@ -1,0 +1,31 @@
+DAST Multi-Tool Results Summary
+Generated: Sun Mar  8 03:32:31 PM MSK 2026
+
+=== ZAP ===
+  [HIGH] SQL Injection
+  [MED] Content Security Policy (CSP) Header Not Set
+  [MED] Cross-Domain Misconfiguration
+  [MED] Missing Anti-clickjacking Header
+  [MED] Session ID in URL Rewrite
+  [LOW] Cross-Domain JavaScript Source File Inclusion
+  [LOW] Private IP Disclosure
+  [LOW] Timestamp Disclosure - Unix
+  [LOW] X-Content-Type-Options Header Missing
+  [INFO] Authentication Request Identified
+Total: 13 alert types
+
+=== Nuclei ===
+  Findings: 1
+  [INFO] Public Swagger API - Detect
+
+=== Nikto ===
+  Findings: 82
+  + GET Retrieved access-control-allow-origin header: *
+  + GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
+  + GET Uncommon header 'feature-policy' found, with contents: payment 'self'
+  + GET Uncommon header 'x-recruiting' found, with contents: /#/jobs
+  + GET Entry '/ftp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
+
+=== SQLmap ===
+  Injection points: 0
+0
