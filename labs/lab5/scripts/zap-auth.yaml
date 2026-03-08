@@ -1,0 +1,41 @@
+﻿env:
+  contexts:
+    - name: "Juice Shop Auth"
+      urls:
+        - "http://localhost:3000/*"
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: '{"email":"admin@juice-sh.op","password":"admin123"}'
+          loginRequestUrl: "http://localhost:3000/rest/user/login"
+        verification:
+          method: "response"
+          loggedInRegex: "authentication"
+          loggedOutRegex: "Unauthorized"
+      sessionManagement:
+        method: "cookie"
+
+jobs:
+  - type: "spider"
+    parameters:
+      context: "Juice Shop Auth"
+      url: "http://localhost:3000"
+      maxDuration: 5
+  
+  - type: "spiderAjax"
+    parameters:
+      context: "Juice Shop Auth"
+      url: "http://localhost:3000"
+      maxDuration: 10
+  
+  - type: "activeScan"
+    parameters:
+      context: "Juice Shop Auth"
+      policy: "Default Policy"
+  
+  - type: "report"
+    parameters:
+      template: "traditional-html"
+      reportFile: "/zap/wrk/report-auth.html"
+      reportTitle: "Juice Shop Authenticated Scan"
