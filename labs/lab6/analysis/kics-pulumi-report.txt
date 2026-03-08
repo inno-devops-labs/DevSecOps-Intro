@@ -1,0 +1,51 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.14
+
+
+Preparing Scan Assets: Done
+
+
+
+
+[38;2;91;192;222mEC2 Not EBS Optimized[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 1
+	[38;2;91;192;222m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m157[0m
+[38;2;91;192;222mDynamoDB Table Point In Time Recovery Disabled[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 1
+	[38;2;91;192;222m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m213[0m
+[38;2;255;114;19mRDS DB Instance Publicly Accessible[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+	[38;2;255;114;19m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m104[0m
+[38;2;255;114;19mEC2 Instance Monitoring Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+	[38;2;255;114;19m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m157[0m
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+	[38;2;187;33;36m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m16[0m
+[38;2;187;33;36mDynamoDB Table Not Encrypted[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+	[38;2;187;33;36m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m205[0m
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 2
+[38;2;255;114;19mMEDIUM[0m: 2
+[38;2;237;213;126mLOW[0m: 0
+[38;2;91;192;222mINFO[0m: 2
+TOTAL: 6
+
