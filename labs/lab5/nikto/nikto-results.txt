@@ -1,0 +1,83 @@
+- Nikto v2.1.6/2.1.5
++ Target Host: localhost
++ Target Port: 3000
++ GET Retrieved access-control-allow-origin header: *
++ GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ GET Uncommon header 'feature-policy' found, with contents: payment 'self'
++ GET Uncommon header 'x-recruiting' found, with contents: /#/jobs
++ GET Entry '/ftp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ GET "robots.txt" contains 1 entry which should be manually viewed.
++ HEAD /site.egg: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.alz: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.cer: Potentially interesting backup/cert file found. 
++ HEAD /backup.war: Potentially interesting backup/cert file found. 
++ HEAD /localhost.tar.lzma: Potentially interesting backup/cert file found. 
++ HEAD /dump.alz: Potentially interesting backup/cert file found. 
++ HEAD /localhost.alz: Potentially interesting backup/cert file found. 
++ HEAD /localhost.cer: Potentially interesting backup/cert file found. 
++ HEAD /site.cer: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.tar.lzma: Potentially interesting backup/cert file found. 
++ HEAD /archive.tar.bz2: Potentially interesting backup/cert file found. 
++ HEAD /dump.tgz: Potentially interesting backup/cert file found. 
++ HEAD /dump.war: Potentially interesting backup/cert file found. 
++ HEAD /backup.tar.lzma: Potentially interesting backup/cert file found. 
++ HEAD /database.alz: Potentially interesting backup/cert file found. 
++ HEAD /database.war: Potentially interesting backup/cert file found. 
++ HEAD /database.cer: Potentially interesting backup/cert file found. 
++ HEAD /database.tar: Potentially interesting backup/cert file found. 
++ HEAD /site.jks: Potentially interesting backup/cert file found. 
++ HEAD /archive.egg: Potentially interesting backup/cert file found. 
++ HEAD /site.war: Potentially interesting backup/cert file found. 
++ HEAD /site.tgz: Potentially interesting backup/cert file found. 
++ HEAD /archive.cer: Potentially interesting backup/cert file found. 
++ HEAD /dump.jks: Potentially interesting backup/cert file found. 
++ HEAD /database.tgz: Potentially interesting backup/cert file found. 
++ HEAD /localhost.jks: Potentially interesting backup/cert file found. 
++ HEAD /dump.egg: Potentially interesting backup/cert file found. 
++ HEAD /archive.tar: Potentially interesting backup/cert file found. 
++ HEAD /archive.pem: Potentially interesting backup/cert file found. 
++ HEAD /database.pem: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.jks: Potentially interesting backup/cert file found. 
++ HEAD /site.alz: Potentially interesting backup/cert file found. 
++ HEAD /dump.cer: Potentially interesting backup/cert file found. 
++ HEAD /database.jks: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.tar: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.egg: Potentially interesting backup/cert file found. 
++ HEAD /site.tar.bz2: Potentially interesting backup/cert file found. 
++ HEAD /localhost.tar.bz2: Potentially interesting backup/cert file found. 
++ HEAD /localhost.tgz: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.pem: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.tar.bz2: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.tgz: Potentially interesting backup/cert file found. 
++ HEAD /localhost.tar: Potentially interesting backup/cert file found. 
++ HEAD /localhost.egg: Potentially interesting backup/cert file found. 
++ HEAD /backup.cer: Potentially interesting backup/cert file found. 
++ HEAD /localhost.pem: Potentially interesting backup/cert file found. 
++ HEAD /database.tar.bz2: Potentially interesting backup/cert file found. 
++ HEAD /backup.jks: Potentially interesting backup/cert file found. 
++ HEAD /archive.tgz: Potentially interesting backup/cert file found. 
++ HEAD /dump.pem: Potentially interesting backup/cert file found. 
++ HEAD /archive.war: Potentially interesting backup/cert file found. 
++ HEAD /dump.tar: Potentially interesting backup/cert file found. 
++ HEAD /dump.tar.lzma: Potentially interesting backup/cert file found. 
++ HEAD /backup.alz: Potentially interesting backup/cert file found. 
++ HEAD /site.pem: Potentially interesting backup/cert file found. 
++ HEAD /127.0.0.1.war: Potentially interesting backup/cert file found. 
++ HEAD /archive.tar.lzma: Potentially interesting backup/cert file found. 
++ HEAD /site.tar: Potentially interesting backup/cert file found. 
++ HEAD /site.tar.lzma: Potentially interesting backup/cert file found. 
++ HEAD /localhost.war: Potentially interesting backup/cert file found. 
++ HEAD /backup.pem: Potentially interesting backup/cert file found. 
++ HEAD /backup.tgz: Potentially interesting backup/cert file found. 
++ HEAD /dump.tar.bz2: Potentially interesting backup/cert file found. 
++ HEAD /database.tar.lzma: Potentially interesting backup/cert file found. 
++ HEAD /database.egg: Potentially interesting backup/cert file found. 
++ HEAD /backup.tar.bz2: Potentially interesting backup/cert file found. 
++ HEAD /backup.tar: Potentially interesting backup/cert file found. 
++ HEAD /archive.jks: Potentially interesting backup/cert file found. 
++ HEAD /archive.alz: Potentially interesting backup/cert file found. 
++ HEAD /backup.egg: Potentially interesting backup/cert file found. 
++ OSVDB-3092: GET /ftp/: This might be interesting.
++ OSVDB-3092: GET /public/: This might be interesting.
++ POST /wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/nextgen_addgallery_page/static/jquery.filetree/connectors/jqueryFileTree.php: NextGEN Gallery LFI, see https://security.dxw.com/advisories/directory-traversal-in-nextgen-gallery-2-0-0/
++ POST /wordpress/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/nextgen_addgallery_page/static/jquery.filetree/connectors/jqueryFileTree.php: NextGEN Gallery LFI, see https://security.dxw.com/advisories/directory-traversal-in-nextgen-gallery-2-0-0/

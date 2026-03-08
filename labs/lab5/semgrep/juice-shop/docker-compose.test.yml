@@ -1,0 +1,8 @@
+services:
+  sut:
+    build: ./test/smoke/
+    links:
+      - app
+  app:
+    image: bkimminich/juice-shop:latest
+    build: ./

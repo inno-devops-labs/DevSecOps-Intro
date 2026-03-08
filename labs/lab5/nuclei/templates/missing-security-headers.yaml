@@ -1,0 +1,25 @@
+id: juice-shop-missing-security-headers
+
+info:
+  name: Missing Security Headers
+  author: lab5-local
+  severity: medium
+  description: Detects common missing HTTP security headers.
+  tags: misconfig,headers
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/"
+
+    matchers-condition: or
+    matchers:
+      - type: dsl
+        dsl:
+          - '!contains(tolower(all_headers), "content-security-policy")'
+      - type: dsl
+        dsl:
+          - '!contains(tolower(all_headers), "x-content-type-options")'
+      - type: dsl
+        dsl:
+          - '!contains(tolower(all_headers), "strict-transport-security")'

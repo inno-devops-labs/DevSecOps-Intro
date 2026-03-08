@@ -1,0 +1,36 @@
+DAST Multi-Tool Results Summary
+Generated: Sun Mar  8 17:07:45 MSK 2026
+
+=== ZAP ===
+  [MED] Content Security Policy (CSP) Header Not Set
+  [MED] Cross-Domain Misconfiguration
+  [LOW] Application Error Disclosure
+  [LOW] Cross-Domain JavaScript Source File Inclusion
+  [LOW] Timestamp Disclosure - Unix
+  [INFO] Authentication Request Identified
+  [INFO] Modern Web Application
+  [INFO] Session Management Response Identified
+Total: 8 alert types
+
+=== Nuclei ===
+  Findings: 1
+  [MEDIUM] Missing Security Headers
+
+=== Nikto ===
+  Findings: 82
+  + GET Retrieved access-control-allow-origin header: *
+  + GET The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
+  + GET Uncommon header 'feature-policy' found, with contents: payment 'self'
+  + GET Uncommon header 'x-recruiting' found, with contents: /#/jobs
+  + GET Entry '/ftp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
+
+=== SQLmap ===
+  Injection points: 2
+  Parameter: #1* (URI)
+      Type: boolean-based blind
+      Title: AND boolean-based blind - WHERE or HAVING clause
+  back-end DBMS: SQLite
+  Parameter: JSON #1* ((custom) POST)
+      Type: boolean-based blind
+      Title: OR boolean-based blind - WHERE or HAVING clause (NOT)
+  back-end DBMS: SQLite
