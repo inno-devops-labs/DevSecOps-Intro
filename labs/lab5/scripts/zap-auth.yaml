@@ -1,0 +1,59 @@
+env:
+  contexts:
+    - name: "JuiceShop"
+      urls:
+        - "http://localhost:3000"
+      includePaths:
+        - "http://localhost:3000.*"
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://localhost:3000/#/login"
+          loginRequestUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: '{"email":"admin@juice-sh.op","password":"admin123"}'
+        verification:
+          method: "response"
+          loggedInRegex: '"authentication"'
+          loggedOutRegex: '"Invalid email or password."'
+      sessionManagement:
+        method: "cookie"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+
+jobs:
+  - type: spider
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      maxDuration: 5
+
+  - type: spiderAjax
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      maxDuration: 10
+
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+
+  - type: activeScan
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      maxDuration: 15
+
+  - type: report
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.html"
+
+  - type: report
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "zap-report-auth.json"

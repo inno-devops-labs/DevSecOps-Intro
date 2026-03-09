@@ -1,0 +1,16 @@
+=== ZAP Unauthenticated Scan Summary ===
+Total discovered URLs: 95
+FAIL-NEW: 0
+WARN-NEW: 9
+PASS: 58
+
+Key warnings:
+- Cross-Domain JavaScript Source File Inclusion [10017]
+- Content Security Policy (CSP) Header Not Set [10038]
+- Non-Storable Content [10049]
+- Deprecated Feature Policy Header Set [10063]
+- Timestamp Disclosure - Unix [10096]
+- Cross-Domain Misconfiguration [10098]
+- Modern Web Application [10109]
+- Dangerous JS Functions [10110]
+- Cross-Origin-Embedder-Policy Header Missing or Invalid [90004]

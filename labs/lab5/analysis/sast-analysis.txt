@@ -1,0 +1,23 @@
+=== SAST Analysis Report ===
+
+Tool: Semgrep
+Rulesets:
+- p/security-audit
+- p/owasp-top-ten
+
+Summary:
+- Total findings: 25
+- Severity: 7 ERROR, 18 WARNING
+- Targets scanned: 1014
+- Files with findings: 20
+- Approximate repository file count: 1186
+- Rules run: 140
+- Parsed lines: ~99.9%
+- Skipped files >1MB: 8
+- Skipped by .semgrepignore: 139
+
+Key vulnerability categories observed:
+- SQL Injection
+- Insecure Express.js configuration
+- Directory listing exposure
+- Template injection / XSS-related risks
