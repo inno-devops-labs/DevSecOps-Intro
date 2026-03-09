@@ -1,0 +1,2573 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.16.1",
+	"@generated": "Fri, 10 Oct 2025 18:08:22",
+	"created": "2025-10-10T18:08:22.380520549Z",
+	"site":[ 
+		{
+			"@name": "https://localhost:3000",
+			"@host": "localhost",
+			"@port": "3000",
+			"@ssl": "true",
+			"alerts": [ 
+			]
+		},
+		{
+			"@name": "http://localhost:3000",
+			"@host": "localhost",
+			"@port": "3000",
+			"@ssl": "false",
+			"alerts": [ 
+				{
+					"pluginid": "10095",
+					"alertRef": "10095",
+					"alert": "Backup File Disclosure",
+					"name": "Backup File Disclosure",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>A backup of the file was disclosed by the web server.</p>",
+					"instances":[ 
+						{
+							"id": "137",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy]"
+						},
+						{
+							"id": "138",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)]"
+						},
+						{
+							"id": "142",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_linux_amd_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_linux_amd_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_amd_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_linux_amd_64.url]"
+						},
+						{
+							"id": "146",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_linux_arm_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_linux_arm_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_arm_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_linux_arm_64.url]"
+						},
+						{
+							"id": "151",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_macos_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_macos_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_macos_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_macos_64.url]"
+						},
+						{
+							"id": "152",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_windows_64.exe.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_windows_64.exe.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_windows_64.exe.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(2)/juicy_malware_windows_64.exe.url]"
+						},
+						{
+							"id": "139",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)]"
+						},
+						{
+							"id": "143",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_linux_amd_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_linux_amd_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_amd_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_linux_amd_64.url]"
+						},
+						{
+							"id": "147",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_linux_arm_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_linux_arm_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_arm_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_linux_arm_64.url]"
+						},
+						{
+							"id": "153",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_macos_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_macos_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_macos_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_macos_64.url]"
+						},
+						{
+							"id": "154",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_windows_64.exe.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_windows_64.exe.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_windows_64.exe.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy%20(3)/juicy_malware_windows_64.exe.url]"
+						},
+						{
+							"id": "141",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_linux_amd_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_linux_amd_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_amd_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_linux_amd_64.url]"
+						},
+						{
+							"id": "145",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_linux_arm_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_linux_arm_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_arm_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_linux_arm_64.url]"
+						},
+						{
+							"id": "149",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_macos_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_macos_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_macos_64.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_macos_64.url]"
+						},
+						{
+							"id": "150",
+							"uri": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_windows_64.exe.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_windows_64.exe.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_windows_64.exe.url] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy/juicy_malware_windows_64.exe.url]"
+						},
+						{
+							"id": "128",
+							"uri": "http://localhost:3000/ftp/quarantine.bac",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.bac",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.bac]"
+						},
+						{
+							"id": "127",
+							"uri": "http://localhost:3000/ftp/quarantine.backup",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.backup",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.backup]"
+						},
+						{
+							"id": "126",
+							"uri": "http://localhost:3000/ftp/quarantine.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.bak",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.bak]"
+						},
+						{
+							"id": "131",
+							"uri": "http://localhost:3000/ftp/quarantine.jar",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.jar",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.jar]"
+						},
+						{
+							"id": "132",
+							"uri": "http://localhost:3000/ftp/quarantine.log",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.log",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.log]"
+						},
+						{
+							"id": "135",
+							"uri": "http://localhost:3000/ftp/quarantine.old",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.old",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.old]"
+						},
+						{
+							"id": "133",
+							"uri": "http://localhost:3000/ftp/quarantine.swp",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.swp",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.swp]"
+						},
+						{
+							"id": "130",
+							"uri": "http://localhost:3000/ftp/quarantine.tar",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.tar",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.tar]"
+						},
+						{
+							"id": "129",
+							"uri": "http://localhost:3000/ftp/quarantine.zip",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.zip",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.zip]"
+						},
+						{
+							"id": "136",
+							"uri": "http://localhost:3000/ftp/quarantine.~bk",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine.~bk",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine.~bk]"
+						},
+						{
+							"id": "140",
+							"uri": "http://localhost:3000/ftp/quarantinebackup",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantinebackup",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantinebackup]"
+						},
+						{
+							"id": "144",
+							"uri": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_linux_amd_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_linux_amd_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_amd_64.url] is available at [http://localhost:3000/ftp/quarantinebackup/juicy_malware_linux_amd_64.url]"
+						},
+						{
+							"id": "148",
+							"uri": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_linux_arm_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_linux_arm_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_linux_arm_64.url] is available at [http://localhost:3000/ftp/quarantinebackup/juicy_malware_linux_arm_64.url]"
+						},
+						{
+							"id": "155",
+							"uri": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_macos_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_macos_64.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_macos_64.url] is available at [http://localhost:3000/ftp/quarantinebackup/juicy_malware_macos_64.url]"
+						},
+						{
+							"id": "156",
+							"uri": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_windows_64.exe.url",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantinebackup/juicy_malware_windows_64.exe.url",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine/juicy_malware_windows_64.exe.url] is available at [http://localhost:3000/ftp/quarantinebackup/juicy_malware_windows_64.exe.url]"
+						},
+						{
+							"id": "134",
+							"uri": "http://localhost:3000/ftp/quarantine~",
+							"method": "GET",
+							"param": "",
+							"attack": "http://localhost:3000/ftp/quarantine~",
+							"evidence": "",
+							"otherinfo": "A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine~]"
+						}
+					],
+					"count": "31",
+					"solution": "<p>Do not edit files in-situ on the web server, and ensure that un-necessary files (including hidden files) are removed from the web server.</p>",
+					"otherinfo": "<p>A backup of [http://localhost:3000/ftp/quarantine] is available at [http://localhost:3000/ftp/quarantine%20-%20Copy]</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/530.html</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information.html</p>",
+					"cweid": "530",
+					"wascid": "34",
+					"sourceid": "9819"
+				},
+				{
+					"pluginid": "40038",
+					"alertRef": "40038",
+					"alert": "Bypassing 403",
+					"name": "Bypassing 403",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Bypassing 403 endpoints may be possible, the scan rule sent a payload that caused the response to be accessible (status code 200).</p>",
+					"instances":[ 
+						{
+							"id": "158",
+							"uri": "http://localhost:3000/%2e/ftp/coupons_2013.md.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "/%2e/ftp/coupons_2013.md.bak",
+							"evidence": "",
+							"otherinfo": "http://localhost:3000/ftp/coupons_2013.md.bak"
+						},
+						{
+							"id": "159",
+							"uri": "http://localhost:3000/%2e/ftp/eastere.gg",
+							"method": "GET",
+							"param": "",
+							"attack": "/%2e/ftp/eastere.gg",
+							"evidence": "",
+							"otherinfo": "http://localhost:3000/ftp/eastere.gg"
+						},
+						{
+							"id": "162",
+							"uri": "http://localhost:3000/%2e/ftp/encrypt.pyc",
+							"method": "GET",
+							"param": "",
+							"attack": "/%2e/ftp/encrypt.pyc",
+							"evidence": "",
+							"otherinfo": "http://localhost:3000/ftp/encrypt.pyc"
+						},
+						{
+							"id": "160",
+							"uri": "http://localhost:3000/%2e/ftp/package-lock.json.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "/%2e/ftp/package-lock.json.bak",
+							"evidence": "",
+							"otherinfo": "http://localhost:3000/ftp/package-lock.json.bak"
+						},
+						{
+							"id": "161",
+							"uri": "http://localhost:3000/%2e/ftp/package.json.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "/%2e/ftp/package.json.bak",
+							"evidence": "",
+							"otherinfo": "http://localhost:3000/ftp/package.json.bak"
+						},
+						{
+							"id": "163",
+							"uri": "http://localhost:3000/%2e/ftp/suspicious_errors.yml",
+							"method": "GET",
+							"param": "",
+							"attack": "/%2e/ftp/suspicious_errors.yml",
+							"evidence": "",
+							"otherinfo": "http://localhost:3000/ftp/suspicious_errors.yml"
+						}
+					],
+					"count": "6",
+					"solution": "",
+					"otherinfo": "<p>http://localhost:3000/ftp/coupons_2013.md.bak</p>",
+					"reference": "<p>https://www.acunetix.com/blog/articles/a-fresh-look-on-reverse-proxy-related-attacks/</p><p>https://i.blackhat.com/us-18/Wed-August-8/us-18-Orange-Tsai-Breaking-Parser-Logic-Take-Your-Path-Normalization-Off-And-Pop-0days-Out-2.pdf</p><p>https://seclists.org/fulldisclosure/2011/Oct/273</p>",
+					"cweid": "348",
+					"wascid": "0",
+					"sourceid": "13251"
+				},
+				{
+					"pluginid": "40040",
+					"alertRef": "40040-2",
+					"alert": "CORS Misconfiguration",
+					"name": "CORS Misconfiguration",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>This CORS misconfiguration could allow an attacker to perform AJAX queries to the vulnerable website from a malicious page loaded by the victim's user agent.</p><p>In order to perform authenticated AJAX queries, the server must specify the header \"Access-Control-Allow-Credentials: true\" and the \"Access-Control-Allow-Origin\" header must be set to null or the malicious page's domain. Even if this misconfiguration doesn't allow authenticated AJAX requests, unauthenticated sensitive content can still be accessed (e.g intranet websites).</p><p>A malicious page can belong to a malicious website but also a trusted website with flaws (e.g XSS, support of HTTP without TLS allowing code injection through MITM, etc).</p>",
+					"instances":[ 
+						{
+							"id": "165",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "164",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "169",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "166",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "167",
+							"uri": "http://localhost:3000/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "257",
+							"uri": "http://localhost:3000/ftp",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "256",
+							"uri": "http://localhost:3000/ftp/",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "168",
+							"uri": "http://localhost:3000/ftp/acquisitions.md",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "174",
+							"uri": "http://localhost:3000/ftp/announcement_encrypted.md",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "170",
+							"uri": "http://localhost:3000/ftp/coupons_2013.md.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "171",
+							"uri": "http://localhost:3000/ftp/eastere.gg",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "172",
+							"uri": "http://localhost:3000/ftp/encrypt.pyc",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "173",
+							"uri": "http://localhost:3000/ftp/incident-support.kdbx",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "175",
+							"uri": "http://localhost:3000/ftp/legal.md",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "176",
+							"uri": "http://localhost:3000/ftp/package-lock.json.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "177",
+							"uri": "http://localhost:3000/ftp/package.json.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "258",
+							"uri": "http://localhost:3000/ftp/quarantine",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "178",
+							"uri": "http://localhost:3000/ftp/quarantine/juicy_malware_linux_amd_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "180",
+							"uri": "http://localhost:3000/ftp/quarantine/juicy_malware_linux_arm_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "179",
+							"uri": "http://localhost:3000/ftp/quarantine/juicy_malware_macos_64.url",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "182",
+							"uri": "http://localhost:3000/ftp/quarantine/juicy_malware_windows_64.exe.url",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "181",
+							"uri": "http://localhost:3000/ftp/suspicious_errors.yml",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "183",
+							"uri": "http://localhost:3000/juice-shop",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "184",
+							"uri": "http://localhost:3000/juice-shop/build",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "185",
+							"uri": "http://localhost:3000/juice-shop/build/routes",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "186",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "187",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "188",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/assets",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "189",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/assets/public",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "192",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "193",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "190",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "191",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "197",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "198",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "194",
+							"uri": "http://localhost:3000/juice-shop/build/routes/assets/public/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "195",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "196",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "199",
+							"uri": "http://localhost:3000/juice-shop/build/routes/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "203",
+							"uri": "http://localhost:3000/juice-shop/build/routes/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "200",
+							"uri": "http://localhost:3000/juice-shop/build/routes/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "201",
+							"uri": "http://localhost:3000/juice-shop/build/routes/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "202",
+							"uri": "http://localhost:3000/juice-shop/build/routes/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "204",
+							"uri": "http://localhost:3000/juice-shop/node_modules",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "205",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "206",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "207",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "208",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "209",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "210",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/assets",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "211",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/assets/public",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "213",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "212",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "214",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "215",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "216",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "218",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "219",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/assets/public/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "217",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:280:10",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "220",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:286:9",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "224",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:328:13",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "221",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:365:14",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "225",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:376:14",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "222",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:421:3",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "223",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "226",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "230",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "227",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "228",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "229",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "231",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "232",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "233",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "234",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/assets",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "235",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/assets/public",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "237",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "239",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "236",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "238",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "243",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "244",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "240",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/assets/public/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "241",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/index.js:145:39",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "242",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "247",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "248",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "246",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "249",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "245",
+							"uri": "http://localhost:3000/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "250",
+							"uri": "http://localhost:3000/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "251",
+							"uri": "http://localhost:3000/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "252",
+							"uri": "http://localhost:3000/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "253",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "254",
+							"uri": "http://localhost:3000/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "255",
+							"uri": "http://localhost:3000/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://ISr6IJgp.com",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "95",
+					"solution": "<p>If a web resource contains sensitive information, the origin should be properly specified in the Access-Control-Allow-Origin header. Only trusted websites needing this resource should be specified in this header, with the most secured protocol supported.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS</p><p>https://portswigger.net/web-security/cors</p>",
+					"cweid": "942",
+					"wascid": "14",
+					"sourceid": "13376"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "18",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "0",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "72",
+							"uri": "http://localhost:3000/ftp",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "76",
+							"uri": "http://localhost:3000/ftp/coupons_2013.md.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "77",
+							"uri": "http://localhost:3000/ftp/eastere.gg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "71",
+							"uri": "http://localhost:3000/ftp/encrypt.pyc",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "85",
+							"uri": "http://localhost:3000/ftp/package-lock.json.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "84",
+							"uri": "http://localhost:3000/ftp/package.json.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "83",
+							"uri": "http://localhost:3000/ftp/suspicious_errors.yml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "86",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "28",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "10098",
+					"alertRef": "10098",
+					"alert": "Cross-Domain Misconfiguration",
+					"name": "Cross-Domain Misconfiguration",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
+					"instances":[ 
+						{
+							"id": "19",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "1",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "54",
+							"uri": "http://localhost:3000/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "70",
+							"uri": "http://localhost:3000/ftp/incident-support.kdbx",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "60",
+							"uri": "http://localhost:3000/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "56",
+							"uri": "http://localhost:3000/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "12",
+							"uri": "http://localhost:3000/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "14",
+							"uri": "http://localhost:3000/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "30",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "17",
+							"uri": "http://localhost:3000/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "65",
+							"uri": "http://localhost:3000/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+					"reference": "<p>https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy</p>",
+					"cweid": "264",
+					"wascid": "14",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "10106",
+					"alertRef": "10106",
+					"alert": "HTTP Only Site",
+					"name": "HTTP Only Site",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The site is only served under HTTP and not HTTPS.</p>",
+					"instances":[ 
+						{
+							"id": "157",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "Failed to connect.\nZAP attempted to connect via: https://localhost:3000"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Configure your web or application server to use SSL (https).</p>",
+					"otherinfo": "<p>Failed to connect.</p><p>ZAP attempted to connect via: https://localhost:3000</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html</p><p>https://letsencrypt.org/</p>",
+					"cweid": "311",
+					"wascid": "4",
+					"sourceid": "12415"
+				},
+				{
+					"pluginid": "10017",
+					"alertRef": "10017",
+					"alert": "Cross-Domain JavaScript Source File Inclusion",
+					"name": "Cross-Domain JavaScript Source File Inclusion",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
+					"instances":[ 
+						{
+							"id": "20",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "21",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "2",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "3",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "87",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "88",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "92",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "93",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "31",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "32",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "10",
+					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "829",
+					"wascid": "15",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "10110",
+					"alertRef": "10110",
+					"alert": "Dangerous JS Functions",
+					"name": "Dangerous JS Functions",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
+					"instances":[ 
+						{
+							"id": "63",
+							"uri": "http://localhost:3000/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bypassSecurityTrustHtml(",
+							"otherinfo": ""
+						},
+						{
+							"id": "68",
+							"uri": "http://localhost:3000/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bypassSecurityTrustHtml(",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>See the references for security advice on the use of these functions.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://v17.angular.io/guide/security</p>",
+					"cweid": "749",
+					"wascid": "-1",
+					"sourceid": "25"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-2",
+					"alert": "Deprecated Feature Policy Header Set",
+					"name": "Deprecated Feature Policy Header Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The header has now been renamed to Permissions-Policy.</p>",
+					"instances":[ 
+						{
+							"id": "35",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "9",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "78",
+							"uri": "http://localhost:3000/ftp",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "81",
+							"uri": "http://localhost:3000/ftp/coupons_2013.md.bak",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "82",
+							"uri": "http://localhost:3000/ftp/eastere.gg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "75",
+							"uri": "http://localhost:3000/ftp/encrypt.pyc",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "64",
+							"uri": "http://localhost:3000/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "58",
+							"uri": "http://localhost:3000/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "16",
+							"uri": "http://localhost:3000/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "51",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						},
+						{
+							"id": "69",
+							"uri": "http://localhost:3000/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Feature-Policy",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header instead of the Feature-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy</p><p>https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/</p>",
+					"cweid": "16",
+					"wascid": "15",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "90004",
+					"alertRef": "90004-2",
+					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
+					"instances":[ 
+						{
+							"id": "36",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "10",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
+							"uri": "http://localhost:3000/ftp",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "90",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "52",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "37",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "11",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
+							"uri": "http://localhost:3000/ftp",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "91",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "53",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "10",
+					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Embedder-Policy header appropriately, and that it sets the Cross-Origin-Embedder-Policy header to 'require-corp' for documents.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Embedder-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-embedder-policy).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy</p>",
+					"cweid": "693",
+					"wascid": "14",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
+					"instances":[ 
+						{
+							"id": "25",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1650485437",
+							"otherinfo": "1650485437, which evaluates to: 2022-04-20 20:10:37."
+						},
+						{
+							"id": "27",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1981395349",
+							"otherinfo": "1981395349, which evaluates to: 2032-10-14 19:35:49."
+						},
+						{
+							"id": "26",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2038834951",
+							"otherinfo": "2038834951, which evaluates to: 2034-08-10 15:02:31."
+						},
+						{
+							"id": "5",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1650485437",
+							"otherinfo": "1650485437, which evaluates to: 2022-04-20 20:10:37."
+						},
+						{
+							"id": "7",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1981395349",
+							"otherinfo": "1981395349, which evaluates to: 2032-10-14 19:35:49."
+						},
+						{
+							"id": "6",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2038834951",
+							"otherinfo": "2038834951, which evaluates to: 2034-08-10 15:02:31."
+						},
+						{
+							"id": "43",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1650485437",
+							"otherinfo": "1650485437, which evaluates to: 2022-04-20 20:10:37."
+						},
+						{
+							"id": "45",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1981395349",
+							"otherinfo": "1981395349, which evaluates to: 2032-10-14 19:35:49."
+						},
+						{
+							"id": "44",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2038834951",
+							"otherinfo": "2038834951, which evaluates to: 2034-08-10 15:02:31."
+						}
+					],
+					"count": "9",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1650485437, which evaluates to: 2022-04-20 20:10:37.</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "497",
+					"wascid": "13",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
+					"instances":[ 
+						{
+							"id": "61",
+							"uri": "http://localhost:3000/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//owasp.org' target='_blank'>Open Worldwide Application Security Project (OWASP)</a> and is developed and maintained by voluntee\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "66",
+							"uri": "http://localhost:3000/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M0 256C0 397.4 114.6 512 256 512s256-114.6 256-256S397.4 0 256 0S0 114.6 0\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//owasp.org' target='_blank'>Open Worldwide Application Security Project (OWASP)</a> and is developed and maintained by voluntee\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "615",
+					"wascid": "13",
+					"sourceid": "25"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"id": "22",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "4",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "96",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "89",
+							"uri": "http://localhost:3000/juice-shop/build/routes/fileServer.js:59:18",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "100",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:280:10",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "95",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:286:9",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "99",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:328:13",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "98",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:365:14",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "97",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:421:3",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "94",
+							"uri": "http://localhost:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "101",
+							"uri": "http://localhost:3000/juice-shop/node_modules/serve-index/index.js:145:39",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "39",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "12",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049-1",
+					"alert": "Non-Storable Content",
+					"name": "Non-Storable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+					"instances":[ 
+						{
+							"id": "74",
+							"uri": "http://localhost:3000/ftp/encrypt.pyc",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "403",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "40"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049-3",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"id": "13",
+							"uri": "http://localhost:3000/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						}
+					],
+					"count": "1",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049-2",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
+					"instances":[ 
+						{
+							"id": "33",
+							"uri": "http://localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "8",
+							"uri": "http://localhost:3000/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "55",
+							"uri": "http://localhost:3000/assets/public/favicon_js.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "73",
+							"uri": "http://localhost:3000/ftp/incident-support.kdbx",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "62",
+							"uri": "http://localhost:3000/main.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "57",
+							"uri": "http://localhost:3000/polyfills.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "15",
+							"uri": "http://localhost:3000/runtime.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "50",
+							"uri": "http://localhost:3000/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "59",
+							"uri": "http://localhost:3000/styles.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "67",
+							"uri": "http://localhost:3000/vendor.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						}
+					],
+					"count": "10",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "9"
+				},
+				{
+					"pluginid": "10104",
+					"alertRef": "10104",
+					"alert": "User Agent Fuzzer",
+					"name": "User Agent Fuzzer",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>",
+					"instances":[ 
+						{
+							"id": "107",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "105",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "103",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "109",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "111",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "125",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "123",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "113",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "116",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "121",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "118",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "114",
+							"uri": "http://localhost:3000/assets",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "106",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "104",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "102",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "108",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "110",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "124",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "122",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "112",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "117",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "120",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "119",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "115",
+							"uri": "http://localhost:3000/assets/public",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "24",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/wstg</p>",
+					"cweid": "0",
+					"wascid": "0",
+					"sourceid": "6822"
+				}
+			]
+		}
+	],
+	"sequences":[
+	]
+
+}

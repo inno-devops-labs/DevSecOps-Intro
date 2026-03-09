@@ -1,0 +1,53 @@
+# ZAP Automation Framework Configuration for Authenticated Scanning
+# Targets OWASP Juice Shop with admin authentication
+
+env:
+  contexts:
+    - name: "juice-shop-context"
+      urls:
+        - "http://localhost:3000"
+      authentication:
+        method: "manualAuthentication"
+        parameters:
+          loginUrl: "http://localhost:3000/rest/user/login"
+          loginRequestData: '{"email":"admin@juice-sh.op","password":"admin123"}'
+      sessionManagement:
+        method: "cookieBasedSessionManagement"
+        parameters:
+          sessionTokens: ["token"]
+      verification:
+        method: "responseRegex"
+        parameters:
+          regex: "authentication"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+
+jobs:
+  - type: "spider"
+    parameters:
+      maxDuration: 5
+      user: "admin"
+  
+  - type: "spiderAjax"
+    parameters:
+      maxDuration: 10
+      user: "admin"
+  
+  - type: "passiveScan-wait"
+    parameters:
+      maxDuration: 5
+  
+  - type: "activeScan"
+    parameters:
+      maxDuration: 10
+      user: "admin"
+  
+  - type: "report"
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFileName: "report-auth.html"
+      reportTitle: "ZAP Authenticated Scan - Juice Shop"
