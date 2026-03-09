@@ -1,0 +1,45 @@
+Found Java version 17.0.18
+Available memory: 5925 MB
+Using JVM args: -Xmx1481m
+149 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to /home/zap/.ZAP/config.xml
+185 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/session
+185 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/dirbuster
+185 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/fuzzers
+185 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/plugin
+Job spider set context = Juice Shop
+Job spider set user = admin@juice-sh.op
+Job spider set url = ${ZAP_TARGET}
+Job spider set maxDuration = 5
+Job spiderAjax set context = Juice Shop
+Job spiderAjax set user = admin@juice-sh.op
+Job spiderAjax set url = ${ZAP_TARGET}
+Job spiderAjax set browserId = firefox-headless
+Job spiderAjax set maxDuration = 20
+Job passiveScan-wait set maxDuration = 10
+Job activeScan set context = Juice Shop
+Job activeScan set user = admin@juice-sh.op
+Job activeScan set url = ${ZAP_TARGET}
+Job activeScan set maxRuleDurationInMins = 3
+Job activeScan set maxScanDurationInMins = 25
+Job report set template = traditional-html
+Job report set reportDir = /zap/wrk/zap
+Job report set reportFile = report-auth.html
+Job report set reportTitle = OWASP Juice Shop Authenticated ZAP Report
+Job report set reportDescription = Authenticated spider, AJAX spider, passive scan, and active scan against Juice Shop.
+Job spider started
+Job spider requesting URL http://host.docker.internal:3000
+Job spider terminated
+Job spider found 169 URLs
+Job spider finished, time taken: 00:05:34
+Job spiderAjax started
+Job spiderAjax found 311 URLs
+Job spiderAjax finished, time taken: 00:00:53
+Job passiveScan-wait started
+Job passiveScan-wait finished, time taken: 00:00:01
+Job activeScan started
+Job activeScan terminated
+Job activeScan finished, time taken: 00:25:05
+Job report started
+Job report generated report /zap/wrk/zap/report-auth.html
+Job report finished, time taken: 00:00:00
+Automation plan succeeded!

@@ -1,0 +1,14 @@
+=== DAST Summary ===
+
+| Tool | Findings | Severity Breakdown | Best Use Case |
+|---|---:|---|---|
+| ZAP (auth) | 16 | High=1, Medium=5, Low=5, Info=5 | Broad web app coverage, authenticated crawl, active testing |
+| Nuclei | 1 | Critical=0, High=0, Medium=0, Low=0, Info=1 | Fast template-based checks and known exposures |
+| Nikto | 152 | Text report, no native severity split | Server misconfigurations and risky defaults |
+| SQLmap | 2 | 2 confirmed injection target(s); login run dumped 12 SQLite tables | Deep SQL injection validation and database dumping |
+
+Example findings to mention:
+- ZAP: missing security headers, CSP/header issues, authenticated endpoint coverage.
+- Nuclei: template matches for exposed files, missing hardening, known signatures.
+- Nikto: server header disclosure, insecure defaults, missing headers.
+- SQLmap: confirmed GET /search SQLi and POST /login SQLi, with SQLite fingerprinting and database dumping.

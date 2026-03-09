@@ -1,0 +1,29 @@
+=== SAST/DAST Correlation Report ===
+
+Security Testing Results Summary:
+
+SAST (Semgrep): 25 code-level findings
+DAST (rough combined artifact count): 171
+
+Breakdown:
+- ZAP authenticated: 16 alert types
+- Nuclei: 1 template match
+- Nikto: 152 reported request-level items
+- SQLmap: 2 confirmed vulnerable targets (GET /search and POST /login), with 12 dumped SQLite tables from the login run
+
+Key Insights:
+
+SAST (Static Analysis):
+- Found code-level issues such as SQL injection, code injection, hardcoded secrets, unsafe file handling, and open redirect patterns.
+- Most valuable before deployment because it points directly to risky files and lines in the source code.
+
+DAST (Dynamic Analysis):
+- Found runtime issues such as missing security headers, exposed Swagger documentation, accessible `/ftp/` content, and authenticated admin surface.
+- Authenticated scanning expanded discovery from 95 URLs to 311 URLs, including `/rest/admin/application-configuration`.
+
+Why the results differ:
+- SAST analyzes source code structure and taint flow, so it catches implementation patterns even if they are hard to trigger manually.
+- DAST analyzes the running app and live HTTP responses, so it catches deployment, configuration, header, route exposure, and session-dependent issues.
+
+Recommendation:
+- Use both SAST and DAST in the DevSecOps pipeline. Semgrep should run on commits and pull requests, while authenticated ZAP/Nuclei/Nikto/SQLmap checks should run in a controlled test environment before release.

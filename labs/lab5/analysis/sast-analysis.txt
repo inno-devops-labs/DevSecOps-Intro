@@ -1,0 +1,14 @@
+=== SAST Analysis Report ===
+Files scanned: 1014
+Total findings: 25
+
+Severity breakdown:
+ERROR: 7
+WARNING: 18
+
+Coverage limitations:
+- Semgrep reported 37 scan issues in total
+- Syntax error: 20
+- PartialParsing: 15
+- Timeout: 2
+- Timeout path: /src/frontend/src/assets/private/three.js

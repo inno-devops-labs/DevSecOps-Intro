@@ -1,0 +1,82 @@
+env:
+  contexts:
+    - name: "Juice Shop"
+      urls:
+        - "${ZAP_TARGET}"
+      includePaths:
+        - "${ZAP_TARGET}.*"
+      excludePaths:
+        - "${ZAP_TARGET}/rest/user/logout.*"
+      authentication:
+        method: "browser"
+        parameters:
+          loginPageUrl: "${ZAP_TARGET}/#/login"
+          browserId: "firefox-headless"
+          loginPageWait: 5
+        verification:
+          method: "poll"
+          loggedInRegex: "\\Qadmin@juice-sh.op\\E"
+          loggedOutRegex: ""
+          pollFrequency: 60
+          pollUnits: "seconds"
+          pollUrl: "${ZAP_TARGET}/rest/user/whoami"
+          pollPostData: ""
+      sessionManagement:
+        method: "headers"
+        parameters:
+          Authorization: "Bearer {%json:authentication.token%}"
+          cookie: "token={%json:authentication.token%}"
+      users:
+        - name: "admin@juice-sh.op"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+      technology: {}
+      structure: {}
+  parameters:
+    failOnError: true
+    failOnWarning: false
+    progressToStdout: true
+  vars:
+    ZAP_TARGET: "http://host.docker.internal:3000"
+
+jobs:
+  - type: spider
+    parameters:
+      context: "Juice Shop"
+      user: "admin@juice-sh.op"
+      url: "${ZAP_TARGET}"
+      maxDuration: 5
+  - type: spiderAjax
+    parameters:
+      context: "Juice Shop"
+      user: "admin@juice-sh.op"
+      url: "${ZAP_TARGET}"
+      browserId: "firefox-headless"
+      maxDuration: 20
+      excludedElements:
+        - description: "Logout"
+          element: "span"
+          text: "Logout"
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 10
+  - type: activeScan
+    parameters:
+      context: "Juice Shop"
+      user: "admin@juice-sh.op"
+      url: "${ZAP_TARGET}"
+      maxRuleDurationInMins: 3
+      maxScanDurationInMins: 25
+  - type: report
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.html"
+      reportTitle: "OWASP Juice Shop Authenticated ZAP Report"
+      reportDescription: "Authenticated spider, AJAX spider, passive scan, and active scan against Juice Shop."
+    risks:
+      - high
+      - medium
+      - low
+      - info
