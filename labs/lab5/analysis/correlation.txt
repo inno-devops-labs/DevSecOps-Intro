@@ -1,0 +1,6 @@
+=== SAST/DAST Correlation Report ===
+SAST (Semgrep): 25 code-level findings
+DAST (ZAP authenticated): 9 alerts
+DAST (Nuclei): 0 template matches
+DAST (Nikto): 0 server issues
+DAST (SQLmap): 0 SQL injection vulnerabilities

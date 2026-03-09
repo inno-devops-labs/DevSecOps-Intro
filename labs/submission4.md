@@ -200,24 +200,3 @@ Trivy was run with `--scanners secret`; output is in `labs/lab4/trivy/trivy-secr
 - **Task 3:** Package overlap 1126 (both); 13 Syft-only, 9 Trivy-only. CVE overlap: Grype 95, Trivy 91, common 26. Toolchain comparison and use-case recommendations are documented in the sections above.
 
 All generated files (SBOMs, vulnerability reports, analysis outputs) are under `labs/lab4/` and can be committed for the PR.
-
----
-
-## Checklist for submission
-
-1. ~~Regenerate artifacts~~ — Done; report updated with actual data.
-
-2. **Branch and commit:**
-   ```bash
-   git switch -c feature/lab4
-   git add labs/submission4.md labs/lab4/
-   git commit -m "docs: add lab4 submission - SBOM generation and SCA comparison"
-   git push -u origin feature/lab4
-   ```
-
-3. **Open a PR** from your fork’s `feature/lab4` → course repository’s `main`. In the PR description include:
-   - [x] Task 1 done — SBOM Generation with Syft and Trivy
-   - [x] Task 2 done — SCA with Grype and Trivy
-   - [x] Task 3 done — Comprehensive Toolchain Comparison
-
-4. **Submit the PR URL** via Moodle before the deadline.
