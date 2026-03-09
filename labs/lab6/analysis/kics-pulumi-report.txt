@@ -1,0 +1,12 @@
+=== KICS Pulumi Scan Report ===
+
+Total findings: 6
+Severity: CRITICAL=1 HIGH=2 MEDIUM=1 LOW=0 INFO=2
+
+Findings:
+  [CRITICAL] RDS DB Instance Publicly Accessible - ../../src/Pulumi-vulnerable.yaml:104
+  [HIGH] DynamoDB Table Not Encrypted - ../../src/Pulumi-vulnerable.yaml:205
+  [HIGH] Passwords And Secrets - Generic Password - ../../src/Pulumi-vulnerable.yaml:16
+  [MEDIUM] EC2 Instance Monitoring Disabled - ../../src/Pulumi-vulnerable.yaml:157
+  [INFO] DynamoDB Table Point In Time Recovery Disabled - ../../src/Pulumi-vulnerable.yaml:213
+  [INFO] EC2 Not EBS Optimized - ../../src/Pulumi-vulnerable.yaml:157

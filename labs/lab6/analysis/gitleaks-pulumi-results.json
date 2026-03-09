@@ -1,0 +1,42 @@
+[
+ {
+  "RuleID": "stripe-access-token",
+  "Description": "Found a Stripe Access Token, posing a risk to payment processing services and sensitive financial data.",
+  "StartLine": 19,
+  "EndLine": 19,
+  "StartColumn": 13,
+  "EndColumn": 37,
+  "Match": "sk_live_**REDACTED**\"",
+  "Secret": "sk_live_**REDACTED**",
+  "File": "/src/Pulumi-vulnerable.yaml",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 4.418296,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "/src/Pulumi-vulnerable.yaml:stripe-access-token:19"
+ },
+ {
+  "RuleID": "stripe-access-token",
+  "Description": "Found a Stripe Access Token, posing a risk to payment processing services and sensitive financial data.",
+  "StartLine": 23,
+  "EndLine": 23,
+  "StartColumn": 13,
+  "EndColumn": 37,
+  "Match": "sk_live_**REDACTED**\"",
+  "Secret": "sk_live_**REDACTED**",
+  "File": "/src/__main__.py",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 4.418296,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "/src/__main__.py:stripe-access-token:23"
+ }
+]

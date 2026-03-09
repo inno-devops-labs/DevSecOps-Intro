@@ -1,0 +1,16 @@
+=== KICS Ansible Scan Report ===
+
+Total findings: 10
+Severity: HIGH=9 MEDIUM=0 LOW=1
+
+Findings:
+  [HIGH] Passwords And Secrets - Generic Password - ../../src/configure.yml:16
+  [HIGH] Passwords And Secrets - Generic Password - ../../src/inventory.ini:10
+  [HIGH] Passwords And Secrets - Generic Password - ../../src/deploy.yml:12
+  [HIGH] Passwords And Secrets - Generic Password - ../../src/inventory.ini:5
+  [HIGH] Passwords And Secrets - Generic Password - ../../src/inventory.ini:18
+  [HIGH] Passwords And Secrets - Generic Password - ../../src/inventory.ini:19
+  [HIGH] Passwords And Secrets - Generic Secret - ../../src/inventory.ini:20
+  [HIGH] Passwords And Secrets - Password in URL - ../../src/deploy.yml:16
+  [HIGH] Passwords And Secrets - Password in URL - ../../src/deploy.yml:72
+  [LOW] Unpinned Package Version - ../../src/deploy.yml:99
