@@ -1,0 +1,36 @@
+{
+  "scan_type": "Trivy Scan",
+  "test": 1,
+  "test_id": 1,
+  "engagement_id": 1,
+  "engagement_name": "Labs Security Testing",
+  "product_id": 1,
+  "product_name": "Juice Shop",
+  "product_type_name": "Engineering",
+  "statistics": {
+    "before": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "after": {
+      "info": 0,
+      "low": 18,
+      "medium": 33,
+      "high": 55,
+      "critical": 10,
+      "total": 116
+    },
+    "delta": {
+      "created": 116,
+      "closed": 0,
+      "reactivated": 0,
+      "left_untouched": 0
+    }
+  },
+  "push_to_jira": false,
+  "auto_create_context": true
+}

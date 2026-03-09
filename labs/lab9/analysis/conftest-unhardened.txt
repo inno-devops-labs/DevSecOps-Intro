@@ -1,0 +1,13 @@
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" uses disallowed :latest tag
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set runAsNonRoot: true
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set allowPrivilegeEscalation: false
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set readOnlyRootFilesystem: true
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must drop ALL capabilities
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.cpu
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.memory
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.cpu
+FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.memory
+WARN - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define readinessProbe
+WARN - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define livenessProbe
+
+11 tests, 0 passed, 2 warnings, 9 failures

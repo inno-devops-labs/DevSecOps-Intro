@@ -1,0 +1,36 @@
+{
+  "scan_type": "Anchore Grype",
+  "test": 2,
+  "test_id": 2,
+  "engagement_id": 1,
+  "engagement_name": "Labs Security Testing",
+  "product_id": 1,
+  "product_name": "Juice Shop",
+  "product_type_name": "Engineering",
+  "statistics": {
+    "before": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "after": {
+      "info": 12,
+      "low": 3,
+      "medium": 31,
+      "high": 60,
+      "critical": 11,
+      "total": 117
+    },
+    "delta": {
+      "created": 89,
+      "closed": 0,
+      "reactivated": 0,
+      "left_untouched": 28
+    }
+  },
+  "push_to_jira": false,
+  "auto_create_context": true
+}
