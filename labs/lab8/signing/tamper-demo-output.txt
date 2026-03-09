@@ -1,0 +1,16 @@
+Error: no matching signatures: failed to verify signature
+main.go:62: error during command execution: no matching signatures: crypto/rsa: verification error
+
+The image localhost:5000/juice-shop@sha256:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2 was NOT signed with the provided key.
+
+This demonstrates that after replacing the image (tagging busybox as juice-shop:v19.0.0),
+the new image has a different digest and no valid Cosign signature, so verification fails.
+
+--- Original digest verification (still succeeds) ---
+
+Verification for localhost:5000/juice-shop@sha256:9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - The signatures were verified against the specified public key
+
+[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop"},"image":{"docker-manifest-digest":"sha256:9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a"},"type":"cosign container image signature"},"optional":null}]

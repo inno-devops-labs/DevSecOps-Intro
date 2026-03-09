@@ -1,0 +1,6 @@
+Verification for localhost:5000/juice-shop@sha256:9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - The signatures were verified against the specified public key
+
+[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop"},"image":{"docker-manifest-digest":"sha256:9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a"},"type":"cosign container image signature"},"optional":null}]

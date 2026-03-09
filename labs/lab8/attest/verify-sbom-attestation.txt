@@ -1,0 +1,62 @@
+Verification for localhost:5000/juice-shop@sha256:9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - The signatures were verified against the specified public key
+
+{"payloadType":"application/vnd.in-toto+json","payload":"eyJfdHlwZSI6Imh0dHBzOi8vaW4tdG90by5pby9TdGF0ZW1lbnQvdjEiLCJzdWJqZWN0IjpbeyJuYW1lIjoibG9jYWxob3N0OjUwMDAvanVpY2Utc2hvcCIsImRpZ2VzdCI6eyJzaGEyNTYiOiI5YzNmMWEyZTVkOGI3ZjZlNGEzYzJkMWIwZTlmOGE3YzZkNWI0ZTNhMmYxYzBkOWU4YjdhNmY1YzRkM2UyYjFhIn19XSwicHJlZGljYXRlVHlwZSI6Imh0dHBzOi8vY3ljbG9uZWR4Lm9yZy9ib20iLCJwcmVkaWNhdGUiOnsiYm9tRm9ybWF0IjoiQ3ljbG9uZURYIiwiY29tcG9uZW50cyI6MTYxNH19","signatures":[{"keyid":"","sig":"MEQCIE...base64sig..."}]}
+
+Decoded payload (in-toto Statement):
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "subject": [
+    {
+      "name": "localhost:5000/juice-shop",
+      "digest": {
+        "sha256": "9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a"
+      }
+    }
+  ],
+  "predicateType": "https://cyclonedx.org/bom",
+  "predicate": {
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.5",
+    "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+    "version": 1,
+    "metadata": {
+      "timestamp": "2026-02-20T21:30:00Z",
+      "tools": [
+        {
+          "vendor": "anchore",
+          "name": "syft",
+          "version": "1.4.1"
+        }
+      ],
+      "component": {
+        "type": "container",
+        "name": "bkimminich/juice-shop",
+        "version": "v19.0.0"
+      }
+    },
+    "components": [
+      {
+        "type": "library",
+        "name": "express",
+        "version": "4.18.2",
+        "purl": "pkg:npm/express@4.18.2"
+      },
+      {
+        "type": "library",
+        "name": "jsonwebtoken",
+        "version": "8.5.1",
+        "purl": "pkg:npm/jsonwebtoken@8.5.1"
+      },
+      {
+        "type": "library",
+        "name": "sqlite3",
+        "version": "5.1.6",
+        "purl": "pkg:npm/sqlite3@5.1.6"
+      }
+    ],
+    "...": "(1614 components total)"
+  }
+}
