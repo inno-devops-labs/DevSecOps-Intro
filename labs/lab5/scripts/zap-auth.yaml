@@ -1,0 +1,57 @@
+--- # ZAP automation configuration file
+env:                                   # The environment, mandatory
+  contexts :                           # List of 1 or more contexts, mandatory
+    - name: Juice Shop                 # Name to be used to refer to this context in other jobs, mandatory
+      urls:
+      - http://localhost:3000
+      includePaths:
+      - http://localhost:3000.*
+      authentication:
+        method: form
+        loginUrl: http://localhost:3000/rest/user/login
+        loginRequestData: '{"email":"{%username%}","password":"{%password%}"}'
+        usernameParameter: email
+        passwordParameter: password
+      verification:
+        loggedInRegex: authentication
+        loggedOutRegex: Log in
+      users:
+        - name: admin
+          credentials:
+            username: admin@juice-sh.op
+            password: admin123
+  parameters:
+    failOnError: false                  # If set exit on an error
+    failOnWarning: false               # If set exit on a warning
+    continueOnFailure: true           # Continue running all jobs, even if one fails
+    progressToStdout: true             # If set will write job progress to stdout
+
+jobs:
+  - type: spider
+    parameters:
+      context: Juice Shop
+      user: admin
+      maxDuration: 10
+
+  - type: spiderAjax
+    parameters:
+      context: Juice Shop
+      user: admin
+      maxDuration: 15
+
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 10
+
+  - type: activeScan
+    parameters:
+      context: Juice Shop
+      user: admin
+      maxScanDurationInMins: 30
+
+  - type: report
+    parameters:
+      reportDir: /zap/wrk/
+      reportFile: report-auth.html
+      reportTitle: ZAP Authenticated Scan Report for Juice Shop
+      template: traditional-html

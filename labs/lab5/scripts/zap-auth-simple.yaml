@@ -1,0 +1,233 @@
+--- # ZAP automation configuration file, for more details see https://www.zaproxy.org/docs/automate/automation-framework/
+env:                                   # The environment, mandatory
+  contexts :                           # List of 1 or more contexts, mandatory
+    - name: context 1                  # Name to be used to refer to this context in other jobs, mandatory
+      urls:                            # A mandatory list of top level urls, everything under each url will be included
+      includePaths:                    # An optional list of regexes to include
+      excludePaths:                    # An optional list of regexes to exclude
+  vars:                                # List of variables, can be used in urls and selected other parameters
+  parameters:
+    failOnError: true                  # If set exit on an error         
+    failOnWarning: false               # If set exit on a warning
+    continueOnFailure: false           # Continue running all jobs, even if one fails
+    progressToStdout: true             # If set will write job progress to stdout
+
+jobs:
+  - type: activeScan-config                # Configures the settings of the active scanner.
+    parameters:
+      maxRuleDurationInMins:               # Int: The max time in minutes any individual rule will be allowed to run for, default: 0 unlimited
+      maxScanDurationInMins:               # Int: The max time in minutes the active scanner will be allowed to run for, default: 0 unlimited
+      maxAlertsPerRule:                    # Int: Maximum number of alerts to raise per rule, default: 0 unlimited
+      defaultPolicy:                       # String: The name of the default scan policy to use, default: Default Policy
+
+  - type: activeScan-policy            # Defines a new active scan policy which can be used by later activeScan related jobs
+    parameters:
+      name:                            # String: Name of the policy, mandatory
+    policyDefinition:                  # The policy definition
+      defaultStrength:                 # String: The default Attack Strength for all rules, one of Low, Medium, High, Insane (not recommended), default: Medium
+      defaultThreshold:                # String: The default Alert Threshold for all rules, one of Off, Low, Medium, High, default: Medium
+      alertTags:                       # Add rules by alert tags; overrides default settings but not rules explicitly listed under "rules"
+        include: []                    # List of alert tags to include, regex supported
+        exclude: []                    # List of alert tags to exclude from the include list, regex supported
+        strength:                      # String: The Attack Strength for this set of rules, one of Low, Medium, High, Insane, default: Medium
+        threshold:                     # String: The Alert Threshold for this set of rules, one of Off, Low, Medium, High, default: Medium
+      rules:                           # A list of one or more active scan rules and associated settings which override the defaults
+      - id:                            # Int: The rule id as per https://www.zaproxy.org/docs/alerts/
+        name:                          # Comment: The name of the rule for documentation purposes - this is not required or actually used
+        strength:                      # String: The Attack Strength for this rule, one of Low, Medium, High, Insane, default: Medium
+        threshold:                     # String: The Alert Threshold for this rule, one of Off, Low, Medium, High, default: Medium
+
+  - type: alertFilter                  # Used to change the risk levels of alerts
+    parameters:
+      deleteGlobalAlerts: true         # Boolean, if true then will delete all existing global alerts, default false
+    alertFilters:                      # A list of alertFilters to be applied
+      - ruleId:                        # Int: Mandatory alert rule id
+        newRisk:                       # String: Mandatory new risk level, one of 'False Positive', 'Info', 'Low', 'Medium', 'High'
+        context:                       # String: Optional context name, if empty then a global alert filter will be created
+        url:                           # String: Optional string to match against the alert, supports environment vars
+        urlRegex:                      # Boolean: Optional, if true then the url is a regex
+        parameter:                     # String: Optional string to match against the alert parameter field
+        parameterRegex:                # Boolean: Optional, if true then the parameter is a regex, supports environment vars
+        attack:                        # String: Optional string to match against the alert attack field
+        attackRegex:                   # Boolean: Optional, if true then the attack is a regex
+        evidence:                      # String: Optional string to match against the alert evidence field
+        evidenceRegex:                 # Boolean: Optional, if true then the evidence is a regex
+
+  - type: passiveScan-config           # Passive scan configuration
+    parameters:
+      maxAlertsPerRule:                # Int: Maximum number of alerts to raise per rule, default: 0 unlimited
+	  scanOnlyInScope:                 # Bool: Only scan URLs in scope (recommended), default: true
+      maxBodySizeInBytesToScan:        # Int: Maximum body size to scan, default: 0 - will scan all messages
+
+  - type: "replacer"                   # Replacer rules
+    parameters:
+      deleteAllRules:                  # Boolean, if true then will delete all existing replacer rules, default false
+    rules:                             # A list of replacer rules
+      - description:                   # String, the name of the rule
+        url:                           # String, a regex which will be used to match URLs, if empty then it will match all
+        matchType:                     # String, one of req_header, req_header_str, req_body_str, resp_header, resp_header_str, resp_body_str
+        matchString:                   # String, will be used to identify what should be replaced
+        matchRegex:                    # Boolean, if set then the matchString will be treated as a regex, default false
+        replacementString:             # String, the new string that will replace the specified selection
+
+  - type: script
+    parameters:
+      action:                    # String: The executed action - available actions: add, remove, run, loaddir, enable, disable
+      type:                      # String: The type of the script
+      engine:                    # String: The script engine to use - can be used to override the default engine for the file extension
+      name:                      # String: The name of the script, defaults to the file name
+      source:                    # String: The full or relative path, must be readable
+      target:                    # String: The URL to be invoked for "targeted" script type
+
+  - type: requestor                    # Used to send specific requests to targets
+    parameters:
+      user:                            # String: An optional user to use for authenticated requests, must be defined in the env
+    requests:                          # A list of requests to make
+      - url:                           # String: A mandatory URL of the request to be made
+
+  - type: graphql                      # GraphQL definition import
+    parameters:
+      endpoint:                        # String: the endpoint URL, default: null, no schema is imported
+
+  - type: import                        # Import a file of requests
+    parameters:
+      type:                            # String: One of ['har', 'modsec2', 'url', 'zap_messages']
+      fileName:                        # String: Name of the file containing the data
+
+  - type: openapi                      # OpenAPI definition import
+    parameters:
+      apiFile:                         # String: Local file containing the OpenAPI definition, default: null, no definition will be imported
+      apiUrl:                          # String: URL containing the OpenAPI definition, default: null, no definition will be imported
+      context:                         # String: Context to use when importing the OpenAPI definition, default: first context.
+      targetUrl:                       # String: URL which overrides the target defined in the definition, default: null, the target will not be overridden
+
+  - type: postman         # Postman collection import
+    parameters:
+      collectionFile:     # String: Local file containing the Postman collection, default: null, no collection will be imported
+      collectionUrl:      # String: URL containing the Postman collection, default: null, no collection will be imported
+      variables:          # String: Comma-separated list of variables as key-value pairs in the format key1=value1,key2=value2,..., these variables will have precedence over the collection ones
+
+  - type: sequence-import      # Imports a sequence from a HAR file.
+    parameters:
+      name:                    # The name by which the seq will be known in ZAP.
+      path:                    # The full/relative path to the HAR file to import.
+
+  - type: soap                         # SOAP WSDL import
+    parameters:
+      wsdlFile:                        # String: Local file path of the WSDL, default: null, no definition will be imported
+      wsdlUrl:                         # String: URL pointing to the WSDL, default: null, no definition will be imported
+
+  - type: spider                       # The traditional spider - fast but doesnt handle modern apps so well
+    parameters:
+      context:                         # String: Name of the context to spider, default: first context
+      user:                            # String: An optional user to use for authentication, must be defined in the env
+      url:                             # String: Url to start spidering from, default: first context URL
+      maxDuration:                     # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited
+      maxDepth:                        # Int: The maximum tree depth to explore
+      maxChildren:                     # Int: The maximum number of children to add to each node in the tree
+    tests:
+      - name: 'At least X URLs found'                   # String: Name of the test, default: statistic + operator + value
+        type: 'stats'                                   # String: Type of test, only 'stats' is supported for now
+        statistic: 'automation.spider.urls.added'       # String: Name of an integer / long statistic, currently supported: 'automation.spider.urls.added'
+        operator: '>='                                  # String ['==', '!=', '>=', '>', '<', '<=']: Operator used for testing
+        value: 100                                      # Int: Change this to the number of URLs you expect to find
+        onFail: 'info'                                  # String: One of 'warn', 'error', 'info', mandatory
+
+  - type: spiderAjax                   # The ajax spider - slower than the standard spider but handles modern apps well
+    parameters:
+      context:                         # String: Name of the context to spider, default: first context
+      user:                            # String: An optional user to use for authentication, must be defined in the env
+      url:                             # String: Url to start spidering from, default: first context URL
+      maxDuration:                     # Int: The max time in minutes the ajax spider will be allowed to run for, default: 0 unlimited
+      maxCrawlDepth:                   # Int: The max depth that the crawler can reach, default: 10, 0 is unlimited
+      numberOfBrowsers:                # Int: The number of browsers the spider will use, more will be faster but will use up more memory, default: number of cores
+      browserId:                       # String: Browser Id to use, default: firefox-headless
+      runOnlyIfModern:                 # Boolean: If true then the spider will only run if a "modern app" alert is raised, default: false
+    tests:
+      - name: 'At least X URLs found'        # String: Name of the test, default: statistic + operator + value
+        type: 'stats'                        # String: Type of test, only 'stats' is supported for now
+        statistic: 'stats.spiderAjax.urls.added'   # String: Name of an integer / long statistic, currently supported: 'stats.spiderAjax.urls.added'
+        operator: '>='                       # String ['==', '!=', '>=', '>', '<', '<=']: Operator used for testing
+        value: 100                           # Int: Change this to the number of URLs you expect to find
+        onFail: 'info'                       # String [warn, error, info]: Change this to 'warn' or 'error' for the test to take effect
+
+  - type: spiderClient                 # The client spider - a spider which explores modern web apps more effectively
+    parameters:
+      context:                         # String: Name of the context to spider, default: first context
+      user:                            # String: An optional user to use for authentication, must be defined in the env
+      url:                             # String: URL to start spidering from, default: first context URL
+
+  - type: delay                        # Pause the plan for a set period of time or event (file created, programmatic method called, API endpoint called)
+    parameters:
+      time:                            # String: The time to wait, format any of ['hh:mm:ss', 'mm:ss', 'ss'], default: 0
+      fileName:                        # String: Name of a file which will cause the job to end early if created, default: empty
+
+  - type: passiveScan-wait             # Passive scan wait for the passive scanner to finish
+    parameters:
+      maxDuration:                     # Int: The max time in minutes to wait for the passive scanner, default: 0 unlimited
+    tests:
+      - name:                                  # Name of the test, optional
+        type:                                  # String: Specifies the type of test (in this job only 'alert' is supported)
+        action:                                # String: The condition (presence/absence) of the alert, default: passIfAbsent  
+        scanRuleId:                            # Integer: The id of the scanRule which generates the alert, mandatory  
+        alertName:                             # String: The name of the alert generated, optional
+        url:                                   # String: The url of the request corresponding to the alert generated, optional
+        method:                                # String: The method of the request corresponding to the alert generated, optional
+        attack:                                # String: The actual attack which generated the alert, optional
+        param:                                 # String: The parameter which was modified to generate the alert, optional
+        evidence:                              # String: The evidence corresponding to the alert generated, optional
+        confidence:                            # String: The confidence of the alert, one of 'False Positive', 'Low', 'Medium', 'High', 'Confirmed', optional
+        risk:                                  # String: The risk of the alert, one of 'Informational', 'Low', 'Medium', 'High', optional
+        otherInfo:                             # String: Addional information corresponding to the alert, optional
+        onFail:                                # String: One of 'warn', 'error', 'info', mandatory
+
+  - type: prune           # Prunes nodes from the Sites Tree using Sites Tree data (YAML) from a file
+    parameters:
+      fileName:           # String: Name/path to the file
+
+  - type: activeScan                   # The active scanner - this actively attacks the target so should only be used with permission
+    parameters:
+      context:                         # String: Name of the context to attack, default: first context
+      user:                            # String: An optional user to use for authentication, must be defined in the env
+      url:                             # String: The subtree to active scan, default: all URLs of the context
+      policy:                          # String: Name of the scan policy to be used, default: Default Policy
+      maxRuleDurationInMins:           # Int: The max time in minutes any individual rule will be allowed to run for, default: 0 unlimited
+      maxScanDurationInMins:           # Int: The max time in minutes the active scanner will be allowed to run for, default: 0 unlimited
+    tests:
+      - name: 'test one'                       # Name of the test, optional
+        type: alert                            # Specifies that the test is of type 'alert'
+        action: passIfPresent/passIfAbsent     # String: The condition (presence/absence) of the alert, default: passIfAbsent  
+        scanRuleId:                            # Integer: The id of the scanRule which generates the alert, mandatory  
+        alertName:                             # String: The name of the alert generated, optional
+        url: http://www.example.com/path       # String: The url of the request corresponding to the alert generated, optional
+        method:                                # String: The method of the request corresponding to the alert generated, optional
+        attack:                                # String: The actual attack which generated the alert, optional
+        param:                                 # String: The parameter which was modified to generate the alert, optional
+        evidence:                              # String: The evidence corresponding to the alert generated, optional
+        confidence:                            # String: The confidence of the alert, one of 'False Positive', 'Low', 'Medium', 'High', 'Confirmed', optional
+        risk:                                  # String: The risk of the alert, one of 'Informational', 'Low', 'Medium', 'High', optional
+        otherInfo:                             # String: Addional information corresponding to the alert, optional
+        onFail: 'info'                         # String: One of 'warn', 'error', 'info', mandatory
+
+  - type: sequence-activeScan                  # Active scans one or all sequences.
+    parameters:
+      sequence:                                # String: The name of the sequence, or empty to active scan all sequences.
+
+  - type: export          # Exports data into a file
+    parameters:
+      fileName:           # String: Name/path to the file
+
+  - type: report                       # Report generation
+    parameters:
+      template:                        # String: The template id, default: risk-confidence-html
+      theme:                           # String: The template theme, default: the first theme defined for the template (if any)
+      reportDir:                       # String: The directory into which the report will be written
+      reportFile:                      # String: The report file name pattern, default: {{yyyy-MM-dd}}-ZAP-Report-[[site]]
+      reportTitle:                     # String: The report title
+      reportDescription:               # String: The report description
+
+  - type: exitStatus                   # Sets the exit code based on scan results
+    parameters:
+      errorLevel:                      # String: Informational, Low, Medium, High, default: not set
+      warnLevel:                       # String: Informational, Low, Medium, High, default: not set
+
