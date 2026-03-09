@@ -1,0 +1,18 @@
+=== Comprehensive Tool Comparison ===
+
+Terraform Scanning Results:
+  - tfsec: 53 findings
+  - Checkov: 78 findings
+  - Terrascan: 22 findings
+
+Pulumi Scanning Results (KICS): 6 findings
+  CRITICAL: 1 | HIGH: 2 | MEDIUM: 1 | INFO: 2
+
+Ansible Scanning Results (KICS): 10 findings
+  HIGH: 9 | LOW: 1
+
+Tool Effectiveness Summary:
+  tfsec     - Fast, Terraform-specific, low noise, 53 findings
+  Checkov   - Broadest coverage, policy-as-code, 78 findings
+  Terrascan - Compliance-focused (PCI-DSS/HIPAA), 22 findings
+  KICS      - Multi-framework (Pulumi + Ansible), 16 total findings
