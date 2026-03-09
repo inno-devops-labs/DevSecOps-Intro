@@ -1,0 +1,32 @@
+- Nikto v2.6.0/
++ Target Host: localhost
++ Target Port: 3000
++ GET /: Retrieved access-control-allow-origin header: *.
++ GET /: Uncommon header(s) 'x-recruiting' found, with contents: /#/jobs.
++ GET /robots.txt: Entry '/ftp/' is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file: 
++ GET /robots.txt: contains 1 entry which should be manually viewed. See: https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt: 
++ GET /: Suggested security header missing: strict-transport-security. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security: 
++ GET /: Suggested security header missing: content-security-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP: 
++ GET /: Suggested security header missing: referrer-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy: 
++ GET /: Suggested security header missing: permissions-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy: 
++ GET /.psql_history: This might be interesting.
++ GET /ftp/: This might be interesting.
++ GET /public/: This might be interesting.
++ GET /.htpasswd: Contains authorization information.
++ GET /.bash_history: A user's home directory may be set to the web root, the shell history was retrieved. This should not be accessible via the web.
++ GET /.mysql_history: Database SQL?.
++ GET /.sh_history: A user's home directory may be set to the web root, the shell history was retrieved. This should not be accessible via the web.
++ GET /.sqlite_history: This might be interesting.
++ GET /userdata.json: This might be interesting.
++ GET /login.json: This might be interesting.
++ GET /master.json: This might be interesting.
++ GET /masters.json: This might be interesting.
++ GET /connections.json: This might be interesting.
++ GET /connection.json: This might be interesting.
++ GET /PasswordsData.json: This might be interesting.
++ GET /users.json: This might be interesting.
++ GET /conndb.json: This might be interesting.
++ GET /conn.json: This might be interesting.
++ GET /accounts.json: This might be interesting.
++ GET /JAMonAdmin.jsp: JAMon - Java Application Monitor Admin interface identified. Versions 2.7 and earlier contain XSS vulnerabilities. See: CVE-2013-6235: 
++ GET /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/: 
