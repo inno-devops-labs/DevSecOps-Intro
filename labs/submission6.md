@@ -65,6 +65,40 @@ docker run --rm -v "${PWD}/labs/lab6/vulnerable-iac/terraform:/tf" `
 
 Checkov reported **78 failed checks** — the highest count among all three Terraform tools. Its policy-as-code engine covers a broader set of checks including resource tagging, logging, backup policies, and compliance best practices that tfsec and Terrascan do not check by default.
 
+> **Note:** The version of Checkov used (`bridgecrew/checkov:latest`) does not populate a `severity` field in its JSON output for Terraform checks — all 78 `failed_checks` entries have a blank `severity` value. Severity information must be inferred from the check descriptions and Bridgecrew documentation.
+
+**Sample findings (first 15 unique checks):**
+
+| Check ID | Description |
+|----------|-------------|
+| CKV_AWS_16 | Ensure all data stored in the RDS is securely encrypted at rest |
+| CKV_AWS_17 | Ensure all data stored in RDS is not publicly accessible |
+| CKV_AWS_18 | Ensure the S3 bucket has access logging enabled |
+| CKV_AWS_20 | S3 Bucket has an ACL defined which allows public READ access |
+| CKV_AWS_21 | Ensure all data stored in the S3 bucket have versioning enabled |
+| CKV_AWS_23 | Ensure every security group and rule has a description |
+| CKV_AWS_24 | Ensure no security groups allow ingress from 0.0.0.0:0 to port 22 |
+| CKV_AWS_25 | Ensure no security groups allow ingress from 0.0.0.0:0 to port 3389 |
+| CKV_AWS_28 | Ensure DynamoDB point in time recovery (backup) is enabled |
+| CKV_AWS_40 | Ensure IAM policies are attached only to groups or roles |
+| CKV_AWS_41 | Ensure no hard coded AWS access key and secret key exists in provider |
+| CKV_AWS_53 | Ensure S3 bucket has block public ACLS enabled |
+| CKV_AWS_62 | Ensure no IAM policies documents allow "*-*" administrative privileges |
+| CKV_AWS_63 | Ensure no IAM policies documents allow "*" as a statement's actions |
+| CKV_AWS_161 | Ensure RDS database has IAM authentication enabled |
+
+**JSON evidence (excerpt from `checkov-terraform-results.json`):**
+
+```json
+{
+  "summary": {
+    "passed": 48,
+    "failed": 78,
+    "parsing_error": 0
+  }
+}
+```
+
 ---
 
 #### Terrascan — 22 Findings
@@ -76,6 +110,56 @@ docker run --rm -v "${PWD}/labs/lab6/vulnerable-iac/terraform:/iac" `
 ```
 
 Terrascan reported **22 violated policies** — the lowest count among Terraform tools. Terrascan focuses on compliance-mapped controls (PCI-DSS, HIPAA, CIS) and does not flag stylistic or best-practice issues, resulting in a tighter, lower-noise finding set.
+
+**Severity distribution (Terrascan):**
+
+| Severity | Count |
+|----------|------:|
+| HIGH | 14 |
+| MEDIUM | 8 |
+| LOW | 0 |
+| **Total** | **22** |
+
+**All Terrascan findings:**
+
+| Rule Name | Severity | Description |
+|-----------|----------|-------------|
+| rdsPubliclyAccessible | HIGH | RDS Instance publicly_accessible flag is true |
+| rdsHasStorageEncrypted | HIGH | RDS database instances must encrypt underlying storage (AES-256) |
+| rdsAutoMinorVersionUpgradeEnabled | HIGH | RDS Instance Auto Minor Version Upgrade flag disabled |
+| rdsBackupDisabled | HIGH | Ensure automated backups are enabled for AWS RDS instances (×2) |
+| rdsLogExportDisabled | MEDIUM | Ensure CloudWatch logging is enabled for AWS DB instances (×2) |
+| rdsIamAuthEnabled | MEDIUM | Ensure that your RDS database has IAM Authentication enabled (×2) |
+| s3Versioning | HIGH | Enabling S3 versioning enables easy recovery from unintended user actions (×2) |
+| s3PublicAclNoAccessBlock | HIGH | Ensure S3 buckets do not have both public ACL and public access block |
+| allUsersReadAccess | HIGH | Misconfigured S3 buckets can leak private information to the entire internet |
+| dynamoDbEncrypted | MEDIUM | Ensure DynamoDB is encrypted at rest |
+| dynamoderecovery_enabled | MEDIUM | Ensure Point In Time Recovery is enabled for DynamoDB Tables |
+| port22OpenToInternet | HIGH | Security Groups — Unrestricted Specific Ports (SSH, 22) |
+| port3306AlbNetworkPortSecurity | HIGH | Security Groups — Unrestricted Specific Ports (MySQL, TCP 3306) |
+| port3389OpenToInternet | HIGH | Security Groups — Unrestricted Specific Ports (RDP, TCP 3389) |
+| port5432AlbNetworkPortSecurity | HIGH | Security Groups — Unrestricted Specific Ports (PostgreSQL, TCP 5432) |
+| portWideOpenToPublic | HIGH | Ensure no security group allows traffic from 0.0.0.0/0 to ALL ports |
+| iamUserInlinePolicy | MEDIUM | Ensure IAM policies are attached only to groups or roles |
+| programmaticAccessCreation | MEDIUM | Ensure no exposed Amazon IAM access keys exist |
+
+**JSON evidence (excerpt from `terrascan-results.json`):**
+
+```json
+{
+  "results": {
+    "scan_summary": {
+      "file/folder": "/iac",
+      "iac_type": "terraform",
+      "policies_validated": 167,
+      "violated_policies": 22,
+      "low": 0,
+      "medium": 8,
+      "high": 14
+    }
+  }
+}
+```
 
 ---
 
@@ -118,6 +202,31 @@ docker run -t --rm -v "${PWD}/labs/lab6/vulnerable-iac/pulumi:/src" `
 | EC2 Instance Monitoring Disabled | MEDIUM | Pulumi-vulnerable.yaml |
 | DynamoDB Table Point In Time Recovery Disabled | INFO | Pulumi-vulnerable.yaml |
 | EC2 Not EBS Optimized | INFO | Pulumi-vulnerable.yaml |
+
+> **Note on coverage:** KICS found 6 issues in `Pulumi-vulnerable.yaml`, while `__main__.py` contains 20 additional intentional vulnerabilities. To partially close this gap, Gitleaks was run on the Python file:
+>
+> ```powershell
+> docker run --rm -v "${PWD}/labs/lab6/vulnerable-iac/pulumi:/src" `
+>   zricethezav/gitleaks:latest detect --source /src --no-git `
+>   --report-format json --report-path /src/gitleaks-report.json --exit-code 0
+> ```
+>
+> Gitleaks found **1 additional secret** in `__main__.py`: a hardcoded Stripe API key at line 23. The AWS access key on line 16 was not flagged because Gitleaks allowlists that well-known AWS documentation example key. The remaining ~18 issues in `__main__.py` — open security groups, unencrypted EBS/RDS/DynamoDB, IAM wildcards, passwords in EC2 user-data, etc. — are infrastructure configuration issues expressed in Python API calls. No current open-source static tool can detect these in Pulumi Python code; Pulumi-aware analysis for the Python SDK does not yet exist in OSS tooling.
+
+**JSON evidence (excerpt from `kics-pulumi-results.json`):**
+
+```json
+{
+  "total_counter": 6,
+  "severity_counters": {
+    "CRITICAL": 1,
+    "HIGH": 2,
+    "MEDIUM": 1,
+    "INFO": 2,
+    "LOW": 0
+  }
+}
+```
 
 **KICS Pulumi query catalog evaluation:**
 
@@ -287,16 +396,35 @@ docker run -t --rm -v "${PWD}/labs/lab6/vulnerable-iac/ansible:/src" `
 | LOW | 1 |
 | **Total** | **10** |
 
-**All KICS Ansible findings:**
+**All KICS Ansible findings (per file and line from `kics-ansible-results.json`):**
 
-| Finding | Severity | File |
-|---------|----------|------|
-| Passwords And Secrets - Generic Password | HIGH | configure.yml |
-| Passwords And Secrets - Generic Password | HIGH | deploy.yml |
-| Passwords And Secrets - Generic Password | HIGH | inventory.ini (×4) |
-| Passwords And Secrets - Generic Secret | HIGH | inventory.ini |
-| Passwords And Secrets - Password in URL | HIGH | deploy.yml (×2) |
-| Unpinned Package Version | LOW | deploy.yml |
+| Finding | Severity | File | Line |
+|---------|----------|------|------|
+| Passwords And Secrets - Generic Password | HIGH | configure.yml | 16 |
+| Passwords And Secrets - Generic Password | HIGH | inventory.ini | 5 |
+| Passwords And Secrets - Generic Password | HIGH | inventory.ini | 10 |
+| Passwords And Secrets - Generic Password | HIGH | inventory.ini | 18 |
+| Passwords And Secrets - Generic Password | HIGH | inventory.ini | 19 |
+| Passwords And Secrets - Generic Password | HIGH | deploy.yml | 12 |
+| Passwords And Secrets - Generic Secret | HIGH | inventory.ini | 20 |
+| Passwords And Secrets - Password in URL | HIGH | deploy.yml | 16 |
+| Passwords And Secrets - Password in URL | HIGH | deploy.yml | 72 |
+| Unpinned Package Version | LOW | deploy.yml | 99 |
+
+**JSON evidence (excerpt from `kics-ansible-results.json`):**
+
+```json
+{
+  "total_counter": 10,
+  "severity_counters": {
+    "CRITICAL": 0,
+    "HIGH": 9,
+    "MEDIUM": 0,
+    "LOW": 1,
+    "INFO": 0
+  }
+}
+```
 
 ---
 
@@ -368,6 +496,32 @@ A package installation task in `deploy.yml` installs a package without specifyin
     name: nodejs=18.20.4-1nodesource1
     state: present
 ```
+
+**Issue 4: Missing `no_log` on Sensitive Tasks (Manual Finding — not detected by KICS)**
+
+Several tasks in `deploy.yml` and `configure.yml` handle sensitive data (passwords, API keys, connection strings) but do not include `no_log: true`. Ansible logs all task arguments to stdout and to any configured logging backends by default.
+
+**Security impact:** Every CI/CD run that executes the playbook will print plaintext credentials to the build log. CI logs are typically retained for weeks or months and are accessible to anyone with pipeline read access — significantly broadening the credential exposure surface beyond the IaC file itself.
+
+**Remediation:**
+```yaml
+# BEFORE (vulnerable) — credentials visible in Ansible output
+- name: Create application user
+  mysql_user:
+    name: appuser
+    password: "{{ db_password }}"
+    host: "%"
+
+# AFTER (secure) — suppress logging for sensitive tasks
+- name: Create application user
+  mysql_user:
+    name: appuser
+    password: "{{ vault_db_password }}"
+    host: "%"
+  no_log: true
+```
+
+> **KICS limitation:** KICS did not flag the absence of `no_log: true` because static analysis can detect the *presence* of a known bad pattern but not the *absence* of a required directive without deep task-semantic understanding. This type of check requires a custom rule or a dedicated Ansible linter (e.g., `ansible-lint` rule `no-log-password`).
 
 ---
 
@@ -522,6 +676,11 @@ docker run -t --rm -v "${PWD}/labs/lab6/vulnerable-iac/pulumi:/src" `
 # KICS — Ansible
 docker run -t --rm -v "${PWD}/labs/lab6/vulnerable-iac/ansible:/src" `
   checkmarx/kics:latest scan -p /src -o /src/kics-report --report-formats json,html
+
+# Gitleaks — Pulumi Python secrets scan
+docker run --rm -v "${PWD}/labs/lab6/vulnerable-iac/pulumi:/src" `
+  zricethezav/gitleaks:latest detect --source /src --no-git `
+  --report-format json --report-path /src/gitleaks-report.json --exit-code 0
 ```
 
 ### Tools and Versions
@@ -530,3 +689,4 @@ docker run -t --rm -v "${PWD}/labs/lab6/vulnerable-iac/ansible:/src" `
 - **Checkov** `bridgecrew/checkov:latest` — Policy-as-code multi-framework scanner
 - **Terrascan** `tenable/terrascan:latest` — OPA-based compliance-focused scanner
 - **KICS** `checkmarx/kics:latest` — Open-source multi-framework IaC scanner with first-class Pulumi and Ansible support
+- **Gitleaks** `zricethezav/gitleaks:latest` — Secrets scanner used to supplement KICS on the Pulumi Python file
