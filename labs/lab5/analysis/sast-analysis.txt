@@ -1,0 +1,22 @@
+=== SAST Analysis Report ===
+
+Semgrep scan summary:
+- Total findings: 25
+- Files scanned: 1014
+- Files with findings: 20
+
+Severity breakdown:
+   7 ERROR
+  18 WARNING
+
+Top rule categories:
+   6 javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection
+   4 javascript.express.security.audit.express-res-sendfile.express-res-sendfile
+   4 javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing
+   4 generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var
+   2 javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag
+   1 javascript.lang.security.audit.code-string-concat.code-string-concat
+   1 javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret
+   1 javascript.express.security.injection.raw-html-format.raw-html-format
+   1 javascript.express.security.audit.possible-user-input-redirect.unknown-value-in-redirect
+   1 javascript.express.security.audit.express-open-redirect.express-open-redirect

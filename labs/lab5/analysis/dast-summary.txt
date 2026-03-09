@@ -1,0 +1,17 @@
+=== DAST Summary ===
+
+ZAP (authenticated):
+- Total alerts: 14
+- Severity breakdown: high=1, medium=5, low=4, info=4
+
+Nuclei:
+- Total findings: 2
+- Severity breakdown: critical=0, high=0, medium=0, low=0, info=2
+
+Nikto:
+- Total findings: 82
+
+SQLmap:
+- Confirmed SQLi findings: 2
+
+Combined DAST findings (raw sum): 100
