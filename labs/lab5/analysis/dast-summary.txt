@@ -1,0 +1,38 @@
+DAST Multi-Tool Results Summary
+Generated: Sun, Mar  8, 2026  5:09:40 AM
+
+=== ZAP ===
+  [HIGH] SQL Injection
+  [MED] Content Security Policy (CSP) Header Not Set
+  [MED] Cross-Domain Misconfiguration
+  [MED] HTTP Only Site
+  [MED] Missing Anti-clickjacking Header
+  [MED] Session ID in URL Rewrite
+  [LOW] Cross-Domain JavaScript Source File Inclusion
+  [LOW] Private IP Disclosure
+  [LOW] Timestamp Disclosure - Unix
+  [LOW] X-Content-Type-Options Header Missing
+Total: 15 alert types
+
+=== Nuclei ===
+  Findings: 25
+  [UNKNOWN] DNS Rebinding Attack
+  [INFO] Wildcard DNS Configuration - Detection
+  [INFO] Public Swagger API - Detect
+  [INFO] robots.txt file
+  [INFO] X-Recruiting Header
+
+=== Nikto ===
+  Findings: 84
+  + GET /: Retrieved access-control-allow-origin header: *.
+  + GET /:X-Frame-Options header is deprecated and was replaced with the Content-Security-Policy HTTP header with the frame-ancestors directive instead. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options: 
+  + GET /: Uncommon header(s) 'x-recruiting' found, with contents: /#/jobs.
+  + GET /robots.txt: Entry '/ftp/' is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file: 
+  + GET /robots.txt: contains 1 entry which should be manually viewed. See: https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt: 
+
+=== SQLmap ===
+  Injection points: 1
+  Parameter: #1* (URI)
+      Type: boolean-based blind
+      Title: AND boolean-based blind - WHERE or HAVING clause
+  back-end DBMS: SQLite

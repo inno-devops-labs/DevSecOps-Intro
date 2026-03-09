@@ -67,7 +67,7 @@ Semgrep detected six distinct vulnerability categories across the codebase. SQL 
 | File | `/src/lib/insecurity.ts` |
 | Line | 56 |
 | Severity | WARNING |
-| Description | The RSA private key used to sign JWTs is hardcoded in the source file. Combined with Trivy's finding of the same key baked into the Docker image, any attacker with access to the image or source can forge arbitrary JWT tokens for any user, including admin. |
+| Description | The RSA private key used to sign JWTs is hardcoded in the source file. Any attacker with access to the source can forge arbitrary JWT tokens for any user, including admin. |
 
 **5. SQL Injection in Code Fix Challenge Files**
 
@@ -90,11 +90,11 @@ Semgrep detected six distinct vulnerability categories across the codebase. SQL 
 | Scan Type | URLs Discovered | Spider Method |
 |-----------|----------------|---------------|
 | Unauthenticated baseline | 95 | Traditional spider only |
-| Authenticated (spider) | 112 | Traditional spider with admin session |
-| Authenticated (AJAX spider) | 387 | JavaScript-aware AJAX spider |
-| **Total authenticated** | **499** | Combined |
+| Authenticated (spider) | 58 | Traditional spider with admin session |
+| Authenticated (AJAX spider) | 567 | JavaScript-aware AJAX spider |
+| **Total authenticated** | **625** | Combined |
 
-The authenticated scan discovered **5.25× more URLs** than the unauthenticated baseline (499 vs 95). The AJAX spider alone found 387 URLs by executing Angular JavaScript and navigating the SPA dynamically, which the traditional spider cannot do.
+The authenticated scan discovered **6.6× more URLs** than the unauthenticated baseline (625 vs 95). The AJAX spider alone found 567 URLs by executing Angular JavaScript and navigating the SPA dynamically, which the traditional spider cannot do.
 
 **Examples of authenticated-only endpoints discovered:**
 
@@ -108,16 +108,16 @@ The authenticated scan discovered **5.25× more URLs** than the unauthenticated 
 
 **Why authenticated scanning matters:**
 
-Unauthenticated scans only see the attack surface available to anonymous users — login forms, public product pages, and static assets. The majority of a web application's functionality and its most sensitive operations (account management, admin panels, payment processing) sit behind authentication. Without authenticating, a scanner misses the endpoints most likely to contain authorization flaws, IDOR vulnerabilities, and business logic issues. In this case, authentication expanded coverage by over 400 additional URLs and enabled the active scanner to test admin-only endpoints that represent the highest business risk.
+Unauthenticated scans only see the attack surface available to anonymous users — login forms, public product pages, and static assets. The majority of a web application's functionality and its most sensitive operations (account management, admin panels, payment processing) sit behind authentication. Without authenticating, a scanner misses the endpoints most likely to contain authorization flaws, IDOR vulnerabilities, and business logic issues. In this case, authentication expanded coverage by over 500 additional URLs and enabled the active scanner to test admin-only endpoints that represent the highest business risk.
 
 ### 2.2 Tool Comparison Matrix
 
 | Tool | Findings | Severity Breakdown | Best Use Case |
 |------|----------|--------------------|---------------|
-| ZAP (authenticated) | 18 alerts | 2 High, 8 Medium, 8 Low | Comprehensive web app scanning with authentication support; covers headers, injection, session management |
-| ZAP (unauthenticated) | 10 alerts | 0 High, 0 Medium, 10 Warn | Quick baseline scan of publicly accessible endpoints |
+| ZAP (authenticated) | 15 alerts | 1 High, 5 Medium, 4 Low | Comprehensive web app scanning with authentication support; covers headers, injection, session management |
+| ZAP (unauthenticated) | 13 alerts | 0 High, 2 Medium, 6 Low | Quick baseline scan of publicly accessible endpoints |
 | Nuclei | 25 matches | 1 Medium, 23 Info, 1 Unknown | Fast template-based known-CVE detection and technology fingerprinting |
-| Nikto | 82 findings | Mixed (server-level) | Web server misconfiguration and backup file detection |
+| Nikto | 84 findings | Mixed (server-level) | Web server misconfiguration and backup file detection |
 | SQLmap | 1 confirmed SQLi | Critical (confirmed exploitation) | Deep SQL injection confirmation and data extraction |
 
 ### 2.3 Tool-Specific Strengths
@@ -147,7 +147,7 @@ Key findings from Nuclei:
 
 **Nikto — Web Server Misconfiguration and Backup File Detection**
 
-Nikto specializes in server-level issues and is particularly effective at enumerating potentially dangerous files and checking server configuration. It reported 82 findings in 158 seconds.
+Nikto specializes in server-level issues and is particularly effective at enumerating potentially dangerous files and checking server configuration. It reported 84 findings in 158 seconds.
 
 Key findings from Nikto:
 - **Accessible `/ftp/` Directory (Notable)** — The robots.txt entry for `/ftp/` returns HTTP 200 rather than a redirect or 403. This directory contains sensitive backup files including `package-lock.json.bak` and easter egg files.
@@ -177,11 +177,11 @@ Key findings from SQLmap:
 | Approach | Tool | Findings |
 |----------|------|----------|
 | SAST | Semgrep | 25 |
-| DAST | ZAP (authenticated) | 18 |
+| DAST | ZAP (authenticated) | 15 |
 | DAST | Nuclei | 25 |
-| DAST | Nikto | 82 |
+| DAST | Nikto | 84 |
 | DAST | SQLmap | 1 confirmed SQLi |
-| **Total DAST** | | **126** |
+| **Total DAST** | | **125** |
 
 **Vulnerability types found ONLY by SAST:**
 
@@ -251,19 +251,20 @@ docker run --rm --network host -v "$(pwd)/labs/lab5/zap:/zap/wrk/:rw" \
 
 # ZAP authenticated
 docker run --rm --network host -v "$(pwd)/labs/lab5:/zap/wrk/:rw" \
-  zaproxy/zap-stable:latest zap.sh -cmd -autorun /zap/wrk/scripts/zap-auth.yaml
+  zaproxy/zap-stable:latest zap.sh -cmd -port 8090 -autorun /zap/wrk/scripts/zap-auth.yaml
 
 # Nuclei
 docker run --rm --network host -v "$(pwd)/labs/lab5/nuclei:/app" \
-  projectdiscovery/nuclei:latest -u http://localhost:3000 \
+  projectdiscovery/nuclei:latest \
+  -ut -u http://localhost:3000 \
   -jsonl -o /app/nuclei-results.json
 
 # Nikto
 docker run --rm --network host -v "$(pwd)/labs/lab5/nikto:/tmp" \
-  ghcr.io/sullo/nikto:latest -h http://localhost:3000 -o /tmp/nikto-results.txt
+  alpine/nikto -h http://localhost:3000 -o /tmp/nikto-results.txt
 
 # SQLmap
-docker run --rm --network container:juice-shop-lab5 \
+docker run --rm --network host \
   -v "$(pwd)/labs/lab5/sqlmap:/output" secsi/sqlmap \
   -u "http://localhost:3000/rest/products/search?q=*" \
   --dbms=sqlite --batch --level=3 --risk=2 --technique=B \
