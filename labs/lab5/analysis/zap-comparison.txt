@@ -1,0 +1,12 @@
+ZAP Scan Comparison: Authenticated vs Unauthenticated
+Generated: Пн 09 мар 2026 20:57:42 MSK
+
+Unauthenticated Scan:
+  Total alerts: 12
+  High: 0
+  Medium: 2
+  Low: 6
+  Info: 4
+  Unique URLs with findings: 16
+
+Authenticated Scan: report not found (labs/lab5/zap/zap-report-auth.json)
