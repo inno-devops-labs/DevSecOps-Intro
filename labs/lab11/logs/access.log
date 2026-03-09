@@ -1,0 +1,14 @@
+172.20.0.1 - - [09/Mar/2026:11:14:22 +0000] "GET / HTTP/2.0" 200 5055 "-" "curl/8.7.1" rt=0.045 uct=0.002 urt=0.044
+172.20.0.1 - - [09/Mar/2026:11:14:22 +0000] "GET /assets/public/favicon_js.ico HTTP/2.0" 200 1550 "https://localhost:8443/" "Mozilla/5.0" rt=0.012 uct=0.001 urt=0.011
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 200 248 "-" "curl/8.7.1" rt=0.089 uct=0.002 urt=0.087
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 200 248 "-" "curl/8.7.1" rt=0.041 uct=0.001 urt=0.040
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 200 248 "-" "curl/8.7.1" rt=0.038 uct=0.001 urt=0.037
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 200 248 "-" "curl/8.7.1" rt=0.037 uct=0.001 urt=0.036
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 200 248 "-" "curl/8.7.1" rt=0.035 uct=0.001 urt=0.035
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 200 248 "-" "curl/8.7.1" rt=0.034 uct=0.001 urt=0.034
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 429 177 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 429 177 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+172.20.0.1 - - [09/Mar/2026:11:27:03 +0000] "POST /rest/user/login HTTP/2.0" 429 177 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+172.20.0.1 - - [09/Mar/2026:11:27:04 +0000] "POST /rest/user/login HTTP/2.0" 429 177 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+172.20.0.1 - - [09/Mar/2026:11:27:04 +0000] "POST /rest/user/login HTTP/2.0" 429 177 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+172.20.0.1 - - [09/Mar/2026:11:27:04 +0000] "POST /rest/user/login HTTP/2.0" 429 177 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
