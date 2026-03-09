@@ -1,0 +1,82 @@
+env:
+  contexts:
+    - name: "Juice Shop Auth"
+      urls:
+        - "http://localhost:3000"
+      includePaths:
+        - "http://localhost:3000.*"
+      excludePaths:
+        - ".*\\.js$"
+        - ".*\\.css$"
+        - ".*\\.png$"
+        - ".*\\.jpg$"
+        - ".*\\.ico$"
+        - ".*\\.woff2?$"
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://localhost:3000/rest/user/login"
+          loginRequestUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+        verification:
+          method: "poll"
+          loggedInRegex: ".*\"user\".*"
+          loggedOutRegex: ".*\"error\".*"
+          pollFrequency: 60
+          pollUnits: "requests"
+          pollUrl: "http://localhost:3000/rest/user/whoami"
+          pollAdditionalHeaders:
+            - header: "Authorization"
+              value: "Bearer {%token%}"
+      sessionManagement:
+        method: "cookie"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+  parameters:
+    failOnError: false
+    progressToStdout: true
+
+jobs:
+  - type: "spider"
+    parameters:
+      maxDuration: 5
+      url: "http://localhost:3000"
+      user: "admin"
+
+  - type: "spiderAjax"
+    parameters:
+      maxDuration: 10
+      url: "http://localhost:3000"
+      user: "admin"
+
+  - type: "passiveScan-config"
+    parameters:
+      maxAlertsPerRule: 10
+      enableTags: false
+
+  - type: "passiveScan-wait"
+    parameters:
+      maxDuration: 5
+
+  - type: "activeScan"
+    parameters:
+      user: "admin"
+      maxScanDurationInMins: 15
+      maxRuleDurationInMins: 3
+
+  - type: "report"
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap/"
+      reportFile: "report-auth.html"
+      reportTitle: "ZAP Authenticated Scan Report"
+
+  - type: "report"
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/zap/"
+      reportFile: "zap-report-auth.json"
+      reportTitle: "ZAP Authenticated Scan (JSON)"
