@@ -1,0 +1,12 @@
+# Ignore large source code directory
+semgrep/juice-shop/
+
+# Ignore Nuclei templates directory
+nuclei/templates/
+
+# Ignore SQLmap session files
+sqlmap/.sqlmap/
+sqlmap/*/session.sqlite
+sqlmap/*/log
+
+# Keep only result files

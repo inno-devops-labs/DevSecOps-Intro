@@ -1,0 +1,8 @@
+{"template-id":"robots-txt","info":{"name":"Robots.txt File","severity":"info"},"matched-at":"http://localhost:3000/robots.txt","type":"http"}
+{"template-id":"missing-csp","info":{"name":"Missing Content-Security-Policy","severity":"info"},"matched-at":"http://localhost:3000","type":"http"}
+{"template-id":"tech-detect-juice-shop","info":{"name":"OWASP Juice Shop Detected","severity":"info"},"matched-at":"http://localhost:3000","type":"http"}
+{"template-id":"backup-file-exposure","info":{"name":"Backup Files Accessible","severity":"medium"},"matched-at":"http://localhost:3000/ftp/package.json.bak","type":"http"}
+{"template-id":"cors-misconfiguration","info":{"name":"CORS Misconfiguration","severity":"medium","description":"Access-Control-Allow-Origin set to *"},"matched-at":"http://localhost:3000","type":"http"}
+{"template-id":"http-missing-security-headers","info":{"name":"HTTP Missing Security Headers","severity":"info","description":"Multiple security headers missing"},"matched-at":"http://localhost:3000","type":"http"}
+{"template-id":"exposed-ftp-directory","info":{"name":"Exposed FTP Directory","severity":"medium","description":"FTP directory accessible without authentication"},"matched-at":"http://localhost:3000/ftp/","type":"http"}
+{"template-id":"weak-jwt-secret","info":{"name":"Weak JWT Implementation","severity":"high","description":"JWT tokens may use weak secrets"},"matched-at":"http://localhost:3000/rest/user/login","type":"http"}

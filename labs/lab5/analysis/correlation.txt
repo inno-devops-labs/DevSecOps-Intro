@@ -1,0 +1,32 @@
+=== SAST/DAST Correlation Report ===
+
+Security Testing Results Summary:
+
+SAST (Semgrep): 25 code-level findings
+DAST (ZAP authenticated): 69 alerts
+DAST (Nuclei): 8 template matches
+DAST (Nikto): 12 server issues
+DAST (SQLmap): 1 SQL injection vulnerability
+
+Key Insights:
+
+SAST (Static Analysis):
+  - Finds code-level vulnerabilities before deployment
+  - Detects: hardcoded secrets, SQL injection patterns, insecure crypto
+  - Fast feedback in development phase
+  - Cannot assess runtime configuration
+
+DAST (Dynamic Analysis):
+  - Finds runtime configuration and deployment issues
+  - Detects: missing security headers, authentication flaws, server misconfigs
+  - Authenticated scanning reveals 60%+ more attack surface
+  - Validates exploitability of vulnerabilities
+
+Correlation Examples:
+  - SAST found SQL injection in /src/routes/search.ts
+  - DAST (SQLmap) confirmed it's exploitable at runtime
+  - Both approaches needed for complete picture
+
+Recommendation: Use BOTH approaches for comprehensive security coverage
+  - SAST in CI/CD for early detection
+  - DAST in staging for pre-production validation

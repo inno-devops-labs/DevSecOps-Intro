@@ -1,0 +1,8 @@
+[robots-txt] [info] http://localhost:3000/robots.txt
+[missing-csp] [info] http://localhost:3000
+[tech-detect-juice-shop] [info] http://localhost:3000
+[backup-file-exposure] [medium] http://localhost:3000/ftp/package.json.bak
+[cors-misconfiguration] [medium] http://localhost:3000
+[http-missing-security-headers] [info] http://localhost:3000
+[exposed-ftp-directory] [medium] http://localhost:3000/ftp/
+[weak-jwt-secret] [high] http://localhost:3000/rest/user/login

@@ -1,65 +1,43 @@
 #!/bin/bash
-# Compares authenticated vs unauthenticated ZAP scan results using actual report data
 
-set -e
-
-NOAUTH="labs/lab5/zap/zap-report-noauth.json"
-AUTH="labs/lab5/zap/zap-report-auth.json"
-OUT="labs/lab5/analysis/zap-comparison.txt"
-mkdir -p labs/lab5/analysis
-
-parse_report() {
-  local file="$1"
-  local label="$2"
-
-  if [ ! -f "$file" ]; then
-    echo "$label: report not found ($file)"
-    return
-  fi
-
-  echo "$label:"
-  python3 -c "
-import json, sys
-with open('$file') as f:
-    data = json.load(f)
-
-sites = data.get('site', [])
-total_alerts = 0
-by_risk = {'3': 0, '2': 0, '1': 0, '0': 0}
-risk_names = {'3': 'High', '2': 'Medium', '1': 'Low', '0': 'Info'}
-
-for site in sites:
-    if 'localhost:3000' not in site.get('@name', ''):
-        continue
-    for alert in site.get('alerts', []):
-        risk = alert.get('riskcode', '0')
-        by_risk[risk] = by_risk.get(risk, 0) + 1
-        total_alerts += 1
-
-print(f'  Total alerts: {total_alerts}')
-for code in ['3','2','1','0']:
-    print(f'  {risk_names[code]}: {by_risk[code]}')
-
-# count unique URLs scanned
-urls = set()
-for site in sites:
-    if 'localhost:3000' not in site.get('@name', ''):
-        continue
-    for alert in site.get('alerts', []):
-        for inst in alert.get('instances', []):
-            urls.add(inst.get('uri', ''))
-print(f'  Unique URLs with findings: {len(urls)}')
-"
-}
-
-{
-  echo "ZAP Scan Comparison: Authenticated vs Unauthenticated"
-  echo "Generated: $(date)"
-  echo ""
-  parse_report "$NOAUTH" "Unauthenticated Scan"
-  echo ""
-  parse_report "$AUTH" "Authenticated Scan"
-} | tee "$OUT"
-
+echo "=== ZAP Authenticated vs Unauthenticated Comparison ==="
 echo ""
-echo "Saved to: $OUT"
+
+# Count URLs discovered
+noauth_urls=$(grep -o '"url":' labs/lab5/zap/zap-report-noauth.json 2>/dev/null | wc -l | tr -d ' ')
+auth_urls=$(grep -o '"url":' labs/lab5/zap/zap-report-auth.json 2>/dev/null | wc -l | tr -d ' ')
+
+echo "URLs Discovered:"
+echo "  Unauthenticated scan: $noauth_urls URLs"
+echo "  Authenticated scan: $auth_urls URLs"
+echo "  Difference: $((auth_urls - noauth_urls)) additional URLs"
+echo ""
+
+# Count alerts by severity
+echo "Alerts by Severity:"
+echo ""
+echo "Unauthenticated Scan:"
+noauth_high=$(grep -c '"risk":"High"' labs/lab5/zap/zap-report-noauth.json 2>/dev/null || echo "0")
+noauth_med=$(grep -c '"risk":"Medium"' labs/lab5/zap/zap-report-noauth.json 2>/dev/null || echo "0")
+noauth_low=$(grep -c '"risk":"Low"' labs/lab5/zap/zap-report-noauth.json 2>/dev/null || echo "0")
+noauth_info=$(grep -c '"risk":"Informational"' labs/lab5/zap/zap-report-noauth.json 2>/dev/null || echo "0")
+echo "  High: $noauth_high"
+echo "  Medium: $noauth_med"
+echo "  Low: $noauth_low"
+echo "  Informational: $noauth_info"
+echo ""
+
+echo "Authenticated Scan:"
+auth_high=$(grep -c '"risk":"High"' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
+auth_med=$(grep -c '"risk":"Medium"' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
+auth_low=$(grep -c '"risk":"Low"' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
+auth_info=$(grep -c '"risk":"Informational"' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
+echo "  High: $auth_high"
+echo "  Medium: $auth_med"
+echo "  Low: $auth_low"
+echo "  Informational: $auth_info"
+echo ""
+
+# Show admin endpoints discovered
+echo "Sample Admin/Authenticated Endpoints Discovered:"
+grep -o '"url":"[^"]*admin[^"]*"' labs/lab5/zap/zap-report-auth.json 2>/dev/null | head -5 | sed 's/"url":"//g' | sed 's/"//g' || echo "  (checking...)"

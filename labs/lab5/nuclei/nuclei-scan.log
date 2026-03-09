@@ -1,0 +1,17 @@
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.7.1
+
+		projectdiscovery.io
+
+[[34mINF[0m] nuclei-templates are not installed, installing...
+[[34mINF[0m] Your current nuclei-templates  are outdated. Latest is v10.3.9
+[[31mERR[0m] Could not find template '/root/nuclei-templates': no templates found in path "/root/nuclei-templates"
+[[34mINF[0m] Current nuclei version: v3.7.1 ([92mlatest[0m)
+[[34mINF[0m] Current nuclei-templates version:  ([91moutdated[0m)
+[[34mINF[0m] Targets loaded for current scan: 1
+[[34mINF[0m] Scan completed in 1.573958ms. No results found.
+[[1;31mFTL[0m] Could not run nuclei: no templates provided for scan
