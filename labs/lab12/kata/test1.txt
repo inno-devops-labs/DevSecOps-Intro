@@ -1,0 +1,1 @@
+Linux 6.12.47 #1 SMP Wed Feb 19 12:00:00 UTC 2026 x86_64 Linux

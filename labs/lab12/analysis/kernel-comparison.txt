@@ -1,0 +1,3 @@
+=== Kernel Version Comparison ===
+Host kernel (runc uses this): 6.8.0-52-generic
+Kata guest kernel: Linux version 6.12.47 (kata-containers@kata) (gcc (GCC) 12.3.0, GNU ld (GNU Binutils) 2.40) #1 SMP Wed Feb 19 12:00:00 UTC 2026

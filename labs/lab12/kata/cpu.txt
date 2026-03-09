@@ -1,0 +1,1 @@
+model name	: Intel Core Processor (Skylake, IBRS)

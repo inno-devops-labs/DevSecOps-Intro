@@ -1,0 +1,7 @@
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+[    0.000000] Linux version 6.12.47 (kata-containers@kata) (gcc (GCC) 12.3.0, GNU ld (GNU Binutils) 2.40) #1 SMP Wed Feb 19 12:00:00 UTC 2026
+[    0.000000] Command line: tsc=reliable no_timer_check rcupdate.rcu_expedited=1 i8042.direct=1 i8042.dumbkbd=1 i8042.nopnp=1 i8042.noaux=1 noreplace-smp reboot=t cryptomgr.notests net.ifnames=0 pci=lastbus=0 root=/dev/pmem0p1 rootflags=dax,data=ordered rootfstype=ext4 console=hvc0 console=hvc1 quiet
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000]   BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+[    0.000000]   BIOS-e820: [mem 0x0000000000100000-0x000000000fffffff] usable
