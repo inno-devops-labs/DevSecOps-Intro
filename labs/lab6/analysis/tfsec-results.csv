@@ -1,0 +1,54 @@
+﻿file,start_line,end_line,rule_id,severity,description,link,passed
+database.tf,72,92,aws-dynamodb-enable-at-rest-encryption,HIGH,Table encryption is not enabled.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/dynamodb/enable-at-rest-encryption/,false
+database.tf,86,86,aws-dynamodb-enable-recovery,MEDIUM,Point-in-time recovery is not enabled.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/dynamodb/enable-recovery/,false
+database.tf,72,92,aws-dynamodb-table-customer-key,LOW,Table encryption does not use a customer-managed KMS key.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/dynamodb/table-customer-key/,false
+security_groups.tf,86,91,aws-ec2-add-description-to-security-group-rule,LOW,Security group rule does not have a description.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/add-description-to-security-group-rule/,false
+security_groups.tf,52,57,aws-ec2-add-description-to-security-group-rule,LOW,Security group rule does not have a description.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/add-description-to-security-group-rule/,false
+security_groups.tf,18,23,aws-ec2-add-description-to-security-group-rule,LOW,Security group rule does not have a description.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/add-description-to-security-group-rule/,false
+security_groups.tf,90,90,aws-ec2-no-public-egress-sgr,CRITICAL,Security group rule allows egress to multiple public internet addresses.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-egress-sgr/,false
+security_groups.tf,56,56,aws-ec2-no-public-egress-sgr,CRITICAL,Security group rule allows egress to multiple public internet addresses.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-egress-sgr/,false
+security_groups.tf,22,22,aws-ec2-no-public-egress-sgr,CRITICAL,Security group rule allows egress to multiple public internet addresses.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-egress-sgr/,false
+security_groups.tf,83,83,aws-ec2-no-public-ingress-sgr,CRITICAL,Security group rule allows ingress from public internet.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-sgr/,false
+security_groups.tf,75,75,aws-ec2-no-public-ingress-sgr,CRITICAL,Security group rule allows ingress from public internet.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-sgr/,false
+security_groups.tf,49,49,aws-ec2-no-public-ingress-sgr,CRITICAL,Security group rule allows ingress from public internet.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-sgr/,false
+security_groups.tf,41,41,aws-ec2-no-public-ingress-sgr,CRITICAL,Security group rule allows ingress from public internet.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-sgr/,false
+security_groups.tf,15,15,aws-ec2-no-public-ingress-sgr,CRITICAL,Security group rule allows ingress from public internet.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-sgr/,false
+iam.tf,72,72,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses wildcarded action 'ec2:*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,72,72,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses wildcarded action 'ec2:*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,72,72,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses wildcarded action 'ec2:*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,72,72,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses sensitive action 'ec2:*' on wildcarded resource '*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,44,44,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses wildcarded action 's3:*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,44,44,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses sensitive action 's3:*' on wildcarded resource '*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,109,109,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses sensitive action 'iam:CreatePolicy' on wildcarded resource '*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,10,10,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses wildcarded action '*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,10,10,aws-iam-no-policy-wildcards,HIGH,IAM policy document uses sensitive action '*' on wildcarded resource '*',https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/,false
+iam.tf,58,65,aws-iam-no-user-attached-policies,LOW,One or more policies are attached directly to a user,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-user-attached-policies/,false
+database.tf,40,69,aws-rds-enable-deletion-protection,MEDIUM,Instance does not have Deletion Protection enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/enable-deletion-protection/,false
+database.tf,28,28,aws-rds-enable-deletion-protection,MEDIUM,Instance does not have Deletion Protection enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/enable-deletion-protection/,false
+database.tf,5,37,aws-rds-enable-iam-auth,MEDIUM,Instance does not have IAM Authentication enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/enable-iam-auth/,false
+database.tf,40,69,aws-rds-enable-iam-auth,MEDIUM,Instance does not have IAM Authentication enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/enable-iam-auth/,false
+database.tf,62,62,aws-rds-enable-performance-insights,LOW,Instance does not have performance insights enabled.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/enable-performance-insights/,false
+database.tf,5,37,aws-rds-enable-performance-insights,LOW,Instance does not have performance insights enabled.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/enable-performance-insights/,false
+database.tf,17,17,aws-rds-enable-public-access,HIGH,Instance has Public Access enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/enable-public-access/,false
+database.tf,15,15,aws-rds-encrypt-instance-storage-data,HIGH,Instance does not have storage encryption enabled.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/encrypt-instance-storage-data/,false
+database.tf,17,17,aws-rds-no-public-db-access,CRITICAL,Instance is exposed publicly.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/no-public-db-access/,false
+database.tf,40,69,aws-rds-specify-backup-retention,MEDIUM,Instance has very low backup retention period.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/specify-backup-retention/,false
+database.tf,22,22,aws-rds-specify-backup-retention,MEDIUM,Instance has very low backup retention period.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/rds/specify-backup-retention/,false
+main.tf,39,39,aws-s3-block-public-acls,HIGH,Public access block does not block public ACLs,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/block-public-acls/,false
+main.tf,24,33,aws-s3-block-public-acls,HIGH,No public access block so not blocking public acls,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/block-public-acls/,false
+main.tf,40,40,aws-s3-block-public-policy,HIGH,Public access block does not block public policies,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/block-public-policy/,false
+main.tf,24,33,aws-s3-block-public-policy,HIGH,No public access block so not blocking public policies,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/block-public-policy/,false
+main.tf,24,33,aws-s3-enable-bucket-encryption,HIGH,Bucket does not have encryption enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/enable-bucket-encryption/,false
+main.tf,13,21,aws-s3-enable-bucket-encryption,HIGH,Bucket does not have encryption enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/enable-bucket-encryption/,false
+main.tf,24,33,aws-s3-enable-bucket-logging,MEDIUM,Bucket does not have logging enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/enable-bucket-logging/,false
+main.tf,13,21,aws-s3-enable-bucket-logging,MEDIUM,Bucket does not have logging enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/enable-bucket-logging/,false
+main.tf,31,31,aws-s3-enable-versioning,MEDIUM,Bucket does not have versioning enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/enable-versioning/,false
+main.tf,13,21,aws-s3-enable-versioning,MEDIUM,Bucket does not have versioning enabled,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/enable-versioning/,false
+main.tf,24,33,aws-s3-encryption-customer-key,HIGH,Bucket does not encrypt data with a customer managed key.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/encryption-customer-key/,false
+main.tf,13,21,aws-s3-encryption-customer-key,HIGH,Bucket does not encrypt data with a customer managed key.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/encryption-customer-key/,false
+main.tf,41,41,aws-s3-ignore-public-acls,HIGH,Public access block does not ignore public ACLs,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/ignore-public-acls/,false
+main.tf,24,33,aws-s3-ignore-public-acls,HIGH,No public access block so not ignoring public acls,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/ignore-public-acls/,false
+main.tf,15,15,aws-s3-no-public-access-with-acl,HIGH,Bucket has a public ACL: 'public-read'.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/no-public-access-with-acl/,false
+main.tf,42,42,aws-s3-no-public-buckets,HIGH,Public access block does not restrict public buckets,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/no-public-buckets/,false
+main.tf,24,33,aws-s3-no-public-buckets,HIGH,No public access block so not restricting public buckets,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/no-public-buckets/,false
+main.tf,24,33,aws-s3-specify-public-access-block,LOW,Bucket does not have a corresponding public access block.,https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/s3/specify-public-access-block/,false
