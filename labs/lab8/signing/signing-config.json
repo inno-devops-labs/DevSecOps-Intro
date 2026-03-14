@@ -1,0 +1,12 @@
+﻿{
+  "signers": [
+    {
+      "name": "local-signer",
+      "type": "key",
+      "key": {
+        "path": "labs/lab8/signing/cosign.key"
+      }
+    }
+  ],
+  "transparencyLogServices": []
+}
