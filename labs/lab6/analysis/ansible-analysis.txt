@@ -1,0 +1,11 @@
+=== Ansible Security Analysis (KICS) ===
+KICS Ansible findings: 10
+  HIGH severity: 9
+  MEDIUM severity: 0
+  LOW severity: 1
+
+=== Findings Detail ===
+HIGH: Passwords And Secrets - Generic Password (6 instances)
+HIGH: Passwords And Secrets - Generic Secret (1 instance)
+HIGH: Passwords And Secrets - Password in URL (2 instances)
+LOW: Unpinned Package Version (1 instance)
