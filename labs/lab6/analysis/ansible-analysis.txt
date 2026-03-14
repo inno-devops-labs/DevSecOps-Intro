@@ -1,0 +1,4 @@
+KICS Ansible findings: 10
+HIGH severity: 9
+MEDIUM severity: 0
+LOW severity: 1
