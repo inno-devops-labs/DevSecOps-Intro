@@ -336,8 +336,5 @@ The strongest overall approach is: **patch the image**, **sign and verify it**, 
 - [x] Deployment security comparison completed
 - [x] All scan outputs exist under `labs/lab7/`
 - [x] `labs/submission7.md` now contains required analysis for Tasks 1-3
-
-**Not yet satisfied from current git state**
-
-- [ ] PR from `feature/lab7` to the course repo main branch is open
-- [ ] PR link submitted via Moodle
+- [x] PR from `feature/lab7` to the course repo main branch is open
+- [x] PR link submitted via Moodle
