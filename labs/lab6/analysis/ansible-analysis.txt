@@ -1,0 +1,10 @@
+=== Ansible Security Analysis (KICS) ===
+{
+  "CRITICAL": 0,
+  "HIGH": 9,
+  "INFO": 0,
+  "LOW": 1,
+  "MEDIUM": 0,
+  "TRACE": 0
+}
+Total: 10

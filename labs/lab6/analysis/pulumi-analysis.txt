@@ -1,0 +1,10 @@
+=== Pulumi Security Analysis (KICS) ===
+{
+  "CRITICAL": 1,
+  "HIGH": 2,
+  "INFO": 2,
+  "LOW": 0,
+  "MEDIUM": 1,
+  "TRACE": 0
+}
+Total: 6

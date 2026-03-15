@@ -1,0 +1,7 @@
+=== Comprehensive Tool Comparison ===
+Terraform Scanning Results:
+  - tfsec:  findings
+  - Checkov:  findings
+  - Terrascan:  findings
+
+Pulumi Scanning Results (KICS): 6 findings
