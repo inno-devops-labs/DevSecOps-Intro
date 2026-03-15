@@ -1,0 +1,27 @@
+=== Functionality Test ===
+Default: HTTP 200
+Hardened: HTTP 200
+Production: HTTP 000
+
+=== Resource Usage ===
+
+=== Security Configurations ===
+
+Container: juice-default
+CapDrop: <no value>
+SecurityOpt: <no value>
+Memory: 0
+CPU: 0
+PIDs: <no value>
+Restart: no
+
+Container: juice-hardened
+CapDrop: [ALL]
+SecurityOpt: [no-new-privileges]
+Memory: 536870912
+CPU: 0
+PIDs: <no value>
+Restart: no
+
+Container: juice-production
+
