@@ -330,6 +330,7 @@ The strongest overall approach is: **patch the image**, **sign and verify it**, 
 **Satisfied in the current workspace**
 
 - [x] Branch `feature/lab7` exists
+- [x] Lab 7 files are committed
 - [x] Vulnerability scanning completed with Docker Scout
 - [x] CIS Docker Benchmark audit completed
 - [x] Deployment security comparison completed
@@ -338,6 +339,5 @@ The strongest overall approach is: **patch the image**, **sign and verify it**, 
 
 **Not yet satisfied from current git state**
 
-- [ ] Lab 7 files are committed
 - [ ] PR from `feature/lab7` to the course repo main branch is open
 - [ ] PR link submitted via Moodle
