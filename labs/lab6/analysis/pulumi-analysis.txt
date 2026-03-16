@@ -1,0 +1,25 @@
+=== Pulumi Security Analysis (KICS) ===
+Analysis date: 2026-03-16
+
+KICS Pulumi findings: 6
+  CRITICAL severity: 1
+  HIGH severity: 2
+  MEDIUM severity: 1
+  LOW severity: 0
+  INFO severity: 2
+
+Files scanned: 1
+Queries executed: 21
+Unique failed queries: 6
+
+Detected Pulumi query types:
+- RDS DB Instance Publicly Accessible
+- DynamoDB Table Not Encrypted
+- Passwords And Secrets - Generic Password
+- EC2 Instance Monitoring Disabled
+- DynamoDB Table Point In Time Recovery Disabled
+- EC2 Not EBS Optimized
+
+Key observation:
+- KICS detected public RDS exposure, missing DynamoDB encryption, and hardcoded secrets.
+- This run scanned Pulumi YAML (Pulumi-vulnerable.yaml) and did not analyze Python code in __main__.py.

@@ -1,0 +1,23 @@
+=== Comprehensive Tool Comparison ===
+Analysis date: 2026-03-16
+
+Terraform Scanning Results:
+  - tfsec: 53 findings
+  - Checkov: 78 findings
+  - Terrascan: 22 findings
+
+Pulumi Scanning Results (KICS): 6 findings
+Ansible Scanning Results (KICS): 10 findings
+
+Quick run scan times (cached images, seconds):
+  - tfsec: 2.93
+  - Checkov: 12.38
+  - Terrascan: 15.75
+  - KICS Pulumi: 3.00
+  - KICS Ansible: 8.82
+
+Notes:
+- Checkov reported the highest Terraform finding volume.
+- tfsec highlighted high/critical Terraform issues with concise output.
+- Terrascan emphasized policy-level Terraform violations.
+- KICS provided cross-framework scanning for Pulumi YAML and Ansible with consistent report format.

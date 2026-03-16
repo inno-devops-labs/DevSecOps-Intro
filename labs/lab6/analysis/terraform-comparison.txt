@@ -1,0 +1,24 @@
+=== Terraform Security Analysis ===
+Analysis date: 2026-03-16
+
+tfsec findings: 53
+  CRITICAL: 9
+  HIGH: 25
+  MEDIUM: 11
+  LOW: 8
+  Unique rules: 25
+
+Checkov findings: 78
+  Passed checks: 48
+  Failed checks: 78
+  Unique checks: 45
+
+Terrascan findings: 22
+  HIGH: 14
+  MEDIUM: 8
+  Unique rules: 18
+
+Key observation:
+- Checkov produced the broadest policy coverage on Terraform in this lab.
+- tfsec produced the most critical/high-priority Terraform signal.
+- Terrascan produced fewer but focused policy violations.

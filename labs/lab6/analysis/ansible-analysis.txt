@@ -1,0 +1,23 @@
+=== Ansible Security Analysis (KICS) ===
+Analysis date: 2026-03-16
+
+KICS Ansible findings: 10
+  CRITICAL severity: 0
+  HIGH severity: 9
+  MEDIUM severity: 0
+  LOW severity: 1
+  INFO severity: 0
+
+Files scanned: 3
+Queries executed: 287
+Unique failed queries: 4
+
+Query occurrence counts:
+- Passwords And Secrets - Generic Password: 6
+- Passwords And Secrets - Generic Secret: 1
+- Passwords And Secrets - Password in URL: 2
+- Unpinned Package Version: 1
+
+Key observation:
+- KICS concentrated on secrets exposure in Ansible inventory and playbooks.
+- The highest signal was plaintext credentials/passwords in inventory.ini and deploy.yml.
