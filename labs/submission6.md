@@ -12,7 +12,7 @@
 From here:
 
 | Metric              | tfsec | Checkov | Terrascan |
-||-||--|
+|--|--|--|--|
 | **Total findings**  | 53    | 78      | 22        |
 | **CRITICAL**        | 9     | -       | 0         |
 | **HIGH**            | 25    | -       | 14        |
@@ -49,6 +49,7 @@ Among the tested tools, **Checkov** reported the highest number of issues This l
 # Pulumi Security Analysis (KICS)
 
 | Severity | Findings |
+|--|--|
 | HIGH | 2 |
 | MEDIUM | 1 |
 | LOW | 0 |
@@ -202,12 +203,12 @@ This layered approach improves security by reducing the chance that important vu
 
 ## Lessons Learned
 
-During this lab I understood that different IaC security tools have different strengths and limitations
+- During this lab I understood that different IaC security tools have different strengths and limitations
 
-One important observation is that **no single tool detects all security issues** Each scanner focuses on specific types of misconfigurations, so using multiple tools together provides better coverage
+- One important observation is that **no single tool detects all security issues** Each scanner focuses on specific types of misconfigurations, so using multiple tools together provides better coverage
 
-Another insight is related to **tool effectiveness** Tools like tfsec and Checkov detected many Terraform issues quickly and produced clear reports Checkov generally provided the most comprehensive results because of its larger rule set
+- Another insight is related to **tool effectiveness** Tools like tfsec and Checkov detected many Terraform issues quickly and produced clear reports Checkov generally provided the most comprehensive results because of its larger rule set
 
-I also noticed that **false positives can occur**, especially when scanners interpret configuration context differently This means findings should always be reviewed manually before making changes
+- I also noticed that **false positives can occur**, especially when scanners interpret configuration context differently This means findings should always be reviewed manually before making changes
 
 Overall, combining multiple scanners and integrating them into the development workflow improves the chances of detecting security problems early
