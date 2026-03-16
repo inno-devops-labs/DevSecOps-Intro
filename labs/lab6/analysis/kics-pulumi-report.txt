@@ -1,0 +1,24 @@
+Scanning with Keeping Infrastructure as Code Secure v2.1.20
+
+Preparing Scan Assets: Done
+
+EC2 Not EBS Optimized, Severity: INFO, Results: 1
+	[1]: ../../src/Pulumi-vulnerable.yaml:157
+DynamoDB Table Point In Time Recovery Disabled, Severity: INFO, Results: 1
+	[1]: ../../src/Pulumi-vulnerable.yaml:213
+EC2 Instance Monitoring Disabled, Severity: MEDIUM, Results: 1
+	[1]: ../../src/Pulumi-vulnerable.yaml:157
+Passwords And Secrets - Generic Password, Severity: HIGH, Results: 1
+	[1]: ../../src/Pulumi-vulnerable.yaml:16
+DynamoDB Table Not Encrypted, Severity: HIGH, Results: 1
+	[1]: ../../src/Pulumi-vulnerable.yaml:205
+RDS DB Instance Publicly Accessible, Severity: CRITICAL, Results: 1
+	[1]: ../../src/Pulumi-vulnerable.yaml:104
+
+Results Summary:
+CRITICAL: 1
+HIGH: 2
+MEDIUM: 1
+LOW: 0
+INFO: 2
+TOTAL: 6

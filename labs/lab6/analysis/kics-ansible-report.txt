@@ -1,0 +1,26 @@
+Scanning with Keeping Infrastructure as Code Secure v2.1.20
+
+Preparing Scan Assets: Done
+
+Unpinned Package Version, Severity: LOW, Results: 1
+	[1]: ../../src/deploy.yml:99
+Passwords And Secrets - Password in URL, Severity: HIGH, Results: 2
+	[1]: ../../src/deploy.yml:16
+	[2]: ../../src/deploy.yml:72
+Passwords And Secrets - Generic Secret, Severity: HIGH, Results: 1
+	[1]: ../../src/inventory.ini:20
+Passwords And Secrets - Generic Password, Severity: HIGH, Results: 6
+	[1]: ../../src/inventory.ini:19
+	[2]: ../../src/inventory.ini:5
+	[3]: ../../src/deploy.yml:12
+	[4]: ../../src/configure.yml:16
+	[5]: ../../src/inventory.ini:10
+	[6]: ../../src/inventory.ini:18
+
+Results Summary:
+CRITICAL: 0
+HIGH: 9
+MEDIUM: 0
+LOW: 1
+INFO: 0
+TOTAL: 10

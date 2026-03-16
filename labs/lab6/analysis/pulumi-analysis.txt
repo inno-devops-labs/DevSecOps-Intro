@@ -1,0 +1,26 @@
+=== Pulumi Security Analysis (KICS) ===
+
+KICS Pulumi findings: 6
+  CRITICAL severity: 1
+  HIGH severity: 2
+  MEDIUM severity: 1
+  LOW severity: 0
+  INFO severity: 2
+  Queries evaluated: 21
+
+Detected by KICS:
+- RDS DB Instance Publicly Accessible
+- DynamoDB Table Not Encrypted
+- Generic hardcoded password
+- EC2 Instance Monitoring Disabled
+- DynamoDB PITR disabled
+- EC2 Not EBS Optimized
+
+Important interpretation:
+- KICS scanned the Pulumi YAML manifest successfully, but its coverage was clearly partial.
+- Manual review of Pulumi YAML, Pulumi Python, and Pulumi config shows many more issues than the 6 reported findings.
+- KICS did not surface several meaningful problems present in the codebase, including permissive IAM, secrets exposed in outputs, secrets in user data, EKS public endpoint exposure, and default secrets in Pulumi config.
+
+Practical takeaway:
+- KICS is useful for Pulumi YAML resource-level misconfigurations.
+- It is not sufficient alone for mixed Pulumi stacks that include Python logic and secret-handling patterns.

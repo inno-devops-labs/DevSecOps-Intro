@@ -1,0 +1,22 @@
+=== Comprehensive Tool Comparison ===
+
+Terraform Scanning Results:
+  - tfsec: 53 findings
+  - Checkov: 78 findings
+  - Terrascan: 22 findings
+
+Pulumi Scanning Results (KICS): 6 findings
+Ansible Scanning Results (KICS): 10 findings
+
+High-level conclusions:
+- Checkov had the widest Terraform policy coverage.
+- tfsec gave the cleanest fast-feedback Terraform report.
+- Terrascan produced fewer but still useful compliance-oriented Terraform findings.
+- KICS worked for Pulumi YAML and Ansible secrets, but coverage was incomplete compared with manual review of the source.
+
+Recommended CI/CD strategy:
+- Pull request fast gate: tfsec on Terraform diffs
+- Merge gate: Checkov across Terraform and other supported IaC
+- Scheduled compliance scan: Terrascan
+- YAML/IaC consistency layer: KICS for Pulumi YAML and Ansible
+- Manual review / supplemental tooling: Pulumi Python and risky Ansible automation patterns

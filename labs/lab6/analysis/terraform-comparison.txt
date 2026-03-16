@@ -1,0 +1,35 @@
+=== Terraform Security Analysis ===
+
+tfsec findings: 53
+  Severity: CRITICAL=9, HIGH=25, MEDIUM=11, LOW=8
+  Main strengths:
+  - Strong signal on public network exposure and security groups open to 0.0.0.0/0
+  - Good coverage of S3 encryption/public access controls
+  - Detects permissive IAM and RDS encryption/public access issues
+  Main limitations:
+  - Repeats several findings per resource/rule combination
+  - Less governance/compliance depth than Checkov
+
+Checkov findings: 78
+  Summary: failed=78, passed=48, skipped=0
+  Main strengths:
+  - Broadest Terraform coverage in this lab
+  - Best IAM/governance coverage: wildcard policies, privilege escalation, SSO guidance, inline user policies
+  - Strong best-practice coverage for RDS, S3, logging, monitoring, lifecycle, replication
+  Main limitations:
+  - JSON output in this run does not include severity values, which weakens prioritization
+  - Noisier than tfsec because one resource can trigger many policy checks
+
+Terrascan findings: 22
+  Severity: HIGH=14, MEDIUM=8
+  Main strengths:
+  - Concise compliance-oriented output with clear policy IDs
+  - Good signal for exposed ports, public buckets, encryption and backup gaps
+  - Useful when a smaller, higher-signal finding set is preferred
+  Main limitations:
+  - Lower coverage than tfsec and Checkov on this Terraform sample
+
+Practical comparison:
+- Best fast Terraform-focused feedback: tfsec
+- Best broad Terraform gate in CI: Checkov
+- Best compact compliance-style report: Terrascan

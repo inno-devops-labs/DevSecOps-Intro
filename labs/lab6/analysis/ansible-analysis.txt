@@ -1,0 +1,27 @@
+=== Ansible Security Analysis (KICS) ===
+
+KICS Ansible findings: 10
+  CRITICAL severity: 0
+  HIGH severity: 9
+  MEDIUM severity: 0
+  LOW severity: 1
+  INFO severity: 0
+  Queries evaluated: 287
+
+Detected by KICS:
+- Generic passwords and secrets in playbooks and inventory
+- Password in URL for the Git repository
+- Unpinned package version (`state: latest`)
+
+Important interpretation:
+- KICS was effective for obvious plaintext secrets.
+- KICS missed many operational and hardening issues visible in the Ansible code, such as:
+  - `shell`/`raw` usage for risky commands
+  - missing `no_log: true` on secret-bearing tasks
+  - disabled firewall and SELinux
+  - weak SSH settings (`PermitRootLogin`, `PasswordAuthentication`, `PermitEmptyPasswords`)
+  - passwordless sudo and insecure root usage
+
+Practical takeaway:
+- KICS should be treated as a secrets and baseline best-practice scanner for Ansible.
+- Manual review or ansible-lint-style policy checks are still necessary for real coverage.
