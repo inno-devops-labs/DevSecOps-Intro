@@ -114,33 +114,126 @@ WARN - container "juice" should define livenessProbe
 
 **juice-unhardened.yaml → juice-hardened.yaml:**
 
+#### Image Tag Hardening
 ```yaml
-#  BEFORE
+# BEFORE
 image: bkimminich/juice-shop:latest
-# No securityContext
-# No resources
-# No probes
 
-#  AFTER
+# AFTER
 image: bkimminich/juice-shop:v19.0.0  # Explicit version
+```
+**Why:** The `:latest` tag is mutable—future pulls could retrieve a different, potentially vulnerable image. Explicit versioning ensures reproducibility and prevents supply chain attacks. Fixes **FAIL: uses disallowed :latest tag**.
+
+---
+
+#### Security Context: Run as Non-Root
+```yaml
+# BEFORE
+# (no securityContext)
+
+# AFTER
 securityContext:
   runAsNonRoot: true
+```
+**Why:** Running as root gives attackers full privileges if the container is compromised. Non-root execution limits damage scope. Fixes **FAIL: must set runAsNonRoot: true**.
+
+---
+
+#### Security Context: Prevent Privilege Escalation
+```yaml
+# AFTER (continued)
+securityContext:
   allowPrivilegeEscalation: false
+```
+**Why:** If true, processes can use `setuid` binaries (e.g., `sudo`) to escalate to root. Disabling this prevents lateral privilege escalation even if the attacker gains code execution. Fixes **FAIL: must set allowPrivilegeEscalation: false**.
+
+---
+
+#### Security Context: Read-Only Root Filesystem
+```yaml
+# AFTER (continued)
+securityContext:
   readOnlyRootFilesystem: true
+```
+**Why:** A read-only filesystem prevents attackers from modifying application files, installing backdoors, or corrupting logs. Attackers are limited to `/tmp` and other writable mounts. Fixes **FAIL: must set readOnlyRootFilesystem: true**.
+
+---
+
+#### Security Context: Drop All Capabilities
+```yaml
+# AFTER (continued)
+securityContext:
   capabilities:
     drop: ["ALL"]
+```
+**Why:** Linux capabilities (CAP_NET_ADMIN, CAP_SYS_ADMIN, etc.) are dangerous if inherited by containers. Dropping all and re-adding only what's needed (not done here) minimizes attack surface. Fixes **FAIL: must drop ALL capabilities**.
+
+---
+
+#### Resource Requests
+```yaml
+# BEFORE
+# (no resources)
+
+# AFTER
 resources:
   requests: { cpu: "100m", memory: "256Mi" }
+```
+**Why:** Resource requests tell Kubernetes how much CPU/memory the container needs. This ensures proper scheduling and prevents overcommitment. Fixes **FAIL: missing resources.requests.cpu** and **resources.requests.memory**.
+
+---
+
+#### Resource Limits
+```yaml
+# AFTER (continued)
+resources:
   limits:   { cpu: "500m", memory: "512Mi" }
+```
+**Why:** Resource limits act as hard caps—if exceeded, the container is throttled (CPU) or killed (memory). Prevents resource exhaustion DoS attacks and ensures fair resource sharing. Fixes **FAIL: missing resources.limits.cpu** and **resources.limits.memory**.
+
+---
+
+#### Readiness Probe
+```yaml
+# BEFORE
+# (no probes)
+
+# AFTER
 readinessProbe:
   httpGet: { path: /, port: 3000 }
   initialDelaySeconds: 5
+  periodSeconds: 10
+```
+**Why:** Readiness probes tell Kubernetes if the container is ready to accept traffic. Prevents routing requests to unhealthy instances. Without it, Kubernetes may send traffic to containers still starting up. Fixes **WARN: should define readinessProbe**.
+
+---
+
+#### Liveness Probe
+```yaml
+# AFTER (continued)
 livenessProbe:
   httpGet: { path: /, port: 3000 }
   initialDelaySeconds: 10
+  periodSeconds: 20
 ```
+**Why:** Liveness probes detect if the container has crashed or is stuck. If the probe fails, Kubernetes restarts the container automatically. Ensures high availability and resilience. Fixes **WARN: should define livenessProbe**.
 
-**Result:** All 8 FAIL violations resolved + 2 WARN recommendations implemented.
+---
+
+### Summary of Changes
+
+| Change | Resolves | Security Benefit |
+|--------|----------|-----------------|
+| Explicit version tag | `:latest` FAIL | Prevents unpredictable image updates |
+| `runAsNonRoot: true` | Root access FAIL | Limits privilege scope if breached |
+| `allowPrivilegeEscalation: false` | Setuid FAIL | Prevents privilege escalation via binaries |
+| `readOnlyRootFilesystem: true` | Filesystem modification FAIL | Prevents backdoor installation |
+| `capabilities.drop: ["ALL"]` | Linux capabilities FAIL | Reduces attack surface from dangerous syscalls |
+| Resource requests/limits | Resource exhaustion FAIL | Prevents DoS and ensures fair scheduling |
+| Readiness/Liveness probes | Availability WARN | Ensures healthy containers receive traffic |
+
+**Result:** All 8 FAIL violations resolved + 2 WARN recommendations implemented = **30/30 tests pass**.
+
 
 ---
 
