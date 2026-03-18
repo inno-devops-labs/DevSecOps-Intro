@@ -32,7 +32,7 @@ The following baseline Falco alerts were triggered and captured in `labs/lab9/fa
 
 ---
 
-### 1.3 Custom Rule: `Write Binary Under UsrLocalBin`
+### 1.2 Custom Rule: `Write Binary Under UsrLocalBin`
 
 **Purpose:**  
 Detect unauthorized writes to `/usr/local/bin` inside containers. This directory is part of the standard Linux `$PATH` and is often used to place executable binaries. If an attacker (or misconfigured process) writes files here, it indicates either:
