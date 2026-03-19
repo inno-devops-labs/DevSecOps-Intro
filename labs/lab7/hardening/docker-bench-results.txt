@@ -1,0 +1,11 @@
+docker/docker-bench-security audit attempted on Windows 11 / Docker Desktop 29.2.0
+
+Result: FAILED - tool incompatible with Docker Desktop on Windows
+Error:  Cannot connect to Docker daemon
+Reason: Tool requires Unix socket at /var/run/docker.sock
+        Docker Desktop uses Windows named pipe (npipe:////./pipe/dockerDesktopLinuxEngine)
+
+Fallback: CIS Docker Benchmark image assessment performed using Dockle
+          Dockle results: 0 FATAL, 0 WARN, 3 INFO, 1 SKIP
+          Dockle output saved to: labs/lab7/scanning/dockle-results.txt
+          Full explanation in labs/submission7.md section 2.1

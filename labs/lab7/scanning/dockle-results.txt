@@ -1,0 +1,9 @@
+SKIP	- DKL-LI-0001: Avoid empty password
+	* failed to detect etc/shadow,etc/master.passwd
+INFO	- CIS-DI-0005: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+INFO	- CIS-DI-0006: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+INFO	- DKL-LI-0003: Only put necessary files
+	* unnecessary file : juice-shop/node_modules/extglob/lib/.DS_Store 
+	* unnecessary file : juice-shop/node_modules/micromatch/lib/.DS_Store 
