@@ -1,0 +1,3 @@
+Docker Scout status: completed successfully after Docker Hub login.
+Snyk status: completed successfully after passing a valid SNYK_TOKEN.
+Environment note: snyk/snyk:docker required linux/amd64 emulation on this arm64 host.
