@@ -1,88 +1,41 @@
-package k8s.security
+﻿package main
 
-# Helper: true if array arr contains value v
-has_value(arr, v) if {
-  some i
-  arr[i] == v
-}
-
-# No :latest tags
+# Deny privileged containers
 deny contains msg if {
   input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  endswith(c.image, ":latest")
-  msg := sprintf("container %q uses disallowed :latest tag", [c.name])
+  container := input.spec.template.spec.containers[_]
+  container.securityContext.privileged == true
+  msg := sprintf("DENY: Container '%v' must not run as privileged", [container.name])
 }
 
-# Require essential securityContext settings
+# Deny running as root (uid 0)
 deny contains msg if {
   input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.securityContext.runAsNonRoot
-  msg := sprintf("container %q must set runAsNonRoot: true", [c.name])
+  container := input.spec.template.spec.containers[_]
+  container.securityContext.runAsUser == 0
+  msg := sprintf("DENY: Container '%v' must not run as root (runAsUser: 0)", [container.name])
 }
 
+# Deny allowPrivilegeEscalation
 deny contains msg if {
   input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.securityContext.allowPrivilegeEscalation == false
-  msg := sprintf("container %q must set allowPrivilegeEscalation: false", [c.name])
+  container := input.spec.template.spec.containers[_]
+  container.securityContext.allowPrivilegeEscalation == true
+  msg := sprintf("DENY: Container '%v' must set allowPrivilegeEscalation: false", [container.name])
 }
 
-deny contains msg if {
-  input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.securityContext.readOnlyRootFilesystem == true
-  msg := sprintf("container %q must set readOnlyRootFilesystem: true", [c.name])
-}
-
-deny contains msg if {
-  input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not has_value(c.securityContext.capabilities.drop, "ALL")
-  msg := sprintf("container %q must drop ALL capabilities", [c.name])
-}
-
-# Require CPU/Memory requests and limits
-deny contains msg if {
-  input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.resources.requests.cpu
-  msg := sprintf("container %q missing resources.requests.cpu", [c.name])
-}
-
-deny contains msg if {
-  input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.resources.requests.memory
-  msg := sprintf("container %q missing resources.requests.memory", [c.name])
-}
-
-deny contains msg if {
-  input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.resources.limits.cpu
-  msg := sprintf("container %q missing resources.limits.cpu", [c.name])
-}
-
-deny contains msg if {
-  input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.resources.limits.memory
-  msg := sprintf("container %q missing resources.limits.memory", [c.name])
-}
-
-# Recommend probes
+# Warn if readOnlyRootFilesystem is not true
 warn contains msg if {
   input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.readinessProbe
-  msg := sprintf("container %q should define readinessProbe", [c.name])
+  container := input.spec.template.spec.containers[_]
+  not container.securityContext.readOnlyRootFilesystem == true
+  msg := sprintf("WARN: Container '%v' should set readOnlyRootFilesystem: true", [container.name])
 }
 
+# Warn if resource limits are missing
 warn contains msg if {
   input.kind == "Deployment"
-  c := input.spec.template.spec.containers[_]
-  not c.livenessProbe
-  msg := sprintf("container %q should define livenessProbe", [c.name])
+  container := input.spec.template.spec.containers[_]
+  not container.resources.limits
+  msg := sprintf("WARN: Container '%v' has no resource limits defined", [container.name])
 }

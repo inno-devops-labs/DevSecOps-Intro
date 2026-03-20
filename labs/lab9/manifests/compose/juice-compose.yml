@@ -1,11 +1,10 @@
+﻿version: "3.8"
 services:
-  juice:
+  juice-shop:
     image: bkimminich/juice-shop:v19.0.0
-    ports: ["3006:3000"]
-    user: "10001:10001"
-    read_only: true
-    tmpfs: ["/tmp"]
-    security_opt:
-      - no-new-privileges:true
-    cap_drop: ["ALL"]
-
+    ports:
+      - "3000:3000"
+    privileged: true
+    user: "0"
+    environment:
+      - NODE_ENV=production
