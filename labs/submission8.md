@@ -51,7 +51,7 @@ Public key written to labs/lab8/signing/cosign.pub
 - `cosign.key` — ECDSA private key, passphrase-protected
 - `cosign.pub` — corresponding public key used for verification
 
-> Both files are committed to the repository. The private key is passphrase-protected. In production, the private key should never be committed to version control and should be stored in a secrets manager (e.g. HashiCorp Vault, AWS KMS).
+>The private key is passphrase-protected. In production, the private key should never be committed to version control and should be stored in a secrets manager (e.g. HashiCorp Vault, AWS KMS).
 
 ---
 
@@ -463,7 +463,7 @@ labs/lab8/
 │   ├── ref.txt                          # Original digest reference
 │   └── ref-after-tamper.txt            # Post-tamper digest reference
 ├── signing/
-│   ├── cosign.key                       # Private key (passphrase-protected)
+│   ├── cosign.key                       # Private key (passphrase-protected) Not commited
 │   ├── cosign.pub                       # Public key
 │   ├── signing-config.json             # Signing config (no tlog)
 │   ├── verify-original.txt             # Verification output — original image
