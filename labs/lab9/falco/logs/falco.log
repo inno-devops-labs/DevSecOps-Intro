@@ -1,0 +1,17 @@
+﻿2026-03-20T01:44:34+0000: Falco version: 0.43.0 (x86_64)
+2026-03-20T01:44:34+0000: Opening 'syscall' source with modern BPF probe.
+2026-03-20T01:44:34+0000: Loaded event sources: syscall
+2026-03-20T01:44:34+0000: Enabled event sources: syscall
+{"hostname":"bd43098fe774","output":"2026-03-20T01:47:06.591901689+0000: Notice A shell was spawned in a container with an attached terminal | evt_type=execve user=root user_uid=0 user_loginuid=-1 process=sh proc_exepath=/bin/busybox parent=containerd-shim command=sh -lc echo hello-from-shell terminal=34816 exe_flags=EXE_WRITABLE|EXE_LOWER_LAYER container_id=46362388bedc container_name=lab9-helper container_image_repository=alpine container_image_tag=3.19 k8s_pod_name=<NA> k8s_ns_name=<NA>","priority":"Notice","rule":"Terminal shell in container","source":"syscall","tags":["T1059","container","maturity_stable","mitre_execution","shell"],"time":"2026-03-20T01:47:06.591901689Z"}
+2026-03-20T01:47:35+0000: SIGHUP received, restarting...
+2026-03-20T01:47:35+0000: Loading rules from:
+2026-03-20T01:47:35+0000:    /etc/falco/falco_rules.yaml | schema validation: ok
+2026-03-20T01:47:35+0000:    /etc/falco/rules.d/custom-rules.yaml | schema validation: ok
+{"hostname":"bd43098fe774","output":"2026-03-20T01:47:41.567240227+0000: Warning Falco Custom: File write in /usr/local/bin (container=lab9-helper user=root file=/usr/local/bin/custom-rule.txt flags=O_LARGEFILE|O_TRUNC|O_CREAT|O_WRONLY|O_F_CREATED|FD_UPPER_LAYER)","priority":"Warning","rule":"Write Binary Under UsrLocalBin","source":"syscall","tags":["compliance","container","drift"],"time":"2026-03-20T01:47:41.567240227Z"}
+Events detected: 2
+Rule counts by severity:
+   NOTICE: 1
+   WARNING: 1
+Triggered rules by rule name:
+   Terminal shell in container: 1
+   Write Binary Under UsrLocalBin: 1

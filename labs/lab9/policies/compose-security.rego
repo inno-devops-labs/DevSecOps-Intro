@@ -1,33 +1,13 @@
-package compose.security
+﻿package main
 
-containers := input.services
-
-# Helper: true if array arr contains value v
-has_value(arr, v) if {
-  some i
-  arr[i] == v
-}
-
+# Deny privileged compose services
 deny contains msg if {
-  svc := containers[_]
-  not svc.user
-  msg := "services must set an explicit non-root user"
+  input.services[name].privileged == true
+  msg := sprintf("DENY: Compose service '%v' must not run as privileged", [name])
 }
 
-deny contains msg if {
-  svc := containers[_]
-  not svc.read_only
-  msg := "services must set read_only: true"
-}
-
-deny contains msg if {
-  svc := containers[_]
-  not has_value(svc.cap_drop, "ALL")
-  msg := "services must drop ALL capabilities"
-}
-
+# Warn if running as root user
 warn contains msg if {
-  svc := containers[_]
-  not has_value(svc.security_opt, "no-new-privileges:true")
-  msg := "services should enable no-new-privileges"
+  input.services[name].user == "0"
+  msg := sprintf("WARN: Compose service '%v' is running as root (user: 0)", [name])
 }

@@ -1,45 +1,36 @@
-apiVersion: apps/v1
+﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: juice-hardened
+  name: juice-shop
+  namespace: default
 spec:
   replicas: 1
   selector:
-    matchLabels: { app: juice }
+    matchLabels:
+      app: juice-shop
   template:
     metadata:
-      labels: { app: juice }
+      labels:
+        app: juice-shop
     spec:
       containers:
-        - name: juice
+        - name: juice-shop
           image: bkimminich/juice-shop:v19.0.0
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1.0"
+            requests:
+              memory: "256Mi"
+              cpu: "0.5"
           securityContext:
+            runAsUser: 1000
             runAsNonRoot: true
+            privileged: false
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
             capabilities:
-              drop: ["ALL"]
-          resources:
-            requests: { cpu: "100m", memory: "256Mi" }
-            limits:   { cpu: "500m", memory: "512Mi" }
-          ports:
-            - containerPort: 3000
-          readinessProbe:
-            httpGet: { path: /, port: 3000 }
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            httpGet: { path: /, port: 3000 }
-            initialDelaySeconds: 10
-            periodSeconds: 20
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: juice-hardened
-spec:
-  selector: { app: juice }
-  ports:
-    - port: 80
-      targetPort: 3000
-
+              drop:
+                - ALL
