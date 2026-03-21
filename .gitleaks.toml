@@ -1,0 +1,11 @@
+title = "Gitleaks Config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Lab11 self-signed localhost TLS certificate - intentional lab artifact"
+paths = [
+    '''labs/lab11/reverse-proxy/certs/localhost\.key''',
+    '''labs/lab11/reverse-proxy/certs/localhost\.crt'''
+]
