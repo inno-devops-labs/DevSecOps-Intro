@@ -1,3 +1,5 @@
+# Lab 10 — Vulnerability Management & Response with DefectDojo
+
 ## Task 1: DefectDojo Local Setup
 
 - DefectDojo was started locally using Docker Compose in `labs/lab10/setup/django-DefectDojo`.
