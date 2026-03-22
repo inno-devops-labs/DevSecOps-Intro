@@ -1,0 +1,9 @@
+[34mSKIP[0m	- [36mDKL-LI-0001[0m: Avoid empty password
+	* failed to detect etc/shadow,etc/master.passwd
+[35mINFO[0m	- [36mCIS-DI-0005[0m: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+[35mINFO[0m	- [36mCIS-DI-0006[0m: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+[35mINFO[0m	- [36mDKL-LI-0003[0m: Only put necessary files
+	* unnecessary file : juice-shop/node_modules/extglob/lib/.DS_Store 
+	* unnecessary file : juice-shop/node_modules/micromatch/lib/.DS_Store 

@@ -1,0 +1,3 @@
+juice-default NanoCpus=0 MemoryReservation=0
+juice-hardened NanoCpus=1000000000 MemoryReservation=0
+juice-production NanoCpus=1000000000 MemoryReservation=0
