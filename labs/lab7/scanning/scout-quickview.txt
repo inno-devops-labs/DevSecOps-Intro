@@ -1,0 +1,13 @@
+    ✓ SBOM of image already cached, 1004 packages indexed
+
+    i Base image was auto-detected. To get more accurate results, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+
+ Target     │  bkimminich/juice-shop:v19.0.0  │   11C    65H    30M     5L     7?  
+   digest   │  37cc73163c4c                   │                                    
+ Base image │  distroless/static:nonroot      │    0C     0H     0M     0L         
+
+What's next:
+    View vulnerabilities → docker scout cves bkimminich/juice-shop:v19.0.0
+    Include policy results in your quickview by supplying an organization → docker scout quickview bkimminich/juice-shop:v19.0.0 --org <organization>
+
