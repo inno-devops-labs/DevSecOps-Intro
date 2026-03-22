@@ -65,20 +65,32 @@ Other notable high-risk packages included `jsonwebtoken`, `minimist`, `tar`, `so
 
 ### 1.3 Snyk Comparison
 
-I attempted the lab’s Snyk comparison in two stages:
+Snyk required `linux/amd64` emulation because the published `snyk/snyk:docker` image did not provide a matching `linux/arm64` manifest in this environment. With a valid token, the scan returned real findings for both OS packages and application dependencies.
 
-1. Native `linux/arm64` run of `snyk/snyk:docker`
-2. Fallback run with `--platform linux/amd64`
+**Snyk results summary:**
 
-Results:
+| Scope | Dependencies tested | Issues found | Critical | High |
+|-------|---------------------:|-------------:|---------:|-----:|
+| OS packages (`deb`) | 10 | 6 | 1 | 5 |
+| Application packages (`npm`) | 975 | 47 | 6 | 41 |
+| **Total** | **985** | **53** | **7** | **46** |
 
-- The native run failed because the published `snyk/snyk:docker` image did not provide a matching `linux/arm64` manifest in this environment.
-- The emulated `linux/amd64` run started successfully, but Snyk then returned **`401 Unauthorized`** because no valid `SNYK_TOKEN` was configured.
+Representative Snyk findings:
 
-So:
+- `node@22.18.0`: **Critical** race condition, fixed in `22.22.0`
+- `openssl/libssl3@3.0.17-1~deb12u2`: **High** vulnerability, fixed in `3.0.18-1~deb12u2`
+- `multer@1.4.5-lts.2`: **Critical** uncaught exception
+- `marsdb@0.6.11`: **Critical** arbitrary code injection, no patch available
+- `vm2@3.9.17`: multiple **Critical** RCE / sandbox-bypass issues
+- `sequelize@6.37.7`: **High** SQL injection, fixed in `6.37.8`
 
-- **Docker Scout comparison data is complete**
-- **Snyk comparison is attempted and evidenced, but not fully executable without Snyk credentials**
+**Comparison with Docker Scout:**
+
+- Both tools agreed that the image has serious risk concentrated in **Node.js runtime** and **outdated npm dependencies**.
+- Docker Scout reported a broader overall vulnerability set (`118` total findings), while Snyk reported a smaller but still severe set (`53` high/critical issues only from the executed scopes).
+- The overlap on `node`, `vm2`, `sequelize`, `lodash`, `socket.io`, `tar`, and `validator` increases confidence that these are not scanner-specific false positives.
+
+**Caveat:** after returning the scan findings, the Snyk CLI ended with a final `403 Forbidden`. The important scan results were still produced and captured in the artifact file, so I used the actual findings above rather than treating the comparison as blocked.
 
 Evidence: `labs/lab7/scanning/snyk-results.txt`
 
