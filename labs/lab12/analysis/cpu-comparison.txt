@@ -1,0 +1,5 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name	: 12th Gen Intel(R) Core(TM) i5-12450H
+Kata VM CPU:
+model name	: Intel(R) Xeon(R) Processor
