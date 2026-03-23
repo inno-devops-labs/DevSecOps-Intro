@@ -7,7 +7,7 @@
 # Inspired by the CIS Docker Community Edition Benchmark v1.1.0.
 # ------------------------------------------------------------------------------[0m
 
-Initializing Mon Mar 23 16:12:56 UTC 2026
+Initializing Mon Mar 23 17:47:04 UTC 2026
 
 
 [1;34m[INFO][0m 1 - Host Configuration
@@ -103,7 +103,6 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 
 [1;34m[INFO][0m 4 - Container Images and Build File
 [1;31m[WARN][0m 4.1  - Ensure a user for the container has been created
-[1;31m[WARN][0m      * Running as root: elegant_sammet
 [1;31m[WARN][0m      * Running as root: devops-lab9-control-plane
 [1;31m[WARN][0m      * Running as root: devops-lab9-worker
 [1;31m[WARN][0m      * Running as root: promtail
@@ -112,12 +111,13 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;33m[NOTE][0m 4.4  - Ensure images are scanned and rebuilt to include security patches
 [1;31m[WARN][0m 4.5  - Ensure Content trust for Docker is Enabled
 [1;31m[WARN][0m 4.6  - Ensure HEALTHCHECK instructions have been added to the container image
+[1;31m[WARN][0m      * No Healthcheck found: [snyk/snyk:docker]
+[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
 [1;31m[WARN][0m      * No Healthcheck found: [pepegx/devops-info-service:lab02]
-[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
-[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service-go:lab08 localhost:5001/devops-info-service-go:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service-go:lab08 localhost:5001/devops-info-service-go:latest]
 [1;31m[WARN][0m      * No Healthcheck found: [devops-info-go:lab02]
-[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service-go:lab08 localhost:5001/devops-info-service-go:latest]
-[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service-go:lab08 localhost:5001/devops-info-service-go:latest]
 [1;31m[WARN][0m      * No Healthcheck found: [devops-info-service:lab07]
 [1;31m[WARN][0m      * No Healthcheck found: [devops-info-service-go:lab07]
 [1;31m[WARN][0m      * No Healthcheck found: [host.docker.internal:5001/devops-info-service:latest]
@@ -129,6 +129,7 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * No Healthcheck found: [checkmarx/kics:latest]
 [1;31m[WARN][0m      * No Healthcheck found: [semgrep/semgrep:latest]
 [1;31m[WARN][0m      * No Healthcheck found: [ghcr.io/sullo/nikto:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [alpine:3.22]
 [1;31m[WARN][0m      * No Healthcheck found: [prom/prometheus:v3.9.0]
 [1;31m[WARN][0m      * No Healthcheck found: [grafana/grafana:12.3.1]
 [1;31m[WARN][0m      * No Healthcheck found: [kindest/node@sha256:08497ee19eace7b4b5348db5c6a1591d7752b164530a36f855cb0f2bdcbadd48]
@@ -141,9 +142,10 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * No Healthcheck found: [grafana/loki:3.0.0]
 [1;31m[WARN][0m      * No Healthcheck found: [registry:2]
 [1;34m[INFO][0m 4.7  - Ensure update instructions are not use alone in the Dockerfile
+[1;34m[INFO][0m      * Update instruction found: [snyk/snyk:docker]
+[1;34m[INFO][0m      * Update instruction found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
+[1;34m[INFO][0m      * Update instruction found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
 [1;34m[INFO][0m      * Update instruction found: [pepegx/devops-info-service:lab02]
-[1;34m[INFO][0m      * Update instruction found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
-[1;34m[INFO][0m      * Update instruction found: [devops-info-service:lab08 localhost:5001/devops-info-service:latest]
 [1;34m[INFO][0m      * Update instruction found: [devops-info-service:lab07]
 [1;34m[INFO][0m      * Update instruction found: [host.docker.internal:5001/devops-info-service:latest]
 [1;34m[INFO][0m      * Update instruction found: [bridgecrew/checkov:latest]
@@ -153,11 +155,13 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;34m[INFO][0m      * Update instruction found: [grafana/promtail:3.0.0]
 [1;33m[NOTE][0m 4.8  - Ensure setuid and setgid permissions are removed in the images
 [1;34m[INFO][0m 4.9  - Ensure COPY is used instead of ADD in Dockerfile
+[1;34m[INFO][0m      * ADD in image history: [snyk/snyk:docker]
 [1;34m[INFO][0m      * ADD in image history: [geerlingguy/docker-ubuntu2404-ansible:latest]
 [1;34m[INFO][0m      * ADD in image history: [docker:cli]
 [1;34m[INFO][0m      * ADD in image history: [projectdiscovery/nuclei:latest]
 [1;34m[INFO][0m      * ADD in image history: [semgrep/semgrep:latest]
 [1;34m[INFO][0m      * ADD in image history: [ghcr.io/sullo/nikto:latest]
+[1;34m[INFO][0m      * ADD in image history: [alpine:3.22]
 [1;34m[INFO][0m      * ADD in image history: [grafana/grafana:12.3.1]
 [1;34m[INFO][0m      * ADD in image history: [aquasec/tfsec:latest]
 [1;34m[INFO][0m      * ADD in image history: [sh1co/wikifet_arm:latest]
@@ -172,7 +176,6 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 
 [1;34m[INFO][0m 5 - Container Runtime
 [1;31m[WARN][0m 5.1  - Ensure AppArmor Profile is Enabled
-[1;31m[WARN][0m      * No AppArmorProfile Found: elegant_sammet
 [1;31m[WARN][0m      * No AppArmorProfile Found: devops-lab9-control-plane
 [1;31m[WARN][0m      * No AppArmorProfile Found: devops-lab9-worker
 [1;31m[WARN][0m      * No AppArmorProfile Found: prometheus
@@ -188,8 +191,7 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * No SecurityOptions Found: devops-go
 [1;31m[WARN][0m      * No SecurityOptions Found: devops-python
 [1;31m[WARN][0m      * No SecurityOptions Found: loki
-[1;31m[WARN][0m 5.3  - Ensure Linux Kernel Capabilities are restricted within containers
-[1;31m[WARN][0m      * Capabilities added: CapAdd=[CAP_AUDIT_CONTROL] to elegant_sammet
+[1;32m[PASS][0m 5.3  - Ensure Linux Kernel Capabilities are restricted within containers
 [1;31m[WARN][0m 5.4  - Ensure privileged containers are not used
 [1;31m[WARN][0m      * Container running in Privileged mode: devops-lab9-control-plane
 [1;31m[WARN][0m      * Container running in Privileged mode: devops-lab9-worker
@@ -199,14 +201,11 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * Privileged Port in use: 80 in devops-lab9-control-plane
 [1;31m[WARN][0m      * Privileged Port in use: 443 in devops-lab9-control-plane
 [1;33m[NOTE][0m 5.8  - Ensure only needed ports are open on the container
-[1;31m[WARN][0m 5.9  - Ensure the host's network namespace is not shared
-[1;31m[WARN][0m      * Container running with networking mode 'host': elegant_sammet
+[1;32m[PASS][0m 5.9  - Ensure the host's network namespace is not shared
 [1;31m[WARN][0m 5.10  - Ensure memory usage for container is limited
-[1;31m[WARN][0m      * Container running without memory restrictions: elegant_sammet
 [1;31m[WARN][0m      * Container running without memory restrictions: devops-lab9-control-plane
 [1;31m[WARN][0m      * Container running without memory restrictions: devops-lab9-worker
 [1;31m[WARN][0m 5.11  - Ensure CPU priority is set appropriately on the container
-[1;31m[WARN][0m      * Container running without CPU restrictions: elegant_sammet
 [1;31m[WARN][0m      * Container running without CPU restrictions: devops-lab9-control-plane
 [1;31m[WARN][0m      * Container running without CPU restrictions: devops-lab9-worker
 [1;31m[WARN][0m      * Container running without CPU restrictions: prometheus
@@ -216,7 +215,6 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * Container running without CPU restrictions: devops-python
 [1;31m[WARN][0m      * Container running without CPU restrictions: loki
 [1;31m[WARN][0m 5.12  - Ensure the container's root filesystem is mounted as read only
-[1;31m[WARN][0m      * Container running with root FS mounted R/W: elegant_sammet
 [1;31m[WARN][0m      * Container running with root FS mounted R/W: devops-lab9-control-plane
 [1;31m[WARN][0m      * Container running with root FS mounted R/W: devops-lab9-worker
 [1;31m[WARN][0m      * Container running with root FS mounted R/W: prometheus
@@ -235,7 +233,6 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in devops-python
 [1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in loki
 [1;31m[WARN][0m 5.14  - Ensure 'on-failure' container restart policy is set to '5'
-[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: elegant_sammet
 [1;31m[WARN][0m      * MaximumRetryCount is not set to 5: devops-lab9-control-plane
 [1;31m[WARN][0m      * MaximumRetryCount is not set to 5: devops-lab9-worker
 [1;31m[WARN][0m      * MaximumRetryCount is not set to 5: prometheus
@@ -244,12 +241,10 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * MaximumRetryCount is not set to 5: devops-go
 [1;31m[WARN][0m      * MaximumRetryCount is not set to 5: devops-python
 [1;31m[WARN][0m      * MaximumRetryCount is not set to 5: loki
-[1;31m[WARN][0m 5.15  - Ensure the host's process namespace is not shared
-[1;31m[WARN][0m      * Host PID namespace being shared with: elegant_sammet
+[1;32m[PASS][0m 5.15  - Ensure the host's process namespace is not shared
 [1;32m[PASS][0m 5.16  - Ensure the host's IPC namespace is not shared
 [1;32m[PASS][0m 5.17  - Ensure host devices are not directly exposed to containers
 [1;34m[INFO][0m 5.18  - Ensure the default ulimit is overwritten at runtime, only if needed
-[1;34m[INFO][0m      * Container no default ulimit override: elegant_sammet
 [1;34m[INFO][0m      * Container no default ulimit override: devops-lab9-control-plane
 [1;34m[INFO][0m      * Container no default ulimit override: devops-lab9-worker
 [1;34m[INFO][0m      * Container no default ulimit override: prometheus
@@ -267,7 +262,6 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;33m[NOTE][0m 5.23  - Ensure docker exec commands are not used with user option
 [1;32m[PASS][0m 5.24  - Ensure cgroup usage is confirmed
 [1;31m[WARN][0m 5.25  - Ensure the container is restricted from acquiring additional privileges
-[1;31m[WARN][0m      * Privileges not restricted: elegant_sammet
 [1;31m[WARN][0m      * Privileges not restricted: devops-lab9-control-plane
 [1;31m[WARN][0m      * Privileges not restricted: devops-lab9-worker
 [1;31m[WARN][0m      * Privileges not restricted: prometheus
@@ -277,7 +271,6 @@ Initializing Mon Mar 23 16:12:56 UTC 2026
 [1;31m[WARN][0m      * Privileges not restricted: devops-python
 [1;31m[WARN][0m      * Privileges not restricted: loki
 [1;31m[WARN][0m 5.26  - Ensure container health is checked at runtime
-[1;31m[WARN][0m      * Health check not set: elegant_sammet
 [1;31m[WARN][0m      * Health check not set: devops-lab9-control-plane
 [1;31m[WARN][0m      * Health check not set: devops-lab9-worker
 [1;34m[INFO][0m 5.27  - Ensure docker commands always get the latest version of the image
@@ -289,20 +282,17 @@ sh: <nil>: out of range
 sh: <nil>: out of range
 sh: <nil>: out of range
 sh: <nil>: out of range
-sh: <nil>: out of range
 [1;32m[PASS][0m 5.28  - Ensure PIDs cgroup limit is used
 [1;32m[PASS][0m 5.29  - Ensure Docker's default bridge docker0 is not used
-[1;31m[WARN][0m 5.30  - Ensure the host's user namespaces is not shared
-[1;31m[WARN][0m      * Namespace shared: elegant_sammet
+[1;32m[PASS][0m 5.30  - Ensure the host's user namespaces is not shared
 [1;31m[WARN][0m 5.31  - Ensure the Docker socket is not mounted inside any containers
-[1;31m[WARN][0m      * Docker socket shared: elegant_sammet
 [1;31m[WARN][0m      * Docker socket shared: promtail
 
 
 [1;34m[INFO][0m 6 - Docker Security Operations
 [1;34m[INFO][0m 6.1  - Avoid image sprawl
-[1;34m[INFO][0m      * There are currently: 28 images
-[1;34m[INFO][0m      * Only 12 out of 28 are in use
+[1;34m[INFO][0m      * There are currently: 30 images
+[1;34m[INFO][0m      * Only 12 out of 30 are in use
 [1;34m[INFO][0m 6.2  - Avoid container sprawl
 [1;34m[INFO][0m      * There are currently a total of 12 containers, with 9 of them currently running
 
@@ -320,4 +310,4 @@ sh: <nil>: out of range
 [1;32m[PASS][0m 7.10  - Ensure management plane traffic has been separated from data plane traffic (Swarm mode not enabled)
 
 [1;34m[INFO][0m Checks: 105
-[1;34m[INFO][0m Score: -3
+[1;34m[INFO][0m Score: 4

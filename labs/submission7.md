@@ -125,6 +125,8 @@ Conclusion:
 
 - Platform compatibility is a separate concern, but it is not the final blocker in the preserved scan outputs.
 - The actual blocker to completing Task 1.3 is missing credentials.
+- I was not able to obtain a valid `SNYK_TOKEN` for this lab environment, so the Snyk comparison could not be completed successfully.
+- Because of that, Task 1.3 remains formally incomplete on this machine.
 - To finish the Snyk comparison fully on this host, I would need a valid `SNYK_TOKEN` or a prior authenticated `snyk auth` session.
 
 ### 1.7 Security Posture Assessment
@@ -171,7 +173,8 @@ Observed stock failure on Docker Desktop:
 Working execution using the official extracted benchmark scripts:
 
 ```bash
-docker run --rm --net host --pid host --userns host --cap-add audit_control \
+docker run --rm --label docker_bench_security \
+  --net host --pid host --userns host --cap-add audit_control \
   -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
   -v "$(pwd)/labs/lab7/hardening/docker-bench-src":/src \
   -v /var/lib:/var/lib:ro \
@@ -190,19 +193,27 @@ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 
 | Metric | Count |
 |---|---:|
-| `PASS` | `28` |
-| `WARN` | `30` |
+| `PASS` | `32` |
+| `WARN` | `26` |
 | `FAIL` | `0` |
-| `INFO` | `44` |
-| `NOTE` | `10` |
+| `INFO` | `38` |
+| `NOTE` | `9` |
 | Total checks | `105` |
-| Score | `-3` |
+| Score | `4` |
 
 Important interpretation:
 
 - There were no formal `FAIL` results in this run.
 - The host still has many meaningful `WARN` results, so "no FAIL" does not mean "secure".
 - A number of `INFO` lines were caused by Docker Desktop abstraction layers, for example missing `/etc/docker/daemon.json` or other Linux host files not exposed in the same way as on a native Linux host.
+- The authoritative per-check totals above come from the structured benchmark log `docker-bench-src/docker-bench-security.sh.log.json`, not from counting every human-readable output line in `docker-bench-results.txt`.
+- The final Task 2 totals above come from the corrected labeled rerun. Adding `--label docker_bench_security` was necessary so the benchmark's own helper container was excluded by the official script logic.
+
+Reproducibility note:
+
+- The human-readable report used for analysis is `labs/lab7/hardening/docker-bench-results.txt`.
+- The auxiliary `.log` and `.log.json` files under `docker-bench-src/` can drift slightly across reruns because Docker Bench records the exact currently-running container names and image inventory at execution time.
+- Those rerun-sensitive details do not change the main benchmark conclusion or the priority remediation items called out below.
 
 ### 2.3 High-Value Warning Analysis
 I focused on warnings that represent real security risk instead of platform noise.
@@ -518,7 +529,7 @@ I would add:
 ### 1. Snyk architecture and authentication blockers
 - `snyk/snyk:docker` had no native `arm64` manifest.
 - After switching to `--platform linux/amd64`, the scan reached Snyk but failed with `401 Unauthorized`.
-- This is a real credentials issue, not a Docker networking issue.
+- I was not able to obtain a valid `SNYK_TOKEN`, so this remained a real credentials issue rather than a Docker networking issue.
 
 ### 2. `docker-bench-security` on Docker Desktop
 - The stock lab command failed because a read-only bind of `/etc` blocked Docker's own hostname mount.
@@ -552,3 +563,7 @@ This lab demonstrates a realistic DevSecOps lesson:
 - Runtime hardening matters because it constrains blast radius even when the application itself is compromised.
 
 The strongest practical takeaway is that container security is layered. Image scanning, daemon / host hardening, and runtime restrictions each solve different parts of the problem, and none of them is enough on its own.
+
+Honest completion note:
+
+- Task 1.3 with Snyk was attempted and documented, but it was not completed successfully because I did not have a valid `SNYK_TOKEN` in this environment.
