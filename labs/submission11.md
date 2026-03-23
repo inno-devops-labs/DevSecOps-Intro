@@ -32,7 +32,7 @@ This reduces attack surface by:
 - Preventing accidental exposure of additional app ports.
 - Forcing all traffic through a hardened, controlled entry point.
 
-### 1.3 docker compose ps evidence
+### 1.3 Docker compose ps evidence
 
 The stack was started from `labs/lab11`:
 
@@ -210,8 +210,16 @@ Output from `labs/lab11/analysis/rate-limit-test.txt`:
 Relevant lines from `labs/lab11/logs/access.log`:
 
 ```text
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 401 2373 "-" "curl/8.18.0" rt=0.016 uct=0.001 urt=0.016
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 401 2373 "-" "curl/8.18.0" rt=0.003 uct=0.001 urt=0.003
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 401 2373 "-" "curl/8.18.0" rt=0.002 uct=0.001 urt=0.002
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 401 2373 "-" "curl/8.18.0" rt=0.003 uct=0.000 urt=0.002
 172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 401 2373 "-" "curl/8.18.0" rt=0.002 uct=0.000 urt=0.002
 172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 401 2373 "-" "curl/8.18.0" rt=0.002 uct=0.000 urt=0.001
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
 172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
 172.18.0.1 - - [23/Mar/2026:18:41:33 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
 ```
