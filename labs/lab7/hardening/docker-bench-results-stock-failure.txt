@@ -1,0 +1,4 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/var/lib/docker/containers/5b59aaecdec190bd0c6112b69f971a288ef909b089147332a6cb6c0d9f5f80b3/hostname" to rootfs at "/etc/hostname": create mountpoint for /etc/hostname mount: make mountpoint "/etc/hostname": read-only file system
+
+Run 'docker run --help' for more information

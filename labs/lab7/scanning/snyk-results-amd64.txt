@@ -1,0 +1,80 @@
+Unable to find image 'snyk/snyk:docker' locally
+docker: Pulling from snyk/snyk
+13647075a508: Pulling fs layer
+9df03e33ed49: Pulling fs layer
+92fbd819f55b: Pulling fs layer
+a524d6d9cccd: Pulling fs layer
+8b4da28e0bc4: Pulling fs layer
+589002ba0eae: Pulling fs layer
+5b446eb8f05b: Pulling fs layer
+d3f1c7a58cda: Pulling fs layer
+a2730091713c: Pulling fs layer
+503f0e2071dd: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+7a5cd3b91051: Pulling fs layer
+bcdcbaa55207: Pulling fs layer
+7ba58ca1e42e: Pulling fs layer
+31bd52174687: Pulling fs layer
+04a9731c772a: Pulling fs layer
+34962ed90623: Pulling fs layer
+a4a294ee3d24: Pulling fs layer
+6e8d156e10c7: Pulling fs layer
+12f8c3243c30: Pulling fs layer
+89e9c4ffbcbf: Pulling fs layer
+4f4fb700ef54: Already exists
+efc96099a71d: Download complete
+7ba58ca1e42e: Download complete
+8b4da28e0bc4: Download complete
+9df03e33ed49: Download complete
+5b446eb8f05b: Download complete
+a4a294ee3d24: Download complete
+04a9731c772a: Download complete
+bcdcbaa55207: Download complete
+6e8d156e10c7: Download complete
+31bd52174687: Download complete
+a524d6d9cccd: Download complete
+589002ba0eae: Download complete
+589002ba0eae: Pull complete
+92fbd819f55b: Download complete
+7a5cd3b91051: Download complete
+13647075a508: Download complete
+a2730091713c: Download complete
+d3f1c7a58cda: Download complete
+4f4fb700ef54: Pull complete
+7ba58ca1e42e: Pull complete
+d3f1c7a58cda: Pull complete
+34962ed90623: Download complete
+12f8c3243c30: Download complete
+12f8c3243c30: Pull complete
+89e9c4ffbcbf: Download complete
+89e9c4ffbcbf: Pull complete
+9df03e33ed49: Pull complete
+a4a294ee3d24: Pull complete
+04a9731c772a: Pull complete
+34962ed90623: Pull complete
+8b4da28e0bc4: Pull complete
+a524d6d9cccd: Pull complete
+92fbd819f55b: Pull complete
+503f0e2071dd: Download complete
+5b446eb8f05b: Pull complete
+bcdcbaa55207: Pull complete
+6e8d156e10c7: Pull complete
+31bd52174687: Pull complete
+7a5cd3b91051: Pull complete
+a2730091713c: Pull complete
+503f0e2071dd: Pull complete
+13647075a508: Pull complete
+Digest: sha256:f7e762e86b24872fc65aa73844198112655a10c8d6f38cb1ef75f563b423c446
+Status: Downloaded newer image for snyk/snyk:docker
+
+ ERROR   Authentication error (SNYK-0005)
+         Authentication credentials not recognized, or user access is not provisioned.  
+         Revise credentials and try again, or request access from your Snyk             
+         administrator.                                                                 
+                                                                                        
+           Use `snyk auth` to authenticate.                                             
+
+Status:  401 Unauthorized 
+Docs:    https://docs.snyk.io/scan-with-snyk/error-catalog#snyk-0005 
+                                                                     
+ID:      urn:snyk:interaction:cd25d665-638f-4965-a023-60cb544cc214 
