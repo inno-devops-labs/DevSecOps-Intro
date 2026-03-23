@@ -30,8 +30,9 @@ Important environment notes:
 
 - The required `Docker Scout` scan worked normally on this host.
 - The required `Dockle` scan worked normally on this host.
-- The `Snyk` container image did not provide an `arm64` manifest, so I reran it with `--platform linux/amd64`.
-- After architecture emulation was fixed, `Snyk` still failed with `401 Unauthorized`, which confirms that a valid `SNYK_TOKEN` or prior `snyk auth` is required in this environment.
+- `docker manifest inspect snyk/snyk:docker` showed a `linux/amd64` manifest but no native `linux/arm64` variant, so the preserved Snyk scan was rerun with `--platform linux/amd64`.
+- The saved Snyk scan artifacts `labs/lab7/scanning/snyk-results.txt` and `labs/lab7/scanning/snyk-results-amd64.txt` are identical and both show the real blocker: `401 Unauthorized`.
+- That means platform compatibility had to be handled separately, but the actual reason Task 1.3 could not be completed is missing Snyk authentication.
 - The stock lab command for `docker-bench-security` failed on Docker Desktop because `-v /etc:/etc:ro` conflicted with Docker's own `/etc/hostname` mount, and the old bundled Docker CLI in that image could not talk to the current daemon reliably. To keep the benchmark method intact, I extracted the official benchmark scripts from the image and ran them inside a modern `docker:cli` container with the same host mounts. The working benchmark output is saved as `labs/lab7/hardening/docker-bench-results.txt`, and the stock failure log is preserved separately.
 - The CIS benchmark reflects the full local Docker Desktop environment and all running containers at scan time, not only Juice Shop.
 
@@ -52,19 +53,17 @@ docker run --rm \
   goodwithtech/dockle:latest \
   bkimminich/juice-shop:v19.0.0 > labs/lab7/scanning/dockle-results.txt
 
-# First run from the lab instructions failed because the image has no linux/arm64 manifest.
-docker run --rm \
+docker manifest inspect snyk/snyk:docker > labs/lab7/scanning/snyk-manifest-inspect.txt
+
+# Final preserved Snyk attempt, executed with amd64 emulation because the manifest list
+# does not expose a native linux/arm64 image.
+docker run --rm --platform linux/amd64 \
   -e SNYK_TOKEN \
   -v /var/run/docker.sock:/var/run/docker.sock \
   snyk/snyk:docker snyk test --docker bkimminich/juice-shop:v19.0.0 \
   --severity-threshold=high > labs/lab7/scanning/snyk-results.txt 2>&1
 
-# Architecture-adjusted rerun to confirm the real blocker.
-docker run --rm --platform linux/amd64 \
-  -e SNYK_TOKEN \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  snyk/snyk:docker snyk test --docker bkimminich/juice-shop:v19.0.0 \
-  --severity-threshold=high > labs/lab7/scanning/snyk-results-amd64.txt 2>&1
+cp labs/lab7/scanning/snyk-results.txt labs/lab7/scanning/snyk-results-amd64.txt
 
 docker image inspect bkimminich/juice-shop:v19.0.0 \
   --format 'User={{json .Config.User}} Healthcheck={{json .Config.Healthcheck}}'
@@ -112,17 +111,21 @@ Security interpretation:
 - Unnecessary files are low severity, but they still represent avoidable attack surface and sloppy build hygiene.
 
 ### 1.6 Snyk Comparison Status
-The Snyk comparison could not be completed successfully in this environment for two separate, reproducible reasons:
+The Snyk comparison could not be completed successfully in this environment, and the preserved evidence shows exactly where it stopped.
 
-1. The default `snyk/snyk:docker` image pull failed on `arm64` because no matching manifest was available.
-2. The `amd64` rerun under emulation reached the scanner, but then failed with:
+What is verifiably present in the artifacts:
+
+1. `labs/lab7/scanning/snyk-manifest-inspect.txt` shows a `linux/amd64` manifest but no native `linux/arm64` manifest for `snyk/snyk:docker`.
+2. `labs/lab7/scanning/snyk-results.txt` and `labs/lab7/scanning/snyk-results-amd64.txt` are identical.
+3. Both saved Snyk scan outputs reach the scanner and then fail with:
    - `ERROR Authentication error (SNYK-0005)`
    - `Status: 401 Unauthorized`
 
 Conclusion:
 
-- The remaining blocker is credentials, not connectivity.
-- To complete the Snyk portion fully on this host, I would need a valid `SNYK_TOKEN` or a prior authenticated `snyk auth` session.
+- Platform compatibility is a separate concern, but it is not the final blocker in the preserved scan outputs.
+- The actual blocker to completing Task 1.3 is missing credentials.
+- To finish the Snyk comparison fully on this host, I would need a valid `SNYK_TOKEN` or a prior authenticated `snyk auth` session.
 
 ### 1.7 Security Posture Assessment
 The image posture is mixed:
@@ -530,6 +533,7 @@ I would add:
 ## Evidence Files
 - `labs/lab7/scanning/scout-cves.txt`
 - `labs/lab7/scanning/dockle-results.txt`
+- `labs/lab7/scanning/snyk-manifest-inspect.txt`
 - `labs/lab7/scanning/snyk-results.txt`
 - `labs/lab7/scanning/snyk-results-amd64.txt`
 - `labs/lab7/hardening/docker-bench-results.txt`
