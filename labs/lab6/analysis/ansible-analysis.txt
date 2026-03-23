@@ -1,0 +1,5 @@
+=== Ansible Security Analysis (KICS) ===
+KICS Ansible findings: 9
+  HIGH severity: 8
+  MEDIUM severity: 0
+  LOW severity: 1
