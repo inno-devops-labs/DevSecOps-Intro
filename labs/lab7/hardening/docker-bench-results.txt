@@ -1,0 +1,367 @@
+[1;33m# ------------------------------------------------------------------------------
+# Docker Bench for Security v1.3.4
+#
+# Docker, Inc. (c) 2015-
+#
+# Checks for dozens of common best-practices around deploying Docker containers in production.
+# Inspired by the CIS Docker Community Edition Benchmark v1.1.0.
+# ------------------------------------------------------------------------------[0m
+
+Initializing Mon Mar 23 10:30:07 UTC 2026
+
+
+[1;34m[INFO][0m 1 - Host Configuration
+[1;32m[PASS][0m 1.1  - Ensure a separate partition for containers has been created
+[1;33m[NOTE][0m 1.2  - Ensure the container host has been Hardened
+[1;32m[PASS][0m 1.3  - Ensure Docker is up to date
+[1;34m[INFO][0m      * Using 28.5.2 which is current
+[1;34m[INFO][0m      * Check with your operating system vendor for support and security maintenance for Docker
+[1;34m[INFO][0m 1.4  - Ensure only trusted users are allowed to control Docker daemon
+[1;31m[WARN][0m 1.5  - Ensure auditing is configured for the Docker daemon
+[1;31m[WARN][0m 1.6  - Ensure auditing is configured for Docker files and directories - /var/lib/docker
+[1;31m[WARN][0m 1.7  - Ensure auditing is configured for Docker files and directories - /etc/docker
+[1;34m[INFO][0m 1.8  - Ensure auditing is configured for Docker files and directories - docker.service
+[1;34m[INFO][0m      * File not found
+[1;34m[INFO][0m 1.9  - Ensure auditing is configured for Docker files and directories - docker.socket
+[1;34m[INFO][0m      * File not found
+[1;34m[INFO][0m 1.10  - Ensure auditing is configured for Docker files and directories - /etc/default/docker
+[1;34m[INFO][0m      * File not found
+[1;31m[WARN][0m 1.11  - Ensure auditing is configured for Docker files and directories - /etc/docker/daemon.json
+[1;34m[INFO][0m 1.12  - Ensure auditing is configured for Docker files and directories - /usr/bin/docker-containerd
+[1;34m[INFO][0m      * File not found
+[1;34m[INFO][0m 1.13  - Ensure auditing is configured for Docker files and directories - /usr/bin/docker-runc
+[1;34m[INFO][0m      * File not found
+
+
+[1;34m[INFO][0m 2 - Docker daemon configuration
+[1;31m[WARN][0m 2.1  - Ensure network traffic is restricted between containers on the default bridge
+[1;32m[PASS][0m 2.2  - Ensure the logging level is set to 'info'
+[1;32m[PASS][0m 2.3  - Ensure Docker is allowed to make changes to iptables
+[1;32m[PASS][0m 2.4  - Ensure insecure registries are not used
+[1;32m[PASS][0m 2.5  - Ensure aufs storage driver is not used
+[1;31m[WARN][0m 2.6  - Ensure TLS authentication for Docker daemon is configured
+[1;31m[WARN][0m      * Docker daemon currently listening on TCP without TLS
+[1;34m[INFO][0m 2.7  - Ensure the default ulimit is configured appropriately
+[1;34m[INFO][0m      * Default ulimit doesn't appear to be set
+[1;31m[WARN][0m 2.8  - Enable user namespace support
+[1;32m[PASS][0m 2.9  - Ensure the default cgroup usage has been confirmed
+[1;32m[PASS][0m 2.10  - Ensure base device size is not changed until needed
+[1;31m[WARN][0m 2.11  - Ensure that authorization for Docker client commands is enabled
+[1;31m[WARN][0m 2.12  - Ensure centralized and remote logging is configured
+[1;34m[INFO][0m 2.13  - Ensure operations on legacy registry (v1) are Disabled (Deprecated)
+[1;31m[WARN][0m 2.14  - Ensure live restore is Enabled
+[1;31m[WARN][0m 2.15  - Ensure Userland Proxy is Disabled
+[1;34m[INFO][0m 2.16  - Ensure daemon-wide custom seccomp profile is applied, if needed
+[1;32m[PASS][0m 2.17  - Ensure experimental features are avoided in production
+[1;31m[WARN][0m 2.18  - Ensure containers are restricted from acquiring new privileges
+
+
+[1;34m[INFO][0m 3 - Docker daemon configuration files
+[1;34m[INFO][0m 3.1  - Ensure that docker.service file ownership is set to root:root
+[1;34m[INFO][0m      * File not found
+[1;34m[INFO][0m 3.2  - Ensure that docker.service file permissions are set to 644 or more restrictive
+[1;34m[INFO][0m      * File not found
+[1;34m[INFO][0m 3.3  - Ensure that docker.socket file ownership is set to root:root
+[1;34m[INFO][0m      * File not found
+[1;34m[INFO][0m 3.4  - Ensure that docker.socket file permissions are set to 644 or more restrictive
+[1;34m[INFO][0m      * File not found
+[1;32m[PASS][0m 3.5  - Ensure that /etc/docker directory ownership is set to root:root
+[1;32m[PASS][0m 3.6  - Ensure that /etc/docker directory permissions are set to 755 or more restrictive
+[1;34m[INFO][0m 3.7  - Ensure that registry certificate file ownership is set to root:root
+[1;34m[INFO][0m      * Directory not found
+[1;34m[INFO][0m 3.8  - Ensure that registry certificate file permissions are set to 444 or more restrictive
+[1;34m[INFO][0m      * Directory not found
+[1;34m[INFO][0m 3.9  - Ensure that TLS CA certificate file ownership is set to root:root
+[1;34m[INFO][0m      * No TLS CA certificate found
+[1;34m[INFO][0m 3.10  - Ensure that TLS CA certificate file permissions are set to 444 or more restrictive
+[1;34m[INFO][0m      * No TLS CA certificate found
+[1;34m[INFO][0m 3.11  - Ensure that Docker server certificate file ownership is set to root:root
+[1;34m[INFO][0m      * No TLS Server certificate found
+[1;34m[INFO][0m 3.12  - Ensure that Docker server certificate file permissions are set to 444 or more restrictive
+[1;34m[INFO][0m      * No TLS Server certificate found
+[1;34m[INFO][0m 3.13  - Ensure that Docker server certificate key file ownership is set to root:root
+[1;34m[INFO][0m      * No TLS Key found
+[1;34m[INFO][0m 3.14  - Ensure that Docker server certificate key file permissions are set to 400
+[1;34m[INFO][0m      * No TLS Key found
+[1;31m[WARN][0m 3.15  - Ensure that Docker socket file ownership is set to root:docker
+[1;31m[WARN][0m      * Wrong ownership for /var/run/docker.sock
+[1;32m[PASS][0m 3.16  - Ensure that Docker socket file permissions are set to 660 or more restrictive
+[1;32m[PASS][0m 3.17  - Ensure that daemon.json file ownership is set to root:root
+[1;32m[PASS][0m 3.18  - Ensure that daemon.json file permissions are set to 644 or more restrictive
+[1;34m[INFO][0m 3.19  - Ensure that /etc/default/docker file ownership is set to root:root
+[1;34m[INFO][0m      * File not found
+[1;34m[INFO][0m 3.20  - Ensure that /etc/default/docker file permissions are set to 644 or more restrictive
+[1;34m[INFO][0m      * File not found
+
+
+[1;34m[INFO][0m 4 - Container Images and Build File
+[1;31m[WARN][0m 4.1  - Ensure a user for the container has been created
+[1;31m[WARN][0m      * Running as root: youthful_chebyshev
+[1;31m[WARN][0m      * Running as root: prompt_base_2-web-1
+[1;31m[WARN][0m      * Running as root: prompt_base_2-api-1
+[1;31m[WARN][0m      * Running as root: promtail
+[1;31m[WARN][0m      * Running as root: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * Running as root: prompt_base_2-postgres-1
+[1;33m[NOTE][0m 4.2  - Ensure that containers use trusted base images
+[1;33m[NOTE][0m 4.3  - Ensure unnecessary packages are not installed in the container
+[1;33m[NOTE][0m 4.4  - Ensure images are scanned and rebuilt to include security patches
+[1;31m[WARN][0m 4.5  - Ensure Content trust for Docker is Enabled
+[1;31m[WARN][0m 4.6  - Ensure HEALTHCHECK instructions have been added to the container image
+[1;31m[WARN][0m      * No Healthcheck found: [prompt_base_2-api:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [prompt_base_2-web:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [prompt_base-frontend:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [prompt_base-backend:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [news-bot:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [bridgecrew/checkov:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [caddy:2-alpine]
+[1;31m[WARN][0m      * No Healthcheck found: [projectdiscovery/nuclei:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [checkmarx/kics:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [sh3b0/labenv:stable]
+[1;31m[WARN][0m      * No Healthcheck found: [aquasec/trivy:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [semgrep/semgrep:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [trufflesecurity/trufflehog:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [postgres:16-alpine]
+[1;31m[WARN][0m      * No Healthcheck found: [postgres:17-alpine]
+[1;31m[WARN][0m      * No Healthcheck found: [aflplusplus/aflplusplus:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [anchore/grype:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [anchore/syft:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [plumbus-api:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [sh3b0/tiwap:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service-go:latest pav0rkmert/devops-info-service-go:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [devops-info-service-go:latest pav0rkmert/devops-info-service-go:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [stackhawk/hawkscan:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [curlimages/curl:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [prom/prometheus:v3.9.0]
+[1;31m[WARN][0m      * No Healthcheck found: [jlesage/firefox:v25.12.5]
+[1;31m[WARN][0m      * No Healthcheck found: [grafana/grafana:12.3.1]
+[1;31m[WARN][0m      * No Healthcheck found: [zricethezav/gitleaks:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [sh3b0/renderer:v2]
+[1;31m[WARN][0m      * No Healthcheck found: [nginx:alpine]
+[1;31m[WARN][0m      * No Healthcheck found: [bkimminich/juice-shop:v19.0.0]
+[1;31m[WARN][0m      * No Healthcheck found: [aquasec/tfsec:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [sh1co/wikifet_arm:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [quay.io/keycloak/keycloak:26.0]
+[1;31m[WARN][0m      * No Healthcheck found: [goodwithtech/dockle:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [getmeili/meilisearch:v1.11]
+[1;31m[WARN][0m      * No Healthcheck found: [tenable/terrascan:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [threagile/threagile:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [grafana/promtail:3.0.0]
+[1;31m[WARN][0m      * No Healthcheck found: [grafana/loki:3.0.0]
+[1;34m[INFO][0m 4.7  - Ensure update instructions are not use alone in the Dockerfile
+[1;34m[INFO][0m      * Update instruction found: [pavorkmert/devops-info-service:latest]
+[1;34m[INFO][0m      * Update instruction found: [news-bot:latest]
+[1;34m[INFO][0m      * Update instruction found: [bridgecrew/checkov:latest]
+[1;34m[INFO][0m      * Update instruction found: [checkmarx/kics:latest]
+[1;34m[INFO][0m      * Update instruction found: [sh3b0/labenv:stable]
+[1;34m[INFO][0m      * Update instruction found: [sh3b0/tiwap:latest]
+[1;34m[INFO][0m      * Update instruction found: [devops-info-service:latest pav0rkmert/devops-info-service:latest]
+[1;34m[INFO][0m      * Update instruction found: [devops-info-service:latest pav0rkmert/devops-info-service:latest]
+[1;34m[INFO][0m      * Update instruction found: [sh3b0/renderer:v2]
+[1;34m[INFO][0m      * Update instruction found: [sh3b0/terminal:v2]
+[1;34m[INFO][0m      * Update instruction found: [sh1co/wikifet_arm:latest]
+[1;34m[INFO][0m      * Update instruction found: [threagile/threagile:latest]
+[1;34m[INFO][0m      * Update instruction found: [grafana/promtail:3.0.0]
+[1;33m[NOTE][0m 4.8  - Ensure setuid and setgid permissions are removed in the images
+[1;34m[INFO][0m 4.9  - Ensure COPY is used instead of ADD in Dockerfile
+[1;34m[INFO][0m      * ADD in image history: [prompt_base_2-api:latest]
+[1;34m[INFO][0m      * ADD in image history: [prompt_base_2-web:latest]
+[1;34m[INFO][0m      * ADD in image history: [prompt_base-frontend:latest]
+[1;34m[INFO][0m      * ADD in image history: [prompt_base-backend:latest]
+[1;34m[INFO][0m      * ADD in image history: [caddy:2-alpine]
+[1;34m[INFO][0m      * ADD in image history: [projectdiscovery/nuclei:latest]
+[1;34m[INFO][0m      * ADD in image history: [sh3b0/labenv:stable]
+[1;34m[INFO][0m      * ADD in image history: [aquasec/trivy:latest]
+[1;34m[INFO][0m      * ADD in image history: [semgrep/semgrep:latest]
+[1;34m[INFO][0m      * ADD in image history: [trufflesecurity/trufflehog:latest]
+[1;34m[INFO][0m      * ADD in image history: [postgres:16-alpine]
+[1;34m[INFO][0m      * ADD in image history: [postgres:17-alpine]
+[1;34m[INFO][0m      * ADD in image history: [aflplusplus/aflplusplus:latest]
+[1;34m[INFO][0m      * ADD in image history: [plumbus-api:latest]
+[1;34m[INFO][0m      * ADD in image history: [sh3b0/tiwap:latest]
+[1;34m[INFO][0m      * ADD in image history: [stackhawk/hawkscan:latest]
+[1;34m[INFO][0m      * ADD in image history: [curlimages/curl:latest]
+[1;34m[INFO][0m      * ADD in image history: [jlesage/firefox:v25.12.5]
+[1;34m[INFO][0m      * ADD in image history: [grafana/grafana:12.3.1]
+[1;34m[INFO][0m      * ADD in image history: [zricethezav/gitleaks:latest]
+[1;34m[INFO][0m      * ADD in image history: [nginx:alpine]
+[1;34m[INFO][0m      * ADD in image history: [sh3b0/terminal:v2]
+[1;34m[INFO][0m      * ADD in image history: [aquasec/tfsec:latest]
+[1;34m[INFO][0m      * ADD in image history: [sh1co/wikifet_arm:latest]
+[1;34m[INFO][0m      * ADD in image history: [goodwithtech/dockle:latest]
+[1;34m[INFO][0m      * ADD in image history: [getmeili/meilisearch:v1.11]
+[1;34m[INFO][0m      * ADD in image history: [threagile/threagile:latest]
+[1;34m[INFO][0m      * ADD in image history: [grafana/promtail:3.0.0]
+[1;34m[INFO][0m      * ADD in image history: [grafana/loki:3.0.0]
+[1;34m[INFO][0m      * ADD in image history: [docker/docker-bench-security:latest]
+[1;33m[NOTE][0m 4.10  - Ensure secrets are not stored in Dockerfiles
+[1;33m[NOTE][0m 4.11  - Ensure verified packages are only Installed
+
+
+[1;34m[INFO][0m 5 - Container Runtime
+[1;31m[WARN][0m 5.1  - Ensure AppArmor Profile is Enabled
+[1;31m[WARN][0m      * No AppArmorProfile Found: youthful_chebyshev
+[1;31m[WARN][0m      * No AppArmorProfile Found: prompt_base_2-web-1
+[1;31m[WARN][0m      * No AppArmorProfile Found: prompt_base_2-api-1
+[1;31m[WARN][0m      * No AppArmorProfile Found: prometheus
+[1;31m[WARN][0m      * No AppArmorProfile Found: promtail
+[1;31m[WARN][0m      * No AppArmorProfile Found: grafana
+[1;31m[WARN][0m      * No AppArmorProfile Found: app-python
+[1;31m[WARN][0m      * No AppArmorProfile Found: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * No AppArmorProfile Found: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * No AppArmorProfile Found: loki
+[1;31m[WARN][0m      * No AppArmorProfile Found: plumbus-api
+[1;31m[WARN][0m 5.2  - Ensure SELinux security options are set, if applicable
+[1;31m[WARN][0m      * No SecurityOptions Found: youthful_chebyshev
+[1;31m[WARN][0m      * No SecurityOptions Found: prompt_base_2-web-1
+[1;31m[WARN][0m      * No SecurityOptions Found: prompt_base_2-api-1
+[1;31m[WARN][0m      * No SecurityOptions Found: prometheus
+[1;31m[WARN][0m      * No SecurityOptions Found: promtail
+[1;31m[WARN][0m      * No SecurityOptions Found: grafana
+[1;31m[WARN][0m      * No SecurityOptions Found: app-python
+[1;31m[WARN][0m      * No SecurityOptions Found: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * No SecurityOptions Found: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * No SecurityOptions Found: loki
+[1;31m[WARN][0m      * No SecurityOptions Found: plumbus-api
+[1;32m[PASS][0m 5.3  - Ensure Linux Kernel Capabilities are restricted within containers
+[1;32m[PASS][0m 5.4  - Ensure privileged containers are not used
+[1;32m[PASS][0m 5.5  - Ensure sensitive host system directories are not mounted on containers
+[1;32m[PASS][0m 5.6  - Ensure ssh is not run within containers
+[1;31m[WARN][0m 5.7  - Ensure privileged ports are not mapped within containers
+[1;31m[WARN][0m      * Privileged Port in use: 80 in prompt_base_2-proxy-1
+[1;33m[NOTE][0m 5.8  - Ensure only needed ports are open on the container
+[1;32m[PASS][0m 5.9  - Ensure the host's network namespace is not shared
+[1;31m[WARN][0m 5.10  - Ensure memory usage for container is limited
+[1;31m[WARN][0m      * Container running without memory restrictions: youthful_chebyshev
+[1;31m[WARN][0m      * Container running without memory restrictions: prompt_base_2-web-1
+[1;31m[WARN][0m      * Container running without memory restrictions: prompt_base_2-api-1
+[1;31m[WARN][0m      * Container running without memory restrictions: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * Container running without memory restrictions: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * Container running without memory restrictions: plumbus-api
+[1;31m[WARN][0m 5.11  - Ensure CPU priority is set appropriately on the container
+[1;31m[WARN][0m      * Container running without CPU restrictions: youthful_chebyshev
+[1;31m[WARN][0m      * Container running without CPU restrictions: prompt_base_2-web-1
+[1;31m[WARN][0m      * Container running without CPU restrictions: prompt_base_2-api-1
+[1;31m[WARN][0m      * Container running without CPU restrictions: prometheus
+[1;31m[WARN][0m      * Container running without CPU restrictions: promtail
+[1;31m[WARN][0m      * Container running without CPU restrictions: grafana
+[1;31m[WARN][0m      * Container running without CPU restrictions: app-python
+[1;31m[WARN][0m      * Container running without CPU restrictions: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * Container running without CPU restrictions: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * Container running without CPU restrictions: loki
+[1;31m[WARN][0m      * Container running without CPU restrictions: plumbus-api
+[1;31m[WARN][0m 5.12  - Ensure the container's root filesystem is mounted as read only
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: youthful_chebyshev
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: prompt_base_2-web-1
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: prompt_base_2-api-1
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: prometheus
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: promtail
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: grafana
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: app-python
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: loki
+[1;31m[WARN][0m      * Container running with root FS mounted R/W: plumbus-api
+[1;31m[WARN][0m 5.13  - Ensure incoming container traffic is binded to a specific host interface
+[1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in youthful_chebyshev
+[1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in prometheus
+[1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in grafana
+[1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in app-python
+[1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in prompt_base_2-proxy-1
+[1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in prompt_base_2-postgres-1
+[1;31m[WARN][0m      * Port being bound to wildcard IP: 0.0.0.0 in loki
+[1;31m[WARN][0m 5.14  - Ensure 'on-failure' container restart policy is set to '5'
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: youthful_chebyshev
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: prompt_base_2-web-1
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: prompt_base_2-api-1
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: prometheus
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: promtail
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: grafana
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: app-python
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: loki
+[1;31m[WARN][0m      * MaximumRetryCount is not set to 5: plumbus-api
+[1;32m[PASS][0m 5.15  - Ensure the host's process namespace is not shared
+[1;32m[PASS][0m 5.16  - Ensure the host's IPC namespace is not shared
+[1;32m[PASS][0m 5.17  - Ensure host devices are not directly exposed to containers
+[1;34m[INFO][0m 5.18  - Ensure the default ulimit is overwritten at runtime, only if needed
+[1;34m[INFO][0m      * Container no default ulimit override: youthful_chebyshev
+[1;34m[INFO][0m      * Container no default ulimit override: prompt_base_2-web-1
+[1;34m[INFO][0m      * Container no default ulimit override: prompt_base_2-api-1
+[1;34m[INFO][0m      * Container no default ulimit override: prometheus
+[1;34m[INFO][0m      * Container no default ulimit override: promtail
+[1;34m[INFO][0m      * Container no default ulimit override: grafana
+[1;34m[INFO][0m      * Container no default ulimit override: app-python
+[1;34m[INFO][0m      * Container no default ulimit override: prompt_base_2-proxy-1
+[1;34m[INFO][0m      * Container no default ulimit override: prompt_base_2-postgres-1
+[1;34m[INFO][0m      * Container no default ulimit override: loki
+[1;34m[INFO][0m      * Container no default ulimit override: plumbus-api
+[1;32m[PASS][0m 5.19  - Ensure mount propagation mode is not set to shared
+[1;32m[PASS][0m 5.20  - Ensure the host's UTS namespace is not shared
+[1;32m[PASS][0m 5.21  - Ensure the default seccomp profile is not Disabled
+[1;33m[NOTE][0m 5.22  - Ensure docker exec commands are not used with privileged option
+[1;33m[NOTE][0m 5.23  - Ensure docker exec commands are not used with user option
+[1;32m[PASS][0m 5.24  - Ensure cgroup usage is confirmed
+[1;31m[WARN][0m 5.25  - Ensure the container is restricted from acquiring additional privileges
+[1;31m[WARN][0m      * Privileges not restricted: youthful_chebyshev
+[1;31m[WARN][0m      * Privileges not restricted: prompt_base_2-web-1
+[1;31m[WARN][0m      * Privileges not restricted: prompt_base_2-api-1
+[1;31m[WARN][0m      * Privileges not restricted: prometheus
+[1;31m[WARN][0m      * Privileges not restricted: promtail
+[1;31m[WARN][0m      * Privileges not restricted: grafana
+[1;31m[WARN][0m      * Privileges not restricted: app-python
+[1;31m[WARN][0m      * Privileges not restricted: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * Privileges not restricted: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * Privileges not restricted: loki
+[1;31m[WARN][0m      * Privileges not restricted: plumbus-api
+[1;31m[WARN][0m 5.26  - Ensure container health is checked at runtime
+[1;31m[WARN][0m      * Health check not set: youthful_chebyshev
+[1;31m[WARN][0m      * Health check not set: prompt_base_2-web-1
+[1;31m[WARN][0m      * Health check not set: prompt_base_2-api-1
+[1;31m[WARN][0m      * Health check not set: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * Health check not set: plumbus-api
+[1;34m[INFO][0m 5.27  - Ensure docker commands always get the latest version of the image
+[1;31m[WARN][0m 5.28  - Ensure PIDs cgroup limit is used
+[1;31m[WARN][0m      * PIDs limit not set: youthful_chebyshev
+[1;31m[WARN][0m      * PIDs limit not set: prompt_base_2-web-1
+[1;31m[WARN][0m      * PIDs limit not set: prompt_base_2-api-1
+[1;31m[WARN][0m      * PIDs limit not set: prometheus
+[1;31m[WARN][0m      * PIDs limit not set: promtail
+[1;31m[WARN][0m      * PIDs limit not set: grafana
+[1;31m[WARN][0m      * PIDs limit not set: app-python
+[1;31m[WARN][0m      * PIDs limit not set: prompt_base_2-proxy-1
+[1;31m[WARN][0m      * PIDs limit not set: prompt_base_2-postgres-1
+[1;31m[WARN][0m      * PIDs limit not set: loki
+[1;31m[WARN][0m      * PIDs limit not set: plumbus-api
+[1;34m[INFO][0m 5.29  - Ensure Docker's default bridge docker0 is not used
+[1;34m[INFO][0m      * Container in docker0 network: youthful_chebyshev
+[1;34m[INFO][0m      * Container in docker0 network: juice-production
+[1;34m[INFO][0m      * Container in docker0 network: juice-hardened
+[1;34m[INFO][0m      * Container in docker0 network: juice-default
+[1;32m[PASS][0m 5.30  - Ensure the host's user namespaces is not shared
+[1;31m[WARN][0m 5.31  - Ensure the Docker socket is not mounted inside any containers
+[1;31m[WARN][0m      * Docker socket shared: promtail
+
+
+[1;34m[INFO][0m 6 - Docker Security Operations
+[1;34m[INFO][0m 6.1  - Avoid image sprawl
+[1;34m[INFO][0m      * There are currently: 89 images
+[1;34m[INFO][0m      * Only 25 out of 89 are in use
+[1;34m[INFO][0m 6.2  - Avoid container sprawl
+[1;34m[INFO][0m      * There are currently a total of 25 containers, with 15 of them currently running
+
+
+[1;34m[INFO][0m 7 - Docker Swarm Configuration
+[1;32m[PASS][0m 7.1  - Ensure swarm mode is not Enabled, if not needed
+[1;32m[PASS][0m 7.2  - Ensure the minimum number of manager nodes have been created in a swarm (Swarm mode not enabled)
+[1;32m[PASS][0m 7.3  - Ensure swarm services are binded to a specific host interface (Swarm mode not enabled)
+[1;32m[PASS][0m 7.4  - Ensure data exchanged between containers are encrypted on different nodes on the overlay network
+[1;32m[PASS][0m 7.5  - Ensure Docker's secret management commands are used for managing secrets in a Swarm cluster (Swarm mode not enabled)
+[1;32m[PASS][0m 7.6  - Ensure swarm manager is run in auto-lock mode (Swarm mode not enabled)
+[1;32m[PASS][0m 7.7  - Ensure swarm manager auto-lock key is rotated periodically (Swarm mode not enabled)
+[1;32m[PASS][0m 7.8  - Ensure node certificates are rotated as appropriate (Swarm mode not enabled)
+[1;32m[PASS][0m 7.9  - Ensure CA certificates are rotated as appropriate (Swarm mode not enabled)
+[1;32m[PASS][0m 7.10  - Ensure management plane traffic has been separated from data plane traffic (Swarm mode not enabled)
+
+[1;34m[INFO][0m Checks: 105
+[1;34m[INFO][0m Score: 7
