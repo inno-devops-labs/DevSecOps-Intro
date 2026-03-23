@@ -1,0 +1,12 @@
+
+ ERROR   Authentication error (SNYK-0005)
+         Authentication credentials not recognized, or user access is not provisioned.  
+         Revise credentials and try again, or request access from your Snyk             
+         administrator.                                                                 
+                                                                                        
+           Use `snyk auth` to authenticate.                                             
+
+Status:  401 Unauthorized 
+Docs:    https://docs.snyk.io/scan-with-snyk/error-catalog#snyk-0005 
+                                                                     
+ID:      urn:snyk:interaction:74fa04a1-0b52-4c58-bef1-4e3600fbde38 
