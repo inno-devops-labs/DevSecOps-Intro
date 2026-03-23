@@ -1,0 +1,5 @@
+Docker Bench Summary
+PASS: 40
+WARN: 82
+FAIL: 0
+INFO: 88
