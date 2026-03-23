@@ -69,8 +69,6 @@ Notable findings:
 - FAIL: **0**
 - INFO: **115**
 
-> Note: On macOS/Docker Desktop, some Linux-host checks are not directly applicable (`systemctl`, Linux file paths, GNU/BSD command differences). These appear as informational warnings/noise in output.
-
 ### Failure analysis and remediation
 No explicit `[FAIL]` entries were reported in this run.
 
