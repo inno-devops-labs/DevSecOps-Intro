@@ -29,26 +29,45 @@ Packages scanned: 1004
 
 Docker Scout found **76 total vulnerabilities** in 33 packages — 11 Critical and 65 High.
 
-### 1.3 Snyk Comparison (Trivy)
-
-Since Snyk requires an account token and timed out during authentication, Trivy was used as the comparison tool (it is a widely-used alternative):
+### 1.3 Snyk Comparison
 
 ```bash
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  aquasec/trivy:latest image --severity HIGH,CRITICAL \
-  bkimminich/juice-shop:v19.0.0 | tee scanning/snyk-results.txt
+export SNYK_TOKEN=<your-token>
+docker run --rm \
+  --network=host \
+  -e SNYK_TOKEN \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  snyk/snyk:docker snyk test --docker bkimminich/juice-shop:v19.0.0 --severity-threshold=high \
+  | tee scanning/snyk-results.txt
 ```
 
-**Trivy results summary:**
+**Snyk results summary:**
 
-| Layer | HIGH | CRITICAL |
-|-------|------|----------|
-| OS packages | 4 | 1 |
-| npm packages | 87 | 9 |
-| Secrets detected | 1 | 0 |
-| **Total** | **92** | **10** |
+Snyk tested 2 projects (OS packages via deb, and npm packages via package.json):
 
-Trivy found 102 total findings — slightly more than Docker Scout (76) because Trivy also scanned OS-level packages and detected an embedded private key in the source code.
+| Project | HIGH | CRITICAL |
+|---------|------|----------|
+| OS packages (deb) | 5 | 1 |
+| npm packages | 39 | 4 |
+| **Total** | **44** | **5** |
+
+**Total: 49 issues** found across 975 npm dependencies and 10 OS-level dependencies.
+
+Key Snyk findings (unique perspective vs Docker Scout):
+- `multer@1.4.5-lts.2` — 1 Critical (Uncaught Exception), 6 High — file upload handler is very vulnerable
+- `vm2@3.9.17` — 3 Critical (Sandbox Bypass, 2x RCE) + 1 High — no fix available for some
+- `marsdb@0.6.11` — 1 Critical (Arbitrary Code Injection) — no upgrade available
+- `express-jwt@0.1.3` — multiple High (Authorization Bypass, JWT issues) — needs upgrade to 6.0.0
+- `socket.io@3.1.2` — 5 High (DoS, resource exhaustion) — needs upgrade to 4.7.0
+
+**Docker Scout vs Snyk comparison:**
+
+| Tool | Total Found | Critical | High | Notes |
+|------|------------|----------|------|-------|
+| Docker Scout | 76 | 11 | 65 | Broader CVE coverage, includes all CVE databases |
+| Snyk | 49 | 5 | 44 | More actionable — shows upgrade paths, dependency chains |
+
+Docker Scout found more total CVEs because it cross-references multiple vulnerability databases (NVD, GitHub Advisory). Snyk found fewer but gave better remediation advice — it shows exactly which package to upgrade and to which version, which is more useful for a developer fixing the issues.
 
 ### 1.4 Dockle Configuration Assessment
 
@@ -77,40 +96,45 @@ No FATAL or WARN findings — only INFO level. This means the image follows basi
 
 ### Top 5 Critical/High Vulnerabilities
 
-**1. CVE-2026-22709 — vm2 3.9.17 (CRITICAL, CVSS 9.8)**
+**1. vm2 3.9.17 — Sandbox Bypass / RCE (CRITICAL)**
 
-- **Package:** vm2 (JavaScript sandbox library)
-- **Type:** Protection Mechanism Failure
-- **Impact:** Remote code execution — an attacker can break out of the vm2 sandbox and run arbitrary code on the host system. This is extremely dangerous in any app that executes user-supplied scripts.
-- **Fix:** Upgrade to vm2 3.10.2 or replace with a safer alternative
+- **CVE (Scout):** CVE-2023-37466 / **Snyk:** SNYK-JS-VM2-5772823, SNYK-JS-VM2-5772825
+- **Package:** vm2 — JavaScript sandbox used by juicy-chat-bot
+- **Type:** Remote Code Execution — attacker escapes the sandbox and runs code on the host
+- **Impact:** Full server takeover. Two separate RCE paths, both confirmed by Scout and Snyk. The vm2 project is abandoned — no maintained fork exists.
+- **Fix:** Remove vm2 entirely and replace with a maintained sandboxing solution
 
-**2. CVE-2023-37903 — vm2 3.9.17 (CRITICAL, CVSS 9.8)**
+**2. multer 1.4.5-lts.2 — Uncaught Exception (CRITICAL)**
 
-- **Package:** vm2
-- **Type:** OS Command Injection
-- **Impact:** No fix available for this version. An attacker can inject OS commands through the sandbox escape. Since there is no fix, the library itself must be replaced.
-- **Fix:** Replace vm2 entirely — the project was abandoned
+- **Snyk:** SNYK-JS-MULTER-10299078
+- **Package:** multer — file upload middleware for Express
+- **Type:** Uncaught exception leading to crash / potential RCE
+- **Impact:** An attacker can crash the server by sending a crafted file upload request. Combined with 5 other High-severity issues in the same package, multer is a major attack surface.
+- **Fix:** Upgrade to multer 2.1.1
 
-**3. CVE-2019-10744 — lodash 2.4.2 (CRITICAL, CVSS 9.1)**
+**3. marsdb 0.6.11 — Arbitrary Code Injection (CRITICAL)**
 
-- **Package:** lodash (utility library)
-- **Type:** Prototype Pollution
-- **Impact:** An attacker can modify the prototype of base JavaScript objects, which can lead to unexpected behavior, privilege escalation, or denial of service.
-- **Fix:** Upgrade to lodash 4.17.12 or later
+- **Snyk:** SNYK-JS-MARSDB-480405
+- **Package:** marsdb — in-memory database
+- **Type:** Arbitrary code injection
+- **Impact:** Attacker can inject and execute arbitrary code through the database query interface. **No upgrade available** — this package has no fix.
+- **Fix:** Replace marsdb with a maintained alternative
 
-**4. CVE-2025-55130 — Node.js 22.18.0 (CRITICAL)**
+**4. node 22.18.0 — Race Condition (CRITICAL)**
 
+- **CVE (Scout):** CVE-2025-55130 / **Snyk:** SNYK-UPSTREAM-NODE-14928492
 - **Package:** Node.js runtime
-- **Type:** Unspecified vulnerability in Node.js core
-- **Impact:** Affects all applications running on this Node.js version.
-- **Fix:** Upgrade to Node.js 22.22.0
+- **Type:** Race condition in core Node.js
+- **Impact:** Affects the entire application — all code running on this Node.js version is exposed.
+- **Fix:** Upgrade Node.js base image to 22.22.0
 
-**5. CVE-2023-37466 — vm2 3.9.17 (CRITICAL, CVSS 9.8)**
+**5. express-jwt 0.1.3 — Authorization Bypass (HIGH)**
 
-- **Package:** vm2
-- **Type:** Code Injection
-- **Impact:** Allows complete sandbox escape and remote code execution. Same vm2 package — three separate CVEs because the library has multiple independent vulnerabilities.
-- **Fix:** Upgrade to vm2 3.10.0+ or replace library
+- **CVE (Scout):** CVE-2020-15084 / **Snyk:** SNYK-JS-EXPRESSJWT-575022
+- **Package:** express-jwt — JWT authentication middleware
+- **Type:** Improper authorization — JWT verification can be bypassed
+- **Impact:** An attacker can forge JWT tokens and authenticate as any user, including admins, without knowing the secret key. This is a direct authentication bypass.
+- **Fix:** Upgrade to express-jwt 6.0.0
 
 ---
 
