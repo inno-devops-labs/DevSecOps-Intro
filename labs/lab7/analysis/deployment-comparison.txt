@@ -1,0 +1,47 @@
+=== Functionality Test ===
+Note: seccomp=default failed on this host and was omitted for production profile compatibility.
+Default: HTTP 200
+Hardened: HTTP 200
+Production: HTTP 200
+
+=== Resource Usage ===
+NAME               CPU %     MEM USAGE / LIMIT     MEM %
+juice-default      4.37%     139.1MiB / 7.434GiB   1.83%
+juice-hardened     0.68%     106MiB / 512MiB       20.71%
+juice-production   21.16%    97.71MiB / 512MiB     19.08%
+
+=== Security Configurations ===
+
+Container: juice-default
+CapDrop: <no value>
+CapAdd: <no value>
+SecurityOpt: <no value>
+Memory: 0
+MemorySwap: 0
+NanoCpus: 0
+PidsLimit: <no value>
+Restart: no:0
+User: 65532
+
+Container: juice-hardened
+CapDrop: [ALL]
+CapAdd: <no value>
+SecurityOpt: [no-new-privileges]
+Memory: 536870912
+MemorySwap: 1073741824
+NanoCpus: 1000000000
+PidsLimit: <no value>
+Restart: no:0
+User: 65532
+
+Container: juice-production
+CapDrop: [ALL]
+CapAdd: [CAP_NET_BIND_SERVICE]
+SecurityOpt: [no-new-privileges]
+Memory: 536870912
+MemorySwap: 536870912
+NanoCpus: 1000000000
+PidsLimit: 100
+Restart: on-failure:3
+User: 65532
+
