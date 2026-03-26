@@ -1,0 +1,5 @@
+=== Ansible Security Analysis ===
+Total: 10
+HIGH: 9
+MEDIUM: 0
+LOW: 1
