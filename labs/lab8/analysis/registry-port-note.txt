@@ -1,0 +1,2 @@
+Port 5000 is occupied on this host, so Lab 8 uses localhost:5001 for the local registry.
+Owner: macOS Control Center (ControlCe).
