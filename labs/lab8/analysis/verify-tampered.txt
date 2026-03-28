@@ -1,0 +1,19 @@
+Tampered image verification evidence
+
+Target:
+127.0.0.1:5001/juice-shop@sha256:50a3a2fef78c92dee45a3a9b72af5bdcbff6476e685cef49d97f286b6ce6f14a
+
+Expected result:
+Verification must fail, because the mutable tag `juice-shop:v19.0.0` was repointed to different content after signing.
+
+Observed Cosign result:
+- Exit code: 10
+- Outcome: verification failed as expected
+
+Command output:
+WARNING: Skipping tlog verification is an insecure practice that lacks transparency and auditability verification for the signature.
+Error: no signatures found
+error during command execution: no signatures found
+
+Conclusion:
+The new digest has no valid signatures from `labs/lab8/signing/cosign.pub`, which demonstrates that digest-based signing detects tag tampering.
