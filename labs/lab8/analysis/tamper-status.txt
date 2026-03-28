@@ -1,0 +1,1 @@
+tamper_verify_exit_code=10

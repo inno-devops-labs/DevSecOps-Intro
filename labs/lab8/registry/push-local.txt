@@ -1,0 +1,152 @@
+The push refers to repository [localhost:5001/juice-shop]
+d6ffcb7a1207: Unavailable
+3214acf345c0: Unavailable
+045fc1c20da8: Unavailable
+7faf6706c0c2: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+da88a3b79f2c: Unavailable
+62de241dac5f: Unavailable
+2780920e5dbf: Unavailable
+ddf74a63f7d8: Unavailable
+da7816fa955e: Unavailable
+2215264100f7: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+4eff9a62d888: Unavailable
+d0b859bfa04f: Unavailable
+bfb59b82a9b6: Unavailable
+99889590e328: Unavailable
+6ee9adc7733a: Unavailable
+5664b15f108b: Unavailable
+7faf6706c0c2: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+da88a3b79f2c: Unavailable
+62de241dac5f: Unavailable
+2780920e5dbf: Unavailable
+ddf74a63f7d8: Unavailable
+da7816fa955e: Unavailable
+2215264100f7: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+4eff9a62d888: Unavailable
+d0b859bfa04f: Unavailable
+bfb59b82a9b6: Unavailable
+99889590e328: Unavailable
+6ee9adc7733a: Unavailable
+5664b15f108b: Unavailable
+d6ffcb7a1207: Unavailable
+3214acf345c0: Unavailable
+045fc1c20da8: Unavailable
+4aa0ea1413d3: Unavailable
+4eff9a62d888: Unavailable
+d0b859bfa04f: Unavailable
+bfb59b82a9b6: Unavailable
+99889590e328: Unavailable
+6ee9adc7733a: Unavailable
+5664b15f108b: Unavailable
+d6ffcb7a1207: Unavailable
+3214acf345c0: Unavailable
+045fc1c20da8: Unavailable
+7faf6706c0c2: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+da88a3b79f2c: Unavailable
+62de241dac5f: Unavailable
+2780920e5dbf: Unavailable
+ddf74a63f7d8: Unavailable
+da7816fa955e: Unavailable
+2215264100f7: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+4eff9a62d888: Unavailable
+d0b859bfa04f: Unavailable
+bfb59b82a9b6: Unavailable
+99889590e328: Unavailable
+6ee9adc7733a: Unavailable
+5664b15f108b: Unavailable
+d6ffcb7a1207: Unavailable
+3214acf345c0: Unavailable
+045fc1c20da8: Unavailable
+7faf6706c0c2: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+da88a3b79f2c: Unavailable
+62de241dac5f: Unavailable
+2780920e5dbf: Unavailable
+ddf74a63f7d8: Unavailable
+da7816fa955e: Unavailable
+2215264100f7: Unavailable
+136258a9a846: Unavailable
+5664b15f108b: Unavailable
+d6ffcb7a1207: Unavailable
+3214acf345c0: Unavailable
+045fc1c20da8: Unavailable
+7faf6706c0c2: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+da88a3b79f2c: Unavailable
+62de241dac5f: Unavailable
+2780920e5dbf: Unavailable
+ddf74a63f7d8: Unavailable
+da7816fa955e: Unavailable
+2215264100f7: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+4eff9a62d888: Unavailable
+d0b859bfa04f: Unavailable
+bfb59b82a9b6: Unavailable
+99889590e328: Unavailable
+6ee9adc7733a: Unavailable
+ddf74a63f7d8: Unavailable
+da7816fa955e: Unavailable
+2215264100f7: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+4eff9a62d888: Unavailable
+d0b859bfa04f: Unavailable
+bfb59b82a9b6: Unavailable
+99889590e328: Unavailable
+6ee9adc7733a: Unavailable
+5664b15f108b: Unavailable
+d6ffcb7a1207: Unavailable
+3214acf345c0: Unavailable
+045fc1c20da8: Unavailable
+7faf6706c0c2: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+da88a3b79f2c: Unavailable
+62de241dac5f: Unavailable
+2780920e5dbf: Unavailable
+4aa0ea1413d3: Layer already exists
+4eff9a62d888: Layer already exists
+d0b859bfa04f: Layer already exists
+bfb59b82a9b6: Layer already exists
+99889590e328: Layer already exists
+6ee9adc7733a: Layer already exists
+5664b15f108b: Layer already exists
+d6ffcb7a1207: Layer already exists
+3214acf345c0: Layer already exists
+045fc1c20da8: Layer already exists
+7faf6706c0c2: Layer already exists
+dc77cd168f19: Layer already exists
+5b0422100c5f: Layer already exists
+7c12895b777b: Layer already exists
+da88a3b79f2c: Layer already exists
+62de241dac5f: Layer already exists
+2780920e5dbf: Layer already exists
+ddf74a63f7d8: Layer already exists
+da7816fa955e: Layer already exists
+2215264100f7: Layer already exists
+136258a9a846: Layer already exists
+v19.0.0: digest: sha256:772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5 size: 4276
+
+ Info -> Not all multiplatform-content is present and only the available single-platform image was pushed
+         [31msha256:2765a26de7647609099a338d5b7f61085d95903c8703bb70f03fcc4b12f0818d[0m -> [32msha256:772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5[0m
