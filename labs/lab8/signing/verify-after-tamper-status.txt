@@ -1,0 +1,1 @@
+verify-after-tamper exit code: 10

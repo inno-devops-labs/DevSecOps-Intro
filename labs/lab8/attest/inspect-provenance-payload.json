@@ -1,0 +1,33 @@
+{
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "predicateType": "https://slsa.dev/provenance/v0.2",
+  "subject": [
+    {
+      "name": "localhost:5000/juice-shop",
+      "digest": {
+        "sha256": "b029fa83327aa8a3bbcaf161af6269c18c80134942437cb90794233502554e48"
+      }
+    }
+  ],
+  "predicate": {
+    "builder": {
+      "id": "student@local"
+    },
+    "buildType": "manual-local-demo",
+    "invocation": {
+      "configSource": {},
+      "parameters": {
+        "image": "localhost:5000/juice-shop@sha256:b029fa83327aa8a3bbcaf161af6269c18c80134942437cb90794233502554e48"
+      }
+    },
+    "metadata": {
+      "buildStartedOn": "2026-03-29T12:59:03Z",
+      "completeness": {
+        "parameters": true,
+        "environment": false,
+        "materials": false
+      },
+      "reproducible": false
+    }
+  }
+}

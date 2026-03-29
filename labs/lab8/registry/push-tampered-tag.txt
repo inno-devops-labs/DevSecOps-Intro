@@ -1,0 +1,4 @@
+The push refers to repository [localhost:5000/juice-shop]
+7f74ca728556: Preparing
+7f74ca728556: Pushed
+v19.0.0: digest: sha256:11f85134f388cff5f4c66f9bb4c5942249c1f6f7eb8b3889948d953487b5f7a8 size: 527

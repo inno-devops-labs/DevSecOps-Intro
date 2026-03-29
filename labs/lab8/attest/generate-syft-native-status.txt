@@ -1,0 +1,1 @@
+Generated Syft native SBOM at labs/lab4/syft/juice-shop-syft-native.json using syft v1.42.3 on local image bkimminich/juice-shop:v19.0.0.

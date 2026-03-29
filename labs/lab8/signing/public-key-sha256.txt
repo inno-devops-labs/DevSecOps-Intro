@@ -1,0 +1,1 @@
+a6eec1f4a8a6e3ca72db3ca8150eb5d0a612ee117ae35dc64ddc18c8cb0a8023  labs/lab8/signing/cosign.pub

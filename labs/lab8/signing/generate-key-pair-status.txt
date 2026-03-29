@@ -1,0 +1,1 @@
+Generated local Cosign key pair with cosign v3.0.5 using COSIGN_PASSWORD from the environment. Keys were used for signing/verification and will not be committed.

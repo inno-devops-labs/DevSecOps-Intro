@@ -1,0 +1,1 @@
+attest-sbom exit code: 0

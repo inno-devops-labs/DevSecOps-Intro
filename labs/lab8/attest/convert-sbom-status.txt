@@ -1,0 +1,1 @@
+Derived CycloneDX JSON predicate at labs/lab8/attest/juice-shop.cdx.json from the Syft-native SBOM for attestation use.

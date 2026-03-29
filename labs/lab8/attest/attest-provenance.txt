@@ -1,0 +1,2 @@
+Flag --tlog-upload has been deprecated, prefer using a --signing-config file with no transparency log services
+Using payload from: labs/lab8/attest/provenance.json
