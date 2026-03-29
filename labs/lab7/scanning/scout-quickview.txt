@@ -1,0 +1,10 @@
+
+
+ Target     │  bkimminich/juice-shop:v19.0.0  │   12C    72H    35M     5L    13?  
+   digest   │  37cc73163c4c                   │                                    
+ Base image │  distroless/static:nonroot      │    0C     0H     0M     0L         
+
+What's next:
+    View vulnerabilities → docker scout cves bkimminich/juice-shop:v19.0.0
+    Include policy results in your quickview by supplying an organization → docker scout quickview bkimminich/juice-shop:v19.0.0 --org <organization>
+

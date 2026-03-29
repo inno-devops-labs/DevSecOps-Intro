@@ -1,0 +1,54 @@
+=== Container Status ===
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+7279b810a010   bkimminich/juice-shop:v19.0.0   "/nodejs/bin/node /j…"   15 seconds ago   Up 15 seconds   0.0.0.0:3003->3000/tcp, [::]:3003->3000/tcp   juice-production
+8f8a14ed284d   bkimminich/juice-shop:v19.0.0   "/nodejs/bin/node /j…"   15 seconds ago   Up 15 seconds   0.0.0.0:3002->3000/tcp, [::]:3002->3000/tcp   juice-hardened
+fed4061d2e32   bkimminich/juice-shop:v19.0.0   "/nodejs/bin/node /j…"   16 seconds ago   Up 15 seconds   0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp   juice-default
+
+=== Functionality Test ===
+Default: HTTP 200
+Hardened: HTTP 200
+Production: HTTP 200
+
+=== Resource Usage ===
+NAME               CPU %     MEM USAGE / LIMIT     MEM %
+juice-default      1.70%     135.8MiB / 15.35GiB   0.86%
+juice-hardened     0.53%     91.76MiB / 512MiB     17.92%
+juice-production   0.47%     106.1MiB / 512MiB     20.72%
+
+=== Security Configurations ===
+
+Container: juice-default
+User: 65532
+CapAdd: <no value>
+CapDrop: <no value>
+SecurityOpt: <no value>
+Memory: 0
+MemorySwap: 0
+NanoCPUs: 0
+PIDs: <no value>
+Restart: no:0
+ReadonlyRootfs: false
+
+Container: juice-hardened
+User: 65532
+CapAdd: <no value>
+CapDrop: [ALL]
+SecurityOpt: [no-new-privileges]
+Memory: 536870912
+MemorySwap: 1073741824
+NanoCPUs: 1000000000
+PIDs: <no value>
+Restart: no:0
+ReadonlyRootfs: false
+
+Container: juice-production
+User: 65532
+CapAdd: [CAP_NET_BIND_SERVICE]
+CapDrop: [ALL]
+SecurityOpt: [no-new-privileges seccomp=builtin]
+Memory: 536870912
+MemorySwap: 536870912
+NanoCPUs: 1000000000
+PIDs: 100
+Restart: on-failure:3
+ReadonlyRootfs: false
