@@ -1,0 +1,2 @@
+# Never commit private keys
+signing/cosign.key
