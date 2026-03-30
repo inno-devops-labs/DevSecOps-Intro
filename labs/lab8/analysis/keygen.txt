@@ -1,0 +1,2 @@
+Private key written to cosign.key
+Public key written to cosign.pub

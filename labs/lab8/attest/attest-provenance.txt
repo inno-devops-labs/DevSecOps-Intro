@@ -1,0 +1,3 @@
+WARNING: Could not fetch trusted_root.json from the TUF repository. Continuing with individual targets. Error from TUF: error getting live trusted root: failed to create TUF client failed to load metadata: tuf refresh failed: Get "https://tuf-repo-cdn.sigstore.dev/14.root.json": dial tcp: lookup tuf-repo-cdn.sigstore.dev on 10.90.137.31:53: write udp 10.8.1.3:45288->10.90.137.31:53: write: operation not permitted
+Using payload from: labs/lab8/attest/provenance.json
+Signing artifact...
