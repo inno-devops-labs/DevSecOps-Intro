@@ -1,0 +1,86 @@
+{
+  "predicateType": "https://cyclonedx.org/bom",
+  "subject": [
+    {
+      "name": "localhost:5000/juice-shop",
+      "digest": {
+        "sha256": "872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"
+      }
+    }
+  ],
+  "predicate": {
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.6",
+    "serialNumber": "urn:uuid:159ae3dc-e0d9-4276-b6d9-11a58ad10c65",
+    "metadata": {
+      "component": {
+        "bom-ref": "74a13d56af4aed47",
+        "name": "bkimminich/juice-shop",
+        "type": "container",
+        "version": "v19.0.0"
+      },
+      "properties": [
+        {
+          "name": "syft:image:labels:maintainer",
+          "value": "Bjoern Kimminich <bjoern.kimminich@owasp.org>"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.authors",
+          "value": "Bjoern Kimminich <bjoern.kimminich@owasp.org>"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.created",
+          "value": "”2025-09-04T05:38:11Z”"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.description",
+          "value": "Probably the most modern and sophisticated insecure web application"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.documentation",
+          "value": "https://help.owasp-juice.shop"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.licenses",
+          "value": "MIT"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.revision",
+          "value": "36870cb"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.source",
+          "value": "https://github.com/juice-shop/juice-shop"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.title",
+          "value": "OWASP Juice Shop"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.url",
+          "value": "https://owasp-juice.shop"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.vendor",
+          "value": "Open Worldwide Application Security Project"
+        },
+        {
+          "name": "syft:image:labels:org.opencontainers.image.version",
+          "value": "19.0.0"
+        }
+      ],
+      "timestamp": "2026-03-30T14:01:50Z",
+      "tools": {
+        "components": [
+          {
+            "author": "anchore",
+            "name": "syft",
+            "type": "application",
+            "version": "1.42.1"
+          }
+        ]
+      }
+    },
+    "components_count": 3532
+  }
+}

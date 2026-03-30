@@ -1,0 +1,30 @@
+$ cosign verify --allow-http-registry --allow-insecure-registry --insecure-ignore-tlog --key labs/lab8/signing/cosign.pub "$REF"
+
+[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop@sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"image":{"docker-manifest-digest":"sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]
+
+$ docker pull busybox:latest
+latest: Pulling from library/busybox
+2f3adcef67f0: Pulling fs layer
+2f3adcef67f0: Verifying Checksum
+2f3adcef67f0: Download complete
+2f3adcef67f0: Pull complete
+Digest: sha256:1487d0af5f52b4ba31c7e465126ee2123fe3f2305d638e7827681e7cf6c83d5e
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
+
+$ docker tag busybox:latest localhost:5000/juice-shop:v19.0.0
+
+$ docker push localhost:5000/juice-shop:v19.0.0
+The push refers to repository [localhost:5000/juice-shop]
+900b851735fc: Preparing
+900b851735fc: Pushed
+v19.0.0: digest: sha256:50a3a2fef78c92dee45a3a9b72af5bdcbff6476e685cef49d97f286b6ce6f14a size: 527
+
+After tamper digest ref: localhost:5000/juice-shop@sha256:50a3a2fef78c92dee45a3a9b72af5bdcbff6476e685cef49d97f286b6ce6f14a
+
+$ cosign verify --allow-http-registry --allow-insecure-registry --insecure-ignore-tlog --key labs/lab8/signing/cosign.pub "$REF_AFTER"
+tamper_verify_exit_code=10
+
+$ cosign verify --allow-http-registry --allow-insecure-registry --insecure-ignore-tlog --key labs/lab8/signing/cosign.pub "$REF"
+
+[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop@sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"image":{"docker-manifest-digest":"sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]

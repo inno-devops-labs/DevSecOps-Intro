@@ -1,0 +1,9 @@
+cosign v3 note: --tlog-upload=false from the lab handout is incompatible with v3.0.5 for this local flow; used --signing-config without Rekor/TSA instead.
+
+$ cat labs/lab8/signing/local-signing-config.json
+{"mediaType":"application/vnd.dev.sigstore.signingconfig.v0.2+json","rekorTlogConfig":{},"tsaConfig":{}}
+$ cosign sign --yes --allow-http-registry --allow-insecure-registry --signing-config labs/lab8/signing/local-signing-config.json --key labs/lab8/signing/cosign.key "$REF"
+
+$ cosign verify --allow-http-registry --allow-insecure-registry --insecure-ignore-tlog --key labs/lab8/signing/cosign.pub "$REF"
+
+[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop@sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"image":{"docker-manifest-digest":"sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"type":"https://slsa.dev/provenance/v0.2"},"optional":{}},{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop@sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"image":{"docker-manifest-digest":"sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}},{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop@sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"image":{"docker-manifest-digest":"sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"type":"https://cyclonedx.org/bom"},"optional":{}},{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop@sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"image":{"docker-manifest-digest":"sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]

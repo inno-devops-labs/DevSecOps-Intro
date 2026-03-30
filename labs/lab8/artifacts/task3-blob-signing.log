@@ -1,0 +1,3 @@
+$ cosign sign-blob --yes --key labs/lab8/signing/cosign.key --signing-config labs/lab8/signing/local-signing-config.json --bundle labs/lab8/artifacts/sample.tar.gz.bundle labs/lab8/artifacts/sample.tar.gz
+
+$ cosign verify-blob --key labs/lab8/signing/cosign.pub --bundle labs/lab8/artifacts/sample.tar.gz.bundle --insecure-ignore-tlog labs/lab8/artifacts/sample.tar.gz

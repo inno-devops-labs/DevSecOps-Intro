@@ -1,0 +1,6 @@
+.DS_Store
+
+# Keep local cosign key material out of version control.
+labs/lab8/signing/cosign.key
+labs/lab8/signing/cosign.pub
+labs/lab8/bin/cosign
