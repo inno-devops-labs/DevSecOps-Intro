@@ -1,0 +1,196 @@
+[Task1] Pull target image
+v19.0.0: Pulling from bkimminich/juice-shop
+Digest: sha256:2765a26de7647609099a338d5b7f61085d95903c8703bb70f03fcc4b12f0818d
+Status: Image is up to date for bkimminich/juice-shop:v19.0.0
+docker.io/bkimminich/juice-shop:v19.0.0
+[Task1] Start local registry on 5001 (5000 occupied by AirTunes)
+bec497f93ecaa2082c132fe577f66e9d64cbeaccbbee90a1d8d102dcfe203dd2
+[Task1] Tag and push
+The push refers to repository [localhost:5001/juice-shop]
+7c12895b777b: Unavailable
+d6ffcb7a1207: Unavailable
+2780920e5dbf: Unavailable
+7faf6706c0c2: Unavailable
+6ee9adc7733a: Unavailable
+d0b859bfa04f: Unavailable
+2215264100f7: Unavailable
+99889590e328: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+62de241dac5f: Unavailable
+da88a3b79f2c: Unavailable
+da7816fa955e: Unavailable
+3214acf345c0: Unavailable
+4eff9a62d888: Unavailable
+045fc1c20da8: Unavailable
+5b0422100c5f: Unavailable
+ddf74a63f7d8: Unavailable
+bfb59b82a9b6: Unavailable
+5664b15f108b: Unavailable
+dc77cd168f19: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+ddf74a63f7d8: Unavailable
+bfb59b82a9b6: Unavailable
+5664b15f108b: Unavailable
+7c12895b777b: Unavailable
+d0b859bfa04f: Unavailable
+2215264100f7: Unavailable
+99889590e328: Unavailable
+d6ffcb7a1207: Unavailable
+2780920e5dbf: Unavailable
+7faf6706c0c2: Unavailable
+6ee9adc7733a: Unavailable
+3214acf345c0: Unavailable
+4eff9a62d888: Unavailable
+045fc1c20da8: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+62de241dac5f: Unavailable
+da88a3b79f2c: Unavailable
+da7816fa955e: Unavailable
+7c12895b777b: Unavailable
+d6ffcb7a1207: Unavailable
+2780920e5dbf: Unavailable
+7faf6706c0c2: Unavailable
+6ee9adc7733a: Unavailable
+d0b859bfa04f: Unavailable
+2215264100f7: Unavailable
+99889590e328: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+62de241dac5f: Unavailable
+da88a3b79f2c: Unavailable
+da7816fa955e: Unavailable
+3214acf345c0: Unavailable
+4eff9a62d888: Unavailable
+045fc1c20da8: Unavailable
+5b0422100c5f: Unavailable
+ddf74a63f7d8: Unavailable
+bfb59b82a9b6: Unavailable
+5664b15f108b: Unavailable
+dc77cd168f19: Unavailable
+6ee9adc7733a: Unavailable
+d0b859bfa04f: Unavailable
+2215264100f7: Unavailable
+99889590e328: Unavailable
+d6ffcb7a1207: Unavailable
+2780920e5dbf: Unavailable
+7faf6706c0c2: Unavailable
+da7816fa955e: Unavailable
+3214acf345c0: Unavailable
+4eff9a62d888: Unavailable
+045fc1c20da8: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+62de241dac5f: Unavailable
+da88a3b79f2c: Unavailable
+5664b15f108b: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+ddf74a63f7d8: Unavailable
+bfb59b82a9b6: Unavailable
+7c12895b777b: Unavailable
+5664b15f108b: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+ddf74a63f7d8: Unavailable
+bfb59b82a9b6: Unavailable
+7c12895b777b: Unavailable
+6ee9adc7733a: Unavailable
+d0b859bfa04f: Unavailable
+2215264100f7: Unavailable
+99889590e328: Unavailable
+d6ffcb7a1207: Unavailable
+2780920e5dbf: Unavailable
+7faf6706c0c2: Unavailable
+da7816fa955e: Unavailable
+3214acf345c0: Unavailable
+4eff9a62d888: Unavailable
+045fc1c20da8: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+62de241dac5f: Unavailable
+da88a3b79f2c: Unavailable
+ddf74a63f7d8: Unavailable
+bfb59b82a9b6: Unavailable
+5664b15f108b: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+2780920e5dbf: Unavailable
+7faf6706c0c2: Unavailable
+6ee9adc7733a: Unavailable
+d0b859bfa04f: Unavailable
+2215264100f7: Unavailable
+99889590e328: Unavailable
+d6ffcb7a1207: Unavailable
+62de241dac5f: Unavailable
+da88a3b79f2c: Unavailable
+da7816fa955e: Unavailable
+3214acf345c0: Unavailable
+4eff9a62d888: Unavailable
+045fc1c20da8: Unavailable
+136258a9a846: Unavailable
+4aa0ea1413d3: Unavailable
+2780920e5dbf: Unavailable
+7faf6706c0c2: Unavailable
+6ee9adc7733a: Unavailable
+d0b859bfa04f: Unavailable
+2215264100f7: Unavailable
+99889590e328: Unavailable
+62de241dac5f: Unavailable
+da88a3b79f2c: Unavailable
+3214acf345c0: Unavailable
+4eff9a62d888: Unavailable
+045fc1c20da8: Unavailable
+136258a9a846: Unavailable
+ddf74a63f7d8: Unavailable
+bfb59b82a9b6: Unavailable
+5664b15f108b: Unavailable
+dc77cd168f19: Unavailable
+5b0422100c5f: Unavailable
+7c12895b777b: Unavailable
+7c12895b777b: Pushed
+d0b859bfa04f: Pushed
+2215264100f7: Pushed
+99889590e328: Pushed
+d6ffcb7a1207: Pushed
+2780920e5dbf: Pushed
+6ee9adc7733a: Pushed
+3214acf345c0: Pushed
+4eff9a62d888: Pushed
+045fc1c20da8: Pushed
+4aa0ea1413d3: Pushed
+62de241dac5f: Pushed
+da88a3b79f2c: Pushed
+da7816fa955e: Pushed
+dc77cd168f19: Pushed
+ddf74a63f7d8: Pushed
+bfb59b82a9b6: Pushed
+5664b15f108b: Pushed
+7faf6706c0c2: Pushed
+136258a9a846: Pushed
+5b0422100c5f: Pushed
+v19.0.0: digest: sha256:772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5 size: 4276
+Using digest ref: localhost:5001/juice-shop@
+[Task1] Sign image
+[Task1] Sign image
+[Task1] Verify image signature
+[Task1] Tamper demo with busybox
+latest: Pulling from library/busybox
+2f3adcef67f0: Pulling fs layer
+2f3adcef67f0: Download complete
+Digest: sha256:1487d0af5f52b4ba31c7e465126ee2123fe3f2305d638e7827681e7cf6c83d5e
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
+The push refers to repository [localhost:5001/juice-shop]
+2f3adcef67f0: Unavailable
+2f3adcef67f0: Unavailable
+2f3adcef67f0: Unavailable
+2f3adcef67f0: Unavailable
+2f3adcef67f0: Unavailable
+2f3adcef67f0: Unavailable
+2f3adcef67f0: Pushed
+v19.0.0: digest: sha256:c4e5b27bf840ba1ebd5568b6b914f6926f3559b2ad4f505b1f37aae483b907d6 size: 610
+Tamper verify failed as expected
