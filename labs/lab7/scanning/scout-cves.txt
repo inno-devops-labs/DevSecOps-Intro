@@ -1,0 +1,1380 @@
+[6n[34m    i [0mFailed to connect to Docker Engine. Please run the container with '-u root -v /var/run/docker.sock:/var/run/docker.sock' to access local images.
+[92m    ✓ [0mSBOM of image already cached, 1004 packages indexed
+[91m    ✗ [0mDetected 54 vulnerable packages with a total of 105 vulnerabilities
+[6n
+
+[1m[34m## Overview[0m[0m
+
+                   │                [1mAnalyzed Image[0m                
+───────────────────┼──────────────────────────────────────────────
+ Target            │ [38;5;203;48;5;236m bkimminich/juice-shop:v19.0.0 [0m              
+   digest          │ [38;5;203;48;5;236m 547bd3fef4a6 [0m                               
+   platform        │ linux/amd64                                  
+   provenance      │ https://github.com/juice-shop/juice-shop     
+                   │ [38;5;203;48;5;236m [0m[38;5;203;48;5;236m [0m   
+   vulnerabilities │ [37;48;5;88m  12C [0m [30;48;5;167m  72H [0m [30;48;5;215m  36M [0m [30;48;5;222m   6L [0m [97m  13? [0m           
+   size            │ 158 MB                                       
+   packages        │ 1004                                         
+                   │                                              
+ Base image        │ [38;5;203;48;5;236m gcr.io/distroless/nodejs22-debian12:latest [0m 
+                   │ [38;5;203;48;5;236m 4c6848a24760 [0m                               
+
+
+[1m[34m## Packages and Vulnerabilities[0m[0m
+
+[37;48;5;88m   4C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mvm2 3.9.17[0m
+pkg:npm/vm2@3.9.17
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m CVE-2026-22709[2m [Protection Mechanism Failure][0m
+      
+      Affected range : <=3.10.1                                     
+      Fixed version  : 3.10.2                                       
+      CVSS Score     : 9.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;88m✗ CRITICAL[0m CVE-2023-37903[2m [Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')][0m
+      
+      Affected range : <=3.9.19                                     
+      Fixed version  : [91mnot fixed[0m                                    
+      CVSS Score     : 9.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;88m✗ CRITICAL[0m CVE-2023-37466[2m [Improper Control of Generation of Code ('Code Injection')][0m
+      
+      Affected range : <=3.9.19                                     
+      Fixed version  : 3.10.0                                       
+      CVSS Score     : 9.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;88m✗ CRITICAL[0m CVE-2023-32314[2m [Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')][0m
+      
+      Affected range : <3.9.18                                      
+      Fixed version  : 3.9.18                                       
+      CVSS Score     : 9.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2023-32313[2m [Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')][0m
+      
+      Affected range : <3.9.18                                      
+      Fixed version  : 3.9.18                                       
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+
+[37;48;5;88m   1C [0m [30;48;5;167m   4H [0m [30;48;5;215m   2M [0m [30;48;5;222m   1L [0m [1mhandlebars 4.7.7[0m
+pkg:npm/handlebars@4.7.7
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m CVE-2026-33937[2m [Access of Resource Using Incompatible Type ('Type Confusion')][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <=4.7.8                                      
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 9.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-33941[2m [Improper Encoding or Escaping of Output][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <=4.7.8                                      
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 8.2                                          
+      CVSS Vector    : CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-33940[2m [Access of Resource Using Incompatible Type ('Type Confusion')][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <=4.7.8                                      
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 8.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-33938[2m [Access of Resource Using Incompatible Type ('Type Confusion')][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <=4.7.8                                      
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 8.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-33939[2m [Improper Check for Unusual or Exceptional Conditions][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <=4.7.8                                      
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;215m✗ MEDIUM[0m GHSA-7rx3-28cr-v5wh[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : >=4.6.0                                      
+                     : <=4.7.8                                      
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 4.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2026-33916[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <4.7.9                                       
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 4.7                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N 
+    
+    [38;5;222m✗ LOW[0m GHSA-442j-39wm-28r2[2m [Time-of-check Time-of-use (TOCTOU) Race Condition][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <=4.7.8                                      
+      Fixed version  : 4.7.9                                        
+      CVSS Score     : 3.7                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N 
+    
+
+[37;48;5;88m   1C [0m [30;48;5;167m   4H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [97m   6? [0m [1mnode 22.18.0[0m
+pkg:generic/node@22.18.0
+
+
+FROM gcr.io/distroless/nodejs22-debian12
+
+    [38;5;88m✗ CRITICAL[0m CVE-2025-55130
+      
+      Affected range : >=22.0.0 
+                     : <22.22.0 
+      Fixed version  : 22.22.0  
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-21637
+      
+      Affected range : >=22.0.0 
+                     : <22.22.0 
+      Fixed version  : 22.22.0  
+    
+    [38;5;167m✗ HIGH[0m CVE-2025-59466
+      
+      Affected range : >=22.0.0 
+                     : <22.22.0 
+      Fixed version  : 22.22.0  
+    
+    [38;5;167m✗ HIGH[0m CVE-2025-59465
+      
+      Affected range : >=22.0.0 
+                     : <22.22.0 
+      Fixed version  : 22.22.0  
+    
+    [38;5;167m✗ HIGH[0m CVE-2025-55131
+      
+      Affected range : >=22.0.0 
+                     : <22.22.0 
+      Fixed version  : 22.22.0  
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2025-55132
+      
+      Affected range : >=22.0.0 
+                     : <22.22.0 
+      Fixed version  : 22.22.0  
+    
+    [97m✗ UNSPECIFIED[0m BSA-2026-21717
+      
+      Affected range : >=22.0.0 
+                     : <22.22.2 
+      Fixed version  : 22.22.2  
+    
+    [97m✗ UNSPECIFIED[0m BSA-2026-21716
+      
+      Affected range : >=22.0.0 
+                     : <22.22.2 
+      Fixed version  : 22.22.2  
+    
+    [97m✗ UNSPECIFIED[0m BSA-2026-21715
+      
+      Affected range : >=22.0.0 
+                     : <22.22.2 
+      Fixed version  : 22.22.2  
+    
+    [97m✗ UNSPECIFIED[0m BSA-2026-21714
+      
+      Affected range : >=22.0.0 
+                     : <22.22.2 
+      Fixed version  : 22.22.2  
+    
+    [97m✗ UNSPECIFIED[0m BSA-2026-21713
+      
+      Affected range : >=22.0.0 
+                     : <22.22.2 
+      Fixed version  : 22.22.2  
+    
+    [97m✗ UNSPECIFIED[0m BSA-2026-21710
+      
+      Affected range : >=22.0.0 
+                     : <22.22.2 
+      Fixed version  : 22.22.2  
+    
+
+[37;48;5;88m   1C [0m [30;48;5;167m   3H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [97m   1? [0m [1mlodash 2.4.2[0m
+pkg:npm/lodash@2.4.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m CVE-2019-10744[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : <4.17.12                                     
+      Fixed version  : 4.17.12                                      
+      CVSS Score     : 9.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2020-8203[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <4.17.20                                     
+      Fixed version  : 4.17.20                                      
+      CVSS Score     : 7.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2021-23337[2m [Improper Neutralization of Special Elements used in a Command ('Command Injection')][0m
+      
+      Affected range : <4.17.21                                     
+      Fixed version  : 4.17.21                                      
+      CVSS Score     : 7.2                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2018-16487[2m [Uncontrolled Resource Consumption][0m
+      
+      Affected range : <4.17.11 
+      Fixed version  : 4.17.11  
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2018-3721[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : <4.17.5                                      
+      Fixed version  : 4.17.5                                       
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N 
+    
+    [97m✗ UNSPECIFIED[0m GMS-2018-10[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <4.17.5 
+      Fixed version  : 4.17.5  
+    
+
+[37;48;5;88m   1C [0m [30;48;5;167m   1H [0m [30;48;5;215m   2M [0m [30;48;5;239m   0L [0m [97m   1? [0m [1mjsonwebtoken 0.4.0[0m
+pkg:npm/jsonwebtoken@0.4.0
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m CVE-2015-9235[2m [Improper Input Validation][0m
+      
+      Affected range : <4.2.2 
+      Fixed version  : 4.2.2  
+    
+    [38;5;167m✗ HIGH[0m CVE-2022-23539[2m [Use of a Broken or Risky Cryptographic Algorithm][0m
+      
+      Affected range : <=8.5.1                                      
+      Fixed version  : 9.0.0                                        
+      CVSS Score     : 8.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2022-23540[2m [Improper Authentication][0m
+      
+      Affected range : <9.0.0                                       
+      Fixed version  : 9.0.0                                        
+      CVSS Score     : 6.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2022-23541[2m [Improper Restriction of Security Token Assignment][0m
+      
+      Affected range : <=8.5.1                                      
+      Fixed version  : 9.0.0                                        
+      CVSS Score     : 5.0                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L 
+    
+    [97m✗ UNSPECIFIED[0m GMS-2015-4[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <4.2.2 
+      Fixed version  : 4.2.2  
+    
+
+[37;48;5;88m   1C [0m [30;48;5;167m   1H [0m [30;48;5;215m   2M [0m [30;48;5;239m   0L [0m [97m   1? [0m [1mjsonwebtoken 0.1.0[0m
+pkg:npm/jsonwebtoken@0.1.0
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m CVE-2015-9235[2m [Improper Input Validation][0m
+      
+      Affected range : <4.2.2 
+      Fixed version  : 4.2.2  
+    
+    [38;5;167m✗ HIGH[0m CVE-2022-23539[2m [Use of a Broken or Risky Cryptographic Algorithm][0m
+      
+      Affected range : <=8.5.1                                      
+      Fixed version  : 9.0.0                                        
+      CVSS Score     : 8.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2022-23540[2m [Improper Authentication][0m
+      
+      Affected range : <9.0.0                                       
+      Fixed version  : 9.0.0                                        
+      CVSS Score     : 6.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2022-23541[2m [Improper Restriction of Security Token Assignment][0m
+      
+      Affected range : <=8.5.1                                      
+      Fixed version  : 9.0.0                                        
+      CVSS Score     : 5.0                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L 
+    
+    [97m✗ UNSPECIFIED[0m GMS-2015-4[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <4.2.2 
+      Fixed version  : 4.2.2  
+    
+
+[37;48;5;88m   1C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mcrypto-js 3.3.0[0m
+pkg:npm/crypto-js@3.3.0
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m CVE-2023-46233[2m [Use of a Broken or Risky Cryptographic Algorithm][0m
+      
+      Affected range : <4.2.0                                       
+      Fixed version  : 4.2.0                                        
+      CVSS Score     : 9.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N 
+    
+    [38;5;167m✗ HIGH[0m GMS-2020-4[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : >=3.3.0                    
+                     : <4.0.0                     
+      Fixed version  : 3.2.1, 4.0.0               
+      CVSS Score     : 7.5                        
+      CVSS Vector    : AV:N/AC:L/Au:N/C:P/I:P/A:P 
+    
+
+[37;48;5;88m   1C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mminimist 0.2.4[0m
+pkg:npm/minimist@0.2.4
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m CVE-2021-44906[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <1.2.6                                       
+      Fixed version  : 1.2.6                                        
+      CVSS Score     : 9.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2020-7598[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <1.2.2                                       
+      Fixed version  : 1.2.2                                        
+      CVSS Score     : 5.6                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L 
+    
+
+[37;48;5;88m   1C [0m [30;48;5;239m   0H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mmarsdb 0.6.11[0m
+pkg:npm/marsdb@0.6.11
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;88m✗ CRITICAL[0m GHSA-5mrr-rgp6-x4gr[2m [Improper Neutralization of Special Elements used in a Command ('Command Injection')][0m
+      
+      Affected range : >=0.0.0   
+      Fixed version  : [91mnot fixed[0m 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   6H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mtar 4.4.19[0m
+pkg:npm/tar@4.4.19
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-23950[2m [Improper Handling of Unicode Encoding][0m
+      
+      Affected range : <=7.5.3                                      
+      Fixed version  : 7.5.4                                        
+      CVSS Score     : 8.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-31802[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.10                                                        
+      Fixed version  : 7.5.11                                                          
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-29786[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.9                                                         
+      Fixed version  : 7.5.10                                                          
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:L/SC:N/SI:H/SA:L 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-24842[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <7.5.7                                       
+      Fixed version  : 7.5.7                                        
+      CVSS Score     : 8.2                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-23745[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.2                                                         
+      Fixed version  : 7.5.3                                                           
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:L/VA:N/SC:H/SI:L/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-26960[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <7.5.8                                       
+      Fixed version  : 7.5.8                                        
+      CVSS Score     : 7.1                                          
+      CVSS Vector    : CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2024-28863[2m [Uncontrolled Resource Consumption][0m
+      
+      Affected range : <6.2.1                                       
+      Fixed version  : 6.2.1                                        
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   6H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mtar 6.2.1[0m
+pkg:npm/tar@6.2.1
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-23950[2m [Improper Handling of Unicode Encoding][0m
+      
+      Affected range : <=7.5.3                                      
+      Fixed version  : 7.5.4                                        
+      CVSS Score     : 8.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-31802[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.10                                                        
+      Fixed version  : 7.5.11                                                          
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-29786[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.9                                                         
+      Fixed version  : 7.5.10                                                          
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:L/SC:N/SI:H/SA:L 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-24842[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <7.5.7                                       
+      Fixed version  : 7.5.7                                        
+      CVSS Score     : 8.2                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-23745[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.2                                                         
+      Fixed version  : 7.5.3                                                           
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:L/VA:N/SC:H/SI:L/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-26960[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <7.5.8                                       
+      Fixed version  : 7.5.8                                        
+      CVSS Score     : 7.1                                          
+      CVSS Vector    : CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   6H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mtar 7.4.3[0m
+pkg:npm/tar@7.4.3
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-23950[2m [Improper Handling of Unicode Encoding][0m
+      
+      Affected range : <=7.5.3                                      
+      Fixed version  : 7.5.4                                        
+      CVSS Score     : 8.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-31802[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.10                                                        
+      Fixed version  : 7.5.11                                                          
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-29786[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.9                                                         
+      Fixed version  : 7.5.10                                                          
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:L/SC:N/SI:H/SA:L 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-24842[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <7.5.7                                       
+      Fixed version  : 7.5.7                                        
+      CVSS Score     : 8.2                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-23745[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <=7.5.2                                                         
+      Fixed version  : 7.5.3                                                           
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:L/VA:N/SC:H/SI:L/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-26960[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <7.5.8                                       
+      Fixed version  : 7.5.8                                        
+      CVSS Score     : 7.1                                          
+      CVSS Vector    : CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   4H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mmulter 1.4.5-lts.2[0m
+pkg:npm/multer@1.4.5-lts.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-3520[2m [Uncontrolled Recursion][0m
+      
+      Affected range : <2.1.1                                                          
+      Fixed version  : 2.1.1                                                           
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-3304[2m [Incomplete Cleanup][0m
+      
+      Affected range : <2.1.0                                                          
+      Fixed version  : 2.1.0                                                           
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-2359[2m [Missing Release of Resource after Effective Lifetime][0m
+      
+      Affected range : <2.1.0                                                          
+      Fixed version  : 2.1.0                                                           
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2025-47935[2m [Missing Release of Memory after Effective Lifetime][0m
+      
+      Affected range : <2.0.0                                       
+      Fixed version  : 2.0.0                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   3H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mminimatch 3.0.8[0m
+pkg:npm/minimatch@3.0.8
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-26996[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <3.1.3                                                          
+      Fixed version  : 10.2.1                                                          
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27904[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <3.1.4                                       
+      Fixed version  : 3.1.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27903[2m [Inefficient Algorithmic Complexity][0m
+      
+      Affected range : <3.1.3                                       
+      Fixed version  : 3.1.3                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   3H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mminimatch 3.1.2[0m
+pkg:npm/minimatch@3.1.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-26996[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <3.1.3                                                          
+      Fixed version  : 10.2.1                                                          
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27904[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <3.1.4                                       
+      Fixed version  : 3.1.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27903[2m [Inefficient Algorithmic Complexity][0m
+      
+      Affected range : <3.1.3                                       
+      Fixed version  : 3.1.3                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   3H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mminimatch 3.0.5[0m
+pkg:npm/minimatch@3.0.5
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-26996[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <3.1.3                                                          
+      Fixed version  : 10.2.1                                                          
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27904[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <3.1.4                                       
+      Fixed version  : 3.1.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27903[2m [Inefficient Algorithmic Complexity][0m
+      
+      Affected range : <3.1.3                                       
+      Fixed version  : 3.1.3                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   3H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mminimatch 5.1.6[0m
+pkg:npm/minimatch@5.1.6
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-26996[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : >=5.0.0                                                         
+                     : <5.1.7                                                          
+      Fixed version  : 10.2.1                                                          
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27904[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : >=5.0.0                                      
+                     : <5.1.8                                       
+      Fixed version  : 5.1.8                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27903[2m [Inefficient Algorithmic Complexity][0m
+      
+      Affected range : >=5.0.0                                      
+                     : <5.1.8                                       
+      Fixed version  : 5.1.8                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   3H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mminimatch 9.0.5[0m
+pkg:npm/minimatch@9.0.5
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-26996[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : >=9.0.0                                                         
+                     : <9.0.6                                                          
+      Fixed version  : 10.2.1                                                          
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27904[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : >=9.0.0                                      
+                     : <9.0.7                                       
+      Fixed version  : 9.0.7                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;167m✗ HIGH[0m CVE-2026-27903[2m [Inefficient Algorithmic Complexity][0m
+      
+      Affected range : >=9.0.0                                      
+                     : <9.0.7                                       
+      Fixed version  : 9.0.7                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   2H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [97m   1? [0m [1mmoment 2.0.0[0m
+pkg:npm/moment@2.0.0
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2022-24785[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : <2.29.2                                      
+      Fixed version  : 2.29.2                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2017-18214[2m [Uncontrolled Resource Consumption][0m
+      
+      Affected range : <2.19.3                                      
+      Fixed version  : 2.19.3                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2016-4055[2m [Uncontrolled Resource Consumption][0m
+      
+      Affected range : <2.11.2                                      
+      Fixed version  : 2.11.2                                       
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H 
+    
+    [97m✗ UNSPECIFIED[0m GMS-2017-332[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <2.19.3 
+      Fixed version  : 2.19.3  
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   2H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [97m   1? [0m [1mjws 0.2.6[0m
+pkg:npm/jws@0.2.6
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2016-1000223
+      
+      Affected range : <3.0.0                                       
+      Fixed version  : 3.0.0                                        
+      CVSS Score     : 8.7                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N 
+    
+    [38;5;167m✗ HIGH[0m CVE-2025-65945[2m [Improper Verification of Cryptographic Signature][0m
+      
+      Affected range : <3.2.3                                       
+      Fixed version  : 3.2.3                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N 
+    
+    [97m✗ UNSPECIFIED[0m GMS-2016-54[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <3.0.0 
+      Fixed version  : 3.0.0  
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;215m   6M [0m [30;48;5;239m   0L [0m [97m   2? [0m [1msanitize-html 1.4.2[0m
+pkg:npm/sanitize-html@1.4.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2022-25887[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <2.7.1                                       
+      Fixed version  : 2.7.1                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2019-25225[2m [Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')][0m
+      
+      Affected range : <2.0.0-beta                                  
+      Fixed version  : 2.0.0-beta                                   
+      CVSS Score     : 6.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2016-1000237[2m [Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')][0m
+      
+      Affected range : <1.4.3                                       
+      Fixed version  : 1.4.3                                        
+      CVSS Score     : 6.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2024-21501[2m [Exposure of Sensitive Information to an Unauthorized Actor][0m
+      
+      Affected range : <2.12.1                                      
+      Fixed version  : 2.12.1                                       
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2021-26540[2m [Improper Input Validation][0m
+      
+      Affected range : <2.3.2                                       
+      Fixed version  : 2.3.2                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2021-26539[2m [Improper Input Validation][0m
+      
+      Affected range : <2.3.1                                       
+      Fixed version  : 2.3.1                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2017-16016[2m [Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')][0m
+      
+      Affected range : <=1.11.1 
+      Fixed version  : 1.11.4   
+    
+    [97m✗ UNSPECIFIED[0m GMS-2016-57[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <=1.4.2 
+      Fixed version  : 1.4.3   
+    
+    [97m✗ UNSPECIFIED[0m GMS-2016-17[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : <1.11.4 
+      Fixed version  : 1.11.4  
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mpicomatch 2.3.1[0m
+pkg:npm/picomatch@2.3.1
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-33671[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <2.3.2                                       
+      Fixed version  : 2.3.2                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2026-33672[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : <2.3.2                                       
+      Fixed version  : 2.3.2                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mvalidator 13.15.15[0m
+pkg:npm/validator@13.15.15
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2025-12758[2m [Encoding Error][0m
+      
+      Affected range : <13.15.22                                                           
+      Fixed version  : 13.15.22                                                            
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2025-56200[2m [Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')][0m
+      
+      Affected range : <13.15.20                                    
+      Fixed version  : 13.15.20                                     
+      CVSS Score     : 6.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1msocket.io 3.1.2[0m
+pkg:npm/socket.io@3.1.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m GHSA-25hc-qcg6-38wj[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : >=3.0.0                                      
+                     : <4.6.2                                       
+      Fixed version  : 2.5.1, 4.6.2                                 
+      CVSS Score     : 7.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2024-38355[2m [Improper Input Validation][0m
+      
+      Affected range : >=3.0.0                                                         
+                     : <4.6.2                                                          
+      Fixed version  : 4.6.2                                                           
+      CVSS Score     : 6.9                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mpicomatch 4.0.3[0m
+pkg:npm/picomatch@4.0.3
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-33671[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2026-33672[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1msocket.io-parser 4.0.5[0m
+pkg:npm/socket.io-parser@4.0.5
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-33151[2m [Improper Check for Unusual or Exceptional Conditions][0m
+      
+      Affected range : >=4.0.0                                                         
+                     : <4.2.6                                                          
+      Fixed version  : 4.2.6                                                           
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+    [38;5;215m✗ MEDIUM[0m CVE-2023-32695[2m [Improper Input Validation][0m
+      
+      Affected range : >=4.0.4                                                         
+                     : <4.2.3                                                          
+      Fixed version  : 4.2.3                                                           
+      CVSS Score     : 6.9                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mhttp-cache-semantics 3.8.1[0m
+pkg:npm/http-cache-semantics@3.8.1
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2022-25881[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <4.1.1                                       
+      Fixed version  : 4.1.1                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mws 7.4.6[0m
+pkg:npm/ws@7.4.6
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2024-37890[2m [NULL Pointer Dereference][0m
+      
+      Affected range : >=7.0.0                                                         
+                     : <7.5.10                                                         
+      Fixed version  : 7.5.10                                                          
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1msequelize 6.37.7[0m
+pkg:npm/sequelize@6.37.7
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-30951[2m [Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')][0m
+      
+      Affected range : >=6.0.0-beta.1                               
+                     : <=6.37.7                                     
+      Fixed version  : 6.37.8                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mexpress-jwt 0.1.3[0m
+pkg:npm/express-jwt@0.1.3
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2020-15084[2m [Improper Authorization][0m
+      
+      Affected range : <=5.3.3                                      
+      Fixed version  : 6.0.0                                        
+      CVSS Score     : 7.7                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mglob 10.4.5[0m
+pkg:npm/glob@10.4.5
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2025-64756[2m [Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')][0m
+      
+      Affected range : >=10.2.0                                     
+                     : <10.5.0                                      
+      Fixed version  : 11.1.0                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mtar-fs 2.1.3[0m
+pkg:npm/tar-fs@2.1.3
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2025-59343[2m [Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')][0m
+      
+      Affected range : >=2.0.0                                                         
+                     : <2.1.4                                                          
+      Fixed version  : 2.1.4                                                           
+      CVSS Score     : 8.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mmout 1.2.4[0m
+pkg:npm/mout@1.2.4
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2020-7792[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : >=0                                          
+      Fixed version  : [91mnot fixed[0m                                    
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mpath-to-regexp 0.1.12[0m
+pkg:npm/path-to-regexp@0.1.12
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2026-4867[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <0.1.13                                      
+      Fixed version  : 0.1.13                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mlodash.set 4.3.2[0m
+pkg:npm/lodash.set@4.3.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2020-8203[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : >=3.7.0                                      
+                     : <=4.3.2                                      
+      Fixed version  : [91mnot fixed[0m                                    
+      CVSS Score     : 7.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mip 2.0.1[0m
+pkg:npm/ip@2.0.1
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2024-29415[2m [Server-Side Request Forgery (SSRF)][0m
+      
+      Affected range : <=2.0.1                                      
+      Fixed version  : [91mnot fixed[0m                                    
+      CVSS Score     : 8.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;167m   1H [0m [30;48;5;239m   0M [0m [30;48;5;239m   0L [0m [1mbraces 2.3.2[0m
+pkg:npm/braces@2.3.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;167m✗ HIGH[0m CVE-2024-4068[2m [Excessive Platform Resource Consumption within a Loop][0m
+      
+      Affected range : <3.0.3                                       
+      Fixed version  : 3.0.3                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;222m   1L [0m [1mqs 6.13.0[0m
+pkg:npm/qs@6.13.0
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2025-15284[2m [Improper Input Validation][0m
+      
+      Affected range : <6.14.1                                                         
+      Fixed version  : 6.14.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L 
+    
+    [38;5;222m✗ LOW[0m CVE-2026-2391[2m [Improper Input Validation][0m
+      
+      Affected range : >=6.7.0                                      
+                     : <=6.14.1                                     
+      Fixed version  : 6.14.2                                       
+      CVSS Score     : 3.7                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mgot 8.3.2[0m
+pkg:npm/got@8.3.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2022-33987
+      
+      Affected range : <11.8.5                                      
+      Fixed version  : 11.8.5                                       
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mlodash 4.17.21[0m
+pkg:npm/lodash@4.17.21
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2025-13465[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : >=4.0.0                                                             
+                     : <=4.17.22                                                           
+      Fixed version  : 4.17.23                                                             
+      CVSS Score     : 6.9                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:H/SI:H/SA:H/E:P 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mjs-yaml 3.14.1[0m
+pkg:npm/js-yaml@3.14.1
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2025-64718[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : <3.14.2                                      
+      Fixed version  : 4.1.1                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mhbs 4.2.0[0m
+pkg:npm/hbs@4.2.0
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2021-32822[2m [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities][0m
+      
+      Affected range : >=0                                          
+      Fixed version  : [91mnot fixed[0m                                    
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mbrace-expansion 2.0.2[0m
+pkg:npm/brace-expansion@2.0.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2026-33750[2m [Uncontrolled Resource Consumption][0m
+      
+      Affected range : >=2.0.0                                      
+                     : <2.0.3                                       
+      Fixed version  : 5.0.5                                        
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mbase64url 0.0.6[0m
+pkg:npm/base64url@0.0.6
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m GHSA-rvg8-pwq2-xj7q[2m [Out-of-bounds Read][0m
+      
+      Affected range : <3.0.0 
+      Fixed version  : 3.0.0  
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mnotevil 1.3.3[0m
+pkg:npm/notevil@1.3.3
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2021-23771[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : <=1.3.3                                      
+      Fixed version  : [91mnot fixed[0m                                    
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mfile-type 16.5.4[0m
+pkg:npm/file-type@16.5.4
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2026-31808[2m [Loop with Unreachable Exit Condition ('Infinite Loop')][0m
+      
+      Affected range : >=13.0.0                                     
+                     : <21.3.1                                      
+      Fixed version  : 21.3.1                                       
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mbrace-expansion 1.1.12[0m
+pkg:npm/brace-expansion@1.1.12
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2026-33750[2m [Uncontrolled Resource Consumption][0m
+      
+      Affected range : <1.1.13                                      
+      Fixed version  : 5.0.5                                        
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mdottie 2.0.6[0m
+pkg:npm/dottie@2.0.6
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2026-27837[2m [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')][0m
+      
+      Affected range : >=2.0.4                                      
+                     : <=2.0.6                                      
+      Fixed version  : 2.0.7                                        
+      CVSS Score     : 6.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mmicromatch 3.1.10[0m
+pkg:npm/micromatch@3.1.10
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2024-4067[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : <4.0.8                                       
+      Fixed version  : 4.0.8                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;215m   1M [0m [30;48;5;239m   0L [0m [1mengine.io 4.1.2[0m
+pkg:npm/engine.io@4.1.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;215m✗ MEDIUM[0m CVE-2022-41940[2m [Uncaught Exception][0m
+      
+      Affected range : >=4.0.0                                      
+                     : <6.2.1                                       
+      Fixed version  : 6.2.1                                        
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;239m   0M [0m [30;48;5;222m   1L [0m [1m@tootallnate/once 2.0.0[0m
+pkg:npm/%40tootallnate/once@2.0.0
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;222m✗ LOW[0m CVE-2026-3449[2m [Incorrect Control Flow Scoping][0m
+      
+      Affected range : <3.0.1                                                              
+      Fixed version  : 3.0.1                                                               
+      CVSS Score     : 1.9                                                                 
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;239m   0M [0m [30;48;5;222m   1L [0m [1mcookie 0.4.2[0m
+pkg:npm/cookie@0.4.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;222m✗ LOW[0m CVE-2024-47764[2m [Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')][0m
+      
+      Affected range : <0.7.0 
+      Fixed version  : 0.7.0  
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;239m   0M [0m [30;48;5;222m   1L [0m [1mdiff 4.0.2[0m
+pkg:npm/diff@4.0.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;222m✗ LOW[0m CVE-2026-24001[2m [Inefficient Regular Expression Complexity][0m
+      
+      Affected range : >=4.0.0                                                             
+                     : <4.0.4                                                              
+      Fixed version  : 4.0.4                                                               
+      CVSS Score     : 2.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:U 
+    
+
+[30;48;5;239m   0C [0m [30;48;5;239m   0H [0m [30;48;5;239m   0M [0m [30;48;5;222m   1L [0m [1m@tootallnate/once 1.1.2[0m
+pkg:npm/%40tootallnate/once@1.1.2
+
+
+COPY --from=installer --chown=65532:0 /juice-shop .
+
+    [38;5;222m✗ LOW[0m CVE-2026-3449[2m [Incorrect Control Flow Scoping][0m
+      
+      Affected range : <3.0.1                                                              
+      Fixed version  : 3.0.1                                                               
+      CVSS Score     : 1.9                                                                 
+      CVSS Vector    : CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P 
+    
+
+
+[1m139 vulnerabilities found in 54 packages[0m
+  [37;48;5;88mCRITICAL[0m     [38;5;88m12[0m 
+  [30;48;5;167mHIGH[0m         [38;5;167m72[0m 
+  [30;48;5;215mMEDIUM[0m       [38;5;215m36[0m 
+  [30;48;5;222mLOW[0m          [38;5;222m6[0m  
+  [97mUNSPECIFIED[0m  [97m13[0m 
+
+
+[1mWhat's next:[0m
+    View base image update recommendations → [36mdocker scout recommendations bkimminich/juice-shop:v19.0.0[0m
+
