@@ -1,0 +1,4 @@
+v19.0.0: Pulling from bkimminich/juice-shop
+Digest: sha256:2765a26de7647609099a338d5b7f61085d95903c8703bb70f03fcc4b12f0818d
+Status: Image is up to date for bkimminich/juice-shop:v19.0.0
+docker.io/bkimminich/juice-shop:v19.0.0

@@ -1,0 +1,57 @@
+v2.2.4: Pulling from sigstore/cosign/cosign
+b2ce0e066077: Pulling fs layer
+e8d9a567199d: Pulling fs layer
+058cf3d8c2ba: Pulling fs layer
+b6824ed73363: Pulling fs layer
+7c12895b777b: Pulling fs layer
+33e068de2649: Pulling fs layer
+5664b15f108b: Pulling fs layer
+27be814a09eb: Pulling fs layer
+4aa0ea1413d3: Pulling fs layer
+da7816fa955e: Pulling fs layer
+9aee425378d2: Pulling fs layer
+250c06f7c38e: Pulling fs layer
+5664b15f108b: Waiting
+4348fcbc5af7: Pulling fs layer
+b6824ed73363: Waiting
+7c12895b777b: Waiting
+27be814a09eb: Waiting
+4aa0ea1413d3: Waiting
+9aee425378d2: Waiting
+da7816fa955e: Waiting
+4348fcbc5af7: Waiting
+250c06f7c38e: Waiting
+33e068de2649: Waiting
+b2ce0e066077: Download complete
+b2ce0e066077: Pull complete
+e8d9a567199d: Download complete
+e8d9a567199d: Pull complete
+b6824ed73363: Verifying Checksum
+b6824ed73363: Download complete
+7c12895b777b: Verifying Checksum
+7c12895b777b: Download complete
+33e068de2649: Verifying Checksum
+33e068de2649: Download complete
+5664b15f108b: Verifying Checksum
+5664b15f108b: Download complete
+27be814a09eb: Verifying Checksum
+27be814a09eb: Download complete
+4aa0ea1413d3: Verifying Checksum
+4aa0ea1413d3: Download complete
+da7816fa955e: Verifying Checksum
+da7816fa955e: Download complete
+058cf3d8c2ba: Verifying Checksum
+058cf3d8c2ba: Download complete
+058cf3d8c2ba: Pull complete
+b6824ed73363: Pull complete
+250c06f7c38e: Verifying Checksum
+250c06f7c38e: Download complete
+7c12895b777b: Pull complete
+33e068de2649: Pull complete
+5664b15f108b: Pull complete
+27be814a09eb: Pull complete
+4aa0ea1413d3: Pull complete
+da7816fa955e: Pull complete
+9aee425378d2: Download complete
+9aee425378d2: Pull complete
+250c06f7c38e: Pull complete

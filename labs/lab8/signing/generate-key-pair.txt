@@ -1,0 +1,2 @@
+Private key written to labs/lab8/signing/cosign.key
+Public key written to labs/lab8/signing/cosign.pub

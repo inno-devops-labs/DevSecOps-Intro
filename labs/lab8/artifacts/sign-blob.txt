@@ -1,0 +1,3 @@
+Using payload from: labs/lab8/artifacts/sample.tar.gz
+Wrote bundle to file labs/lab8/artifacts/sample.tar.gz.bundle
+MEYCIQC/LnFqT1hZuy7CUSHo3XKEaM9FKxlCalxabS+J++TRFAIhAPhwjtdXZkAc+qp2fZy8jRvXI1d8XaT14GtFZ6lpYAWN

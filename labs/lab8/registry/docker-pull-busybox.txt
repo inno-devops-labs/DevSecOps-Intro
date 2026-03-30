@@ -1,0 +1,7 @@
+latest: Pulling from library/busybox
+481282afbc43: Pulling fs layer
+481282afbc43: Download complete
+481282afbc43: Pull complete
+Digest: sha256:1487d0af5f52b4ba31c7e465126ee2123fe3f2305d638e7827681e7cf6c83d5e
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest

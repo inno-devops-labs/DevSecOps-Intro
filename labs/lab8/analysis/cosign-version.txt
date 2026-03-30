@@ -1,0 +1,16 @@
+  ______   ______        _______. __    _______ .__   __.
+ /      | /  __  \      /       ||  |  /  _____||  \ |  |
+|  ,----'|  |  |  |    |   (----`|  | |  |  __  |   \|  |
+|  |     |  |  |  |     \   \    |  | |  | |_ | |  . `  |
+|  `----.|  `--'  | .----)   |   |  | |  |__| | |  |\   |
+ \______| \______/  |_______/    |__|  \______| |__| \__|
+cosign: A tool for Container Signing, Verification and Storage in an OCI registry.
+
+GitVersion:    v2.2.4
+GitCommit:     fb651b4ddd8176bd81756fca2d988dd8611f514d
+GitTreeState:  clean
+BuildDate:     2024-04-10T21:57:27Z
+GoVersion:     go1.21.8
+Compiler:      gc
+Platform:      linux/amd64
+
