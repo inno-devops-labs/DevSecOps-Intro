@@ -1,0 +1,14 @@
+{
+  "type": "https://in-toto.io/Statement/v0.1",
+  "predicateType": "https://cyclonedx.org/bom",
+  "subject": {
+    "name": "localhost:5000/juice-shop",
+    "digest": {
+      "sha256": "b029fa83327aa8a3bbcaf161af6269c18c80134942437cb90794233502554e48"
+    }
+  },
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b3225b23-9710-4a17-97ea-417dc1c939ec",
+  "componentCount": 3533
+}
