@@ -1,0 +1,3 @@
+/bin/cosign
+/signing/*.key
+/signing/*.key.password

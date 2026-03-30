@@ -1,0 +1,12 @@
+{
+  "predicateType": "https://cyclonedx.org/bom",
+  "subject": [
+    {
+      "name": "localhost:5000/juice-shop",
+      "digest": {
+        "sha256": "772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5"
+      }
+    }
+  ],
+  "component_count": 3532
+}

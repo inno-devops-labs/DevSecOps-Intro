@@ -1,0 +1,16 @@
+{
+  "predicateType": "https://slsa.dev/provenance/v0.2",
+  "subject": [
+    {
+      "name": "localhost:5000/juice-shop",
+      "digest": {
+        "sha256": "772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5"
+      }
+    }
+  ],
+  "buildType": "manual-local-demo",
+  "builder": {
+    "id": "student@local"
+  },
+  "buildStartedOn": "2026-03-30T14:16:27Z"
+}

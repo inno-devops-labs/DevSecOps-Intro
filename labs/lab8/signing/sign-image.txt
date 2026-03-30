@@ -1,0 +1,5 @@
+Timestamp: 2026-03-30T14:57:39Z
+Subject: localhost:5000/juice-shop@sha256:772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5
+Command: COSIGN_PASSWORD=*** ./labs/lab8/bin/cosign sign --yes --allow-insecure-registry --signing-config labs/lab8/signing/local-signing-config.pb --key labs/lab8/signing/cosign.key localhost:5000/juice-shop@sha256:772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5
+
+Signing artifact...

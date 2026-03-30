@@ -1,0 +1,13 @@
+Unable to find image 'anchore/syft:latest' locally
+latest: Pulling from anchore/syft
+51a4984c9c65: Pulling fs layer
+9a64fa64a45d: Pulling fs layer
+70ee70a0d1f7: Pulling fs layer
+9a64fa64a45d: Download complete
+70ee70a0d1f7: Download complete
+9a64fa64a45d: Pull complete
+70ee70a0d1f7: Pull complete
+51a4984c9c65: Download complete
+51a4984c9c65: Pull complete
+Digest: sha256:5999d209a342e55e9edf70bf8930fb5b86d8f2a783fa401178372c50e21b1d36
+Status: Downloaded newer image for anchore/syft:latest
