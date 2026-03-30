@@ -1,2 +1,10 @@
 .DS_Store
 stereoscope-*
+# Lab 8 cosign keys
+labs/lab8/signing/cosign.key
+labs/lab8/signing/cosign.pub
+
+*.bundle
+*.pem
+*.key
+*.crt

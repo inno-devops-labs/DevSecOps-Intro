@@ -1,0 +1,4 @@
+Using payload from: labs/lab8/artifacts/sample.tar.gz
+Enter password for private key: 
+Wrote bundle to file labs/lab8/artifacts/sample.tar.gz.bundle
+MEUCIQCkRdXhGozQ8HmdWTlaKaB1Hp/h36UJHTnFltImHJlNsgIgTsUjflS0leh/R1X9E8FMSH8yhCBGe8njUrHPwFS2rgk=

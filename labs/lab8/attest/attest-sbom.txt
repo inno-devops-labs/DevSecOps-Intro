@@ -1,0 +1,2 @@
+Enter password for private key: 
+Using payload from: labs/lab8/attest/juice-shop.cdx.json

@@ -1,0 +1,7 @@
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                   PORTS                    NAMES
+9770d1e5a832   registry:3               "/entrypoint.sh /etc…"   11 seconds ago   Up 11 seconds            0.0.0.0:5500->5000/tcp   registry
+04364027a674   grafana/grafana:12.3.1   "/run.sh"                11 days ago      Up 4 minutes (healthy)   0.0.0.0:3001->3000/tcp   grafana
+a1d33171ac72   prom/prometheus:v3.9.0   "/bin/prometheus --c…"   11 days ago      Up 4 minutes (healthy)   0.0.0.0:9090->9090/tcp   prometheus
+12f1124080aa   grafana/promtail:3.0.0   "/usr/bin/promtail -…"   11 days ago      Up 4 minutes             0.0.0.0:9080->9080/tcp   promtail
+877682ddd6e9   monitoring-app-python    "uvicorn app:app --h…"   11 days ago      Up 4 minutes (healthy)   0.0.0.0:5001->5000/tcp   app-python
+bc8c5d214d46   grafana/loki:3.0.0       "/usr/bin/loki -conf…"   11 days ago      Up 4 minutes (healthy)   0.0.0.0:3100->3100/tcp   loki
