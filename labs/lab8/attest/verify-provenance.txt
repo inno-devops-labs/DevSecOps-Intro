@@ -1,38 +1,7 @@
-Verification for localhost:5000/juice-shop@sha256:9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a --
+WARNING: Skipping tlog verification is an insecure practice that lacks of transparency and auditability verification for the attestation.
+{"payloadType":"application/vnd.in-toto+json","payload":"eyJfdHlwZSI6Imh0dHBzOi8vaW4tdG90by5pby9TdGF0ZW1lbnQvdjAuMSIsInByZWRpY2F0ZVR5cGUiOiJodHRwczovL3Nsc2EuZGV2L3Byb3ZlbmFuY2UvdjAuMiIsInN1YmplY3QiOlt7Im5hbWUiOiJsb2NhbGhvc3Q6NTAwMC9qdWljZS1zaG9wIiwiZGlnZXN0Ijp7InNoYTI1NiI6ImIwMjlmYTgzMzI3YWE4YTNiYmNhZjE2MWFmNjI2OWMxOGM4MDEzNDk0MjQzN2NiOTA3OTQyMzM1MDI1NTRlNDgifX1dLCJwcmVkaWNhdGUiOnsiYnVpbGRlciI6eyJpZCI6InN0dWRlbnRAbG9jYWwifSwiYnVpbGRUeXBlIjoibWFudWFsLWxvY2FsLWRlbW8iLCJpbnZvY2F0aW9uIjp7ImNvbmZpZ1NvdXJjZSI6e30sInBhcmFtZXRlcnMiOnsiaW1hZ2UiOiJsb2NhbGhvc3Q6NTAwMC9qdWljZS1zaG9wQHNoYTI1NjpiMDI5ZmE4MzMyN2FhOGEzYmJjYWYxNjFhZjYyNjljMThjODAxMzQ5NDI0MzdjYjkwNzk0MjMzNTAyNTU0ZTQ4In19LCJtZXRhZGF0YSI6eyJidWlsZFN0YXJ0ZWRPbiI6IjIwMjYtMDMtMzBUMTQ6NTM6NDlaIiwiY29tcGxldGVuZXNzIjp7InBhcmFtZXRlcnMiOnRydWUsImVudmlyb25tZW50IjpmYWxzZSwibWF0ZXJpYWxzIjpmYWxzZX0sInJlcHJvZHVjaWJsZSI6ZmFsc2V9fX0=","signatures":[{"keyid":"","sig":"MEQCIB7fyfbViV3LCltYI/+N4TasSltmH0TCibumzMThkJKwAiAoxjxnGrgllxwMY1Hrx3z7J8ZORNBHDli0oqOCbQ+ZwA=="}]}
+Verification for localhost:5000/juice-shop@sha256:b029fa83327aa8a3bbcaf161af6269c18c80134942437cb90794233502554e48 --
 The following checks were performed on each of these signatures:
   - The cosign claims were validated
   - The signatures were verified against the specified public key
 
-{"payloadType":"application/vnd.in-toto+json","payload":"eyJfdHlwZSI6Imh0dHBzOi8vaW4tdG90by5pby9TdGF0ZW1lbnQvdjEiLCJzdWJqZWN0IjpbeyJuYW1lIjoibG9jYWxob3N0OjUwMDAvanVpY2Utc2hvcCIsImRpZ2VzdCI6eyJzaGEyNTYiOiI5YzNmMWEyZTVkOGI3ZjZlNGEzYzJkMWIwZTlmOGE3YzZkNWI0ZTNhMmYxYzBkOWU4YjdhNmY1YzRkM2UyYjFhIn19XSwicHJlZGljYXRlVHlwZSI6Imh0dHBzOi8vc2xzYS5kZXYvcHJvdmVuYW5jZS92MSIsInByZWRpY2F0ZSI6e319","signatures":[{"keyid":"","sig":"MEUCIQDy...base64sig..."}]}
-
-Decoded payload (in-toto Statement):
-{
-  "_type": "https://in-toto.io/Statement/v1",
-  "subject": [
-    {
-      "name": "localhost:5000/juice-shop",
-      "digest": {
-        "sha256": "9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a"
-      }
-    }
-  ],
-  "predicateType": "https://slsa.dev/provenance/v1",
-  "predicate": {
-    "_type": "https://slsa.dev/provenance/v1",
-    "buildType": "manual-local-demo",
-    "builder": {
-      "id": "student@local"
-    },
-    "invocation": {
-      "parameters": {
-        "image": "localhost:5000/juice-shop@sha256:9c3f1a2e5d8b7f6e4a3c2d1b0e9f8a7c6d5b4e3a2f1c0d9e8b7a6f5c4d3e2b1a"
-      }
-    },
-    "metadata": {
-      "buildStartedOn": "2026-02-20T21:35:00Z",
-      "completeness": {
-        "parameters": true
-      }
-    }
-  }
-}
