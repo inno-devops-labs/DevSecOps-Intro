@@ -1,0 +1,29 @@
+Unable to find image 'openpolicyagent/conftest:latest' locally
+latest: Pulling from openpolicyagent/conftest
+4a8d3212159a: Pulling fs layer
+ec2ccb3b56d1: Pulling fs layer
+8227b94939eb: Pulling fs layer
+c3a9ca3a4b27: Pulling fs layer
+c3a9ca3a4b27: Download complete
+50b3ddf15235: Download complete
+4a8d3212159a: Download complete
+ec2ccb3b56d1: Download complete
+ec2ccb3b56d1: Pull complete
+8227b94939eb: Download complete
+c3a9ca3a4b27: Pull complete
+4a8d3212159a: Pull complete
+8227b94939eb: Pull complete
+Digest: sha256:7f8c0d4b28908b2f72abeb81697b3d4143981c09b0a03db263a8493636cd1956
+Status: Downloaded newer image for openpolicyagent/conftest:latest
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define livenessProbe
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define readinessProbe
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set allowPrivilegeEscalation: false
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set readOnlyRootFilesystem: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set runAsNonRoot: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" uses disallowed :latest tag
+
+[31m30 tests, 20 passed, 2 warnings, 8 failures, 0 exceptions[0m
