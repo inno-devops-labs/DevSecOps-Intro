@@ -1,0 +1,14 @@
+record_type,name,count,notes
+severity,Critical,21,Active findings aggregated in DefectDojo dashboard
+severity,High,109,Active findings aggregated in DefectDojo dashboard
+severity,Medium,68,Active findings aggregated in DefectDojo dashboard
+severity,Low,21,Active findings aggregated in DefectDojo dashboard
+severity,Informational,27,Active findings aggregated in DefectDojo dashboard
+severity,Total,246,Total active findings aggregated in DefectDojo dashboard
+tool,Trivy Scan,120,Imported successfully
+tool,Anchore Grype,109,Imported successfully
+tool,Nuclei Scan,12,Imported successfully
+tool,ZAP Scan,5,Imported successfully after XML import
+tool,Semgrep Pro JSON Report,0,Imported successfully but zero findings in this engagement context
+workflow,Verified findings,0,No verification workflow applied yet
+workflow,Mitigated findings,0,No mitigation workflow applied yet

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 10 DefectDojo Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; color: #222; line-height: 1.5; }
+    h1, h2, h3 { color: #0b4f6c; }
+    .meta { background: #f4f7f9; padding: 16px; border-left: 4px solid #0b4f6c; margin-bottom: 24px; }
+    table { border-collapse: collapse; width: 100%; margin: 18px 0 28px; }
+    th, td { border: 1px solid #d9e1e6; padding: 10px; text-align: left; }
+    th { background: #eef5f8; }
+    .note { font-size: 0.95em; color: #555; }
+    .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #eef5f8; margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <h1>DefectDojo Vulnerability Management Report</h1>
+  <div class="meta">
+    <strong>Lab:</strong> Lab 10 — Vulnerability Management &amp; Response with DefectDojo<br>
+    <strong>Date captured:</strong> 2026-04-03<br>
+    <strong>Product Type:</strong> Engineering<br>
+    <strong>Product:</strong> Juice Shop<br>
+    <strong>Engagement:</strong> Labs Security Testing
+  </div>
+
+  <h2>Executive Summary</h2>
+  <p>
+    DefectDojo was deployed locally and used as a centralized vulnerability management platform for prior lab outputs.
+    Findings from ZAP, Trivy, Nuclei, Grype, and Semgrep were imported into a single engagement to provide a consolidated view of risk.
+  </p>
+  <p>
+    The engagement currently contains <strong>246 active findings</strong>. The dominant risk bands are <strong>High</strong> and <strong>Medium</strong>,
+    which indicates a meaningful remediation backlog. No findings were marked mitigated at the time of capture, so this report reflects an
+    initial aggregation baseline rather than a post-triage state.
+  </p>
+
+  <h2>Severity Overview</h2>
+  <table>
+    <thead>
+      <tr><th>Severity</th><th>Active Findings</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Critical</td><td>21</td></tr>
+      <tr><td>High</td><td>109</td></tr>
+      <tr><td>Medium</td><td>68</td></tr>
+      <tr><td>Low</td><td>21</td></tr>
+      <tr><td>Informational</td><td>27</td></tr>
+      <tr><th>Total</th><th>246</th></tr>
+    </tbody>
+  </table>
+
+  <h2>Findings by Tool</h2>
+  <table>
+    <thead>
+      <tr><th>Tool / Test</th><th>Total Findings</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Trivy Scan</td><td>120</td><td>Largest single contributor from image/dependency vulnerability scanning.</td></tr>
+      <tr><td>Anchore Grype</td><td>109</td><td>Second-largest contributor; overlaps the software composition / package risk space.</td></tr>
+      <tr><td>Nuclei Scan</td><td>12</td><td>Template-based web and service checks.</td></tr>
+      <tr><td>ZAP Scan</td><td>5</td><td>Imported successfully after switching from JSON attempt to XML-based report.</td></tr>
+      <tr><td>Semgrep Pro JSON Report</td><td>0</td><td>Imported successfully, but no findings were present in this engagement context.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Observations</h2>
+  <ul>
+    <li>High severity findings represent the biggest risk concentration with 109 open items.</li>
+    <li>Critical findings total 21 and should be prioritized first in a real remediation workflow.</li>
+    <li>Most imported issues came from Trivy and Grype, showing that dependency and package exposure dominate the current risk profile.</li>
+    <li>The current dashboard state reflects initial aggregation and visibility, not completed triage or remediation.</li>
+  </ul>
+
+  <h2>Verified / Mitigated Status</h2>
+  <p>
+    Findings are currently unverified and unmitigated, which is consistent with an initial import and review baseline.
+    In a production workflow, the next steps would be triage, deduplication review, ownership assignment, validation,
+    and remediation tracking.
+  </p>
+
+  <h2>SLA / Due Soon</h2>
+  <p>
+    No explicit SLA breach breakdown was captured from the dashboard evidence used to compile this report.
+    Further SLA analysis would normally be performed from the DefectDojo reporting/export views after workflow rules are configured.
+  </p>
+
+  <h2>Artifact Notes</h2>
+  <p class="note">
+    This HTML report is a stakeholder-ready summary compiled from the imported scan results and visible DefectDojo dashboard metrics.
+    It is not a native DefectDojo export.
+  </p>
+</body>
+</html>
