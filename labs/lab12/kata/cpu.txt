@@ -1,0 +1,1 @@
+model name	: QEMU Virtual CPU version 2.5+

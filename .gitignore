@@ -4,4 +4,6 @@ labs/lab10/setup/django-DefectDojo/
 labs/lab11/logs/*.log
 labs/lab11/reverse-proxy/certs/localhost.crt
 labs/lab11/reverse-proxy/certs/localhost.key
+labs/lab12/setup/kata-build/
+labs/lab12/setup/kata-out/
 tools/
