@@ -1,0 +1,38 @@
+2026-04-04T12:52:27+0000: Falco version: 0.43.0 (x86_64)
+2026-04-04T12:52:27+0000: Falco initialized with configuration files:
+2026-04-04T12:52:27+0000:    /etc/falco/config.d/falco.container_plugin.yaml | schema validation: ok
+2026-04-04T12:52:27+0000:    /etc/falco/config.d/falco.iso8601_timeformat.yaml | schema validation: ok
+2026-04-04T12:52:27+0000:    /etc/falco/falco.yaml | schema validation: ok
+2026-04-04T12:52:27+0000: System info: Linux version 6.17.0-20-generic (buildd@lcy02-amd64-120) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #20~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 19 01:28:37 UTC 2
+2026-04-04T12:52:27+0000: Loaded plugin 'container@0.6.1' from file /usr/share/falco/plugins/libcontainer.so
+2026-04-04T12:52:27+0000: [libs]: container: Enabled 'podman' container engine.
+2026-04-04T12:52:27+0000: [libs]: container: * enabled container runtime socket at '/host/run/podman/podman.sock'
+2026-04-04T12:52:27+0000: [libs]: container: Enabled 'docker' container engine.
+2026-04-04T12:52:27+0000: [libs]: container: * enabled container runtime socket at '/host/var/run/docker.sock'
+2026-04-04T12:52:27+0000: [libs]: container: Enabled 'cri' container engine.
+2026-04-04T12:52:27+0000: [libs]: container: * enabled container runtime socket at '/host/run/containerd/containerd.sock'
+2026-04-04T12:52:27+0000: [libs]: container: * enabled container runtime socket at '/host/run/crio/crio.sock'
+2026-04-04T12:52:27+0000: [libs]: container: * enabled container runtime socket at '/host/run/k3s/containerd/containerd.sock'
+2026-04-04T12:52:27+0000: [libs]: container: * enabled container runtime socket at '/host/run/host-containerd/containerd.sock'
+2026-04-04T12:52:27+0000: [libs]: container: Enabled 'containerd' container engine.
+2026-04-04T12:52:27+0000: [libs]: container: * enabled container runtime socket at '/host/run/host-containerd/containerd.sock'
+2026-04-04T12:52:27+0000: [libs]: container: Enabled 'lxc' container engine.
+2026-04-04T12:52:27+0000: [libs]: container: Enabled 'libvirt_lxc' container engine.
+2026-04-04T12:52:27+0000: [libs]: container: Enabled 'bpm' container engine.
+2026-04-04T12:52:27+0000: Loading rules from:
+2026-04-04T12:52:27+0000:    /etc/falco/falco_rules.yaml | schema validation: ok
+2026-04-04T12:52:27+0000:    /etc/falco/falco_rules.local.yaml | schema validation: none
+2026-04-04T12:52:27+0000:    /etc/falco/rules.d/custom-rules.yaml | schema validation: ok
+2026-04-04T12:52:27+0000: The chosen syscall buffer dimension is: 8388608 bytes (8 MBs)
+2026-04-04T12:52:27+0000: Starting health webserver with threadiness 16, listening on 0.0.0.0:8765
+2026-04-04T12:52:27+0000: Loaded event sources: syscall
+2026-04-04T12:52:27+0000: Enabled event sources: syscall
+2026-04-04T12:52:27+0000: Opening 'syscall' source with modern BPF probe.
+2026-04-04T12:52:27+0000: One ring buffer every '2' CPUs.
+2026-04-04T12:52:27+0000: [libs]: Trying to open the right engine!
+2026-04-04T12:52:29+0000: [libs]: libbpf: failed to determine tracepoint 'syscalls/sys_enter_connect' perf event ID: No such file or directory
+2026-04-04T12:52:29+0000: [libs]: libbpf: prog 'connect_e': failed to create tracepoint 'syscalls/sys_enter_connect' perf event: No such file or directory
+2026-04-04T12:52:29+0000: [libs]: libpman: failure while attaching TOCTOU mitigation program for 'connect' system call. Detection will continue to work, but TOCTOU mitigation may not properly work (errno: 2 | message: No such file or directory)
+2026-04-04T12:52:29+0000: [libs]: libbpf: failed to determine tracepoint 'syscalls/sys_enter_creat' perf event ID: No such file or directory
+2026-04-04T12:52:29+0000: [libs]: libbpf: prog 'creat_e': failed to create tracepoint 'syscalls/sys_enter_creat' perf event: No such file or directory
+2026-04-04T12:52:29+0000: [libs]: libpman: failure while attaching TOCTOU mitigation program for 'creat' system call. Detection will continue to work, but TOCTOU mitigation may not properly work (errno: 2 | message: No such file or directory)
