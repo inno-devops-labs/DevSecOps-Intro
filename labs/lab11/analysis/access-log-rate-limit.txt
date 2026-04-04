@@ -1,0 +1,14 @@
+# Snippet from labs/lab11/logs/access.log — POST /rest/user/login after rate-limit test (same second)
+
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 401 26 "-" "curl/8.18.0" rt=0.035 uct=0.001 urt=0.035
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 401 26 "-" "curl/8.18.0" rt=0.011 uct=0.001 urt=0.012
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 401 26 "-" "curl/8.18.0" rt=0.011 uct=0.000 urt=0.011
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 401 26 "-" "curl/8.18.0" rt=0.010 uct=0.000 urt=0.010
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 401 26 "-" "curl/8.18.0" rt=0.009 uct=0.000 urt=0.009
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 401 26 "-" "curl/8.18.0" rt=0.009 uct=0.000 urt=0.009
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.20.0.1 - - [04/Apr/2026:15:28:56 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
