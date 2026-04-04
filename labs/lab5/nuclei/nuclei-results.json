@@ -1,0 +1,13 @@
+[
+  {
+    "template-id": "lab10-sample-http",
+    "type": "http",
+    "matched-at": "https://example.com/",
+    "timestamp": "2026-04-03T12:00:00Z",
+    "info": {
+      "name": "Lab 10 Nuclei import sample",
+      "severity": "info",
+      "description": "Minimal Nuclei JSON export used for DefectDojo Lab 10 import validation."
+    }
+  }
+]

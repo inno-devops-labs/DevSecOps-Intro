@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Lab 10 — Juice Shop / Labs Security Testing</title>
+  <style>
+    body { font-family: Segoe UI, system-ui, sans-serif; margin: 2rem; line-height: 1.45; color: #1a1a1a; max-width: 900px; }
+    h1 { font-size: 1.35rem; border-bottom: 2px solid #2563eb; padding-bottom: 0.35rem; }
+    h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+    table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.45rem 0.6rem; text-align: left; }
+    th { background: #f3f4f6; }
+    .muted { color: #555; font-size: 0.92rem; }
+    ul { margin: 0.4rem 0 0; }
+  </style>
+</head>
+<body>
+  <h1>Vulnerability snapshot</h1>
+  <p class="muted">DefectDojo engagement <strong>Labs Security Testing</strong>, product <strong>Juice Shop</strong>. Same data as <code>findings.csv</code> / <code>metrics-snapshot.md</code> (1163 rows at export).</p>
+
+  <h2>What went in</h2>
+  <p>ZAP (DAST), Semgrep, Trivy, Grype, Nuclei — all pulled from earlier lab outputs and imported into one engagement.</p>
+
+  <h2>Severity</h2>
+  <p class="muted">Totals are inflated if you imported more than once without deleting old tests.</p>
+  <table>
+    <thead><tr><th>Severity</th><th>Count</th></tr></thead>
+    <tbody>
+      <tr><td>Critical</td><td>84</td></tr>
+      <tr><td>High</td><td>602</td></tr>
+      <tr><td>Medium</td><td>314</td></tr>
+      <tr><td>Low</td><td>102</td></tr>
+      <tr><td>Informational</td><td>61</td></tr>
+      <tr><th>Total</th><th>1163</th></tr>
+    </tbody>
+  </table>
+
+  <h2>Triaging</h2>
+  <ul>
+    <li>572 verified, 591 not verified.</li>
+    <li>0 mitigated.</li>
+    <li>84 with SLA ≤ 14 days left.</li>
+  </ul>
+
+  <h2>CWEs that show up a lot</h2>
+  <p>1333, 407, 22, 79, 20 — dependency noise plus usual web-app stuff.</p>
+
+  <h2>Per tool (tests 16–20)</h2>
+  <table>
+    <thead><tr><th>Tool</th><th>Findings</th></tr></thead>
+    <tbody>
+      <tr><td>ZAP</td><td>11</td></tr>
+      <tr><td>Semgrep</td><td>25</td></tr>
+      <tr><td>Trivy</td><td>147</td></tr>
+      <tr><td>Nuclei</td><td>1</td></tr>
+      <tr><td>Grype</td><td>122</td></tr>
+    </tbody>
+  </table>
+  <p class="muted">Duplicate tests from earlier runs will skew the big table above; use the per-tool row if you’re comparing scanners.</p>
+</body>
+</html>

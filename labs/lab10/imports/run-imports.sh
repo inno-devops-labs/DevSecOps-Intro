@@ -64,7 +64,14 @@ if $have_jq; then
     echo "$val"
   }
   SCAN_ZAP="${SCAN_ZAP:-$(choose_type '^ZAP' 'ZAP Scan')}"
-  SCAN_SEMGREP="${SCAN_SEMGREP:-$(choose_type '^Semgrep' 'Semgrep JSON Report')}"
+  # Prefer exact "Semgrep JSON Report" (OSS); avoid matching "Semgrep Pro" via broad regex.
+  SCAN_SEMGREP="${SCAN_SEMGREP:-}"
+  if [[ -z "$SCAN_SEMGREP" ]]; then
+    SCAN_SEMGREP="$(printf '%s\n' "${types[@]}" | grep -Fx 'Semgrep JSON Report' | head -n1 || true)"
+  fi
+  if [[ -z "$SCAN_SEMGREP" ]]; then
+    SCAN_SEMGREP="Semgrep JSON Report"
+  fi
   SCAN_TRIVY="${SCAN_TRIVY:-$(choose_type '^Trivy' 'Trivy Scan')}"
   SCAN_NUCLEI="${SCAN_NUCLEI:-$(choose_type '^Nuclei' 'Nuclei Scan')}"
   # Grype importer (commonly named "Anchore Grype")
@@ -96,9 +103,10 @@ import_scan() {
     echo "SKIP: $scan_type file not found: $file"
     return 0
   fi
-  local base out
+  local base stem out
   base="$(basename "$file")"
-  out="$out_dir/import-${base//[^A-Za-z0-9_.-]/_}.json"
+  stem="${base%.*}"
+  out="$out_dir/import-${stem//[^A-Za-z0-9_.-]/_}.json"
   echo "Importing $scan_type from $file"
   curl -sS -X POST "$DD_API/import-scan/" \
     -H "Authorization: Token $DD_TOKEN" \
@@ -114,8 +122,8 @@ import_scan() {
     | tee "$out"
 }
 
-# Candidate paths per tool
-zap_file="labs/lab5/zap/zap-report-noauth.json"
+# Candidate paths per tool (DefectDojo "ZAP Scan" expects XML; generate JSON→XML via labs/lab10/scripts/zap_json_to_xml.py)
+zap_file="labs/lab5/zap/zap-report-noauth.xml"
 semgrep_file="labs/lab5/semgrep/semgrep-results.json"
 trivy_file="labs/lab4/trivy/trivy-vuln-detailed.json"
 nuclei_file="labs/lab5/nuclei/nuclei-results.json"
