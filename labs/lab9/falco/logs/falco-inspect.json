@@ -1,0 +1,245 @@
+[
+    {
+        "Id": "1188dd76292aabcb276895e69bd35a268bd33dcedd0c927aa4113252a959dafe",
+        "Created": "2026-04-05T07:34:26.154541335Z",
+        "Path": "falco",
+        "Args": [
+            "-U",
+            "-o",
+            "json_output=true",
+            "-o",
+            "time_format_iso_8601=true"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 82159,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-04-05T07:34:26.194944335Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:88c01fa17bcc03c990a2691d08e7d43d746e32b07dbe9c6eb77bfdb3646cec41",
+        "ResolvConfPath": "/var/lib/docker/containers/1188dd76292aabcb276895e69bd35a268bd33dcedd0c927aa4113252a959dafe/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/1188dd76292aabcb276895e69bd35a268bd33dcedd0c927aa4113252a959dafe/hostname",
+        "HostsPath": "/var/lib/docker/containers/1188dd76292aabcb276895e69bd35a268bd33dcedd0c927aa4113252a959dafe/hosts",
+        "LogPath": "/var/lib/docker/containers/1188dd76292aabcb276895e69bd35a268bd33dcedd0c927aa4113252a959dafe/1188dd76292aabcb276895e69bd35a268bd33dcedd0c927aa4113252a959dafe-json.log",
+        "Name": "/falco",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/proc:/host/proc:ro",
+                "/run/host-services/docker.proxy.sock:/host/var/run/docker.sock",
+                "/host_mnt/Users/avgreensoup/Desktop/innopolis-homeworks/DevSecOps-Intro/labs/lab9/falco/rules:/etc/falco/rules.d:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": true,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": null,
+            "ReadonlyPaths": null
+        },
+        "GraphDriver": {
+            "Data": null,
+            "Name": "overlayfs"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/proc",
+                "Destination": "/host/proc",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/run/host-services/docker.proxy.sock",
+                "Destination": "/host/var/run/docker.sock",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/host_mnt/Users/avgreensoup/Desktop/innopolis-homeworks/DevSecOps-Intro/labs/lab9/falco/rules",
+                "Destination": "/etc/falco/rules.d",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "1188dd76292a",
+            "Domainname": "",
+            "User": "0",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin",
+                "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt",
+                "FALCO_VERSION=0.43.0",
+                "VERSION_BUCKET=bin",
+                "HOST_ROOT=/host",
+                "HOME=/root"
+            ],
+            "Cmd": [
+                "falco",
+                "-U",
+                "-o",
+                "json_output=true",
+                "-o",
+                "time_format_iso_8601=true"
+            ],
+            "Image": "falcosecurity/falco:latest",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "dev.chainguard.image.title": "wolfi-base",
+                "dev.chainguard.package.main": "",
+                "maintainer": "cncf-falco-dev@lists.cncf.io",
+                "org.opencontainers.image.authors": "The Falco Authors https://falco.org",
+                "org.opencontainers.image.created": "2026-01-27T19:07:49Z",
+                "org.opencontainers.image.licenses": "Apache-2.0",
+                "org.opencontainers.image.revision": "cc4cf3d10234050e7ab48aeead23fe1f210121bc",
+                "org.opencontainers.image.source": "https://github.com/falcosecurity/falco",
+                "org.opencontainers.image.title": "wolfi-base",
+                "org.opencontainers.image.url": "https://falco.org",
+                "org.opencontainers.image.vendor": "Falco Organization",
+                "org.opencontainers.image.version": "0.43.0",
+                "usage": "docker run -i -t --privileged -v /var/run/docker.sock:/host/var/run/docker.sock -v /proc:/host/proc:ro  -v /etc:/host/etc:ro falcosecurity/falco:latest"
+            },
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "1eefea76bfda715fc61e20c483d90f29c575c5edd7d8ca9f05d464c524ffb89b",
+            "SandboxKey": "/var/run/docker/netns/1eefea76bfda",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "90c4f6ace013e19404a80b762af27e65f4ab24162b63375ed6cf22659c1d62b3",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.4",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "5a:16:b0:97:5e:52",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "5a:16:b0:97:5e:52",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "775e3830b5bdc9bc83a27377fa83293d1e348d0be8eead49bc836dd6cb40c758",
+                    "EndpointID": "90c4f6ace013e19404a80b762af27e65f4ab24162b63375ed6cf22659c1d62b3",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.4",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+            "digest": "sha256:a9880e16f69f46dc2c1c390faf5584ed2c388e3a16714f224a871621e4706c8f",
+            "size": 3253,
+            "platform": {
+                "architecture": "arm64",
+                "os": "linux"
+            }
+        }
+    }
+]
