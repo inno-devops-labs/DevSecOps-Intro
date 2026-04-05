@@ -1,0 +1,88 @@
+Unable to find image 'openpolicyagent/conftest:latest' locally
+latest: Pulling from openpolicyagent/conftest
+d8ad8cd72600: Pulling fs layer
+ec2ccb3b56d1: Pulling fs layer
+8227b94939eb: Pulling fs layer
+c3a9ca3a4b27: Pulling fs layer
+4a8d3212159a: Pulling fs layer
+c3a9ca3a4b27: Waiting
+4a8d3212159a: Waiting
+ec2ccb3b56d1: Downloading
+d8ad8cd72600: Downloading
+8227b94939eb: Downloading
+8227b94939eb: Retrying in 5 seconds
+d8ad8cd72600: Retrying in 5 seconds
+ec2ccb3b56d1: Retrying in 5 seconds
+ec2ccb3b56d1: Retrying in 4 seconds
+8227b94939eb: Retrying in 4 seconds
+d8ad8cd72600: Retrying in 4 seconds
+ec2ccb3b56d1: Retrying in 3 seconds
+8227b94939eb: Retrying in 3 seconds
+d8ad8cd72600: Retrying in 3 seconds
+ec2ccb3b56d1: Retrying in 2 seconds
+8227b94939eb: Retrying in 2 seconds
+d8ad8cd72600: Retrying in 2 seconds
+ec2ccb3b56d1: Retrying in 1 second
+8227b94939eb: Retrying in 1 second
+d8ad8cd72600: Retrying in 1 second
+ec2ccb3b56d1: Downloading
+d8ad8cd72600: Downloading
+d8ad8cd72600: Retrying in 10 seconds
+ec2ccb3b56d1: Retrying in 10 seconds
+8227b94939eb: Retrying in 10 seconds
+8227b94939eb: Retrying in 9 seconds
+ec2ccb3b56d1: Retrying in 9 seconds
+d8ad8cd72600: Retrying in 9 seconds
+8227b94939eb: Retrying in 8 seconds
+ec2ccb3b56d1: Retrying in 8 seconds
+d8ad8cd72600: Retrying in 8 seconds
+8227b94939eb: Retrying in 7 seconds
+ec2ccb3b56d1: Retrying in 7 seconds
+d8ad8cd72600: Retrying in 7 seconds
+ec2ccb3b56d1: Retrying in 6 seconds
+d8ad8cd72600: Retrying in 6 seconds
+8227b94939eb: Retrying in 6 seconds
+8227b94939eb: Retrying in 5 seconds
+ec2ccb3b56d1: Retrying in 5 seconds
+d8ad8cd72600: Retrying in 5 seconds
+8227b94939eb: Retrying in 4 seconds
+ec2ccb3b56d1: Retrying in 4 seconds
+d8ad8cd72600: Retrying in 4 seconds
+ec2ccb3b56d1: Retrying in 3 seconds
+d8ad8cd72600: Retrying in 3 seconds
+8227b94939eb: Retrying in 3 seconds
+8227b94939eb: Retrying in 2 seconds
+ec2ccb3b56d1: Retrying in 2 seconds
+d8ad8cd72600: Retrying in 2 seconds
+8227b94939eb: Retrying in 1 second
+ec2ccb3b56d1: Retrying in 1 second
+d8ad8cd72600: Retrying in 1 second
+d8ad8cd72600: Verifying Checksum
+d8ad8cd72600: Download complete
+d8ad8cd72600: Pull complete
+c3a9ca3a4b27: Verifying Checksum
+c3a9ca3a4b27: Download complete
+4a8d3212159a: Verifying Checksum
+4a8d3212159a: Download complete
+ec2ccb3b56d1: Verifying Checksum
+ec2ccb3b56d1: Download complete
+ec2ccb3b56d1: Pull complete
+8227b94939eb: Verifying Checksum
+8227b94939eb: Download complete
+8227b94939eb: Pull complete
+c3a9ca3a4b27: Pull complete
+4a8d3212159a: Pull complete
+Digest: sha256:7f8c0d4b28908b2f72abeb81697b3d4143981c09b0a03db263a8493636cd1956
+Status: Downloaded newer image for openpolicyagent/conftest:latest
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define livenessProbe
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define readinessProbe
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set allowPrivilegeEscalation: false
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set readOnlyRootFilesystem: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set runAsNonRoot: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" uses disallowed :latest tag
+
+[31m30 tests, 20 passed, 2 warnings, 8 failures, 0 exceptions[0m
