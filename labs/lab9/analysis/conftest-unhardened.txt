@@ -1,0 +1,31 @@
+Unable to find image 'openpolicyagent/conftest:v0.63.0' locally
+v0.63.0: Pulling from openpolicyagent/conftest
+b8c5cdd36fd9: Pulling fs layer
+642decec96ab: Pulling fs layer
+dd72e378772b: Pulling fs layer
+9824c27679d3: Pulling fs layer
+ea98f359721f: Pulling fs layer
+b8c5cdd36fd9: Download complete
+ea98f359721f: Download complete
+9824c27679d3: Download complete
+9824c27679d3: Pull complete
+642decec96ab: Download complete
+dd72e378772b: Download complete
+dd72e378772b: Pull complete
+b8c5cdd36fd9: Pull complete
+ea98f359721f: Pull complete
+642decec96ab: Pull complete
+Digest: sha256:76c8968828cd7752d7c0b2a9347917791e2eced8dcdd0ca7309ff423e23d4836
+Status: Downloaded newer image for openpolicyagent/conftest:v0.63.0
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define livenessProbe
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define readinessProbe
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set allowPrivilegeEscalation: false
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set readOnlyRootFilesystem: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set runAsNonRoot: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" uses disallowed :latest tag
+
+[31m30 tests, 20 passed, 2 warnings, 8 failures, 0 exceptions[0m
