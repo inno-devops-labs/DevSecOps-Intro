@@ -5,16 +5,71 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: { app: juice }
+    matchLabels: { app: juice-hardened }
   template:
     metadata:
-      labels: { app: juice }
+      labels: { app: juice-hardened }
     spec:
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: seed-juice-writable-paths
+          image: bkimminich/juice-shop:v19.0.0
+          command: ["/nodejs/bin/node", "-e"]
+          args:
+            - |
+              const fs = require('fs');
+              const copies = [
+                ['/juice-shop/.well-known/csaf', '/seed/csaf'],
+                ['/juice-shop/data', '/seed/data'],
+                ['/juice-shop/ftp', '/seed/ftp'],
+                ['/juice-shop/frontend/dist/frontend', '/seed/frontend-dist'],
+                ['/juice-shop/i18n', '/seed/i18n'],
+                ['/juice-shop/logs', '/seed/logs'],
+                ['/juice-shop/uploads/complaints', '/seed/complaints']
+              ];
+              for (const [source, target] of copies) {
+                fs.mkdirSync(target, { recursive: true });
+                for (const entry of fs.readdirSync(source)) {
+                  fs.cpSync(`${source}/${entry}`, `${target}/${entry}`, { recursive: true });
+                }
+              }
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: "25m", memory: "64Mi" }
+            limits:   { cpu: "100m", memory: "128Mi" }
+          volumeMounts:
+            - name: juice-csaf
+              mountPath: /seed/csaf
+            - name: juice-data
+              mountPath: /seed/data
+            - name: juice-ftp
+              mountPath: /seed/ftp
+            - name: juice-frontend-dist
+              mountPath: /seed/frontend-dist
+            - name: juice-i18n
+              mountPath: /seed/i18n
+            - name: juice-logs
+              mountPath: /seed/logs
+            - name: juice-complaints
+              mountPath: /seed/complaints
       containers:
         - name: juice
           image: bkimminich/juice-shop:v19.0.0
           securityContext:
             runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
             capabilities:
@@ -32,14 +87,48 @@ spec:
             httpGet: { path: /, port: 3000 }
             initialDelaySeconds: 10
             periodSeconds: 20
+          volumeMounts:
+            - name: juice-csaf
+              mountPath: /juice-shop/.well-known/csaf
+            - name: juice-data
+              mountPath: /juice-shop/data
+            - name: juice-ftp
+              mountPath: /juice-shop/ftp
+            - name: juice-frontend-dist
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: juice-i18n
+              mountPath: /juice-shop/i18n
+            - name: juice-logs
+              mountPath: /juice-shop/logs
+            - name: juice-complaints
+              mountPath: /juice-shop/uploads/complaints
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: juice-csaf
+          emptyDir: {}
+        - name: juice-data
+          emptyDir: {}
+        - name: juice-ftp
+          emptyDir: {}
+        - name: juice-frontend-dist
+          emptyDir: {}
+        - name: juice-i18n
+          emptyDir: {}
+        - name: juice-logs
+          emptyDir: {}
+        - name: juice-complaints
+          emptyDir: {}
+        - name: tmp
+          emptyDir:
+            medium: Memory
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: juice-hardened
 spec:
-  selector: { app: juice }
+  selector: { app: juice-hardened }
   ports:
     - port: 80
       targetPort: 3000
-

@@ -1,0 +1,17 @@
+- list: allowed_usr_local_bin_writers
+  items: [apk, dpkg, rpm, yum, dnf, microdnf, pip, pip3]
+
+- rule: Write Binary Under UsrLocalBin
+  desc: Detect writes under /usr/local/bin inside containers while ignoring common package-manager noise.
+  condition: >
+    evt.type in (open, openat, openat2, creat)
+    and evt.is_open_write=true
+    and container.id != host
+    and fd.name startswith /usr/local/bin/
+    and not proc.name in (allowed_usr_local_bin_writers)
+  output: >
+    Falco Custom: write under /usr/local/bin in container
+    (container=%container.name image=%container.image.repository:%container.image.tag
+    user=%user.name process=%proc.name file=%fd.name flags=%evt.arg.flags)
+  priority: WARNING
+  tags: [container, filesystem, compliance, drift]

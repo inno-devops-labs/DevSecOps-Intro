@@ -1,11 +1,28 @@
 services:
   juice:
     image: bkimminich/juice-shop:v19.0.0
-    ports: ["3006:3000"]
-    user: "10001:10001"
+    ports: ["127.0.0.1:3006:3000"]
+    user: "65532:65532"
     read_only: true
-    tmpfs: ["/tmp"]
+    tmpfs:
+      - "/tmp:uid=65532,gid=65532,mode=1777"
     security_opt:
       - no-new-privileges:true
     cap_drop: ["ALL"]
+    volumes:
+      - juice-shop-csaf:/juice-shop/.well-known/csaf
+      - juice-shop-data:/juice-shop/data
+      - juice-shop-ftp:/juice-shop/ftp
+      - juice-shop-frontend-dist:/juice-shop/frontend/dist/frontend
+      - juice-shop-i18n:/juice-shop/i18n
+      - juice-shop-logs:/juice-shop/logs
+      - juice-shop-complaints:/juice-shop/uploads/complaints
 
+volumes:
+  juice-shop-csaf:
+  juice-shop-data:
+  juice-shop-ftp:
+  juice-shop-frontend-dist:
+  juice-shop-i18n:
+  juice-shop-logs:
+  juice-shop-complaints:
