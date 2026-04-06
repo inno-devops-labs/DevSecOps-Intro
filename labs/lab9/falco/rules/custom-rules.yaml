@@ -1,0 +1,7 @@
+- rule: Custom Lab9 Proof Shell
+  desc: Detect the lab-specific proof shell command inside lab9-helper
+  condition: evt.type=execve and container and container.name="lab9-helper" and proc.name=sh and proc.cmdline contains "lab9-proof-shell"
+  output: >
+    Falco Custom: lab9 proof shell detected (container=%container.name user=%user.name command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, shell, custom, lab9]
