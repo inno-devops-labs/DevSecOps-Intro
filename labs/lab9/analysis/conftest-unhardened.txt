@@ -1,0 +1,34 @@
+Unable to find image 'openpolicyagent/conftest:latest' locally
+latest: Pulling from openpolicyagent/conftest
+589002ba0eae: Already exists
+3ffc44404b8c: Pulling fs layer
+c684f3af7327: Pulling fs layer
+9355e7aacde4: Pulling fs layer
+dad68ecfc7b2: Pulling fs layer
+dad68ecfc7b2: Waiting
+9355e7aacde4: Verifying Checksum
+9355e7aacde4: Download complete
+dad68ecfc7b2: Verifying Checksum
+dad68ecfc7b2: Download complete
+3ffc44404b8c: Verifying Checksum
+3ffc44404b8c: Download complete
+3ffc44404b8c: Pull complete
+c684f3af7327: Verifying Checksum
+c684f3af7327: Download complete
+c684f3af7327: Pull complete
+9355e7aacde4: Pull complete
+dad68ecfc7b2: Pull complete
+Digest: sha256:7f8c0d4b28908b2f72abeb81697b3d4143981c09b0a03db263a8493636cd1956
+Status: Downloaded newer image for openpolicyagent/conftest:latest
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define livenessProbe
+[33mWARN[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" should define readinessProbe
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.limits.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.cpu
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" missing resources.requests.memory
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set allowPrivilegeEscalation: false
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set readOnlyRootFilesystem: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set runAsNonRoot: true
+[31mFAIL[0m - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" uses disallowed :latest tag
+
+[31m30 tests, 20 passed, 2 warnings, 8 failures, 0 exceptions[0m

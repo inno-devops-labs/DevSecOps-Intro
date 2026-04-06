@@ -1,0 +1,49 @@
+2026-04-06T12:34:54+0000: Falco version: 0.43.0 (x86_64)
+2026-04-06T12:34:54+0000: Falco initialized with configuration files:
+2026-04-06T12:34:54+0000:    /etc/falco/config.d/falco.container_plugin.yaml | schema validation: ok
+2026-04-06T12:34:54+0000:    /etc/falco/config.d/falco.iso8601_timeformat.yaml | schema validation: ok
+2026-04-06T12:34:54+0000:    /etc/falco/falco.yaml | schema validation: ok
+2026-04-06T12:34:54+0000: System info: Linux version 6.8.0-106-generic (buildd@lcy02-amd64-085) (x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #106~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar  6 08:44:59 UTC 
+2026-04-06T12:34:54+0000: Loaded plugin 'container@0.6.1' from file /usr/share/falco/plugins/libcontainer.so
+2026-04-06T12:34:54+0000: [libs]: container: Enabled 'podman' container engine.
+2026-04-06T12:34:54+0000: [libs]: container: * enabled container runtime socket at '/host/run/podman/podman.sock'
+2026-04-06T12:34:54+0000: [libs]: container: Enabled 'docker' container engine.
+2026-04-06T12:34:54+0000: [libs]: container: * enabled container runtime socket at '/host/var/run/docker.sock'
+2026-04-06T12:34:54+0000: [libs]: container: Enabled 'cri' container engine.
+2026-04-06T12:34:54+0000: [libs]: container: * enabled container runtime socket at '/host/run/containerd/containerd.sock'
+2026-04-06T12:34:54+0000: [libs]: container: * enabled container runtime socket at '/host/run/crio/crio.sock'
+2026-04-06T12:34:54+0000: [libs]: container: * enabled container runtime socket at '/host/run/k3s/containerd/containerd.sock'
+2026-04-06T12:34:54+0000: [libs]: container: * enabled container runtime socket at '/host/run/host-containerd/containerd.sock'
+2026-04-06T12:34:54+0000: [libs]: container: Enabled 'containerd' container engine.
+2026-04-06T12:34:54+0000: [libs]: container: * enabled container runtime socket at '/host/run/host-containerd/containerd.sock'
+2026-04-06T12:34:54+0000: [libs]: container: Enabled 'lxc' container engine.
+2026-04-06T12:34:54+0000: [libs]: container: Enabled 'libvirt_lxc' container engine.
+2026-04-06T12:34:54+0000: [libs]: container: Enabled 'bpm' container engine.
+2026-04-06T12:34:54+0000: Loading rules from:
+2026-04-06T12:34:54+0000:    /etc/falco/falco_rules.yaml | schema validation: ok
+2026-04-06T12:34:54+0000:    /etc/falco/falco_rules.local.yaml | schema validation: none
+2026-04-06T12:34:54+0000:    /etc/falco/rules.d/custom-rules.yaml | schema validation: ok
+2026-04-06T12:34:54+0000: The chosen syscall buffer dimension is: 8388608 bytes (8 MBs)
+2026-04-06T12:34:54+0000: Starting health webserver with threadiness 20, listening on 0.0.0.0:8765
+2026-04-06T12:34:54+0000: Loaded event sources: syscall
+2026-04-06T12:34:54+0000: Enabled event sources: syscall
+2026-04-06T12:34:54+0000: Opening 'syscall' source with modern BPF probe.
+2026-04-06T12:34:54+0000: One ring buffer every '2' CPUs.
+2026-04-06T12:34:54+0000: [libs]: Trying to open the right engine!
+2026-04-06T12:34:55+0000: [libs]: libbpf: failed to determine tracepoint 'syscalls/sys_enter_connect' perf event ID: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libbpf: prog 'connect_e': failed to create tracepoint 'syscalls/sys_enter_connect' perf event: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libpman: failure while attaching TOCTOU mitigation program for 'connect' system call. Detection will continue to work, but TOCTOU mitigation may not properly work (errno: 2 | message: No such file or director
+2026-04-06T12:34:55+0000: [libs]: libbpf: failed to determine tracepoint 'syscalls/sys_enter_creat' perf event ID: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libbpf: prog 'creat_e': failed to create tracepoint 'syscalls/sys_enter_creat' perf event: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libpman: failure while attaching TOCTOU mitigation program for 'creat' system call. Detection will continue to work, but TOCTOU mitigation may not properly work (errno: 2 | message: No such file or directory)
+2026-04-06T12:34:55+0000: [libs]: libbpf: failed to determine tracepoint 'syscalls/sys_enter_open' perf event ID: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libbpf: prog 'open_e': failed to create tracepoint 'syscalls/sys_enter_open' perf event: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libpman: failure while attaching TOCTOU mitigation program for 'open' system call. Detection will continue to work, but TOCTOU mitigation may not properly work (errno: 2 | message: No such file or directory)
+2026-04-06T12:34:55+0000: [libs]: libbpf: failed to determine tracepoint 'syscalls/sys_enter_openat2' perf event ID: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libbpf: prog 'openat2_e': failed to create tracepoint 'syscalls/sys_enter_openat2' perf event: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libpman: failure while attaching TOCTOU mitigation program for 'openat2' system call. Detection will continue to work, but TOCTOU mitigation may not properly work (errno: 2 | message: No such file or director
+2026-04-06T12:34:55+0000: [libs]: libbpf: failed to determine tracepoint 'syscalls/sys_enter_openat' perf event ID: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libbpf: prog 'openat_e': failed to create tracepoint 'syscalls/sys_enter_openat' perf event: No such file or directory
+2026-04-06T12:34:55+0000: [libs]: libpman: failure while attaching TOCTOU mitigation program for 'openat' system call. Detection will continue to work, but TOCTOU mitigation may not properly work (errno: 2 | message: No such file or directory
+{"hostname":"b58bb595efe2","output":"2026-04-06T12:35:16.520326418+0000: Warning Falco Custom: File write in /usr/local/bin (container=lab9-helper user=root file=/usr/local/bin/drift.txt flags=O_LARGEFILE|O_TRUNC|O_CREAT|O_WRONLY|O_F_CREATED|FD_UPPER_LAYER) container_id=7d498470a4df container_name=lab9-helper container_image_repository=alpine container_image_tag=3.19 k8s_pod_name=<NA> k8s_ns_name=<NA>","output_fields":{"container.id":"7d498470a4df","container.image.repository":"alpine","container.image.tag":"3.19","container.name":"lab9-helper","evt.arg.flags":"O_LARGEFILE|O_TRUNC|O_CREAT|O_WRONLY|O_F_CREATED|FD_UPPER_LAYER","evt.time.iso8601":1775478916520326418,"fd.name":"/usr/local/bin/drift.txt","k8s.ns.name":null,"k8s.pod.name":null,"user.name":"root"},"priority":"Warning","rule":"Write Binary Under UsrLocalBin","source":"syscall","tags":["compliance","container","drift"],"time":"2026-04-06T12:35:16.520326418Z"}
+{"hostname":"b58bb595efe2","output":"2026-04-06T12:35:19.564185157+0000: Warning Falco Custom: File write in /usr/local/bin (container=lab9-helper user=root file=/usr/local/bin/custom-rule.txt flags=O_LARGEFILE|O_TRUNC|O_CREAT|O_WRONLY|O_F_CREATED|FD_UPPER_LAYER) container_id=7d498470a4df container_name=lab9-helper container_image_repository=alpine container_image_tag=3.19 k8s_pod_name=<NA> k8s_ns_name=<NA>","output_fields":{"container.id":"7d498470a4df","container.image.repository":"alpine","container.image.tag":"3.19","container.name":"lab9-helper","evt.arg.flags":"O_LARGEFILE|O_TRUNC|O_CREAT|O_WRONLY|O_F_CREATED|FD_UPPER_LAYER","evt.time.iso8601":1775478919564185157,"fd.name":"/usr/local/bin/custom-rule.txt","k8s.ns.name":null,"k8s.pod.name":null,"user.name":"root"},"priority":"Warning","rule":"Write Binary Under UsrLocalBin","source":"syscall","tags":["compliance","container","drift"],"time":"2026-04-06T12:35:19.564185157Z"}
