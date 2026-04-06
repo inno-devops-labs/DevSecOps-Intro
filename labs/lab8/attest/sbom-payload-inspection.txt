@@ -1,0 +1,8 @@
+payloadType=application/vnd.in-toto+json
+statementType=https://in-toto.io/Statement/v0.1
+predicateType=https://cyclonedx.org/bom
+subjectName=host.docker.internal:5000/juice-shop
+subjectDigest=547bd3fef4a6d7e25e131da68f454e6dc4a59d281f8793df6853e6796c9bbf58
+bomFormat=CycloneDX
+specVersion=1.6
+componentCount=3533
