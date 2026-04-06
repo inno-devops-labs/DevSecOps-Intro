@@ -1,0 +1,45 @@
+--- labs/lab9/manifests/k8s/juice-unhardened.yaml	2026-02-08 17:16:05.141510923 +0300
++++ labs/lab9/manifests/k8s/juice-hardened.yaml	2026-02-08 17:16:05.141510923 +0300
+@@ -1,7 +1,7 @@
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+-  name: juice-unhardened
++  name: juice-hardened
+ spec:
+   replicas: 1
+   selector:
+@@ -12,14 +12,31 @@
+     spec:
+       containers:
+         - name: juice
+-          image: bkimminich/juice-shop:latest
++          image: bkimminich/juice-shop:v19.0.0
++          securityContext:
++            runAsNonRoot: true
++            allowPrivilegeEscalation: false
++            readOnlyRootFilesystem: true
++            capabilities:
++              drop: ["ALL"]
++          resources:
++            requests: { cpu: "100m", memory: "256Mi" }
++            limits:   { cpu: "500m", memory: "512Mi" }
+           ports:
+             - containerPort: 3000
++          readinessProbe:
++            httpGet: { path: /, port: 3000 }
++            initialDelaySeconds: 5
++            periodSeconds: 10
++          livenessProbe:
++            httpGet: { path: /, port: 3000 }
++            initialDelaySeconds: 10
++            periodSeconds: 20
+ ---
+ apiVersion: v1
+ kind: Service
+ metadata:
+-  name: juice-unhardened
++  name: juice-hardened
+ spec:
+   selector: { app: juice }
+   ports:

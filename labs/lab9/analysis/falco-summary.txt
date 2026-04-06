@@ -1,0 +1,27 @@
+Total alerts:
+69
+
+Alerts by rule:
+      6 Execution from /dev/shm
+      3 System user interactive
+      3 Search Private Keys or Passwords
+      3 Run shell untrusted
+      3 Remove Bulk Data from Disk
+      3 Read sensitive file untrusted
+      3 Read sensitive file trusted after startup
+      3 Packet socket created in container
+      3 PTRACE attached to process
+      3 PTRACE anti-debug attempt
+      3 Netcat Remote Code Execution in Container
+      3 Find AWS Credentials
+      3 Fileless execution via memfd_create
+      3 Drop and execute new binary in container
+      3 Disallowed SSH Connection Non Standard Port
+      3 Directory traversal monitored file read
+      3 Detect release_agent File Container Escapes
+      3 Debugfs Launched in Privileged Container
+      3 Create Symlink Over Sensitive Files
+      3 Create Hardlink Over Sensitive Files
+      3 Clear Log Activities
+      2 Write Binary Under UsrLocalBin
+      1 Terminal shell in container
