@@ -1,0 +1,6 @@
+Active findings: 159
+Critical: 11
+High: 69
+Medium: 52
+Low: 9
+Info: 18

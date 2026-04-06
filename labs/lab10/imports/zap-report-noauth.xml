@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OWASPZAPReport version="2.17.0" generated="Wed, 4 Mar 2026 06:09:57">
+  <site name="" host="localhost" port="3000" ssl="false">
+    <alerts>
+      <alertitem>
+        <pluginid>10038</pluginid>
+        <alert>Content Security Policy (CSP) Header Not Set</alert>
+        <name>Content Security Policy (CSP) Header Not Set</name>
+        <riskcode>2</riskcode>
+        <confidence>3</confidence>
+        <riskdesc>Medium (High)</riskdesc>
+        <desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP&lt;/p&gt;&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;https://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;https://w3c.github.io/webappsec-csp/&lt;/p&gt;&lt;p&gt;https://web.dev/articles/csp&lt;/p&gt;&lt;p&gt;https://caniuse.com/#feat=contentsecuritypolicy&lt;/p&gt;&lt;p&gt;https://content-security-policy.com/&lt;/p&gt;</reference>
+        <otherinfo></otherinfo>
+        <cweid>693</cweid>
+        <wascid>15</wascid>
+        <sourceid>7</sourceid>
+        <count>5</count>
+        <alertRef>10038-1</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>7</id>
+            <nodeName>http://localhost:3000</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/ftp</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>64</id>
+            <nodeName>http://localhost:3000/ftp</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/ftp/eastere.gg</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>60</id>
+            <nodeName>http://localhost:3000/ftp/eastere.gg</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/ftp/encrypt.pyc</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>62</id>
+            <nodeName>http://localhost:3000/ftp/encrypt.pyc</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>11</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10098</pluginid>
+        <alert>Cross-Domain Misconfiguration</alert>
+        <name>Cross-Domain Misconfiguration</name>
+        <riskcode>2</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Medium (Medium)</riskdesc>
+        <desc>&lt;p&gt;Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).&lt;/p&gt;&lt;p&gt;Configure the &quot;Access-Control-Allow-Origin&quot; HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://vulncat.fortify.com/en/detail?category=HTML5&amp;subcategory=Overly%20Permissive%20CORS%20Policy&lt;/p&gt;</reference>
+        <otherinfo>&lt;p&gt;The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.&lt;/p&gt;</otherinfo>
+        <cweid>264</cweid>
+        <wascid>14</wascid>
+        <sourceid>12</sourceid>
+        <count>5</count>
+        <alertRef>10098</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000/assets/public/favicon_js.ico</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Access-Control-Allow-Origin: *</evidence>
+            <otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+            <id>0</id>
+            <nodeName>http://localhost:3000/assets/public/favicon_js.ico</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/polyfills.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Access-Control-Allow-Origin: *</evidence>
+            <otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+            <id>6</id>
+            <nodeName>http://localhost:3000/polyfills.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/robots.txt</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Access-Control-Allow-Origin: *</evidence>
+            <otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+            <id>1</id>
+            <nodeName>http://localhost:3000/robots.txt</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/runtime.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Access-Control-Allow-Origin: *</evidence>
+            <otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+            <id>2</id>
+            <nodeName>http://localhost:3000/runtime.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/styles.css</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Access-Control-Allow-Origin: *</evidence>
+            <otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+            <id>5</id>
+            <nodeName>http://localhost:3000/styles.css</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10017</pluginid>
+        <alert>Cross-Domain JavaScript Source File Inclusion</alert>
+        <name>Cross-Domain JavaScript Source File Inclusion</name>
+        <riskcode>1</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Low (Medium)</riskdesc>
+        <desc>&lt;p&gt;The page includes one or more script files from a third-party domain.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Ensure JavaScript source files are loaded from only trusted sources, and the sources can&#x27;t be controlled by end users of the application.&lt;/p&gt;</solution>
+        <reference></reference>
+        <otherinfo></otherinfo>
+        <cweid>829</cweid>
+        <wascid>15</wascid>
+        <sourceid>7</sourceid>
+        <count>5</count>
+        <alertRef>10017</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000</uri>
+            <method>GET</method>
+            <param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo></otherinfo>
+            <id>9</id>
+            <nodeName>http://localhost:3000</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000</uri>
+            <method>GET</method>
+            <param>//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js</param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo></otherinfo>
+            <id>10</id>
+            <nodeName>http://localhost:3000</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/</uri>
+            <method>GET</method>
+            <param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo></otherinfo>
+            <id>85</id>
+            <nodeName>http://localhost:3000/</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo></otherinfo>
+            <id>16</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param>//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js</param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo></otherinfo>
+            <id>18</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>90004</pluginid>
+        <alert>Cross-Origin-Embedder-Policy Header Missing or Invalid</alert>
+        <name>Cross-Origin-Embedder-Policy Header Missing or Invalid</name>
+        <riskcode>1</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Low (Medium)</riskdesc>
+        <desc>&lt;p&gt;Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don&#x27;t explicitly grant the document permission (using CORP or CORS).&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Ensure that the application/web server sets the Cross-Origin-Embedder-Policy header appropriately, and that it sets the Cross-Origin-Embedder-Policy header to &#x27;require-corp&#x27; for documents.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Embedder-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-embedder-policy).&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy&lt;/p&gt;</reference>
+        <otherinfo></otherinfo>
+        <cweid>693</cweid>
+        <wascid>14</wascid>
+        <sourceid>1</sourceid>
+        <count>5</count>
+        <alertRef>90004-2</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Embedder-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>52</id>
+            <nodeName>http://localhost:3000</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Embedder-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>94</id>
+            <nodeName>http://localhost:3000/</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/ftp</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Embedder-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>82</id>
+            <nodeName>http://localhost:3000/ftp</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Embedder-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>98</id>
+            <nodeName>http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Embedder-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>50</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>90004</pluginid>
+        <alert>Cross-Origin-Opener-Policy Header Missing or Invalid</alert>
+        <name>Cross-Origin-Opener-Policy Header Missing or Invalid</name>
+        <riskcode>1</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Low (Medium)</riskdesc>
+        <desc>&lt;p&gt;Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Ensure that the application/web server sets the Cross-Origin-Opener-Policy header appropriately, and that it sets the Cross-Origin-Opener-Policy header to &#x27;same-origin&#x27; for documents.&lt;/p&gt;&lt;p&gt;&#x27;same-origin-allow-popups&#x27; is considered as less secured and should be avoided.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Opener-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-opener-policy).&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Opener-Policy&lt;/p&gt;</reference>
+        <otherinfo></otherinfo>
+        <cweid>693</cweid>
+        <wascid>14</wascid>
+        <sourceid>1</sourceid>
+        <count>5</count>
+        <alertRef>90004-3</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Opener-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>55</id>
+            <nodeName>http://localhost:3000</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Opener-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>96</id>
+            <nodeName>http://localhost:3000/</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/ftp</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Opener-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>83</id>
+            <nodeName>http://localhost:3000/ftp</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Opener-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>99</id>
+            <nodeName>http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param>Cross-Origin-Opener-Policy</param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo></otherinfo>
+            <id>53</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10110</pluginid>
+        <alert>Dangerous JS Functions</alert>
+        <name>Dangerous JS Functions</name>
+        <riskcode>1</riskcode>
+        <confidence>1</confidence>
+        <riskdesc>Low (Low)</riskdesc>
+        <desc>&lt;p&gt;A dangerous JS function seems to be in use that would leave the site vulnerable.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;See the references for security advice on the use of these functions.&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://v17.angular.io/guide/security&lt;/p&gt;</reference>
+        <otherinfo></otherinfo>
+        <cweid>749</cweid>
+        <wascid>-1</wascid>
+        <sourceid>22</sourceid>
+        <count>2</count>
+        <alertRef>10110</alertRef>
+        <systemic>False</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000/main.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>bypassSecurityTrustHtml(</evidence>
+            <otherinfo></otherinfo>
+            <id>58</id>
+            <nodeName>http://localhost:3000/main.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/vendor.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>bypassSecurityTrustHtml(</evidence>
+            <otherinfo></otherinfo>
+            <id>108</id>
+            <nodeName>http://localhost:3000/vendor.js</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10063</pluginid>
+        <alert>Deprecated Feature Policy Header Set</alert>
+        <name>Deprecated Feature Policy Header Set</name>
+        <riskcode>1</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Low (Medium)</riskdesc>
+        <desc>&lt;p&gt;The header has now been renamed to Permissions-Policy.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header instead of the Feature-Policy header.&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy&lt;/p&gt;&lt;p&gt;https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/&lt;/p&gt;</reference>
+        <otherinfo></otherinfo>
+        <cweid>16</cweid>
+        <wascid>15</wascid>
+        <sourceid>1</sourceid>
+        <count>5</count>
+        <alertRef>10063-2</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Feature-Policy</evidence>
+            <otherinfo></otherinfo>
+            <id>49</id>
+            <nodeName>http://localhost:3000</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/main.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Feature-Policy</evidence>
+            <otherinfo></otherinfo>
+            <id>59</id>
+            <nodeName>http://localhost:3000/main.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/polyfills.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Feature-Policy</evidence>
+            <otherinfo></otherinfo>
+            <id>43</id>
+            <nodeName>http://localhost:3000/polyfills.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/runtime.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Feature-Policy</evidence>
+            <otherinfo></otherinfo>
+            <id>40</id>
+            <nodeName>http://localhost:3000/runtime.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>Feature-Policy</evidence>
+            <otherinfo></otherinfo>
+            <id>47</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10096</pluginid>
+        <alert>Timestamp Disclosure - Unix</alert>
+        <name>Timestamp Disclosure - Unix</name>
+        <riskcode>1</riskcode>
+        <confidence>1</confidence>
+        <riskdesc>Low (Low)</riskdesc>
+        <desc>&lt;p&gt;A timestamp was disclosed by the application/web server. - Unix&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://cwe.mitre.org/data/definitions/200.html&lt;/p&gt;</reference>
+        <otherinfo>&lt;p&gt;1680327869, which evaluates to: 2023-04-01 05:44:29.&lt;/p&gt;</otherinfo>
+        <cweid>497</cweid>
+        <wascid>13</wascid>
+        <sourceid>15</sourceid>
+        <count>5</count>
+        <alertRef>10096</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000/styles.css</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>1680327869</evidence>
+            <otherinfo>1680327869, which evaluates to: 2023-04-01 05:44:29.</otherinfo>
+            <id>22</id>
+            <nodeName>http://localhost:3000/styles.css</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/styles.css</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>1701244813</evidence>
+            <otherinfo>1701244813, which evaluates to: 2023-11-29 08:00:13.</otherinfo>
+            <id>19</id>
+            <nodeName>http://localhost:3000/styles.css</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/styles.css</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>1839622642</evidence>
+            <otherinfo>1839622642, which evaluates to: 2028-04-17 22:17:22.</otherinfo>
+            <id>21</id>
+            <nodeName>http://localhost:3000/styles.css</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/styles.css</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>1863874346</evidence>
+            <otherinfo>1863874346, which evaluates to: 2029-01-23 14:52:26.</otherinfo>
+            <id>23</id>
+            <nodeName>http://localhost:3000/styles.css</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/styles.css</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>2033195021</evidence>
+            <otherinfo>2033195021, which evaluates to: 2034-06-06 08:23:41.</otherinfo>
+            <id>20</id>
+            <nodeName>http://localhost:3000/styles.css</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10109</pluginid>
+        <alert>Modern Web Application</alert>
+        <name>Modern Web Application</name>
+        <riskcode>0</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Informational (Medium)</riskdesc>
+        <desc>&lt;p&gt;The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;This is an informational alert and so no changes are required.&lt;/p&gt;</solution>
+        <reference></reference>
+        <otherinfo>&lt;p&gt;No links have been found while there are scripts, which is an indication that this is a modern web application.&lt;/p&gt;</otherinfo>
+        <cweid>-1</cweid>
+        <wascid>-1</wascid>
+        <sourceid>1</sourceid>
+        <count>5</count>
+        <alertRef>10109</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+            <id>35</id>
+            <nodeName>http://localhost:3000</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+            <id>93</id>
+            <nodeName>http://localhost:3000/</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+            <id>95</id>
+            <nodeName>http://localhost:3000/juice-shop/build/routes/fileServer.js:43:13</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:421:3</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+            <id>97</id>
+            <nodeName>http://localhost:3000/juice-shop/node_modules/express/lib/router/index.js:421:3</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+            <otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+            <id>36</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10049</pluginid>
+        <alert>Non-Storable Content</alert>
+        <name>Non-Storable Content</name>
+        <riskcode>0</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Informational (Medium)</riskdesc>
+        <desc>&lt;p&gt;The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;The content may be marked as storable by ensuring that the following conditions are satisfied:&lt;/p&gt;&lt;p&gt;The request method must be understood by the cache and defined as being cacheable (&quot;GET&quot;, &quot;HEAD&quot;, and &quot;POST&quot; are currently defined as cacheable)&lt;/p&gt;&lt;p&gt;The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)&lt;/p&gt;&lt;p&gt;The &quot;no-store&quot; cache directive must not appear in the request or response header fields&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;private&quot; response directive must not appear in the response&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;Authorization&quot; header field must not appear in the request, unless the response explicitly allows it (using one of the &quot;must-revalidate&quot;, &quot;public&quot;, or &quot;s-maxage&quot; Cache-Control response directives)&lt;/p&gt;&lt;p&gt;In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:&lt;/p&gt;&lt;p&gt;It must contain an &quot;Expires&quot; header field&lt;/p&gt;&lt;p&gt;It must contain a &quot;max-age&quot; response directive&lt;/p&gt;&lt;p&gt;For &quot;shared&quot; caches such as &quot;proxy&quot; caches, it must contain a &quot;s-maxage&quot; response directive&lt;/p&gt;&lt;p&gt;It must contain a &quot;Cache Control Extension&quot; that allows it to be cached&lt;/p&gt;&lt;p&gt;It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
+        <otherinfo></otherinfo>
+        <cweid>524</cweid>
+        <wascid>13</wascid>
+        <sourceid>39</sourceid>
+        <count>2</count>
+        <alertRef>10049-1</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000/ftp/eastere.gg</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>403</evidence>
+            <otherinfo></otherinfo>
+            <id>66</id>
+            <nodeName>http://localhost:3000/ftp/eastere.gg</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/ftp/encrypt.pyc</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>403</evidence>
+            <otherinfo></otherinfo>
+            <id>69</id>
+            <nodeName>http://localhost:3000/ftp/encrypt.pyc</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10049</pluginid>
+        <alert>Storable and Cacheable Content</alert>
+        <name>Storable and Cacheable Content</name>
+        <riskcode>0</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Informational (Medium)</riskdesc>
+        <desc>&lt;p&gt;The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where &quot;shared&quot; caching servers such as &quot;proxy&quot; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.&lt;/p&gt;</desc>
+        <solution>&lt;p&gt;Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:&lt;/p&gt;&lt;p&gt;Cache-Control: no-cache, no-store, must-revalidate, private&lt;/p&gt;&lt;p&gt;Pragma: no-cache&lt;/p&gt;&lt;p&gt;Expires: 0&lt;/p&gt;&lt;p&gt;This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.&lt;/p&gt;</solution>
+        <reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
+        <otherinfo>&lt;p&gt;In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.&lt;/p&gt;</otherinfo>
+        <cweid>524</cweid>
+        <wascid>13</wascid>
+        <sourceid>6</sourceid>
+        <count>1</count>
+        <alertRef>10049-3</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000/robots.txt</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence></evidence>
+            <otherinfo>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</otherinfo>
+            <id>3</id>
+            <nodeName>http://localhost:3000/robots.txt</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+      <alertitem>
+        <pluginid>10049</pluginid>
+        <alert>Storable but Non-Cacheable Content</alert>
+        <name>Storable but Non-Cacheable Content</name>
+        <riskcode>0</riskcode>
+        <confidence>2</confidence>
+        <riskdesc>Informational (Medium)</riskdesc>
+        <desc>&lt;p&gt;The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.&lt;/p&gt;</desc>
+        <solution></solution>
+        <reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
+        <otherinfo></otherinfo>
+        <cweid>524</cweid>
+        <wascid>13</wascid>
+        <sourceid>12</sourceid>
+        <count>5</count>
+        <alertRef>10049-2</alertRef>
+        <systemic>True</systemic>
+        <instances>
+          <instance>
+            <uri>http://localhost:3000/assets/public/favicon_js.ico</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>max-age=0</evidence>
+            <otherinfo></otherinfo>
+            <id>4</id>
+            <nodeName>http://localhost:3000/assets/public/favicon_js.ico</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/polyfills.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>max-age=0</evidence>
+            <otherinfo></otherinfo>
+            <id>42</id>
+            <nodeName>http://localhost:3000/polyfills.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/runtime.js</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>max-age=0</evidence>
+            <otherinfo></otherinfo>
+            <id>39</id>
+            <nodeName>http://localhost:3000/runtime.js</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/sitemap.xml</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>max-age=0</evidence>
+            <otherinfo></otherinfo>
+            <id>45</id>
+            <nodeName>http://localhost:3000/sitemap.xml</nodeName>
+          </instance>
+          <instance>
+            <uri>http://localhost:3000/styles.css</uri>
+            <method>GET</method>
+            <param></param>
+            <attack></attack>
+            <evidence>max-age=0</evidence>
+            <otherinfo></otherinfo>
+            <id>44</id>
+            <nodeName>http://localhost:3000/styles.css</nodeName>
+          </instance>
+        </instances>
+      </alertitem>
+    </alerts>
+  </site>
+</OWASPZAPReport>

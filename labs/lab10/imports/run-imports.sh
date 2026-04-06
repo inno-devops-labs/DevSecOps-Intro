@@ -52,14 +52,14 @@ SCAN_NUCLEI="${SCAN_NUCLEI:-}"
 
 if $have_jq; then
   echo "Discovering importer names from /test_types/ ..."
-  mapfile -t types < <(curl -sS -H "Authorization: Token $DD_TOKEN" "$DD_API/test_types/?limit=2000" | jq -r '.results[].name')
+  types_json="$(curl -sS -H "Authorization: Token $DD_TOKEN" "$DD_API/test_types/?limit=2000")"
   choose_type() {
     local pat="$1"
     local fallback="$2"
     local val=""
-    for t in "${types[@]}"; do
+    while IFS= read -r t; do
       if [[ "$t" =~ $pat ]]; then val="$t"; break; fi
-    done
+    done < <(printf '%s\n' "$types_json" | jq -r '.results[].name')
     if [[ -z "$val" ]]; then val="$fallback"; fi
     echo "$val"
   }
@@ -69,9 +69,9 @@ if $have_jq; then
   SCAN_NUCLEI="${SCAN_NUCLEI:-$(choose_type '^Nuclei' 'Nuclei Scan')}"
   # Grype importer (commonly named "Anchore Grype")
   if [[ -z "${SCAN_GRYPE:-}" ]]; then
-    SCAN_GRYPE=$(printf '%s\n' "${types[@]}" | grep -i '^Anchore Grype' | head -n1)
+    SCAN_GRYPE=$(printf '%s\n' "$types_json" | jq -r '.results[].name' | grep -i '^Anchore Grype' | head -n1)
     if [[ -z "$SCAN_GRYPE" ]]; then
-      SCAN_GRYPE=$(printf '%s\n' "${types[@]}" | grep -i 'Grype' | head -n1)
+      SCAN_GRYPE=$(printf '%s\n' "$types_json" | jq -r '.results[].name' | grep -i 'Grype' | head -n1)
     fi
   fi
 else
@@ -115,7 +115,10 @@ import_scan() {
 }
 
 # Candidate paths per tool
-zap_file="labs/lab5/zap/zap-report-noauth.json"
+zap_file="labs/lab10/imports/zap-report-noauth.xml"
+if [[ ! -f "$zap_file" ]]; then
+  zap_file="labs/lab5/zap/zap-report-noauth.json"
+fi
 semgrep_file="labs/lab5/semgrep/semgrep-results.json"
 trivy_file="labs/lab4/trivy/trivy-vuln-detailed.json"
 nuclei_file="labs/lab5/nuclei/nuclei-results.json"

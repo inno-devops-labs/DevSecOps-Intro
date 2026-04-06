@@ -1,0 +1,160 @@
+id,title,severity,active,verified,is_mitigated,duplicate,cwe,found_by_tool,test_id,display_status,sla_days_remaining,sla_expiration_date,planned_remediation_date,age,created,updated
+148,Content Security Policy (CSP) Header Not Set,Medium,True,False,False,False,693,ZAP Scan,6,Active,90,2026-07-04,,0,2026-04-05T18:49:48.478054Z,2026-04-05T18:49:48.478059Z
+149,Cross-Domain Misconfiguration,Medium,True,False,False,False,264,ZAP Scan,6,Active,90,2026-07-04,,0,2026-04-05T18:49:48.494314Z,2026-04-05T18:49:48.494318Z
+150,Cross-Domain JavaScript Source File Inclusion,Low,True,False,False,False,829,ZAP Scan,6,Active,120,2026-08-03,,0,2026-04-05T18:49:48.504992Z,2026-04-05T18:49:48.504995Z
+151,Cross-Origin-Embedder-Policy Header Missing or Invalid,Low,True,False,False,False,693,ZAP Scan,6,Active,120,2026-08-03,,0,2026-04-05T18:49:48.512200Z,2026-04-05T18:49:48.512204Z
+152,Cross-Origin-Opener-Policy Header Missing or Invalid,Low,True,False,False,False,693,ZAP Scan,6,Active,120,2026-08-03,,0,2026-04-05T18:49:48.520404Z,2026-04-05T18:49:48.520407Z
+153,Dangerous JS Functions,Low,True,False,False,False,749,ZAP Scan,6,Active,120,2026-08-03,,0,2026-04-05T18:49:48.527655Z,2026-04-05T18:49:48.527658Z
+154,Deprecated Feature Policy Header Set,Low,True,False,False,False,16,ZAP Scan,6,Active,120,2026-08-03,,0,2026-04-05T18:49:48.532025Z,2026-04-05T18:49:48.532028Z
+155,Timestamp Disclosure - Unix,Low,True,False,False,False,497,ZAP Scan,6,Active,120,2026-08-03,,0,2026-04-05T18:49:48.538512Z,2026-04-05T18:49:48.538515Z
+156,Modern Web Application,Info,True,False,False,False,0,ZAP Scan,6,Active,,,,0,2026-04-05T18:49:48.544248Z,2026-04-05T18:49:48.544251Z
+157,Non-Storable Content,Info,True,False,False,False,524,ZAP Scan,6,Active,,,,0,2026-04-05T18:49:48.551020Z,2026-04-05T18:49:48.551023Z
+158,Storable and Cacheable Content,Info,True,False,False,False,524,ZAP Scan,6,Active,,,,0,2026-04-05T18:49:48.554585Z,2026-04-05T18:49:48.554588Z
+159,Storable but Non-Cacheable Content,Info,True,False,False,False,524,ZAP Scan,6,Active,,,,0,2026-04-05T18:49:48.556943Z,2026-04-05T18:49:48.556946Z
+160,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,False,89,Semgrep JSON Report,7,Active,30,2026-05-05,,0,2026-04-05T18:49:48.648072Z,2026-04-05T18:49:48.648075Z
+161,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,False,89,Semgrep JSON Report,7,Active,30,2026-05-05,,0,2026-04-05T18:49:48.651284Z,2026-04-05T18:49:48.651287Z
+162,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,False,89,Semgrep JSON Report,7,Active,30,2026-05-05,,0,2026-04-05T18:49:48.652707Z,2026-04-05T18:49:48.652710Z
+163,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,False,89,Semgrep JSON Report,7,Active,30,2026-05-05,,0,2026-04-05T18:49:48.653947Z,2026-04-05T18:49:48.653949Z
+164,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,False,79,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.655189Z,2026-04-05T18:49:48.655192Z
+165,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,False,79,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.656543Z,2026-04-05T18:49:48.656545Z
+166,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,False,79,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.657715Z,2026-04-05T18:49:48.657717Z
+167,javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret,Medium,True,False,False,False,798,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.658736Z,2026-04-05T18:49:48.658739Z
+168,javascript.express.security.injection.raw-html-format.raw-html-format,Medium,True,False,False,False,79,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.659894Z,2026-04-05T18:49:48.659897Z
+169,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,False,73,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.661236Z,2026-04-05T18:49:48.661241Z
+170,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,False,73,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.662471Z,2026-04-05T18:49:48.662474Z
+171,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,False,73,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.663691Z,2026-04-05T18:49:48.663694Z
+172,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,False,89,Semgrep JSON Report,7,Active,30,2026-05-05,,0,2026-04-05T18:49:48.664757Z,2026-04-05T18:49:48.664760Z
+173,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,False,73,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.665803Z,2026-04-05T18:49:48.665806Z
+174,javascript.express.security.audit.possible-user-input-redirect.unknown-value-in-redirect,Medium,True,False,False,False,601,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.666961Z,2026-04-05T18:49:48.666964Z
+175,javascript.express.security.audit.express-open-redirect.express-open-redirect,Medium,True,False,False,False,601,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.667973Z,2026-04-05T18:49:48.667976Z
+176,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,False,89,Semgrep JSON Report,7,Active,30,2026-05-05,,0,2026-04-05T18:49:48.668979Z,2026-04-05T18:49:48.668982Z
+177,javascript.lang.security.audit.code-string-concat.code-string-concat,High,True,False,False,False,95,Semgrep JSON Report,7,Active,30,2026-05-05,,0,2026-04-05T18:49:48.670134Z,2026-04-05T18:49:48.670137Z
+178,javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag,Medium,True,False,False,False,79,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.671188Z,2026-04-05T18:49:48.671190Z
+179,javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag,Medium,True,False,False,False,79,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.672586Z,2026-04-05T18:49:48.672590Z
+180,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,False,548,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.673774Z,2026-04-05T18:49:48.673777Z
+181,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,False,548,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.674860Z,2026-04-05T18:49:48.674863Z
+182,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,False,548,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.676233Z,2026-04-05T18:49:48.676237Z
+183,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,False,548,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.677414Z,2026-04-05T18:49:48.677417Z
+184,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,False,79,Semgrep JSON Report,7,Active,90,2026-07-04,,0,2026-04-05T18:49:48.678456Z,2026-04-05T18:49:48.678459Z
+185,Public Swagger API - Detect,Info,True,False,False,False,200,Nuclei Scan,9,Active,,,,32,2026-04-05T18:49:48.852974Z,2026-04-05T18:49:48.852978Z
+186,X-Recruiting Header,Info,True,False,False,False,0,Nuclei Scan,9,Active,,,,32,2026-04-05T18:49:48.867161Z,2026-04-05T18:49:48.867165Z
+187,GHSA-2p57-rm9w-gvfp in ip:2.0.1,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:48.975230Z,2026-04-05T18:49:48.975234Z
+188,GHSA-whpj-8f3w-67p5 in vm2:3.9.17,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:48.980682Z,2026-04-05T18:49:48.980686Z
+189,GHSA-g644-9gfx-q4q4 in vm2:3.9.17,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:48.983019Z,2026-04-05T18:49:48.983022Z
+190,GHSA-c7hr-j4mj-j2w6 in jsonwebtoken:0.1.0,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:48.990618Z,2026-04-05T18:49:48.990626Z
+191,GHSA-c7hr-j4mj-j2w6 in jsonwebtoken:0.4.0,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:48.998013Z,2026-04-05T18:49:48.998018Z
+192,GHSA-cchq-frgv-rjh5 in vm2:3.9.17,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:49.000790Z,2026-04-05T18:49:49.000794Z
+193,GHSA-87vv-r9j6-g5qv in moment:2.0.0,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.003077Z,2026-04-05T18:49:49.003080Z
+194,GHSA-jf85-cpcp-j695 in lodash:2.4.2,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:49.005317Z,2026-04-05T18:49:49.005330Z
+195,GHSA-p6mc-m468-83gw in lodash.set:4.3.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.007338Z,2026-04-05T18:49:49.007341Z
+196,GHSA-8hfj-j24r-96c4 in moment:2.0.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.009495Z,2026-04-05T18:49:49.009498Z
+197,GHSA-r7qp-cfhv-p84w in engine.io:4.1.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.011576Z,2026-04-05T18:49:49.011579Z
+198,GHSA-xwcq-pm8m-c4vf in crypto-js:3.3.0,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:49.013612Z,2026-04-05T18:49:49.013615Z
+199,GHSA-rm97-x556-q36h in sanitize-html:1.4.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.015556Z,2026-04-05T18:49:49.015559Z
+200,CVE-2025-15467 in libssl3:3.0.17-1~deb12u2,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:49.017560Z,2026-04-05T18:49:49.017562Z
+201,GHSA-35jh-r3h4-6jhm in lodash:2.4.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.019452Z,2026-04-05T18:49:49.019455Z
+202,GHSA-3h5v-q93c-6h6q in ws:7.4.6,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.021736Z,2026-04-05T18:49:49.021741Z
+203,GHSA-pfrx-2q88-qq97 in got:8.3.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.023777Z,2026-04-05T18:49:49.023780Z
+204,GHSA-cgfm-xwp7-2cvr in sanitize-html:1.4.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.025838Z,2026-04-05T18:49:49.025841Z
+205,GHSA-p5gc-c584-jj6v in vm2:3.9.17,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.027767Z,2026-04-05T18:49:49.027770Z
+206,GHSA-4xc9-xhrj-v574 in lodash:2.4.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.029695Z,2026-04-05T18:49:49.029698Z
+207,GHSA-f5x3-32g6-xq36 in tar:4.4.19,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.031313Z,2026-04-05T18:49:49.031316Z
+208,GHSA-446m-mv8f-q348 in moment:2.0.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.033170Z,2026-04-05T18:49:49.033173Z
+209,GHSA-3j7m-hmh3-9jmp in sanitize-html:1.4.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.034999Z,2026-04-05T18:49:49.035003Z
+210,GHSA-8g4m-cjm2-96wq in notevil:1.3.3,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.037022Z,2026-04-05T18:49:49.037025Z
+211,GHSA-6rw7-vpxm-498p in qs:6.13.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.038766Z,2026-04-05T18:49:49.038769Z
+212,GHSA-grv7-fg5c-xmjg in braces:2.3.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.040689Z,2026-04-05T18:49:49.040692Z
+213,GHSA-6g6m-m6h5-w9gf in express-jwt:0.1.3,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.042602Z,2026-04-05T18:49:49.042605Z
+214,GHSA-mjxr-4v3x-q3m4 in sanitize-html:1.4.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.044504Z,2026-04-05T18:49:49.044507Z
+215,GHSA-rjqq-98f6-6j3r in sanitize-html:1.4.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.046272Z,2026-04-05T18:49:49.046274Z
+216,GHSA-rc47-6667-2j5j in http-cache-semantics:3.8.1,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.048376Z,2026-04-05T18:49:49.048379Z
+217,GHSA-fvqr-27wr-82fm in lodash:2.4.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.050071Z,2026-04-05T18:49:49.050074Z
+218,GHSA-xc6g-ggrc-qq4r in sanitize-html:1.4.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.051932Z,2026-04-05T18:49:49.051935Z
+219,GHSA-cqmj-92xf-r6r9 in socket.io-parser:4.0.5,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.053683Z,2026-04-05T18:49:49.053686Z
+220,GHSA-25hc-qcg6-38wj in socket.io:3.1.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.055471Z,2026-04-05T18:49:49.055474Z
+221,CVE-2018-20796 in libc6:2.36-9+deb12u10,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.057203Z,2026-04-05T18:49:49.057206Z
+222,GHSA-952p-6rrq-rcjv in micromatch:3.1.10,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.059041Z,2026-04-05T18:49:49.059044Z
+223,GHSA-pxg6-pf52-xh8x in cookie:0.4.2,Low,True,False,False,False,0,Anchore Grype,10,Active,120,2026-08-03,,0,2026-04-05T18:49:49.060839Z,2026-04-05T18:49:49.060843Z
+224,GHSA-8cf7-32gw-wr33 in jsonwebtoken:0.1.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.062718Z,2026-04-05T18:49:49.062721Z
+225,GHSA-8cf7-32gw-wr33 in jsonwebtoken:0.4.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.064440Z,2026-04-05T18:49:49.064443Z
+226,GHSA-vghf-hv5q-vc2g in validator:13.15.15,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.066314Z,2026-04-05T18:49:49.066317Z
+227,GHSA-g5hg-p3ph-g8qg in multer:1.4.5-lts.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.068012Z,2026-04-05T18:49:49.068015Z
+228,CVE-2025-69420 in libssl3:3.0.17-1~deb12u2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.069808Z,2026-04-05T18:49:49.069811Z
+229,CVE-2025-59465 in node:22.18.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.071604Z,2026-04-05T18:49:49.071608Z
+230,CVE-2025-69421 in libssl3:3.0.17-1~deb12u2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.073199Z,2026-04-05T18:49:49.073202Z
+231,CVE-2019-9192 in libc6:2.36-9+deb12u10,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.074776Z,2026-04-05T18:49:49.074779Z
+232,CVE-2019-1010025 in libc6:2.36-9+deb12u10,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.076611Z,2026-04-05T18:49:49.076614Z
+233,GHSA-3ppc-4f35-3m26 in minimatch:3.0.5,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.078153Z,2026-04-05T18:49:49.078156Z
+234,GHSA-3ppc-4f35-3m26 in minimatch:3.0.8,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.080094Z,2026-04-05T18:49:49.080097Z
+235,GHSA-3ppc-4f35-3m26 in minimatch:3.1.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.081973Z,2026-04-05T18:49:49.081976Z
+236,GHSA-3ppc-4f35-3m26 in minimatch:5.1.6,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.083683Z,2026-04-05T18:49:49.083686Z
+237,GHSA-3ppc-4f35-3m26 in minimatch:9.0.5,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.085556Z,2026-04-05T18:49:49.085559Z
+238,CVE-2025-69419 in libssl3:3.0.17-1~deb12u2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.087379Z,2026-04-05T18:49:49.087382Z
+239,CVE-2025-15281 in libc6:2.36-9+deb12u10,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.089423Z,2026-04-05T18:49:49.089426Z
+240,CVE-2026-22796 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.091015Z,2026-04-05T18:49:49.091018Z
+241,GHSA-44fp-w29j-9vj5 in multer:1.4.5-lts.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.092726Z,2026-04-05T18:49:49.092729Z
+242,GHSA-7r86-cg39-jmmj in minimatch:3.0.5,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.094482Z,2026-04-05T18:49:49.094485Z
+243,GHSA-7r86-cg39-jmmj in minimatch:3.0.8,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.096261Z,2026-04-05T18:49:49.096264Z
+244,GHSA-7r86-cg39-jmmj in minimatch:3.1.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.098251Z,2026-04-05T18:49:49.098254Z
+245,GHSA-7r86-cg39-jmmj in minimatch:5.1.6,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.100021Z,2026-04-05T18:49:49.100024Z
+246,GHSA-7r86-cg39-jmmj in minimatch:9.0.5,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.101937Z,2026-04-05T18:49:49.101940Z
+247,CVE-2019-1010024 in libc6:2.36-9+deb12u10,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.103673Z,2026-04-05T18:49:49.103675Z
+248,GHSA-99p7-6v5w-7xg8 in vm2:3.9.17,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:49.105340Z,2026-04-05T18:49:49.105343Z
+249,GHSA-23c5-xmqv-rm74 in minimatch:3.0.5,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.107091Z,2026-04-05T18:49:49.107094Z
+250,GHSA-23c5-xmqv-rm74 in minimatch:3.0.8,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.108948Z,2026-04-05T18:49:49.108951Z
+251,GHSA-23c5-xmqv-rm74 in minimatch:3.1.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.110658Z,2026-04-05T18:49:49.110660Z
+252,GHSA-23c5-xmqv-rm74 in minimatch:5.1.6,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.112499Z,2026-04-05T18:49:49.112502Z
+253,GHSA-23c5-xmqv-rm74 in minimatch:9.0.5,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.114210Z,2026-04-05T18:49:49.114213Z
+254,GHSA-hjrf-2m68-5959 in jsonwebtoken:0.1.0,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.116161Z,2026-04-05T18:49:49.116164Z
+255,GHSA-hjrf-2m68-5959 in jsonwebtoken:0.4.0,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.117959Z,2026-04-05T18:49:49.117962Z
+256,GHSA-5j98-mcp5-4vw2 in glob:10.4.5,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.119859Z,2026-04-05T18:49:49.119862Z
+257,CVE-2026-21637 in node:22.18.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.121590Z,2026-04-05T18:49:49.121593Z
+258,GHSA-qhxp-v273-g94h in sanitize-html:1.4.2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.123298Z,2026-04-05T18:49:49.123300Z
+259,GHSA-vj76-c3g6-qr5v in tar-fs:2.1.3,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.124991Z,2026-04-05T18:49:49.124993Z
+260,CVE-2025-55131 in node:22.18.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.126942Z,2026-04-05T18:49:49.126944Z
+261,CVE-2010-4756 in libc6:2.36-9+deb12u10,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.128455Z,2026-04-05T18:49:49.128458Z
+262,GHSA-9965-vmph-33xx in validator:13.15.15,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.130147Z,2026-04-05T18:49:49.130150Z
+263,GHSA-r5mx-6wc6-7h9w in dottie:2.0.6,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.131891Z,2026-04-05T18:49:49.131894Z
+264,CVE-2025-59466 in node:22.18.0,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.133669Z,2026-04-05T18:49:49.133672Z
+265,CVE-2025-9230 in libssl3:3.0.17-1~deb12u2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.135194Z,2026-04-05T18:49:49.135196Z
+266,CVE-2019-1010023 in libc6:2.36-9+deb12u10,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.136878Z,2026-04-05T18:49:49.136881Z
+267,GHSA-xxjr-mmjv-4gpg in lodash:4.17.21,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.138392Z,2026-04-05T18:49:49.138395Z
+268,CVE-2026-0915 in libc6:2.36-9+deb12u10,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.140144Z,2026-04-05T18:49:49.140147Z
+269,GHSA-w7fw-mjwx-w883 in qs:6.13.0,Low,True,False,False,False,0,Anchore Grype,10,Active,120,2026-08-03,,0,2026-04-05T18:49:49.141761Z,2026-04-05T18:49:49.141765Z
+270,CVE-2025-9232 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.143803Z,2026-04-05T18:49:49.143806Z
+271,CVE-2025-4802 in libc6:2.36-9+deb12u10,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.145413Z,2026-04-05T18:49:49.145416Z
+272,GHSA-mh29-5h37-fv8m in js-yaml:3.14.1,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.147201Z,2026-04-05T18:49:49.147204Z
+273,CVE-2025-55130 in node:22.18.0,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:49.148977Z,2026-04-05T18:49:49.148980Z
+274,GHSA-qwph-4952-7xr6 in jsonwebtoken:0.1.0,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.150484Z,2026-04-05T18:49:49.150487Z
+275,GHSA-qwph-4952-7xr6 in jsonwebtoken:0.4.0,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.152311Z,2026-04-05T18:49:49.152314Z
+276,GHSA-34x7-hfp2-rc4v in tar:4.4.19,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.154014Z,2026-04-05T18:49:49.154016Z
+277,GHSA-34x7-hfp2-rc4v in tar:6.2.1,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.155892Z,2026-04-05T18:49:49.155895Z
+278,GHSA-34x7-hfp2-rc4v in tar:7.4.3,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.157557Z,2026-04-05T18:49:49.157560Z
+279,GHSA-fjgf-rc76-4x9p in multer:1.4.5-lts.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.159402Z,2026-04-05T18:49:49.159405Z
+280,GHSA-83g3-92jg-28cx in tar:4.4.19,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.161057Z,2026-04-05T18:49:49.161060Z
+281,GHSA-83g3-92jg-28cx in tar:6.2.1,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.162794Z,2026-04-05T18:49:49.162796Z
+282,GHSA-83g3-92jg-28cx in tar:7.4.3,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.164512Z,2026-04-05T18:49:49.164515Z
+283,GHSA-4pg4-qvpc-4q3h in multer:1.4.5-lts.2,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.166403Z,2026-04-05T18:49:49.166406Z
+284,CVE-2026-22795 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.168130Z,2026-04-05T18:49:49.168133Z
+285,CVE-2025-68160 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.169853Z,2026-04-05T18:49:49.169856Z
+286,GHSA-869p-cjfg-cm3x in jws:0.2.6,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.171546Z,2026-04-05T18:49:49.171549Z
+287,CVE-2019-1010022 in libc6:2.36-9+deb12u10,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.173290Z,2026-04-05T18:49:49.173293Z
+288,CVE-2026-0861 in libc6:2.36-9+deb12u10,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.174781Z,2026-04-05T18:49:49.174784Z
+289,GHSA-73rr-hh4g-fpgx in diff:4.0.2,Low,True,False,False,False,0,Anchore Grype,10,Active,120,2026-08-03,,0,2026-04-05T18:49:49.176469Z,2026-04-05T18:49:49.176472Z
+290,GHSA-8qq5-rm4j-mr97 in tar:4.4.19,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.178220Z,2026-04-05T18:49:49.178222Z
+291,GHSA-8qq5-rm4j-mr97 in tar:6.2.1,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.180053Z,2026-04-05T18:49:49.180055Z
+292,GHSA-8qq5-rm4j-mr97 in tar:7.4.3,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.183555Z,2026-04-05T18:49:49.183558Z
+293,GHSA-r6q2-hw4h-h46w in tar:4.4.19,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.185598Z,2026-04-05T18:49:49.185601Z
+294,GHSA-r6q2-hw4h-h46w in tar:6.2.1,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.187515Z,2026-04-05T18:49:49.187517Z
+295,GHSA-r6q2-hw4h-h46w in tar:7.4.3,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.189224Z,2026-04-05T18:49:49.189226Z
+296,CVE-2025-55132 in node:22.18.0,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.191089Z,2026-04-05T18:49:49.191091Z
+297,CVE-2025-8058 in libc6:2.36-9+deb12u10,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.192707Z,2026-04-05T18:49:49.192710Z
+298,CVE-2025-27587 in libssl3:3.0.17-1~deb12u2,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.194363Z,2026-04-05T18:49:49.194366Z
+299,CVE-2022-27943 in gcc-12-base:12.2.0-14+deb12u1,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.195854Z,2026-04-05T18:49:49.195857Z
+300,CVE-2022-27943 in libgcc-s1:12.2.0-14+deb12u1,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.197458Z,2026-04-05T18:49:49.197461Z
+301,CVE-2022-27943 in libgomp1:12.2.0-14+deb12u1,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.199017Z,2026-04-05T18:49:49.199020Z
+302,CVE-2022-27943 in libstdc++6:12.2.0-14+deb12u1,Info,True,False,False,False,0,Anchore Grype,10,Active,,,,0,2026-04-05T18:49:49.200754Z,2026-04-05T18:49:49.200757Z
+303,CVE-2025-69418 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.202340Z,2026-04-05T18:49:49.202343Z
+304,GHSA-5mrr-rgp6-x4gr in marsdb:0.6.11,Critical,True,False,False,False,0,Anchore Grype,10,Active,7,2026-04-12,,0,2026-04-05T18:49:49.204081Z,2026-04-05T18:49:49.204084Z
+305,GHSA-gjcw-v447-2w7q in jws:0.2.6,High,True,False,False,False,0,Anchore Grype,10,Active,30,2026-05-05,,0,2026-04-05T18:49:49.205491Z,2026-04-05T18:49:49.205494Z
+306,GHSA-rvg8-pwq2-xj7q in base64url:0.0.6,Medium,True,False,False,False,0,Anchore Grype,10,Active,90,2026-07-04,,0,2026-04-05T18:49:49.207187Z,2026-04-05T18:49:49.207190Z
