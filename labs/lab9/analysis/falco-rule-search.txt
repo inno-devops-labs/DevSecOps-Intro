@@ -1,0 +1,6 @@
+﻿435:  condition: (proc.pname=postgres and (proc.cmdline startswith "sh -c envdir /etc/wal-e.d/env /usr/local/bin/wal-e" or proc.cmdline startswith "sh -c envdir \"/run/etc/wal-e.d/env\" wal-g wal-push"))
+496:  condition: (proc.pname=nginx and proc.cmdline startswith "sh -c /usr/local/bin/aws s3 cp")
+693:    unique to your environment. The rule "Terminal shell in container" that fires when using "kubectl exec" is more Kubernetes 
+709:- rule: Terminal shell in container
+1155:    "Drop and execute new binary in container" rule.
+1176:- rule: Drop and execute new binary in container
