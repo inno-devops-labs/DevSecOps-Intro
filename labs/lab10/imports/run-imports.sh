@@ -115,7 +115,16 @@ import_scan() {
 }
 
 # Candidate paths per tool
-zap_file="labs/lab5/zap/zap-report-noauth.json"
+zap_file_json="labs/lab5/zap/zap-report-noauth.json"
+zap_file_xml="labs/lab5/zap/zap-report-noauth.xml"
+if [[ -f "$zap_file_json" ]]; then
+  zap_file="$zap_file_json"
+elif [[ -f "$zap_file_xml" ]]; then
+  zap_file="$zap_file_xml"
+else
+  # Keep the original default path in log messages when neither file exists.
+  zap_file="$zap_file_json"
+fi
 semgrep_file="labs/lab5/semgrep/semgrep-results.json"
 trivy_file="labs/lab4/trivy/trivy-vuln-detailed.json"
 nuclei_file="labs/lab5/nuclei/nuclei-results.json"

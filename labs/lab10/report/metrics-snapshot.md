@@ -1,39 +1,34 @@
 # Metrics Snapshot — Lab 10
 
-- Date captured: 2026-03-09
+- Date captured: 2026-04-07
 - Active findings:
-  - Critical: 11
-  - High: 62
-  - Medium: 38
-  - Low: 19
-  - Informational: 12
-- Total active: 142
+  - Critical: 21
+  - High: 109
+  - Medium: 78
+  - Low: 27
+  - Informational: 17
+- Total active: 252
 - Verified: 0
 - Mitigated: 0
 - False positives: 0
-- Duplicates suppressed: 91 (hash-based deduplication across Trivy and Grype)
-- Verified vs. Mitigated notes: All findings remain in Active status since no triage or remediation has been performed yet. The next step would be to verify Critical and High findings and assign SLA deadlines.
+- Verified vs. Mitigated notes: Findings were imported and normalized in DefectDojo; triage/remediation workflow has not started yet.
 
-## Findings per Tool
+## Findings per Tool (Import Responses)
 
-| Tool   | Imported | After Dedup | Critical | High | Medium | Low | Info |
-|--------|----------|-------------|----------|------|--------|-----|------|
-| Trivy  |      116 |         116 |       10 |   55 |     33 |  18 |    0 |
-| Grype  |      117 |          89 |       11 |   60 |     31 |   3 |   12 |
-| ZAP    |      N/A |         N/A |      N/A |  N/A |    N/A | N/A |  N/A |
-| Semgrep|      N/A |         N/A |      N/A |  N/A |    N/A | N/A |  N/A |
-| Nuclei |      N/A |         N/A |      N/A |  N/A |    N/A | N/A |  N/A |
-
-> ZAP, Semgrep, and Nuclei were skipped — report files were not present at the expected paths. Only Trivy and Grype results were imported.
+| Tool | Imported (active) | Critical | High | Medium | Low | Info |
+|------|-------------------|----------|------|--------|-----|------|
+| ZAP | 12 | 0 | 0 | 2 | 6 | 4 |
+| Semgrep | 10 | 0 | 0 | 10 | 0 | 0 |
+| Trivy | 120 | 10 | 57 | 35 | 18 | 0 |
+| Nuclei | 1 | 0 | 0 | 0 | 0 | 1 |
+| Grype | 109 | 11 | 52 | 31 | 3 | 12 |
 
 ## SLA Status
 
-| Severity     | SLA Target | Due Date   | Status    |
-|-------------|-----------|------------|-----------|
-| Critical    | 7 days    | 2026-03-16 | On track  |
-| High        | 30 days   | 2026-04-08 | On track  |
-| Medium      | 90 days   | 2026-06-07 | On track  |
-| Low         | 180 days  | 2026-09-05 | On track  |
-| Informational | No SLA  | —          | —         |
-
-No SLA breaches at this time (day 0 of triage).
+| Severity | SLA Target | Status |
+|----------|------------|--------|
+| Critical | 7 days | Triage not started |
+| High | 30 days | Triage not started |
+| Medium | 90 days | Triage not started |
+| Low | 180 days | Triage not started |
+| Informational | No SLA | Informational only |

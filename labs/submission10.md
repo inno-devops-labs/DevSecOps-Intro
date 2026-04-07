@@ -1,215 +1,104 @@
 # Lab 10 Submission — Vulnerability Management & Response with DefectDojo
 
-## Task 1 — DefectDojo Local Setup (2 pts)
+## Task 1 — DefectDojo Local Setup
 
-### 1.1 Clone & Launch
+### 1.1 Local deployment
+
+DefectDojo was deployed locally with Docker Compose from the official repository:
 
 ```bash
-# Clone DefectDojo
 git clone https://github.com/DefectDojo/django-DefectDojo.git labs/lab10/setup/django-DefectDojo
 cd labs/lab10/setup/django-DefectDojo
-
-# Compose compatibility check
-./docker/docker-compose-check.sh || true
-
-# Build and start
-docker compose build
 docker compose up -d
 ```
 
-Container health check after startup:
+Core services started successfully (`nginx`, `uwsgi`, `postgres`, `celeryworker`, `celerybeat`, `valkey`).
 
-```
-$ docker compose ps
-NAME                  IMAGE                                   STATUS
-defectdojo-celerybeat     defectdojo/defectdojo-django:latest   Up 2 minutes (healthy)
-defectdojo-celeryworker   defectdojo/defectdojo-django:latest   Up 2 minutes (healthy)
-defectdojo-django         defectdojo/defectdojo-django:latest   Up 2 minutes (healthy)
-defectdojo-initializer    defectdojo/defectdojo-django:latest   Exited (0) 1 minute ago
-defectdojo-nginx          defectdojo/defectdojo-nginx:latest    Up 2 minutes (healthy)
-defectdojo-postgres       postgres:16.2-alpine                  Up 2 minutes (healthy)
-defectdojo-rabbitmq       rabbitmq:3.13.1-alpine                Up 2 minutes (healthy)
-defectdojo-redis          redis:7.2.4-alpine                    Up 2 minutes (healthy)
-```
+### 1.2 Context creation
 
-All 7 long-running services reported `healthy`. The `initializer` container ran database migrations and exited with code 0.
+The following hierarchy was used for imports:
 
-### 1.2 Admin Credentials
+- Product Type: `Engineering`
+- Product: `Juice Shop`
+- Engagement: `Labs Security Testing`
 
-```bash
-$ docker compose logs initializer | grep "Admin password:"
-Admin password: aB3$kL9mNpQr
-```
-
-Successfully logged in at `http://localhost:8080` with:
-- **Username:** `admin`
-- **Password:** `aB3$kL9mNpQr`
-
-### 1.3 Structure Created in DefectDojo
-
-| Entity | Value |
-|--------|-------|
-| Product Type | Engineering |
-| Product | Juice Shop |
-| Engagement | Labs Security Testing |
-
-The engagement was auto-created by the import script (Task 2) using the `auto_create_context=true` flag. No manual creation was needed.
+Context creation was automated by import calls with `auto_create_context=true`.
 
 ---
 
-## Task 2 — Import Prior Findings (4 pts)
+## Task 2 — Import Prior Findings
 
-### 2.1 API Token & Environment
+### 2.1 Input files used
 
-```bash
-# Token obtained from: Profile → API v2 Key
-export DD_API="http://localhost:8080/api/v2"
-export DD_TOKEN="ec0c1f12...redacted...a94b"
+- ZAP: `labs/lab5/zap/zap-report-noauth.xml`
+- Semgrep: `labs/lab5/semgrep/semgrep-results.json`
+- Trivy: `labs/lab4/trivy/trivy-vuln-detailed.json`
+- Nuclei: `labs/lab5/nuclei/nuclei-results.json`
+- Grype: `labs/lab4/syft/grype-vuln-results.json`
 
-export DD_PRODUCT_TYPE="Engineering"
-export DD_PRODUCT="Juice Shop"
-export DD_ENGAGEMENT="Labs Security Testing"
-```
+Note: DefectDojo `ZAP Scan` parser accepted XML input. A JSON report was also generated for lab evidence, but import used XML.
 
-### 2.2 Report Files — Availability Check
+### 2.2 Import evidence
 
-| Tool | Expected Path | Present? |
-|------|---------------|----------|
-| ZAP | `labs/lab5/zap/zap-report-noauth.json` | **No** — ZAP output was not preserved in lab5 |
-| Semgrep | `labs/lab5/semgrep/semgrep-results.json` | **No** — Semgrep output was not preserved |
-| Trivy | `labs/lab4/trivy/trivy-vuln-detailed.json` | **Yes** ✓ |
-| Nuclei | `labs/lab5/nuclei/nuclei-results.json` | **No** — Nuclei output was not preserved |
-| Grype | `labs/lab4/syft/grype-vuln-results.json` | **Yes** ✓ |
+Saved API responses:
 
-Only **Trivy** and **Grype** scan results were available from prior labs. The ZAP, Semgrep, and Nuclei JSON outputs were not committed in their respective lab branches.
+- `labs/lab10/imports/import-zap-report-noauth.json`
+- `labs/lab10/imports/import-semgrep-results.json`
+- `labs/lab10/imports/import-trivy-vuln-detailed.json`
+- `labs/lab10/imports/import-nuclei-results.json`
+- `labs/lab10/imports/import-grype-vuln-results.json`
 
-### 2.3 Import Execution
+### 2.3 Import results by tool
 
-```bash
-$ bash labs/lab10/imports/run-imports.sh
+| Tool | Active Imported | Critical | High | Medium | Low | Info |
+|------|------------------|----------|------|--------|-----|------|
+| ZAP | 12 | 0 | 0 | 2 | 6 | 4 |
+| Semgrep | 10 | 0 | 0 | 10 | 0 | 0 |
+| Trivy | 120 | 10 | 57 | 35 | 18 | 0 |
+| Nuclei | 1 | 0 | 0 | 0 | 0 | 1 |
+| Grype | 109 | 11 | 52 | 31 | 3 | 12 |
 
-Using context:
-  DD_API=http://localhost:8080/api/v2
-  DD_PRODUCT_TYPE=Engineering
-  DD_PRODUCT=Juice Shop
-  DD_ENGAGEMENT=Labs Security Testing
-Discovering importer names from /test_types/ ...
-Importer names:
-  ZAP      = ZAP Scan
-  Semgrep  = Semgrep JSON Report
-  Trivy    = Trivy Scan
-  Nuclei   = Nuclei Scan
-  Grype    = Anchore Grype
-SKIP: ZAP Scan file not found: labs/lab5/zap/zap-report-noauth.json
-SKIP: Semgrep JSON Report file not found: labs/lab5/semgrep/semgrep-results.json
-Importing Trivy Scan from labs/lab4/trivy/trivy-vuln-detailed.json
-Importing Nuclei Scan... SKIP: file not found: labs/lab5/nuclei/nuclei-results.json
-Importing Anchore Grype from labs/lab4/syft/grype-vuln-results.json
-Done. Import responses saved under labs/lab10/imports/
-```
-
-### 2.4 Import Results
-
-**Trivy import** ([import-trivy-vuln-detailed.json](labs/lab10/imports/import-trivy-vuln-detailed.json)):
-
-| Metric | Value |
-|--------|-------|
-| Scan type | Trivy Scan |
-| Raw findings imported | 116 |
-| New (created) | 116 |
-| Duplicates suppressed | 0 (first import) |
-| Severity breakdown | 10 Critical, 55 High, 33 Medium, 18 Low |
-
-**Grype import** ([import-grype-vuln-results.json](labs/lab10/imports/import-grype-vuln-results.json)):
-
-| Metric | Value |
-|--------|-------|
-| Scan type | Anchore Grype |
-| Raw findings imported | 117 |
-| New (created) | 89 |
-| Duplicates (left_untouched) | 28 |
-| Severity breakdown | 11 Critical, 60 High, 31 Medium, 3 Low, 12 Info |
-
-**Deduplication analysis:** DefectDojo used **hash-based deduplication** (default algorithm) to identify 28 findings from Grype that matched existing Trivy findings. The matching criteria includes the CVE ID and affected component name+version. This is expected because both tools scan the same container image (`bkimminich/juice-shop:v19.0.0`) and detect many of the same OS-level and npm-level vulnerabilities.
-
-The 89 new Grype findings include:
-- 12 Negligible/Informational-severity findings that Trivy doesn't report (Trivy skips `Negligible`)
-- Differences in vulnerability databases (Grype uses a different advisory source than Trivy)
-- Some packages where Grype and Trivy disagree on severity (e.g., Grype rates some issues as High while Trivy rates them as Medium)
-
-### 2.5 Combined Findings Dashboard
-
-After both imports, the DefectDojo engagement dashboard shows:
-
-| Severity | Count | % of Total |
-|----------|-------|------------|
-| Critical | 11 | 7.7% |
-| High | 62 | 43.7% |
-| Medium | 38 | 26.8% |
-| Low | 19 | 13.4% |
-| Informational | 12 | 8.5% |
-| **Total** | **142** | **100%** |
-
-All 142 findings are in **Active** status (no triage has been performed).
+All required tool families for the task were imported into the same engagement.
 
 ---
 
-## Task 3 — Reporting & Program Metrics (4 pts)
+## Task 3 — Reporting & Program Metrics
 
-### 3.1 Metrics Snapshot
+### 3.1 Metrics snapshot
 
-Full snapshot saved to [labs/lab10/report/metrics-snapshot.md](labs/lab10/report/metrics-snapshot.md).
+Snapshot file:
 
-**Key numbers:**
-- **142 active findings** (0 verified, 0 mitigated, 0 false positives)
-- **11 Critical** findings with a 7-day SLA deadline (2026-03-16)
-- **62 High** findings with a 30-day SLA deadline (2026-04-08)
-- **91 duplicates suppressed** across Trivy and Grype via hash-based deduplication
-- **0 SLA breaches** (day 0 of triage)
+- `labs/lab10/report/metrics-snapshot.md`
 
-### 3.2 Governance Artifacts
+Current active findings in DefectDojo (API snapshot, 2026-04-07):
 
-| Artifact | Path | Format |
-|----------|------|--------|
-| Executive report | [labs/lab10/report/dojo-report.html](labs/lab10/report/dojo-report.html) | HTML |
-| Findings export | [labs/lab10/report/findings.csv](labs/lab10/report/findings.csv) | CSV |
-| Metrics snapshot | [labs/lab10/report/metrics-snapshot.md](labs/lab10/report/metrics-snapshot.md) | Markdown |
+- Critical: 21
+- High: 109
+- Medium: 78
+- Low: 27
+- Informational: 17
+- Total: 252
 
-The **HTML report** was generated from DefectDojo's Engagement → Reports → Executive Summary template. It includes severity distribution, top critical findings, CWE categories, and recommendations.
+### 3.2 Governance artifacts
 
-The **CSV export** contains 30 representative findings with columns: `id`, `title`, `severity`, `cve`, `cwe`, `component`, `version`, `tool`, `status`, `active`, `verified`, `false_positive`, `sla_deadline`. This enables stakeholders to perform their own filtering/analysis in spreadsheets.
+- `labs/lab10/report/metrics-snapshot.md`
+- `labs/lab10/report/dojo-report.html`
+- `labs/lab10/report/findings.csv`
 
-### 3.3 Key Metrics Summary
+### 3.3 Key stakeholder metrics (summary)
 
-1. **Severity concentration is skewed toward High:** 43.7% of all findings are High severity, primarily affecting npm dependencies (`express-jwt`, `jsonwebtoken`, `braces`, `ip`) and Debian system libraries (`libc6`, `libssl3`). This indicates that dependency management is the primary security risk vector.
+- The vulnerability backlog is dominated by **High + Medium** findings (187/252), which should drive prioritization and SLA planning.
+- **Critical findings (21)** are concentrated in SCA tools (Trivy/Grype), indicating dependency and base-image risk exposure.
+- DAST/SAST/runtime imports are now present (ZAP, Semgrep, Nuclei), so reporting is no longer limited to container/package scanning only.
+- No findings are mitigated yet in this lab dataset; next operational step is triage (verify, mark false positives, assign owners, set due dates).
+- Unified import into one engagement enables centralized deduplication, ownership assignment, and SLA tracking in a single workflow.
 
-2. **Critical findings demand immediate action:** All 11 Critical findings are in well-known components with public exploits. 4 of 11 Criticals are in `vm2` (a sandboxing library that is EOL — no patches will be released). The recommended remediation is to migrate to `isolated-vm` or remove the sandbox dependency entirely.
+---
 
-3. **Tool overlap creates noise without deduplication:** Trivy and Grype produced 233 raw findings combined, but only 142 are unique after deduplication. This 39% overlap demonstrates why centralized vulnerability management is essential — without DefectDojo, teams would be triaging the same CVEs twice across different dashboards.
+## Acceptance Criteria Mapping
 
-4. **Top recurring CWE/OWASP categories:**
-   - **CWE-1333 (ReDoS)** — 18 findings → OWASP A06:2021 (Vulnerable and Outdated Components). Many npm packages use inefficient regex patterns, causing denial-of-service risk under crafted input.
-   - **CWE-1321 (Prototype Pollution)** — 12 findings → OWASP A03:2021 (Injection). JavaScript-specific vulnerability class where attackers inject properties into `Object.prototype`, affecting all downstream code.
-   - **CWE-913 (Sandbox Escape)** — 8 findings → OWASP A03:2021 (Injection). All in `vm2`, enabling arbitrary code execution outside the sandbox boundary.
-
-5. **SLA outlook:** No breaches at this time. The first SLA deadline is 2026-03-16 (Critical, 7 days). Triage should begin immediately to verify which Criticals are exploitable in the Juice Shop context and which can be accepted as risk (e.g., `vm2` is used intentionally as part of the challenge).
-
-### 3.4 Observations on the DefectDojo Workflow
-
-**Strengths observed:**
-- **Auto-create context** (`auto_create_context=true`) eliminated manual Product Type/Product/Engagement creation — a single API call bootstrapped the entire hierarchy.
-- **Built-in deduplication** (hash-based, default algorithm) automatically recognized overlapping Trivy/Grype findings, reducing triage burden by 39%.
-- **Importer ecosystem** supports 180+ scan types natively — the same API call structure works for ZAP, Semgrep, Nuclei, and dozens of other tools.
-
-**Limitations noted:**
-- **Missing DAST/SAST imports:** Without ZAP and Semgrep results, the current dataset is limited to SCA (dependency) vulnerabilities. A complete picture would also include application-level findings (XSS, SQLi, SSRF) from DAST and code-level issues from SAST.
-- **No triage workflow tested:** All findings remain in Active status. In a real engagement, the next step would be to bulk-verify Critical/High findings, mark known false positives (e.g., CVEs in test-only dependencies), and assign owners.
-- **Deduplication heuristics:** The hash-based algorithm matched 28 findings, but there are likely more semantic duplicates (same CVE, slightly different package paths) that a more aggressive dedup algorithm (e.g., `unique_id_from_tool_or_hash_code`) would catch.
-
-### 3.5 Cleanup
-
-```bash
-cd labs/lab10/setup/django-DefectDojo
-docker compose down -v
-cd ../../../..
-```
+- DefectDojo runs locally and is reachable: **Done**
+- Product Type / Product / Engagement configured: **Done**
+- Imports completed for ZAP, Semgrep, Trivy (+ Nuclei, Grype): **Done**
+- Reporting artifacts generated under `labs/lab10/report/`: **Done**
+- `labs/submission10.md` includes setup, import evidence, metrics, and analysis: **Done**
