@@ -10,9 +10,9 @@ set -euo pipefail
 #   bash labs/lab12/setup/build-kata-runtime.sh
 #   # result: labs/lab12/setup/kata-out/containerd-shim-kata-v2
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/../.. && pwd)"
-WORK_DIR="${ROOT_DIR}/lab12/setup/kata-build"
-OUT_DIR="${ROOT_DIR}/lab12/setup/kata-out"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/../../.. && pwd)"
+WORK_DIR="${ROOT_DIR}/labs/lab12/setup/kata-build"
+OUT_DIR="${ROOT_DIR}/labs/lab12/setup/kata-out"
 
 mkdir -p "${WORK_DIR}" "${OUT_DIR}"
 
@@ -24,8 +24,13 @@ docker run --rm \
   rust:1.75-bookworm bash -lc '
     set -euo pipefail
     apt-get update && apt-get install -y --no-install-recommends \
-      git make gcc pkg-config ca-certificates musl-tools libseccomp-dev && \
+      git make gcc g++-aarch64-linux-gnu cmake pkg-config ca-certificates musl-tools libseccomp-dev jq && \
       update-ca-certificates || true
+
+    # Some Kata crates expect an aarch64 musl C++ compiler name even when we
+    # are building on arm64 and using the GNU cross toolchain as the backend.
+    ln -sf /usr/bin/aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-musl-g++
+    ln -sf /usr/bin/aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-musl-c++
 
     # Ensure cargo/rustup are available
     export PATH=/usr/local/cargo/bin:$PATH
@@ -37,14 +42,17 @@ docker run --rm \
     fi
     cd kata-containers/src/runtime-rs
 
-    # Add MUSL target for static build expected by runtime Makefile
-    rustup target add x86_64-unknown-linux-musl || true
+    # Add MUSL target(s) for static build expected by runtime Makefile
+    case "$(uname -m)" in
+      x86_64) rustup target add x86_64-unknown-linux-musl || true ;;
+      aarch64|arm64) rustup target add aarch64-unknown-linux-musl || true ;;
+    esac
 
     # Build the runtime (shim v2)
     make
 
     # Collect the produced binary
-    f=$(find target -type f -name containerd-shim-kata-v2 | head -n1)
+    f=$(find ../../target -type f -name containerd-shim-kata-v2 | head -n1)
     if [ -z "$f" ]; then
       echo "ERROR: built binary not found" >&2; exit 1
     fi

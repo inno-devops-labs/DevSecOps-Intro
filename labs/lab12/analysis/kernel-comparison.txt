@@ -1,0 +1,3 @@
+Kernel comparison:
+- runc: uses the host kernel -> 6.11.11-linuxkit
+- kata: guest kernel unavailable in this environment because Kata never completed boot
