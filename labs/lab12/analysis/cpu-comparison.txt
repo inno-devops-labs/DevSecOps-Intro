@@ -1,0 +1,4 @@
+CPU comparison:
+- host architecture: aarch64
+- host kernel: 6.11.11-linuxkit
+- kata CPU/arch: unavailable because Kata guest did not boot

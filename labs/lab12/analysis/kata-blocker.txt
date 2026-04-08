@@ -1,0 +1,9 @@
+Kata runtime attempts were not able to boot in this environment.
+
+Observed blockers:
+- /dev/kvm is missing inside the host container
+- /proc/cpuinfo does not expose vmx/svm flags
+- Kata tasks connect to the shim but never produce guest output
+- Short-lived Kata runs time out without printing uname output
+
+This environment is Docker Desktop / LinuxKit on macOS, so nested virtualization is unavailable here.

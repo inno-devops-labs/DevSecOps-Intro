@@ -1,0 +1,4 @@
+Kata runtime test did not complete in this environment.
+- /dev/kvm is missing
+- vmx/svm flags are absent
+- Kata task/shim starts, but the guest never prints uname output
