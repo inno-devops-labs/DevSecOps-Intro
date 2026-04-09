@@ -1,0 +1,2 @@
+reverse-proxy/certs/*
+logs/*.log

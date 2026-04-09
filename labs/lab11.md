@@ -61,13 +61,11 @@ mkdir -p labs/lab11/{reverse-proxy/certs,logs,analysis}
 cd labs/lab11
 
 # Generate a local self-signed cert with SAN for localhost so Nginx can start
-docker run --rm -v "$(pwd)/reverse-proxy/certs":/certs \
-  alpine:latest \
-  sh -c "apk add --no-cache openssl && cat > /tmp/san.cnf << 'EOF' && \
-cat /tmp/san.cnf && \
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-  -keyout /certs/localhost.key -out /certs/localhost.crt \
-  -config /tmp/san.cnf -extensions v3_req
+# (write OpenSSL config first, then run openssl — order matters)
+mkdir -p reverse-proxy/certs
+docker run --rm -v "$(pwd)/reverse-proxy/certs:/certs" alpine:latest sh -c '
+  apk add --no-cache openssl
+  cat > /tmp/san.cnf << "EOFCNF"
 [ req ]
 default_bits = 2048
 distinguished_name = req_distinguished_name
@@ -84,7 +82,11 @@ subjectAltName = @alt_names
 DNS.1 = localhost
 IP.1 = 127.0.0.1
 IP.2 = ::1
-EOF"
+EOFCNF
+  openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /certs/localhost.key -out /certs/localhost.crt \
+    -config /tmp/san.cnf -extensions v3_req
+'
 
 # Start services
 docker compose up -d
