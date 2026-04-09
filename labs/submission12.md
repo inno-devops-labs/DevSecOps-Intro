@@ -1,6 +1,6 @@
 # Lab 12 — Kata Containers: VM-backed Container Sandboxing
 
-## Task 1 — Install and Configure Kata (2 pts)
+## Task 1 — Install and Configure Kata
 
 ### 1.1 Kata Shim Installation
 
@@ -84,7 +84,7 @@ Linux 7f4a2b9e1d8c 6.12.47 #1 SMP Wed Apr 8 12:34:56 UTC 2026 x86_64 Linux
 
 ---
 
-## Task 2 — Run and Compare Containers (runc vs Kata) (3 pts)
+## Task 2 — Run and Compare Containers (runc vs Kata)
 
 ### 2.1 runc Container — Juice Shop Health Check
 
@@ -428,9 +428,10 @@ Container escape → Guest kernel exploit (1 of 71 modules) → Hypervisor escap
 ```
 
 **Risk level:** **LOW** — Requires chaining multiple rare vulnerabilities (guest kernel + hypervisor).
+
 ---
 
-## Task 4 — Performance Comparison (2 pts)
+## Task 4 — Performance Comparison
 
 ### 4.1 Container Startup Time Comparison
 
