@@ -1,12 +1,13 @@
 === dmesg Access Test ===
 Kata VM (separate kernel boot logs):
-[    0.000000] Linux version 6.12.47-152.kata-001 (builder@kata-ci) (gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0) #1 SMP PREEMPT_DYNAMIC Tue Feb 11 14:22:08 UTC 2025
-[    0.000000] Command line: root=/dev/pmem0p1 rootflags=dax,data=ordered rw quiet systemd.show_status=0 console=hvc0 init=/usr/bin/kata-agent
+[    0.000000] Linux version 6.12.47-152.kata-001 (buildd@lcy02-amd64-029) (gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #1 SMP PREEMPT_DYNAMIC Tue Feb 11 14:22:08 UTC 2025
+[    0.000000] Command line: root=/dev/pmem0p1 rootflags=dax,data=ordered rw quiet console=hvc0 init=/usr/bin/kata-agent
 [    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
 [    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] BIOS-provided physical RAM map:
 [    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000007fffffff] usable
 [    0.000000] NX (Execute Disable) protection: active
 [    0.000000] Hypervisor detected: KVM
-[    0.052184] ACPI: Core revision 20240827
-[    0.128441] SCSI subsystem initialized
+[    0.004000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.120000] ACPI: Core revision 20240827
 [    0.201933] virtio_blk virtio0: 2/0/0 default/read/poll queues

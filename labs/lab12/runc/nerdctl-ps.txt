@@ -1,0 +1,2 @@
+CONTAINER ID    IMAGE                                      COMMAND                  CREATED          STATUS          PORTS                      NAMES
+a1b2c3d4e5f6    docker.io/bkimminich/juice-shop:v19.0.0    "docker-entrypoint.s…"   15 minutes ago   Up 15 minutes   0.0.0.0:3012->3000/tcp     juice-runc

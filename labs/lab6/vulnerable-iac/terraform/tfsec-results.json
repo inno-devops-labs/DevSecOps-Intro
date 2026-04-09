@@ -360,7 +360,7 @@
 				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/",
 				"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document"
 			],
-			"description": "IAM policy document uses sensitive action 'ec2:*' on wildcarded resource '*'",
+			"description": "IAM policy document uses wildcarded action 'ec2:*'",
 			"severity": "HIGH",
 			"warning": false,
 			"status": 0,
@@ -383,7 +383,7 @@
 				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/",
 				"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document"
 			],
-			"description": "IAM policy document uses wildcarded action 'ec2:*'",
+			"description": "IAM policy document uses sensitive action 'ec2:*' on wildcarded resource '*'",
 			"severity": "HIGH",
 			"warning": false,
 			"status": 0,
@@ -498,7 +498,7 @@
 				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/",
 				"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document"
 			],
-			"description": "IAM policy document uses wildcarded action '*'",
+			"description": "IAM policy document uses sensitive action '*' on wildcarded resource '*'",
 			"severity": "HIGH",
 			"warning": false,
 			"status": 0,
@@ -521,7 +521,7 @@
 				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/iam/no-policy-wildcards/",
 				"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document"
 			],
-			"description": "IAM policy document uses sensitive action '*' on wildcarded resource '*'",
+			"description": "IAM policy document uses wildcarded action '*'",
 			"severity": "HIGH",
 			"warning": false,
 			"status": 0,

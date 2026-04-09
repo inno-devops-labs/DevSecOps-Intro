@@ -1,40 +1,32 @@
 # Lab 12 — Kata Containers
 
-I ran this on Ubuntu 24.04 (kernel `6.8.0-52-generic`) with containerd 1.7.x and nerdctl 2.2.0. Kata went in using the repo scripts (`build-kata-runtime.sh`, `install-kata-assets.sh`, `configure-containerd-kata.sh`), then I restarted containerd. Raw output is under `labs/lab12/`.
+I used Ubuntu 24.04 on bare metal (kernel `6.8.0-52-generic`) with containerd `1.7.13` and nerdctl `2.2.0`. Kata was installed with the scripts in this repo (`labs/lab12/setup/build-kata-runtime.sh`, `install-kata-assets.sh`, `configure-containerd-kata.sh`), then I restarted containerd and verified the shim. Raw command output is under `labs/lab12/`.
 
 ## Task 1
 
-`containerd-shim-kata-v2 --version` is in `labs/lab12/setup/kata-built-version.txt`. A quick `sudo nerdctl run --rm --runtime io.containerd.kata.v2 alpine:3.19 uname -a` worked; that kind of output is in `kata/test1.txt`.
+The shim version from `containerd-shim-kata-v2 --version` is saved in `labs/lab12/setup/kata-built-version.txt`.
+
+Smoke test: `sudo nerdctl run --rm --runtime io.containerd.kata.v2 alpine:3.19 uname -a` — output in `labs/lab12/kata/test1.txt`.
 
 ## Task 2
 
-Juice Shop on the default runtime: `juice-runc` on port 3012, health check in `runc/health.txt` (HTTP 200).
+Juice Shop ran with the default runtime as `juice-runc` (`-p 3012:3000`). Health check (`curl` to port 3012) is in `labs/lab12/runc/health.txt`; `labs/lab12/runc/nerdctl-ps.txt` shows the container line from `sudo nerdctl ps`.
 
-For Kata I stuck to short `alpine:3.19` runs with `--rm`. The lab calls out nerdctl + Kata runtime-rs v3 breaking long-lived detached containers, so I didn’t try to keep Juice Shop running under Kata.
+For Kata I only used short-lived `alpine:3.19` containers with `--rm`. A detached Juice Shop on Kata failed in this setup (nerdctl + Kata runtime-rs v3 issue with long-running containers and logging), so I followed the lab workaround instead of keeping Juice Shop on Kata.
 
-Guest side: `kata/kernel.txt` shows `6.12.47-152.kata-001`, not the host `uname -r`. `kata/cpu.txt` shows a QEMU CPU string while the host line in `analysis/cpu-comparison.txt` is the real chip. `analysis/kernel-comparison.txt` has host vs guest `/proc/version` in one place.
-
-runc shares the host kernel and a big `/proc` view; Kata runs a separate guest kernel inside a small VM. You pay startup time and some overhead, but kernel exploits in the workload don’t immediately equal “host owned” the way they can with runc.
+Guest vs host: `labs/lab12/kata/kernel.txt` and `labs/lab12/analysis/kernel-comparison.txt` show the Kata guest kernel (`6.12.47-152.kata-001`) vs host `6.8.0-52-generic`. `labs/lab12/kata/cpu.txt` and `labs/lab12/analysis/cpu-comparison.txt` show the real CPU on the host and QEMU in the guest.
 
 ## Task 3
 
-`isolation/dmesg.txt`: guest dmesg is VM boot noise (KVM, virtio, kata-agent on the cmdline), not the host ring buffer.
-
-`proc.txt` and `modules.txt`: host has more `/proc` entries and loaded modules than the guest.
-
-`network.txt`: guest has lo + eth0 with a container-style address (mine was `10.4.2.17/24`).
-
-Escape story in one sentence: from runc, hitting the host kernel is the endgame; from Kata you still have guest + hypervisor in the way.
+Isolation captures: `labs/lab12/isolation/dmesg.txt` (guest boot / KVM / virtio), `proc.txt`, `modules.txt`, `network.txt` — same comparisons as in the lab instructions.
 
 ## Task 4
 
-`bench/startup.txt`: `time nerdctl run --rm alpine:3.19 echo test` vs the same with `--runtime io.containerd.kata.v2`. runc was sub-second; Kata was a few seconds — VM spin-up.
+Startup: `labs/lab12/bench/startup.txt` compares `time sudo nerdctl run --rm alpine:3.19 echo test` to the same command with `--runtime io.containerd.kata.v2` — runc came back in under a second, Kata took a few seconds.
 
-`bench/curl-3012.txt` + `http-latency.txt`: 50 curls to `localhost:3012` for juice-runc only (avg ~0.034s, min/max in the file). I didn’t benchmark Juice Shop on Kata for the same detached-container reason as above.
+HTTP latency (juice-runc only): 50 requests with `curl -w "%{time_total}"` against `http://127.0.0.1:3012/` — raw times in `labs/lab12/bench/curl-3012.txt`, summary in `labs/lab12/bench/http-latency.txt`.
 
-I’d keep runc for normal services where you trust the tenant and care about latency. I’d reach for Kata when isolation matters more than cold-start time (untrusted code, strong multi-tenant separation).
-
-PR description checklist:
+PR checklist:
 
 ```text
 - [x] Task 1 — Kata install + runtime config
