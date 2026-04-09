@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Lab 10 — Vulnerability program snapshot (Juice Shop)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; line-height: 1.5; color: #222; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.75rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; }
+    th { background: #f4f4f4; }
+    .note { background: #fff8e6; border: 1px solid #e6c200; padding: 0.75rem 1rem; border-radius: 4px; }
+    footer { margin-top: 2rem; font-size: 0.85rem; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Vulnerability management snapshot — Juice Shop (labs)</h1>
+  <p><strong>Audience:</strong> engineering leads &amp; security stakeholders<br />
+     <strong>Source:</strong> OWASP DefectDojo (local Docker Compose), API v2 export on <strong>2026-04-09</strong><br />
+     <strong>Engagement:</strong> Labs Security Testing &nbsp;|&nbsp; <strong>Product:</strong> Juice Shop</p>
+
+  <div class="note">
+    <strong>Note on DAST coverage:</strong> The bundled ZAP output in this repo is <code>zap-report-noauth.json</code>.
+    The DefectDojo importer <strong>ZAP Scan</strong> rejected it (expects XML). DAST findings are therefore <strong>not</strong> included in the counts below.
+    Re-import after exporting a ZAP XML report, or add a JSON-capable pipeline (e.g. custom parser / alternate tool output).
+  </div>
+
+  <h2>Executive summary</h2>
+  <ul>
+    <li><strong>292</strong> active findings aggregated from Semgrep, Trivy, and Grype imports.</li>
+    <li>Severity is dominated by <strong>High</strong> (152) and <strong>Medium</strong> (86); <strong>Critical</strong> count is 21 — prioritize validation and patch paths for these first.</li>
+    <li><strong>143 / 292</strong> findings are already marked <em>verified</em>; the remainder still need analyst validation (false-positive review, severity tuning, ownership).</li>
+    <li><strong>21</strong> items show SLA horizon ≤ 14 days (expiration <strong>2026-04-16</strong> in API data); none are past due in this snapshot.</li>
+    <li>Recurring themes in CWE mapping include <strong>CWE-1333</strong>, <strong>CWE-22</strong>, <strong>CWE-79</strong>, and dependency-related issues — align remediation with dependency upgrades and secure coding standards.</li>
+  </ul>
+
+  <h2>Severity distribution</h2>
+  <table>
+    <thead><tr><th>Severity</th><th>Count</th></tr></thead>
+    <tbody>
+      <tr><td>Critical</td><td>21</td></tr>
+      <tr><td>High</td><td>152</td></tr>
+      <tr><td>Medium</td><td>86</td></tr>
+      <tr><td>Low</td><td>21</td></tr>
+      <tr><td>Info</td><td>12</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Findings by scanner</h2>
+  <table>
+    <thead><tr><th>Scanner</th><th>Findings</th></tr></thead>
+    <tbody>
+      <tr><td>Semgrep JSON Report</td><td>25</td></tr>
+      <tr><td>Trivy Scan</td><td>147</td></tr>
+      <tr><td>Anchore Grype</td><td>120</td></tr>
+      <tr><td>ZAP Scan</td><td>0 (import blocked — wrong format)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Recommended next steps</h2>
+  <ol>
+    <li>Fix ZAP import path (XML export or alternate DAST importer) and re-run import for full stack visibility.</li>
+    <li>Drive down <strong>Critical</strong> and <strong>High</strong> through patching (Trivy/Grype) and targeted code fixes (Semgrep).</li>
+    <li>Complete verification on the 149 unverified items; mark false positives with rationale in Dojo.</li>
+    <li>Track the 21 near-term SLA items to closure before <strong>2026-04-16</strong>.</li>
+  </ol>
+
+  <footer>
+    Generated for coursework (Lab 10). Raw machine-readable export: <code>labs/lab10/report/findings.csv</code>.
+  </footer>
+</body>
+</html>

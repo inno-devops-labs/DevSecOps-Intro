@@ -96,9 +96,10 @@ import_scan() {
     echo "SKIP: $scan_type file not found: $file"
     return 0
   fi
-  local base out
+  local base stem out
   base="$(basename "$file")"
-  out="$out_dir/import-${base//[^A-Za-z0-9_.-]/_}.json"
+  stem="${base%.*}"
+  out="$out_dir/import-${stem//[^A-Za-z0-9_.-]/_}.json"
   echo "Importing $scan_type from $file"
   curl -sS -X POST "$DD_API/import-scan/" \
     -H "Authorization: Token $DD_TOKEN" \

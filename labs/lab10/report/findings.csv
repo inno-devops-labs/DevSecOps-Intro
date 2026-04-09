@@ -1,0 +1,293 @@
+id,title,severity,active,verified,is_mitigated,test,cwe,sla_days_remaining,sla_expiration_date,found_by,numerical_severity
+1,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,2,89,30,2026-05-09,[182],S1
+2,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,2,89,30,2026-05-09,[182],S1
+3,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,2,89,30,2026-05-09,[182],S1
+4,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,2,89,30,2026-05-09,[182],S1
+5,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,2,79,90,2026-07-08,[182],S2
+6,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,2,79,90,2026-07-08,[182],S2
+7,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,2,79,90,2026-07-08,[182],S2
+8,javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret,Medium,True,False,False,2,798,90,2026-07-08,[182],S2
+9,javascript.express.security.injection.raw-html-format.raw-html-format,Medium,True,False,False,2,79,90,2026-07-08,[182],S2
+10,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,2,73,90,2026-07-08,[182],S2
+11,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,2,73,90,2026-07-08,[182],S2
+12,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,2,73,90,2026-07-08,[182],S2
+13,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,2,89,30,2026-05-09,[182],S1
+14,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,True,False,False,2,73,90,2026-07-08,[182],S2
+15,javascript.express.security.audit.possible-user-input-redirect.unknown-value-in-redirect,Medium,True,False,False,2,601,90,2026-07-08,[182],S2
+16,javascript.express.security.audit.express-open-redirect.express-open-redirect,Medium,True,False,False,2,601,90,2026-07-08,[182],S2
+17,javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection,High,True,False,False,2,89,30,2026-05-09,[182],S1
+18,javascript.lang.security.audit.code-string-concat.code-string-concat,High,True,False,False,2,95,30,2026-05-09,[182],S1
+19,javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag,Medium,True,False,False,2,79,90,2026-07-08,[182],S2
+20,javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag,Medium,True,False,False,2,79,90,2026-07-08,[182],S2
+21,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,2,548,90,2026-07-08,[182],S2
+22,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,2,548,90,2026-07-08,[182],S2
+23,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,2,548,90,2026-07-08,[182],S2
+24,javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing,Medium,True,False,False,2,548,90,2026-07-08,[182],S2
+25,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,True,False,False,2,79,90,2026-07-08,[182],S2
+26,CVE-2022-27943 GCC-12-Base 12.2.0-14+deb12u1,Low,True,True,False,3,674,120,2026-08-07,[208],S3
+27,CVE-2025-4802 Libc6 2.36-9+deb12u10,High,True,True,False,3,426,30,2026-05-09,[208],S1
+28,CVE-2026-0861 Libc6 2.36-9+deb12u10,High,True,True,False,3,190,30,2026-05-09,[208],S1
+29,CVE-2025-15281 Libc6 2.36-9+deb12u10,Medium,True,True,False,3,908,90,2026-07-08,[208],S2
+30,CVE-2025-8058 Libc6 2.36-9+deb12u10,Medium,True,True,False,3,415,90,2026-07-08,[208],S2
+31,CVE-2026-0915 Libc6 2.36-9+deb12u10,Medium,True,True,False,3,908,90,2026-07-08,[208],S2
+32,CVE-2010-4756 Libc6 2.36-9+deb12u10,Low,True,True,False,3,399,120,2026-08-07,[208],S3
+33,CVE-2018-20796 Libc6 2.36-9+deb12u10,Low,True,True,False,3,674,120,2026-08-07,[208],S3
+34,CVE-2019-1010022 Libc6 2.36-9+deb12u10,Low,True,True,False,3,119,120,2026-08-07,[208],S3
+35,CVE-2019-1010023 Libc6 2.36-9+deb12u10,Low,True,True,False,3,0,120,2026-08-07,[208],S3
+36,CVE-2019-1010024 Libc6 2.36-9+deb12u10,Low,True,True,False,3,200,120,2026-08-07,[208],S3
+37,CVE-2019-1010025 Libc6 2.36-9+deb12u10,Low,True,True,False,3,330,120,2026-08-07,[208],S3
+38,CVE-2019-9192 Libc6 2.36-9+deb12u10,Low,True,True,False,3,674,120,2026-08-07,[208],S3
+39,CVE-2022-27943 Libgcc-S1 12.2.0-14+deb12u1,Low,True,True,False,3,674,120,2026-08-07,[208],S3
+40,CVE-2022-27943 Libgomp1 12.2.0-14+deb12u1,Low,True,True,False,3,674,120,2026-08-07,[208],S3
+41,CVE-2025-15467 Libssl3 3.0.17-1~deb12u2,Critical,True,True,False,3,787,7,2026-04-16,[208],S0
+42,CVE-2025-69419 Libssl3 3.0.17-1~deb12u2,High,True,True,False,3,787,30,2026-05-09,[208],S1
+43,CVE-2025-69421 Libssl3 3.0.17-1~deb12u2,High,True,True,False,3,476,30,2026-05-09,[208],S1
+44,CVE-2025-68160 Libssl3 3.0.17-1~deb12u2,Medium,True,True,False,3,787,90,2026-07-08,[208],S2
+45,CVE-2025-69418 Libssl3 3.0.17-1~deb12u2,Medium,True,True,False,3,325,90,2026-07-08,[208],S2
+46,CVE-2025-69420 Libssl3 3.0.17-1~deb12u2,Medium,True,True,False,3,754,90,2026-07-08,[208],S2
+47,CVE-2025-9230 Libssl3 3.0.17-1~deb12u2,Medium,True,True,False,3,125,90,2026-07-08,[208],S2
+48,CVE-2026-22795 Libssl3 3.0.17-1~deb12u2,Medium,True,True,False,3,754,90,2026-07-08,[208],S2
+49,CVE-2026-22796 Libssl3 3.0.17-1~deb12u2,Medium,True,True,False,3,754,90,2026-07-08,[208],S2
+50,CVE-2025-27587 Libssl3 3.0.17-1~deb12u2,Low,True,True,False,3,385,120,2026-08-07,[208],S3
+51,CVE-2025-9232 Libssl3 3.0.17-1~deb12u2,Low,True,True,False,3,125,120,2026-08-07,[208],S3
+52,CVE-2022-27943 Libstdc++6 12.2.0-14+deb12u1,Low,True,True,False,3,674,120,2026-08-07,[208],S3
+53,NSWG-ECO-428 Base64url 0.0.6,High,True,True,False,3,0,30,2026-05-09,[208],S1
+54,GHSA-rvg8-pwq2-xj7q Base64url 0.0.6,Medium,True,True,False,3,0,90,2026-07-08,[208],S2
+55,CVE-2024-4068 Braces 2.3.2,High,True,True,False,3,1050,30,2026-05-09,[208],S1
+56,CVE-2024-47764 Cookie 0.4.2,Low,True,True,False,3,74,120,2026-08-07,[208],S3
+57,CVE-2023-46233 Crypto-Js 3.3.0,Critical,True,True,False,3,328,7,2026-04-16,[208],S0
+58,CVE-2026-24001 Diff 4.0.2,Low,True,True,False,3,400,120,2026-08-07,[208],S3
+59,CVE-2026-27837 Dottie 2.0.6,Medium,True,True,False,3,1321,90,2026-07-08,[208],S2
+60,CVE-2022-41940 engine.io 4.1.2,Medium,True,True,False,3,248,90,2026-07-08,[208],S2
+61,CVE-2020-15084 Express-JWT 0.1.3,High,True,True,False,3,285,30,2026-05-09,[208],S1
+62,CVE-2025-64756 Glob 10.4.5,High,True,True,False,3,78,30,2026-05-09,[208],S1
+63,CVE-2022-33987 Got 8.3.2,Medium,True,True,False,3,0,90,2026-07-08,[208],S2
+64,CVE-2022-25881 HTTP-Cache-Semantics 3.8.1,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+65,CVE-2024-29415 Ip 2.0.1,High,True,True,False,3,918,30,2026-05-09,[208],S1
+66,CVE-2025-64718 Js-Yaml 3.14.1,Medium,True,True,False,3,1321,90,2026-07-08,[208],S2
+67,CVE-2015-9235 Jsonwebtoken 0.1.0,Critical,True,True,False,3,20,7,2026-04-16,[208],S0
+68,CVE-2022-23539 Jsonwebtoken 0.1.0,High,True,True,False,3,327,30,2026-05-09,[208],S1
+69,NSWG-ECO-17 Jsonwebtoken 0.1.0,High,True,True,False,3,0,30,2026-05-09,[208],S1
+70,CVE-2022-23540 Jsonwebtoken 0.1.0,Medium,True,True,False,3,287,90,2026-07-08,[208],S2
+71,CVE-2022-23541 Jsonwebtoken 0.1.0,Medium,True,True,False,3,287,90,2026-07-08,[208],S2
+72,CVE-2015-9235 Jsonwebtoken 0.4.0,Critical,True,True,False,3,20,7,2026-04-16,[208],S0
+73,CVE-2022-23539 Jsonwebtoken 0.4.0,High,True,True,False,3,327,30,2026-05-09,[208],S1
+74,NSWG-ECO-17 Jsonwebtoken 0.4.0,High,True,True,False,3,0,30,2026-05-09,[208],S1
+75,CVE-2022-23540 Jsonwebtoken 0.4.0,Medium,True,True,False,3,287,90,2026-07-08,[208],S2
+76,CVE-2022-23541 Jsonwebtoken 0.4.0,Medium,True,True,False,3,287,90,2026-07-08,[208],S2
+77,CVE-2016-1000223 JWS 0.2.6,High,True,True,False,3,0,30,2026-05-09,[208],S1
+78,CVE-2025-65945 JWS 0.2.6,High,True,True,False,3,347,30,2026-05-09,[208],S1
+79,CVE-2019-10744 Lodash 2.4.2,Critical,True,True,False,3,1321,7,2026-04-16,[208],S0
+80,CVE-2018-16487 Lodash 2.4.2,High,True,True,False,3,400,30,2026-05-09,[208],S1
+81,CVE-2021-23337 Lodash 2.4.2,High,True,True,False,3,94,30,2026-05-09,[208],S1
+82,CVE-2018-3721 Lodash 2.4.2,Low,True,True,False,3,471,120,2026-08-07,[208],S3
+83,CVE-2025-13465 Lodash 4.17.21,Medium,True,True,False,3,1321,90,2026-07-08,[208],S2
+84,CVE-2020-8203 lodash.set 4.3.2,High,True,True,False,3,770,30,2026-05-09,[208],S1
+85,GHSA-5mrr-rgp6-x4gr Marsdb 0.6.11,Critical,True,True,False,3,0,7,2026-04-16,[208],S0
+86,CVE-2025-57349 Messageformat 2.3.0,Low,True,True,False,3,1321,120,2026-08-07,[208],S3
+87,CVE-2024-4067 Micromatch 3.1.10,Medium,True,True,False,3,1333,90,2026-07-08,[208],S2
+88,CVE-2026-26996 Minimatch 3.0.5,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+89,CVE-2026-27903 Minimatch 3.0.5,High,True,True,False,3,407,30,2026-05-09,[208],S1
+90,CVE-2026-27904 Minimatch 3.0.5,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+91,CVE-2026-26996 Minimatch 3.0.8,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+92,CVE-2026-27903 Minimatch 3.0.8,High,True,True,False,3,407,30,2026-05-09,[208],S1
+93,CVE-2026-27904 Minimatch 3.0.8,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+94,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+95,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+96,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+97,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+98,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+99,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+100,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+101,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+102,CVE-2026-26996 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+103,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+104,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+105,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+106,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+107,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+108,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+109,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+110,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+111,CVE-2026-27903 Minimatch 3.1.2,High,True,True,False,3,407,30,2026-05-09,[208],S1
+112,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+113,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+114,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+115,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+116,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+117,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+118,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+119,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+120,CVE-2026-27904 Minimatch 3.1.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+121,CVE-2026-26996 Minimatch 5.1.6,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+122,CVE-2026-27903 Minimatch 5.1.6,High,True,True,False,3,407,30,2026-05-09,[208],S1
+123,CVE-2026-27904 Minimatch 5.1.6,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+124,CVE-2026-26996 Minimatch 9.0.5,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+125,CVE-2026-27903 Minimatch 9.0.5,High,True,True,False,3,407,30,2026-05-09,[208],S1
+126,CVE-2026-27904 Minimatch 9.0.5,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+127,CVE-2017-18214 Moment 2.0.0,High,True,True,False,3,400,30,2026-05-09,[208],S1
+128,CVE-2022-24785 Moment 2.0.0,High,True,True,False,3,22,30,2026-05-09,[208],S1
+129,CVE-2016-4055 Moment 2.0.0,Medium,True,True,False,3,400,90,2026-07-08,[208],S2
+130,CVE-2025-47935 Multer 1.4.5-lts.2,High,True,True,False,3,401,30,2026-05-09,[208],S1
+131,CVE-2025-47944 Multer 1.4.5-lts.2,High,True,True,False,3,248,30,2026-05-09,[208],S1
+132,CVE-2025-48997 Multer 1.4.5-lts.2,High,True,True,False,3,248,30,2026-05-09,[208],S1
+133,CVE-2025-7338 Multer 1.4.5-lts.2,High,True,True,False,3,248,30,2026-05-09,[208],S1
+134,CVE-2021-23771 Notevil 1.3.3,Medium,True,True,False,3,1321,90,2026-07-08,[208],S2
+135,CVE-2025-15284 Qs 6.13.0,High,True,True,False,3,20,30,2026-05-09,[208],S1
+136,CVE-2026-2391 Qs 6.13.0,Low,True,True,False,3,20,120,2026-08-07,[208],S3
+137,CVE-2022-25887 Sanitize-HTML 1.4.2,High,True,True,False,3,1333,30,2026-05-09,[208],S1
+138,CVE-2016-1000237 Sanitize-HTML 1.4.2,Medium,True,True,False,3,79,90,2026-07-08,[208],S2
+139,CVE-2017-16016 Sanitize-HTML 1.4.2,Medium,True,True,False,3,79,90,2026-07-08,[208],S2
+140,CVE-2019-25225 Sanitize-HTML 1.4.2,Medium,True,True,False,3,79,90,2026-07-08,[208],S2
+141,CVE-2021-26539 Sanitize-HTML 1.4.2,Medium,True,True,False,3,0,90,2026-07-08,[208],S2
+142,CVE-2021-26540 Sanitize-HTML 1.4.2,Medium,True,True,False,3,0,90,2026-07-08,[208],S2
+143,CVE-2024-21501 Sanitize-HTML 1.4.2,Medium,True,True,False,3,200,90,2026-07-08,[208],S2
+144,NSWG-ECO-154 Sanitize-HTML 1.4.2,Medium,True,True,False,3,0,90,2026-07-08,[208],S2
+145,CVE-2024-38355 socket.io 3.1.2,Medium,True,True,False,3,20,90,2026-07-08,[208],S2
+146,CVE-2023-32695 socket.io-parser 4.0.5,Medium,True,True,False,3,20,90,2026-07-08,[208],S2
+147,CVE-2026-23745 Tar 4.4.19,High,True,True,False,3,22,30,2026-05-09,[208],S1
+148,CVE-2026-23950 Tar 4.4.19,High,True,True,False,3,176,30,2026-05-09,[208],S1
+149,CVE-2026-24842 Tar 4.4.19,High,True,True,False,3,22,30,2026-05-09,[208],S1
+150,CVE-2026-26960 Tar 4.4.19,High,True,True,False,3,22,30,2026-05-09,[208],S1
+151,CVE-2024-28863 Tar 4.4.19,Medium,True,True,False,3,400,90,2026-07-08,[208],S2
+152,CVE-2026-23745 Tar 6.2.1,High,True,True,False,3,22,30,2026-05-09,[208],S1
+153,CVE-2026-23950 Tar 6.2.1,High,True,True,False,3,176,30,2026-05-09,[208],S1
+154,CVE-2026-24842 Tar 6.2.1,High,True,True,False,3,22,30,2026-05-09,[208],S1
+155,CVE-2026-26960 Tar 6.2.1,High,True,True,False,3,22,30,2026-05-09,[208],S1
+156,CVE-2026-23745 Tar 7.4.3,High,True,True,False,3,22,30,2026-05-09,[208],S1
+157,CVE-2026-23950 Tar 7.4.3,High,True,True,False,3,176,30,2026-05-09,[208],S1
+158,CVE-2026-24842 Tar 7.4.3,High,True,True,False,3,22,30,2026-05-09,[208],S1
+159,CVE-2026-26960 Tar 7.4.3,High,True,True,False,3,22,30,2026-05-09,[208],S1
+160,CVE-2025-59343 Tar-Fs 2.1.3,High,True,True,False,3,22,30,2026-05-09,[208],S1
+161,CVE-2025-12758 Validator 13.15.15,High,True,True,False,3,792,30,2026-05-09,[208],S1
+162,CVE-2025-56200 Validator 13.15.15,Medium,True,True,False,3,79,90,2026-07-08,[208],S2
+163,CVE-2023-32314 Vm2 3.9.17,Critical,True,True,False,3,74,7,2026-04-16,[208],S0
+164,CVE-2023-37466 Vm2 3.9.17,Critical,True,True,False,3,94,7,2026-04-16,[208],S0
+165,CVE-2023-37903 Vm2 3.9.17,Critical,True,True,False,3,78,7,2026-04-16,[208],S0
+166,CVE-2026-22709 Vm2 3.9.17,Critical,True,True,False,3,94,7,2026-04-16,[208],S0
+167,CVE-2023-32313 Vm2 3.9.17,Medium,True,True,False,3,74,90,2026-07-08,[208],S2
+168,CVE-2024-37890 Ws 7.4.6,High,True,True,False,3,476,30,2026-05-09,[208],S1
+169,Secret Detected in /juice-shop/build/lib/insecurity.js - Asymmetric Private Key,High,True,False,False,3,0,30,2026-05-09,[208],S1
+170,Secret Detected in /juice-shop/frontend/src/app/app.guard.spec.ts - JWT Token,Medium,True,False,False,3,0,90,2026-07-08,[208],S2
+171,Secret Detected in /juice-shop/frontend/src/app/last-login-ip/last-login-ip.component.spec.ts - JWT Token,Medium,True,False,False,3,0,90,2026-07-08,[208],S2
+172,Secret Detected in /juice-shop/lib/insecurity.ts - Asymmetric Private Key,High,True,False,False,3,0,30,2026-05-09,[208],S1
+173,GHSA-2p57-rm9w-gvfp in ip:2.0.1,High,True,False,False,4,0,30,2026-05-09,[12],S1
+174,GHSA-whpj-8f3w-67p5 in vm2:3.9.17,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+175,GHSA-g644-9gfx-q4q4 in vm2:3.9.17,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+176,GHSA-c7hr-j4mj-j2w6 in jsonwebtoken:0.1.0,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+177,GHSA-c7hr-j4mj-j2w6 in jsonwebtoken:0.4.0,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+178,GHSA-cchq-frgv-rjh5 in vm2:3.9.17,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+179,GHSA-87vv-r9j6-g5qv in moment:2.0.0,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+180,GHSA-jf85-cpcp-j695 in lodash:2.4.2,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+181,GHSA-p6mc-m468-83gw in lodash.set:4.3.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+182,GHSA-8hfj-j24r-96c4 in moment:2.0.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+183,GHSA-r7qp-cfhv-p84w in engine.io:4.1.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+184,CVE-2025-15467 in libssl3:3.0.17-1~deb12u2,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+185,GHSA-xwcq-pm8m-c4vf in crypto-js:3.3.0,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+186,GHSA-rm97-x556-q36h in sanitize-html:1.4.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+187,GHSA-35jh-r3h4-6jhm in lodash:2.4.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+188,GHSA-3h5v-q93c-6h6q in ws:7.4.6,High,True,False,False,4,0,30,2026-05-09,[12],S1
+189,GHSA-pfrx-2q88-qq97 in got:8.3.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+190,GHSA-cgfm-xwp7-2cvr in sanitize-html:1.4.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+191,GHSA-p5gc-c584-jj6v in vm2:3.9.17,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+192,GHSA-4xc9-xhrj-v574 in lodash:2.4.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+193,GHSA-f5x3-32g6-xq36 in tar:4.4.19,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+194,GHSA-446m-mv8f-q348 in moment:2.0.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+195,GHSA-3j7m-hmh3-9jmp in sanitize-html:1.4.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+196,GHSA-8g4m-cjm2-96wq in notevil:1.3.3,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+197,GHSA-6rw7-vpxm-498p in qs:6.13.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+198,GHSA-grv7-fg5c-xmjg in braces:2.3.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+199,GHSA-6g6m-m6h5-w9gf in express-jwt:0.1.3,High,True,False,False,4,0,30,2026-05-09,[12],S1
+200,CVE-2025-69420 in libssl3:3.0.17-1~deb12u2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+201,GHSA-mjxr-4v3x-q3m4 in sanitize-html:1.4.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+202,GHSA-rjqq-98f6-6j3r in sanitize-html:1.4.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+203,GHSA-rc47-6667-2j5j in http-cache-semantics:3.8.1,High,True,False,False,4,0,30,2026-05-09,[12],S1
+204,GHSA-fvqr-27wr-82fm in lodash:2.4.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+205,GHSA-xc6g-ggrc-qq4r in sanitize-html:1.4.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+206,GHSA-cqmj-92xf-r6r9 in socket.io-parser:4.0.5,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+207,GHSA-25hc-qcg6-38wj in socket.io:3.1.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+208,CVE-2018-20796 in libc6:2.36-9+deb12u10,Info,True,False,False,4,0,,,[12],S4
+209,GHSA-952p-6rrq-rcjv in micromatch:3.1.10,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+210,GHSA-pxg6-pf52-xh8x in cookie:0.4.2,Low,True,False,False,4,0,120,2026-08-07,[12],S3
+211,GHSA-8cf7-32gw-wr33 in jsonwebtoken:0.1.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+212,GHSA-8cf7-32gw-wr33 in jsonwebtoken:0.4.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+213,GHSA-vghf-hv5q-vc2g in validator:13.15.15,High,True,False,False,4,0,30,2026-05-09,[12],S1
+214,GHSA-g5hg-p3ph-g8qg in multer:1.4.5-lts.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+215,CVE-2025-59465 in node:22.18.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+216,CVE-2025-69421 in libssl3:3.0.17-1~deb12u2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+217,CVE-2025-69419 in libssl3:3.0.17-1~deb12u2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+218,CVE-2019-9192 in libc6:2.36-9+deb12u10,Info,True,False,False,4,0,,,[12],S4
+219,CVE-2019-1010025 in libc6:2.36-9+deb12u10,Info,True,False,False,4,0,,,[12],S4
+220,GHSA-3ppc-4f35-3m26 in minimatch:3.0.5,High,True,False,False,4,0,30,2026-05-09,[12],S1
+221,GHSA-3ppc-4f35-3m26 in minimatch:3.0.8,High,True,False,False,4,0,30,2026-05-09,[12],S1
+222,GHSA-3ppc-4f35-3m26 in minimatch:3.1.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+223,GHSA-3ppc-4f35-3m26 in minimatch:5.1.6,High,True,False,False,4,0,30,2026-05-09,[12],S1
+224,GHSA-3ppc-4f35-3m26 in minimatch:9.0.5,High,True,False,False,4,0,30,2026-05-09,[12],S1
+225,CVE-2025-15281 in libc6:2.36-9+deb12u10,High,True,False,False,4,0,30,2026-05-09,[12],S1
+226,CVE-2026-22796 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+227,GHSA-r5mx-6wc6-7h9w in dottie:2.0.6,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+228,GHSA-44fp-w29j-9vj5 in multer:1.4.5-lts.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+229,GHSA-7r86-cg39-jmmj in minimatch:3.0.5,High,True,False,False,4,0,30,2026-05-09,[12],S1
+230,GHSA-7r86-cg39-jmmj in minimatch:3.0.8,High,True,False,False,4,0,30,2026-05-09,[12],S1
+231,GHSA-7r86-cg39-jmmj in minimatch:3.1.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+232,GHSA-7r86-cg39-jmmj in minimatch:5.1.6,High,True,False,False,4,0,30,2026-05-09,[12],S1
+233,GHSA-7r86-cg39-jmmj in minimatch:9.0.5,High,True,False,False,4,0,30,2026-05-09,[12],S1
+234,CVE-2019-1010024 in libc6:2.36-9+deb12u10,Info,True,False,False,4,0,,,[12],S4
+235,GHSA-99p7-6v5w-7xg8 in vm2:3.9.17,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+236,GHSA-23c5-xmqv-rm74 in minimatch:3.0.5,High,True,False,False,4,0,30,2026-05-09,[12],S1
+237,GHSA-23c5-xmqv-rm74 in minimatch:3.0.8,High,True,False,False,4,0,30,2026-05-09,[12],S1
+238,GHSA-23c5-xmqv-rm74 in minimatch:3.1.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+239,GHSA-23c5-xmqv-rm74 in minimatch:5.1.6,High,True,False,False,4,0,30,2026-05-09,[12],S1
+240,GHSA-23c5-xmqv-rm74 in minimatch:9.0.5,High,True,False,False,4,0,30,2026-05-09,[12],S1
+241,GHSA-hjrf-2m68-5959 in jsonwebtoken:0.1.0,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+242,GHSA-hjrf-2m68-5959 in jsonwebtoken:0.4.0,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+243,GHSA-5j98-mcp5-4vw2 in glob:10.4.5,High,True,False,False,4,0,30,2026-05-09,[12],S1
+244,CVE-2026-21637 in node:22.18.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+245,GHSA-qhxp-v273-g94h in sanitize-html:1.4.2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+246,GHSA-vj76-c3g6-qr5v in tar-fs:2.1.3,High,True,False,False,4,0,30,2026-05-09,[12],S1
+247,CVE-2025-55131 in node:22.18.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+248,CVE-2010-4756 in libc6:2.36-9+deb12u10,Info,True,False,False,4,0,,,[12],S4
+249,GHSA-9965-vmph-33xx in validator:13.15.15,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+250,CVE-2025-59466 in node:22.18.0,High,True,False,False,4,0,30,2026-05-09,[12],S1
+251,CVE-2025-9230 in libssl3:3.0.17-1~deb12u2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+252,CVE-2019-1010023 in libc6:2.36-9+deb12u10,Info,True,False,False,4,0,,,[12],S4
+253,GHSA-xxjr-mmjv-4gpg in lodash:4.17.21,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+254,CVE-2026-0915 in libc6:2.36-9+deb12u10,High,True,False,False,4,0,30,2026-05-09,[12],S1
+255,GHSA-w7fw-mjwx-w883 in qs:6.13.0,Low,True,False,False,4,0,120,2026-08-07,[12],S3
+256,CVE-2025-9232 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+257,CVE-2025-4802 in libc6:2.36-9+deb12u10,High,True,False,False,4,0,30,2026-05-09,[12],S1
+258,GHSA-mh29-5h37-fv8m in js-yaml:3.14.1,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+259,CVE-2025-55130 in node:22.18.0,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+260,GHSA-qwph-4952-7xr6 in jsonwebtoken:0.1.0,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+261,GHSA-qwph-4952-7xr6 in jsonwebtoken:0.4.0,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+262,GHSA-34x7-hfp2-rc4v in tar:4.4.19,High,True,False,False,4,0,30,2026-05-09,[12],S1
+263,GHSA-34x7-hfp2-rc4v in tar:6.2.1,High,True,False,False,4,0,30,2026-05-09,[12],S1
+264,GHSA-34x7-hfp2-rc4v in tar:7.4.3,High,True,False,False,4,0,30,2026-05-09,[12],S1
+265,GHSA-fjgf-rc76-4x9p in multer:1.4.5-lts.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+266,CVE-2026-22795 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+267,GHSA-83g3-92jg-28cx in tar:4.4.19,High,True,False,False,4,0,30,2026-05-09,[12],S1
+268,GHSA-83g3-92jg-28cx in tar:6.2.1,High,True,False,False,4,0,30,2026-05-09,[12],S1
+269,GHSA-83g3-92jg-28cx in tar:7.4.3,High,True,False,False,4,0,30,2026-05-09,[12],S1
+270,GHSA-4pg4-qvpc-4q3h in multer:1.4.5-lts.2,High,True,False,False,4,0,30,2026-05-09,[12],S1
+271,CVE-2025-68160 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+272,GHSA-869p-cjfg-cm3x in jws:0.2.6,High,True,False,False,4,0,30,2026-05-09,[12],S1
+273,CVE-2019-1010022 in libc6:2.36-9+deb12u10,Info,True,False,False,4,0,,,[12],S4
+274,CVE-2026-0861 in libc6:2.36-9+deb12u10,High,True,False,False,4,0,30,2026-05-09,[12],S1
+275,GHSA-73rr-hh4g-fpgx in diff:4.0.2,Low,True,False,False,4,0,120,2026-08-07,[12],S3
+276,GHSA-8qq5-rm4j-mr97 in tar:4.4.19,High,True,False,False,4,0,30,2026-05-09,[12],S1
+277,GHSA-8qq5-rm4j-mr97 in tar:6.2.1,High,True,False,False,4,0,30,2026-05-09,[12],S1
+278,GHSA-8qq5-rm4j-mr97 in tar:7.4.3,High,True,False,False,4,0,30,2026-05-09,[12],S1
+279,GHSA-r6q2-hw4h-h46w in tar:4.4.19,High,True,False,False,4,0,30,2026-05-09,[12],S1
+280,GHSA-r6q2-hw4h-h46w in tar:6.2.1,High,True,False,False,4,0,30,2026-05-09,[12],S1
+281,GHSA-r6q2-hw4h-h46w in tar:7.4.3,High,True,False,False,4,0,30,2026-05-09,[12],S1
+282,CVE-2025-55132 in node:22.18.0,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+283,CVE-2025-8058 in libc6:2.36-9+deb12u10,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+284,CVE-2025-27587 in libssl3:3.0.17-1~deb12u2,Info,True,False,False,4,0,,,[12],S4
+285,CVE-2022-27943 in gcc-12-base:12.2.0-14+deb12u1,Info,True,False,False,4,0,,,[12],S4
+286,CVE-2022-27943 in libgcc-s1:12.2.0-14+deb12u1,Info,True,False,False,4,0,,,[12],S4
+287,CVE-2022-27943 in libgomp1:12.2.0-14+deb12u1,Info,True,False,False,4,0,,,[12],S4
+288,CVE-2022-27943 in libstdc++6:12.2.0-14+deb12u1,Info,True,False,False,4,0,,,[12],S4
+289,CVE-2025-69418 in libssl3:3.0.17-1~deb12u2,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
+290,GHSA-5mrr-rgp6-x4gr in marsdb:0.6.11,Critical,True,False,False,4,0,7,2026-04-16,[12],S0
+291,GHSA-gjcw-v447-2w7q in jws:0.2.6,High,True,False,False,4,0,30,2026-05-09,[12],S1
+292,GHSA-rvg8-pwq2-xj7q in base64url:0.0.6,Medium,True,False,False,4,0,90,2026-07-08,[12],S2
