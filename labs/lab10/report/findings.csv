@@ -1,0 +1,25 @@
+ID,Title,Severity,Tool,CWE,Active,Verified,Duplicate,Date,SLA Days Remaining,Component
+1,javascript.lang.security.audit.eval-detected.eval-detected,High,Semgrep JSON Report,95,True,False,False,2026-04-10,30,
+2,javascript.node-jose.security.audit.jwt-none-alg.jwt-none-alg,High,Semgrep JSON Report,347,True,False,False,2026-04-10,30,
+3,javascript.lang.security.audit.sqli.node-sqlite3-sqli.node-sqlite3-sqli,High,Semgrep JSON Report,89,True,False,False,2026-04-10,30,
+4,javascript.lang.security.audit.hardcoded-secret.hardcoded-secret,Medium,Semgrep JSON Report,798,True,False,False,2026-04-10,90,
+5,javascript.express.security.audit.xss.ejs.xss-ejs,Medium,Semgrep JSON Report,79,True,False,False,2026-04-10,90,
+6,CVE-2023-4911 Libc6 2.36-9+deb12u3,High,Trivy Scan,122,True,False,False,2026-04-10,30,libc6:2.36-9+deb12u3
+7,CVE-2023-44487 Libnghttp2-14 1.52.0-1,High,Trivy Scan,400,True,False,False,2026-04-10,30,libnghttp2-14:1.52.0-1
+8,CVE-2023-46234 Browserify-Sign 4.2.1,High,Trivy Scan,347,True,False,False,2026-04-10,30,browserify-sign:4.2.1
+9,CVE-2023-45133 @Babel/Traverse 7.22.5,Critical,Trivy Scan,184,True,False,False,2026-04-10,7,@babel/traverse:7.22.5
+10,CVE-2023-49085 Sequelize 6.35.0,High,Trivy Scan,89,True,False,False,2026-04-10,30,sequelize:6.35.0
+11,HTTP Missing Security Headers,Info,Nuclei Scan,0,True,False,False,2026-04-10,,content-security-policy
+12,HTTP Missing Security Headers,Info,Nuclei Scan,0,True,False,False,2026-04-10,,x-frame-options
+13,SQL Injection (Error-Based),High,Nuclei Scan,89,True,False,False,2026-04-10,30,
+14,Exposed .Gitignore File,Low,Nuclei Scan,0,True,False,False,2026-04-10,120,
+15,JWT None Algorithm Bypass,Medium,Nuclei Scan,347,True,False,False,2026-04-10,90,
+16,CVE-2023-45133 in @babel/traverse:7.22.5,Critical,Anchore Grype,0,True,False,False,2026-04-10,7,@babel/traverse:7.22.5
+17,CVE-2023-46234 in browserify-sign:4.2.1,High,Anchore Grype,0,True,False,False,2026-04-10,30,browserify-sign:4.2.1
+18,CVE-2023-49085 in sequelize:6.35.0,High,Anchore Grype,0,True,False,False,2026-04-10,30,sequelize:6.35.0
+19,Cross Site Scripting (Reflected),High,ZAP Scan,79,True,False,False,2026-04-10,30,
+20,Content Security Policy (CSP) Header Not Set,Medium,ZAP Scan,693,True,False,False,2026-04-10,90,
+21,X-Content-Type-Options Header Missing,Low,ZAP Scan,693,True,False,False,2026-04-10,120,
+22,Cross-Domain JavaScript Source File Inclusion,Low,ZAP Scan,829,True,False,False,2026-04-10,120,
+23,Cloud Metadata Potentially Exposed,Info,ZAP Scan,0,True,False,False,2026-04-10,,
+

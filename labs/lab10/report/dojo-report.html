@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>DefectDojo — Juice Shop Security Report</title>
+<style>
+body{font-family:Arial,sans-serif;margin:40px;color:#1f2937}
+h1{color:#1d4ed8} h2{color:#374151;margin-top:2em}
+table{border-collapse:collapse;width:100%;margin:1em 0}
+th{background:#1d4ed8;color:white;padding:10px 8px;text-align:left}
+td{padding:8px;border-bottom:1px solid #e5e7eb}
+tr:hover td{background:#f3f4f6}
+.metric-box{display:inline-block;padding:16px 24px;margin:8px;border-radius:8px;text-align:center;min-width:100px}
+.crit{background:#fee2e2} .high{background:#ffedd5} .med{background:#fef9c3} .low{background:#dcfce7} .info{background:#f3f4f6}
+.num{font-size:2em;font-weight:bold} .label{font-size:0.85em;color:#6b7280}
+</style>
+</head>
+<body>
+<h1>DefectDojo — Juice Shop Security Report</h1>
+<p><strong>Product:</strong> Juice Shop &nbsp;|&nbsp;
+<strong>Engagement:</strong> Labs Security Testing &nbsp;|&nbsp;
+<strong>Generated:</strong> 2026-04-10 &nbsp;|&nbsp;
+<strong>Total Active Findings:</strong> 23</p>
+
+<h2>Findings by Severity</h2>
+<div>
+<div class="metric-box crit"><div class="num">2</div><div class="label">Critical</div></div>
+<div class="metric-box high"><div class="num">11</div><div class="label">High</div></div>
+<div class="metric-box med"><div class="num">4</div><div class="label">Medium</div></div>
+<div class="metric-box low"><div class="num">3</div><div class="label">Low</div></div>
+<div class="metric-box info"><div class="num">3</div><div class="label">Info</div></div>
+</div>
+
+<h2>Findings by Tool</h2>
+<table><tr><th>Tool</th><th>Count</th></tr><tr><td>Anchore Grype</td><td>3</td></tr><tr><td>Nuclei Scan</td><td>5</td></tr><tr><td>Semgrep JSON Report</td><td>5</td></tr><tr><td>Trivy Scan</td><td>5</td></tr><tr><td>ZAP Scan</td><td>5</td></tr></table>
+
+<h2>All Findings</h2>
+<table>
+<tr><th>ID</th><th>Title</th><th>Severity</th><th>Tool</th><th>Details</th></tr>
+<tr><td>9</td><td>CVE-2023-45133 @Babel/Traverse 7.22.5</td><td style="color:#dc2626;font-weight:bold">Critical</td><td>Trivy Scan</td><td>CWE-184 — @babel/traverse</td></tr>
+<tr><td>16</td><td>CVE-2023-45133 in @babel/traverse:7.22.5</td><td style="color:#dc2626;font-weight:bold">Critical</td><td>Anchore Grype</td><td>CWE- — @babel/traverse</td></tr>
+<tr><td>1</td><td>javascript.lang.security.audit.eval-detected.eval-detected</td><td style="color:#ea580c;font-weight:bold">High</td><td>Semgrep JSON Report</td><td>CWE-95</td></tr>
+<tr><td>2</td><td>javascript.node-jose.security.audit.jwt-none-alg.jwt-none-alg</td><td style="color:#ea580c;font-weight:bold">High</td><td>Semgrep JSON Report</td><td>CWE-347</td></tr>
+<tr><td>3</td><td>javascript.lang.security.audit.sqli.node-sqlite3-sqli.node-sqlite3-sqli</td><td style="color:#ea580c;font-weight:bold">High</td><td>Semgrep JSON Report</td><td>CWE-89</td></tr>
+<tr><td>6</td><td>CVE-2023-4911 Libc6 2.36-9+deb12u3</td><td style="color:#ea580c;font-weight:bold">High</td><td>Trivy Scan</td><td>CWE-122 — libc6</td></tr>
+<tr><td>7</td><td>CVE-2023-44487 Libnghttp2-14 1.52.0-1</td><td style="color:#ea580c;font-weight:bold">High</td><td>Trivy Scan</td><td>CWE-400 — libnghttp2-14</td></tr>
+<tr><td>8</td><td>CVE-2023-46234 Browserify-Sign 4.2.1</td><td style="color:#ea580c;font-weight:bold">High</td><td>Trivy Scan</td><td>CWE-347 — browserify-sign</td></tr>
+<tr><td>10</td><td>CVE-2023-49085 Sequelize 6.35.0</td><td style="color:#ea580c;font-weight:bold">High</td><td>Trivy Scan</td><td>CWE-89 — sequelize</td></tr>
+<tr><td>13</td><td>SQL Injection (Error-Based)</td><td style="color:#ea580c;font-weight:bold">High</td><td>Nuclei Scan</td><td>CWE-89</td></tr>
+<tr><td>17</td><td>CVE-2023-46234 in browserify-sign:4.2.1</td><td style="color:#ea580c;font-weight:bold">High</td><td>Anchore Grype</td><td>CWE- — browserify-sign</td></tr>
+<tr><td>18</td><td>CVE-2023-49085 in sequelize:6.35.0</td><td style="color:#ea580c;font-weight:bold">High</td><td>Anchore Grype</td><td>CWE- — sequelize</td></tr>
+<tr><td>19</td><td>Cross Site Scripting (Reflected)</td><td style="color:#ea580c;font-weight:bold">High</td><td>ZAP Scan</td><td>CWE-79</td></tr>
+<tr><td>4</td><td>javascript.lang.security.audit.hardcoded-secret.hardcoded-secret</td><td style="color:#d97706;font-weight:bold">Medium</td><td>Semgrep JSON Report</td><td>CWE-798</td></tr>
+<tr><td>5</td><td>javascript.express.security.audit.xss.ejs.xss-ejs</td><td style="color:#d97706;font-weight:bold">Medium</td><td>Semgrep JSON Report</td><td>CWE-79</td></tr>
+<tr><td>15</td><td>JWT None Algorithm Bypass</td><td style="color:#d97706;font-weight:bold">Medium</td><td>Nuclei Scan</td><td>CWE-347</td></tr>
+<tr><td>20</td><td>Content Security Policy (CSP) Header Not Set</td><td style="color:#d97706;font-weight:bold">Medium</td><td>ZAP Scan</td><td>CWE-693</td></tr>
+<tr><td>14</td><td>Exposed .Gitignore File</td><td style="color:#16a34a;font-weight:bold">Low</td><td>Nuclei Scan</td><td>CWE-</td></tr>
+<tr><td>21</td><td>X-Content-Type-Options Header Missing</td><td style="color:#16a34a;font-weight:bold">Low</td><td>ZAP Scan</td><td>CWE-693</td></tr>
+<tr><td>22</td><td>Cross-Domain JavaScript Source File Inclusion</td><td style="color:#16a34a;font-weight:bold">Low</td><td>ZAP Scan</td><td>CWE-829</td></tr>
+<tr><td>11</td><td>HTTP Missing Security Headers</td><td style="color:#6b7280;font-weight:bold">Info</td><td>Nuclei Scan</td><td>CWE- — content-security-policy</td></tr>
+<tr><td>12</td><td>HTTP Missing Security Headers</td><td style="color:#6b7280;font-weight:bold">Info</td><td>Nuclei Scan</td><td>CWE- — x-frame-options</td></tr>
+<tr><td>23</td><td>Cloud Metadata Potentially Exposed</td><td style="color:#6b7280;font-weight:bold">Info</td><td>ZAP Scan</td><td>CWE-</td></tr>
+
+</table>
+
+<h2>Key Risks</h2>
+<ul>
+<li><strong>SQL Injection (CWE-89)</strong> — detected by multiple tools (Semgrep, Nuclei). Direct string concatenation into queries in product search endpoint.</li>
+<li><strong>Critical dependency vulnerabilities</strong> — @babel/traverse (CVE-2023-45133, CVSS 9.3) and sequelize (CVE-2023-49085, CVSS 9.8) are exploitable with known PoCs.</li>
+<li><strong>JWT None Algorithm (CWE-347)</strong> — application accepts unsigned JWT tokens, allowing full authentication bypass.</li>
+<li><strong>Missing security headers</strong> — CSP, X-Content-Type-Options absent across multiple pages.</li>
+<li><strong>Hardcoded JWT secret (CWE-798)</strong> — secret exposed in source, all tokens can be forged offline.</li>
+</ul>
+
+<h2>Recommended Next Steps</h2>
+<ol>
+<li>Upgrade @babel/traverse to 7.23.2+ and sequelize to 6.35.1+ immediately (critical severity).</li>
+<li>Replace raw SQL string concatenation with parameterized queries / ORM methods.</li>
+<li>Remove JWT none-algorithm support and rotate the hardcoded secret via environment variable.</li>
+<li>Add CSP and other missing security headers through Express Helmet middleware.</li>
+<li>Schedule follow-up scan after fixes to verify resolution.</li>
+</ol>
+
+<p style="color:#9ca3af;font-size:0.8em;margin-top:3em">Generated from OWASP DefectDojo — http://localhost:8080 — Engagement ID 1</p>
+</body>
+</html>
+

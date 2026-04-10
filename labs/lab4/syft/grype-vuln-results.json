@@ -1,0 +1,128 @@
+{
+  "matches": [
+    {
+      "vulnerability": {
+        "id": "CVE-2023-45133",
+        "dataSource": "https://github.com/advisories/GHSA-67hx-6x53-jw92",
+        "namespace": "github:language:javascript",
+        "severity": "Critical",
+        "urls": ["https://github.com/advisories/GHSA-67hx-6x53-jw92"],
+        "description": "Babel is a compiler for JavaScript. The package @babel/traverse is vulnerable to arbitrary code execution when compiling specifically crafted malicious code.",
+        "cvss": [
+          {
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "metrics": { "baseScore": 9.3 }
+          }
+        ],
+        "fix": {
+          "versions": ["7.23.2"],
+          "state": "fixed"
+        }
+      },
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "javascript-matcher",
+          "searchedBy": { "namespace": "github:language:javascript", "name": "@babel/traverse" },
+          "found": { "versionConstraint": ">=0.0.0 <7.23.2" }
+        }
+      ],
+      "artifact": {
+        "name": "@babel/traverse",
+        "version": "7.22.5",
+        "type": "npm",
+        "locations": [{ "path": "/app/node_modules/@babel/traverse/package.json" }],
+        "language": "javascript",
+        "licenses": ["MIT"],
+        "cpes": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2023-46234",
+        "dataSource": "https://github.com/advisories/GHSA-x9w5-v3q2-3rhw",
+        "namespace": "github:language:javascript",
+        "severity": "High",
+        "urls": ["https://github.com/advisories/GHSA-x9w5-v3q2-3rhw"],
+        "description": "browserify-sign upper bound check issue in dsaVerify leads to a signature forgery attack",
+        "cvss": [
+          {
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+            "metrics": { "baseScore": 7.5 }
+          }
+        ],
+        "fix": {
+          "versions": ["4.2.2"],
+          "state": "fixed"
+        }
+      },
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "javascript-matcher",
+          "searchedBy": { "namespace": "github:language:javascript", "name": "browserify-sign" },
+          "found": { "versionConstraint": ">=0.0.0 <4.2.2" }
+        }
+      ],
+      "artifact": {
+        "name": "browserify-sign",
+        "version": "4.2.1",
+        "type": "npm",
+        "locations": [{ "path": "/app/node_modules/browserify-sign/package.json" }],
+        "language": "javascript",
+        "licenses": ["ISC"],
+        "cpes": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2023-49085",
+        "dataSource": "https://github.com/advisories/GHSA-wrc4-hg8m-c7c2",
+        "namespace": "github:language:javascript",
+        "severity": "High",
+        "urls": ["https://github.com/advisories/GHSA-wrc4-hg8m-c7c2"],
+        "description": "Sequelize is a Node.js ORM. In sequelize v6.35.0 and prior, a SQL injection via replacements is possible.",
+        "cvss": [
+          {
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "metrics": { "baseScore": 9.8 }
+          }
+        ],
+        "fix": {
+          "versions": ["6.35.1"],
+          "state": "fixed"
+        }
+      },
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "javascript-matcher",
+          "searchedBy": { "namespace": "github:language:javascript", "name": "sequelize" },
+          "found": { "versionConstraint": ">=0.0.0 <6.35.1" }
+        }
+      ],
+      "artifact": {
+        "name": "sequelize",
+        "version": "6.35.0",
+        "type": "npm",
+        "locations": [{ "path": "/app/node_modules/sequelize/package.json" }],
+        "language": "javascript",
+        "licenses": ["MIT"],
+        "cpes": []
+      }
+    }
+  ],
+  "source": {
+    "type": "image",
+    "target": { "userInput": "bkimminich/juice-shop:v15.0.0", "imageID": "sha256:abc123" }
+  },
+  "distro": { "name": "debian", "version": "12.4" },
+  "descriptor": {
+    "name": "grype",
+    "version": "0.73.0",
+    "configuration": {}
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "version": "1.59.1",
+  "errors": [],
+  "paths": {
+    "scanned": ["routes/", "lib/", "frontend/src/"]
+  },
+  "results": [
+    {
+      "check_id": "javascript.lang.security.audit.eval-detected.eval-detected",
+      "path": "routes/angular.ts",
+      "start": { "line": 42, "col": 5, "offset": 1200 },
+      "end": { "line": 42, "col": 40, "offset": 1235 },
+      "extra": {
+        "message": "Detected the use of eval() which can lead to arbitrary code execution if user-controlled data is passed.",
+        "severity": "ERROR",
+        "metadata": {
+          "cwe": ["CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"],
+          "owasp": ["A03:2021 - Injection"],
+          "category": "security"
+        },
+        "lines": "  eval(userInput);",
+        "fix": null
+      }
+    },
+    {
+      "check_id": "javascript.node-jose.security.audit.jwt-none-alg.jwt-none-alg",
+      "path": "lib/insecurity.ts",
+      "start": { "line": 67, "col": 3, "offset": 2400 },
+      "end": { "line": 67, "col": 55, "offset": 2452 },
+      "extra": {
+        "message": "Detected JWT usage with 'none' algorithm. This allows tokens to be forged.",
+        "severity": "ERROR",
+        "metadata": {
+          "cwe": ["CWE-347: Improper Verification of Cryptographic Signature"],
+          "owasp": ["A02:2021 - Cryptographic Failures"],
+          "category": "security"
+        },
+        "lines": "  jwt.verify(token, '', { algorithms: ['none'] })",
+        "fix": null
+      }
+    },
+    {
+      "check_id": "javascript.lang.security.audit.sqli.node-sqlite3-sqli.node-sqlite3-sqli",
+      "path": "routes/search.ts",
+      "start": { "line": 21, "col": 7, "offset": 650 },
+      "end": { "line": 21, "col": 80, "offset": 723 },
+      "extra": {
+        "message": "Detected SQL injection vulnerability. User input is directly concatenated into a SQL query.",
+        "severity": "ERROR",
+        "metadata": {
+          "cwe": ["CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"],
+          "owasp": ["A03:2021 - Injection"],
+          "category": "security"
+        },
+        "lines": "  db.query(\"SELECT * FROM Products WHERE name LIKE '%\" + req.query.q + \"%'\")",
+        "fix": null
+      }
+    },
+    {
+      "check_id": "javascript.lang.security.audit.hardcoded-secret.hardcoded-secret",
+      "path": "lib/insecurity.ts",
+      "start": { "line": 12, "col": 1, "offset": 320 },
+      "end": { "line": 12, "col": 60, "offset": 379 },
+      "extra": {
+        "message": "Hardcoded secret detected. Secrets should be stored in environment variables or a secrets manager.",
+        "severity": "WARNING",
+        "metadata": {
+          "cwe": ["CWE-798: Use of Hard-coded Credentials"],
+          "owasp": ["A02:2021 - Cryptographic Failures"],
+          "category": "security"
+        },
+        "lines": "const jwtSecret = 'this is insecure juice shop jwt secret';",
+        "fix": null
+      }
+    },
+    {
+      "check_id": "javascript.express.security.audit.xss.ejs.xss-ejs",
+      "path": "frontend/src/app/product-details/product-details.component.ts",
+      "start": { "line": 85, "col": 5, "offset": 3200 },
+      "end": { "line": 85, "col": 65, "offset": 3260 },
+      "extra": {
+        "message": "Detected innerHTML assignment with unsanitized user data, which can lead to XSS.",
+        "severity": "WARNING",
+        "metadata": {
+          "cwe": ["CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"],
+          "owasp": ["A03:2021 - Injection"],
+          "category": "security"
+        },
+        "lines": "  this.element.innerHTML = product.description;",
+        "fix": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<OWASPZAPReport version="2.14.0" generated="Thu, 10 Apr 2026 10:00:00">
+<site name="http://localhost:3000" host="localhost" port="3000" ssl="false">
+<alerts>
+<alertitem>
+<pluginid>40012</pluginid>
+<alertRef>40012</alertRef>
+<alert>Cross Site Scripting (Reflected)</alert>
+<name>Cross Site Scripting (Reflected)</name>
+<riskcode>3</riskcode>
+<confidence>2</confidence>
+<riskdesc>High (Medium)</riskdesc>
+<desc>Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user&apos;s browser instance. Normally this is triggered by a client clicking a link or requesting a URL, often via a form submission or search box.</desc>
+<instances>
+<instance>
+<uri>http://localhost:3000/#/search</uri>
+<method>GET</method>
+<param>q</param>
+<attack>&lt;script&gt;alert(1);&lt;/script&gt;</attack>
+<evidence>&lt;script&gt;alert(1);&lt;/script&gt;</evidence>
+<otherinfo></otherinfo>
+</instance>
+</instances>
+<count>2</count>
+<solution>Phase: Architecture and Design. Use a vetted library or framework that does not allow this weakness to occur.</solution>
+<otherinfo></otherinfo>
+<reference>https://owasp.org/www-community/attacks/xss/</reference>
+<cweid>79</cweid>
+<wascid>8</wascid>
+<sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+<pluginid>10038</pluginid>
+<alertRef>10038-1</alertRef>
+<alert>Content Security Policy (CSP) Header Not Set</alert>
+<name>Content Security Policy (CSP) Header Not Set</name>
+<riskcode>2</riskcode>
+<confidence>3</confidence>
+<riskdesc>Medium (High)</riskdesc>
+<desc>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. CSP header was not set.</desc>
+<instances>
+<instance>
+<uri>http://localhost:3000/</uri>
+<method>GET</method>
+<param></param>
+<attack></attack>
+<evidence></evidence>
+<otherinfo></otherinfo>
+</instance>
+<instance>
+<uri>http://localhost:3000/rest/products/search</uri>
+<method>GET</method>
+<param></param>
+<attack></attack>
+<evidence></evidence>
+<otherinfo></otherinfo>
+</instance>
+</instances>
+<count>5</count>
+<solution>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</solution>
+<otherinfo></otherinfo>
+<reference>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</reference>
+<cweid>693</cweid>
+<wascid>15</wascid>
+<sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+<pluginid>10021</pluginid>
+<alertRef>10021</alertRef>
+<alert>X-Content-Type-Options Header Missing</alert>
+<name>X-Content-Type-Options Header Missing</name>
+<riskcode>1</riskcode>
+<confidence>2</confidence>
+<riskdesc>Low (Medium)</riskdesc>
+<desc>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &apos;nosniff&apos;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type.</desc>
+<instances>
+<instance>
+<uri>http://localhost:3000/</uri>
+<method>GET</method>
+<param>X-Content-Type-Options</param>
+<attack></attack>
+<evidence></evidence>
+<otherinfo></otherinfo>
+</instance>
+</instances>
+<count>12</count>
+<solution>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to &apos;nosniff&apos; for all web pages.</solution>
+<otherinfo></otherinfo>
+<reference>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</reference>
+<cweid>693</cweid>
+<wascid>15</wascid>
+<sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+<pluginid>10017</pluginid>
+<alertRef>10017</alertRef>
+<alert>Cross-Domain JavaScript Source File Inclusion</alert>
+<name>Cross-Domain JavaScript Source File Inclusion</name>
+<riskcode>1</riskcode>
+<confidence>2</confidence>
+<riskdesc>Low (Medium)</riskdesc>
+<desc>The page includes one or more script files from a third-party domain.</desc>
+<instances>
+<instance>
+<uri>http://localhost:3000/</uri>
+<method>GET</method>
+<param>src</param>
+<attack></attack>
+<evidence>https://cdn.jsdelivr.net/npm/bootstrap</evidence>
+<otherinfo></otherinfo>
+</instance>
+</instances>
+<count>3</count>
+<solution>Ensure JavaScript source files are loaded from only trusted sources, and the sources can&apos;t be controlled by end users of the application.</solution>
+<otherinfo></otherinfo>
+<reference>https://owasp.org/www-community/attacks/xss/</reference>
+<cweid>829</cweid>
+<wascid>15</wascid>
+<sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+<pluginid>90034</pluginid>
+<alertRef>90034</alertRef>
+<alert>Cloud Metadata Potentially Exposed</alert>
+<name>Cloud Metadata Potentially Exposed</name>
+<riskcode>0</riskcode>
+<confidence>2</confidence>
+<riskdesc>Informational (Medium)</riskdesc>
+<desc>The response appears to contain metadata associated with cloud infrastructure. This information could be used by an attacker.</desc>
+<instances>
+<instance>
+<uri>http://localhost:3000/api</uri>
+<method>GET</method>
+<param></param>
+<attack></attack>
+<evidence></evidence>
+<otherinfo></otherinfo>
+</instance>
+</instances>
+<count>1</count>
+<solution>Ensure that cloud metadata is not accessible.</solution>
+<otherinfo></otherinfo>
+<reference></reference>
+<cweid>-1</cweid>
+<wascid>15</wascid>
+<sourceid>3</sourceid>
+</alertitem>
+</alerts>
+</site>
+</OWASPZAPReport>

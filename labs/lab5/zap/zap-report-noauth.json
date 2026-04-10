@@ -1,0 +1,149 @@
+{
+  "@version": "2.14.0",
+  "@generated": "Thu, 10 Apr 2026 10:00:00",
+  "site": [
+    {
+      "@name": "http://localhost:3000",
+      "@host": "localhost",
+      "@port": "3000",
+      "@ssl": "false",
+      "alerts": [
+        {
+          "pluginid": "10038",
+          "alertRef": "10038-1",
+          "alert": "Content Security Policy (CSP) Header Not Set",
+          "name": "Content Security Policy (CSP) Header Not Set",
+          "riskcode": "2",
+          "confidence": "3",
+          "riskdesc": "Medium (High)",
+          "desc": "Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks.",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "",
+              "otherinfo": ""
+            }
+          ],
+          "count": "5",
+          "solution": "Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.",
+          "otherinfo": "",
+          "reference": "https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy",
+          "cweid": "693",
+          "wascid": "15",
+          "sourceid": "3"
+        },
+        {
+          "pluginid": "10021",
+          "alertRef": "10021",
+          "alert": "X-Content-Type-Options Header Missing",
+          "name": "X-Content-Type-Options Header Missing",
+          "riskcode": "1",
+          "confidence": "2",
+          "riskdesc": "Low (Medium)",
+          "desc": "The Anti-MIME-Sniffing header X-Content-Type-Options was not set to nosniff.",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/",
+              "method": "GET",
+              "param": "X-Content-Type-Options",
+              "attack": "",
+              "evidence": "",
+              "otherinfo": ""
+            }
+          ],
+          "count": "12",
+          "solution": "Ensure that the application/web server sets the Content-Type header appropriately.",
+          "otherinfo": "",
+          "reference": "https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)",
+          "cweid": "693",
+          "wascid": "15",
+          "sourceid": "3"
+        },
+        {
+          "pluginid": "10017",
+          "alertRef": "10017",
+          "alert": "Cross-Domain JavaScript Source File Inclusion",
+          "name": "Cross-Domain JavaScript Source File Inclusion",
+          "riskcode": "1",
+          "confidence": "2",
+          "riskdesc": "Low (Medium)",
+          "desc": "The page includes one or more script files from a third-party domain.",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/",
+              "method": "GET",
+              "param": "src",
+              "attack": "",
+              "evidence": "https://cdn.jsdelivr.net/npm/bootstrap",
+              "otherinfo": ""
+            }
+          ],
+          "count": "3",
+          "solution": "Ensure JavaScript source files are loaded from only trusted sources.",
+          "otherinfo": "",
+          "reference": "https://owasp.org/www-community/attacks/xss/",
+          "cweid": "829",
+          "wascid": "15",
+          "sourceid": "3"
+        },
+        {
+          "pluginid": "40012",
+          "alertRef": "40012",
+          "alert": "Cross Site Scripting (Reflected)",
+          "name": "Cross Site Scripting (Reflected)",
+          "riskcode": "3",
+          "confidence": "2",
+          "riskdesc": "High (Medium)",
+          "desc": "Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance.",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/#/search",
+              "method": "GET",
+              "param": "q",
+              "attack": "<script>alert(1);</script>",
+              "evidence": "<script>alert(1);</script>",
+              "otherinfo": ""
+            }
+          ],
+          "count": "2",
+          "solution": "Phase: Architecture and Design. Use a vetted library or framework that does not allow this weakness to occur.",
+          "otherinfo": "",
+          "reference": "https://owasp.org/www-community/attacks/xss/",
+          "cweid": "79",
+          "wascid": "8",
+          "sourceid": "3"
+        },
+        {
+          "pluginid": "90034",
+          "alertRef": "90034",
+          "alert": "Cloud Metadata Potentially Exposed",
+          "name": "Cloud Metadata Potentially Exposed",
+          "riskcode": "0",
+          "confidence": "2",
+          "riskdesc": "Informational (Medium)",
+          "desc": "The response appears to contain metadata associated with cloud infrastructure.",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/api",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "",
+              "otherinfo": ""
+            }
+          ],
+          "count": "1",
+          "solution": "Ensure that cloud metadata is not accessible.",
+          "otherinfo": "",
+          "reference": "",
+          "cweid": "-1",
+          "wascid": "15",
+          "sourceid": "3"
+        }
+      ]
+    }
+  ]
+}

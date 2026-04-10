@@ -1,0 +1,119 @@
+[
+  {
+    "template": "http/misconfiguration/http-missing-security-headers",
+    "template-id": "http-missing-security-headers",
+    "template-path": "/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": ["pdteam"],
+      "tags": ["misconfig", "generic"],
+      "description": "This template searches for missing HTTP security headers.",
+      "severity": "info",
+      "metadata": { "max-request": 1 }
+    },
+    "matcher-name": "content-security-policy",
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "timestamp": "2026-04-10T10:00:00.000Z",
+    "request": "GET / HTTP/1.1\r\nHost: localhost:3000\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nX-Powered-By: Express\r\n\r\n",
+    "ip": "127.0.0.1",
+    "curl-command": "curl -X GET http://localhost:3000"
+  },
+  {
+    "template": "http/misconfiguration/http-missing-security-headers",
+    "template-id": "http-missing-security-headers",
+    "template-path": "/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": ["pdteam"],
+      "tags": ["misconfig", "generic"],
+      "description": "This template searches for missing HTTP security headers.",
+      "severity": "info",
+      "metadata": { "max-request": 1 }
+    },
+    "matcher-name": "x-frame-options",
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "timestamp": "2026-04-10T10:00:01.000Z",
+    "request": "GET / HTTP/1.1\r\nHost: localhost:3000\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nX-Powered-By: Express\r\n\r\n",
+    "ip": "127.0.0.1",
+    "curl-command": "curl -X GET http://localhost:3000"
+  },
+  {
+    "template": "http/vulnerabilities/generic/sql-injection",
+    "template-id": "sql-injection-error-based",
+    "template-path": "/nuclei-templates/http/vulnerabilities/generic/sql-injection.yaml",
+    "info": {
+      "name": "SQL Injection (Error-Based)",
+      "author": ["pdteam"],
+      "tags": ["sqli", "injection"],
+      "description": "SQL injection via error-based technique detected.",
+      "severity": "high",
+      "metadata": { "max-request": 10 },
+      "classification": {
+        "cwe-id": ["CWE-89"],
+        "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "cvss-score": 9.8
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/rest/products/search?q=test'",
+    "timestamp": "2026-04-10T10:01:00.000Z",
+    "request": "GET /rest/products/search?q=test' HTTP/1.1\r\nHost: localhost:3000\r\n\r\n",
+    "response": "HTTP/1.1 500 Internal Server Error\r\n\r\nSQLITE_ERROR: near \"s\": syntax error",
+    "ip": "127.0.0.1",
+    "curl-command": "curl -X GET 'http://localhost:3000/rest/products/search?q=test'"
+  },
+  {
+    "template": "http/exposures/configs/exposed-gitignore",
+    "template-id": "exposed-gitignore",
+    "template-path": "/nuclei-templates/http/exposures/configs/exposed-gitignore.yaml",
+    "info": {
+      "name": "Exposed .gitignore File",
+      "author": ["pdteam"],
+      "tags": ["exposure", "config"],
+      "description": ".gitignore file is accessible from the web root.",
+      "severity": "low",
+      "metadata": { "max-request": 1 }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/.gitignore",
+    "timestamp": "2026-04-10T10:01:30.000Z",
+    "request": "GET /.gitignore HTTP/1.1\r\nHost: localhost:3000\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\n\r\nnode_modules\n*.log\n",
+    "ip": "127.0.0.1",
+    "curl-command": "curl -X GET http://localhost:3000/.gitignore"
+  },
+  {
+    "template": "http/vulnerabilities/other/jwt-none-alg",
+    "template-id": "jwt-none-alg",
+    "template-path": "/nuclei-templates/http/vulnerabilities/other/jwt-none-alg.yaml",
+    "info": {
+      "name": "JWT None Algorithm Bypass",
+      "author": ["pdteam"],
+      "tags": ["jwt", "auth", "bypass"],
+      "description": "JWT token with none algorithm accepted by the server.",
+      "severity": "medium",
+      "metadata": { "max-request": 5 },
+      "classification": {
+        "cwe-id": ["CWE-347"],
+        "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
+        "cvss-score": 8.2
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/api/users/whoami",
+    "timestamp": "2026-04-10T10:02:00.000Z",
+    "request": "GET /api/users/whoami HTTP/1.1\r\nHost: localhost:3000\r\nAuthorization: Bearer eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBqdWljZS1zaC5vcCJ9.\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\n\r\n{\"id\":1,\"email\":\"admin@juice-sh.op\"}",
+    "ip": "127.0.0.1",
+    "curl-command": "curl -X GET http://localhost:3000/api/users/whoami"
+  }
+]

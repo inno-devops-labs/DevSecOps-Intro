@@ -1,0 +1,157 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "bkimminich/juice-shop:v15.0.0",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "OS": {
+      "Family": "debian",
+      "Name": "12.4"
+    },
+    "ImageID": "sha256:abc123",
+    "RepoTags": ["bkimminich/juice-shop:v15.0.0"],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  },
+  "Results": [
+    {
+      "Target": "bkimminich/juice-shop:v15.0.0 (debian 12.4)",
+      "Class": "os-pkgs",
+      "Type": "debian",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2023-4911",
+          "PkgID": "libc6@2.36-9+deb12u3",
+          "PkgName": "libc6",
+          "InstalledVersion": "2.36-9+deb12u3",
+          "FixedVersion": "2.36-9+deb12u4",
+          "Layer": {},
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-4911",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: buffer overflow in ld.so leading to privilege escalation",
+          "Description": "A buffer overflow was discovered in the GNU C Library's dynamic loader ld.so while processing the GLIBC_TUNABLES environment variable.",
+          "Severity": "HIGH",
+          "CweIDs": ["CWE-122"],
+          "CVSS": {
+            "nvd": {
+              "V3Score": 7.8,
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+            }
+          },
+          "References": ["https://www.qualys.com/2023/10/03/cve-2023-4911/looney-tunables-local-privilege-escalation-glibc-ld-so.txt"],
+          "PublishedDate": "2023-10-03T18:15:10Z",
+          "LastModifiedDate": "2023-10-10T13:15:10Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-44487",
+          "PkgID": "libnghttp2-14@1.52.0-1",
+          "PkgName": "libnghttp2-14",
+          "InstalledVersion": "1.52.0-1",
+          "FixedVersion": "1.52.0-1+deb12u1",
+          "Layer": {},
+          "SeveritySource": "nvd",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-44487",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker"
+          },
+          "Title": "HTTP/2 Rapid Reset Attack",
+          "Description": "The HTTP/2 protocol allows a denial of service because request cancellation can reset many streams quickly.",
+          "Severity": "HIGH",
+          "CweIDs": ["CWE-400"],
+          "CVSS": {
+            "nvd": {
+              "V3Score": 7.5,
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            }
+          },
+          "References": ["https://cloud.google.com/blog/products/identity-security/how-it-works-the-novel-http2-rapid-reset-ddos-attack"],
+          "PublishedDate": "2023-10-10T14:15:10Z",
+          "LastModifiedDate": "2023-10-11T00:15:10Z"
+        }
+      ]
+    },
+    {
+      "Target": "Node.js",
+      "Class": "lang-pkgs",
+      "Type": "node-pkg",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2023-46234",
+          "PkgID": "browserify-sign@4.2.1",
+          "PkgName": "browserify-sign",
+          "InstalledVersion": "4.2.1",
+          "FixedVersion": "4.2.2",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-46234",
+          "Title": "browserify-sign upper bound check issue in dsaVerify leads to a signature forgery attack",
+          "Description": "An upper bound check issue in dsaVerify function lets an attacker forge signatures.",
+          "Severity": "HIGH",
+          "CweIDs": ["CWE-347"],
+          "CVSS": {
+            "ghsa": {
+              "V3Score": 7.5,
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            }
+          },
+          "References": ["https://github.com/crypto-browserify/browserify-sign/security/advisories/GHSA-x9w5-v3q2-3rhw"],
+          "PublishedDate": "2023-10-26T15:15:10Z",
+          "LastModifiedDate": "2023-10-26T18:35:10Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-45133",
+          "PkgID": "@babel/traverse@7.22.5",
+          "PkgName": "@babel/traverse",
+          "InstalledVersion": "7.22.5",
+          "FixedVersion": "7.23.2",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-45133",
+          "Title": "Babel vulnerable to arbitrary code execution when compiling specifically crafted malicious code",
+          "Description": "Babel is a compiler for JavaScript. The package `@babel/traverse` is vulnerable to arbitrary code execution.",
+          "Severity": "CRITICAL",
+          "CweIDs": ["CWE-184", "CWE-697"],
+          "CVSS": {
+            "ghsa": {
+              "V3Score": 9.3,
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+            }
+          },
+          "References": ["https://github.com/babel/babel/security/advisories/GHSA-67hx-6x53-jw92"],
+          "PublishedDate": "2023-10-12T17:15:10Z",
+          "LastModifiedDate": "2023-10-15T01:15:10Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-49085",
+          "PkgID": "sequelize@6.35.0",
+          "PkgName": "sequelize",
+          "InstalledVersion": "6.35.0",
+          "FixedVersion": "6.35.1",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-49085",
+          "Title": "sequelize SQL Injection via replacements",
+          "Description": "Sequelize is a Node.js ORM. In sequelize v6.35.0, an attacker can use `sequelize.query` with `replacements` to perform SQL injection.",
+          "Severity": "HIGH",
+          "CweIDs": ["CWE-89"],
+          "CVSS": {
+            "ghsa": {
+              "V3Score": 9.8,
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            }
+          },
+          "References": ["https://github.com/sequelize/sequelize/security/advisories/GHSA-wrc4-hg8m-c7c2"],
+          "PublishedDate": "2023-12-01T06:15:10Z",
+          "LastModifiedDate": "2023-12-05T12:35:10Z"
+        }
+      ]
+    }
+  ]
+}
