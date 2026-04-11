@@ -1,0 +1,2 @@
+Checking docker compose version
+Supported docker compose version

@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-04-11T16:56:17",
+  "active_by_severity": {
+    "Medium": 89,
+    "High": 154,
+    "Critical": 21,
+    "Informational": 16,
+    "Low": 27
+  },
+  "open_by_severity": {
+    "Medium": 89,
+    "High": 154,
+    "Critical": 21,
+    "Informational": 16,
+    "Low": 27
+  },
+  "closed_by_severity": {
+    "Critical": 0,
+    "High": 0,
+    "Medium": 0,
+    "Low": 0,
+    "Informational": 0
+  },
+  "verified_count": 143,
+  "mitigated_count": 0,
+  "findings_per_tool": {
+    "Nuclei": 1,
+    "Grype": 122,
+    "ZAP": 12,
+    "Semgrep": 25,
+    "Trivy": 147
+  },
+  "sla_breached": 0,
+  "sla_due_next_14_days": 21,
+  "top_cwe": [
+    {
+      "cwe": 1333,
+      "count": 29
+    },
+    {
+      "cwe": 407,
+      "count": 13
+    },
+    {
+      "cwe": 79,
+      "count": 11
+    },
+    {
+      "cwe": 22,
+      "count": 11
+    },
+    {
+      "cwe": 89,
+      "count": 6
+    }
+  ],
+  "total_findings": 307
+}

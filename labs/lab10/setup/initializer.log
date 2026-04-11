@@ -1,0 +1,488 @@
+initializer-1  | wait-for-it.sh: waiting max 60 seconds for postgres:5432
+initializer-1  | wait-for-it.sh: postgres:5432 is available after 4 seconds
+initializer-1  | ============================================================
+initializer-1  |      Overriding DefectDojo's local_settings.py with multiple
+initializer-1  |      Files: /app/docker/extra_settings/README.md
+initializer-1  | ============================================================
+initializer-1  | [11/Apr/2026 13:41:05] INFO [dojo.auditlog:317] Registering models with django-pghistory
+initializer-1  | [11/Apr/2026 13:41:05] INFO [dojo.auditlog:610] Successfully registered models with django-pghistory
+initializer-1  | [11/Apr/2026 13:41:05] INFO [dojo.auditlog:676] Audit logging configured: django-pghistory
+initializer-1  | Waiting for database to be reachable 27 objects could not be automatically imported:
+initializer-1  | 
+initializer-1  |   dojo.auditlog.ObjectsProductTags
+initializer-1  |   dojo.auditlog.AppAnalysisTags
+initializer-1  |   dojo.auditlog.FindingTemplateTags
+initializer-1  |   dojo.auditlog.EndpointInheritedTags
+initializer-1  |   dojo.auditlog.EndpointTags
+initializer-1  |   dojo.auditlog.TestInheritedTags
+initializer-1  |   dojo.auditlog.TestTags
+initializer-1  |   dojo.auditlog.EngagementInheritedTags
+initializer-1  |   dojo.auditlog.EngagementTags
+initializer-1  |   dojo.auditlog.ProductTags
+initializer-1  |   dojo.auditlog.FindingInheritedTags
+initializer-1  |   dojo.auditlog.FindingTags
+initializer-1  |   dojo.auditlog.FindingReviewers
+initializer-1  |   dojo.location.models.Tagulous_Location_inherited_tags
+initializer-1  |   dojo.location.models.Tagulous_Location_tags
+initializer-1  |   dojo.models.Tagulous_Objects_Product_tags
+initializer-1  |   dojo.models.Tagulous_App_Analysis_tags
+initializer-1  |   dojo.models.Tagulous_Finding_Template_tags
+initializer-1  |   dojo.models.Tagulous_Finding_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Finding_tags
+initializer-1  |   dojo.models.Tagulous_Test_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Test_tags
+initializer-1  |   dojo.models.Tagulous_Endpoint_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Endpoint_tags
+initializer-1  |   dojo.models.Tagulous_Engagement_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Engagement_tags
+initializer-1  |   dojo.models.Tagulous_Product_tags
+initializer-1  | 
+initializer-1  | 143 objects imported automatically (use -v 2 for details).
+initializer-1  | 
+initializer-1  | Simple database test was successful
+initializer-1  | [11/Apr/2026 13:41:10] INFO [dojo.auditlog:317] Registering models with django-pghistory
+initializer-1  | [11/Apr/2026 13:41:10] INFO [dojo.auditlog:610] Successfully registered models with django-pghistory
+initializer-1  | [11/Apr/2026 13:41:10] INFO [dojo.auditlog:676] Audit logging configured: django-pghistory
+initializer-1  | Initializing DefectDojo
+initializer-1  | Checking ENABLE_AUDITLOG consistency
+initializer-1  | Database not initialized yet; skipping auditlog check
+initializer-1  | Checking for missing migrations
+initializer-1  | No changes detected
+initializer-1  | Applying migrations
+initializer-1  | Operations to perform:
+initializer-1  |   Apply all migrations: admin, auditlog, auth, authtoken, contenttypes, django_celery_results, dojo, pghistory, sessions, single_session, sites, social_django, watson
+initializer-1  | Running migrations:
+initializer-1  |   Applying contenttypes.0001_initial... OK
+initializer-1  |   Applying auth.0001_initial... OK
+initializer-1  |   Applying admin.0001_initial... OK
+initializer-1  |   Applying admin.0002_logentry_remove_auto_add... OK
+initializer-1  |   Applying admin.0003_logentry_add_action_flag_choices... OK
+initializer-1  |   Applying auditlog.0001_initial... OK
+initializer-1  |   Applying auditlog.0002_auto_support_long_primary_keys... OK
+initializer-1  |   Applying auditlog.0003_logentry_remote_addr... OK
+initializer-1  |   Applying auditlog.0004_logentry_detailed_object_repr... OK
+initializer-1  |   Applying auditlog.0005_logentry_additional_data_verbose_name... OK
+initializer-1  |   Applying auditlog.0006_object_pk_index... OK
+initializer-1  |   Applying auditlog.0007_object_pk_type... OK
+initializer-1  |   Applying auditlog.0008_action_index... OK
+initializer-1  |   Applying auditlog.0009_alter_logentry_additional_data... OK
+initializer-1  |   Applying auditlog.0010_alter_logentry_timestamp... OK
+initializer-1  |   Applying auditlog.0011_logentry_serialized_data... OK
+initializer-1  |   Applying auditlog.0012_add_logentry_action_access... OK
+initializer-1  |   Applying auditlog.0013_alter_logentry_timestamp... OK
+initializer-1  |   Applying auditlog.0014_logentry_cid... OK
+initializer-1  |   Applying auditlog.0015_alter_logentry_changes... OK
+initializer-1  |   Applying auditlog.0016_logentry_remote_port... OK
+initializer-1  |   Applying auditlog.0017_add_actor_email... OK
+initializer-1  |   Applying contenttypes.0002_remove_content_type_name... OK
+initializer-1  |   Applying auth.0002_alter_permission_name_max_length... OK
+initializer-1  |   Applying auth.0003_alter_user_email_max_length... OK
+initializer-1  |   Applying auth.0004_alter_user_username_opts... OK
+initializer-1  |   Applying auth.0005_alter_user_last_login_null... OK
+initializer-1  |   Applying auth.0006_require_contenttypes_0002... OK
+initializer-1  |   Applying auth.0007_alter_validators_add_error_messages... OK
+initializer-1  |   Applying auth.0008_alter_user_username_max_length... OK
+initializer-1  |   Applying auth.0009_alter_user_last_name_max_length... OK
+initializer-1  |   Applying auth.0010_alter_group_name_max_length... OK
+initializer-1  |   Applying auth.0011_update_proxy_permissions... OK
+initializer-1  |   Applying auth.0012_alter_user_first_name_max_length... OK
+initializer-1  |   Applying authtoken.0001_initial... OK
+initializer-1  |   Applying authtoken.0002_auto_20160226_1747... OK
+initializer-1  |   Applying authtoken.0003_tokenproxy... OK
+initializer-1  |   Applying authtoken.0004_alter_tokenproxy_options... OK
+initializer-1  |   Applying django_celery_results.0001_initial... OK
+initializer-1  |   Applying django_celery_results.0002_add_task_name_args_kwargs... OK
+initializer-1  |   Applying django_celery_results.0003_auto_20181106_1101... OK
+initializer-1  |   Applying django_celery_results.0004_auto_20190516_0412... OK
+initializer-1  |   Applying django_celery_results.0005_taskresult_worker... OK
+initializer-1  |   Applying django_celery_results.0006_taskresult_date_created... OK
+initializer-1  |   Applying django_celery_results.0007_remove_taskresult_hidden... OK
+initializer-1  |   Applying django_celery_results.0008_chordcounter... OK
+initializer-1  |   Applying django_celery_results.0009_groupresult... OK
+initializer-1  |   Applying django_celery_results.0010_remove_duplicate_indices... OK
+initializer-1  |   Applying django_celery_results.0011_taskresult_periodic_task_name... OK
+initializer-1  |   Applying django_celery_results.0012_taskresult_date_started... OK
+initializer-1  |   Applying django_celery_results.0013_taskresult_django_cele_periodi_1993cf_idx... OK
+initializer-1  |   Applying django_celery_results.0014_alter_taskresult_status... OK
+initializer-1  |   Applying pghistory.0001_initial... OK
+initializer-1  |   Applying pghistory.0002_aggregateevent... OK
+initializer-1  |   Applying pghistory.0003_auto_20201023_1636... OK
+initializer-1  |   Applying pghistory.0004_auto_20220906_1625... OK
+initializer-1  |   Applying pghistory.0005_events_middlewareevents... OK
+initializer-1  |   Applying pghistory.0006_delete_aggregateevent... OK
+initializer-1  |   Applying pghistory.0007_auto_20250421_0444... OK
+initializer-1  |   Applying sessions.0001_initial... OK
+initializer-1  |   Applying dojo.0001_squashed_0090_index_duplicate_finding...Database vendor: postgresql
+initializer-1  |  OK
+initializer-1  | [11/Apr/2026 13:41:39] INFO [dojo.db_migrations.0091_npm_audit_path_censoring:20] Removing random hashes from npm audit file_paths
+initializer-1  | [11/Apr/2026 13:41:39] INFO [dojo.utils:1895] 0 out of 0 models processed ...
+initializer-1  | [11/Apr/2026 13:41:39] INFO [dojo.utils:1900] 0 out of 0 models processed ...
+initializer-1  |   Applying dojo.0091_npm_audit_path_censoring... OK
+initializer-1  |   Applying dojo.0092_is_mitigated... OK
+initializer-1  |   Applying dojo.0093_django_tagging_removal... OK
+initializer-1  |   Applying dojo.0094_remove_system_settings_s_finding_severity_naming... OK
+initializer-1  |   Applying dojo.0095_remove_old_product_contact_fields... OK
+initializer-1  |   Applying dojo.0096_grype_name_change... OK
+initializer-1  |   Applying dojo.0097_engagement_type... OK
+initializer-1  |   Applying dojo.0098_anchore_vuln_id... OK
+initializer-1  |   Applying dojo.0099_delete_report... OK
+initializer-1  |   Applying dojo.0100_dojo_user_for_authv2... OK
+initializer-1  |   Applying dojo.0101_enable_features... OK
+initializer-1  |   Applying dojo.0102_dojo_group... OK
+initializer-1  |   Applying dojo.0103_report_notification... OK
+initializer-1  |   Applying dojo.0104_endpoint_userinfo_creation... OK
+initializer-1  | [11/Apr/2026 13:41:44] INFO [dojo.endpoint.utils:199] There is not broken endpoint.
+initializer-1  |   Applying dojo.0105_endpoint_host_migration... OK
+initializer-1  |   Applying dojo.0106_role_model...Installed 5 object(s) from 1 fixture(s)
+initializer-1  |  OK
+initializer-1  |   Applying dojo.0107_global_role... OK
+initializer-1  |   Applying dojo.0108_blank_fields... OK
+initializer-1  |   Applying dojo.0109_group_user_role... OK
+initializer-1  |   Applying dojo.0110_auth_v2_migrate_user_roles... OK
+initializer-1  |   Applying dojo.0111_group_user_rename... OK
+initializer-1  |   Applying dojo.0112_group_user_rename_2... OK
+initializer-1  |   Applying dojo.0113_endpoint_protocol... OK
+initializer-1  |   Applying dojo.0114_cyclonedx_vuln_uniqu... OK
+initializer-1  |   Applying dojo.0115_language_types...Installed 462 object(s) from 1 fixture(s)
+initializer-1  |  OK
+initializer-1  |   Applying dojo.0116_test_type_active... OK
+initializer-1  |   Applying dojo.0117_usercontactinfo_force_password_reset... OK
+initializer-1  |   Applying dojo.0118_remove_finding_images... OK
+initializer-1  |   Applying dojo.0119_default_group_is_staff... OK
+initializer-1  | [11/Apr/2026 13:41:47] WARNING [dojo.db_migrations.0120_sonarqube_test_and_clean:23] No SonarQube tool configuration found, all invalid SonarQube configurations will be removed.
+initializer-1  |   Applying dojo.0120_sonarqube_test_and_clean... OK
+initializer-1  |   Applying dojo.0121_user_restrict... OK
+initializer-1  |   Applying dojo.0122_cobaltio_product... OK
+initializer-1  |   Applying dojo.0123_scan_type... OK
+initializer-1  |   Applying dojo.0124_sonarqube_api_type_length_change... OK
+initializer-1  |   Applying dojo.0125_sonarqube_clean... OK
+initializer-1  |   Applying dojo.0126_finding_publish_date... OK
+initializer-1  | [11/Apr/2026 13:41:51] INFO [dojo.db_migrations.0127_remove_hashes:15] Content type for auth / user does not exist
+initializer-1  | [11/Apr/2026 13:41:51] INFO [dojo.db_migrations.0127_remove_hashes:19] Content type for dojo / cred_user does not exist
+initializer-1  |   Applying dojo.0127_remove_hashes... OK
+initializer-1  |   Applying dojo.0128_pytz_update... OK
+initializer-1  |   Applying dojo.0129_finding_deprecated_fields... OK
+initializer-1  |   Applying dojo.0130_product_api_scan_configuration... OK
+initializer-1  |   Applying dojo.0131_migrate_sonarcube_cobalt... OK
+initializer-1  |   Applying dojo.0132_remove_configs_from_test... OK
+initializer-1  |   Applying dojo.0133_finding_service... OK
+initializer-1  |   Applying dojo.0134_sonarque_cobaltio_removal... OK
+initializer-1  |   Applying dojo.0135_email_from... OK
+initializer-1  |   Applying dojo.0136_default_group_help_text... OK
+initializer-1  |   Applying dojo.0137_system_settings_enable_endpoint_metadata_import... OK
+initializer-1  |   Applying dojo.0138_remove_authorized_users... OK
+initializer-1  |   Applying dojo.0139_google_sheets_rules_framework_enable... OK
+initializer-1  |   Applying dojo.0140_auth_group... OK
+initializer-1  |   Applying dojo.0141_enable_user_profile_editable... OK
+initializer-1  |   Applying dojo.0142_environment_delete... OK
+initializer-1  |   Applying dojo.0143_objects... OK
+initializer-1  |   Applying dojo.0144_import_action_untouched... OK
+initializer-1  |   Applying dojo.0145_system_settings_default_group_email_pattern... OK
+initializer-1  |   Applying dojo.0146_lead_optional... OK
+initializer-1  |   Applying dojo.0147_rename_sslyze_parser... OK
+initializer-1  |   Applying dojo.0148_default_notifications... OK
+initializer-1  |   Applying dojo.0149_harmonize_user_format... OK
+initializer-1  | [11/Apr/2026 13:41:58] INFO [dojo.db_migrations.0150_dedupe_endpoint_status:22] There is nothing to process
+initializer-1  |   Applying dojo.0150_dedupe_endpoint_status... OK
+initializer-1  |   Applying dojo.0151_index_endpoint_status... OK
+initializer-1  |   Applying dojo.0152_notifications_template... OK
+initializer-1  | [11/Apr/2026 13:41:58] INFO [dojo.db_migrations.0153_migrate_endpoint_mitigated:20] There is nothing to process
+initializer-1  |   Applying dojo.0153_migrate_endpoint_mitigated... OK
+initializer-1  |   Applying dojo.0154_remove_endpoint_mitigated... OK
+initializer-1  |   Applying dojo.0155_enable_finding_groups... OK
+initializer-1  | [11/Apr/2026 13:41:58] INFO [dojo.db_migrations.0156_migrate_finding_groups_setting:14] Migrating value from FEATURE_FINDING_GROUPS into system settings model
+initializer-1  |   Applying dojo.0156_migrate_finding_groups_setting... OK
+initializer-1  |   Applying dojo.0157_vulnerability_reference... OK
+initializer-1  |   Applying dojo.0158_vulnerability_id... OK
+initializer-1  | [11/Apr/2026 13:41:59] INFO [dojo.endpoint.utils:378] There is no broken endpoint_status
+initializer-1  |   Applying dojo.0159_remove_broken_endpoint_statuses... OK
+initializer-1  |   Applying dojo.0160_set_notnull_endpoint_statuses... OK
+initializer-1  |   Applying dojo.0161_alter_dojo_group_social_provider... OK
+initializer-1  |   Applying dojo.0162_created_and_updated... OK
+initializer-1  |   Applying dojo.0163_system_settings_enable_calendar... OK
+initializer-1  |   Applying dojo.0164_remove_system_settings_staff_user_email_pattern... OK
+initializer-1  |   Applying dojo.0165_custom_sla... OK
+initializer-1  |   Applying dojo.0166_copy_sla_from_system_settings... OK
+initializer-1  |   Applying dojo.0167_system_settings_add_vulnerability_id_to_jira_label... OK
+initializer-1  |   Applying dojo.0168_alter_system_settings_time_zone... OK
+initializer-1  |   Applying dojo.0169_planned_remediation_date... OK
+initializer-1  |   Applying dojo.0170_jira_project_custom_fields... OK
+initializer-1  |   Applying dojo.0171_jira_labels_per_product_and_engagement... OK
+initializer-1  |   Applying dojo.0172_optimize_usage_of_endpoint_status... OK
+initializer-1  |   Applying dojo.0173_alter_risk_acceptance_name... OK
+initializer-1  |   Applying dojo.0174_jira_project_default_assignee... OK
+initializer-1  | [11/Apr/2026 13:42:02] INFO [dojo.db_migrations.0175_system_settings_enable_notify_sla:14] Migrating value from SLA_NOTIFY_ACTIVE into system settings model
+initializer-1  | [11/Apr/2026 13:42:02] INFO [dojo.db_migrations.0175_system_settings_enable_notify_sla:25] Migrating value from SLA_NOTIFY_ACTIVE_VERIFIED_ONLY into system settings model
+initializer-1  | [11/Apr/2026 13:42:02] INFO [dojo.db_migrations.0175_system_settings_enable_notify_sla:36] Migrating value from SLA_NOTIFY_WITH_JIRA_ONLY into system settings model
+initializer-1  |   Applying dojo.0175_system_settings_enable_notify_sla... OK
+initializer-1  |   Applying dojo.0176_custom_password_requirements... OK
+initializer-1  |   Applying dojo.0177_alter_system_settings_time_zone... OK
+initializer-1  |   Applying dojo.0178_alter_answer_polymorphic_ctype_and_more... OK
+initializer-1  |   Applying dojo.0179_alter_finding_verified... OK
+initializer-1  |   Applying dojo.0180_announcement_userannouncement... OK
+initializer-1  |   Applying dojo.0181_jira_instance_finding_jira_sync... OK
+initializer-1  |   Applying dojo.0182_alter_jira_instance_default_issue_type... OK
+initializer-1  |   Applying dojo.0183_system_settings_enable_notify_sla_exponential_backoff_and_more... OK
+initializer-1  |   Applying dojo.0184_remove_child_rule_parent_rule_delete_fieldrule_and_more... OK
+initializer-1  |   Applying dojo.0185_product_disable_sla_breach_notifications_and_more... OK
+initializer-1  |   Applying dojo.0186_system_settings_non_common_password_required... OK
+initializer-1  | [11/Apr/2026 13:42:03] WARNING [dojo.db_migrations.0187_nessus_to_tenable:42] We identified 0 Nessus/NessusWAS findings to migrate to Tenable findings
+initializer-1  |   Applying dojo.0187_nessus_to_tenable... OK
+initializer-1  |   Applying dojo.0188_product_enable_product_tag_inheritance_and_more... OK
+initializer-1  |   Applying dojo.0189_finding_effort_and_remediation_for_fixing... OK
+initializer-1  |   Applying dojo.0190_system_settings_experimental_fp_history... OK
+initializer-1  |   Applying dojo.0191_alter_notifications_risk_acceptance_expiration... OK
+initializer-1  |   Applying dojo.0192_notifications_scan_added_empty... OK
+initializer-1  |   Applying dojo.0193_remove_system_settings_enable_auditlog... OK
+initializer-1  |   Applying dojo.0194_alter_finding_component_name... OK
+initializer-1  |   Applying dojo.0195_alter_announcement_dismissable... OK
+initializer-1  |   Applying dojo.0196_notifications_sla_breach_combined... OK
+initializer-1  | [11/Apr/2026 13:42:05] WARNING [dojo.db_migrations.0197_parser_merge:62] We identified 0 OpenVAS CSV/ OpenVAS XML findings to migrate to OpenVAS Parser findings
+initializer-1  | [11/Apr/2026 13:42:05] WARNING [dojo.db_migrations.0197_parser_merge:80] We identified 0 Clair Klar Scan findings to migrate to Clair Scan findings
+initializer-1  |   Applying dojo.0197_parser_merge... OK
+initializer-1  |   Applying dojo.0198_alter_system_settings_enable_deduplication... OK
+initializer-1  | [11/Apr/2026 13:42:05] WARNING [dojo.db_migrations.0199_whitesource_to_mend:41] We identified 0 Whitesource findings to migrate to Mend findings
+initializer-1  |   Applying dojo.0199_whitesource_to_mend... OK
+initializer-1  |   Applying dojo.0200_finding_sla_expiration_date_product_async_updating_and_more... OK
+initializer-1  | [11/Apr/2026 13:42:05] INFO [dojo.db_migrations.0201_populate_finding_sla_expiration_date:18] Calculating SLA expiration dates for all findings
+initializer-1  | [11/Apr/2026 13:42:05] INFO [dojo.db_migrations.0201_populate_finding_sla_expiration_date:27] Found 0 findings to be updated
+initializer-1  | [11/Apr/2026 13:42:05] INFO [dojo.db_migrations.0201_populate_finding_sla_expiration_date:74] 0 out of 0 findings processed...
+initializer-1  |   Applying dojo.0201_populate_finding_sla_expiration_date... OK
+initializer-1  |   Applying dojo.0202_alter_dojo_group_social_provider... OK
+initializer-1  |   Applying dojo.0203_alter_finding_options_finding_epss_percentile_and_more... OK
+initializer-1  |   Applying dojo.0204_alter_finding_cvssv3_score... OK
+initializer-1  |   Applying dojo.0205_jira_project_epic_issue_type_name... OK
+initializer-1  |   Applying dojo.0206_system_settings_api_expose_error_details... OK
+initializer-1  |   Applying dojo.0207_alter_sonarqube_issue_key... OK
+initializer-1  | [11/Apr/2026 13:42:06] WARNING [dojo.db_migrations.0208_merge_acunetix:38] We identified 0 Acunetix360 Scan findings to migrate to Acunetix Scan findings
+initializer-1  |   Applying dojo.0208_merge_acunetix... OK
+initializer-1  |   Applying dojo.0209_alter_finding_severity... OK
+initializer-1  |   Applying dojo.0210_system_settings_filter_string_matching... OK
+initializer-1  |   Applying dojo.0211_system_settings_enable_similar_findings... OK
+initializer-1  |   Applying dojo.0212_sla_configuration_enforce_critical_and_more... OK
+initializer-1  |   Applying dojo.0213_system_settings_enable_ui_table_based_searching... OK
+initializer-1  |   Applying dojo.0214_test_type_dynamically_generated... OK
+initializer-1  |   Applying dojo.0215_webhooks_notifications... OK
+initializer-1  |   Applying dojo.0216_alter_jira_project_push_all_issues... OK
+initializer-1  |   Applying dojo.0217_jira_project_enabled... OK
+initializer-1  |   Applying dojo.0218_system_settings_enforce_verified_status_and_more... OK
+initializer-1  |   Applying dojo.0219_system_settings_enforce_verified_status_jira_and_more... OK
+initializer-1  |   Applying dojo.0220_system_settings_disclaimer_notif... OK
+initializer-1  |   Applying dojo.0221_system_settings_disclaimer_notif... OK
+initializer-1  |   Applying dojo.0222_clean_old_sessions... OK
+initializer-1  |   Applying dojo.0223_aws_sechub_update_endpoints... OK
+initializer-1  |   Applying dojo.0224_alter_regulation_category... OK
+initializer-1  |   Applying dojo.0225_alter_product_revenue... OK
+initializer-1  |   Applying dojo.0226_import_history_left_untouched_rename... OK
+initializer-1  |   Applying dojo.0227_migrate_tags... OK
+initializer-1  |   Applying dojo.0228_alter_jira_username_password... OK
+initializer-1  |   Applying dojo.0229_alter_finding_unique_id_from_tool... OK
+initializer-1  |   Applying dojo.0230_add_finding_kev_fields... OK
+initializer-1  |   Applying dojo.0231_alter_finding_cvssv3_alter_finding_template_cvssv3... OK
+initializer-1  |   Applying dojo.0232_alter_jira_instance_accepted_mapping_resolution_and_more... OK
+initializer-1  |   Applying dojo.0233_remove_test_actual_time_remove_test_estimated_time... OK
+initializer-1  |   Applying dojo.0234_alter_system_settings_maximum_password_length_and_more... OK
+initializer-1  |   Applying dojo.0235_clean_tags... OK
+initializer-1  |   Applying dojo.0236_alter_system_settings_time_zone_zoneinfo... OK
+initializer-1  |   Applying dojo.0237_finding_cvssv4_finding_cvssv4_score... OK
+initializer-1  |   Applying dojo.0238_finding_fix_available... OK
+initializer-1  |   Applying dojo.0239_sla_configuration_restart_sla_on_reactivation... OK
+initializer-1  |   Applying dojo.0240_jira_instance_password_help_text_fix... OK
+initializer-1  |   Applying dojo.0241_remove_system_settings_time_zone... OK
+initializer-1  |   Applying dojo.0242_file_upload_cleanup... OK
+initializer-1  |   Applying dojo.0243_pghistory_models... OK
+initializer-1  |   Applying dojo.0244_pghistory_indices... OK
+initializer-1  |   Applying dojo.0245_alter_jira_instance_accepted_mapping_resolution... OK
+initializer-1  |   Applying dojo.0246_endpoint_idx_ep_product_lower_host_and_more... OK
+initializer-1  |   Applying dojo.0247_remove_finding_insert_insert_and_more... OK
+initializer-1  |   Applying dojo.0248_alter_general_survey_expiration... OK
+initializer-1  |   Applying dojo.0249_findingreviewers_findingreviewersevent_and_more... OK
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:54] Starting pghistory backfill for 27 model(s)...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Dojo_User...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   Table dojo_dojo_user not found
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Endpoint...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Endpoint
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Engagement...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Engagement
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Finding...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Finding
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Finding_Group...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Finding_Group
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Product_Type...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Product_Type
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Product...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Product
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Test...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Test
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Risk_Acceptance...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Risk_Acceptance
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Finding_Template...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Finding_Template
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Cred_User...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Cred_User
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Notification_Webhooks...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for Notification_Webhooks
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing FindingReviewers...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   No records found for FindingReviewers
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing Location...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   Table dojo_location not found
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing URL...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:49]   Table dojo_url not found
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing FindingTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing FindingInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing ProductTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing EngagementTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing EngagementInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing TestTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing TestInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing EndpointTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing EndpointInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing FindingTemplateTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing AppAnalysisTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:58] Processing ObjectsProductTags...
+initializer-1  | [11/Apr/2026 13:42:26] INFO [dojo.db_migrations.0250_pghistory_backfill:72] Pghistory backfill complete: Processed 0 records
+initializer-1  |   Applying dojo.0250_pghistory_backfill... OK
+initializer-1  |   Applying dojo.0251_usercontactinfo_reset_timestamps... OK
+initializer-1  |   Applying dojo.0252_finding_template_changes... OK
+initializer-1  |   Applying dojo.0253_migrate_vulnerability_ids_to_textfield... OK
+initializer-1  |   Applying dojo.0254_remove_vulnerability_id_template_model... OK
+initializer-1  |   Applying dojo.0255_remove_system_settings_product_grade... OK
+initializer-1  |   Applying dojo.0256_pghistory_for_tags_models... OK
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:64] Starting pghistory backfill for 12 tag model(s)...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing FindingTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for FindingTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing FindingInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for FindingInheritedTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing ProductTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for ProductTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing EngagementTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for EngagementTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing EngagementInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for EngagementInheritedTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing TestTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for TestTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing TestInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for TestInheritedTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing EndpointTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for EndpointTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing EndpointInheritedTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for EndpointInheritedTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing FindingTemplateTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for FindingTemplateTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing AppAnalysisTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for AppAnalysisTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:68] Processing ObjectsProductTags...
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:62]   No records found for ObjectsProductTags
+initializer-1  | [11/Apr/2026 13:42:34] INFO [dojo.db_migrations.0257_pghistory_tags_backfill:82] Pghistory tag backfill complete: Processed 0 records
+initializer-1  |   Applying dojo.0257_pghistory_tags_backfill... OK
+initializer-1  |   Applying dojo.0258_alter_answer_options_alter_choiceanswer_options_and_more... OK
+initializer-1  |   Applying dojo.0259_locations... OK
+initializer-1  |   Applying dojo.0260_alter_engagement_status_alter_engagementevent_status... OK
+initializer-1  |   Applying dojo.0261_remove_url_insert_insert_remove_url_update_update_and_more... OK
+initializer-1  |   Applying dojo.0262_remove_system_settings_credentials... OK
+initializer-1  |   Applying dojo.0263_language_type_unique_language... OK
+initializer-1  |   Applying single_session.0001_initial... OK
+initializer-1  |   Applying sites.0001_initial... OK
+initializer-1  |   Applying sites.0002_alter_domain_unique... OK
+initializer-1  |   Applying social_django.0001_initial... OK
+initializer-1  |   Applying social_django.0002_add_related_name... OK
+initializer-1  |   Applying social_django.0003_alter_email_max_length... OK
+initializer-1  |   Applying social_django.0004_auto_20160423_0400... OK
+initializer-1  |   Applying social_django.0005_auto_20160727_2333... OK
+initializer-1  |   Applying social_django.0006_partial... OK
+initializer-1  |   Applying social_django.0007_code_timestamp... OK
+initializer-1  |   Applying social_django.0008_partial_timestamp... OK
+initializer-1  |   Applying social_django.0009_auto_20191118_0520... OK
+initializer-1  |   Applying social_django.0010_uid_db_index... OK
+initializer-1  |   Applying social_django.0011_alter_id_fields... OK
+initializer-1  |   Applying social_django.0012_usersocialauth_extra_data_new... OK
+initializer-1  |   Applying social_django.0013_migrate_extra_data... OK
+initializer-1  |   Applying social_django.0014_remove_usersocialauth_extra_data... OK
+initializer-1  |   Applying social_django.0015_rename_extra_data_new_usersocialauth_extra_data... OK
+initializer-1  |   Applying social_django.0016_alter_usersocialauth_extra_data... OK
+initializer-1  |   Applying social_django.0017_usersocialauth_user_social_auth_uid_required... OK
+initializer-1  |   Applying watson.0001_initial... OK
+initializer-1  | pgtrigger: Enabling insert_insert trigger for auth_user table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for auth_user table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for auth_user table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_endpoint table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_endpoint table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_endpoint table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_engagement table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_engagement table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_engagement table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_finding table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_group table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_finding_group table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_group table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_product_type table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_product_type table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_product_type table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_product table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_product table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_product table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_test table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_test table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_test table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_risk_acceptance table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_risk_acceptance table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_risk_acceptance table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_template table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_finding_template table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_template table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_cred_user table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_cred_user table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_cred_user table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_notification_webhooks table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_notification_webhooks table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_notification_webhooks table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_reviewers table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_reviewers table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_location table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_location table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_location table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_url table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_url table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_url table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_product_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_product_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_engagement_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_engagement_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_engagement_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_engagement_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_test_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_test_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_test_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_test_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_endpoint_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_endpoint_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_endpoint_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_endpoint_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_template_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_template_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_app_analysis_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_app_analysis_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_objects_product_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_objects_product_tags table on default database.
+initializer-1  | [11/Apr/2026 13:42:45] INFO [dojo.auditlog:632] Successfully enabled pghistory triggers
+initializer-1  | [11/Apr/2026 13:42:45] INFO [dojo.utils:1440] creating default set of notifications for: admin
+initializer-1  | [11/Apr/2026 13:42:49] INFO [dojo.management.commands.migrate_textquestions:19] Started migrating textquestions ...
+initializer-1  | [11/Apr/2026 13:42:49] INFO [dojo.management.commands.migrate_textquestions:34] Finished migrating textquestions
+initializer-1  | [11/Apr/2026 13:42:50] INFO [dojo.management.commands.initialize_permissions:18] Non-standard permissions have been created
+initializer-1  |   Applying watson.0002_alter_searchentry_object_id... OK
+initializer-1  | Configuring pghistory triggers
+initializer-1  | Admin password: <redacted>
+initializer-1  | JIRA Webhook Secret: d8eac5ff-e03f-48c2-ad46-068a4b90d5fa
+initializer-1  | Running first boot setup
+initializer-1  | Loading initial fixtures
+initializer-1  | Installed 1475 object(s) from 14 fixture(s)
+initializer-1  | Installing watson search index
+initializer-1  | Creating announcement banner
+initializer-1  | Initializing test types
+initializer-1  | Initializing non-standard permissions

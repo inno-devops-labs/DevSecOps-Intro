@@ -1,0 +1,338 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>
+            
+            DefectDojo
+        </title>
+        
+        
+
+        <!-- jQuery -->
+        <script src="/static/jquery/dist/jquery.min.js"></script>
+        <!--  jQuery UI -->
+        <script src="/static/jquery-ui/dist/jquery-ui.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Select -->
+        <script src="/static/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="/static/metismenu/dist/metisMenu.min.js"></script>
+
+        <script src="/static/chosen-js/chosen.jquery.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/static/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js"></script>
+        <!-- Calendar JavaScript -->
+        <script src="/static/moment/min/moment.min.js"></script>
+        <script src="/static/fullcalendar/dist/fullcalendar.min.js"></script>
+        <!-- jquery cookie -->
+        <script src="/static/jquery.cookie/jquery.cookie.js"></script>
+        <!-- DataTables Javascript -->
+        <!-- DataTables core (required) -->
+        <script src="/static/datatables.net/js/dataTables.min.js"></script>
+        <!-- DataTables with Bootstrap styling (integration) -->
+        <script src="/static/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <!-- DataTables Buttons extension (core) -->
+        <script src="/static/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <!-- DataTables Buttons Bootstrap integration -->
+        <script src="/static/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <!-- Other Buttons extensions -->
+        <script src="/static/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="/static/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+        <script src="/static/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <!-- ColReorder extension -->
+        <script src="/static/datatables.net-colreorder/js/dataTables.colReorder.min.js"></script>
+
+        <script src="/static/pdfmake/build/pdfmake.min.js"></script>
+        <script src="/static/pdfmake/build/vfs_fonts.js"></script>
+
+        <script src="/static/jszip/dist/jszip.min.js"></script>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="/static/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Bootstrap Select -->
+        <link href="/static/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="/static/metismenu/dist/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="/static/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="/static/fontawesomefree/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/fontawesomefree/css/brands.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/fontawesomefree/css/solid.min.css" rel="stylesheet" type="text/css">
+
+        
+        
+        <link rel="stylesheet" href="/static/jquery-ui/dist/themes/flick/jquery-ui.min.css">
+        <link rel="shortcut icon" type="image/png" href="/static/dojo/img/favicon.png"/>
+        <link rel="stylesheet" href="/static/chosen-bootstrap/chosen.bootstrap.min.css">
+        <link rel="stylesheet" href="/static/fullcalendar/dist/fullcalendar.min.css">
+        
+            <link rel="stylesheet" href="/static/dojo/css/dojo.css">
+        
+        <link rel="stylesheet" href="/static/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="/static/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+
+        <style>
+            
+            
+        </style>
+    </head>
+    <body class="min">
+        
+        
+        <div id="wrapper">
+            
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">
+                        
+                            <div style="padding: 10px;">
+                                <img src="/static/dojo/img/logo.png" alt="DefectDojo Logo" width="240"/>
+                            </div>
+                        
+                        </a>
+
+                    </div>
+                    <!-- /.navbar-header -->
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" aria-label="User Menu">
+                                <i class="fa-solid fa-user fa-fw"></i>
+                                <i class="fa-solid fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                
+                                    
+                                    <li>
+                                        <a href="/api/v2/oa3/swagger-ui/" target="_blank">
+                                            <i class="fa-solid fa-book fa-fw" title="OpenAPI v3 Docs"></i>
+                                            API v2 OpenAPI3 Docs
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://documentation.defectdojo.com" target="_blank">
+                                            <i class="fa-solid fa-circle-question fa-fw"></i>
+                                            Documentation
+                                        </a>
+                                    </li>
+                                
+                                
+                            </ul>
+                            <!-- /.dropdown-user -->
+                        </li>
+                        <!-- /.dropdown -->
+                    </ul>
+                    <!-- /.navbar-top-links -->
+
+                    
+                </nav>
+            
+            <!-- Page Content -->
+            <div id="page-wrapper">
+                
+                
+                <div class="container-fluid">
+                    <!-- start of tabs -->
+                    
+                        
+                            <div class="row hidden-xs">
+                                <div class="col-lg-12">
+                                    
+                                </div>
+                            </div>
+                        
+                    
+                    <!-- end of tabs -->
+                    
+                    <!-- /.row -->
+                    <div class="row">
+                        <div id="base-content" class="col-lg-12">
+                            
+
+                            
+
+                            
+
+                            
+
+
+                            
+
+                            
+    
+                            
+    <div class="error-page-box">
+        <i class="fa-solid fa-5x fa-magnifying-glass"></i>
+    </div>
+    <div class="error-page-box">
+        <h1>
+            Well...
+        </h1>
+        <h2>
+            ...we can't find what you're looking for.
+        </h2>
+    </div>
+    <hr/>
+    <p class="lightgrey">404 Not Found</p>
+
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+
+            <!-- .dojo-modals-wrapper -->
+            <div id="dojo-modals-wrapper" class="dojo-modals-wrapper">
+            
+            
+            </div>
+            <!-- /.dojo-modals-wrapper -->
+
+            <!-- Session Timeout Modal -->
+            <div class="modal fade" id="sessionTimeoutModal" tabindex="-1" role="dialog" aria-labelledby="sessionModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="sessionModalLabel">Session Expiring Soon</h4>
+                    </div>
+                    <div class="modal-body">
+                        Your session is about to expire due to inactivity.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- #footer-wrapper -->
+            <div id="footer-wrapper">
+            
+                <footer class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center text-">
+                                <p>
+                                    <a href="/">
+                                        <img class="logo" src="/static/dojo/img/chop.png" alt="DefectDojo Chop" height="45"/>
+                                    </a>
+                                    <br/>
+                                    <br/>
+                                    v. 2.57.0 ( release mode )
+                                </p>
+                                <p>
+                                    Detailed DefectDojo documentation can be found in our <a
+                                        href="https://documentation.defectdojo.com">GitHub Pages</a>.
+                                </p>
+                                <p>
+                                    DefectDojo is licensed under the <a
+                                        href="https://github.com/DefectDojo/django-DefectDojo/blob/master/LICENSE.md">3-Clause BSD
+                            License</a>. | <a href="https://github.com/DefectDojo/django-DefectDojo/blob/master/NOTICE"> Dependencies Notice.</a>
+                                </p>
+                                <p>
+                                    &copy; 2015-2026 DefectDojo, Inc. All rights reserved. DefectDojo is trademark of DefectDojo, Inc.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            
+            </div>
+            <!-- /#footer-wrapper -->
+        </div>
+
+        <!-- /#wrapper -->
+
+        <!-- our JS -->
+        <script src="/static/dojo/js/index.js"></script>
+
+        <!-- our CVSS stuff -->
+        <script src="/static/dojo/js/cvsscalc31_helptext.js"></script>
+        <script src="/static/dojo/js/cvsscalc31.js"></script>
+        <script src="/static/dojo/js/cvss_calculator.js"></script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+                $('.has-popover').hover(
+                    function() { $(this).popover('show'); }, // hover
+                    function() { $(this).popover('hide'); } // unhover
+                );
+
+                
+
+                
+
+                function htmlEscape(str) {
+                    if (!str) {
+                        return '';
+                    }
+                    return str
+                        .replace(/\n/g, " ")
+                        .replace(/&/g, '&amp;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                }
+
+                $("#id_jiraform-jira_issue").on('paste', function(e) {
+                    var clipboardData = e.clipboardData || e.originalEvent.clipboardData || window.clipboardData;
+                    var pastedData = clipboardData.getData('text');
+
+                    $this = $(this)
+                    // if someone entered/pasted a full URL, we strip evertyhing until last '/'
+                    setTimeout(function (elem) {
+                        $this.val($this.val().substring($this.val().lastIndexOf("/") + 1));
+                    }, 100);
+                });
+
+                <!-- TODO not working with django tagulous which uses select2, break styling -->
+                <!-- $('#id_tags').select2({ -->
+                    <!-- 'placeholder': 'Select or add some tags...', -->
+                    <!-- 'no_results_text': "Tag not found, press TAB key to add.", -->
+                <!-- }); -->
+
+                $('select').not('#notification-scope').addClass('selectpicker');
+                $('.selectpicker').attr('data-live-search', 'true');
+                $('.selectpicker').attr('data-container', 'body');
+                $('.selectpicker').css('width', '70%');
+                $('.selectpicker').selectpicker('render');
+
+            });
+        </script>
+        
+        
+        
+        
+    </body>
+</html>

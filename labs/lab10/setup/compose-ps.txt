@@ -1,0 +1,7 @@
+NAME                               IMAGE                                                                                                COMMAND                  SERVICE        CREATED         STATUS              PORTS
+django-defectdojo-celerybeat-1     defectdojo/defectdojo-django:latest                                                                  "/wait-for-it.sh pos…"   celerybeat     3 minutes ago   Up About a minute   
+django-defectdojo-celeryworker-1   defectdojo/defectdojo-django:latest                                                                  "/wait-for-it.sh pos…"   celeryworker   3 minutes ago   Up About a minute   
+django-defectdojo-nginx-1          defectdojo/defectdojo-nginx:latest                                                                   "/entrypoint-nginx.sh"   nginx          3 minutes ago   Up About a minute   0.0.0.0:8080->8080/tcp, 80/tcp, 0.0.0.0:8443->8443/tcp
+django-defectdojo-postgres-1       postgres:18.3-alpine@sha256:4da1a4828be12604092fa55311276f08f9224a74a62dcb4708bd7439e2a03911         "docker-entrypoint.s…"   postgres       3 minutes ago   Up 3 minutes        5432/tcp
+django-defectdojo-uwsgi-1          defectdojo/defectdojo-django:latest                                                                  "/wait-for-it.sh pos…"   uwsgi          3 minutes ago   Up About a minute   
+django-defectdojo-valkey-1         valkey/valkey:9.0.3-alpine@sha256:84c96f47ebe197e635cd3ddbe3ab74e8bdf783cf3befbfb1c36387275c1cd5d5   "docker-entrypoint.s…"   valkey         3 minutes ago   Up 3 minutes        6379/tcp
