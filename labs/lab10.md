@@ -80,7 +80,7 @@ Use the importer script below; no manual API calls are required. The script will
 ```bash
 # In the UI: Profile → API v2 Key → copy your token
 export DD_API="http://localhost:8080/api/v2"
-export DD_TOKEN="REPLACE_WITH_YOUR_API_TOKEN"
+export DD_TOKEN="b13e3f5487db1acceb5fac449a1f131882332b43"
 
 # Target context (adjust names if you prefer)
 export DD_PRODUCT_TYPE="Engineering"
