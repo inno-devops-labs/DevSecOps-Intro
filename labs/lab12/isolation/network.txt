@@ -1,0 +1,14 @@
+=== Network Interfaces ===
+Kata VM network:
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 42:88:e2:4a:5d:b5 brd ff:ff:ff:ff:ff:ff
+    inet 10.4.0.10/24 brd 10.4.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::4088:e2ff:fe4a:5db5/64 scope link tentative 
+       valid_lft forever preferred_lft forever
