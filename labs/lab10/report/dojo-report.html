@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lab 10 DefectDojo Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    h1, h2 { margin-bottom: 8px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 16px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; font-size: 12px; }
+    th { background: #f4f4f4; }
+    .card { border: 1px solid #ddd; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <h1>DefectDojo Stakeholder Report - Lab 10</h1>
+  <p>Generated automatically from the local DefectDojo API.</p>
+  <div class="card"><h2>Severity mix (active)</h2><ul><li>Critical: 18</li><li>High: 102</li><li>Medium: 75</li><li>Low: 20</li><li>Informational: 9</li></ul></div>
+  <div class="card"><h2>Status snapshot</h2><ul><li>Total findings: 224</li><li>Verified: 125</li><li>Mitigated: 0</li></ul></div>
+  <div class="card"><h2>Findings per tool</h2><ul><li>ZAP: 0</li><li>Semgrep: 0</li><li>Trivy: 0</li><li>Nuclei: 0</li><li>Grype: 0</li><li>Other: 224</li></ul></div>
+  <div class="card"><h2>Top CWE categories</h2><ul>
+<li>CWE-22: 11</li>
+<li>CWE-79: 10</li>
+<li>CWE-1333: 7</li>
+<li>CWE-20: 6</li>
+<li>CWE-89: 6</li>
+  </ul></div>
+  <h2>Top findings (first 50)</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Severity</th><th>Title</th><th>CWE</th><th>Active</th><th>Verified</th><th>Mitigated</th><th>Test</th></tr></thead>
+    <tbody>
+<tr><td>1</td><td>High</td><td>javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection</td><td>89</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>2</td><td>High</td><td>javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection</td><td>89</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>3</td><td>High</td><td>javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection</td><td>89</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>4</td><td>High</td><td>javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection</td><td>89</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>5</td><td>Medium</td><td>generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var</td><td>79</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>6</td><td>Medium</td><td>generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var</td><td>79</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>7</td><td>Medium</td><td>generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var</td><td>79</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>8</td><td>Medium</td><td>javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret</td><td>798</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>9</td><td>Medium</td><td>javascript.express.security.injection.raw-html-format.raw-html-format</td><td>79</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>10</td><td>Medium</td><td>javascript.express.security.audit.express-res-sendfile.express-res-sendfile</td><td>73</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>11</td><td>Medium</td><td>javascript.express.security.audit.express-res-sendfile.express-res-sendfile</td><td>73</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>12</td><td>Medium</td><td>javascript.express.security.audit.express-res-sendfile.express-res-sendfile</td><td>73</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>13</td><td>High</td><td>javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection</td><td>89</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>14</td><td>Medium</td><td>javascript.express.security.audit.express-res-sendfile.express-res-sendfile</td><td>73</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>15</td><td>Medium</td><td>javascript.express.security.audit.possible-user-input-redirect.unknown-value-in-redirect</td><td>601</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>16</td><td>Medium</td><td>javascript.express.security.audit.express-open-redirect.express-open-redirect</td><td>601</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>17</td><td>High</td><td>javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection</td><td>89</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>18</td><td>High</td><td>javascript.lang.security.audit.code-string-concat.code-string-concat</td><td>95</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>19</td><td>Medium</td><td>javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag</td><td>79</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>20</td><td>Medium</td><td>javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag</td><td>79</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>21</td><td>Medium</td><td>javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing</td><td>548</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>22</td><td>Medium</td><td>javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing</td><td>548</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>23</td><td>Medium</td><td>javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing</td><td>548</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>24</td><td>Medium</td><td>javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing</td><td>548</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>25</td><td>Medium</td><td>generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var</td><td>79</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>26</td><td>Medium</td><td>CVE-2026-4046 Libc6 2.41-12+deb13u2</td><td>617</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>27</td><td>Medium</td><td>CVE-2026-4437 Libc6 2.41-12+deb13u2</td><td>125</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>28</td><td>Medium</td><td>CVE-2026-4438 Libc6 2.41-12+deb13u2</td><td>20</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>29</td><td>Low</td><td>CVE-2010-4756 Libc6 2.41-12+deb13u2</td><td>399</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>30</td><td>Low</td><td>CVE-2018-20796 Libc6 2.41-12+deb13u2</td><td>674</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>31</td><td>Low</td><td>CVE-2019-1010022 Libc6 2.41-12+deb13u2</td><td>119</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>32</td><td>Low</td><td>CVE-2019-1010023 Libc6 2.41-12+deb13u2</td><td>0</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>33</td><td>Low</td><td>CVE-2019-1010024 Libc6 2.41-12+deb13u2</td><td>200</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>34</td><td>Low</td><td>CVE-2019-1010025 Libc6 2.41-12+deb13u2</td><td>330</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>35</td><td>Low</td><td>CVE-2019-9192 Libc6 2.41-12+deb13u2</td><td>674</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>36</td><td>High</td><td>CVE-2026-28390 Libssl3t64 3.5.5-1~deb13u1</td><td>476</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>37</td><td>Medium</td><td>CVE-2026-31790 Libssl3t64 3.5.5-1~deb13u1</td><td>754</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>38</td><td>Low</td><td>CVE-2026-2673 Libssl3t64 3.5.5-1~deb13u1</td><td>757</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>39</td><td>Low</td><td>CVE-2026-28387 Libssl3t64 3.5.5-1~deb13u1</td><td>416</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>40</td><td>Low</td><td>CVE-2026-28388 Libssl3t64 3.5.5-1~deb13u1</td><td>476</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>41</td><td>Low</td><td>CVE-2026-28389 Libssl3t64 3.5.5-1~deb13u1</td><td>476</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>42</td><td>Low</td><td>CVE-2026-31789 Libssl3t64 3.5.5-1~deb13u1</td><td>787</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>43</td><td>Medium</td><td>CVE-2026-27171 Zlib1g 1:1.3.dfsg+really1.3.1-1+b1</td><td>1284</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>44</td><td>Low</td><td>CVE-2026-3449 @Tootallnate/Once 1.1.2</td><td>705</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>45</td><td>Low</td><td>CVE-2026-3449 @Tootallnate/Once 2.0.0</td><td>705</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>46</td><td>High</td><td>NSWG-ECO-428 Base64url 0.0.6</td><td>0</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>47</td><td>Medium</td><td>GHSA-rvg8-pwq2-xj7q Base64url 0.0.6</td><td>0</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>48</td><td>High</td><td>CVE-2024-4068 Braces 2.3.2</td><td>1050</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>49</td><td>Low</td><td>CVE-2024-47764 Cookie 0.4.2</td><td>74</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+<tr><td>50</td><td>Critical</td><td>CVE-2023-46233 Crypto-Js 3.3.0</td><td>328</td><td>True</td><td>True</td><td>False</td><td></td></tr>
+    </tbody>
+  </table>
+</body>
+</html>

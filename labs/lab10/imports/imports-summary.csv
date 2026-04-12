@@ -1,0 +1,6 @@
+﻿"Tool","Status","ScanType","HttpCode","Report","ResponseFile","Note"
+"ZAP","failed","","","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab5\zap\zap-report-noauth.xml","","required report not found"
+"Semgrep","success","Semgrep JSON Report","201","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab5\semgrep\semgrep-results.json","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab10\imports\semgrep-Semgrep_JSON_Report.json",""
+"Trivy","success","Trivy Scan","201","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab4\trivy\trivy-vuln-detailed.json","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab10\imports\trivy-Trivy_Scan.json",""
+"Nuclei","skipped","","","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab5\nuclei\nuclei-results.json","","optional report not found"
+"Grype","success","Anchore Grype","201","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab4\syft\grype-vuln-results.json","C:\Users\Admin\Desktop\Code\DevSecOps-Intro\labs\lab10\imports\grype-Anchore_Grype.json",""
