@@ -1,0 +1,5 @@
+*
+!.gitignore
+!README.md
+!compose-check.txt
+!docker-compose-ps.txt

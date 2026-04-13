@@ -1,0 +1,26 @@
+# Metrics Snapshot — Lab 10
+
+- Date captured: `2026-04-13`
+- Product / engagement: `Juice Shop` / `Labs Security Testing`
+- Scope loaded into DefectDojo: `5` tests (`ZAP Scan`, `Semgrep JSON Report`, `Trivy Scan`, `Nuclei Scan`, `Anchore Grype`)
+- Active findings:
+  - Critical: `22`
+  - High: `195`
+  - Medium: `126`
+  - Low: `37`
+  - Informational: `20`
+- Verified vs. Mitigated notes: `194` findings are marked `Verified` and `0` are `Mitigated`, so this snapshot is a pre-remediation baseline rather than a post-fix state.
+- Open vs. Closed summary: `400` open, `0` closed.
+- Tool contribution:
+  - Trivy Scan: `194`
+  - Anchore Grype: `167`
+  - Semgrep JSON Report: `25`
+  - ZAP Scan: `12`
+  - Nuclei Scan: `2`
+- SLA outlook as of `2026-04-13`: `0` overdue findings; `22` critical findings are due within 14 days and currently expire on `2026-04-20`.
+- Top recurring non-zero CWE categories:
+  - `CWE-1333` — `32`
+  - `CWE-400` — `17`
+  - `CWE-22` — `17`
+  - `CWE-79` — `13`
+  - `CWE-407` — `13`

@@ -1,0 +1,124 @@
+{
+  "captured_date": "2026-04-13",
+  "product_id": 1,
+  "product_name": "Juice Shop",
+  "engagement_id": 1,
+  "engagement_name": "Labs Security Testing",
+  "tests": [
+    {
+      "id": 1,
+      "title": null,
+      "test_type__name": "ZAP Scan"
+    },
+    {
+      "id": 2,
+      "title": null,
+      "test_type__name": "Semgrep JSON Report"
+    },
+    {
+      "id": 3,
+      "title": null,
+      "test_type__name": "Trivy Scan"
+    },
+    {
+      "id": 4,
+      "title": null,
+      "test_type__name": "Nuclei Scan"
+    },
+    {
+      "id": 5,
+      "title": null,
+      "test_type__name": "Anchore Grype"
+    }
+  ],
+  "total_findings": 400,
+  "active_findings": 400,
+  "verified_findings": 194,
+  "mitigated_findings": 0,
+  "active_by_severity": {
+    "Critical": 22,
+    "High": 195,
+    "Medium": 126,
+    "Low": 37,
+    "Info": 20
+  },
+  "open_by_severity": {
+    "Critical": 22,
+    "High": 195,
+    "Medium": 126,
+    "Low": 37,
+    "Info": 20
+  },
+  "closed_by_severity": {
+    "Critical": 0,
+    "High": 0,
+    "Medium": 0,
+    "Low": 0,
+    "Info": 0
+  },
+  "findings_per_tool": {
+    "Trivy Scan": 194,
+    "Anchore Grype": 167,
+    "Semgrep JSON Report": 25,
+    "ZAP Scan": 12,
+    "Nuclei Scan": 2
+  },
+  "sla_overdue": 0,
+  "sla_due_within_14_days": 22,
+  "sla_due_within_14_days_by_severity": {
+    "Critical": 22,
+    "High": 0,
+    "Medium": 0,
+    "Low": 0,
+    "Info": 0
+  },
+  "next_due_dates": [
+    {
+      "severity": "Critical",
+      "sla_expiration_date": "2026-04-20",
+      "count": 22
+    },
+    {
+      "severity": "High",
+      "sla_expiration_date": "2026-05-13",
+      "count": 195
+    },
+    {
+      "severity": "Medium",
+      "sla_expiration_date": "2026-07-12",
+      "count": 126
+    },
+    {
+      "severity": "Low",
+      "sla_expiration_date": "2026-08-11",
+      "count": 37
+    }
+  ],
+  "top_cwe": [
+    {
+      "cwe": 1333,
+      "name": "Inefficient Regular Expression Complexity",
+      "count": 32
+    },
+    {
+      "cwe": 400,
+      "name": "Uncontrolled Resource Consumption",
+      "count": 17
+    },
+    {
+      "cwe": 22,
+      "name": "Path Traversal",
+      "count": 17
+    },
+    {
+      "cwe": 79,
+      "name": "Cross-site Scripting",
+      "count": 13
+    },
+    {
+      "cwe": 407,
+      "name": "Inefficient Algorithmic Complexity",
+      "count": 13
+    }
+  ]
+}
