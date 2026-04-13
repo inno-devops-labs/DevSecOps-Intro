@@ -52,7 +52,10 @@ SCAN_NUCLEI="${SCAN_NUCLEI:-}"
 
 if $have_jq; then
   echo "Discovering importer names from /test_types/ ..."
-  mapfile -t types < <(curl -sS -H "Authorization: Token $DD_TOKEN" "$DD_API/test_types/?limit=2000" | jq -r '.results[].name')
+  types=()
+  while IFS= read -r line; do
+    types+=("$line")
+  done < <(curl -sS -H "Authorization: Token $DD_TOKEN" "$DD_API/test_types/?limit=2000" | jq -r '.results[].name')
   choose_type() {
     local pat="$1"
     local fallback="$2"
@@ -63,9 +66,9 @@ if $have_jq; then
     if [[ -z "$val" ]]; then val="$fallback"; fi
     echo "$val"
   }
-  SCAN_ZAP="${SCAN_ZAP:-$(choose_type '^ZAP' 'ZAP Scan')}"
-  SCAN_SEMGREP="${SCAN_SEMGREP:-$(choose_type '^Semgrep' 'Semgrep JSON Report')}"
-  SCAN_TRIVY="${SCAN_TRIVY:-$(choose_type '^Trivy' 'Trivy Scan')}"
+  SCAN_ZAP="${SCAN_ZAP:-$(choose_type '^ZAP Scan$' 'ZAP Scan')}"
+  SCAN_SEMGREP="${SCAN_SEMGREP:-$(choose_type '^Semgrep JSON Report$' 'Semgrep JSON Report')}"
+  SCAN_TRIVY="${SCAN_TRIVY:-$(choose_type '^Trivy Scan$' 'Trivy Scan')}"
   SCAN_NUCLEI="${SCAN_NUCLEI:-$(choose_type '^Nuclei' 'Nuclei Scan')}"
   # Grype importer (commonly named "Anchore Grype")
   if [[ -z "${SCAN_GRYPE:-}" ]]; then
@@ -114,6 +117,70 @@ import_scan() {
     | tee "$out"
 }
 
+convert_zap_json_to_xml() {
+  local src="$1"
+  local dest="$2"
+  python3 - "$src" "$dest" <<'PY'
+import json
+import sys
+import xml.etree.ElementTree as ET
+
+src, dest = sys.argv[1], sys.argv[2]
+with open(src, encoding="utf-8") as handle:
+    data = json.load(handle)
+
+
+def build(parent, key, value):
+    if isinstance(value, list):
+        if key == "alerts":
+            alerts_node = ET.SubElement(parent, "alerts")
+            for item in value:
+                child = ET.SubElement(alerts_node, "alertitem")
+                for sub_key, sub_value in item.items():
+                    build(child, sub_key, sub_value)
+            return
+        if key == "instances":
+            instances_node = ET.SubElement(parent, "instances")
+            for item in value:
+                child = ET.SubElement(instances_node, "instance")
+                for sub_key, sub_value in item.items():
+                    build(child, sub_key, sub_value)
+            return
+        child_tag = key
+        if key.endswith("ies"):
+            child_tag = key[:-3] + "y"
+        elif key.endswith("s") and key not in {"alerts"}:
+            child_tag = key[:-1]
+        for item in value:
+            child = ET.SubElement(parent, child_tag)
+            if isinstance(item, dict):
+                for sub_key, sub_value in item.items():
+                    build(child, sub_key, sub_value)
+            elif isinstance(item, list):
+                build(child, child_tag, item)
+            elif item is not None:
+                child.text = str(item)
+        return
+
+    if key.startswith("@"):
+        parent.set(key[1:], "" if value is None else str(value))
+        return
+
+    child = ET.SubElement(parent, key)
+    if isinstance(value, dict):
+        for sub_key, sub_value in value.items():
+            build(child, sub_key, sub_value)
+    elif value is not None:
+        child.text = str(value)
+
+
+root = ET.Element("OWASPZAPReport")
+for key, value in data.items():
+    build(root, key, value)
+ET.ElementTree(root).write(dest, encoding="utf-8", xml_declaration=True)
+PY
+}
+
 # Candidate paths per tool
 zap_file="labs/lab5/zap/zap-report-noauth.json"
 semgrep_file="labs/lab5/semgrep/semgrep-results.json"
@@ -122,6 +189,13 @@ nuclei_file="labs/lab5/nuclei/nuclei-results.json"
 
 # Grype
 grype_file="labs/lab4/syft/grype-vuln-results.json"
+
+if [[ "$zap_file" == *.json ]]; then
+  zap_xml="$out_dir/zap-report-noauth.xml"
+  echo "Converting ZAP JSON report to XML: $zap_xml"
+  convert_zap_json_to_xml "$zap_file" "$zap_xml"
+  zap_file="$zap_xml"
+fi
 
 import_scan "$SCAN_ZAP"     "$zap_file"
 import_scan "$SCAN_SEMGREP" "$semgrep_file"
