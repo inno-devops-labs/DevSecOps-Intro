@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<OWASPZAPReport version="2.16.1" generated="Sun, 9 Mar 2025 19:30:00">
+<site name="http://localhost:3000" host="localhost" port="3000" ssl="false">
+<alerts>
+<alertitem>
+  <pluginid>10038</pluginid>
+  <alertRef>10038</alertRef>
+  <alert>Content Security Policy (CSP) Header Not Set</alert>
+  <name>Content Security Policy (CSP) Header Not Set</name>
+  <riskcode>2</riskcode>
+  <confidence>3</confidence>
+  <riskdesc>Medium (High)</riskdesc>
+  <desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000</uri><method>GET</method><param></param><attack></attack><evidence></evidence></instance>
+    <instance><uri>http://localhost:3000/rest/products/search</uri><method>GET</method><param></param><attack></attack><evidence></evidence></instance>
+  </instances>
+  <count>2</count>
+  <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP&lt;/p&gt;</reference>
+  <cweid>693</cweid>
+  <wascid>15</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10021</pluginid>
+  <alertRef>10021</alertRef>
+  <alert>X-Content-Type-Options Header Missing</alert>
+  <name>X-Content-Type-Options Header Missing</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000</uri><method>GET</method><param>x-content-type-options</param><attack></attack><evidence></evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Ensure that the application/web server sets the Content-Type header appropriately.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/&lt;/p&gt;</reference>
+  <cweid>693</cweid>
+  <wascid>15</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10035</pluginid>
+  <alertRef>10035</alertRef>
+  <alert>Strict-Transport-Security Header Not Set</alert>
+  <name>Strict-Transport-Security Header Not Set</name>
+  <riskcode>1</riskcode>
+  <confidence>3</confidence>
+  <riskdesc>Low (High)</riskdesc>
+  <desc>&lt;p&gt;HTTP Strict Transport Security (HSTS) is a web security policy mechanism.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000</uri><method>GET</method><param></param><attack></attack><evidence></evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Ensure that your web server is configured to enforce Strict-Transport-Security.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html&lt;/p&gt;</reference>
+  <cweid>319</cweid>
+  <wascid>15</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>40012</pluginid>
+  <alertRef>40012</alertRef>
+  <alert>Cross Site Scripting (Reflected)</alert>
+  <name>Cross Site Scripting (Reflected)</name>
+  <riskcode>3</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>High (Medium)</riskdesc>
+  <desc>&lt;p&gt;Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000/rest/products/search?q=%3Cscript%3Ealert(1)%3C/script%3E</uri><method>GET</method><param>q</param><attack>&lt;script&gt;alert(1)&lt;/script&gt;</attack><evidence>&lt;script&gt;alert(1)&lt;/script&gt;</evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Phase: Architecture and Design. Use a vetted library or framework.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html&lt;/p&gt;</reference>
+  <cweid>79</cweid>
+  <wascid>8</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>40018</pluginid>
+  <alertRef>40018</alertRef>
+  <alert>SQL Injection</alert>
+  <name>SQL Injection</name>
+  <riskcode>3</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>High (Medium)</riskdesc>
+  <desc>&lt;p&gt;SQL injection may be possible.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000/rest/products/search?q=test</uri><method>GET</method><param>q</param><attack>ZAP' OR '1'='1' --</attack><evidence></evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Do not trust client side input. Use parameterized queries.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html&lt;/p&gt;</reference>
+  <cweid>89</cweid>
+  <wascid>19</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10010</pluginid>
+  <alertRef>10010</alertRef>
+  <alert>Cookie No HttpOnly Flag</alert>
+  <name>Cookie No HttpOnly Flag</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;A cookie has been set without the HttpOnly flag.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000/rest/user/login</uri><method>POST</method><param>token</param><attack></attack><evidence>Set-Cookie: token</evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Ensure that the HttpOnly flag is set for all cookies.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://owasp.org/www-community/HttpOnly&lt;/p&gt;</reference>
+  <cweid>1004</cweid>
+  <wascid>13</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10011</pluginid>
+  <alertRef>10011</alertRef>
+  <alert>Cookie Without Secure Flag</alert>
+  <name>Cookie Without Secure Flag</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;A cookie has been set without the secure flag.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000/rest/user/login</uri><method>POST</method><param>token</param><attack></attack><evidence>Set-Cookie: token</evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Whenever a cookie contains sensitive information, it should always be passed using an encrypted channel.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://owasp.org/www-project-web-security-testing-guide/v41/&lt;/p&gt;</reference>
+  <cweid>614</cweid>
+  <wascid>13</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>90033</pluginid>
+  <alertRef>90033</alertRef>
+  <alert>Loosely Scoped Cookie</alert>
+  <name>Loosely Scoped Cookie</name>
+  <riskcode>0</riskcode>
+  <confidence>1</confidence>
+  <riskdesc>Informational (Low)</riskdesc>
+  <desc>&lt;p&gt;Cookies can be scoped by domain or path.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000</uri><method>GET</method><param></param><attack></attack><evidence></evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Always scope cookies to a FQDN.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference>&lt;p&gt;https://tools.ietf.org/html/rfc6265#section-4.1&lt;/p&gt;</reference>
+  <cweid>565</cweid>
+  <wascid>15</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10109</pluginid>
+  <alertRef>10109</alertRef>
+  <alert>Modern Web Application</alert>
+  <name>Modern Web Application</name>
+  <riskcode>0</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Informational (Medium)</riskdesc>
+  <desc>&lt;p&gt;The application appears to be a modern web application.&lt;/p&gt;</desc>
+  <instances>
+    <instance><uri>http://localhost:3000</uri><method>GET</method><param></param><attack></attack><evidence>&lt;script&gt;</evidence></instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;This is an informational alert.&lt;/p&gt;</solution>
+  <otherinfo></otherinfo>
+  <reference></reference>
+  <cweid>-1</cweid>
+  <wascid></wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+</alerts>
+</site>
+</OWASPZAPReport>
+

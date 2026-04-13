@@ -1,0 +1,289 @@
+{
+  "@version": "2.16.1",
+  "@generated": "Sun, 9 Mar 2025 19:30:00",
+  "site": [
+    {
+      "@name": "http://localhost:3000",
+      "@host": "localhost",
+      "@port": "3000",
+      "@ssl": "false",
+      "alerts": [
+        {
+          "pluginid": "10038",
+          "alertRef": "10038",
+          "alert": "Content Security Policy (CSP) Header Not Set",
+          "name": "Content Security Policy (CSP) Header Not Set",
+          "riskcode": "2",
+          "confidence": "3",
+          "riskdesc": "Medium (High)",
+          "desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": ""
+            },
+            {
+              "uri": "http://localhost:3000/rest/products/search",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "count": "2",
+          "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP</p>",
+          "cweid": "693",
+          "wascid": "15",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "10021",
+          "alertRef": "10021",
+          "alert": "X-Content-Type-Options Header Missing",
+          "name": "X-Content-Type-Options Header Missing",
+          "riskcode": "1",
+          "confidence": "2",
+          "riskdesc": "Low (Medium)",
+          "desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000",
+              "method": "GET",
+              "param": "x-content-type-options",
+              "attack": "",
+              "evidence": ""
+            },
+            {
+              "uri": "http://localhost:3000/api/Products",
+              "method": "GET",
+              "param": "x-content-type-options",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "count": "2",
+          "solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/</p>",
+          "cweid": "693",
+          "wascid": "15",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "10035",
+          "alertRef": "10035",
+          "alert": "Strict-Transport-Security Header Not Set",
+          "name": "Strict-Transport-Security Header Not Set",
+          "riskcode": "1",
+          "confidence": "3",
+          "riskdesc": "Low (High)",
+          "desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "count": "1",
+          "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p>",
+          "cweid": "319",
+          "wascid": "15",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "40012",
+          "alertRef": "40012",
+          "alert": "Cross Site Scripting (Reflected)",
+          "name": "Cross Site Scripting (Reflected)",
+          "riskcode": "3",
+          "confidence": "2",
+          "riskdesc": "High (Medium)",
+          "desc": "<p>Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/rest/products/search?q=%3Cscript%3Ealert(1)%3C/script%3E",
+              "method": "GET",
+              "param": "q",
+              "attack": "<script>alert(1)</script>",
+              "evidence": "<script>alert(1)</script>"
+            }
+          ],
+          "count": "1",
+          "solution": "<p>Phase: Architecture and Design. Use a vetted library or framework that does not allow this weakness to occur.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html</p>",
+          "cweid": "79",
+          "wascid": "8",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "40018",
+          "alertRef": "40018",
+          "alert": "SQL Injection",
+          "name": "SQL Injection",
+          "riskcode": "3",
+          "confidence": "2",
+          "riskdesc": "High (Medium)",
+          "desc": "<p>SQL injection may be possible.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/rest/products/search?q=test",
+              "method": "GET",
+              "param": "q",
+              "attack": "ZAP' OR '1'='1' --",
+              "evidence": ""
+            }
+          ],
+          "count": "1",
+          "solution": "<p>Do not trust client side input, even if there is client side validation in place. Use parameterized queries.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</p>",
+          "cweid": "89",
+          "wascid": "19",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "10010",
+          "alertRef": "10010",
+          "alert": "Cookie No HttpOnly Flag",
+          "name": "Cookie No HttpOnly Flag",
+          "riskcode": "1",
+          "confidence": "2",
+          "riskdesc": "Low (Medium)",
+          "desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/rest/user/login",
+              "method": "POST",
+              "param": "token",
+              "attack": "",
+              "evidence": "Set-Cookie: token"
+            }
+          ],
+          "count": "1",
+          "solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
+          "cweid": "1004",
+          "wascid": "13",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "10011",
+          "alertRef": "10011",
+          "alert": "Cookie Without Secure Flag",
+          "name": "Cookie Without Secure Flag",
+          "riskcode": "1",
+          "confidence": "2",
+          "riskdesc": "Low (Medium)",
+          "desc": "<p>A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000/rest/user/login",
+              "method": "POST",
+              "param": "token",
+              "attack": "",
+              "evidence": "Set-Cookie: token"
+            }
+          ],
+          "count": "1",
+          "solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
+          "cweid": "614",
+          "wascid": "13",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "90033",
+          "alertRef": "90033",
+          "alert": "Loosely Scoped Cookie",
+          "name": "Loosely Scoped Cookie",
+          "riskcode": "0",
+          "confidence": "1",
+          "riskdesc": "Informational (Low)",
+          "desc": "<p>Cookies can be scoped by domain or path. This check is only concerned with domain scope. The domain scope applied to a cookie determines which domains can access it.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "count": "1",
+          "solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
+          "otherinfo": "",
+          "reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p>",
+          "cweid": "565",
+          "wascid": "15",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "10109",
+          "alertRef": "10109",
+          "alert": "Modern Web Application",
+          "name": "Modern Web Application",
+          "riskcode": "0",
+          "confidence": "2",
+          "riskdesc": "Informational (Medium)",
+          "desc": "<p>The application appears to be a modern web application.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "<script>"
+            }
+          ],
+          "count": "1",
+          "solution": "<p>This is an informational alert and so no changes are required.</p>",
+          "otherinfo": "",
+          "reference": "",
+          "cweid": "-1",
+          "wascid": "",
+          "sourceid": "1"
+        },
+        {
+          "pluginid": "10015",
+          "alertRef": "10015",
+          "alert": "Re-examine Cache-control Directives",
+          "name": "Re-examine Cache-control Directives",
+          "riskcode": "0",
+          "confidence": "1",
+          "riskdesc": "Informational (Low)",
+          "desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content.</p>",
+          "instances": [
+            {
+              "uri": "http://localhost:3000",
+              "method": "GET",
+              "param": "cache-control",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "count": "1",
+          "solution": "<p>Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p>",
+          "cweid": "525",
+          "wascid": "13",
+          "sourceid": "1"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,224 @@
+[
+  {
+    "template": "http/misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+    "template-id": "http-missing-security-headers",
+    "template-path": "/root/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": ["pdteam"],
+      "tags": ["misconfig", "headers", "generic"],
+      "description": "The HTTP response is missing important security headers.",
+      "reference": ["https://owasp.org/www-project-secure-headers/"],
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "extracted-results": null,
+    "timestamp": "2025-03-09T19:30:00.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  },
+  {
+    "template": "http/technologies/waf-detect.yaml",
+    "template-url": "https://templates.nuclei.sh/public/waf-detect",
+    "template-id": "waf-detect",
+    "template-path": "/root/nuclei-templates/http/technologies/waf-detect.yaml",
+    "info": {
+      "name": "WAF Detection",
+      "author": ["pdteam"],
+      "tags": ["tech", "waf"],
+      "description": "A web application firewall was not detected.",
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "extracted-results": null,
+    "timestamp": "2025-03-09T19:30:05.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  },
+  {
+    "template": "http/vulnerabilities/generic/cors-misconfig.yaml",
+    "template-url": "https://templates.nuclei.sh/public/cors-misconfig",
+    "template-id": "cors-misconfig",
+    "template-path": "/root/nuclei-templates/http/vulnerabilities/generic/cors-misconfig.yaml",
+    "info": {
+      "name": "CORS Misconfiguration",
+      "author": ["pdteam"],
+      "tags": ["cors", "misconfig", "generic"],
+      "description": "A misconfigured CORS policy was detected that allows arbitrary origins.",
+      "reference": ["https://portswigger.net/web-security/cors"],
+      "severity": "medium",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cwe-id": ["CWE-942"],
+        "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "cvss-score": 6.1
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/rest/products/search",
+    "extracted-results": null,
+    "timestamp": "2025-03-09T19:30:10.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  },
+  {
+    "template": "http/vulnerabilities/generic/open-redirect.yaml",
+    "template-url": "https://templates.nuclei.sh/public/open-redirect",
+    "template-id": "open-redirect-detect",
+    "template-path": "/root/nuclei-templates/http/vulnerabilities/generic/open-redirect.yaml",
+    "info": {
+      "name": "Open Redirect Detection",
+      "author": ["pdteam"],
+      "tags": ["redirect", "generic"],
+      "description": "An open redirect vulnerability was detected.",
+      "reference": ["https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html"],
+      "severity": "medium",
+      "metadata": {
+        "max-request": 2
+      },
+      "classification": {
+        "cwe-id": ["CWE-601"],
+        "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "cvss-score": 6.1
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/redirect?to=https://evil.com",
+    "extracted-results": null,
+    "timestamp": "2025-03-09T19:30:15.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  },
+  {
+    "template": "http/exposures/configs/package-json.yaml",
+    "template-url": "https://templates.nuclei.sh/public/package-json",
+    "template-id": "package-json-exposure",
+    "template-path": "/root/nuclei-templates/http/exposures/configs/package-json.yaml",
+    "info": {
+      "name": "package.json Exposure",
+      "author": ["pdteam"],
+      "tags": ["exposure", "config"],
+      "description": "A package.json file was detected, potentially exposing dependency information.",
+      "severity": "low",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cwe-id": ["CWE-200"],
+        "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "cvss-score": 5.3
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/package.json",
+    "extracted-results": null,
+    "timestamp": "2025-03-09T19:30:20.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  },
+  {
+    "template": "http/exposures/configs/ftp-exposure.yaml",
+    "template-url": "https://templates.nuclei.sh/public/ftp-exposure",
+    "template-id": "ftp-credentials-exposure",
+    "template-path": "/root/nuclei-templates/http/exposures/configs/ftp-exposure.yaml",
+    "info": {
+      "name": "FTP Credentials Exposure",
+      "author": ["pdteam"],
+      "tags": ["exposure", "ftp"],
+      "description": "FTP server detected with accessible files.",
+      "severity": "high",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cwe-id": ["CWE-200"],
+        "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "cvss-score": 7.5
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/ftp",
+    "extracted-results": null,
+    "timestamp": "2025-03-09T19:30:25.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  },
+  {
+    "template": "http/misconfiguration/x-frame-options-missing.yaml",
+    "template-url": "https://templates.nuclei.sh/public/x-frame-options",
+    "template-id": "x-frame-options-missing",
+    "template-path": "/root/nuclei-templates/http/misconfiguration/x-frame-options-missing.yaml",
+    "info": {
+      "name": "X-Frame-Options Header Missing",
+      "author": ["pdteam"],
+      "tags": ["misconfig", "headers"],
+      "description": "The X-Frame-Options header is not set, making the application vulnerable to clickjacking.",
+      "reference": ["https://owasp.org/www-community/attacks/Clickjacking"],
+      "severity": "medium",
+      "metadata": {
+        "max-request": 1
+      },
+      "classification": {
+        "cwe-id": ["CWE-1021"],
+        "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "cvss-score": 4.3
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "extracted-results": null,
+    "timestamp": "2025-03-09T19:30:30.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  },
+  {
+    "template": "http/technologies/tech-detect.yaml",
+    "template-url": "https://templates.nuclei.sh/public/tech-detect",
+    "template-id": "tech-detect",
+    "template-path": "/root/nuclei-templates/http/technologies/tech-detect.yaml",
+    "info": {
+      "name": "Technology Detection - Express.js",
+      "author": ["pdteam"],
+      "tags": ["tech"],
+      "description": "Express.js web framework was detected.",
+      "severity": "info",
+      "metadata": {
+        "max-request": 1
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "extracted-results": ["Express"],
+    "timestamp": "2025-03-09T19:30:35.000000+00:00",
+    "matcher-status": true,
+    "matched-line": null,
+    "matched-word": null
+  }
+]
+

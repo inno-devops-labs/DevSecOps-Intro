@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>DefectDojo Executive Report</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; color: #333; }
+h1 { color: #1a237e; border-bottom: 3px solid #1a237e; padding-bottom: 10px; }
+h2 { color: #283593; margin-top: 30px; }
+table { border-collapse: collapse; margin: 15px 0; width: 100%; }
+th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+th { background: #e8eaf6; font-weight: bold; }
+.sev { padding: 3px 10px; border-radius: 4px; color: white; font-weight: bold; }
+.box { background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 15px 0; }
+.stat { display: inline-block; margin: 10px 20px; text-align: center; }
+.stat .num { font-size: 2em; font-weight: bold; }
+.stat .lbl { font-size: 0.9em; color: #666; }
+footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #999; }
+</style></head><body>
+<h1>DefectDojo Executive Security Report</h1>
+<p><strong>Product:</strong> Juice Shop | <strong>Engagement:</strong> Labs Security Testing | <strong>Date:</strong> April 13, 2026</p>
+<h2>Executive Summary</h2>
+<div class="box">
+<p>This report consolidates vulnerability findings from <strong>5 security scanning tools</strong> (ZAP, Semgrep, Trivy, Nuclei, Grype) imported into OWASP DefectDojo for the Juice Shop application.</p>
+<div>
+<div class="stat"><div class="num" style="color:#d32f2f">21</div><div class="lbl">Critical</div></div>
+<div class="stat"><div class="num" style="color:#f57c00">153</div><div class="lbl">High</div></div>
+<div class="stat"><div class="num" style="color:#fbc02d">77</div><div class="lbl">Medium</div></div>
+<div class="stat"><div class="num" style="color:#388e3c">26</div><div class="lbl">Low</div></div>
+<div class="stat"><div class="num" style="color:#1976d2">17</div><div class="lbl">Info</div></div>
+</div>
+<p><strong>Total active findings: 294</strong> | All Open (none closed/mitigated yet).</p>
+</div>
+<h2>Findings by Severity</h2>
+<table><tr><th>Severity</th><th>Count</th><th>Percentage</th></tr>
+<tr><td><span class="sev" style="background:#d32f2f">Critical</span></td><td>21</td><td>7.1%</td></tr>
+<tr><td><span class="sev" style="background:#f57c00">High</span></td><td>153</td><td>52.0%</td></tr>
+<tr><td><span class="sev" style="background:#fbc02d">Medium</span></td><td>77</td><td>26.2%</td></tr>
+<tr><td><span class="sev" style="background:#388e3c">Low</span></td><td>26</td><td>8.8%</td></tr>
+<tr><td><span class="sev" style="background:#1976d2">Info</span></td><td>17</td><td>5.8%</td></tr>
+<tr style="font-weight:bold"><td>Total</td><td>294</td><td>100%</td></tr></table>
+<h2>Findings by Tool</h2>
+<table><tr><th>Tool</th><th>Findings</th><th>Share</th></tr>
+<tr><td>ZAP</td><td>9</td><td>3.1%</td></tr>
+<tr><td>Semgrep</td><td>8</td><td>2.7%</td></tr>
+<tr><td>Trivy</td><td>147</td><td>50.0%</td></tr>
+<tr><td>Nuclei</td><td>8</td><td>2.7%</td></tr>
+<tr><td>Grype</td><td>122</td><td>41.5%</td></tr>
+</table>
+<h2>Top CWE Categories</h2>
+<table><tr><th>CWE ID</th><th>Count</th></tr>
+<tr><td>CWE-1333: ReDoS</td><td>29</td></tr>
+<tr><td>CWE-407: Algorithmic Complexity</td><td>13</td></tr>
+<tr><td>CWE-22: Path Traversal</td><td>12</td></tr>
+<tr><td>CWE-79: XSS</td><td>6</td></tr>
+<tr><td>CWE-674: Uncontrolled Recursion</td><td>6</td></tr>
+<tr><td>CWE-1321: Prototype Pollution</td><td>6</td></tr>
+<tr><td>CWE-20: Improper Input Validation</td><td>6</td></tr>
+<tr><td>CWE-400: Uncontrolled Resource Consumption</td><td>5</td></tr>
+<tr><td>CWE-94: Code Injection</td><td>4</td></tr>
+<tr><td>CWE-200: Information Exposure</td><td>4</td></tr>
+</table>
+<h2>SLA and Risk Outlook</h2>
+<div class="box"><ul>
+<li><strong>Critical findings (21):</strong> Require immediate attention within 7 days per standard SLA.</li>
+<li><strong>High findings (153):</strong> Should be triaged and remediated within 30 days.</li>
+<li><strong>No findings are currently closed or mitigated</strong> - initial import baseline.</li>
+<li><strong>Next review date:</strong> April 27, 2026 (14 days from capture).</li>
+</ul></div>
+<h2>Recommendations</h2><ol>
+<li><strong>Patch dependencies:</strong> Update vulnerable npm and OS packages (Trivy/Grype).</li>
+<li><strong>Fix injection flaws:</strong> Address SQL injection and XSS (ZAP/Semgrep).</li>
+<li><strong>Harden security headers:</strong> Implement CSP, HSTS, X-Frame-Options.</li>
+<li><strong>Remove hardcoded secrets:</strong> Rotate and externalize JWT secrets.</li>
+<li><strong>Establish deduplication:</strong> Review Trivy/Grype overlaps to reduce noise.</li>
+</ol>
+<footer><p>Generated from OWASP DefectDojo | Product: Juice Shop | Report date: April 13, 2026</p></footer>
+</body></html>

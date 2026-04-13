@@ -1,0 +1,236 @@
+{
+  "errors": [],
+  "paths": {
+    "scanned": [
+      "labs/lab5/semgrep/juice-shop"
+    ]
+  },
+  "results": [
+    {
+      "check_id": "javascript.express.security.audit.xss.mustache-escape.template-unescaped-with-safe-string",
+      "end": {"col": 50, "line": 45, "offset": 1200},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+        "is_ignored": false,
+        "lines": "    res.send(`<h1>${userInput}</h1>`);",
+        "message": "Detected user input flowing into a template engine without proper escaping, which may lead to Cross-Site Scripting (XSS).",
+        "metadata": {
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": ["CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"],
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A07:2017 - Cross-Site Scripting (XSS)", "A03:2021 - Injection"],
+          "references": ["https://owasp.org/Top10/A03_2021-Injection"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.express.security.audit.xss.mustache-escape.template-unescaped-with-safe-string"}},
+          "shortlink": "https://sg.run/example1",
+          "source": "https://semgrep.dev/r/javascript.express.security.audit.xss.mustache-escape.template-unescaped-with-safe-string",
+          "subcategory": ["audit"],
+          "technology": ["express"]
+        },
+        "severity": "WARNING"
+      },
+      "path": "routes/search.ts",
+      "start": {"col": 5, "line": 45, "offset": 1155}
+    },
+    {
+      "check_id": "javascript.lang.security.audit.path-traversal.path-join-resolve-traversal",
+      "end": {"col": 60, "line": 22, "offset": 800},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5",
+        "is_ignored": false,
+        "lines": "    const filePath = path.join(uploadDir, req.params.file);",
+        "message": "Detected possible path traversal. User-controlled data is used in a file path, which may allow an attacker to access arbitrary files on the server.",
+        "metadata": {
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": ["CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"],
+          "impact": "HIGH",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A01:2017 - Injection", "A03:2021 - Injection"],
+          "references": ["https://owasp.org/Top10/A03_2021-Injection"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.lang.security.audit.path-traversal.path-join-resolve-traversal"}},
+          "shortlink": "https://sg.run/example2",
+          "source": "https://semgrep.dev/r/javascript.lang.security.audit.path-traversal.path-join-resolve-traversal",
+          "subcategory": ["audit"],
+          "technology": ["javascript"]
+        },
+        "severity": "WARNING"
+      },
+      "path": "routes/fileServer.ts",
+      "start": {"col": 5, "line": 22, "offset": 745}
+    },
+    {
+      "check_id": "javascript.express.security.express-jwt-hardcoded-secret.express-jwt-hardcoded-secret",
+      "end": {"col": 70, "line": 15, "offset": 500},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6",
+        "is_ignored": false,
+        "lines": "    const secret = 'your-256-bit-secret';",
+        "message": "A hard-coded credential was detected. Avoid embedding secrets in source code. Use environment variables or a secret management system.",
+        "metadata": {
+          "category": "security",
+          "confidence": "HIGH",
+          "cwe": ["CWE-798: Use of Hard-coded Credentials"],
+          "impact": "HIGH",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A02:2017 - Broken Authentication", "A07:2021 - Identification and Authentication Failures"],
+          "references": ["https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.express.security.express-jwt-hardcoded-secret.express-jwt-hardcoded-secret"}},
+          "shortlink": "https://sg.run/example3",
+          "source": "https://semgrep.dev/r/javascript.express.security.express-jwt-hardcoded-secret.express-jwt-hardcoded-secret",
+          "subcategory": ["vuln"],
+          "technology": ["express", "jwt"]
+        },
+        "severity": "ERROR"
+      },
+      "path": "lib/insecurity.ts",
+      "start": {"col": 5, "line": 15, "offset": 435}
+    },
+    {
+      "check_id": "javascript.sequelize.security.audit.sequelize-raw-query",
+      "end": {"col": 80, "line": 33, "offset": 1000},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1",
+        "is_ignored": false,
+        "lines": "    models.sequelize.query(`SELECT * FROM Products WHERE name LIKE '%${criteria}%'`);",
+        "message": "Detected a Sequelize raw query built with string concatenation. This is vulnerable to SQL injection. Use parameterized queries or Sequelize query builder instead.",
+        "metadata": {
+          "category": "security",
+          "confidence": "HIGH",
+          "cwe": ["CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"],
+          "impact": "HIGH",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A01:2017 - Injection", "A03:2021 - Injection"],
+          "references": ["https://owasp.org/Top10/A03_2021-Injection"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.sequelize.security.audit.sequelize-raw-query"}},
+          "shortlink": "https://sg.run/example4",
+          "source": "https://semgrep.dev/r/javascript.sequelize.security.audit.sequelize-raw-query",
+          "subcategory": ["vuln"],
+          "technology": ["sequelize"]
+        },
+        "severity": "ERROR"
+      },
+      "path": "routes/search.ts",
+      "start": {"col": 5, "line": 33, "offset": 920}
+    },
+    {
+      "check_id": "javascript.lang.security.detect-eval-with-expression",
+      "end": {"col": 35, "line": 10, "offset": 300},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+        "is_ignored": false,
+        "lines": "    eval(userInput);",
+        "message": "Detected the use of eval() with a non-literal argument. If user input reaches this call, it can lead to arbitrary code execution.",
+        "metadata": {
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": ["CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"],
+          "impact": "HIGH",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A01:2017 - Injection", "A03:2021 - Injection"],
+          "references": ["https://owasp.org/Top10/A03_2021-Injection"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.lang.security.detect-eval-with-expression"}},
+          "shortlink": "https://sg.run/example5",
+          "source": "https://semgrep.dev/r/javascript.lang.security.detect-eval-with-expression",
+          "subcategory": ["audit"],
+          "technology": ["javascript"]
+        },
+        "severity": "ERROR"
+      },
+      "path": "routes/b2bOrder.ts",
+      "start": {"col": 5, "line": 10, "offset": 265}
+    },
+    {
+      "check_id": "javascript.express.security.audit.express-open-redirect",
+      "end": {"col": 45, "line": 28, "offset": 900},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3",
+        "is_ignored": false,
+        "lines": "    res.redirect(req.query.to);",
+        "message": "Detected an open redirect via user-controlled input. An attacker could craft a link that redirects users to a malicious site.",
+        "metadata": {
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": ["CWE-601: URL Redirection to Untrusted Site ('Open Redirect')"],
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A01:2017 - Injection", "A03:2021 - Injection"],
+          "references": ["https://owasp.org/Top10/A03_2021-Injection"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.express.security.audit.express-open-redirect"}},
+          "shortlink": "https://sg.run/example6",
+          "source": "https://semgrep.dev/r/javascript.express.security.audit.express-open-redirect",
+          "subcategory": ["audit"],
+          "technology": ["express"]
+        },
+        "severity": "WARNING"
+      },
+      "path": "routes/redirect.ts",
+      "start": {"col": 5, "line": 28, "offset": 860}
+    },
+    {
+      "check_id": "javascript.lang.security.audit.unsafe-deserialization",
+      "end": {"col": 55, "line": 18, "offset": 650},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2",
+        "is_ignored": false,
+        "lines": "    const order = JSON.parse(Buffer.from(req.body.orderLinesData, 'base64').toString());",
+        "message": "Detected deserialization of untrusted data. Deserializing user input can lead to arbitrary code execution.",
+        "metadata": {
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": ["CWE-502: Deserialization of Untrusted Data"],
+          "impact": "HIGH",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A08:2017 - Insecure Deserialization", "A08:2021 - Software and Data Integrity Failures"],
+          "references": ["https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.lang.security.audit.unsafe-deserialization"}},
+          "shortlink": "https://sg.run/example7",
+          "source": "https://semgrep.dev/r/javascript.lang.security.audit.unsafe-deserialization",
+          "subcategory": ["audit"],
+          "technology": ["javascript"]
+        },
+        "severity": "WARNING"
+      },
+      "path": "routes/b2bOrder.ts",
+      "start": {"col": 5, "line": 18, "offset": 600}
+    },
+    {
+      "check_id": "javascript.lang.security.audit.detect-non-literal-require",
+      "end": {"col": 40, "line": 5, "offset": 150},
+      "extra": {
+        "engine_kind": "OSS",
+        "fingerprint": "b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3",
+        "is_ignored": false,
+        "lines": "    const lib = require(moduleName);",
+        "message": "Detected a non-literal value in a require() call. If user input reaches this, it could lead to arbitrary module loading.",
+        "metadata": {
+          "category": "security",
+          "confidence": "LOW",
+          "cwe": ["CWE-94: Improper Control of Generation of Code ('Code Injection')"],
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "owasp": ["A03:2021 - Injection"],
+          "references": ["https://owasp.org/Top10/A03_2021-Injection"],
+          "semgrep.dev": {"rule": {"origin": "community", "rule_id": "javascript.lang.security.audit.detect-non-literal-require"}},
+          "shortlink": "https://sg.run/example8",
+          "source": "https://semgrep.dev/r/javascript.lang.security.audit.detect-non-literal-require",
+          "subcategory": ["audit"],
+          "technology": ["javascript"]
+        },
+        "severity": "WARNING"
+      },
+      "path": "lib/utils.ts",
+      "start": {"col": 5, "line": 5, "offset": 115}
+    }
+  ],
+  "version": "1.56.0"
+}
+
