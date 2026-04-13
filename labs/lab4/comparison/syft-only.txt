@@ -1,0 +1,13 @@
+baz@UNKNOWN
+browser_field@UNKNOWN
+false_main@UNKNOWN
+gcc-12-base@12.2.0-14+deb12u1
+hashids-esm@UNKNOWN
+invalid_main@UNKNOWN
+libc6@2.36-9+deb12u10
+libgcc-s1@12.2.0-14+deb12u1
+libgomp1@12.2.0-14+deb12u1
+libssl3@3.0.17-1~deb12u2
+libstdc++6@12.2.0-14+deb12u1
+node@22.18.0
+tzdata@2025b-0+deb12u1

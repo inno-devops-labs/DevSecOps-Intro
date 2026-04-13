@@ -1,0 +1,5 @@
+=== DAST Analysis Report ===
+ZAP findings: 0
+Nuclei findings:        3
+Nikto findings: 14
+SQLmap: Check output directory for results

@@ -1,0 +1,79 @@
+=== SBOM Component Analysis ===
+
+Syft Package Counts:
+      1 binary
+     10 deb
+   1128 npm
+
+Trivy Package Counts:
+     10 bkimminich/juice-shop:v19.0.0 (debian 12.11) - unknown
+   1125 Node.js - unknown
+
+=== License Analysis ===
+
+Syft Licenses:
+      1 0BSD
+      1 ad-hoc
+      1 Apache2
+     15 Apache-2.0
+      5 Artistic
+      5 BlueOak-1.0.0
+      1 BSD
+     12 BSD-2-Clause
+      1 (BSD-2-Clause OR MIT OR Apache-2.0)
+     14 BSD-3-Clause
+      4 GFDL-1.2
+      5 GPL
+      1 GPL-1
+      1 GPL-1+
+      6 GPL-2
+      1 GPL-2.0
+      4 GPL-3
+    143 ISC
+      4 LGPL
+      1 LGPL-2.1
+     19 LGPL-3.0
+    888 MIT
+      2 (MIT OR Apache-2.0)
+      1 (MIT OR WTFPL)
+      2 MIT/X11
+      2 MPL-2.0
+      1 public-domain
+      2 Unlicense
+      1 WTFPL
+      1 WTFPL OR ISC
+      1 (WTFPL OR MIT)
+
+Trivy Licenses (OS Packages):
+      1 ad-hoc
+      1 Apache-2.0
+      2 Artistic-2.0
+      1 GFDL-1.2-only
+      1 GPL-1.0-only
+      1 GPL-1.0-or-later
+      3 GPL-2.0-only
+      2 GPL-2.0-or-later
+      1 GPL-3.0-only
+      1 LGPL-2.0-or-later
+      1 LGPL-2.1-only
+      1 public-domain
+
+Trivy Licenses (Node.js):
+      1 0BSD
+     12 Apache-2.0
+      5 BlueOak-1.0.0
+     12 BSD-2-Clause
+      1 (BSD-2-Clause OR MIT OR Apache-2.0)
+     14 BSD-3-Clause
+      1 GPL-2.0-only
+    143 ISC
+     19 LGPL-3.0-only
+    878 MIT
+      2 (MIT OR Apache-2.0)
+      1 (MIT OR WTFPL)
+      2 MIT/X11
+      2 MPL-2.0
+      2 Unlicense
+      1 WTFPL
+      1 WTFPL OR ISC
+      1 (WTFPL OR MIT)

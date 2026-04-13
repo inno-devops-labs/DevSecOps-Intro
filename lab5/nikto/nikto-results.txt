@@ -1,0 +1,15 @@
+Nikto v2.1.5/2.1.5
+Target Host: host.docker.internal
+Target Port: 3000
+GET /: Server leaks inodes via ETags, header found with file /, fields: 0xW/124fa 0x199ceb49c18 
+GET /: Uncommon header 'x-frame-options' found, with contents: SAMEORIGIN
+GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff
+GET /: Uncommon header 'x-recruiting' found, with contents: /#/jobs
+GET /: Uncommon header 'access-control-allow-origin' found, with contents: *
+GET /: Uncommon header 'feature-policy' found, with contents: payment 'self'
+GET //ftp/: File/dir '/ftp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
+GET /robots.txt: "robots.txt" contains 1 entry which should be manually viewed.
+OPTIONS *: Uncommon header 'access-control-allow-methods' found, with contents: GET,HEAD,PUT,PATCH,POST,DELETE
+-3092: GET /css: /css: This might be interesting...
+-3092: GET /ftp/: /ftp/: This might be interesting...
+-3092: GET /public/: /public/: This might be interesting...
