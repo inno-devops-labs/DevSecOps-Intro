@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "=== DAST Multi-Tool Summary ==="
+echo ""
+echo "ZAP High findings:"
+grep -c 'class="risk-3"' labs/lab5/zap/report-auth.html 2>/dev/null || echo "0"
+echo "ZAP Medium findings:"
+grep -c 'class="risk-2"' labs/lab5/zap/report-auth.html 2>/dev/null || echo "0"
+echo ""
+echo "Nuclei findings:"
+wc -l < labs/lab5/nuclei/nuclei-results.json 2>/dev/null || echo "0"
+echo ""
+echo "Nikto findings:"
+grep -c '+ ' labs/lab5/nikto/nikto-results.txt 2>/dev/null || echo "0"
+echo ""
+echo "SQLmap injection points:"
+find labs/lab5/sqlmap -name "results-*.csv" -exec tail -n +2 {} \; 2>/dev/null | grep -v '^$' | wc -l

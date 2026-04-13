@@ -1,0 +1,12 @@
+=== SAST Analysis Report ===
+Total findings:
+25
+By severity:
+{
+  "severity": "ERROR",
+  "count": 7
+}
+{
+  "severity": "WARNING",
+  "count": 18
+}

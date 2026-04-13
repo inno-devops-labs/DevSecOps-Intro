@@ -1,0 +1,12 @@
+=== SAST/DAST Correlation Report ===
+
+SAST (Semgrep): 25 code-level findings
+DAST (ZAP auth): 0 alerts
+DAST (Nuclei): 0 template matches
+DAST (Nikto): 154 server issues
+DAST (SQLmap): 1 SQL injection vulnerabilities
+
+Key Insights:
+SAST finds: hardcoded secrets, SQL injection patterns, insecure crypto (pre-deployment)
+DAST finds: missing headers, auth flaws, server misconfigs (runtime)
+Recommendation: use BOTH for full coverage

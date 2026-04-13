@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "=== ZAP Authenticated vs Unauthenticated ==="
+echo ""
+echo "Unauthenticated alerts:"
+jq '.site[0].alerts | length' labs/lab5/zap/zap-report-noauth.json 2>/dev/null || echo "file not found"
+echo ""
+echo "Authenticated High severity:"
+grep -c 'class="risk-3"' labs/lab5/zap/report-auth.html 2>/dev/null || echo "0"
+echo "Authenticated Medium severity:"
+grep -c 'class="risk-2"' labs/lab5/zap/report-auth.html 2>/dev/null || echo "0"
+echo "Authenticated Low severity:"
+grep -c 'class="risk-1"' labs/lab5/zap/report-auth.html 2>/dev/null || echo "0"
