@@ -1,0 +1,76 @@
+ID,Title,Severity,Tool,Active,Verified,CWE,Date
+1,Robots.txt File,Info,Nuclei Scan,True,False,0,2026-04-13
+2,Missing Content-Security-Policy,Info,Nuclei Scan,True,False,0,2026-04-13
+3,OWASP Juice Shop Detected,Info,Nuclei Scan,True,False,0,2026-04-13
+4,Backup Files Accessible,Medium,Nuclei Scan,True,False,0,2026-04-13
+5,CORS Misconfiguration,Medium,Nuclei Scan,True,False,0,2026-04-13
+6,HTTP Missing Security Headers,Info,Nuclei Scan,True,False,0,2026-04-13
+7,Exposed FTP Directory,Medium,Nuclei Scan,True,False,0,2026-04-13
+8,Weak JWT Implementation,High,Nuclei Scan,True,False,0,2026-04-13
+9,javascript.sequelize.security.audit.sequelize-injection-express.express-sequeliz,High,Semgrep JSON Report,True,False,89,2026-04-13
+10,javascript.sequelize.security.audit.sequelize-injection-express.express-sequeliz,High,Semgrep JSON Report,True,False,89,2026-04-13
+11,javascript.sequelize.security.audit.sequelize-injection-express.express-sequeliz,High,Semgrep JSON Report,True,False,89,2026-04-13
+12,javascript.sequelize.security.audit.sequelize-injection-express.express-sequeliz,High,Semgrep JSON Report,True,False,89,2026-04-13
+13,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,Semgrep JSON Report,True,False,79,2026-04-13
+14,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,Semgrep JSON Report,True,False,79,2026-04-13
+15,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,Semgrep JSON Report,True,False,79,2026-04-13
+16,javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret,Medium,Semgrep JSON Report,True,False,798,2026-04-13
+17,javascript.express.security.injection.raw-html-format.raw-html-format,Medium,Semgrep JSON Report,True,False,79,2026-04-13
+18,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,Semgrep JSON Report,True,False,73,2026-04-13
+19,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,Semgrep JSON Report,True,False,73,2026-04-13
+20,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,Semgrep JSON Report,True,False,73,2026-04-13
+21,javascript.sequelize.security.audit.sequelize-injection-express.express-sequeliz,High,Semgrep JSON Report,True,False,89,2026-04-13
+22,javascript.express.security.audit.express-res-sendfile.express-res-sendfile,Medium,Semgrep JSON Report,True,False,73,2026-04-13
+23,javascript.express.security.audit.possible-user-input-redirect.unknown-value-in-,Medium,Semgrep JSON Report,True,False,601,2026-04-13
+24,javascript.express.security.audit.express-open-redirect.express-open-redirect,Medium,Semgrep JSON Report,True,False,601,2026-04-13
+25,javascript.sequelize.security.audit.sequelize-injection-express.express-sequeliz,High,Semgrep JSON Report,True,False,89,2026-04-13
+26,javascript.lang.security.audit.code-string-concat.code-string-concat,High,Semgrep JSON Report,True,False,95,2026-04-13
+27,javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-,Medium,Semgrep JSON Report,True,False,79,2026-04-13
+28,javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-,Medium,Semgrep JSON Report,True,False,79,2026-04-13
+29,javascript.express.security.audit.express-check-directory-listing.express-check-,Medium,Semgrep JSON Report,True,False,548,2026-04-13
+30,javascript.express.security.audit.express-check-directory-listing.express-check-,Medium,Semgrep JSON Report,True,False,548,2026-04-13
+31,javascript.express.security.audit.express-check-directory-listing.express-check-,Medium,Semgrep JSON Report,True,False,548,2026-04-13
+32,javascript.express.security.audit.express-check-directory-listing.express-check-,Medium,Semgrep JSON Report,True,False,548,2026-04-13
+33,generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var,Medium,Semgrep JSON Report,True,False,79,2026-04-13
+34,Robots.txt File,Info,Nuclei Scan,True,False,0,2026-04-13
+35,Missing Content-Security-Policy,Info,Nuclei Scan,True,False,0,2026-04-13
+36,OWASP Juice Shop Detected,Info,Nuclei Scan,True,False,0,2026-04-13
+37,Backup Files Accessible,Medium,Nuclei Scan,True,False,0,2026-04-13
+38,CORS Misconfiguration,Medium,Nuclei Scan,True,False,0,2026-04-13
+39,HTTP Missing Security Headers,Info,Nuclei Scan,True,False,0,2026-04-13
+40,Exposed FTP Directory,Medium,Nuclei Scan,True,False,0,2026-04-13
+41,Weak JWT Implementation,High,Nuclei Scan,True,False,0,2026-04-13
+42,Content Security Policy (CSP) Header Not Set,Medium,ZAP Scan,True,False,693,2026-04-13
+43,Cross-Domain Misconfiguration,Medium,ZAP Scan,True,False,264,2026-04-13
+44,Cross-Domain JavaScript Source File Inclusion,Low,ZAP Scan,True,False,829,2026-04-13
+45,Cross-Origin-Embedder-Policy Header Missing or Invalid,Low,ZAP Scan,True,False,693,2026-04-13
+46,Cross-Origin-Opener-Policy Header Missing or Invalid,Low,ZAP Scan,True,False,693,2026-04-13
+47,Dangerous JS Functions,Low,ZAP Scan,True,False,749,2026-04-13
+48,Deprecated Feature Policy Header Set,Low,ZAP Scan,True,False,16,2026-04-13
+49,Timestamp Disclosure - Unix,Low,ZAP Scan,True,False,497,2026-04-13
+50,Modern Web Application,Info,ZAP Scan,True,False,0,2026-04-13
+51,Storable and Cacheable Content,Info,ZAP Scan,True,False,524,2026-04-13
+52,Storable but Non-Cacheable Content,Info,ZAP Scan,True,False,524,2026-04-13
+53,Content Security Policy (CSP) Header Not Set,Medium,ZAP Scan,True,False,693,2026-04-13
+54,Cross-Domain Misconfiguration,Medium,ZAP Scan,True,False,264,2026-04-13
+55,Cross-Domain JavaScript Source File Inclusion,Low,ZAP Scan,True,False,829,2026-04-13
+56,Cross-Origin-Embedder-Policy Header Missing or Invalid,Low,ZAP Scan,True,False,693,2026-04-13
+57,Cross-Origin-Opener-Policy Header Missing or Invalid,Low,ZAP Scan,True,False,693,2026-04-13
+58,Dangerous JS Functions,Low,ZAP Scan,True,False,749,2026-04-13
+59,Deprecated Feature Policy Header Set,Low,ZAP Scan,True,False,16,2026-04-13
+60,Timestamp Disclosure - Unix,Low,ZAP Scan,True,False,497,2026-04-13
+61,Modern Web Application,Info,ZAP Scan,True,False,0,2026-04-13
+62,Storable and Cacheable Content,Info,ZAP Scan,True,False,524,2026-04-13
+63,Storable but Non-Cacheable Content,Info,ZAP Scan,True,False,524,2026-04-13
+64,Content Security Policy (CSP) Header Not Set,Medium,ZAP Scan,True,False,693,2026-04-13
+65,Cross-Domain Misconfiguration,Medium,ZAP Scan,True,False,264,2026-04-13
+66,Missing Anti-Clickjacking Header,Medium,ZAP Scan,True,False,1021,2026-04-13
+67,Session ID in URL Rewrite,Medium,ZAP Scan,True,False,598,2026-04-13
+68,Cross-Domain JavaScript Source File Inclusion,Low,ZAP Scan,True,False,829,2026-04-13
+69,Private IP Disclosure,Low,ZAP Scan,True,False,497,2026-04-13
+70,Timestamp Disclosure - Unix,Low,ZAP Scan,True,False,497,2026-04-13
+71,X-Content-Type-Options Header Missing,Low,ZAP Scan,True,False,693,2026-04-13
+72,Authentication Request Identified,Info,ZAP Scan,True,False,0,2026-04-13
+73,Modern Web Application,Info,ZAP Scan,True,False,0,2026-04-13
+74,Session Management Response Identified,Info,ZAP Scan,True,False,0,2026-04-13
+
