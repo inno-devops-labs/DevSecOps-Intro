@@ -3,7 +3,7 @@ env:
   - excludePaths: []
     name: baseline
     urls:
-    - http://localhost:3000
+    - http://host.docker.internal:3006
   parameters:
     failOnError: true
     progressToStdout: false
@@ -14,7 +14,7 @@ jobs:
   type: passiveScan-config
 - parameters:
     maxDuration: 1
-    url: http://localhost:3000
+    url: http://host.docker.internal:3006
   type: spider
 - parameters:
     maxDuration: 0
@@ -30,6 +30,13 @@ jobs:
     reportFile: report-noauth.html
     reportTitle: ZAP Scanning Report
     template: traditional-html
+  type: report
+- parameters:
+    reportDescription: ''
+    reportDir: /zap/wrk/
+    reportFile: zap-report-noauth.xml
+    reportTitle: ZAP Scanning Report
+    template: traditional-xml
   type: report
 - parameters:
     reportDescription: ''
