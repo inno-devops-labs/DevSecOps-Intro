@@ -1,0 +1,8 @@
+=== Startup Time Comparison ===
+
+runc (3 runs):
+  run 1: 0.207s
+  run 2: 0.180s
+  run 3: 0.174s
+
+Kata startup: Not measurable on macOS (no KVM). Expected: 3-5s per docs.

@@ -1,0 +1,24 @@
+=== /proc Entries Count ===
+runc container: 58
+
+runc /proc entries (first 20):
+1
+7
+8
+buddyinfo
+bus
+cgroups
+cmdline
+config.gz
+consoles
+cpuinfo
+crypto
+device-tree
+devices
+diskstats
+docker
+driver
+execdomains
+filesystems
+fs
+interrupts

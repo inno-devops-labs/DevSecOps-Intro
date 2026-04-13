@@ -1,0 +1,392 @@
+time="2026-04-10T12:13:31.581910546Z" level=info msg="starting containerd" revision= version=2.2.1
+time="2026-04-10T12:13:31.587704379Z" level=info msg="loading plugin" id=io.containerd.content.v1.content type=io.containerd.content.v1
+time="2026-04-10T12:13:31.587753629Z" level=info msg="loading plugin" id=io.containerd.image-verifier.v1.bindir type=io.containerd.image-verifier.v1
+time="2026-04-10T12:13:31.587784129Z" level=info msg="loading plugin" id=io.containerd.internal.v1.opt type=io.containerd.internal.v1
+time="2026-04-10T12:13:31.587842796Z" level=info msg="loading plugin" id=io.containerd.warning.v1.deprecations type=io.containerd.warning.v1
+time="2026-04-10T12:13:31.587862796Z" level=info msg="loading plugin" id=io.containerd.mount-handler.v1.erofs type=io.containerd.mount-handler.v1
+time="2026-04-10T12:13:31.587874296Z" level=info msg="loading plugin" id=io.containerd.snapshotter.v1.blockfile type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.587910337Z" level=info msg="skip loading plugin" error="no scratch file generator: skip plugin" id=io.containerd.snapshotter.v1.blockfile type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.587930962Z" level=info msg="loading plugin" id=io.containerd.snapshotter.v1.btrfs type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588050046Z" level=info msg="skip loading plugin" error="path /var/lib/containerd/io.containerd.snapshotter.v1.btrfs (overlay) must be a btrfs filesystem to be used with the btrfs snapshotter: skip plugin" id=io.containerd.snapshotter.v1.btrfs type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588062879Z" level=info msg="loading plugin" id=io.containerd.snapshotter.v1.devmapper type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588080546Z" level=info msg="skip loading plugin" error="devmapper not configured: skip plugin" id=io.containerd.snapshotter.v1.devmapper type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588087337Z" level=info msg="loading plugin" id=io.containerd.snapshotter.v1.erofs type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588158879Z" level=info msg="loading plugin" id=io.containerd.snapshotter.v1.native type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588181212Z" level=info msg="loading plugin" id=io.containerd.snapshotter.v1.overlayfs type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588274462Z" level=info msg="loading plugin" id=io.containerd.snapshotter.v1.zfs type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588297546Z" level=info msg="skip loading plugin" error="lstat /var/lib/containerd/io.containerd.snapshotter.v1.zfs: no such file or directory: skip plugin" id=io.containerd.snapshotter.v1.zfs type=io.containerd.snapshotter.v1
+time="2026-04-10T12:13:31.588301212Z" level=info msg="loading plugin" id=io.containerd.event.v1.exchange type=io.containerd.event.v1
+time="2026-04-10T12:13:31.588324587Z" level=info msg="loading plugin" id=io.containerd.monitor.task.v1.cgroups type=io.containerd.monitor.task.v1
+time="2026-04-10T12:13:31.588429921Z" level=info msg="loading plugin" id=io.containerd.metadata.v1.bolt type=io.containerd.metadata.v1
+time="2026-04-10T12:13:31.588450171Z" level=info msg="metadata content store policy set" policy=shared
+time="2026-04-10T12:13:31.588540546Z" level=info msg="loading plugin" id=io.containerd.gc.v1.scheduler type=io.containerd.gc.v1
+time="2026-04-10T12:13:31.588579796Z" level=info msg="loading plugin" id=io.containerd.nri.v1.nri type=io.containerd.nri.v1
+time="2026-04-10T12:13:31.588646379Z" level=info msg="built-in NRI default validator is disabled"
+time="2026-04-10T12:13:31.588656296Z" level=info msg="runtime interface created"
+time="2026-04-10T12:13:31.588658837Z" level=info msg="created NRI interface"
+time="2026-04-10T12:13:31.588669379Z" level=info msg="loading plugin" id=io.containerd.differ.v1.erofs type=io.containerd.differ.v1
+time="2026-04-10T12:13:31.588750587Z" level=info msg="skip loading plugin" error="failed to check mkfs.erofs availability: failed to run mkfs.erofs --help: exec: \"mkfs.erofs\": executable file not found in $PATH: skip plugin" id=io.containerd.differ.v1.erofs type=io.containerd.differ.v1
+time="2026-04-10T12:13:31.588759962Z" level=info msg="loading plugin" id=io.containerd.differ.v1.walking type=io.containerd.differ.v1
+time="2026-04-10T12:13:31.588765421Z" level=info msg="loading plugin" id=io.containerd.lease.v1.manager type=io.containerd.lease.v1
+time="2026-04-10T12:13:31.588770087Z" level=info msg="loading plugin" id=io.containerd.mount-manager.v1.bolt type=io.containerd.mount-manager.v1
+time="2026-04-10T12:13:31.588814962Z" level=info msg="loading plugin" id=io.containerd.service.v1.containers-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588824462Z" level=info msg="loading plugin" id=io.containerd.service.v1.content-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588828379Z" level=info msg="loading plugin" id=io.containerd.service.v1.diff-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588838671Z" level=info msg="loading plugin" id=io.containerd.service.v1.images-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588847087Z" level=info msg="loading plugin" id=io.containerd.service.v1.introspection-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588850796Z" level=info msg="loading plugin" id=io.containerd.service.v1.namespaces-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588854254Z" level=info msg="loading plugin" id=io.containerd.service.v1.snapshots-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588857462Z" level=info msg="loading plugin" id=io.containerd.shim.v1.manager type=io.containerd.shim.v1
+time="2026-04-10T12:13:31.588867712Z" level=info msg="loading plugin" id=io.containerd.runtime.v2.task type=io.containerd.runtime.v2
+time="2026-04-10T12:13:31.588896212Z" level=info msg="loading plugin" id=io.containerd.service.v1.tasks-service type=io.containerd.service.v1
+time="2026-04-10T12:13:31.588920462Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.containers type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588925879Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.content type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588944254Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.diff type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588953212Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.events type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588957546Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.images type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588961796Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.introspection type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588965962Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.leases type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588972379Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.mounts type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588976296Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.namespaces type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.588986962Z" level=info msg="loading plugin" id=io.containerd.sandbox.store.v1.local type=io.containerd.sandbox.store.v1
+time="2026-04-10T12:13:31.588995379Z" level=info msg="loading plugin" id=io.containerd.transfer.v1.local type=io.containerd.transfer.v1
+time="2026-04-10T12:13:31.589017129Z" level=info msg="loading plugin" id=io.containerd.cri.v1.images type=io.containerd.cri.v1
+time="2026-04-10T12:13:31.589084962Z" level=info msg="Get image filesystem path \"/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs\" for snapshotter \"overlayfs\""
+time="2026-04-10T12:13:31.589095046Z" level=info msg="Start snapshots syncer"
+time="2026-04-10T12:13:31.589114879Z" level=info msg="loading plugin" id=io.containerd.cri.v1.runtime type=io.containerd.cri.v1
+time="2026-04-10T12:13:31.589300004Z" level=info msg="starting cri plugin" config="{\"containerd\":{\"defaultRuntimeName\":\"runc\",\"runtimes\":{\"kata\":{\"runtimeType\":\"io.containerd.kata.v2\",\"runtimePath\":\"\",\"PodAnnotations\":null,\"ContainerAnnotations\":null,\"options\":null,\"privileged_without_host_devices\":false,\"privileged_without_host_devices_all_devices_allowed\":false,\"cgroupWritable\":false,\"baseRuntimeSpec\":\"\",\"cniConfDir\":\"\",\"cniMaxConfNum\":0,\"snapshotter\":\"\",\"sandboxer\":\"podsandbox\",\"io_type\":\"\"},\"runc\":{\"runtimeType\":\"io.containerd.runc.v2\",\"runtimePath\":\"\",\"PodAnnotations\":[],\"ContainerAnnotations\":[],\"options\":{\"BinaryName\":\"\",\"CriuImagePath\":\"\",\"CriuWorkPath\":\"\",\"IoGid\":0,\"IoUid\":0,\"NoNewKeyring\":false,\"Root\":\"\",\"ShimCgroup\":\"\",\"SystemdCgroup\":false},\"privileged_without_host_devices\":false,\"privileged_without_host_devices_all_devices_allowed\":false,\"cgroupWritable\":false,\"baseRuntimeSpec\":\"\",\"cniConfDir\":\"\",\"cniMaxConfNum\":0,\"snapshotter\":\"\",\"sandboxer\":\"podsandbox\",\"io_type\":\"\"}},\"ignoreBlockIONotEnabledErrors\":false,\"ignoreRdtNotEnabledErrors\":false},\"cni\":{\"binDir\":\"\",\"binDirs\":[\"/opt/cni/bin\"],\"confDir\":\"/etc/cni/net.d\",\"maxConfNum\":1,\"setupSerially\":false,\"confTemplate\":\"\",\"ipPref\":\"\",\"useInternalLoopback\":false},\"enableSelinux\":false,\"selinuxCategoryRange\":1024,\"maxContainerLogLineSize\":16384,\"disableApparmor\":false,\"restrictOOMScoreAdj\":false,\"disableProcMount\":false,\"unsetSeccompProfile\":\"\",\"tolerateMissingHugetlbController\":true,\"disableHugetlbController\":true,\"device_ownership_from_security_context\":false,\"ignoreImageDefinedVolumes\":false,\"netnsMountsUnderStateDir\":false,\"enableUnprivilegedPorts\":true,\"enableUnprivilegedICMP\":true,\"enableCDI\":true,\"cdiSpecDirs\":[\"/etc/cdi\",\"/var/run/cdi\"],\"drainExecSyncIOTimeout\":\"0s\",\"ignoreDeprecationWarnings\":[],\"containerdRootDir\":\"/var/lib/containerd\",\"containerdEndpoint\":\"/run/containerd/containerd.sock\",\"rootDir\":\"/var/lib/containerd/io.containerd.grpc.v1.cri\",\"stateDir\":\"/run/containerd/io.containerd.grpc.v1.cri\"}"
+time="2026-04-10T12:13:31.589330796Z" level=info msg="loading plugin" id=io.containerd.podsandbox.controller.v1.podsandbox type=io.containerd.podsandbox.controller.v1
+time="2026-04-10T12:13:31.589360212Z" level=info msg="loading plugin" id=io.containerd.sandbox.controller.v1.shim type=io.containerd.sandbox.controller.v1
+time="2026-04-10T12:13:31.589387129Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.sandbox-controllers type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589396254Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.sandboxes type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589400171Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.snapshots type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589403962Z" level=info msg="loading plugin" id=io.containerd.streaming.v1.manager type=io.containerd.streaming.v1
+time="2026-04-10T12:13:31.589412087Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.streaming type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589419796Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.tasks type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589424212Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.transfer type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589429379Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.version type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589432879Z" level=info msg="loading plugin" id=io.containerd.monitor.container.v1.restart type=io.containerd.monitor.container.v1
+time="2026-04-10T12:13:31.589447087Z" level=info msg="loading plugin" id=io.containerd.tracing.processor.v1.otlp type=io.containerd.tracing.processor.v1
+time="2026-04-10T12:13:31.589455171Z" level=info msg="skip loading plugin" error="skip plugin: tracing endpoint not configured" id=io.containerd.tracing.processor.v1.otlp type=io.containerd.tracing.processor.v1
+time="2026-04-10T12:13:31.589458629Z" level=info msg="loading plugin" id=io.containerd.internal.v1.tracing type=io.containerd.internal.v1
+time="2026-04-10T12:13:31.589462212Z" level=info msg="skip loading plugin" error="skip plugin: tracing endpoint not configured" id=io.containerd.internal.v1.tracing type=io.containerd.internal.v1
+time="2026-04-10T12:13:31.589465421Z" level=info msg="loading plugin" id=io.containerd.ttrpc.v1.otelttrpc type=io.containerd.ttrpc.v1
+time="2026-04-10T12:13:31.589468504Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.healthcheck type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589472754Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.cri type=io.containerd.grpc.v1
+time="2026-04-10T12:13:31.589488379Z" level=info msg="Connect containerd service"
+time="2026-04-10T12:13:31.589497837Z" level=info msg="using experimental NRI integration - disable nri plugin to prevent this"
+time="2026-04-10T12:13:31.589774171Z" level=error msg="failed to load cni during init, please check CRI plugin status before setting up network for pods" error="cni config load failed: no network config found in /etc/cni/net.d: cni plugin not initialized: failed to load cni config"
+time="2026-04-10T12:13:31.598206379Z" level=info msg="Start subscribing containerd event"
+time="2026-04-10T12:13:31.598241754Z" level=info msg="Start recovering state"
+time="2026-04-10T12:13:31.598286712Z" level=info msg=serving... address=/run/containerd/containerd.sock.ttrpc
+time="2026-04-10T12:13:31.598315712Z" level=info msg="Start event monitor"
+time="2026-04-10T12:13:31.598321837Z" level=info msg="Start cni network conf syncer for default"
+time="2026-04-10T12:13:31.598324587Z" level=info msg=serving... address=/run/containerd/containerd.sock
+time="2026-04-10T12:13:31.598325212Z" level=info msg="Start streaming server"
+time="2026-04-10T12:13:31.598341129Z" level=info msg="Registered namespace \"k8s.io\" with NRI"
+time="2026-04-10T12:13:31.598344462Z" level=info msg="runtime interface starting up..."
+time="2026-04-10T12:13:31.598346421Z" level=info msg="starting plugins..."
+time="2026-04-10T12:13:31.598351254Z" level=info msg="Synchronizing NRI (plugin) with current runtime state"
+time="2026-04-10T12:13:31.598445879Z" level=info msg="containerd successfully booted in 0.017105s"
+=== containerd config (kata section) ===
+[plugins."io.containerd.cri.v1.runtime".containerd.runtimes.kata]
+  runtime_type = "io.containerd.kata.v2"
+
+=== Attempting Kata container run ===
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.1 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.2 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.3 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.4 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.5 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.6 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.7 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.8 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.9 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.0 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.1 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.2 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.3 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.4 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.5 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.6 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.7 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.8 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 1.9 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 2.0 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 2.1 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 2.2 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1: downloading    |[32m[0m--------------------------------------|    0.0 B/7.9 KiB 
+elapsed: 2.3 s                                                                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: downloading    |[32m[0m--------------------------------------|    0.0 B/1.0 KiB 
+elapsed: 2.4 s                                                                    total:  7.9 Ki (3.3 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: downloading    |[32m[0m--------------------------------------|    0.0 B/1.0 KiB 
+elapsed: 2.5 s                                                                    total:  7.9 Ki (3.1 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+elapsed: 2.6 s                                                                    total:  7.9 Ki (3.0 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   downloading    |[32m[0m--------------------------------------|    0.0 B/597.0 B 
+elapsed: 2.7 s                                                                    total:  7.9 Ki (2.9 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   downloading    |[32m[0m--------------------------------------|    0.0 B/597.0 B 
+elapsed: 2.8 s                                                                    total:  7.9 Ki (2.8 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   downloading    |[32m[0m--------------------------------------|    0.0 B/597.0 B 
+elapsed: 2.9 s                                                                    total:  7.9 Ki (2.7 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   downloading    |[32m[0m--------------------------------------|    0.0 B/597.0 B 
+elapsed: 3.0 s                                                                    total:  7.9 Ki (2.6 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   downloading    |[32m[0m--------------------------------------|    0.0 B/597.0 B 
+elapsed: 3.1 s                                                                    total:  7.9 Ki (2.5 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   downloading    |[32m[0m--------------------------------------|    0.0 B/597.0 B 
+elapsed: 3.2 s                                                                    total:  7.9 Ki (2.5 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 3.3 s                                                                    total:  8.5 Ki (2.6 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 3.4 s                                                                    total:  8.5 Ki (2.5 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 3.5 s                                                                    total:  8.5 Ki (2.4 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 3.6 s                                                                    total:  8.5 Ki (2.3 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 3.7 s                                                                    total:  8.5 Ki (2.3 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 3.8 s                                                                    total:  8.5 Ki (2.2 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 3.9 s                                                                    total:  8.5 Ki (2.2 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.0 s                                                                    total:  8.5 Ki (2.1 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.1 s                                                                    total:  8.5 Ki (2.1 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.2 s                                                                    total:  8.5 Ki (2.0 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.3 s                                                                    total:  8.5 Ki (2.0 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.4 s                                                                    total:  8.5 Ki (1.9 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.5 s                                                                    total:  8.5 Ki (1.9 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.6 s                                                                    total:  8.5 Ki (1.8 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.7 s                                                                    total:  8.5 Ki (1.8 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.8 s                                                                    total:  8.5 Ki (1.8 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 4.9 s                                                                    total:  8.5 Ki (1.7 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m[0m--------------------------------------|    0.0 B/3.2 MiB 
+elapsed: 5.0 s                                                                    total:  8.5 Ki (1.7 KiB/s)                                       
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++[0m---------------------------|  1.0 MiB/3.2 MiB 
+elapsed: 5.1 s                                                                    total:  1.0 Mi (202.4 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++[0m---------------------------|  1.0 MiB/3.2 MiB 
+elapsed: 5.2 s                                                                    total:  1.0 Mi (198.5 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++[0m---------------------------|  1.0 MiB/3.2 MiB 
+elapsed: 5.3 s                                                                    total:  1.0 Mi (194.7 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++[0m---------------------------|  1.0 MiB/3.2 MiB 
+elapsed: 5.4 s                                                                    total:  1.0 Mi (191.1 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++[0m---------------------------|  1.0 MiB/3.2 MiB 
+elapsed: 5.5 s                                                                    total:  1.0 Mi (187.6 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++[0m---------------------------|  1.0 MiB/3.2 MiB 
+elapsed: 5.6 s                                                                    total:  1.0 Mi (184.3 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++++++++++++++[0m---------------|  2.0 MiB/3.2 MiB 
+elapsed: 5.7 s                                                                    total:  2.0 Mi (360.6 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++++++++++++++[0m---------------|  2.0 MiB/3.2 MiB 
+elapsed: 5.8 s                                                                    total:  2.0 Mi (354.5 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++++++++++++++[0m---------------|  2.0 MiB/3.2 MiB 
+elapsed: 5.9 s                                                                    total:  2.0 Mi (348.2 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++++++++++++++[0m---------------|  2.0 MiB/3.2 MiB 
+elapsed: 6.0 s                                                                    total:  2.0 Mi (342.6 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++++++++++++++++++++++++++[0m---|  3.0 MiB/3.2 MiB 
+elapsed: 6.1 s                                                                    total:  3.0 Mi (504.7 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    downloading    |[32m+++++++++++++++++++++++++++++++++++[0m---|  3.0 MiB/3.2 MiB 
+elapsed: 6.2 s                                                                    total:  3.0 Mi (496.4 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: waiting        |[32m[0m--------------------------------------| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+elapsed: 6.3 s                                                                    total:  3.2 Mi (521.7 KiB/s)                                     
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:5cd72f301a291887075a70d8b14aed6ee228fc9fd8f65e1e7eaa072f2115efd6: done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+config-sha256:6cf065f724d522cbb3e1898559cd88f015db8a1a4210d2d048a0853b69b57ba9:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+layer-sha256:5711127a7748d32f5a69380c27daf1382f2c6674ea7a60d2a3e338818590fea1:    done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+elapsed: 6.4 s                                                                    total:  3.2 Mi (513.9 KiB/s)                                     
+time="2026-04-10T12:13:41Z" level=fatal msg="failed to verify networking settings: failed to create default network: needs CNI plugin \"bridge\" to be installed in CNI_PATH (\"/opt/cni/bin\"), see https://github.com/containernetworking/plugins/releases: exec: \"/opt/cni/bin/bridge\": stat /opt/cni/bin/bridge: no such file or directory"
+kata_exit_code=1
+=== Attempt Kata with --net=none ===
+time="2026-04-10T12:14:27Z" level=fatal msg="failed to create shim task: Unix syslog delivery error"
+kata_exit_code=1

@@ -1,0 +1,2 @@
+Kata CPU: N/A — container did not start (no KVM)
+Expected on native Linux: virtualized CPU model (e.g., QEMU Virtual CPU)

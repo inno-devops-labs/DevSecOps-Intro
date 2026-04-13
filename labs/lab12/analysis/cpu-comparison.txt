@@ -1,0 +1,4 @@
+=== CPU Model Comparison ===
+Host CPU:
+Apple M4
+runc container CPU:

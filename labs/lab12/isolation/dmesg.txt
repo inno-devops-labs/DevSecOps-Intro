@@ -1,0 +1,20 @@
+=== dmesg Access Test ===
+
+runc (unprivileged) dmesg:
+dmesg: klogctl: Operation not permitted
+
+runc (privileged) dmesg — shows HOST kernel (LinuxKit) boot logs:
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x610f0000]
+[    0.000000] Linux version 6.12.67-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Sun Jan 25 02:26:28 UTC 2026
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000070000000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   [mem 0x0000000100000000-0x0000000269bfffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000070000000-0x0000000269bfffff]
+
+Key observation: runc containers share the host kernel, so privileged dmesg
+shows LinuxKit VM boot logs. Kata would show its OWN VM boot logs, proving
+separate kernel isolation.

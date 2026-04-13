@@ -1,0 +1,30 @@
+# Copyright (c) 2017-2019 Intel Corporation
+# Copyright (c) 2021 Adobe Inc.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# XXX: WARNING: this file is auto-generated.
+# XXX:
+# XXX: Source file: "config/configuration-qemu.toml.in"
+# XXX: Project:
+# XXX:   Name: Kata Containers
+# XXX:   Type: kata
+
+[hypervisor.qemu]
+path = "/opt/kata/bin/qemu-system-aarch64"
+kernel = "/opt/kata/share/kata-containers/vmlinux.container"
+image = "/opt/kata/share/kata-containers/kata-containers.img"
+machine_type = "virt"
+
+# rootfs filesystem type:
+#   - ext4 (default)
+#   - xfs
+#   - erofs
+rootfs_type = "ext4"
+
+# Enable running QEMU VMM as a non-root user.
+# By default QEMU VMM run as root. When this is set to true, QEMU VMM process runs as
+# a non-root random user. See documentation for the limitations of this mode.
+rootless = false
+

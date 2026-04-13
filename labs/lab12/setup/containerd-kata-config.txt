@@ -1,0 +1,3 @@
+
+[plugins."io.containerd.cri.v1.runtime".containerd.runtimes.kata]
+  runtime_type = "io.containerd.kata.v2"

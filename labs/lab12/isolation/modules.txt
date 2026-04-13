@@ -1,0 +1,19 @@
+=== Kernel Modules Count ===
+runc container visible modules: 145
+
+runc container modules (first 15):
+8021q
+8250
+8250_core
+8250_exar
+8250_pci
+8250_pericom
+atkbd
+auth_rpcgss
+blk_cgroup
+block
+bonding
+brd
+bridge
+cachefiles
+cdc_acm

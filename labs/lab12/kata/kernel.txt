@@ -1,0 +1,2 @@
+Kata kernel: N/A — container did not start (no KVM)
+Expected on native Linux: 6.12.x or similar guest kernel (separate from host)

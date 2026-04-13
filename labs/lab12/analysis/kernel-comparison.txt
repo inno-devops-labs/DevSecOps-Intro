@@ -1,0 +1,4 @@
+=== Kernel Version Comparison ===
+Host kernel (macOS): 25.3.0
+runc container kernel (LinuxKit VM): 6.12.67-linuxkit
+runc container /proc/version: Linux version 6.12.67-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Sun Jan 25 02:26:28 UTC 2026

@@ -1,0 +1,3 @@
+Kata test (uname -a): FAILED — no KVM on macOS Docker Desktop
+Error: failed to create shim task: Unix syslog delivery error
+Root cause: /dev/kvm not available (Apple M4 / Docker Desktop LinuxKit VM)

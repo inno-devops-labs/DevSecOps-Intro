@@ -45,10 +45,10 @@ The initializer container printed the admin password on first boot:
 
 ```
 docker compose logs initializer | grep "Admin password:"
-# Output: Admin password: 7z7mvh69gfx2bkC2wF0wG6
+# Output: Admin password: <REDACTED>
 ```
 
-Login: `admin` / `7z7mvh69gfx2bkC2wF0wG6` at `http://localhost:8080`.
+Login: `admin` / `<REDACTED>` at `http://localhost:8080`.
 
 ### 1.3 Product/Engagement Structure
 
@@ -71,7 +71,7 @@ An API token was obtained programmatically:
 ```
 curl -s -X POST http://localhost:8080/api/v2/api-token-auth/ \
   -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"7z7mvh69gfx2bkC2wF0wG6"}'
+  -d '{"username":"admin","password":"<REDACTED>"}'
 ```
 
 Environment variables were configured:
