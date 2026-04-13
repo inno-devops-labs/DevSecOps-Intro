@@ -1,0 +1,40 @@
+DAST Multi-Tool Results Summary
+Generated: Mon Mar  9 18:00:29 MSK 2026
+
+=== ZAP ===
+  [HIGH] SQL Injection
+  [MED] Content Security Policy (CSP) Header Not Set
+  [MED] Cross-Domain Misconfiguration
+  [MED] Missing Anti-clickjacking Header
+  [MED] Session ID in URL Rewrite
+  [LOW] Cross-Domain JavaScript Source File Inclusion
+  [LOW] Private IP Disclosure
+  [LOW] Timestamp Disclosure - Unix
+  [LOW] X-Content-Type-Options Header Missing
+  [INFO] Authentication Request Identified
+Total: 13 alert types
+
+=== Nuclei ===
+  Findings:        0
+  [MEDIUM] Missing Security Headers
+
+=== Nikto ===
+  Findings: 96
+  + GET /: Server leaks inodes via ETags, header found with file /, fields: 0xW/124fa 0x19cd23bae47 
+  + GET /: Uncommon header 'x-recruiting' found, with contents: /#/jobs
+  + GET /: Uncommon header 'feature-policy' found, with contents: payment 'self'
+  + GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff
+  + GET /: Uncommon header 'x-frame-options' found, with contents: SAMEORIGIN
+
+=== SQLmap ===
+  Injection points: 3
+  Parameter: #1* (URI)
+      Type: boolean-based blind
+      Title: AND boolean-based blind - WHERE or HAVING clause
+  back-end DBMS: SQLite
+  Parameter: #1* (URI)
+      Type: boolean-based blind
+      Title: AND boolean-based blind - WHERE or HAVING clause
+  back-end DBMS: SQLite
+  Parameter: #1* (URI)
+      Type: boolean-based blind
