@@ -1,0 +1,45 @@
+env:
+  contexts:
+    - name: "Juice Shop"
+      urls:
+        - "http://host.docker.internal:3000"
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://host.docker.internal:3000/rest/user/login"
+          loginRequestData: '{"email":"admin@juice-sh.op","password":"admin123"}'
+        verification:
+          method: "response"
+          loggedInRegex: "authentication"
+      sessionManagement:
+        method: "cookie"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+jobs:
+  - type: spider
+    parameters:
+      context: "Juice Shop"
+      user: "admin"
+      maxDuration: 2
+  - type: spiderAjax
+    parameters:
+      context: "Juice Shop"
+      user: "admin"
+      maxDuration: 2
+  - type: passiveScan-wait
+  - type: activeScan
+    parameters:
+      context: "Juice Shop"
+      user: "admin"
+  - type: report
+    parameters:
+      template: "traditional-html"
+      reportFile: "/zap/wrk/report-auth.html"
+      reportTitle: "ZAP Auth Scan"
+  - type: report
+    parameters:
+      template: "sarif-json"
+      reportFile: "/zap/wrk/zap-report-auth.json"
