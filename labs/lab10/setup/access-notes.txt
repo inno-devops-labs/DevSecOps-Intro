@@ -1,0 +1,7 @@
+DefectDojo access notes for Lab 10
+
+- Local URL used for this lab: http://localhost:18080
+- The default port 8080 was already occupied by another local process in this environment.
+- Docker Compose status evidence is saved in docker-compose-ps.txt.
+- Initializer logs are saved in initializer.log.
+- No git commits were created while completing this lab.

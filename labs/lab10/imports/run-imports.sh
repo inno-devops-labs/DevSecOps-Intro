@@ -52,7 +52,10 @@ SCAN_NUCLEI="${SCAN_NUCLEI:-}"
 
 if $have_jq; then
   echo "Discovering importer names from /test_types/ ..."
-  mapfile -t types < <(curl -sS -H "Authorization: Token $DD_TOKEN" "$DD_API/test_types/?limit=2000" | jq -r '.results[].name')
+  types=()
+  while IFS= read -r type_name; do
+    types+=("$type_name")
+  done < <(curl -sS -H "Authorization: Token $DD_TOKEN" "$DD_API/test_types/?limit=2000" | jq -r '.results[].name')
   choose_type() {
     local pat="$1"
     local fallback="$2"
@@ -89,12 +92,107 @@ echo "  Trivy    = $SCAN_TRIVY"
 echo "  Nuclei   = $SCAN_NUCLEI"
 echo "  Grype    = $SCAN_GRYPE"
 
+convert_zap_json_to_xml() {
+  local input_file="$1"
+  local output_file="$2"
+
+  python3 - "$input_file" "$output_file" <<'PY'
+import json
+import sys
+import xml.etree.ElementTree as ET
+
+input_file, output_file = sys.argv[1], sys.argv[2]
+
+with open(input_file, "r", encoding="utf-8") as fh:
+    report = json.load(fh)
+
+root = ET.Element(
+    "OWASPZAPReport",
+    {
+        "version": report.get("@version", ""),
+        "generated": report.get("@generated", ""),
+    },
+)
+
+for site in report.get("site", []):
+    site_elem = ET.SubElement(
+        root,
+        "site",
+        {
+            "name": site.get("@name", ""),
+            "host": site.get("@host", ""),
+            "port": str(site.get("@port", "")),
+            "ssl": str(site.get("@ssl", "")),
+        },
+    )
+    alerts_elem = ET.SubElement(site_elem, "alerts")
+    for alert in site.get("alerts", []):
+        alert_elem = ET.SubElement(alerts_elem, "alertitem")
+        for field in (
+            "pluginid",
+            "alertRef",
+            "alert",
+            "name",
+            "riskcode",
+            "confidence",
+            "riskdesc",
+            "desc",
+        ):
+            value = alert.get(field, "")
+            if value is not None:
+                ET.SubElement(alert_elem, field).text = str(value)
+
+        instances_elem = ET.SubElement(alert_elem, "instances")
+        for instance in alert.get("instances", []):
+            instance_elem = ET.SubElement(instances_elem, "instance")
+            for field in (
+                "id",
+                "uri",
+                "nodeName",
+                "method",
+                "param",
+                "attack",
+                "evidence",
+                "otherinfo",
+                "requestheader",
+                "requestbody",
+                "responseheader",
+                "responsebody",
+            ):
+                value = instance.get(field, "")
+                if value is not None:
+                    ET.SubElement(instance_elem, field).text = str(value)
+
+        for field in (
+            "count",
+            "solution",
+            "otherinfo",
+            "reference",
+            "cweid",
+            "wascid",
+            "sourceid",
+        ):
+            value = alert.get(field, "")
+            if value is not None:
+                ET.SubElement(alert_elem, field).text = str(value)
+
+tree = ET.ElementTree(root)
+tree.write(output_file, encoding="utf-8", xml_declaration=True)
+PY
+}
+
 import_scan() {
   local scan_type="$1"; shift
   local file="$1"; shift
   if [[ ! -f "$file" ]]; then
     echo "SKIP: $scan_type file not found: $file"
     return 0
+  fi
+  if [[ "$scan_type" == "$SCAN_ZAP" && "$file" == *.json ]]; then
+    local converted_file="$out_dir/$(basename "${file%.json}").xml"
+    echo "Converting ZAP JSON report to XML: $converted_file"
+    convert_zap_json_to_xml "$file" "$converted_file"
+    file="$converted_file"
   fi
   local base out
   base="$(basename "$file")"

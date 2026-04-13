@@ -1,0 +1,129 @@
+initializer-1  | wait-for-it.sh: waiting max 60 seconds for postgres:5432
+initializer-1  | wait-for-it.sh: postgres:5432 is available after 0 seconds
+initializer-1  | ============================================================
+initializer-1  |      Overriding DefectDojo's local_settings.py with multiple
+initializer-1  |      Files: /app/docker/extra_settings/README.md
+initializer-1  | ============================================================
+initializer-1  | [13/Apr/2026 19:22:17] INFO [dojo.auditlog:317] Registering models with django-pghistory
+initializer-1  | [13/Apr/2026 19:22:17] INFO [dojo.auditlog:610] Successfully registered models with django-pghistory
+initializer-1  | [13/Apr/2026 19:22:17] INFO [dojo.auditlog:676] Audit logging configured: django-pghistory
+initializer-1  | Waiting for database to be reachable 27 objects could not be automatically imported:
+initializer-1  | 
+initializer-1  |   dojo.auditlog.ObjectsProductTags
+initializer-1  |   dojo.auditlog.AppAnalysisTags
+initializer-1  |   dojo.auditlog.FindingTemplateTags
+initializer-1  |   dojo.auditlog.EndpointInheritedTags
+initializer-1  |   dojo.auditlog.EndpointTags
+initializer-1  |   dojo.auditlog.TestInheritedTags
+initializer-1  |   dojo.auditlog.TestTags
+initializer-1  |   dojo.auditlog.EngagementInheritedTags
+initializer-1  |   dojo.auditlog.EngagementTags
+initializer-1  |   dojo.auditlog.ProductTags
+initializer-1  |   dojo.auditlog.FindingInheritedTags
+initializer-1  |   dojo.auditlog.FindingTags
+initializer-1  |   dojo.auditlog.FindingReviewers
+initializer-1  |   dojo.location.models.Tagulous_Location_inherited_tags
+initializer-1  |   dojo.location.models.Tagulous_Location_tags
+initializer-1  |   dojo.models.Tagulous_Objects_Product_tags
+initializer-1  |   dojo.models.Tagulous_App_Analysis_tags
+initializer-1  |   dojo.models.Tagulous_Finding_Template_tags
+initializer-1  |   dojo.models.Tagulous_Finding_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Finding_tags
+initializer-1  |   dojo.models.Tagulous_Test_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Test_tags
+initializer-1  |   dojo.models.Tagulous_Endpoint_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Endpoint_tags
+initializer-1  |   dojo.models.Tagulous_Engagement_inherited_tags
+initializer-1  |   dojo.models.Tagulous_Engagement_tags
+initializer-1  |   dojo.models.Tagulous_Product_tags
+initializer-1  | 
+initializer-1  | 143 objects imported automatically (use -v 2 for details).
+initializer-1  | 
+initializer-1  | Simple database test was successful
+initializer-1  | [13/Apr/2026 19:22:18] INFO [dojo.auditlog:317] Registering models with django-pghistory
+initializer-1  | [13/Apr/2026 19:22:18] INFO [dojo.auditlog:610] Successfully registered models with django-pghistory
+initializer-1  | [13/Apr/2026 19:22:18] INFO [dojo.auditlog:676] Audit logging configured: django-pghistory
+initializer-1  | pgtrigger: Enabling insert_insert trigger for auth_user table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for auth_user table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for auth_user table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_endpoint table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_endpoint table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_endpoint table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_engagement table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_engagement table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_engagement table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_finding table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_group table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_finding_group table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_group table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_product_type table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_product_type table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_product_type table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_product table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_product table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_product table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_test table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_test table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_test table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_risk_acceptance table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_risk_acceptance table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_risk_acceptance table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_template table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_finding_template table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_template table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_cred_user table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_cred_user table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_cred_user table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_notification_webhooks table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_notification_webhooks table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_notification_webhooks table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_reviewers table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_reviewers table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_location table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_location table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_location table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_url table on default database.
+initializer-1  | pgtrigger: Enabling update_update trigger for dojo_url table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_url table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_product_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_product_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_engagement_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_engagement_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_engagement_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_engagement_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_test_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_test_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_test_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_test_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_endpoint_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_endpoint_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_endpoint_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_endpoint_inherited_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_finding_template_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_finding_template_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_app_analysis_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_app_analysis_tags table on default database.
+initializer-1  | pgtrigger: Enabling insert_insert trigger for dojo_objects_product_tags table on default database.
+initializer-1  | pgtrigger: Enabling delete_delete trigger for dojo_objects_product_tags table on default database.
+initializer-1  | [13/Apr/2026 19:22:20] INFO [dojo.auditlog:632] Successfully enabled pghistory triggers
+initializer-1  | [13/Apr/2026 19:22:20] INFO [dojo.management.commands.initialize_permissions:18] Non-standard permissions have been created
+initializer-1  | Initializing DefectDojo
+initializer-1  | Checking ENABLE_AUDITLOG consistency
+initializer-1  | Checking for missing migrations
+initializer-1  | No changes detected
+initializer-1  | Applying migrations
+initializer-1  | Operations to perform:
+initializer-1  |   Apply all migrations: admin, auditlog, auth, authtoken, contenttypes, django_celery_results, dojo, pghistory, sessions, single_session, sites, social_django, watson
+initializer-1  | Running migrations:
+initializer-1  |   No migrations to apply.
+initializer-1  | Configuring pghistory triggers
+initializer-1  | Admin user already exists; skipping first-boot setup
+initializer-1  | Creating announcement banner
+initializer-1  | Initializing test types
+initializer-1  | Initializing non-standard permissions

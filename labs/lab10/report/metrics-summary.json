@@ -1,0 +1,77 @@
+{
+  "total": 306,
+  "active": {
+    "Critical": 21,
+    "High": 154,
+    "Medium": 88,
+    "Low": 27,
+    "Info": 16
+  },
+  "verified": {
+    "Critical": 10,
+    "High": 81,
+    "Medium": 34,
+    "Low": 18
+  },
+  "mitigated": {},
+  "open": {
+    "Critical": 21,
+    "High": 154,
+    "Medium": 88,
+    "Low": 27,
+    "Info": 16
+  },
+  "closed": {},
+  "per_tool": {
+    "Trivy Scan": 147,
+    "Anchore Grype": 122,
+    "Semgrep JSON Report": 25,
+    "ZAP Scan": 12
+  },
+  "due_within_14_days": {
+    "Critical": 21
+  },
+  "overdue": {},
+  "top_cwe": [
+    [
+      1333,
+      29
+    ],
+    [
+      407,
+      13
+    ],
+    [
+      22,
+      11
+    ],
+    [
+      79,
+      11
+    ],
+    [
+      1321,
+      6
+    ],
+    [
+      20,
+      6
+    ],
+    [
+      89,
+      6
+    ],
+    [
+      674,
+      6
+    ],
+    [
+      400,
+      5
+    ],
+    [
+      248,
+      4
+    ]
+  ]
+}

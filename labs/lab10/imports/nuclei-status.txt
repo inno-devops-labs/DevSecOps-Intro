@@ -1,0 +1,5 @@
+Nuclei import status for Lab 10
+
+- Expected input path from lab: labs/lab5/nuclei/nuclei-results.json
+- Status on 2026-04-13: source report not present in this repository
+- Result: Nuclei import was skipped intentionally because there was no input artifact to import
