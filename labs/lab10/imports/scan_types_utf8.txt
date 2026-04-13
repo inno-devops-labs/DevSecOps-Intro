@@ -1,0 +1,232 @@
+﻿API Test
+Static Check
+Pen Test
+Web Application Test
+Security Research
+Threat Modeling
+Manual Code Review
+Prowler
+Anchore Grype
+Anchore Grype detailed
+HCLAppScan XML
+SpotBugs Scan
+NeuVector (compliance)
+NPM Audit Scan
+Threagile risks report
+OssIndex Devaudit SCA Scan Importer
+Clair Scan
+Checkov Scan
+GitLab API Fuzzing Report Scan
+Bundler-Audit Scan
+Openscap Vulnerability Scan
+PHP Symfony Security Check
+Burp Suite DAST Scan
+Burp Enterprise Scan
+OSV Scan
+Rubocop Scan
+Blackduck Hub Scan
+Sslscan
+WFuzz JSON report
+Terrascan Scan
+SSLyze Scan (JSON)
+Sslyze Scan
+AWS Security Hub Scan
+Popeye Scan
+Solar Appscreener Scan
+pip-audit Scan
+PMD Scan
+GitLab SAST Report
+Blackduck Binary Analysis
+Acunetix Scan
+Wiz Scan
+IriusRisk Threats Scan
+SARIF
+ORT evaluated model Importer
+Qualys Hacker Guardian Scan
+Crunch42 Scan
+AnchoreCTL Vuln Report
+OpenVAS Parser
+OpenVAS Parser v2
+Azure Security Center Recommendations Scan
+Horusec Scan
+Kubeaudit Scan
+Humble Json Importer
+Contrast Scan
+GitLab Secret Detection Report
+Mozilla Observatory Scan
+StackHawk HawkScan
+Tenable Scan
+Semgrep Pro JSON Report
+Yarn Audit Scan
+Codechecker Report native
+Hydra Scan
+Node Security Platform Scan
+Veracode Scan
+Immuniweb Scan
+Cycognito Scan
+ESLint Scan
+Cloudflare Insights
+HackerOne Cases
+Bugcrowd API Import
+Burp REST API
+BlackDuck API
+Github Secrets Detection Report Scan
+Brakeman Scan
+GitLab DAST Report
+Retire.js Scan
+BugCrowd Scan
+Checkmarx One Scan
+Twistlock Image Scan
+Snyk Issue API Scan
+Ggshield Scan
+AWS Security Finding Format (ASFF) Scan
+GitLab Container Scan
+PWN SAST
+Trivy Scan
+Checkmarx CxFlow SAST
+AWS Inspector2 Scan
+CredScan Scan
+Legitify Scan
+Aqua Scan
+Crashtest Security JSON File
+Crashtest Security XML File
+OpenReports
+Kiuwan Scan
+SSL Labs Scan
+PingCastle
+AppSpider Scan
+Talisman Scan
+Burp GraphQL API
+Anchore Engine Scan
+Kiuwan SCA Scan
+Checkmarx OSA
+Burp Dastardly Scan
+DrHeader JSON Importer
+Cobalt.io Scan
+HCL AppScan on Cloud SAST XML
+Edgescan Scan
+ThreatComposer Scan
+Whispers Scan
+SSH Audit Importer
+Orca Security Alerts
+TFSec Scan
+Sysdig Vulnerability Report
+MobSF Scorecard Scan
+Trustwave Fusion API Scan
+Invicti Scan
+Xeol Parser
+ReversingLabs Spectra Assure
+IBM AppScan DAST
+Chef Inspect Log
+Wpscan
+Rusty Hog Scan
+Choctaw Hog Scan
+Duroc Hog Scan
+Gottingen Hog Scan
+Essex Hog Scan
+SKF Scan
+Wizcli IaC Scan
+Generic Findings Import
+Deepfence Threatmapper Report
+Nuclei Scan
+Vulners
+PHP Security Audit v2
+GitLab Dependency Scanning Report
+Cyberwatch scan (Galeax)
+AppCheck Web Application Scanner
+Gitleaks Scan
+Qualys Scan
+Bearer CLI
+Xanitizer Scan
+Arachni Scan
+Qualys Webapp Scan
+NPM Audit v7+ Scan
+Dependency Track Finding Packaging Format (FPF) Export
+Mend Scan
+Dockle Scan
+Google Cloud Artifact Vulnerability Scan
+Nancy Scan
+HuskyCI Report
+KICS Scan
+AWS Prowler Scan
+Cobalt.io API Import
+DSOP Scan
+Gosec Scanner
+Wizcli Dir Scan
+Govulncheck Scanner
+Wizcli Img Scan
+CycloneDX Scan
+MobSF Scan
+Mobsfscan Scan
+Detect-secrets Scan
+JFrog Xray Unified Scan
+Harbor Vulnerability Scan
+docker-bench-security Scan
+Progpilot Scan
+Testssl Scan
+IntSights Report
+MSDefender Parser
+Veracode SourceClear Scan
+VCG Scan
+PTART Report
+Fortify Scan
+Prowler Scan
+Wapiti Scan
+Nexpose Scan
+Snyk Scan
+Nmap Scan
+KubeHunter Scan
+AWS Prowler V3
+Checkmarx Scan
+Checkmarx Scan detailed
+Trustwave Scan (CSV)
+Bandit Scan
+Red Hat Satellite
+Risk Recon API Importer
+Netsparker Scan
+Mayhem SARIF Report
+ZAP Scan
+Sysdig CLI Report
+Dependency Check Scan
+Burp Scan
+SonarQube API Import
+NeuVector (REST)
+Outpost24 Scan
+Microfocus Webinspect Scan
+Nosey Parker Scan
+Trufflehog Scan
+kube-bench Scan
+Trufflehog3 Scan
+DawnScanner Scan
+Github SAST Scan
+Snyk Code Scan
+Kubescape JSON Importer
+Blackduck Component Risk
+Qualys Infrastructure Scan (WebGUI XML)
+Coverity API
+Meterian Scan
+AnchoreCTL Policies Report
+Coverity Scan JSON Report
+Rapplex Scan
+JFrog Xray Scan
+JFrog Xray On Demand Binary Scan
+Anchore Enterprise Policy Check
+Github Vulnerability Scan
+SonarQube Scan
+SonarQube Scan detailed
+Semgrep JSON Report
+WhiteHat Sentinel
+AuditJS Scan
+Sonatype Application Scan
+Hadolint Dockerfile check
+Scantist Scan
+Zora Parser
+Scout Suite Scan
+Nikto Scan
+JFrog Xray API Summary Artifact Scan
+Cloudsploit Scan
+CargoAudit Scan
+Trivy Operator Scan
+KrakenD Audit Scan
+Wazuh
+n0s1 Scanner

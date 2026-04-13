@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DefectDojo Engagement Report — Labs Security Testing</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        h1 { color: #2c3e50; }
+        .summary { margin-bottom: 20px; }
+        .metric { display: inline-block; padding: 10px; margin: 5px; border: 1px solid #ddd; border-radius: 4px; }
+        .critical { background: #fee; border-color: #fdd; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Engagement Report: Labs Security Testing</h1>
+    <div class="summary">
+        <p><strong>Date:</strong> 2026-04-13</p>
+        <p><strong>Product:</strong> Juice Shop</p>
+        <p><strong>Engagement:</strong> Labs Security Testing</p>
+    </div>
+
+    <h2>Severity Distribution (Active)</h2>
+    <div class="metric critical"><strong>Critical:</strong> 53</div>
+    <div class="metric"><strong>High:</strong> 372</div>
+    <div class="metric"><strong>Medium:</strong> 204</div>
+    <div class="metric"><strong>Low:</strong> 45</div>
+    <div class="metric"><strong>Info:</strong> 36</div>
+
+    <h2>Tool Summary</h2>
+    <table>
+        <tr><th>Tool</th><th>Status</th><th>Note</th></tr>
+        <tr><td>Semgrep</td><td>Imported</td><td>147 findings</td></tr>
+        <tr><td>Trivy</td><td>Imported</td><td>122 findings</td></tr>
+        <tr><td>Nuclei</td><td>Imported</td><td>25 findings (JSON-L converted)</td></tr>
+        <tr><td>Grype</td><td>Imported</td><td>122 findings</td></tr>
+        <tr><td>ZAP</td><td>Missing</td><td>Report not found</td></tr>
+    </table>
+</body>
+</html>
