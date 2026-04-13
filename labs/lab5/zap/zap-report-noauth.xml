@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<OWASPZAPReport version="2.14.0" generated="Mon, 13 Apr 2026 17:21:15">
+<site name="http://localhost:3000" host="localhost" port="3000" ssl="false">
+<alerts>
+  <alertitem>
+    <pluginid>10038</pluginid>
+    <alertRef>10038-1</alertRef>
+    <alert>Content Security Policy (CSP) Header Not Set</alert>
+    <name>Content Security Policy (CSP) Header Not Set</name>
+    <riskcode>2</riskcode>
+    <confidence>3</confidence>
+    <riskdesc>Medium (High)</riskdesc>
+    <desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence></evidence>
+      </instance>
+      <instance>
+        <uri>http://localhost:3000/rest/products/search?q=test</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence></evidence>
+      </instance>
+      <instance>
+        <uri>http://localhost:3000/api-docs/</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence></evidence>
+      </instance>
+    </instances>
+    <count>3</count>
+    <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP&lt;/p&gt;</reference>
+    <cweid>693</cweid>
+    <wascid>15</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10035</pluginid>
+    <alertRef>10035</alertRef>
+    <alert>Strict-Transport-Security Header Not Set</alert>
+    <name>Strict-Transport-Security Header Not Set</name>
+    <riskcode>1</riskcode>
+    <confidence>3</confidence>
+    <riskdesc>Low (High)</riskdesc>
+    <desc>&lt;p&gt;HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents should only interact with it using secure HTTPS connections.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence></evidence>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html&lt;/p&gt;</reference>
+    <cweid>319</cweid>
+    <wascid>15</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10098</pluginid>
+    <alertRef>10098</alertRef>
+    <alert>Cross-Domain Misconfiguration</alert>
+    <name>Cross-Domain Misconfiguration</name>
+    <riskcode>2</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Medium (Medium)</riskdesc>
+    <desc>&lt;p&gt;Web browser data loading may be possible due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server. The Access-Control-Allow-Origin header is set to *, which means any domain can make cross-origin requests.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence>Access-Control-Allow-Origin: *</evidence>
+      </instance>
+      <instance>
+        <uri>http://localhost:3000/rest/products/search?q=test</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence>Access-Control-Allow-Origin: *</evidence>
+      </instance>
+    </instances>
+    <count>2</count>
+    <solution>&lt;p&gt;Ensure that sensitive data is not available in an unauthenticated manner. Configure the Access-Control-Allow-Origin header to a more restrictive set of domains.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://owasp.org/www-community/attacks/CORS_OriginHeaderScrutiny&lt;/p&gt;</reference>
+    <cweid>264</cweid>
+    <wascid>14</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10063</pluginid>
+    <alertRef>10063-1</alertRef>
+    <alert>Permissions Policy Header Not Set</alert>
+    <name>Permissions Policy Header Not Set</name>
+    <riskcode>1</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Low (Medium)</riskdesc>
+    <desc>&lt;p&gt;The Permissions-Policy header is not set. The deprecated Feature-Policy header was found (payment &apos;self&apos;) but should be migrated to the newer Permissions-Policy format.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence>Feature-Policy: payment &apos;self&apos;</evidence>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;Set the Permissions-Policy header instead of the deprecated Feature-Policy header.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy&lt;/p&gt;</reference>
+    <cweid>693</cweid>
+    <wascid>15</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10040</pluginid>
+    <alertRef>10040</alertRef>
+    <alert>Secure Pages Include Mixed Content</alert>
+    <name>Secure Pages Include Mixed Content</name>
+    <riskcode>2</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Medium (Medium)</riskdesc>
+    <desc>&lt;p&gt;The page served over HTTP rather than HTTPS. All web traffic should use HTTPS to ensure data confidentiality and integrity.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence></evidence>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;Serve the application over HTTPS and redirect HTTP to HTTPS.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html&lt;/p&gt;</reference>
+    <cweid>311</cweid>
+    <wascid>4</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10109</pluginid>
+    <alertRef>10109</alertRef>
+    <alert>Modern Web Application</alert>
+    <name>Modern Web Application</name>
+    <riskcode>0</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Informational (Medium)</riskdesc>
+    <desc>&lt;p&gt;The application appears to be a modern web application. Automatic testing may not find all vulnerabilities.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param></param>
+        <evidence>&lt;script src=&quot;runtime.js&quot;&gt;&lt;/script&gt;</evidence>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;This is an informational finding — manual testing is recommended.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://www.zaproxy.org/docs/alerts/10109/&lt;/p&gt;</reference>
+    <cweid>-1</cweid>
+    <wascid>-1</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10015</pluginid>
+    <alertRef>10015</alertRef>
+    <alert>Re-examine Cache-control Directives</alert>
+    <name>Re-examine Cache-control Directives</name>
+    <riskcode>0</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Informational (Medium)</riskdesc>
+    <desc>&lt;p&gt;The cache-control header is set to &quot;public, max-age=0&quot;. While max-age=0 forces revalidation, sensitive responses should use &quot;no-store&quot; or &quot;no-cache&quot; directives to prevent caching.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param>cache-control</param>
+        <evidence>public, max-age=0</evidence>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;Use Cache-Control: no-store for responses containing sensitive information.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching&lt;/p&gt;</reference>
+    <cweid>525</cweid>
+    <wascid>13</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10049</pluginid>
+    <alertRef>10049</alertRef>
+    <alert>Non-Storable Content</alert>
+    <name>Non-Storable Content</name>
+    <riskcode>0</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Informational (Medium)</riskdesc>
+    <desc>&lt;p&gt;The response contains an ETag header which can be used for tracking users across sessions.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param>ETag</param>
+        <evidence>W/&quot;124fa-19d87c35ad4&quot;</evidence>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;Remove ETag headers if not needed for caching, or ensure they do not leak sensitive information.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag&lt;/p&gt;</reference>
+    <cweid>524</cweid>
+    <wascid>13</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+  <alertitem>
+    <pluginid>10023</pluginid>
+    <alertRef>10023</alertRef>
+    <alert>Information Disclosure - Debug Error Messages</alert>
+    <name>Information Disclosure - Debug Error Messages</name>
+    <riskcode>1</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Low (Medium)</riskdesc>
+    <desc>&lt;p&gt;The X-Recruiting header discloses an internal path: /#/jobs. This is specific to OWASP Juice Shop but represents the broader pattern of information disclosure through custom headers.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://localhost:3000/</uri>
+        <method>GET</method>
+        <param>X-Recruiting</param>
+        <evidence>/#/jobs</evidence>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;Remove custom debug or recruiting headers from production deployments.&lt;/p&gt;</solution>
+    <reference>&lt;p&gt;https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/&lt;/p&gt;</reference>
+    <cweid>200</cweid>
+    <wascid>13</wascid>
+    <sourceid>3</sourceid>
+  </alertitem>
+</alerts>
+</site>
+</OWASPZAPReport>

@@ -65,7 +65,7 @@ if $have_jq; then
   }
   SCAN_ZAP="${SCAN_ZAP:-$(choose_type '^ZAP' 'ZAP Scan')}"
   SCAN_SEMGREP="${SCAN_SEMGREP:-$(choose_type '^Semgrep' 'Semgrep JSON Report')}"
-  SCAN_TRIVY="${SCAN_TRIVY:-$(choose_type '^Trivy' 'Trivy Scan')}"
+  SCAN_TRIVY="${SCAN_TRIVY:-$(choose_type '^Trivy Scan$' 'Trivy Scan')}"
   SCAN_NUCLEI="${SCAN_NUCLEI:-$(choose_type '^Nuclei' 'Nuclei Scan')}"
   # Grype importer (commonly named "Anchore Grype")
   if [[ -z "${SCAN_GRYPE:-}" ]]; then
@@ -115,7 +115,7 @@ import_scan() {
 }
 
 # Candidate paths per tool
-zap_file="labs/lab5/zap/zap-report-noauth.json"
+zap_file="labs/lab5/zap/zap-report-noauth.xml"
 semgrep_file="labs/lab5/semgrep/semgrep-results.json"
 trivy_file="labs/lab4/trivy/trivy-vuln-detailed.json"
 nuclei_file="labs/lab5/nuclei/nuclei-results.json"

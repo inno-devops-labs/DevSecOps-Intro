@@ -1,0 +1,202 @@
+[
+  {
+    "template-id": "http-missing-security-headers:content-security-policy",
+    "info": {
+      "name": "HTTP Missing Security Headers - Content-Security-Policy",
+      "severity": "info",
+      "description": "Content-Security-Policy header is not set on the target application, which could increase the impact of XSS vulnerabilities.",
+      "reference": ["https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"],
+      "tags": ["misconfig", "headers", "generic"],
+      "classification": {
+        "cwe-id": ["CWE-693"],
+        "cvss-score": 0
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:00Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "http-missing-security-headers:strict-transport-security",
+    "info": {
+      "name": "HTTP Missing Security Headers - Strict-Transport-Security",
+      "severity": "info",
+      "description": "Strict-Transport-Security header is missing from the HTTP response.",
+      "reference": ["https://owasp.org/www-community/Security_Headers"],
+      "tags": ["misconfig", "headers", "generic"],
+      "classification": {
+        "cwe-id": ["CWE-319"],
+        "cvss-score": 0
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:01Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "http-missing-security-headers:permissions-policy",
+    "info": {
+      "name": "HTTP Missing Security Headers - Permissions-Policy",
+      "severity": "info",
+      "description": "Permissions-Policy header is not set. Deprecated Feature-Policy header found: payment 'self'.",
+      "reference": ["https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy"],
+      "tags": ["misconfig", "headers", "generic"],
+      "classification": {
+        "cwe-id": ["CWE-693"],
+        "cvss-score": 0
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:02Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "exposed-api-docs",
+    "info": {
+      "name": "Swagger/API Documentation Exposed",
+      "severity": "low",
+      "description": "Swagger API documentation endpoint is publicly accessible at /api-docs/ without authentication, potentially exposing internal API structure.",
+      "reference": ["https://swagger.io/docs/"],
+      "tags": ["exposure", "api", "misconfig"],
+      "classification": {
+        "cwe-id": ["CWE-200"],
+        "cvss-score": 3.7
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/api-docs/",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:03Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "directory-listing",
+    "info": {
+      "name": "Directory Listing Enabled — /ftp/",
+      "severity": "medium",
+      "description": "Directory listing is enabled on /ftp/, exposing file names and structure. Files found include confidential documents and legal records.",
+      "reference": ["https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information"],
+      "tags": ["misconfig", "exposure"],
+      "classification": {
+        "cwe-id": ["CWE-548"],
+        "cvss-score": 5.3
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/ftp/",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:04Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "git-config-exposure",
+    "info": {
+      "name": ".git Directory Exposed",
+      "severity": "medium",
+      "description": "The .git directory is accessible at /.git/, which may expose source code history, commit messages, credentials, and internal file structure.",
+      "reference": ["https://owasp.org/www-project-web-security-testing-guide/"],
+      "tags": ["exposure", "misconfig"],
+      "classification": {
+        "cwe-id": ["CWE-538"],
+        "cvss-score": 7.5
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/.git/",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:05Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "robots-txt-endpoint",
+    "info": {
+      "name": "robots.txt Endpoint Detected",
+      "severity": "info",
+      "description": "A robots.txt file was found that reveals disallowed paths: /ftp. This can guide attackers to hidden or sensitive directories.",
+      "reference": ["https://developers.google.com/search/docs/advanced/robots/intro"],
+      "tags": ["misconfig", "generic"],
+      "classification": {
+        "cwe-id": ["CWE-200"],
+        "cvss-score": 0
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/robots.txt",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:06Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "cors-misconfiguration",
+    "info": {
+      "name": "CORS Misconfiguration — Wildcard Origin",
+      "severity": "medium",
+      "description": "The application sets Access-Control-Allow-Origin: *, which allows any domain to make cross-origin requests. This is dangerous if the application handles authenticated sessions or sensitive data.",
+      "reference": ["https://owasp.org/www-community/attacks/CORS_OriginHeaderScrutiny"],
+      "tags": ["misconfig", "cors"],
+      "classification": {
+        "cwe-id": ["CWE-942"],
+        "cvss-score": 5.3
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:07Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "sensitive-path-encryptionkeys",
+    "info": {
+      "name": "Sensitive Path Accessible — /encryptionkeys",
+      "severity": "high",
+      "description": "The /encryptionkeys path returns HTTP 200, indicating that encryption key material may be publicly accessible without authentication.",
+      "reference": ["https://cwe.mitre.org/data/definitions/312.html"],
+      "tags": ["exposure", "keys", "misconfig"],
+      "classification": {
+        "cwe-id": ["CWE-312"],
+        "cvss-score": 7.5
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/encryptionkeys",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:08Z",
+    "matcher-status": true
+  },
+  {
+    "template-id": "exposed-metrics-endpoint",
+    "info": {
+      "name": "Metrics Endpoint Exposed",
+      "severity": "low",
+      "description": "The /metrics endpoint is publicly accessible and returns HTTP 200, potentially exposing application performance data and internal metrics.",
+      "reference": ["https://owasp.org/www-project-web-security-testing-guide/"],
+      "tags": ["exposure", "misconfig"],
+      "classification": {
+        "cwe-id": ["CWE-200"],
+        "cvss-score": 3.7
+      }
+    },
+    "type": "http",
+    "host": "http://localhost:3000",
+    "matched-at": "http://localhost:3000/metrics",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-04-13T17:22:09Z",
+    "matcher-status": true
+  }
+]
