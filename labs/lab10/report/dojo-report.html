@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<!-- saved from url=(0244)http://localhost:8080/engagement/1/report?include_finding_notes=1&include_finding_images=1&include_executive_summary=1&include_table_of_contents=1&include_disclaimer=1&report_type=HTML&title=&active=1&verified=1&false_p=2&duplicate=2&_generate= -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Engagement Report: Engagement 1: Labs Security Testing (Apr 12, 2026)</title>
+    <link rel="stylesheet" href="./dojo-report_files/bootstrap.min.css">
+    <!-- Custom Fonts -->
+    <link href="./dojo-report_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+
+        .label {
+          border-color: #DEE1E6;
+          color: #ffffff !important;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 960px;
+        }
+
+        .page-cover {
+            margin-bottom: 600px !important;
+        }
+
+        .page-cover-spacer {
+            height: 400px !important;
+        }
+
+        .panel-default {
+            border-color: #A1C0D7 !important;
+        }
+
+        .panel-default > .panel-heading {
+            color: #333 !important;
+            background-color: rgba(32, 166, 216, 0.75)!important;
+            border-color: rgba(32, 166, 216, 0.75) !important;
+            border-radius: 0px !important;
+        }
+
+        .panel-info {
+            border-color: #DEE1E6 !important;
+            border-radius: 0px !important;
+        }
+
+        .panel-info > .panel-heading {
+            color: #333 !important;
+            background-color: #DEE1E6 !important;
+            border-color: #DEE1E6 !important;
+            border-radius: 0px !important;
+        }
+
+        .panel-body {
+            border-radius: 0px !important;
+        }
+
+        .severity {
+            font-size: 100%;
+        }
+
+        .severity- {
+            color: black !important;
+        }
+
+        .severity-Info {
+            background-color: #888888 !important;
+        }
+
+        .severity-Low {
+            background-color: #337ab7 !important;
+        }
+
+        .severity-Medium {
+            background-color: #FBE413 !important;
+        }
+
+        .severity-High {
+            background-color: #f09835 !important;
+        }
+
+        .severity-Critical {
+            background-color: #d9534f !important;
+        }
+
+        .panel-heading {
+            padding: 1px 5px;
+        }
+
+        .page-cover {
+            page-break-after: always
+        }
+
+        .keep-together {
+            page-break-inside: avoid
+        }
+
+        #findings, #executive {
+            page-break-before: always;
+        }
+
+        .graph {
+            height: 250px;
+            width: 418px;
+        }
+
+        .graph-2x {
+            height: 250px;
+            width: 898px;
+        }
+
+        h6{
+            font-size: 120%;
+            border-bottom: 1px solid black;
+            padding-bottom: 8px;
+        }
+
+        .panel-heading h6{
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        pre, p {
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+            page-break-inside: auto;
+            margin-bottom: 15px !important;
+        }
+
+        pre {
+            white-space: pre-wrap !important;
+            padding: 0 !important;
+            overflow: visible !important;
+            word-break: normal !important;
+        }
+
+        ul{
+            margin-bottom: 15px !important;
+        }
+
+        h4, .h4, h5, .h5, h6, .h6 {
+            margin-top: 20px;
+            margin-bottom: 11px;
+        }
+
+        .panel-heading h5 {
+          color: white !important;
+        }
+
+        div.pretty-graphs, .panel, .panel-body {
+            page-break-inside: avoid;
+        }
+
+        *, pre {
+            font-family: 'Roboto Slab', monospace !important;
+            font-size: 13px;
+        }
+
+        .flot-tick-label.tickLabel {
+            font-size: 11px;
+        }
+
+        .raw_request {
+            font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace !important;
+        }
+
+        .panel-warning .panel-heading h4{
+            color: #fff;
+        }
+
+        @media not print {
+            .report-page-break {
+                display: flex;
+                align-items: center;
+                text-align: center;
+            }
+            .report-page-break::before,
+            .report-page-break::after {
+                content: '';
+                flex: 1;
+                border-bottom: 1px dashed #000;
+            }
+            .report-page-break:not(:empty)::before {
+                margin-right: 0.25em;
+            }
+            .report-page-break:not(:empty)::after {
+                margin-left: 0.25em;
+            }
+        }
+
+        @media print {
+            .report-page-break {
+                page-break-after: always;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    
+
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <h3 id="product">Engagement Security Report for Juice Shop</h3>
+              <p>
+                <strong>Engagement:</strong> Labs Security Testing
+                <br><strong>Generated:</strong> Apr 12, 2026
+              </p>
+          </div>
+        </div>
+        
+			<div class="row">
+				<div class="col-lg-12" id="toc">
+					<h3 id="table_of_contents">Table of Contents for Labs Security Testing</h3>
+				<li><a style="font-size:139%; color:black;" href="http://localhost:8080/engagement/1/report?include_finding_notes=1&amp;include_finding_images=1&amp;include_executive_summary=1&amp;include_table_of_contents=1&amp;include_disclaimer=1&amp;report_type=HTML&amp;title=&amp;active=1&amp;verified=1&amp;false_p=2&amp;duplicate=2&amp;_generate=#Executive_Summary">Executive Summary</a></li><ul><ul><li><a style="font-size:125%; color:black;" href="http://localhost:8080/engagement/1/report?include_finding_notes=1&amp;include_finding_images=1&amp;include_executive_summary=1&amp;include_table_of_contents=1&amp;include_disclaimer=1&amp;report_type=HTML&amp;title=&amp;active=1&amp;verified=1&amp;false_p=2&amp;duplicate=2&amp;_generate=#Engagement______________________________________________________________________________:_Labs_Security_Testing">
+                                    Engagement
+                                    
+                                        : Labs Security Testing
+                                    
+                                </a></li><li><a style="font-size:125%; color:black;" href="http://localhost:8080/engagement/1/report?include_finding_notes=1&amp;include_finding_images=1&amp;include_executive_summary=1&amp;include_table_of_contents=1&amp;include_disclaimer=1&amp;report_type=HTML&amp;title=&amp;active=1&amp;verified=1&amp;false_p=2&amp;duplicate=2&amp;_generate=#Endpoints">
+                                      Endpoints
+                                  </a></li><li><a style="font-size:125%; color:black;" href="http://localhost:8080/engagement/1/report?include_finding_notes=1&amp;include_finding_images=1&amp;include_executive_summary=1&amp;include_table_of_contents=1&amp;include_disclaimer=1&amp;report_type=HTML&amp;title=&amp;active=1&amp;verified=1&amp;false_p=2&amp;duplicate=2&amp;_generate=#Engagement_Finding_Count">
+                                Engagement Finding Count
+                            </a></li><li><a style="font-size:125%; color:black;" href="http://localhost:8080/engagement/1/report?include_finding_notes=1&amp;include_finding_images=1&amp;include_executive_summary=1&amp;include_table_of_contents=1&amp;include_disclaimer=1&amp;report_type=HTML&amp;title=&amp;active=1&amp;verified=1&amp;false_p=2&amp;duplicate=2&amp;_generate=#Finding_Age">
+                                Finding Age
+                            </a></li></ul></ul><li><a style="font-size:139%; color:black;" href="http://localhost:8080/engagement/1/report?include_finding_notes=1&amp;include_finding_images=1&amp;include_executive_summary=1&amp;include_table_of_contents=1&amp;include_disclaimer=1&amp;report_type=HTML&amp;title=&amp;active=1&amp;verified=1&amp;false_p=2&amp;duplicate=2&amp;_generate=#Testing_Notes">Testing Notes</a></li></div>
+			</div>
+
+			<div id="contents">
+		
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <a style="color:black;" name="Executive_Summary"><h3 id="executive">Executive Summary</h3></a>
+                    <p>
+                        This report represents a security assessment performed by the Security Team team including
+                        confidential information about the state of your network and applications.
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading finding-title">
+                            <div class="clearfix">
+                                <a style="color:black;" name="Engagement______________________________________________________________________________:_Labs_Security_Testing"><h5>
+                                    Engagement
+                                    
+                                        : Labs Security Testing
+                                    
+                                </h5></a>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="notes" class="table-striped table table-condensed table-hover centered">
+                                <tbody><tr>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Lead</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        April 12, 2026
+                                    </td>
+                                    <td>
+                                        April 12, 2027
+                                    </td>
+                                    <td>
+                                        In Progress
+                                    </td>
+                                    <td>
+                                        Admin User
+                                        - Admin User (admin)
+                                    </td>
+                                </tr>
+                                
+                            </tbody></table>
+                        </div>
+                    </div>
+
+                    
+                        <p>The engagement included the following tests:</p>
+                        <ul>
+                            
+                                  <li>ZAP Scan
+                                      (Development): 04/12/2026</li>
+                            
+                                  <li>Semgrep Pro JSON Report
+                                      (Development): 04/12/2026</li>
+                            
+                                  <li>Trivy Operator Scan
+                                      (Development): 04/12/2026</li>
+                            
+                                  <li>Nuclei Scan
+                                      (Development): 04/12/2026</li>
+                            
+                                  <li>Anchore Grype
+                                      (Development): 04/12/2026</li>
+                            
+                        </ul>
+                    
+                    
+                    <div class="row">
+                      <div class="col-md-12">
+                      <div class="panel panel-default">
+                          <div class="panel-heading finding-title">
+                              <div class="clearfix">
+                                  <a style="color:black;" name="Endpoints"><h5>
+                                      Endpoints
+                                  </h5></a>
+                              </div>
+                          </div>
+                            <div class="panel panel-info endpoints table-responsive">
+                                
+                                <table class="table-striped table table table-condensed table-hover finding-endpoints">
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                    <p>
+                        A total of 0 findings of varying
+                        severity are represented in this report.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a style="color:black;" name="Engagement_Finding_Count"><h5>
+                                Engagement Finding Count
+                            </h5></a>
+                        </div>
+                        <div class="panel-body">
+                            <div id="open_findings" class="graph" style="padding: 0px; position: relative;"><canvas class="flot-base" width="627" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 418px; height: 250px;"></canvas><div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 83px; top: 233px; left: 41px; text-align: center;">Critical</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 83px; top: 233px; left: 123px; text-align: center;">High</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 83px; top: 233px; left: 189px; text-align: center;">Medium</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 83px; top: 233px; left: 275px; text-align: center;">Low</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 83px; top: 233px; left: 352px; text-align: center;">Info</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 219px; left: 2px; text-align: right;">-1.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 164px; left: 1px; text-align: right;">-0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 110px; left: 5px; text-align: right;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 55px; left: 5px; text-align: right;">0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 7px; text-align: right;">1.0</div></div></div><canvas class="flot-overlay" width="627" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 418px; height: 250px;"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a style="color:black;" name="Finding_Age"><h5>
+                                Finding Age
+                            </h5></a>
+                        </div>
+                        <div class="panel-body">
+                            <div id="finding_age" class="graph" style="padding: 0px; position: relative;"><canvas class="flot-base" width="627" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 418px; height: 250px;"></canvas><div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 233px; left: 2px; text-align: right;">-1.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 175px; left: 1px; text-align: right;">-0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 117px; left: 5px; text-align: right;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 59px; left: 5px; text-align: right;">0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 7px; text-align: right;">1.0</div></div></div><canvas class="flot-overlay" width="627" height="375" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 418px; height: 250px;"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div style="background-color:#DADCE2; border:1px #003333; padding:.8em; ">
+                <span style="font-size:16pt;  font-family: &#39;Cambria&#39;,&#39;times new roman&#39;,&#39;garamond&#39;,serif; color:#ff0000;">Disclaimer</span><br>
+                <p style="font-size:11pt; line-height:10pt; font-family: &#39;Cambria&#39;,&#39;times roman&#39;,serif;">Please configure in System Settings.</p>
+            </div>
+		
+        <div class="row">
+            <div class="col-lg-12">
+                
+                
+                    <a style="color:black;" name="Testing_Notes"><h3>Testing Notes</h3></a>
+                    <p>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </p>
+                
+                
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                
+                
+            </div>
+        </div>
+        
+			</div>
+		
+    </div> <!-- /container -->
+
+
+    
+
+    <script src="./dojo-report_files/jquery.min.js"></script>
+    <!-- Flot Charts JavaScript -->
+    <script src="./dojo-report_files/excanvas.min.js"></script>
+    <script src="./dojo-report_files/jquery.flot.js"></script>
+    <script src="./dojo-report_files/jquery.flot.resize.js"></script>
+    <script src="./dojo-report_files/jquery.flot.time.js"></script>
+    <script src="./dojo-report_files/jquery.flot.stack.js"></script>
+    <script src="./dojo-report_files/metrics.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var data = {};
+            var data_1 = [];
+            var ticks = [];
+            
+            var i = 0;
+            $.each(data, function (index, value) {
+                if (value > 0) {
+                    data_1.push([i, value]);
+                    ticks.push([i, index])
+                }
+                i++;
+            });
+            finding_age(data_1, ticks);
+
+            var critical = 0;
+            var high = 0;
+            var medium = 0;
+            var low = 0;
+            var info = 0;
+            ticks = [
+                [0, "Critical"], [1, "High"], [2, "Medium"], [3, "Low"], [4, "Info"]
+            ];
+
+            
+
+            var d1 = [
+                [0, critical],
+            ];
+            var d2 = [
+                [1, high],
+            ];
+            var d3 = [
+                [2, medium],
+            ];
+            var d4 = [
+                [3, low],
+            ];
+            var d5 = [
+                [4, info],
+            ];
+            open_findings(d1, d2, d3, d4, d5, ticks);
+
+            
+
+        });
+
+        
+        window.onload = function () {
+            var toc = "";
+            var level = 3;
+
+            document.getElementById("contents").innerHTML =
+                document.getElementById("contents").innerHTML.replace(
+                    /<h([\d])([^<]*)>([^<]+)<\/h([\d])>|<h([\d])([^>]*)>([^<]+)<sup>([^<]*)<\/sup>([^<]*)<\/h([\d])>/gi,
+                    function (str, openLevel, id, titleText, closeLevel, openLevel_t, id_t, titleText_t, tags, junk, closeLevel_t) {
+                        if (openLevel != closeLevel || openLevel > 5) {
+                            return str;
+                        }
+
+                        if(tags)
+                        {
+                            openLevel = openLevel_t;
+                            id = id_t;
+                            titleText = titleText_t;
+                            closeLevel = closeLevel_t;
+                        }
+
+                        if (openLevel > level) {
+                            toc += (new Array(openLevel - level + 1)).join("<ul>");
+                        } else if (openLevel < level) {
+                            toc += (new Array(level - openLevel + 1)).join("</ul>");
+                        }
+
+                        level = parseInt(openLevel);
+
+                        var anchor = titleText.trim().replace(/\s/g, "_");
+
+                        if(tags)
+                        {
+                            if (['Info', 'Low', 'Medium', 'High', 'Critical'].indexOf(titleText) >= 0) {
+                                toc += "<li><a style=\"font-size:" + (160 - (level * 7)) + "%; color:black;\" href=\"#" + anchor + "\">" +
+                                "<span class=\"label severity severity-" + titleText + "\">" + titleText + "</span></a></li>";
+                            }
+                            else {
+                                toc += "<li><a style=\"font-size:" + (160 - (level * 7)) + "%; color:black;\" href=\"#" + anchor + "\">" +
+                                titleText + "<sup>" + tags + "</sup></a></li>";
+                            }
+
+                            return "<a style=\"color:black;\" name=\"" + anchor + "\"><h" + openLevel + "" + id + ">"
+                                + titleText + "<sup>" + tags + "</sup></h" + closeLevel + "></a>";
+                        }
+                        else
+                        {
+                            if (['Info', 'Low', 'Medium', 'High', 'Critical'].indexOf(titleText) >= 0) {
+                                toc += "<br><li><a style=\"font-size:" + (160 - (level * 7)) + "%; color:black;\" href=\"#" + anchor + "\">" +
+                                "<span class=\"label severity severity-" + titleText + "\">" + titleText + "</span></a></li><br>";
+                            }
+                            else {
+                                toc += "<li><a style=\"font-size:" + (160 - (level * 7)) + "%; color:black;\" href=\"#" + anchor + "\">" +
+                                titleText + "</a></li>";
+                            }
+
+                            return "<a style=\"color:black;\" name=\"" + anchor + "\"><h" + openLevel + "" + id + ">"
+                                + titleText + "</h" + closeLevel + "></a>";
+                        }
+
+                        return "<a style=\"color:black;\" name=\"" + anchor + "\"><h" + openLevel + "" + id + ">"
+                            + titleText + "<sup>" + tags + "</sup></h" + closeLevel + "></a>";
+                    }
+                );
+
+            if (level) {
+                toc += (new Array(level + 1)).join("</ul>");
+            }
+
+            document.getElementById("toc").innerHTML += toc;
+        };
+        
+    </script>
+
+
+
+</body></html>
