@@ -3,7 +3,7 @@
 ## Student / Context
 - Name: `Danil Fishchenko`
 - Branch: `feature/lab9`
-- Work date: `2026-04-05 15:44 MSK`
+- Work date: `2026-04-13 20:59 MSK`
 - Repository root: `DevSecOps-Intro/`
 - Host OS: `macOS 26.3.1 (a) / Darwin 25.3.0 arm64`
 - Docker Desktop / Engine: `29.2.1`
@@ -86,11 +86,14 @@ Why this matters:
 ### 3. Policy quality improved
 - `labs/lab9/policies/k8s-security.rego`
   - fixed capability-drop detection so a missing `capabilities.drop: ["ALL"]` is now denied reliably
+  - added an explicit deny for non-empty `capabilities.add`
   - extended security and resource checks to `initContainers`, closing a gap where an insecure init container could previously pass policy
   - added seccomp enforcement (`RuntimeDefault` or `Localhost`) to align the policy with Kubernetes restricted-style hardening
   - accepts `runAsNonRoot: true` from either container-level or pod-level security context, avoiding a false positive on valid pod-level configurations
 - `labs/lab9/policies/compose-security.rego`
-  - rejects explicit root users (`0`, `0:0`, `root`, `root:root`)
+  - rejects missing users and explicit root users (`0`, `0:0`, `root`, `root:root`)
+  - accepts either numeric or named non-root users
+  - rejects `cap_add`
   - safely checks `cap_drop`
   - safely checks `security_opt`
 - Added policy unit tests:
@@ -195,6 +198,7 @@ Important observed nuance:
 - On this Falco version and ruleset, the plain write under `/usr/local/bin` did not itself produce a built-in drift alert.
 - The built-in drift-style evidence was the rule `Drop and execute new binary in container`, triggered by executing a dropped binary from the container upper layer.
 - That difference is preserved honestly in this submission instead of pretending the older wording from the lab text still matched current behavior.
+- The refreshed `2026-04-13` evidence files use container names `lab9-helper-live` and `eventgen-live`; the scenarios above stay the same.
 
 ### 1.4 Event Generator Result
 Saved stdout:
@@ -211,7 +215,7 @@ Representative extra Falco detections seen after running it:
 ### 1.5 Runtime Caveats
 - Falco startup on Docker Desktop's LinuxKit kernel reported TOCTOU mitigation tracepoint warnings for some syscalls.
 - Falco explicitly continued detection despite those warnings.
-- The full `falco.log` also contains unrelated alerts from already running local containers; the highlights file isolates the lab-relevant evidence for `lab9-helper` and `eventgen`.
+- The full `falco.log` also contains unrelated alerts from already running local containers; the highlights file isolates the lab-relevant evidence for the helper-container and `event-generator` verification runs.
 
 ## Task 2 - Policy-As-Code With Conftest
 
@@ -250,13 +254,13 @@ Saved outputs:
 Observed results with the final policy tree:
 
 - Unhardened Kubernetes manifest:
-  - `38 tests, 26 passed, 2 warnings, 10 failures, 0 exceptions`
+  - `42 tests, 30 passed, 2 warnings, 10 failures, 0 exceptions`
 - Hardened Kubernetes manifest:
-  - `38 tests, 38 passed, 0 warnings, 0 failures, 0 exceptions`
+  - `42 tests, 42 passed, 0 warnings, 0 failures, 0 exceptions`
 - Compose manifest:
-  - `19 tests, 19 passed, 0 warnings, 0 failures, 0 exceptions`
+  - `21 tests, 21 passed, 0 warnings, 0 failures, 0 exceptions`
 - Policy unit tests:
-  - `6 tests, 6 passed, 0 warnings, 0 failures, 0 exceptions, 0 skipped`
+  - `10 tests, 10 passed, 0 warnings, 0 failures, 0 exceptions, 0 skipped`
 
 ### 2.3 Unhardened Kubernetes Violations And Why They Matter
 Observed deny results:
@@ -315,6 +319,7 @@ Why the init-container seeding strategy was necessary:
 Saved runtime evidence:
 - `labs/lab9/analysis/k8s-runtime.log`
 - `labs/lab9/analysis/k8s-http-head.txt`
+- `k8s-runtime.log` includes the exact UID/filesystem/service-account probes executed via `/nodejs/bin/node`
 
 Manual hardening checks performed on the running Kubernetes pod:
 - confirmed the process runs as `65532:65532`
@@ -352,6 +357,7 @@ Why this version is better than the broad `/juice-shop` mount:
 Saved runtime evidence:
 - `labs/lab9/analysis/compose-runtime.log`
 - `labs/lab9/analysis/compose-http-head.txt`
+- `compose-runtime.log` includes the exact UID/filesystem probes executed via `/nodejs/bin/node`
 
 Manual hardening checks performed on the running Compose container:
 - confirmed the process runs as `65532:65532`
@@ -365,14 +371,19 @@ Manual hardening checks performed on the running Compose container:
 
 ## Additional Verification Performed
 - `docker compose -f labs/lab9/manifests/compose/juice-compose.yml config -q`
-- `docker compose -f labs/lab9/manifests/compose/juice-compose.yml -p lab9audit up -d`
-- `curl -sSI http://localhost:3006/` -> `HTTP/1.1 200 OK`
+- `docker compose -f labs/lab9/manifests/compose/juice-compose.yml -p lab9verify up -d`
+- `docker compose -f labs/lab9/manifests/compose/juice-compose.yml -p lab9verify logs --no-color`
+- `docker exec lab9verify-juice-1 /nodejs/bin/node -e '...'` -> confirmed `uid/gid=65532`, `/tmp` writable, `/etc` not writable, immutable app files remain non-writable, required writable subpaths stay writable
+- `curl -sSI http://127.0.0.1:3006/` -> `HTTP/1.1 200 OK`
+- `kubectl cluster-info`
 - `kubectl apply -n lab9-audit -f labs/lab9/manifests/k8s/juice-hardened.yaml`
-- `kubectl rollout status deployment/juice-hardened -n lab9-audit --timeout=180s`
-- `kubectl port-forward -n lab9-audit svc/juice-hardened 3028:80`
-- `curl -sSI http://localhost:3028/` -> `HTTP/1.1 200 OK`
+- `kubectl rollout status deployment/juice-hardened -n lab9-audit --timeout=240s`
+- `kubectl exec -n lab9-audit deploy/juice-hardened -- /nodejs/bin/node -e '...'` -> confirmed `uid/gid=65532`, `/tmp` writable, `/etc` not writable, immutable app files remain non-writable, required writable subpaths stay writable, service-account token absent
+- `kubectl port-forward -n lab9-audit svc/juice-hardened 3928:80`
+- `curl -sSI http://127.0.0.1:3928/` -> `HTTP/1.1 200 OK`
 - `docker run --rm -v "$(pwd)/labs/lab9/falco/rules":/etc/falco/rules.d:ro falcosecurity/falco:0.43.0 falco -V /etc/falco/rules.d/custom-rules.yaml` -> rule file validated successfully
-- `docker run --rm -v "$(pwd)/labs/lab9":/project openpolicyagent/conftest:latest verify --policy /project/policies` -> `6/6` tests passed
+- live Falco rerun repeated the helper-container shell, custom-rule writes, dropped-binary execution, and `event-generator` syscall pack on `2026-04-13`; refreshed evidence was saved under `labs/lab9/falco/logs/` and `labs/lab9/analysis/`
+- `docker run --rm -v "$(pwd)/labs/lab9":/project openpolicyagent/conftest:latest verify --policy /project/policies` -> `10/10` tests passed
 
 ## Acceptance Criteria Checklist
 - [x] Branch `feature/lab9` contains Falco setup, logs, and a custom rule file

@@ -53,6 +53,13 @@ deny contains msg if {
 
 deny contains msg if {
   c := workload_containers[_]
+  add_caps := object.get(object.get(object.get(c, "securityContext", {}), "capabilities", {}), "add", [])
+  count(add_caps) > 0
+  msg := sprintf("container %q must not add capabilities", [c.name])
+}
+
+deny contains msg if {
+  c := workload_containers[_]
   c.securityContext.privileged == true
   msg := sprintf("container %q must not run privileged", [c.name])
 }

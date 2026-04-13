@@ -1,45 +1,45 @@
-INFO sleep for 100ms                               action=syscall.DirectoryTraversalMonitoredFileRead
-INFO action executed                               action=syscall.DirectoryTraversalMonitoredFileRead
-INFO sleep for 100ms                               action=syscall.ExecutionFromDevShm
-INFO action executed                               action=syscall.ExecutionFromDevShm
-INFO sleep for 100ms                               action=syscall.RunShellUntrusted
-INFO spawn as "httpd"                              action=syscall.RunShellUntrusted args="^helper.RunShell$"
-INFO sleep for 100ms                               action=helper.RunShell as=httpd
-INFO action executed                               action=helper.RunShell as=httpd
-INFO sleep for 100ms                               action=syscall.PtraceAttachedToProcess
-INFO sleep for 100ms                               action=syscall.PtraceAntiDebugAttempt
-INFO action executed                               action=syscall.PtraceAntiDebugAttempt
-INFO sleep for 100ms                               action=syscall.MountLaunchedInPrivilegedContainer
-INFO sleep for 100ms                               action=syscall.DebugfsLaunchedInPrivilegedContainer
-INFO action executed                               action=syscall.DebugfsLaunchedInPrivilegedContainer
-INFO sleep for 100ms                               action=syscall.PacketSocketCreatedInContainer
-INFO action executed                               action=syscall.PacketSocketCreatedInContainer
-INFO sleep for 100ms                               action=syscall.SystemUserInteractive
-INFO run as "daemon"                               action=syscall.SystemUserInteractive cmdArgs="[]" cmdName=/bin/login user=daemon
-INFO sleep for 100ms                               action=syscall.ClearLogActivities
-INFO action executed                               action=syscall.ClearLogActivities
-INFO sleep for 100ms                               action=syscall.CreateSymlinkOverSensitiveFiles
-INFO action executed                               action=syscall.CreateSymlinkOverSensitiveFiles
-INFO sleep for 100ms                               action=syscall.FindAwsCredentials
-INFO action executed                               action=syscall.FindAwsCredentials
 INFO sleep for 100ms                               action=syscall.ReadSensitiveFileTrustedAfterStartup
 INFO spawn as "httpd"                              action=syscall.ReadSensitiveFileTrustedAfterStartup args="^syscall.ReadSensitiveFileUntrusted$ --sleep 6s"
 INFO sleep for 6s                                  action=syscall.ReadSensitiveFileUntrusted as=httpd
 INFO action executed                               action=syscall.ReadSensitiveFileUntrusted as=httpd
-INFO sleep for 100ms                               action=syscall.DisallowedSSHConnectionNonStandardPort
-INFO sleep for 100ms                               action=syscall.LaunchSuspiciousNetworkToolOnHost
-WARN action skipped                                action=syscall.LaunchSuspiciousNetworkToolOnHost reason="not applicable to containers"
+INFO sleep for 100ms                               action=syscall.SystemUserInteractive
+INFO run as "daemon"                               action=syscall.SystemUserInteractive cmdArgs="[]" cmdName=/bin/login user=daemon
+INFO sleep for 100ms                               action=syscall.RunShellUntrusted
+INFO spawn as "httpd"                              action=syscall.RunShellUntrusted args="^helper.RunShell$"
+INFO sleep for 100ms                               action=helper.RunShell as=httpd
+INFO action executed                               action=helper.RunShell as=httpd
+INFO sleep for 100ms                               action=syscall.PtraceAntiDebugAttempt
+INFO action executed                               action=syscall.PtraceAntiDebugAttempt
+INFO sleep for 100ms                               action=syscall.DebugfsLaunchedInPrivilegedContainer
+INFO action executed                               action=syscall.DebugfsLaunchedInPrivilegedContainer
 INFO sleep for 100ms                               action=syscall.ReadSensitiveFileUntrusted
 INFO action executed                               action=syscall.ReadSensitiveFileUntrusted
-INFO sleep for 100ms                               action=syscall.DropAndExecuteNewBinaryInContainer
-INFO sleep for 100ms                               action=syscall.FilelessExecutionViaMemfdCreate
-INFO action executed                               action=syscall.FilelessExecutionViaMemfdCreate
+INFO sleep for 100ms                               action=syscall.LaunchSuspiciousNetworkToolOnHost
+WARN action skipped                                action=syscall.LaunchSuspiciousNetworkToolOnHost reason="not applicable to containers"
+INFO sleep for 100ms                               action=syscall.ExecutionFromDevShm
+INFO action executed                               action=syscall.ExecutionFromDevShm
 INFO sleep for 100ms                               action=syscall.DetectReleaseAgentFileContainerEscapes
 INFO action executed                               action=syscall.DetectReleaseAgentFileContainerEscapes
-INFO sleep for 100ms                               action=syscall.SearchPrivateKeysOrPasswords
-INFO action executed                               action=syscall.SearchPrivateKeysOrPasswords
+INFO sleep for 100ms                               action=syscall.ClearLogActivities
+INFO action executed                               action=syscall.ClearLogActivities
+INFO sleep for 100ms                               action=syscall.DisallowedSSHConnectionNonStandardPort
 INFO sleep for 100ms                               action=syscall.CreateHardlinkOverSensitiveFiles
 INFO action executed                               action=syscall.CreateHardlinkOverSensitiveFiles
-INFO sleep for 100ms                               action=syscall.NetcatRemoteCodeExecutionInContainer
+INFO sleep for 100ms                               action=syscall.PtraceAttachedToProcess
+INFO sleep for 100ms                               action=syscall.CreateSymlinkOverSensitiveFiles
+INFO action executed                               action=syscall.CreateSymlinkOverSensitiveFiles
+INFO sleep for 100ms                               action=syscall.FilelessExecutionViaMemfdCreate
+INFO action executed                               action=syscall.FilelessExecutionViaMemfdCreate
+INFO sleep for 100ms                               action=syscall.PacketSocketCreatedInContainer
+INFO action executed                               action=syscall.PacketSocketCreatedInContainer
+INFO sleep for 100ms                               action=syscall.FindAwsCredentials
+INFO action executed                               action=syscall.FindAwsCredentials
+INFO sleep for 100ms                               action=syscall.MountLaunchedInPrivilegedContainer
+INFO sleep for 100ms                               action=syscall.DirectoryTraversalMonitoredFileRead
+INFO action executed                               action=syscall.DirectoryTraversalMonitoredFileRead
 INFO sleep for 100ms                               action=syscall.RemoveBulkDataFromDisk
 INFO action executed                               action=syscall.RemoveBulkDataFromDisk
+INFO sleep for 100ms                               action=syscall.NetcatRemoteCodeExecutionInContainer
+INFO sleep for 100ms                               action=syscall.DropAndExecuteNewBinaryInContainer
+INFO sleep for 100ms                               action=syscall.SearchPrivateKeysOrPasswords
+INFO action executed                               action=syscall.SearchPrivateKeysOrPasswords

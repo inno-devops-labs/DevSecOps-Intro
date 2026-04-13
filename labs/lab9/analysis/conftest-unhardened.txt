@@ -11,4 +11,4 @@ FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "
 FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" must set seccompProfile.type to RuntimeDefault or Localhost
 FAIL - /project/manifests/k8s/juice-unhardened.yaml - k8s.security - container "juice" uses disallowed :latest tag
 
-38 tests, 26 passed, 2 warnings, 10 failures, 0 exceptions
+42 tests, 30 passed, 2 warnings, 10 failures, 0 exceptions

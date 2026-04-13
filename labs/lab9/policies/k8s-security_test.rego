@@ -143,6 +143,45 @@ test_insecure_init_container_fails_expected_rules if {
   violations["container \"prepare\" missing resources.limits.memory"]
 }
 
+test_container_capabilities_add_is_denied if {
+  insecure_caps := {
+    "kind": "Deployment",
+    "spec": {
+      "template": {
+        "spec": {
+          "securityContext": {
+            "seccompProfile": {"type": "RuntimeDefault"},
+          },
+          "containers": [
+            {
+              "name": "juice",
+              "image": "bkimminich/juice-shop:v19.0.0",
+              "securityContext": {
+                "runAsNonRoot": true,
+                "allowPrivilegeEscalation": false,
+                "readOnlyRootFilesystem": true,
+                "capabilities": {
+                  "drop": ["ALL"],
+                  "add": ["SYS_ADMIN"],
+                },
+              },
+              "resources": {
+                "requests": {"cpu": "100m", "memory": "256Mi"},
+                "limits": {"cpu": "500m", "memory": "512Mi"},
+              },
+              "readinessProbe": {"httpGet": {"path": "/", "port": 3000}},
+              "livenessProbe": {"httpGet": {"path": "/", "port": 3000}},
+            },
+          ],
+        },
+      },
+    },
+  }
+
+  violations := deny with input as insecure_caps
+  violations["container \"juice\" must not add capabilities"]
+}
+
 test_pod_level_run_as_non_root_is_accepted if {
   pod_level := {
     "kind": "Deployment",

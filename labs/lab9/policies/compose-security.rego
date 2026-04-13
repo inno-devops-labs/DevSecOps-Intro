@@ -54,6 +54,13 @@ deny contains msg if {
 deny contains msg if {
   some name
   svc := containers[name]
+  count(object.get(svc, "cap_add", [])) > 0
+  msg := sprintf("service %q must not add capabilities", [name])
+}
+
+deny contains msg if {
+  some name
+  svc := containers[name]
   svc.privileged == true
   msg := sprintf("service %q must not run privileged", [name])
 }
