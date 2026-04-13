@@ -186,7 +186,7 @@ At the time of capture, the engagement contained:
 The same baseline snapshot showed 116 verified findings and 0 mitigated findings.
 
 A screenshot of the engagement dashboard:
-![Baseline dashboard](lab10/report/dashboard-baseline.png)
+![Baseline dashboard](images/dashboard.png)
 
 ### Governance-ready exports
 
@@ -230,4 +230,3 @@ The engagement contained the following findings per tool:
 - The baseline snapshot showed 116 verified findings and 0 mitigated findings, so all findings remained open at the time of reporting.
 - No SLA breaches were identified in the exported findings, and 21 findings were due within the next 14 days.
 - The most common populated CWE values in the exported findings were CWE-1333 (16 findings), CWE-79 (11 findings), and CWE-22 (11 findings).
-```
