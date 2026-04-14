@@ -1,0 +1,76 @@
+---
+env:
+  contexts:
+    - name: "JuiceShop"
+      urls:
+        - "http://localhost:3000"
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://localhost:3000/rest/user/login"
+          loginRequestUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+        verification:
+          method: "response"
+          loggedInRegex: "\\Qauthentication\\E"
+          pollFrequency: 60
+          pollUnits: "requests"
+          pollUrl: ""
+          pollRequestBody: ""
+      sessionManagement:
+        method: "cookie"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+  parameters:
+    failOnError: false
+    failOnWarning: false
+    progressToStdout: true
+
+jobs:
+  - type: spider
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      url: "http://localhost:3000"
+      maxDuration: 2
+      maxDepth: 5
+  - type: spiderAjax
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      url: "http://localhost:3000"
+      maxDuration: 5
+      maxCrawlDepth: 5
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 3
+  - type: activeScan
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      policy: ""
+      maxRuleDurationInMins: 2
+      maxScanDurationInMins: 15
+  - type: report
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.html"
+    risks:
+      - high
+      - medium
+      - low
+      - info
+  - type: report
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.json"
+    risks:
+      - high
+      - medium
+      - low
+      - info

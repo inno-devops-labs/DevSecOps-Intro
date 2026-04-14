@@ -1,0 +1,28 @@
+=== SAST Analysis Report ===
+Total findings: 25
+
+Severity breakdown:
+ERROR: 7
+WARNING: 18
+
+Unique files scanned with findings:
+/src/data/static/codefixes/dbSchemaChallenge_1.ts
+/src/data/static/codefixes/dbSchemaChallenge_3.ts
+/src/data/static/codefixes/unionSqlInjectionChallenge_1.ts
+/src/data/static/codefixes/unionSqlInjectionChallenge_3.ts
+/src/frontend/src/app/navbar/navbar.component.html
+/src/frontend/src/app/purchase-basket/purchase-basket.component.html
+/src/frontend/src/app/search-result/search-result.component.html
+/src/lib/insecurity.ts
+/src/routes/chatbot.ts
+/src/routes/fileServer.ts
+/src/routes/keyServer.ts
+/src/routes/logfileServer.ts
+/src/routes/login.ts
+/src/routes/quarantineServer.ts
+/src/routes/redirect.ts
+/src/routes/search.ts
+/src/routes/userProfile.ts
+/src/routes/videoHandler.ts
+/src/server.ts
+/src/views/dataErasureForm.hbs
