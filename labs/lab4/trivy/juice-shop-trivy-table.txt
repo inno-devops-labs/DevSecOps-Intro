@@ -1,0 +1,798 @@
+
+bkimminich/juice-shop:v19.0.0 (debian 12.11)
+============================================
+Total: 36 (UNKNOWN: 0, LOW: 15, MEDIUM: 15, HIGH: 5, CRITICAL: 1)
+
+┌─────────────┬──────────────────┬──────────┬──────────────┬───────────────────┬──────────────────┬──────────────────────────────────────────────────────────────┐
+│   Library   │  Vulnerability   │ Severity │    Status    │ Installed Version │  Fixed Version   │                            Title                             │
+├─────────────┼──────────────────┼──────────┼──────────────┼───────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ gcc-12-base │ CVE-2022-27943   │ LOW      │ affected     │ 12.2.0-14+deb12u1 │                  │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows   │
+│             │                  │          │              │                   │                  │ stack exhaustion in demangle_const                           │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2022-27943                   │
+├─────────────┼──────────────────┼──────────┼──────────────┼───────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libc6       │ CVE-2025-4802    │ HIGH     │ fixed        │ 2.36-9+deb12u10   │ 2.36-9+deb12u11  │ glibc: static setuid binary dlopen may incorrectly search    │
+│             │                  │          │              │                   │                  │ LD_LIBRARY_PATH                                              │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-4802                    │
+│             ├──────────────────┤          ├──────────────┤                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-0861    │          │ affected     │                   │                  │ glibc: Integer overflow in memalign leads to heap corruption │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-0861                    │
+│             ├──────────────────┼──────────┤              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-15281   │ MEDIUM   │              │                   │                  │ glibc: wordexp with WRDE_REUSE and WRDE_APPEND may return    │
+│             │                  │          │              │                   │                  │ uninitialized memory                                         │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-15281                   │
+│             ├──────────────────┤          ├──────────────┤                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-8058    │          │ fixed        │                   │ 2.36-9+deb12u13  │ glibc: Double free in glibc                                  │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-8058                    │
+│             ├──────────────────┤          ├──────────────┤                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-0915    │          │ affected     │                   │                  │ glibc: glibc: Information disclosure via zero-valued network │
+│             │                  │          │              │                   │                  │ query                                                        │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-0915                    │
+│             ├──────────────────┤          ├──────────────┤                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-4046    │          │ fix_deferred │                   │                  │ glibc: glibc: Denial of Service via iconv() function with    │
+│             │                  │          │              │                   │                  │ specific character sets...                                   │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-4046                    │
+│             ├──────────────────┤          ├──────────────┤                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-4437    │          │ affected     │                   │                  │ glibc: glibc: Incorrect DNS response parsing via crafted DNS │
+│             │                  │          │              │                   │                  │ server response                                              │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-4437                    │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-4438    │          │              │                   │                  │ glibc: glibc: Invalid DNS hostname returned via              │
+│             │                  │          │              │                   │                  │ gethostbyaddr functions                                      │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-4438                    │
+│             ├──────────────────┼──────────┤              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2010-4756    │ LOW      │              │                   │                  │ glibc: glob implementation can cause excessive CPU and       │
+│             │                  │          │              │                   │                  │ memory consumption due to...                                 │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2010-4756                    │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2018-20796   │          │              │                   │                  │ glibc: uncontrolled recursion in function                    │
+│             │                  │          │              │                   │                  │ check_dst_limits_calc_pos_1 in posix/regexec.c               │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2018-20796                   │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010022 │          │              │                   │                  │ glibc: stack guard protection bypass                         │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2019-1010022                 │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010023 │          │              │                   │                  │ glibc: running ldd on malicious ELF leads to code execution  │
+│             │                  │          │              │                   │                  │ because of...                                                │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2019-1010023                 │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010024 │          │              │                   │                  │ glibc: ASLR bypass using cache of thread stack and heap      │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2019-1010024                 │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010025 │          │              │                   │                  │ glibc: information disclosure of heap addresses of           │
+│             │                  │          │              │                   │                  │ pthread_created thread                                       │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2019-1010025                 │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-9192    │          │              │                   │                  │ glibc: uncontrolled recursion in function                    │
+│             │                  │          │              │                   │                  │ check_dst_limits_calc_pos_1 in posix/regexec.c               │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2019-9192                    │
+├─────────────┼──────────────────┤          │              ├───────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libgcc-s1   │ CVE-2022-27943   │          │              │ 12.2.0-14+deb12u1 │                  │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows   │
+│             │                  │          │              │                   │                  │ stack exhaustion in demangle_const                           │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2022-27943                   │
+├─────────────┤                  │          │              │                   ├──────────────────┤                                                              │
+│ libgomp1    │                  │          │              │                   │                  │                                                              │
+│             │                  │          │              │                   │                  │                                                              │
+│             │                  │          │              │                   │                  │                                                              │
+├─────────────┼──────────────────┼──────────┼──────────────┼───────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libssl3     │ CVE-2025-15467   │ CRITICAL │ fixed        │ 3.0.17-1~deb12u2  │ 3.0.18-1~deb12u2 │ openssl: OpenSSL: Remote code execution or Denial of Service │
+│             │                  │          │              │                   │                  │ via oversized Initialization...                              │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-15467                   │
+│             ├──────────────────┼──────────┤              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-69419   │ HIGH     │              │                   │                  │ openssl: OpenSSL: Arbitrary code execution due to            │
+│             │                  │          │              │                   │                  │ out-of-bounds write in PKCS#12 processing...                 │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-69419                   │
+│             ├──────────────────┤          │              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-69421   │          │              │                   │                  │ openssl: OpenSSL: Denial of Service via malformed PKCS#12    │
+│             │                  │          │              │                   │                  │ file processing                                              │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-69421                   │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-28390   │          │              │                   │ 3.0.19-1~deb12u2 │ openssl: OpenSSL: Denial of Service due to NULL pointer      │
+│             │                  │          │              │                   │                  │ dereference in CMS...                                        │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-28390                   │
+│             ├──────────────────┼──────────┤              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-68160   │ MEDIUM   │              │                   │ 3.0.18-1~deb12u2 │ openssl: OpenSSL: Denial of Service due to out-of-bounds     │
+│             │                  │          │              │                   │                  │ write in BIO filter...                                       │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-68160                   │
+│             ├──────────────────┤          │              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-69418   │          │              │                   │                  │ openssl: OpenSSL: Information disclosure and data tampering  │
+│             │                  │          │              │                   │                  │ via specific low-level OCB encryption/decryption...          │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-69418                   │
+│             ├──────────────────┤          │              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-69420   │          │              │                   │                  │ openssl: OpenSSL: Denial of Service via malformed TimeStamp  │
+│             │                  │          │              │                   │                  │ Response                                                     │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-69420                   │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-9230    │          │              │                   │ 3.0.17-1~deb12u3 │ openssl: Out-of-bounds read & write in RFC 3211 KEK Unwrap   │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-9230                    │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-22795   │          │              │                   │ 3.0.18-1~deb12u2 │ openssl: OpenSSL: Denial of Service due to type confusion in │
+│             │                  │          │              │                   │                  │ PKCS#12 file...                                              │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-22795                   │
+│             ├──────────────────┤          │              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-22796   │          │              │                   │                  │ openssl: OpenSSL: Denial of Service via type confusion in    │
+│             │                  │          │              │                   │                  │ PKCS#7 signature verification...                             │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-22796                   │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-28388   │          │              │                   │ 3.0.19-1~deb12u2 │ openssl: OpenSSL: Denial of Service due to NULL pointer      │
+│             │                  │          │              │                   │                  │ dereference in delta...                                      │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-28388                   │
+│             ├──────────────────┤          │              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-28389   │          │              │                   │                  │ openssl: OpenSSL: Denial of Service vulnerability in CMS     │
+│             │                  │          │              │                   │                  │ processing                                                   │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-28389                   │
+│             ├──────────────────┤          │              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-31790   │          │              │                   │                  │ openssl: openssl: Information Disclosure from Uninitialized  │
+│             │                  │          │              │                   │                  │ Memory via Invalid RSA Public Key...                         │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-31790                   │
+│             ├──────────────────┼──────────┼──────────────┤                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-27587   │ LOW      │ affected     │                   │                  │ OpenSSL 3.0.0 through 3.3.2 on the PowerPC architecture is   │
+│             │                  │          │              │                   │                  │ vulnerable ......                                            │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-27587                   │
+│             ├──────────────────┤          ├──────────────┤                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2025-9232    │          │ fixed        │                   │ 3.0.17-1~deb12u3 │ openssl: Out-of-bounds read in HTTP client no_proxy handling │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2025-9232                    │
+│             ├──────────────────┤          │              │                   ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-28387   │          │              │                   │ 3.0.19-1~deb12u2 │ openssl: OpenSSL: Arbitrary code execution due to            │
+│             │                  │          │              │                   │                  │ use-after-free in DANE TLSA authentication...                │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-28387                   │
+│             ├──────────────────┤          │              │                   │                  ├──────────────────────────────────────────────────────────────┤
+│             │ CVE-2026-31789   │          │              │                   │                  │ Issue summary: Converting an excessively large OCTET STRING  │
+│             │                  │          │              │                   │                  │ value to a ......                                            │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2026-31789                   │
+├─────────────┼──────────────────┤          ├──────────────┼───────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libstdc++6  │ CVE-2022-27943   │          │ affected     │ 12.2.0-14+deb12u1 │                  │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows   │
+│             │                  │          │              │                   │                  │ stack exhaustion in demangle_const                           │
+│             │                  │          │              │                   │                  │ https://avd.aquasec.com/nvd/cve-2022-27943                   │
+└─────────────┴──────────────────┴──────────┴──────────────┴───────────────────┴──────────────────┴──────────────────────────────────────────────────────────────┘
+
+Node.js (node-pkg)
+==================
+Total: 151 (UNKNOWN: 0, LOW: 8, MEDIUM: 45, HIGH: 88, CRITICAL: 10)
+
+┌─────────────────────────────────────┬─────────────────────┬──────────┬──────────┬───────────────────┬─────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│               Library               │    Vulnerability    │ Severity │  Status  │ Installed Version │                      Fixed Version                      │                            Title                             │
+├─────────────────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ @tootallnate/once (package.json)    │ CVE-2026-3449       │ LOW      │ fixed    │ 1.1.2             │ 3.0.1                                                   │ @tootallnate/once: @tootallnate/once: Denial of Service due  │
+│                                     │                     │          │          │                   │                                                         │ to incorrect control flow scoping with...                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-3449                    │
+│                                     │                     │          │          ├───────────────────┤                                                         │                                                              │
+│                                     │                     │          │          │ 2.0.0             │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ base64url (package.json)            │ NSWG-ECO-428        │ HIGH     │          │ 0.0.6             │ >=3.0.0                                                 │ Out-of-bounds Read                                           │
+│                                     │                     │          │          │                   │                                                         │ https://hackerone.com/reports/321687                         │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ GHSA-rvg8-pwq2-xj7q │ MEDIUM   │          │                   │ 3.0.0                                                   │ Out-of-bounds Read in base64url                              │
+│                                     │                     │          │          │                   │                                                         │ https://github.com/advisories/GHSA-rvg8-pwq2-xj7q            │
+├─────────────────────────────────────┼─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ brace-expansion (package.json)      │ CVE-2026-33750      │          │          │ 1.1.12            │ 5.0.5, 3.0.2, 2.0.3, 1.1.13                             │ brace-expansion: brace-expansion: Denial of Service via zero │
+│                                     │                     │          │          │                   │                                                         │ step value in brace pattern...                               │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33750                   │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          ├───────────────────┤                                                         │                                                              │
+│                                     │                     │          │          │ 2.0.2             │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ braces (package.json)               │ CVE-2024-4068       │ HIGH     │          │ 2.3.2             │ 3.0.3                                                   │ braces: fails to limit the number of characters it can       │
+│                                     │                     │          │          │                   │                                                         │ handle                                                       │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-4068                    │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ cookie (package.json)               │ CVE-2024-47764      │ LOW      │          │ 0.4.2             │ 0.7.0                                                   │ cookie: cookie accepts cookie name, path, and domain with    │
+│                                     │                     │          │          │                   │                                                         │ out of bounds...                                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-47764                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ crypto-js (package.json)            │ CVE-2023-46233      │ CRITICAL │          │ 3.3.0             │ 4.2.0                                                   │ crypto-js: PBKDF2 1,000 times weaker than specified in 1993  │
+│                                     │                     │          │          │                   │                                                         │ and 1.3M times...                                            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2023-46233                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ diff (package.json)                 │ CVE-2026-24001      │ LOW      │          │ 4.0.2             │ 8.0.3, 5.2.2, 4.0.4, 3.5.1                              │ jsdiff: denial of service vulnerability in parsePatch and    │
+│                                     │                     │          │          │                   │                                                         │ applyPatch                                                   │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-24001                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ dottie (package.json)               │ CVE-2026-27837      │ MEDIUM   │          │ 2.0.6             │ 2.0.7                                                   │ dottie.js: dottie.js: Unauthorized object modification via   │
+│                                     │                     │          │          │                   │                                                         │ prototype pollution bypass                                   │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27837                   │
+├─────────────────────────────────────┼─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ engine.io (package.json)            │ CVE-2022-41940      │          │          │ 4.1.2             │ 3.6.1, 6.2.1                                            │ engine.io: Specially crafted HTTP request can trigger an     │
+│                                     │                     │          │          │                   │                                                         │ uncaught exception                                           │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-41940                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ express-jwt (package.json)          │ CVE-2020-15084      │ HIGH     │          │ 0.1.3             │ 6.0.0                                                   │ Authorization bypass in express-jwt                          │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2020-15084                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ file-type (package.json)            │ CVE-2026-31808      │ MEDIUM   │          │ 16.5.4            │ 21.3.1                                                  │ file-type: file-type: Denial of Service due to infinite loop │
+│                                     │                     │          │          │                   │                                                         │ in ASF file...                                               │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-31808                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ glob (package.json)                 │ CVE-2025-64756      │ HIGH     │          │ 10.4.5            │ 11.1.0, 10.5.0                                          │ glob: glob: Command Injection Vulnerability via Malicious    │
+│                                     │                     │          │          │                   │                                                         │ Filenames                                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-64756                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ got (package.json)                  │ CVE-2022-33987      │ MEDIUM   │          │ 8.3.2             │ 12.1.0, 11.8.5                                          │ nodejs-got: missing verification of requested URLs allows    │
+│                                     │                     │          │          │                   │                                                         │ redirects to UNIX sockets                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-33987                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ handlebars (package.json)           │ CVE-2026-33937      │ CRITICAL │          │ 4.7.7             │ 4.7.9                                                   │ handlebars.js: Handlebars: Remote Code Execution via crafted │
+│                                     │                     │          │          │                   │                                                         │ Abstract Syntax Tree object in...                            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33937                   │
+│                                     ├─────────────────────┼──────────┤          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33938      │ HIGH     │          │                   │                                                         │ handlebars: Handlebars: Arbitrary code execution via         │
+│                                     │                     │          │          │                   │                                                         │ @partial-block overwrite                                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33938                   │
+│                                     ├─────────────────────┤          │          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33939      │          │          │                   │                                                         │ handlebars.js: Handlebars.js: Denial of Service via          │
+│                                     │                     │          │          │                   │                                                         │ malformed decorator syntax in template compilation...        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33939                   │
+│                                     ├─────────────────────┤          │          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33940      │          │          │                   │                                                         │ handlebars.js: Handlebars.js: Arbitrary code execution via   │
+│                                     │                     │          │          │                   │                                                         │ crafted template context                                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33940                   │
+│                                     ├─────────────────────┤          │          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33941      │          │          │                   │                                                         │ handlebars.js: Handlebars: Arbitrary code execution via CLI  │
+│                                     │                     │          │          │                   │                                                         │ precompiler input sanitization flaw                          │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33941                   │
+│                                     ├─────────────────────┼──────────┤          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33916      │ MEDIUM   │          │                   │                                                         │ handlebars.js: Handlebars: Cross-Site Scripting (XSS) via    │
+│                                     │                     │          │          │                   │                                                         │ prototype pollution in partial resolution                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33916                   │
+│                                     ├─────────────────────┤          │          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ GHSA-7rx3-28cr-v5wh │          │          │                   │                                                         │ Handlebars.js has a Prototype Method Access Control Gap via  │
+│                                     │                     │          │          │                   │                                                         │ Missing __lookupSetter__ Blocklist...                        │
+│                                     │                     │          │          │                   │                                                         │ https://github.com/advisories/GHSA-7rx3-28cr-v5wh            │
+│                                     ├─────────────────────┼──────────┤          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ GHSA-442j-39wm-28r2 │ LOW      │          │                   │                                                         │ Handlebars.js has a Property Access Validation Bypass in     │
+│                                     │                     │          │          │                   │                                                         │ container.lookup                                             │
+│                                     │                     │          │          │                   │                                                         │ https://github.com/advisories/GHSA-442j-39wm-28r2            │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ http-cache-semantics (package.json) │ CVE-2022-25881      │ HIGH     │          │ 3.8.1             │ 4.1.1                                                   │ http-cache-semantics: Regular Expression Denial of Service   │
+│                                     │                     │          │          │                   │                                                         │ (ReDoS) vulnerability                                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-25881                   │
+├─────────────────────────────────────┼─────────────────────┤          ├──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ip (package.json)                   │ CVE-2024-29415      │          │ affected │ 2.0.1             │                                                         │ node-ip: Incomplete fix for CVE-2023-42282                   │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-29415                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ js-yaml (package.json)              │ CVE-2025-64718      │ MEDIUM   │ fixed    │ 3.14.1            │ 4.1.1, 3.14.2                                           │ js-yaml: js-yaml prototype pollution in merge                │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-64718                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ jsonwebtoken (package.json)         │ CVE-2015-9235       │ CRITICAL │          │ 0.1.0             │ 4.2.2                                                   │ nodejs-jsonwebtoken: verification step bypass with an        │
+│                                     │                     │          │          │                   │                                                         │ altered token                                                │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2015-9235                    │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2022-23539      │ HIGH     │          │                   │ 9.0.0                                                   │ jsonwebtoken: Unrestricted key type could lead to legacy     │
+│                                     │                     │          │          │                   │                                                         │ keys usagen                                                  │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-23539                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ NSWG-ECO-17         │          │          │                   │ >=4.2.2                                                 │ Verification Bypass                                          │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2022-23540      │ MEDIUM   │          │                   │ 9.0.0                                                   │ jsonwebtoken: Insecure default algorithm in jwt.verify()     │
+│                                     │                     │          │          │                   │                                                         │ could lead to signature validation bypass...                 │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-23540                   │
+│                                     ├─────────────────────┤          │          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2022-23541      │          │          │                   │                                                         │ jsonwebtoken: Insecure implementation of key retrieval       │
+│                                     │                     │          │          │                   │                                                         │ function could lead to Forgeable Public/Private...           │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-23541                   │
+│                                     ├─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2015-9235       │ CRITICAL │          │ 0.4.0             │ 4.2.2                                                   │ nodejs-jsonwebtoken: verification step bypass with an        │
+│                                     │                     │          │          │                   │                                                         │ altered token                                                │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2015-9235                    │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2022-23539      │ HIGH     │          │                   │ 9.0.0                                                   │ jsonwebtoken: Unrestricted key type could lead to legacy     │
+│                                     │                     │          │          │                   │                                                         │ keys usagen                                                  │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-23539                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ NSWG-ECO-17         │          │          │                   │ >=4.2.2                                                 │ Verification Bypass                                          │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2022-23540      │ MEDIUM   │          │                   │ 9.0.0                                                   │ jsonwebtoken: Insecure default algorithm in jwt.verify()     │
+│                                     │                     │          │          │                   │                                                         │ could lead to signature validation bypass...                 │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-23540                   │
+│                                     ├─────────────────────┤          │          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2022-23541      │          │          │                   │                                                         │ jsonwebtoken: Insecure implementation of key retrieval       │
+│                                     │                     │          │          │                   │                                                         │ function could lead to Forgeable Public/Private...           │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-23541                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ jws (package.json)                  │ CVE-2016-1000223    │ HIGH     │          │ 0.2.6             │ >=3.0.0                                                 │ Forgeable Public/Private Tokens                              │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2016-1000223                 │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2025-65945      │          │          │                   │ 3.2.3, 4.0.1                                            │ node-jws: auth0/node-jws: Improper signature verification in │
+│                                     │                     │          │          │                   │                                                         │ HS256 algorithm                                              │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-65945                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ lodash (package.json)               │ CVE-2019-10744      │ CRITICAL │          │ 2.4.2             │ 4.17.12                                                 │ nodejs-lodash: prototype pollution in defaultsDeep function  │
+│                                     │                     │          │          │                   │                                                         │ leading to modifying properties                              │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2019-10744                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2018-16487      │ HIGH     │          │                   │ >=4.17.11                                               │ lodash: Prototype pollution in utilities function            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2018-16487                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2021-23337      │          │          │                   │ 4.17.21                                                 │ nodejs-lodash: command injection via template                │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2021-23337                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-2950       │ MEDIUM   │          │                   │ 4.18.0                                                  │ Impact: Lodash versions 4.17.23 and earlier are vulnerable   │
+│                                     │                     │          │          │                   │                                                         │ to prototy ......                                            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-2950                    │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2018-3721       │ LOW      │          │                   │ >=4.17.5                                                │ lodash: Prototype pollution in utilities function            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2018-3721                    │
+│                                     ├─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-4800       │ HIGH     │          │ 4.17.21           │ 4.18.0                                                  │ lodash: lodash: Arbitrary code execution via untrusted input │
+│                                     │                     │          │          │                   │                                                         │ in template imports                                          │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-4800                    │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2025-13465      │ MEDIUM   │          │                   │ 4.17.23                                                 │ lodash: prototype pollution in _.unset and _.omit functions  │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-13465                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-2950       │          │          │                   │ 4.18.0                                                  │ Impact: Lodash versions 4.17.23 and earlier are vulnerable   │
+│                                     │                     │          │          │                   │                                                         │ to prototy ......                                            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-2950                    │
+├─────────────────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ lodash.set (package.json)           │ CVE-2020-8203       │ HIGH     │ affected │ 4.3.2             │                                                         │ nodejs-lodash: prototype pollution in zipObjectDeep function │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2020-8203                    │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ marsdb (package.json)               │ GHSA-5mrr-rgp6-x4gr │ CRITICAL │          │ 0.6.11            │                                                         │ Command Injection in marsdb                                  │
+│                                     │                     │          │          │                   │                                                         │ https://github.com/advisories/GHSA-5mrr-rgp6-x4gr            │
+├─────────────────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ messageformat (package.json)        │ CVE-2025-57349      │ LOW      │ fixed    │ 2.3.0             │ 3.0.0-beta.0                                            │ messageformat has a prototype pollution vulnerability        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-57349                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ micromatch (package.json)           │ CVE-2024-4067       │ MEDIUM   │          │ 3.1.10            │ 4.0.8                                                   │ micromatch: vulnerable to Regular Expression Denial of       │
+│                                     │                     │          │          │                   │                                                         │ Service                                                      │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-4067                    │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ minimatch (package.json)            │ CVE-2026-26996      │ HIGH     │          │ 3.0.5             │ 10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3 │ minimatch: minimatch: Denial of Service via specially        │
+│                                     │                     │          │          │                   │                                                         │ crafted glob patterns                                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26996                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27903      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3 │ minimatch: minimatch: Denial of Service due to unbounded     │
+│                                     │                     │          │          │                   │                                                         │ recursive backtracking via crafted...                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27903                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27904      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4 │ minimatch: Minimatch: Denial of Service via catastrophic     │
+│                                     │                     │          │          │                   │                                                         │ backtracking in glob expressions                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27904                   │
+│                                     ├─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26996      │          │          │ 3.0.8             │ 10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3 │ minimatch: minimatch: Denial of Service via specially        │
+│                                     │                     │          │          │                   │                                                         │ crafted glob patterns                                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26996                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27903      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3 │ minimatch: minimatch: Denial of Service due to unbounded     │
+│                                     │                     │          │          │                   │                                                         │ recursive backtracking via crafted...                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27903                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27904      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4 │ minimatch: Minimatch: Denial of Service via catastrophic     │
+│                                     │                     │          │          │                   │                                                         │ backtracking in glob expressions                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27904                   │
+│                                     ├─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26996      │          │          │ 3.1.2             │ 10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3 │ minimatch: minimatch: Denial of Service via specially        │
+│                                     │                     │          │          │                   │                                                         │ crafted glob patterns                                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26996                   │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27903      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3 │ minimatch: minimatch: Denial of Service due to unbounded     │
+│                                     │                     │          │          │                   │                                                         │ recursive backtracking via crafted...                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27903                   │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27904      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4 │ minimatch: Minimatch: Denial of Service via catastrophic     │
+│                                     │                     │          │          │                   │                                                         │ backtracking in glob expressions                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27904                   │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     │                     │          │          │                   │                                                         │                                                              │
+│                                     ├─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26996      │          │          │ 5.1.6             │ 10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3 │ minimatch: minimatch: Denial of Service via specially        │
+│                                     │                     │          │          │                   │                                                         │ crafted glob patterns                                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26996                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27903      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3 │ minimatch: minimatch: Denial of Service due to unbounded     │
+│                                     │                     │          │          │                   │                                                         │ recursive backtracking via crafted...                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27903                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27904      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4 │ minimatch: Minimatch: Denial of Service via catastrophic     │
+│                                     │                     │          │          │                   │                                                         │ backtracking in glob expressions                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27904                   │
+│                                     ├─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26996      │          │          │ 9.0.5             │ 10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3 │ minimatch: minimatch: Denial of Service via specially        │
+│                                     │                     │          │          │                   │                                                         │ crafted glob patterns                                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26996                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27903      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3 │ minimatch: minimatch: Denial of Service due to unbounded     │
+│                                     │                     │          │          │                   │                                                         │ recursive backtracking via crafted...                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27903                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-27904      │          │          │                   │ 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4 │ minimatch: Minimatch: Denial of Service via catastrophic     │
+│                                     │                     │          │          │                   │                                                         │ backtracking in glob expressions                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-27904                   │
+├─────────────────────────────────────┼─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ moment (package.json)               │ CVE-2017-18214      │          │          │ 2.0.0             │ 2.19.3                                                  │ nodejs-moment: Regular expression denial of service          │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2017-18214                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2022-24785      │          │          │                   │ 2.29.2                                                  │ Moment.js: Path traversal in moment.locale                   │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-24785                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2016-4055       │ MEDIUM   │          │                   │ >=2.11.2                                                │ moment.js: regular expression denial of service              │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2016-4055                    │
+├─────────────────────────────────────┼─────────────────────┤          ├──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ notevil (package.json)              │ CVE-2021-23771      │          │ affected │ 1.3.3             │                                                         │ Sandbox escape in notevil and argencoders-notevil            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2021-23771                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ path-to-regexp (package.json)       │ CVE-2026-4867       │ HIGH     │ fixed    │ 0.1.12            │ 0.1.13                                                  │ path-to-regexp: path-to-regexp: Denial of Service via        │
+│                                     │                     │          │          │                   │                                                         │ catastrophic backtracking from malformed URL parameters...   │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-4867                    │
+├─────────────────────────────────────┼─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ picomatch (package.json)            │ CVE-2026-33671      │          │          │ 2.3.1             │ 4.0.4, 3.0.2, 2.3.2                                     │ picomatch: Picomatch: Regular Expression Denial of Service   │
+│                                     │                     │          │          │                   │                                                         │ via crafted extglob patterns                                 │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33671                   │
+│                                     ├─────────────────────┼──────────┤          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33672      │ MEDIUM   │          │                   │                                                         │ picomatch: Picomatch: Data integrity compromised via method  │
+│                                     │                     │          │          │                   │                                                         │ injection with crafted POSIX bracket...                      │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33672                   │
+│                                     ├─────────────────────┼──────────┤          ├───────────────────┤                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33671      │ HIGH     │          │ 4.0.3             │                                                         │ picomatch: Picomatch: Regular Expression Denial of Service   │
+│                                     │                     │          │          │                   │                                                         │ via crafted extglob patterns                                 │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33671                   │
+│                                     ├─────────────────────┼──────────┤          │                   │                                                         ├──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-33672      │ MEDIUM   │          │                   │                                                         │ picomatch: Picomatch: Data integrity compromised via method  │
+│                                     │                     │          │          │                   │                                                         │ injection with crafted POSIX bracket...                      │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33672                   │
+├─────────────────────────────────────┼─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ qs (package.json)                   │ CVE-2025-15284      │          │          │ 6.13.0            │ 6.14.1                                                  │ qs: qs: Denial of Service via improper input validation in   │
+│                                     │                     │          │          │                   │                                                         │ array parsing...                                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-15284                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-2391       │ LOW      │          │                   │ 6.14.2                                                  │ qs: qs's arrayLimit bypass in comma parsing allows denial of │
+│                                     │                     │          │          │                   │                                                         │ service                                                      │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-2391                    │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ sanitize-html (package.json)        │ CVE-2022-25887      │ HIGH     │          │ 1.4.2             │ 2.7.1                                                   │ sanitize-html: insecure global regular expression            │
+│                                     │                     │          │          │                   │                                                         │ replacement logic may lead to ReDoS                          │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2022-25887                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2016-1000237    │ MEDIUM   │          │                   │ >=1.4.3                                                 │ XSS - Sanitization not applied recursively                   │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2016-1000237                 │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2017-16016      │          │          │                   │ 1.11.4                                                  │ Cross-Site Scripting in sanitize-html                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2017-16016                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2019-25225      │          │          │                   │ 2.0.0-beta                                              │ sanitize-html: sanitize-html cross site scripting            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2019-25225                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2021-26539      │          │          │                   │ 2.3.1                                                   │ sanitize-html: improper handling of internationalized domain │
+│                                     │                     │          │          │                   │                                                         │ name (IDN) can lead to bypass...                             │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2021-26539                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2021-26540      │          │          │                   │ 2.3.2                                                   │ sanitize-html: improper validation of hostnames set by the   │
+│                                     │                     │          │          │                   │                                                         │ "allowedIframeHostnames" option can lead...                  │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2021-26540                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2024-21501      │          │          │                   │ 2.12.1                                                  │ sanitize-html: Information Exposure when used on the backend │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-21501                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ NSWG-ECO-154        │          │          │                   │ >=1.11.4                                                │ Cross Site Scripting                                         │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ sequelize (package.json)            │ CVE-2026-30951      │ HIGH     │          │ 6.37.7            │ 6.37.8                                                  │ sequelize: Sequelize: Data exfiltration via SQL injection in │
+│                                     │                     │          │          │                   │                                                         │ JSON/JSONB where clause processing...                        │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-30951                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ socket.io (package.json)            │ CVE-2024-38355      │ MEDIUM   │          │ 3.1.2             │ 2.5.1, 4.6.2                                            │ socket.io: Unhandled 'error' event                           │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-38355                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ socket.io-parser (package.json)     │ CVE-2026-33151      │ HIGH     │          │ 4.0.5             │ 3.3.5, 3.4.4, 4.2.6                                     │ socket.io: Socket.IO: Denial of Service due to excessive     │
+│                                     │                     │          │          │                   │                                                         │ buffering of specially crafted...                            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-33151                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2023-32695      │ MEDIUM   │          │                   │ 4.2.3, 3.4.3, 3.3.4                                     │ socket.io parser is a socket.io encoder and decoder written  │
+│                                     │                     │          │          │                   │                                                         │ in JavaScr ......                                            │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2023-32695                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tar (package.json)                  │ CVE-2026-23745      │ HIGH     │          │ 4.4.19            │ 7.5.3                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite and        │
+│                                     │                     │          │          │                   │                                                         │ symlink poisoning via unsanitized linkpaths...               │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23745                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-23950      │          │          │                   │ 7.5.4                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite via        │
+│                                     │                     │          │          │                   │                                                         │ Unicode path collision race condition...                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23950                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-24842      │          │          │                   │ 7.5.7                                                   │ node-tar: tar: node-tar: Arbitrary file creation via path    │
+│                                     │                     │          │          │                   │                                                         │ traversal bypass in hardlink...                              │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-24842                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26960      │          │          │                   │ 7.5.8                                                   │ node-tar: node-tar: Arbitrary file read/write via malicious  │
+│                                     │                     │          │          │                   │                                                         │ archive hardlink creation                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26960                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-29786      │          │          │                   │ 7.5.10                                                  │ node-tar: hardlink path traversal via drive-relative         │
+│                                     │                     │          │          │                   │                                                         │ linkpath                                                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-29786                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-31802      │          │          │                   │ 7.5.11                                                  │ tar: tar: File overwrite via drive-relative symlink          │
+│                                     │                     │          │          │                   │                                                         │ traversal                                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-31802                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2024-28863      │ MEDIUM   │          │                   │ 6.2.1                                                   │ node-tar: denial of service while parsing a tar file due to  │
+│                                     │                     │          │          │                   │                                                         │ lack...                                                      │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-28863                   │
+│                                     ├─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-23745      │ HIGH     │          │ 6.2.1             │ 7.5.3                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite and        │
+│                                     │                     │          │          │                   │                                                         │ symlink poisoning via unsanitized linkpaths...               │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23745                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-23950      │          │          │                   │ 7.5.4                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite via        │
+│                                     │                     │          │          │                   │                                                         │ Unicode path collision race condition...                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23950                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-24842      │          │          │                   │ 7.5.7                                                   │ node-tar: tar: node-tar: Arbitrary file creation via path    │
+│                                     │                     │          │          │                   │                                                         │ traversal bypass in hardlink...                              │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-24842                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26960      │          │          │                   │ 7.5.8                                                   │ node-tar: node-tar: Arbitrary file read/write via malicious  │
+│                                     │                     │          │          │                   │                                                         │ archive hardlink creation                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26960                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-29786      │          │          │                   │ 7.5.10                                                  │ node-tar: hardlink path traversal via drive-relative         │
+│                                     │                     │          │          │                   │                                                         │ linkpath                                                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-29786                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-31802      │          │          │                   │ 7.5.11                                                  │ tar: tar: File overwrite via drive-relative symlink          │
+│                                     │                     │          │          │                   │                                                         │ traversal                                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-31802                   │
+│                                     ├─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-23745      │          │          │ 7.4.3             │ 7.5.3                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite and        │
+│                                     │                     │          │          │                   │                                                         │ symlink poisoning via unsanitized linkpaths...               │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23745                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-23950      │          │          │                   │ 7.5.4                                                   │ node-tar: tar: node-tar: Arbitrary file overwrite via        │
+│                                     │                     │          │          │                   │                                                         │ Unicode path collision race condition...                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-23950                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-24842      │          │          │                   │ 7.5.7                                                   │ node-tar: tar: node-tar: Arbitrary file creation via path    │
+│                                     │                     │          │          │                   │                                                         │ traversal bypass in hardlink...                              │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-24842                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-26960      │          │          │                   │ 7.5.8                                                   │ node-tar: node-tar: Arbitrary file read/write via malicious  │
+│                                     │                     │          │          │                   │                                                         │ archive hardlink creation                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-26960                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-29786      │          │          │                   │ 7.5.10                                                  │ node-tar: hardlink path traversal via drive-relative         │
+│                                     │                     │          │          │                   │                                                         │ linkpath                                                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-29786                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-31802      │          │          │                   │ 7.5.11                                                  │ tar: tar: File overwrite via drive-relative symlink          │
+│                                     │                     │          │          │                   │                                                         │ traversal                                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-31802                   │
+├─────────────────────────────────────┼─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tar-fs (package.json)               │ CVE-2025-59343      │          │          │ 2.1.3             │ 3.1.1, 2.1.4, 1.16.6                                    │ tar-fs: tar-fs symlink validation bypass                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-59343                   │
+├─────────────────────────────────────┼─────────────────────┤          │          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ validator (package.json)            │ CVE-2025-12758      │          │          │ 13.15.15          │ 13.15.22                                                │ Validator is Vulnerable to Incomplete Filtering of One or    │
+│                                     │                     │          │          │                   │                                                         │ More Instances of...                                         │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-12758                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2025-56200      │ MEDIUM   │          │                   │ 13.15.20                                                │ validator.js has a URL validation bypass vulnerability in    │
+│                                     │                     │          │          │                   │                                                         │ its isURL function                                           │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2025-56200                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ vm2 (package.json)                  │ CVE-2023-32314      │ CRITICAL │          │ 3.9.17            │ 3.9.18                                                  │ vm2: Sandbox Escape                                          │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2023-32314                   │
+│                                     ├─────────────────────┤          │          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2023-37466      │          │          │                   │ 3.10.0                                                  │ vm2: Promise handler sanitization can be bypassed allowing   │
+│                                     │                     │          │          │                   │                                                         │ attackers to escape the...                                   │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2023-37466                   │
+│                                     ├─────────────────────┤          ├──────────┤                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2023-37903      │          │ affected │                   │                                                         │ vm2: custom inspect function allows attackers to escape the  │
+│                                     │                     │          │          │                   │                                                         │ sandbox and run...                                           │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2023-37903                   │
+│                                     ├─────────────────────┤          ├──────────┤                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2026-22709      │          │ fixed    │                   │ 3.10.2                                                  │ vm2 has a Sandbox Escape                                     │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2026-22709                   │
+│                                     ├─────────────────────┼──────────┤          │                   ├─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                     │ CVE-2023-32313      │ MEDIUM   │          │                   │ 3.9.18                                                  │ vm2: Inspect Manipulation                                    │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2023-32313                   │
+├─────────────────────────────────────┼─────────────────────┼──────────┤          ├───────────────────┼─────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ws (package.json)                   │ CVE-2024-37890      │ HIGH     │          │ 7.4.6             │ 5.2.4, 6.2.3, 7.5.10, 8.17.1                            │ nodejs-ws: denial of service when handling a request with    │
+│                                     │                     │          │          │                   │                                                         │ many HTTP headers...                                         │
+│                                     │                     │          │          │                   │                                                         │ https://avd.aquasec.com/nvd/cve-2024-37890                   │
+└─────────────────────────────────────┴─────────────────────┴──────────┴──────────┴───────────────────┴─────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+/juice-shop/build/lib/insecurity.js (secrets)
+=============================================
+Total: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 1, CRITICAL: 0)
+
+HIGH: AsymmetricPrivateKey (private-key)
+════════════════════════════════════════
+Asymmetric Private Key
+────────────────────────────────────────
+ /juice-shop/build/lib/insecurity.js:47 (added by 'COPY --chown=65532:0 /juice-shop . # bui')
+────────────────────────────────────────
+  45   const z85 = __importStar(require("z85"));
+  46   exports.publicKey = node_fs_1.default ? node_fs_1.default.readFileSync('encryptionkeys/jwt.pub', 'ut
+  47 [ ----BEGIN RSA PRIVATE KEY-----****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END RSA PRIVATE
+  48   const hash = (data) => node_crypto_1.default.createHash('md5').update(data).digest('hex');
+────────────────────────────────────────
+
+
+
+/juice-shop/frontend/src/app/app.guard.spec.ts (secrets)
+========================================================
+Total: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 0)
+
+MEDIUM: JWT (jwt-token)
+════════════════════════════════════════
+JWT token
+────────────────────────────────────────
+ /juice-shop/frontend/src/app/app.guard.spec.ts:38 (added by 'COPY --chown=65532:0 /juice-shop . # bui')
+────────────────────────────────────────
+  36   
+  37     it('returns payload from decoding a valid JWT', inject([LoginGuard], (guard: LoginGuard) => {
+  38 [ ocalStorage.setItem('token', '***********************************************************************************************************************************************************')
+  39       expect(guard.tokenDecode()).toEqual({
+────────────────────────────────────────
+
+
+
+/juice-shop/frontend/src/app/last-login-ip/last-login-ip.component.spec.ts (secrets)
+====================================================================================
+Total: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 0)
+
+MEDIUM: JWT (jwt-token)
+════════════════════════════════════════
+JWT token
+────────────────────────────────────────
+ /juice-shop/frontend/src/app/last-login-ip/last-login-ip.component.spec.ts:61 (added by 'COPY --chown=65532:0 /juice-shop . # bui')
+────────────────────────────────────────
+  59   
+  60     xit('should set Last-Login IP from JWT as trusted HTML', () => { // FIXME Expected state seems to 
+  61 [ ocalStorage.setItem('token', '*******************************************************************************************************************************')
+  62       component.ngOnInit()
+────────────────────────────────────────
+
+
+
+/juice-shop/lib/insecurity.ts (secrets)
+=======================================
+Total: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 1, CRITICAL: 0)
+
+HIGH: AsymmetricPrivateKey (private-key)
+════════════════════════════════════════
+Asymmetric Private Key
+────────────────────────────────────────
+ /juice-shop/lib/insecurity.ts:23 (added by 'COPY --chown=65532:0 /juice-shop . # bui')
+────────────────────────────────────────
+  21   
+  22   export const publicKey = fs ? fs.readFileSync('encryptionkeys/jwt.pub', 'utf8') : 'placeholder-publi
+  23 [ ----BEGIN RSA PRIVATE KEY-----****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END RSA PRIVATE
+  24   
+────────────────────────────────────────
+
+
