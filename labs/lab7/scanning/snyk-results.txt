@@ -1,0 +1,112 @@
+Unable to find image 'snyk/snyk:docker' locally
+docker: Pulling from snyk/snyk
+589002ba0eae: Already exists
+8ee469356d39: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+49d20e0f3203: Pulling fs layer
+f56b28218d1d: Pulling fs layer
+a3568f9ed625: Pulling fs layer
+f56b28218d1d: Waiting
+a3568f9ed625: Waiting
+09ac3564cdb8: Pulling fs layer
+2b4904a2b715: Pulling fs layer
+0a5545be0b2c: Pulling fs layer
+7d86662591a9: Pulling fs layer
+09ac3564cdb8: Waiting
+2b4904a2b715: Waiting
+0a5545be0b2c: Waiting
+5074da42c286: Pulling fs layer
+4d6f4ce6ca5a: Pulling fs layer
+7d86662591a9: Waiting
+5074da42c286: Waiting
+9f21abf0696d: Pulling fs layer
+80aa3ba34873: Pulling fs layer
+ce7a5643b3f6: Pulling fs layer
+84911bab9d69: Pulling fs layer
+8af52c1f138e: Pulling fs layer
+4fee5f027766: Pulling fs layer
+b9efc8f84e46: Pulling fs layer
+46170e4bee90: Pulling fs layer
+ab042eb10fa7: Pulling fs layer
+4d6f4ce6ca5a: Waiting
+9f21abf0696d: Waiting
+80aa3ba34873: Waiting
+ce7a5643b3f6: Waiting
+84911bab9d69: Waiting
+8af52c1f138e: Waiting
+4fee5f027766: Waiting
+b9efc8f84e46: Waiting
+46170e4bee90: Waiting
+ab042eb10fa7: Waiting
+49d20e0f3203: Verifying Checksum
+49d20e0f3203: Download complete
+4f4fb700ef54: Download complete
+8ee469356d39: Verifying Checksum
+8ee469356d39: Download complete
+8ee469356d39: Pull complete
+4f4fb700ef54: Pull complete
+49d20e0f3203: Pull complete
+09ac3564cdb8: Verifying Checksum
+09ac3564cdb8: Download complete
+2b4904a2b715: Verifying Checksum
+2b4904a2b715: Download complete
+0a5545be0b2c: Verifying Checksum
+0a5545be0b2c: Download complete
+a3568f9ed625: Download complete
+7d86662591a9: Verifying Checksum
+7d86662591a9: Download complete
+f56b28218d1d: Verifying Checksum
+f56b28218d1d: Download complete
+4d6f4ce6ca5a: Verifying Checksum
+4d6f4ce6ca5a: Download complete
+5074da42c286: Verifying Checksum
+5074da42c286: Download complete
+f56b28218d1d: Pull complete
+9f21abf0696d: Verifying Checksum
+9f21abf0696d: Download complete
+ce7a5643b3f6: Verifying Checksum
+ce7a5643b3f6: Download complete
+a3568f9ed625: Pull complete
+8af52c1f138e: Verifying Checksum
+8af52c1f138e: Download complete
+84911bab9d69: Verifying Checksum
+84911bab9d69: Download complete
+4fee5f027766: Verifying Checksum
+4fee5f027766: Download complete
+09ac3564cdb8: Pull complete
+2b4904a2b715: Pull complete
+0a5545be0b2c: Pull complete
+7d86662591a9: Pull complete
+5074da42c286: Pull complete
+4d6f4ce6ca5a: Pull complete
+9f21abf0696d: Pull complete
+46170e4bee90: Verifying Checksum
+46170e4bee90: Download complete
+b9efc8f84e46: Verifying Checksum
+b9efc8f84e46: Download complete
+80aa3ba34873: Verifying Checksum
+80aa3ba34873: Download complete
+80aa3ba34873: Pull complete
+ce7a5643b3f6: Pull complete
+84911bab9d69: Pull complete
+8af52c1f138e: Pull complete
+4fee5f027766: Pull complete
+b9efc8f84e46: Pull complete
+46170e4bee90: Pull complete
+ab042eb10fa7: Verifying Checksum
+ab042eb10fa7: Download complete
+ab042eb10fa7: Pull complete
+Digest: sha256:699d7e16a443680f41fc8c374c683558da0fc97e83e09b1651e4e4cbdfd4a767
+Status: Downloaded newer image for snyk/snyk:docker
+
+ ERROR   Authentication error (SNYK-0005)
+         Authentication credentials not recognized, or user access is not provisioned.  
+         Revise credentials and try again, or request access from your Snyk             
+         administrator.                                                                 
+                                                                                        
+           Use `snyk auth` to authenticate.                                             
+
+Status:  401 Unauthorized 
+Docs:    https://docs.snyk.io/scan-with-snyk/error-catalog#snyk-0005 
+                                                                     
+ID:      urn:snyk:interaction:e6a61dc4-82f2-47f0-b7ed-fe036916ea1d 
