@@ -1,0 +1,203 @@
+Compose can now delegate builds to bake for better performance.
+ To do so, set COMPOSE_BAKE=true.
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [uwsgi internal] load build definition from Dockerfile.django-debian
+#1 transferring dockerfile:
+#1 transferring dockerfile: 5.21kB 0.6s done
+#1 DONE 0.8s
+
+#2 [uwsgi internal] load metadata for docker.io/library/python:3.13.12-slim-trixie@sha256:739e7213785e88c0f702dcdc12c0973afcbd606dbf021a589cab77d6b00b579d
+#2 ...
+
+#3 [uwsgi auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [uwsgi internal] load metadata for docker.io/library/python:3.13.12-slim-trixie@sha256:739e7213785e88c0f702dcdc12c0973afcbd606dbf021a589cab77d6b00b579d
+#2 DONE 7.5s
+
+#4 [uwsgi internal] load .dockerignore
+#4 transferring context:
+#4 transferring context: 64B 0.1s done
+#4 DONE 0.2s
+
+#5 [uwsgi base 1/1] FROM docker.io/library/python:3.13.12-slim-trixie@sha256:739e7213785e88c0f702dcdc12c0973afcbd606dbf021a589cab77d6b00b579d
+#5 resolve docker.io/library/python:3.13.12-slim-trixie@sha256:739e7213785e88c0f702dcdc12c0973afcbd606dbf021a589cab77d6b00b579d 0.1s done
+#5 sha256:eecee41f47a6f5c27e0e7c4d3a5cafbd0f315a13f5cb629d634a201838354fb0 0B / 250B 0.2s
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 0B / 11.80MB 0.2s
+#5 sha256:b186029d0aef40dfeb3824ddf540da2ecc123b7412a1f540be8b261d570ef46f 0B / 1.29MB 0.2s
+#5 sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f 0B / 29.78MB 0.2s
+#5 sha256:eecee41f47a6f5c27e0e7c4d3a5cafbd0f315a13f5cb629d634a201838354fb0 250B / 250B 0.5s done
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 1.05MB / 11.80MB 1.5s
+#5 sha256:b186029d0aef40dfeb3824ddf540da2ecc123b7412a1f540be8b261d570ef46f 1.05MB / 1.29MB 1.7s
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 2.10MB / 11.80MB 2.7s
+#5 sha256:b186029d0aef40dfeb3824ddf540da2ecc123b7412a1f540be8b261d570ef46f 1.29MB / 1.29MB 2.5s done
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 3.15MB / 11.80MB 3.0s
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 4.19MB / 11.80MB 3.2s
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 5.24MB / 11.80MB 3.5s
+#5 sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f 2.10MB / 29.78MB 3.2s
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 6.29MB / 11.80MB 3.6s
+#5 sha256:e2a2a5e6ffbfa80c6c3514c20e60c20aa47c15f593833bca16a5a3a15b78ad9e 7.34MB / 11.80MB 3.8s
+
+... [TRUNCATED FOR SUBMISSION] ...
+
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/arrow-left-long.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/sleigh.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/person-military-pointing.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/square-full.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/solar-panel.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/address-card.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/kaaba.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/arrow-down-short-wide.svg'
+#43 77.41 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/apple-whole.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/head-side-virus.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/rupiah-sign.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/bag-shopping.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/comments-dollar.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/angle-left.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/flag-usa.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/circle-chevron-down.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/bug.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/face-surprise.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/stapler.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/mask-ventilator.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/web-awesome.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/house-user.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/exclamation.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/chart-area.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/cloud-sun.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/money-check-dollar.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/arrow-up.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/envelope-open.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/house.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/lungs-virus.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/grip-lines.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/shield-cat.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/car-burst.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/anchor.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/file-lines.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/paint-roller.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/hospital-user.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/shield-dog.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/diagram-project.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/building-ngo.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/wand-magic.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/plane-circle-xmark.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/pepper-hot.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/screwdriver-wrench.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/file-arrow-up.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/tablet.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/id-card-clip.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/battery-quarter.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/bong.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/1.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/slash.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/hat-wizard.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/bore-hole.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/star-half-stroke.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/link-slash.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/shuttle-space.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/file-circle-xmark.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/arrow-down-wide-short.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/building-flag.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/meteor.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/arrow-right-arrow-left.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/person-hiking.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/hands-holding.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/person-drowning.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/file-audio.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/eye-slash.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/square-caret-down.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/plug-circle-check.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/face-grin-squint.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/paragraph.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/mars-and-venus-burst.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/box-tissue.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/square-poll-vertical.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/bell.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/circle-question.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/person-shelter.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/mobile-button.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/handshake-slash.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/hanukiah.svg'
+#43 77.81 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/check.svg'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/house-medical-circle-check.svg'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/eye-low-vision.svg'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/circle-user.svg'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/face-kiss-beam.svg'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/svgs/solid/file-pen.svg'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/icon-families.yml'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/icons.json'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/shims.json'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/icon-families.json'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/sponsors.yml'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/shims.yml'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/categories.yml'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/metadata/icons.yml'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-v4compatibility.ttf'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-brands-400.ttf'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-brands-400.woff2'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-solid-900.ttf'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-regular-400.ttf'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-regular-400.woff2'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-v4compatibility.woff2'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/fontawesomefree/static/fontawesomefree/webfonts/fa-solid-900.woff2'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/debug_toolbar/static/debug_toolbar/css/toolbar.css'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/debug_toolbar/static/debug_toolbar/css/print.css'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/debug_toolbar/static/debug_toolbar/js/toolbar.js'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/debug_toolbar/static/debug_toolbar/js/utils.js'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/debug_toolbar/static/debug_toolbar/js/timer.js'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/debug_toolbar/static/debug_toolbar/js/redirect.js'
+#43 78.21 Copying '/usr/local/lib/python3.13/site-packages/debug_toolbar/static/debug_toolbar/js/history.js'
+#43 78.21 
+#43 78.21 15458 static files copied to '/app/static'.
+#43 DONE 81.1s
+
+#44 [nginx release 2/5] COPY --from=collectstatic /app/static/ /usr/share/nginx/html/static/
+#44 DONE 17.5s
+
+#45 [nginx release 3/5] COPY wsgi_params nginx/nginx.conf nginx/nginx_TLS.conf /etc/nginx/
+#45 DONE 1.4s
+
+#46 [nginx release 4/5] COPY docker/entrypoint-nginx.sh /
+#46 DONE 0.7s
+
+#47 [nginx release 5/5] RUN   apk upgrade --no-cache &&   apk add --no-cache openssl &&   chmod -R g=u /var/cache/nginx &&   mkdir /var/run/defectdojo &&   chmod -R g=u /var/run/defectdojo &&   mkdir -p /etc/nginx/ssl &&   chmod -R g=u /etc/nginx &&   rm -rf /var/cache/apk/* &&   true
+#47 1.353 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/x86_64/APKINDEX.tar.gz
+#47 6.819 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/x86_64/APKINDEX.tar.gz
+#47 17.12 (1/12) Upgrading musl (1.2.5-r10 -> 1.2.5-r12)
+#47 17.61 (2/12) Upgrading busybox (1.37.0-r19 -> 1.37.0-r20)
+#47 18.29 Executing busybox-1.37.0-r20.post-upgrade
+#47 18.43 (3/12) Upgrading busybox-binsh (1.37.0-r19 -> 1.37.0-r20)
+#47 18.52 (4/12) Upgrading alpine-release (3.22.2-r0 -> 3.22.3-r0)
+#47 18.62 (5/12) Upgrading libcrypto3 (3.5.4-r0 -> 3.5.6-r0)
+#47 21.96 (6/12) Upgrading libssl3 (3.5.4-r0 -> 3.5.6-r0)
+#47 22.85 (7/12) Upgrading ssl_client (1.37.0-r19 -> 1.37.0-r20)
+#47 23.01 (8/12) Upgrading c-ares (1.34.5-r0 -> 1.34.6-r0)
+#47 23.66 (9/12) Upgrading musl-utils (1.2.5-r10 -> 1.2.5-r12)
+#47 23.86 (10/12) Upgrading libexpat (2.7.3-r0 -> 2.7.5-r0)
+#47 24.79 (11/12) Upgrading libpng (1.6.47-r0 -> 1.6.57-r0)
+#47 25.59 (12/12) Upgrading tzdata (2025b-r0 -> 2026a-r0)
+#47 27.05 Executing busybox-1.37.0-r20.trigger
+#47 27.06 Executing ca-certificates-20250911-r0.trigger
+#47 27.26 OK: 49 MiB in 70 packages
+#47 27.88 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/x86_64/APKINDEX.tar.gz
+#47 32.51 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/x86_64/APKINDEX.tar.gz
+#47 39.70 (1/1) Installing openssl (3.5.6-r0)
+#47 42.05 Executing busybox-1.37.0-r20.trigger
+#47 42.06 OK: 50 MiB in 71 packages
+#47 DONE 42.8s
+
+#48 [nginx] exporting to image
+#48 exporting layers 38.0s done
+#48 exporting manifest sha256:5af74ea99809883802a9714b75b52757359c090bd4ba3a33eaecf8fbc2be80ff 0.1s done
+#48 exporting config sha256:266de7bb25f5c514a75abf00b1ae921afe1d9ba2a15f67abeadea499f3b7b982 0.1s done
+#48 exporting attestation manifest sha256:aefdabb18e316d88b98ccb1df6b44f3f17535deba3d59741bded96d55fc21879 0.2s done
+#48 exporting manifest list sha256:4e7d938c0a6768380fbf97f8be8a91079bb63651d78305140c7e935fa995dc78 0.1s done
+#48 naming to docker.io/defectdojo/defectdojo-nginx:latest done
+#48 unpacking to docker.io/defectdojo/defectdojo-nginx:latest
+#48 unpacking to docker.io/defectdojo/defectdojo-nginx:latest 15.8s done
+#48 DONE 54.3s
+
+#49 [nginx] resolving provenance for metadata file
+#49 DONE 2.1s

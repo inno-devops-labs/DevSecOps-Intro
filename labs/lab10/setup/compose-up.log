@@ -1,0 +1,253 @@
+docker :  postgres Pulling 
+At line:3 char:1
++ docker compose up -d *>&1 | Tee-Object -FilePath '..\compose-up.log'
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( postgres Pulling :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ valkey Pulling 
+ a92c4c6bf7bf Pulling fs layer 
+ b88294e2a4c6 Pulling fs layer 
+ 51718cc743bc Pulling fs layer 
+ 36af16c7d2ce Pulling fs layer 
+ 7fb0a4f2ca3f Pulling fs layer 
+ 455d094c943c Pulling fs layer 
+ eb134dfb2af4 Pulling fs layer 
+ 946b64497533 Pulling fs layer 
+ 51718cc743bc Downloading [==================================================>]     183B/183B
+ 242569103c81 Pulling fs layer 
+ fe6447b1cf39 Pulling fs layer 
+ 9d35542429bd Pulling fs layer 
+ f83e78026bc1 Pulling fs layer 
+ 8dd53b0e82b7 Pulling fs layer 
+ 4f4fb700ef54 Pulling fs layer 
+ 4f4fb700ef54 Already exists 
+ 51718cc743bc Download complete 
+ b88294e2a4c6 Downloading [==================================================>]  5.836kB/5.836kB
+ b88294e2a4c6 Download complete 
+ a92c4c6bf7bf Downloading [==================================================>]     970B/970B
+ 8dd53b0e82b7 Download complete 
+ a92c4c6bf7bf Download complete 
+ a92c4c6bf7bf Extracting 1 s
+ 7fb0a4f2ca3f Downloading [==================================================>]     128B/128B
+ 455d094c943c Downloading [==================================================>]     116B/116B
+ a92c4c6bf7bf Pull complete 
+ 7fb0a4f2ca3f Downloading [==================================================>]     128B/128B
+ 455d094c943c Download complete 
+ 7fb0a4f2ca3f Download complete 
+ 946b64497533 Downloading [==================================================>]  18.92kB/18.92kB
+ fe6447b1cf39 Downloading [==================================================>]  628.9kB/628.9kB
+ 946b64497533 Download complete 
+ fe6447b1cf39 Download complete 
+ 9d35542429bd Download complete 
+ 242569103c81 Download complete 
+ 242569103c81 Pull complete 
+ fe6447b1cf39 Extracting 1 s
+ fe6447b1cf39 Extracting 1 s
+ 36af16c7d2ce Download complete 
+ fe6447b1cf39 Extracting 1 s
+ 36af16c7d2ce Pull complete 
+ fe6447b1cf39 Extracting 1 s
+
+... [TRUNCATED FOR SUBMISSION] ...
+
+ eb134dfb2af4 Downloading [================================================>  ]  104.9MB/109.2MB
+ eb134dfb2af4 Downloading [================================================>  ]  105.9MB/109.2MB
+ eb134dfb2af4 Downloading [================================================>  ]  105.9MB/109.2MB
+ eb134dfb2af4 Downloading [================================================>  ]  105.9MB/109.2MB
+ eb134dfb2af4 Downloading [================================================>  ]  105.9MB/109.2MB
+ eb134dfb2af4 Downloading [================================================>  ]    107MB/109.2MB
+ eb134dfb2af4 Downloading [================================================>  ]    107MB/109.2MB
+ eb134dfb2af4 Downloading [================================================>  ]    107MB/109.2MB
+ eb134dfb2af4 Downloading [=================================================> ]    108MB/109.2MB
+ eb134dfb2af4 Downloading [=================================================> ]    108MB/109.2MB
+ eb134dfb2af4 Downloading [==================================================>]  109.2MB/109.2MB
+ eb134dfb2af4 Download complete 
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 1 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 2 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 3 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 4 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 5 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 6 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 7 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 8 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 9 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 10 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 11 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 12 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 13 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 14 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Extracting 15 s
+ eb134dfb2af4 Pull complete 
+ 946b64497533 Extracting 1 s
+ 946b64497533 Pull complete 
+ 7fb0a4f2ca3f Extracting 1 s
+ 7fb0a4f2ca3f Pull complete 
+ 51718cc743bc Extracting 1 s
+ b88294e2a4c6 Pull complete 
+ 51718cc743bc Pull complete 
+ postgres Pulled 
+ Network django-defectdojo_default  Creating
+ Network django-defectdojo_default  Created
+ Volume "django-defectdojo_defectdojo_postgres"  Creating
+ Volume "django-defectdojo_defectdojo_postgres"  Created
+ Volume "django-defectdojo_defectdojo_redis"  Creating
+ Volume "django-defectdojo_defectdojo_redis"  Created
+ Volume "django-defectdojo_defectdojo_media"  Creating
+ Volume "django-defectdojo_defectdojo_media"  Created
+ Container django-defectdojo-postgres-1  Creating
+ Container django-defectdojo-valkey-1  Creating
+ Container django-defectdojo-postgres-1  Created
+ Container django-defectdojo-valkey-1  Created
+ Container django-defectdojo-initializer-1  Creating
+ Container django-defectdojo-initializer-1  Created
+ Container django-defectdojo-celeryworker-1  Creating
+ Container django-defectdojo-uwsgi-1  Creating
+ Container django-defectdojo-celerybeat-1  Creating
+ Container django-defectdojo-celerybeat-1  Created
+ Container django-defectdojo-uwsgi-1  Created
+ Container django-defectdojo-nginx-1  Creating
+ Container django-defectdojo-celeryworker-1  Created
+ Container django-defectdojo-nginx-1  Created
+ Container django-defectdojo-postgres-1  Starting
+ Container django-defectdojo-valkey-1  Starting
+ Container django-defectdojo-valkey-1  Started
+ Container django-defectdojo-postgres-1  Started
+ Container django-defectdojo-initializer-1  Starting
+ Container django-defectdojo-initializer-1  Started
+ Container django-defectdojo-initializer-1  Waiting
+ Container django-defectdojo-initializer-1  Waiting
+ Container django-defectdojo-initializer-1  Waiting
+ Container django-defectdojo-initializer-1  Exited
+ Container django-defectdojo-celerybeat-1  Starting
+ Container django-defectdojo-initializer-1  Exited
+ Container django-defectdojo-celeryworker-1  Starting
+ Container django-defectdojo-initializer-1  Exited
+ Container django-defectdojo-uwsgi-1  Starting
+ Container django-defectdojo-celerybeat-1  Started
+ Container django-defectdojo-uwsgi-1  Started
+ Container django-defectdojo-nginx-1  Starting
+ Container django-defectdojo-celeryworker-1  Started
+ Container django-defectdojo-nginx-1  Started

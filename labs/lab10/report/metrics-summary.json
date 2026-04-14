@@ -1,0 +1,79 @@
+{
+  "date": "2026-04-14",
+  "engagement_id": 1,
+  "engagement_name": "Labs Security Testing",
+  "totals": {
+    "findings": 160,
+    "active": 160,
+    "verified": 0,
+    "mitigated": 0
+  },
+  "active_severity": {
+    "Critical": 11,
+    "High": 71,
+    "Medium": 52,
+    "Low": 9,
+    "Info": 17
+  },
+  "open_by_severity": {
+    "Critical": 11,
+    "High": 71,
+    "Medium": 52,
+    "Low": 9,
+    "Info": 17
+  },
+  "closed_by_severity": {
+    "Critical": 0,
+    "High": 0,
+    "Medium": 0,
+    "Low": 0,
+    "Info": 0
+  },
+  "tool_counts": {
+    "ZAP": 13,
+    "Semgrep": 25,
+    "Trivy": 0,
+    "Nuclei": 0,
+    "Grype": 122
+  },
+  "sla": {
+    "breached": 0,
+    "due_in_14_days": 11
+  },
+  "top_cwe": [
+    {
+      "cwe": 79,
+      "count": 7
+    },
+    {
+      "cwe": 89,
+      "count": 6
+    },
+    {
+      "cwe": 73,
+      "count": 4
+    },
+    {
+      "cwe": 548,
+      "count": 4
+    },
+    {
+      "cwe": 693,
+      "count": 3
+    }
+  ],
+  "top_owasp": [
+    {
+      "category": "A03:2021-Injection",
+      "count": 13
+    },
+    {
+      "category": "A05:2021-Security Misconfiguration",
+      "count": 4
+    },
+    {
+      "category": "A07:2021-Identification and Authentication Failures",
+      "count": 1
+    }
+  ]
+}

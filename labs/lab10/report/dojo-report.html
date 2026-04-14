@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>DefectDojo Lab 10 Report</title>
+<style>
+:root{--bg:#f5f8ff;--card:#fff;--ink:#172033;--muted:#4a5976;--line:#d8e0ef;--accent:#0f5bd8;}
+body{margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(130deg,#e9f1ff,#f8fbff);color:var(--ink);}
+.wrap{max-width:980px;margin:24px auto;padding:0 16px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px;box-shadow:0 4px 16px rgba(19,37,82,.06);}
+h1,h2{margin:0 0 10px 0;}h1{font-size:1.45rem;}h2{font-size:1.05rem;color:var(--accent);}p{color:var(--muted);}
+.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.kpi div{background:#f3f7ff;border:1px solid var(--line);border-radius:10px;padding:10px;}
+.k{font-size:.8rem;color:var(--muted);}.v{font-size:1.2rem;font-weight:700;}
+table{width:100%;border-collapse:collapse;}th,td{border:1px solid var(--line);padding:8px;text-align:left;font-size:.93rem;}th{background:#edf4ff;}
+@media (max-width:700px){.kpi{grid-template-columns:repeat(2,minmax(0,1fr));}}
+</style></head><body><div class="wrap">
+<div class="card"><h1>Lab 10 - DefectDojo Reporting Snapshot</h1><p>Generated on 2026-04-14 for engagement <strong>Labs Security Testing</strong> (ID: 1).</p>
+<div class="kpi"><div><div class="k">Total Findings</div><div class="v">160</div></div><div><div class="k">Active</div><div class="v">160</div></div><div><div class="k">Verified</div><div class="v">0</div></div><div><div class="k">Mitigated</div><div class="v">0</div></div></div></div>
+<div class="card"><h2>Open vs Closed by Severity</h2><table><thead><tr><th>Severity</th><th>Open</th><th>Closed</th></tr></thead><tbody>
+<tr><td>Critical</td><td>11</td><td>0</td></tr>
+<tr><td>High</td><td>71</td><td>0</td></tr>
+<tr><td>Medium</td><td>52</td><td>0</td></tr>
+<tr><td>Low</td><td>9</td><td>0</td></tr>
+<tr><td>Informational</td><td>17</td><td>0</td></tr>
+</tbody></table></div>
+<div class="card"><h2>Findings per Tool</h2><table><thead><tr><th>Tool</th><th>Findings</th></tr></thead><tbody><tr><td>ZAP</td><td>13</td></tr><tr><td>Semgrep</td><td>25</td></tr><tr><td>Trivy</td><td>0</td></tr><tr><td>Nuclei</td><td>0</td></tr><tr><td>Grype</td><td>122</td></tr></tbody></table></div>
+<div class="card"><h2>SLA Outlook</h2><table><thead><tr><th>Metric</th><th>Count</th></tr></thead><tbody><tr><td>SLA Breached</td><td>0</td></tr><tr><td>Due in Next 14 Days</td><td>11</td></tr></tbody></table></div>
+<div class="card"><h2>Top CWE and OWASP Categories</h2><p>Top recurring CWE values from imported findings:</p><table><thead><tr><th>CWE</th><th>Count</th></tr></thead><tbody><tr><td>CWE-79</td><td>7</td></tr><tr><td>CWE-89</td><td>6</td></tr><tr><td>CWE-73</td><td>4</td></tr><tr><td>CWE-548</td><td>4</td></tr><tr><td>CWE-693</td><td>3</td></tr></tbody></table>
+<p style="margin-top:10px;">Mapped OWASP Top 10 (2021) categories where CWE mapping is available:</p><table><thead><tr><th>OWASP Category</th><th>Count</th></tr></thead><tbody><tr><td>A03:2021-Injection</td><td>13</td></tr><tr><td>A05:2021-Security Misconfiguration</td><td>4</td></tr><tr><td>A07:2021-Identification and Authentication Failures</td><td>1</td></tr></tbody></table></div>
+</div></body></html>
