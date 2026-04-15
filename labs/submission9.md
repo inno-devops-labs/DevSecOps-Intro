@@ -34,7 +34,7 @@ script -qc 'docker exec -it lab9-helper /bin/sh -lc "echo hello-from-shell"' /de
 {
   "priority": "Notice",
   "rule": "Terminal shell in container",
-  "time": "2026-04-14T09:21:14.273313579Z",
+  "time": "2026-04-15T03:38:48.422632659Z",
   "output_fields": {
     "container.name": "lab9-helper",
     "container.image.repository": "alpine",
@@ -63,7 +63,7 @@ docker exec lab9-helper /bin/sh -c 'cat /etc/shadow'
 {
   "priority": "Warning",
   "rule": "Read sensitive file untrusted",
-  "time": "2026-04-14T09:21:09.482613201Z",
+  "time": "2026-04-15T03:38:49.288471290Z",
   "output_fields": {
     "container.name": "lab9-helper",
     "fd.name": "/etc/shadow",
@@ -117,7 +117,7 @@ docker exec --user 0 lab9-helper /bin/sh -c 'echo boom > /usr/local/bin/drift.tx
 {
   "priority": "Warning",
   "rule": "Write Binary Under UsrLocalBin",
-  "time": "2026-04-14T09:20:51.132710083Z",
+  "time": "2026-04-15T03:38:52.904559496Z",
   "output_fields": {
     "container.name": "lab9-helper",
     "container.image.repository": "alpine",
