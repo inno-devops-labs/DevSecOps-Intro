@@ -1,0 +1,2 @@
+=== Kernel Modules Count ===
+Host kernel modules: 168

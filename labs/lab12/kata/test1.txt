@@ -1,0 +1,8 @@
+=== Kata Runtime Test ===
+Hardware virtualization check (vmx/svm flag count):
+0
+
+modprobe kvm_amd result:
+
+dmesg KVM messages:
+[ 4669.894987] kvm: no hardware support

@@ -1,0 +1,4 @@
+=== Startup Time Comparison ===
+runc:
+real	0m7.097s
+Kata: (requires KVM - typically 3-5s for first VM start)

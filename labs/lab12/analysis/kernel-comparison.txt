@@ -1,0 +1,4 @@
+=== Kernel Version Comparison ===
+Host kernel (runc uses this): 5.4.0-37-generic
+Kata guest kernel: Kata uses a separate lightweight kernel (e.g., 6.12.x)
+Note: Kata runtime could not be started due to missing KVM/nested virtualization

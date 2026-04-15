@@ -1,0 +1,2 @@
+=== Kata Tools Version ===
+kata-tools-static version: 3.28.0

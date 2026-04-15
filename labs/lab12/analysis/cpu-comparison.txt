@@ -1,0 +1,5 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name	: AMD Ryzen 5 5600H with Radeon Graphics
+Kata VM CPU: presents a virtualized CPU (e.g., QEMU Virtual CPU)
+Note: Kata runtime could not be started due to missing KVM/nested virtualization

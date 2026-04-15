@@ -1,0 +1,4 @@
+=== containerd configuration ===
+[plugins.'io.containerd.grpc.v1.cri'.containerd.runtimes.kata]
+  runtime_type = 'io.containerd.kata.v2'
+  runtime_type = 'io.containerd.kata.v2'

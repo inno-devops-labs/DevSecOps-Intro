@@ -1,0 +1,2 @@
+Host CPU: model name	: AMD Ryzen 5 5600H with Radeon Graphics
+Kata guest CPU: (requires KVM - not available on this VM)

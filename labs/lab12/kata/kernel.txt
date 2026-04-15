@@ -1,0 +1,2 @@
+Host kernel: 5.4.0-37-generic
+Kata guest kernel: (requires KVM - not available on this VM)

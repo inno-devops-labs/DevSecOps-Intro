@@ -1,0 +1,9 @@
+=== dmesg Access Test ===
+Host dmesg (first 5 lines):
+[ 3580.901895] audit: type=1326 audit(1776238379.307:3570): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=39911 comm="run-cups-browse" exe="/usr/bin/dash" sig=0 arch=c000003e syscall=439 compat=0 ip=0x7f8c8af41b74 code=0x50000
+[ 3581.911301] audit: type=1326 audit(1776238380.319:3571): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=39911 comm="run-cups-browse" exe="/usr/bin/dash" sig=0 arch=c000003e syscall=439 compat=0 ip=0x7f8c8af41b74 code=0x50000
+[ 3582.941752] audit: type=1326 audit(1776238381.347:3572): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=39911 comm="run-cups-browse" exe="/usr/bin/dash" sig=0 arch=c000003e syscall=439 compat=0 ip=0x7f8c8af41b74 code=0x50000
+[ 3583.951080] audit: type=1326 audit(1776238382.355:3573): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=39911 comm="run-cups-browse" exe="/usr/bin/dash" sig=0 arch=c000003e syscall=439 compat=0 ip=0x7f8c8af41b74 code=0x50000
+[ 3584.956820] audit: type=1326 audit(1776238383.355:3574): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=39911 comm="run-cups-browse" exe="/usr/bin/dash" sig=0 arch=c000003e syscall=439 compat=0 ip=0x7f8c8af41b74 code=0x50000
+
+Kata VM dmesg: (requires KVM - not available)
