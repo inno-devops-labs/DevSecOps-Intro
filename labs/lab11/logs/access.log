@@ -1,0 +1,19 @@
+172.24.0.1 - - [19/Apr/2026:17:27:04 +0000] "HEAD / HTTP/1.1" 308 0 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.24.0.1 - - [19/Apr/2026:17:28:06 +0000] "HEAD / HTTP/1.1" 308 0 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.24.0.1 - - [19/Apr/2026:17:28:35 +0000] "HEAD / HTTP/1.1" 200 0 "-" "curl/8.18.0" rt=0.009 uct=0.001 urt=0.009
+172.24.0.1 - - [19/Apr/2026:17:34:05 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.008 uct=0.001 urt=0.007
+172.24.0.1 - - [19/Apr/2026:17:34:49 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.003 uct=0.001 urt=0.004
+172.24.0.1 - - [19/Apr/2026:17:34:50 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.003 uct=0.000 urt=0.003
+172.24.0.1 - - [19/Apr/2026:17:34:56 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.003 uct=0.000 urt=0.002
+172.24.0.1 - - [19/Apr/2026:17:40:22 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.027 uct=0.001 urt=0.028
+172.24.0.1 - - [19/Apr/2026:17:40:22 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.002 uct=0.000 urt=0.002
+172.24.0.1 - - [19/Apr/2026:17:40:23 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.001 uct=0.001 urt=0.002
+172.24.0.1 - - [19/Apr/2026:17:40:23 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.003 uct=0.000 urt=0.002
+172.24.0.1 - - [19/Apr/2026:17:40:23 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.001 uct=0.000 urt=0.002
+172.24.0.1 - - [19/Apr/2026:17:40:23 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.002 uct=0.000 urt=0.002
+172.24.0.1 - - [19/Apr/2026:17:40:24 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.24.0.1 - - [19/Apr/2026:17:40:24 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.24.0.1 - - [19/Apr/2026:17:40:24 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.24.0.1 - - [19/Apr/2026:17:40:24 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.24.0.1 - - [19/Apr/2026:17:40:25 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
+172.24.0.1 - - [19/Apr/2026:17:40:25 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- urt=-
