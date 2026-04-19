@@ -1,0 +1,3 @@
+=== Kernel Version Comparison ===
+Host kernel (runc uses this):6.17.0-19-generic
+Kata guest kernel: Linux version 6.12.47 #1 SMP Mon Mar 16 08:35:04 UTC 2026 (Ubuntu 6.12.47-generic x86_64)
