@@ -27,6 +27,8 @@ $ curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:8080/
 HTTP 308
 ```
 
+Full output saved to [labs/lab11/analysis/http-redirect.txt](labs/lab11/analysis/http-redirect.txt).
+
 The 308 (Permanent Redirect) response confirms Nginx is receiving requests on port 8080 and redirecting to HTTPS on port 8443. HTTP 308 preserves the request method (unlike 301/302 which may downgrade POST to GET), which is important for API clients.
 
 ### 1.2 Docker Compose Stack Status
@@ -39,6 +41,8 @@ lab11-nginx-1         nginx:stable-alpine            Up 2 minutes    0.0.0.0:808
 ```
 
 **Key observation:** The `juice` container has **no published ports** — it only exposes port 3000 internally via Docker's `expose` directive (which creates no host-level firewall rule). External traffic can only reach Juice Shop through the Nginx reverse proxy.
+
+Full output saved to [labs/lab11/analysis/compose-ps.txt](labs/lab11/analysis/compose-ps.txt).
 
 ### 1.3 Why Reverse Proxies Are Valuable for Security
 
@@ -180,13 +184,13 @@ DHE-RSA-AES256-GCM-SHA384      (TLS 1.2)
 DHE-RSA-AES128-GCM-SHA256      (TLS 1.2)
 ```
 
-All ciphers provide **forward secrecy** (ECDHE/DHE key exchange) and use **AEAD** (authenticated encryption with additional data — GCM/ChaCha20-Poly1305). No RC4, 3DES, CBC-mode, or export ciphers are present.
+The TLS 1.3 suites above were observed in `testssl.txt`; the TLS 1.2 suites are the forward-secret AEAD suites allowed by `ssl_ciphers` in `nginx.conf`. No RC4, 3DES, CBC-mode, or export ciphers are present.
 
 **Why TLSv1.2+ is required and TLSv1.3 is preferred:**
 
 - TLS 1.0 and 1.1 use SHA-1 in the PRF (pseudorandom function) and support obsolete cipher modes (RC4, 3DES). They are banned in RFC 8996 and PCI DSS v4.0.
 - TLS 1.2 is still secure when used with forward-secret, AEAD ciphers. However it requires careful configuration — the protocol supports weak ciphers (RC4, 3DES, non-FS modes) that must be explicitly disabled.
-- TLS 1.3 removes all legacy cipher modes, mandates forward secrecy, and adds **0-RTT resumption** (improved latency) and **encrypted handshake metadata** (protects SNI and certificate in transit). It is simpler, faster, and has a smaller attack surface.
+- TLS 1.3 removes legacy cipher modes, mandates forward secrecy, shortens the handshake, and encrypts more of the handshake after ServerHello. It does not by itself hide SNI; that requires Encrypted ClientHello (ECH), which is separate from this lab configuration. TLS 1.3 is simpler, faster, and has a smaller attack surface.
 
 **Vulnerability check summary:** All tested attack vectors returned "not vulnerable (OK)": POODLE, BEAST, CRIME, BREACH, ROBOT, DROWN, FREAK, LOGJAM, LUCKY13, Heartbleed, Ticketbleed, RC4.
 
@@ -196,7 +200,7 @@ All ciphers provide **forward secrecy** (ECDHE/DHE key exchange) and use **AEAD*
 - `OCSP stapling: not offered` — Disabled in nginx.conf (`ssl_stapling off`). OCSP stapling would allow the server to attach a pre-fetched OCSP response to the TLS handshake, proving the certificate hasn't been revoked without requiring the client to contact the CA. Enabled for publicly trusted certs.
 - `DNS CAA RR: not offered` — No Certification Authority Authorization DNS record exists for `localhost`. In production, CAA records restrict which CAs can issue certificates for your domain.
 
-**HSTS verification:** HSTS appeared only in the HTTPS response (`headers-https.txt`), not in the HTTP redirect response (`headers-http.txt`). The testssl.sh scan confirmed `Strict-Transport-Security` in the HTTPS headers section.
+**HSTS verification:** HSTS appeared only in the HTTPS response (`headers-https.txt`), not in the HTTP redirect response (`headers-http.txt`). The HTTPS evidence shows `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`, and the testssl.sh scan confirms the same 365-day HSTS policy in the HTTPS headers section.
 
 ### 3.2 Rate Limiting Test
 

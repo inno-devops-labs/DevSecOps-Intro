@@ -97,7 +97,7 @@
 
  HTTP Status Code               200 OK
  HTTP clock skew                0 sec from localtime
- Strict Transport Security      864000 seconds=10 days, no subdomains, no preload
+ Strict Transport Security      31536000 seconds=365 days, includeSubDomains, preload
  Public Key Pinning             --
  Server banner                  nginx
  Application banner             --

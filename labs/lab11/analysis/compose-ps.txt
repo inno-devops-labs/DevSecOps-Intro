@@ -1,0 +1,4 @@
+$ docker compose ps
+NAME                  IMAGE                          STATUS          PORTS
+lab11-juice-1         bkimminich/juice-shop:v19.0.0  Up 2 minutes
+lab11-nginx-1         nginx:stable-alpine            Up 2 minutes    0.0.0.0:8080->8080/tcp, 0.0.0.0:8443->8443/tcp

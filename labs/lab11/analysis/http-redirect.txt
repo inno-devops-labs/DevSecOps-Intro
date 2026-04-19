@@ -1,0 +1,2 @@
+$ curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:8080/
+HTTP 308
