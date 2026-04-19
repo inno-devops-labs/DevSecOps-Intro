@@ -1,0 +1,10 @@
+HTTP redirect:
+HTTP 308
+
+HSTS check:
+HTTP HSTS present: no
+HTTPS HSTS present: yes
+
+Rate-limit counts:
+401 x 5
+429 x 7

@@ -1,0 +1,56 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            21:93:1b:88:94:30:8a:fe:a7:3a:08:c7:5f:cb:c9:61:b7:fa:41:1e
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=localhost
+        Validity
+            Not Before: Apr 19 09:11:54 2026 GMT
+            Not After : Apr 19 09:11:54 2027 GMT
+        Subject: CN=localhost
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:ac:95:87:97:8d:34:16:ea:47:85:63:a4:ea:cc:
+                    66:de:bd:91:46:6b:1d:6c:09:c7:e8:c8:c9:7d:3e:
+                    2c:27:27:34:f7:28:9d:4f:65:be:f0:71:a0:ab:fb:
+                    e4:1c:09:25:4b:3d:99:14:1b:07:67:6b:08:5e:28:
+                    52:b2:0c:3f:0b:2c:b2:be:0f:4e:36:26:67:3f:fd:
+                    24:66:fd:87:9f:f2:b9:77:39:5d:14:1d:df:e9:d5:
+                    d2:ce:48:10:59:57:f5:19:23:fc:3b:aa:0a:f6:9a:
+                    ee:08:32:5c:ad:6e:b4:83:0c:79:02:07:6a:74:ce:
+                    31:a1:99:8d:ae:ae:ac:69:fb:93:f9:fe:96:b1:eb:
+                    cf:6f:24:c7:78:10:4b:1e:0a:67:fc:6d:3e:37:ab:
+                    d1:e3:09:00:4c:1f:2d:2c:29:8d:8f:0a:46:be:b4:
+                    9d:1d:5e:e6:f3:df:9d:a5:96:d7:e7:0d:8a:06:fd:
+                    88:bd:77:78:96:96:c2:c2:0f:66:3c:b5:53:6b:2f:
+                    79:1a:b9:d5:e3:93:78:2d:eb:54:4b:1d:bb:d4:20:
+                    57:da:09:e3:d3:51:53:50:e8:2c:88:ed:98:fa:8f:
+                    72:b8:d4:0d:89:48:0e:28:01:4b:1e:be:8b:9d:33:
+                    6f:f4:e4:26:f3:1a:eb:f3:f2:77:51:7d:5b:4e:90:
+                    3b:09
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Alternative Name: 
+                DNS:localhost, DNS:host.docker.internal, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1
+            X509v3 Subject Key Identifier: 
+                DB:33:AE:0F:CB:08:A7:69:8B:5F:DF:E6:49:E6:B8:AD:B4:72:71:58
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        45:69:48:17:61:6c:87:1f:c4:80:f5:fd:42:c6:a9:06:86:a5:
+        ea:b0:64:d4:98:2b:1e:c8:bf:c9:bb:cc:02:8f:ad:5d:a9:2b:
+        e8:a3:86:4e:6b:8f:e2:0c:fb:a2:74:66:ba:b1:3a:2a:fa:93:
+        b4:bd:d3:d8:cc:73:c6:20:ce:8f:54:c4:7c:fb:ea:16:11:66:
+        34:aa:ac:4d:77:6c:19:16:9b:10:2c:c5:30:b9:81:2f:b1:ee:
+        3b:7f:b3:58:cc:f8:a4:0c:63:12:c8:8b:b5:95:bb:31:ec:15:
+        73:79:bf:ae:13:36:8f:f5:d1:31:d4:24:bf:dd:a6:00:f8:d6:
+        ba:c6:f7:f5:af:e0:d1:2a:36:4d:f0:b8:0a:9d:b9:a4:3f:68:
+        5f:b1:38:4c:50:a2:1c:01:50:b6:fa:12:13:c6:44:f6:36:e6:
+        d4:95:ab:b9:12:56:0f:6f:42:85:72:56:d6:95:3c:3c:59:b0:
+        ac:0d:2e:a5:66:90:aa:fc:f1:55:ea:55:12:20:00:31:ee:d9:
+        4c:13:4c:36:5c:ce:bf:7a:c2:0a:fd:45:d4:71:a3:a6:82:4e:
+        7f:d9:d4:0b:2d:af:f3:b9:5f:e4:73:a5:49:ac:1a:db:93:45:
+        6a:c6:d6:99:2c:74:7b:c0:93:60:7e:5b:ab:77:c1:7a:da:6a:
+        c2:b4:c2:a8

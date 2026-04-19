@@ -4,12 +4,26 @@ services:
     restart: unless-stopped
     expose:
       - "3000"
+    healthcheck:
+      test:
+        - CMD
+        - /nodejs/bin/node
+        - -e
+        - >
+          require('http')
+            .get('http://127.0.0.1:3000', (res) => process.exit(res.statusCode < 500 ? 0 : 1))
+            .on('error', () => process.exit(1))
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
 
   nginx:
     image: nginx:stable-alpine
     restart: unless-stopped
     depends_on:
-      - juice
+      juice:
+        condition: service_healthy
     ports:
       - "8080:8080"   # HTTP (will redirect to HTTPS)
       - "8443:8443"   # HTTPS

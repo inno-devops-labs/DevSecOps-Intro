@@ -1,0 +1,19 @@
+HTTP/2 200 
+server: nginx
+date: Sun, 19 Apr 2026 09:28:32 GMT
+content-type: text/html; charset=UTF-8
+content-length: 75002
+accept-ranges: bytes
+cache-control: public, max-age=0
+last-modified: Sun, 19 Apr 2026 09:28:28 GMT
+etag: W/"124fa-19da511ec34"
+vary: Accept-Encoding
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-frame-options: DENY
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), geolocation=(), microphone=()
+cross-origin-opener-policy: same-origin
+cross-origin-resource-policy: same-origin
+content-security-policy-report-only: default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'
+

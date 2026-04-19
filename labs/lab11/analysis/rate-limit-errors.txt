@@ -1,0 +1,7 @@
+2026/04/19 09:24:02 [warn] 30#30: *299 limiting requests, excess: 5.662 by zone "login", client: 192.168.65.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "127.0.0.1:8443"
+2026/04/19 09:24:02 [warn] 30#30: *300 limiting requests, excess: 5.660 by zone "login", client: 192.168.65.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "127.0.0.1:8443"
+2026/04/19 09:24:02 [warn] 30#30: *301 limiting requests, excess: 5.658 by zone "login", client: 192.168.65.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "127.0.0.1:8443"
+2026/04/19 09:24:02 [warn] 30#30: *302 limiting requests, excess: 5.656 by zone "login", client: 192.168.65.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "127.0.0.1:8443"
+2026/04/19 09:24:02 [warn] 30#30: *303 limiting requests, excess: 5.654 by zone "login", client: 192.168.65.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "127.0.0.1:8443"
+2026/04/19 09:24:02 [warn] 30#30: *304 limiting requests, excess: 5.651 by zone "login", client: 192.168.65.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "127.0.0.1:8443"
+2026/04/19 09:24:02 [warn] 31#31: *305 limiting requests, excess: 5.649 by zone "login", client: 192.168.65.1, server: _, request: "POST /rest/user/login HTTP/2.0", host: "127.0.0.1:8443"

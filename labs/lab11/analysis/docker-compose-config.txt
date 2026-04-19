@@ -1,0 +1,58 @@
+name: lab11
+services:
+  juice:
+    expose:
+      - "3000"
+    healthcheck:
+      test:
+        - CMD
+        - /nodejs/bin/node
+        - -e
+        - |
+          require('http')
+            .get('http://127.0.0.1:3000', (res) => process.exit(res.statusCode < 500 ? 0 : 1))
+            .on('error', () => process.exit(1))
+      timeout: 5s
+      interval: 10s
+      retries: 12
+      start_period: 20s
+    image: bkimminich/juice-shop:v19.0.0
+    networks:
+      default: null
+    restart: unless-stopped
+  nginx:
+    depends_on:
+      juice:
+        condition: service_healthy
+        required: true
+    image: nginx:stable-alpine
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "8080"
+        protocol: tcp
+      - mode: ingress
+        target: 8443
+        published: "8443"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /Users/pepega/Developer/learning/DevSecOps-Intro/labs/lab11/reverse-proxy/nginx.conf
+        target: /etc/nginx/nginx.conf
+        read_only: true
+        bind: {}
+      - type: bind
+        source: /Users/pepega/Developer/learning/DevSecOps-Intro/labs/lab11/reverse-proxy/certs
+        target: /etc/nginx/certs
+        read_only: true
+        bind: {}
+      - type: bind
+        source: /Users/pepega/Developer/learning/DevSecOps-Intro/labs/lab11/logs
+        target: /var/log/nginx
+        bind: {}
+networks:
+  default:
+    name: lab11_default

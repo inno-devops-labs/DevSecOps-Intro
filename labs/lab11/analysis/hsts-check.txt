@@ -1,0 +1,2 @@
+HTTP HSTS present: no
+HTTPS HSTS present: yes
