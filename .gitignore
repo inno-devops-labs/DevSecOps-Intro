@@ -1,1 +1,7 @@
 labs/lab8/signing/cosign.key
+
+# Lab 10 local clone
+labs/lab10/setup/django-DefectDojo/
+
+# Local certs
+labs/lab11/reverse-proxy/certs/*.key
