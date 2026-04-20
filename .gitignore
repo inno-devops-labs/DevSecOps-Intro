@@ -4,3 +4,7 @@
 labs/lab8/signing/cosign.key
 labs/lab8/signing/cosign.pub
 labs/lab8/bin/cosign
+
+# Keep local lab11 TLS material out of version control.
+labs/lab11/reverse-proxy/certs/*
+!labs/lab11/reverse-proxy/certs/README.md
