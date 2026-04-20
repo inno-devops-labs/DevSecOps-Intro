@@ -1,0 +1,81 @@
+21:[1m SSLv2      [m[1;32mnot offered (OK)[m
+22:[1m SSLv3      [m[1;32mnot offered (OK)[m
+23:[1m TLS 1      [mnot offered
+24:[1m TLS 1.1    [mnot offered
+25:[1m TLS 1.2    [m[1;32moffered (OK)[m
+26:[1m TLS 1.3    [m[1;32moffered (OK)[m: final
+46:[4mSSLv2[m
+48:[4mSSLv3[m
+54:[4mTLSv1.2[m (server order)
+55: xc030   ECDHE-RSA-AES256-GCM-SHA384       ECDH[0;32m 256[m   AESGCM      256      TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384              
+56: xc02f   ECDHE-RSA-AES128-GCM-SHA256       ECDH[0;32m 256[m   AESGCM      128      TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256              
+57:[4mTLSv1.3[m (server order)
+58: x1302   TLS_AES_256_GCM_SHA384            ECDH/MLKEM AESGCM      256      TLS_AES_256_GCM_SHA384                             
+59: x1303   TLS_CHACHA20_POLY1305_SHA256      ECDH/MLKEM ChaCha20    256      TLS_CHACHA20_POLY1305_SHA256                       
+60: x1301   TLS_AES_128_GCM_SHA256            ECDH/MLKEM AESGCM      128      TLS_AES_128_GCM_SHA256                             
+62:[1m Has server cipher order?     [m[1;32myes (OK)[m -- TLS 1.3 and below
+65:[1m[4m Testing robust forward secrecy (FS)[m[4m -- omitting Null Authentication/Encryption, 3DES, RC4 [m
+67:[0;32m FS is offered (OK) [m          TLS_AES_256_GCM_SHA384
+68:                              TLS_CHACHA20_POLY1305_SHA256
+69:                              ECDHE-RSA-AES256-GCM-SHA384
+70:                              TLS_AES_128_GCM_SHA256
+71:                              ECDHE-RSA-AES128-GCM-SHA256 
+75:[1m TLS 1.2 sig_algs offered:    [mRSA-PSS-RSAE+SHA256 RSA-PSS-RSAE+SHA384 
+78:[1m TLS 1.3 sig_algs offered:    [mRSA-PSS-RSAE+SHA256 RSA-PSS-RSAE+SHA384 
+105:[1m Chain of trust[m               [1;31mNOT ok[m (self signed)
+110:[1m OCSP URI                     [m--
+111:                              [0;31mNOT ok --[m neither CRL nor OCSP URI provided
+112:[1m OCSP stapling                [mnot offered
+114:[1m DNS CAA RR[m (experimental)    [1;33mnot offered[m
+115:[1m Certificate Transparency     [m--
+125:[1m Strict Transport Security    [m[0;32m365 days[m=31536000 s[0;32m, includeSubDomains[m[0;32m, preload[m
+149:[1m Heartbleed[m (CVE-2014-0160)                [1;32mnot vulnerable (OK)[m, no heartbeat extension
+150:[1m CCS[m (CVE-2014-0224)                       [1;32mnot vulnerable (OK)[m
+151:[1m Ticketbleed[m (CVE-2016-9244), experiment.  [1;32mnot vulnerable (OK)[m
+152:[1m ROBOT                                     [m[1;32mServer does not support any cipher suites that use RSA key transport[m
+154:[1m Secure Client-Initiated Renegotiation     [m[0;32mnot vulnerable (OK)[m
+155:[1m CRIME, TLS [m(CVE-2012-4929)                [0;32mnot vulnerable (OK)[m
+156:[1m BREACH[m (CVE-2013-3587)                    [0;32mno gzip/deflate/compress/br HTTP compression (OK) [m - only supplied "/" tested
+157:[1m POODLE, SSL[m (CVE-2014-3566)               [1;32mnot vulnerable (OK)[m, no SSLv3 support
+158:[1m TLS_FALLBACK_SCSV[m (RFC 7507)              [0;32mNo fallback possible (OK)[m, no protocol below TLS 1.2 offered
+159:[1m SWEET32[m (CVE-2016-2183, CVE-2016-6329)    [1;32mnot vulnerable (OK)[m
+160:[1m FREAK[m (CVE-2015-0204)                     [1;32mnot vulnerable (OK)[m
+161:[1m DROWN[m (CVE-2016-0800, CVE-2016-0703)      [1;32mnot vulnerable on this host and port (OK)[m
+162:                                           make sure you don't use this certificate elsewhere with SSLv2 enabled services, see
+164:[1m LOGJAM[m (CVE-2015-4000), experimental      [0;32mnot vulnerable (OK):[m no DH EXPORT ciphers, no DH key detected with <= TLS 1.2
+165:[1m BEAST[m (CVE-2011-3389)                     [0;32mnot vulnerable (OK)[m, no SSL3 or TLS1
+166:[1m LUCKY13[m (CVE-2013-0169), experimental     [1;32mnot vulnerable (OK)[m
+167:[1m Winshock[m (CVE-2014-6321), experimental    [1;32mnot vulnerable (OK)[m
+168:[1m RC4[m (CVE-2013-2566, CVE-2015-2808)        [0;32mno RC4 ciphers detected (OK)[m
+175: Android 7.0 (native)         TLSv1.2   ECDHE-RSA-AES256-GCM-SHA384       [0;32m256 bit ECDH (P-256)[m
+176: Android 8.1 (native)         TLSv1.2   ECDHE-RSA-AES256-GCM-SHA384       [0;32m253 bit ECDH (X25519)[m
+177: Android 9.0 (native)         TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+178: Android 10.0 (native)        TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+179: Android 11/12 (native)       TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+180: Android 13/14 (native)       TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+181: Android 15 (native)          TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32mX25519MLKEM768[m
+182: Chrome 101 (Win 10)          TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+183: Chromium 137 (Win 11)        TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32mX25519MLKEM768[m
+184: Firefox 100 (Win 10)         TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+185: Firefox 137 (Win 11)         TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32mX25519MLKEM768[m
+190: IE 11 Win 10                 TLSv1.2   ECDHE-RSA-AES256-GCM-SHA384       [0;32m256 bit ECDH (P-256)[m
+191: Edge 15 Win 10               TLSv1.2   ECDHE-RSA-AES256-GCM-SHA384       [0;32m253 bit ECDH (X25519)[m
+192: Edge 101 Win 10 21H2         TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+193: Edge 133 Win 11 23H2         TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32mX25519MLKEM768[m
+194: Safari 18.4 (iOS 18.4)       TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+195: Safari 15.4 (macOS 12.3.1)   TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+196: Safari 18.4 (macOS 15.4)     TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+198: Java 8u442 (OpenJDK)         TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+199: Java 11.0.2 (OpenJDK)        TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m256 bit ECDH (P-256)[m
+200: Java 17.0.3 (OpenJDK)        TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+201: Java 21.0.6 (OpenJDK)        TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+202: go 1.17.8                    TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+203: LibreSSL 3.3.6 (macOS)       TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+204: OpenSSL 1.0.2e               TLSv1.2   ECDHE-RSA-AES256-GCM-SHA384       [0;32m256 bit ECDH (P-256)[m
+205: OpenSSL 1.1.1d (Debian)      TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+206: OpenSSL 3.0.15 (Debian)      TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+207: OpenSSL 3.5.0 (git)          TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32mX25519MLKEM768[m
+208: Apple Mail (16.0)            TLSv1.2   ECDHE-RSA-AES256-GCM-SHA384       [0;32m256 bit ECDH (P-256)[m
+209: Thunderbird (91.9)           TLSv1.3   TLS_AES_256_GCM_SHA384            [0;32m253 bit ECDH (X25519)[m
+220:[1m Overall Grade                [m[1;31mT[m
+221:[1m Grade cap reasons            [mGrade capped to T. Issues with chain of trust
