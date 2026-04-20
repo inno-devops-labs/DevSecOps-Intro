@@ -1,0 +1,19 @@
+172.18.0.1 - - [20/Apr/2026:07:24:20 +0000] "GET / HTTP/1.1" 308 164 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [20/Apr/2026:07:25:13 +0000] "HEAD / HTTP/1.1" 308 0 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [20/Apr/2026:07:25:16 +0000] "HEAD / HTTP/2.0" 200 0 "-" "curl/7.81.0" rt=0.021 uct=0.002 urt=0.022
+172.18.0.1 - - [20/Apr/2026:07:25:33 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.009 uct=0.000 urt=0.009
+172.18.0.1 - - [20/Apr/2026:07:26:09 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.007 uct=0.000 urt=0.007
+172.18.0.1 - - [20/Apr/2026:07:26:10 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.006 uct=0.000 urt=0.007
+172.18.0.1 - - [20/Apr/2026:07:26:17 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.005 uct=0.000 urt=0.004
+172.18.0.1 - - [20/Apr/2026:07:26:53 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/7.81.0" rt=0.054 uct=0.002 urt=0.054
+172.18.0.1 - - [20/Apr/2026:07:26:53 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/7.81.0" rt=0.031 uct=0.001 urt=0.031
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/7.81.0" rt=0.026 uct=0.000 urt=0.026
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/7.81.0" rt=0.016 uct=0.001 urt=0.016
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/7.81.0" rt=0.018 uct=0.001 urt=0.018
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/7.81.0" rt=0.015 uct=0.001 urt=0.015
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
+172.18.0.1 - - [20/Apr/2026:07:26:54 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/7.81.0" rt=0.000 uct=- urt=-
