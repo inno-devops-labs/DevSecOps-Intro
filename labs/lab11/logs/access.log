@@ -1,0 +1,32 @@
+192.168.65.1 - - [20/Apr/2026:18:58:49 +0000] "GET / HTTP/1.1" 308 164 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:18:58:53 +0000] "HEAD / HTTP/1.1" 308 0 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:18:58:57 +0000] "HEAD / HTTP/2.0" 200 0 "-" "curl/8.7.1" rt=0.026 uct=0.004 urt=0.026
+192.168.65.1 - - [20/Apr/2026:18:59:29 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.009 uct=0.001 urt=0.008
+192.168.65.1 - - [20/Apr/2026:19:00:23 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.014 uct=0.000 urt=0.013
+192.168.65.1 - - [20/Apr/2026:19:00:24 +0000] "GET / HTTP/1.1" 200 75002 "-" "TLS tester from https://testssl.sh/" rt=0.002 uct=0.001 urt=0.003
+192.168.65.1 - - [20/Apr/2026:19:00:33 +0000] "GET / HTTP/1.1" 200 75002 "https://google.com/" "TLS tester from https://testssl.sh/" rt=0.003 uct=0.000 urt=0.003
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.070 uct=0.007 urt=0.070
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.014 uct=0.001 urt=0.014
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.010 uct=0.001 urt=0.010
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.015 uct=0.001 urt=0.015
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.007 uct=0.000 urt=0.007
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.007 uct=0.000 urt=0.006
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:04:51 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.023 uct=0.003 urt=0.023
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.011 uct=0.001 urt=0.012
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.010 uct=0.001 urt=0.011
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.009 uct=0.000 urt=0.008
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.007 uct=0.001 urt=0.008
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 401 26 "-" "curl/8.7.1" rt=0.011 uct=0.000 urt=0.011
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
+192.168.65.1 - - [20/Apr/2026:19:08:58 +0000] "GET / HTTP/2.0" 200 75002 "-" "curl/8.7.1" rt=0.026 uct=0.004 urt=0.026
