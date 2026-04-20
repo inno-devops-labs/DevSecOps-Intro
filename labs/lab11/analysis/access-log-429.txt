@@ -1,0 +1,27 @@
+﻿
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.016 uct=0.
+000 urt=0.017
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.003 uct=0.
+000 urt=0.002
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.002 uct=0.
+001 urt=0.002
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.002 uct=0.
+000 urt=0.002
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.002 uct=0.
+000 urt=0.002
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 500 2373 "-" "curl/8.18.0" rt=0.002 uct=0.
+000 urt=0.001
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- u
+rt=-
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- u
+rt=-
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- u
+rt=-
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- u
+rt=-
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- u
+rt=-
+172.21.0.1 - - [20/Apr/2026:12:00:18 +0000] "POST /rest/user/login HTTP/1.1" 429 162 "-" "curl/8.18.0" rt=0.000 uct=- u
+rt=-
+
+
