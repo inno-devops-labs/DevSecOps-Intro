@@ -24,9 +24,9 @@ docker run --rm \
   rust:1.75-bookworm bash -lc '
     set -euo pipefail
     apt-get update && apt-get install -y --no-install-recommends \
-      git make gcc pkg-config ca-certificates musl-tools libseccomp-dev && \
+      git make gcc g++ cmake pkg-config ca-certificates musl-tools libseccomp-dev && \
+      ln -sf /usr/bin/g++ /usr/bin/x86_64-linux-musl-g++ && \
       update-ca-certificates || true
-
     # Ensure cargo/rustup are available
     export PATH=/usr/local/cargo/bin:$PATH
     rustc --version; cargo --version; rustup --version || true

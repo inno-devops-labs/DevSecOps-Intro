@@ -1,0 +1,1 @@
+Linux 0937004c07e3 6.18.15 #1 SMP Sat Apr 18 10:30:20 UTC 2026 x86_64 Linux
