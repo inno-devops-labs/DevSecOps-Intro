@@ -30,7 +30,8 @@ ensure_default() {
 
 detect_header() {
   # Prefer v3 split-CRI path if present; otherwise fallback to grpc path
-  if grep -q "^\[plugins\.'io\.containerd\.cri\.v1\.runtime'\]" "$CONF"; then
+  # Note: config.toml may have leading whitespace before the section header
+  if grep -q "io\.containerd\.cri\.v1\.runtime" "$CONF"; then
     echo "[plugins.'io.containerd.cri.v1.runtime'.containerd.runtimes.kata]"
   else
     echo "[plugins.'io.containerd.grpc.v1.cri'.containerd.runtimes.kata]"

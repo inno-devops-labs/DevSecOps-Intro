@@ -52,10 +52,11 @@ fi
 rm -f "${TMP_TAR}"
 
 # Link configuration to an expected path for runtime-rs
-sudo mkdir -p /etc/kata-containers/runtime-rs
+# Prefer QEMU (KVM-backed, most compatible with our shim built without embedded dragonball)
+mkdir -p /etc/kata-containers/runtime-rs
 SRC_CANDIDATES=(
+  "/opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml"
   "/opt/kata/share/defaults/kata-containers/runtime-rs/configuration-dragonball.toml"
-  "/opt/kata/share/defaults/kata-containers/configuration-dragonball.toml"
   "/opt/kata/share/defaults/kata-containers/runtime-rs/configuration.toml"
   "/usr/share/defaults/kata-containers/runtime-rs/configuration.toml"
 )
