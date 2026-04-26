@@ -1,0 +1,3 @@
+=== Kernel Version Comparison ===
+Host kernel (runc uses this): 5.15.0-91-generic
+Kata guest kernel: Linux version 6.12.47 (kata-runtime)
