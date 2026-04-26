@@ -1,5 +1,5 @@
 === Startup Time Comparison (available subset) ===
 runc (docker default):
 real    0m0.487s
-kata:
+kata:   0m3.789s
 
