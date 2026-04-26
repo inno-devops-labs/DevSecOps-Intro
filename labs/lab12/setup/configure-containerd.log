@@ -1,0 +1,2 @@
+Updated /etc/containerd/config.toml with Kata runtime: io.containerd.kata.v2
+Restart containerd to apply: sudo systemctl restart containerd

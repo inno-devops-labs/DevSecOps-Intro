@@ -1,0 +1,13 @@
+=== Startup Time Comparison ===
+runc:
+test
+real 0.25
+user 0.02
+sys 0.02
+
+kata:
+time="2026-04-26T23:41:40+03:00" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+time="2026-04-26T23:41:59+03:00" level=fatal msg="failed to create shim task: CreateContainerRequest timed out: context deadline exceeded"
+real 19.43
+user 0.02
+sys 0.02

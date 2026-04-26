@@ -1,0 +1,4 @@
+65:# For example, `machine_accelerators = "nosmm,nosmbus,nosata,nopit,static-prt,nofw"`
+66:machine_accelerators = "usb=off,gic-version=host"
+79:# For example, `cpu_features = "pmu=off,vmx=off"
+80:cpu_features = ""

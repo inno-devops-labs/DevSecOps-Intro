@@ -1,0 +1,4 @@
+=== kata smoke failure ===
+2026-04-26T23:41:16+03:00
+time="2026-04-26T23:41:16+03:00" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+time="2026-04-26T23:41:37+03:00" level=fatal msg="failed to create shim task: CreateContainerRequest timed out: context deadline exceeded"

@@ -1,0 +1,1 @@
+/opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
