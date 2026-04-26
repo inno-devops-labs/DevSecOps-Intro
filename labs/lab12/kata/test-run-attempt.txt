@@ -1,0 +1,3 @@
+time="2026-04-26T16:05:26Z" level=warning msg="default network named \"bridge\" does not have an internal nerdctl ID or nerdctl-managed config file, it was most likely NOT created by nerdctl"
+time="2026-04-26T16:05:26Z" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+time="2026-04-26T16:05:26Z" level=fatal msg="failed to create shim task: Could not create the sandbox resource controller failed to add any hypervisor device to devices cgroup: unknown"

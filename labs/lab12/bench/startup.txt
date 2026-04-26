@@ -1,0 +1,7 @@
+=== Startup Time Comparison ===
+runc:
+real	0m0.197s
+Kata:
+real	0m0.061s
+
+Note: Kata timing is failed-start latency, not successful VM startup; see kata-startup-attempt.txt.

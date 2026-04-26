@@ -1,0 +1,15 @@
+Kata Containers containerd shim (Golang): id: "io.containerd.kata.v2", version: 3.29.0, commit: 8dccf4cf37aeea4b6c2caacf3e61510d6eef2f71
+
+config_link:
+lrwxrwxrwx 1 root root 81 Apr 26 16:04 /etc/kata-containers/runtime-rs/configuration.toml -> /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-dragonball.toml
+
+runtime_config:
+71:[plugins.'io.containerd.grpc.v1.cri'.containerd.runtimes.kata]
+72-  runtime_type = 'io.containerd.kata.v2'
+
+host:
+Linux minikube 6.10.14-linuxkit #1 SMP Thu Aug 14 19:26:13 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+virt_flags:
+0
+kvm:
+ls: cannot access '/dev/kvm': No such file or directory

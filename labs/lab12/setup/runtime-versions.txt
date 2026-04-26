@@ -1,0 +1,7 @@
+=== Runtime Versions ===
+containerd containerd.io 1.7.24 88bf19b2105c8b17560993bee28a01ddc2f97182
+nerdctl version 1.7.7
+runc version 1.2.2
+commit: v1.2.2-0-g7cb3632
+spec: 1.2.0
+Kata Containers containerd shim (Golang): id: "io.containerd.kata.v2", version: 3.29.0, commit: 8dccf4cf37aeea4b6c2caacf3e61510d6eef2f71
