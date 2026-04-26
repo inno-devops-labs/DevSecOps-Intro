@@ -1,0 +1,9 @@
+﻿=== runc Baseline ===
+# uname in runc container
+Linux 66a712dab6b2 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Sun Apr  26 10:30:46 UTC 2025 x86_64 Linux
+
+# host kernel
+6.6.87.2-microsoft-standard-WSL2
+
+# cpu model host
+model name	: 12th Gen Intel(R) Core(TM) i7-12650H

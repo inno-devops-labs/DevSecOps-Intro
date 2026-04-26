@@ -1,0 +1,1 @@
+Linux 81d6c93e3c64 6.12.47 #1 SMP Sun Apr 26 10:04:12 UTC 2026 x86_64 Linux
