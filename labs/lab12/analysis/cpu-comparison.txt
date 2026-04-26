@@ -1,0 +1,6 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name : Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz
+
+Kata VM CPU:
+model name : QEMU Virtual CPU version 2.5+

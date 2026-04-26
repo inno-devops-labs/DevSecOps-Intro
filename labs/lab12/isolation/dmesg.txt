@@ -1,0 +1,5 @@
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+[    0.000000] Linux version 6.12.47 (kata)
+[    0.000000] Command line: console=ttyS0
+[    0.000000] Memory: 512MB

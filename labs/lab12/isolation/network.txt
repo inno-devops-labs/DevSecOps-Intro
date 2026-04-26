@@ -1,0 +1,5 @@
+=== Network Interfaces ===
+Kata VM network:
+1: lo: <LOOPBACK>
+2: eth0: <BROADCAST,MULTICAST,UP>
+    inet 172.17.0.2/16
