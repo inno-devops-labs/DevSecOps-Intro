@@ -1,0 +1,10 @@
+Building Kata runtime in Docker...
+Unable to find image 'rust:1.75-bookworm' locally
+1.75-bookworm: Pulling from library/rust
+6a299ae9cfd9: Pulling fs layer
+e08e8703b2fb: Pulling fs layer
+68e92d11b04e: Pulling fs layer
+5b9fe7fef9be: Pulling fs layer
+a68b310aca5a: Pulling fs layer
+5b9fe7fef9be: Waiting
+a68b310aca5a: Waiting
