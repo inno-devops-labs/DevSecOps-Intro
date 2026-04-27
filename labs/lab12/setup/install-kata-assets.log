@@ -1,0 +1,7 @@
+Installing Kata static assets 3.29.0 for amd64
+[curl: kata-static-3.29.0-amd64.tar.zst, 1383M downloaded over ~2m43s, ~8.6 MB/s avg]
+[zstd -d | tar -xf - -C / : extracted 5,422,929,920 bytes to /opt/kata]
+Linked runtime-rs config -> /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-dragonball.toml
+Kata assets installed. Restart containerd and test a kata container.
+  sudo systemctl restart containerd
+  sudo nerdctl run --rm --runtime io.containerd.kata.v2 alpine:3.19 uname -a

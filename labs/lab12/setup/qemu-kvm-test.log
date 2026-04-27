@@ -1,0 +1,2 @@
+qemu-system-x86_64: Could not access KVM kernel module: No such file or directory
+qemu-system-x86_64: failed to initialize kvm: No such file or directory

@@ -1,0 +1,5 @@
+[    0.000000] Linux version 5.4.0-37-generic (buildd@lcy01-amd64-001) (gcc version 9.3.0 (Ubuntu 9.3.0-10ubuntu2)) #41-Ubuntu SMP Wed Jun 3 18:57:02 UTC 2020 (Ubuntu 5.4.0-37.41-generic 5.4.41)
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.4.0-37-generic root=UUID=fb261367-cf98-4bce-b682-42b3de0a8ab9 ro zswap.enabled=1 vga=792 quiet
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD

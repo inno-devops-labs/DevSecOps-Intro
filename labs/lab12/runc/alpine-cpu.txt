@@ -1,0 +1,1 @@
+model name	: AMD Ryzen 5 5600H with Radeon Graphics

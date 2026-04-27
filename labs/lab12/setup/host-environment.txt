@@ -1,0 +1,25 @@
+++ uname -a
+Linux labvm 5.4.0-37-generic #41-Ubuntu SMP Wed Jun 3 18:57:02 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+++ lscpu
+++ head -10
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   48 bits physical, 48 bits virtual
+CPU(s):                          2
+On-line CPU(s) list:             0,1
+Thread(s) per core:              1
+Core(s) per socket:              2
+Socket(s):                       1
+NUMA node(s):                    1
+++ egrep -c '(vmx|svm)' /proc/cpuinfo
+0
+++ ls -l /dev/kvm
+ls: cannot access '/dev/kvm': No such file or directory
+++ free -h
+++ head -2
+              total        used        free      shared  buff/cache   available
+Mem:          7.0Gi       3.5Gi       292Mi       8.0Mi       3.2Gi       3.2Gi
+++ tail -1
+++ df -h /
+/dev/sda5       405G   59G  330G  16% /

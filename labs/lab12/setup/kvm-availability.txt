@@ -1,0 +1,20 @@
+=== KVM availability evidence ===
+## /proc/cpuinfo virtualization flags
+0
+## /dev/kvm presence
+ls: cannot access '/dev/kvm': No such file or directory
+## modprobe attempts
+modprobe: ERROR: could not insert 'kvm_amd': Operation not supported
+modprobe: ERROR: could not insert 'kvm_intel': Operation not supported
+## kernel ring buffer KVM messages
+[  523.866310] kvm: no hardware support
+[  523.973802] kvm: no hardware support
+[ 1415.598272] kvm: no hardware support
+[ 1415.681556] kvm: no hardware support
+## QEMU acceleration list (kata-static qemu binary)
+Accelerators supported in QEMU binary:
+mshv
+kvm
+## QEMU direct invocation with accel=kvm
+qemu-system-x86_64: Could not access KVM kernel module: No such file or directory
+qemu-system-x86_64: failed to initialize kvm: No such file or directory

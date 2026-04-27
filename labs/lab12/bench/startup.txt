@@ -1,0 +1,13 @@
+=== Startup Time Comparison (real /usr/bin/time -p) ===
+## runc:
+test
+real 2.87
+user 0.11
+sys 0.21
+
+## Kata (real failure measurement, KVM unavailable):
+time="2026-04-27T09:09:38Z" level=fatal msg="failed to create shim task: Others(\"failed to handle message start sandbox in task handler\\n\\nCaused by:\\n    0: start vm\\n    1: start vmm server\\n    2: run vmm server\\n    3: No such file or directory (os error 2)\\n\\nStack backtrace:\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\n   1: <hypervisor::dragonball::Dragonball as hypervisor::Hypervisor>::start_vm::{{closure}}::{{closure}}\\n   2: <hypervisor::dragonball::Dragonball as hypervisor::Hypervisor>::start_vm::{{closure}}\\n   3: <virt_container::sandbox::VirtSandbox as common::sandbox::Sandbox>::start::{{closure}}::{{closure}}\\n   4: <virt_container::sandbox::VirtSandbox as common::sandbox::Sandbox>::start::{{closure}}\\n   5: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\n   6: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\n   7: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::create::{{closure}}\\n   8: <containerd_shim_protos::shim::shim_ttrpc_async::CreateMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\n   9: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\n  10: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\n  11: tokio::runtime::task::raw::poll\\n  12: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\n  13: tokio::runtime::task::raw::poll\\n  14: std::sys::backtrace::__rust_begin_short_backtrace\\n  15: core::ops::function::FnOnce::call_once{{vtable.shim}}\\n  16: std::sys::thread::unix::Thread::new::thread_start\"): unknown"
+Command exited with non-zero status 1
+real 0.51
+user 0.03
+sys 0.16
