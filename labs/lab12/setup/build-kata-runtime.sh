@@ -24,7 +24,8 @@ docker run --rm \
   rust:1.75-bookworm bash -lc '
     set -euo pipefail
     apt-get update && apt-get install -y --no-install-recommends \
-      git make gcc pkg-config ca-certificates musl-tools libseccomp-dev && \
+      git make gcc g++ pkg-config cmake ca-certificates \
+      musl-tools musl-dev libseccomp-dev && \
       update-ca-certificates || true
 
     # Ensure cargo/rustup are available
@@ -44,6 +45,7 @@ docker run --rm \
     make
 
     # Collect the produced binary
+    cd /work/kata-containers
     f=$(find target -type f -name containerd-shim-kata-v2 | head -n1)
     if [ -z "$f" ]; then
       echo "ERROR: built binary not found" >&2; exit 1

@@ -1,0 +1,11 @@
+=== Startup Time Comparison ===
+runc:
+________________________________________________________
+Executed in  393.85 millis    fish           external
+   usr time    8.93 millis    0.18 millis    8.74 millis
+   sys time   11.01 millis    2.24 millis    8.77 millis
+Kata:
+________________________________________________________
+Executed in  882.07 millis    fish           external
+   usr time    5.43 millis    0.05 millis    5.38 millis
+   sys time   13.17 millis    2.17 millis   11.01 millis
