@@ -1,0 +1,5 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name	: 13th Gen Intel(R) Core(TM) i7-13620H
+Kata VM CPU:
+model name	: Intel(R) Xeon(R) Processor
