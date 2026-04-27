@@ -1,0 +1,7 @@
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+[    0.000000] Linux version 6.18.15 #1 SMP PREEMPT_DYNAMIC Tue Apr  1 00:00:00 UTC 2025
+[    0.000000] Command line: console=hvc0 root=/dev/vda rootflags=ro modules=virtio,virtio_blk,virtio_net
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] ACPI: RSDP 0x000000003FFE0014 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x000000003FFE0138 000054 (v01 BOCHS  BXPC     00000001 BXPC 00000001)

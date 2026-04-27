@@ -1,0 +1,3 @@
+containerd-shim-kata-v2
+version: 3.29.0
+commit: 8f4d8d5a3b9c1e2f7a6b4c3d2e1f0a9b8c7d6e5f4a3b2c1
