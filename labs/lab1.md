@@ -22,7 +22,7 @@ In this lab you will practice:
 
 ## Tasks
 
-### Task 1 — OWASP Juice Shop Deployment (6 pts)
+### Task 1 — OWASP Juice Shop Deployment (5 pts)
 
 **Objective:** Run Juice Shop locally and complete a Triage report capturing deployment, health check, exposure, and top risks.
 
@@ -129,6 +129,76 @@ GitHub loads PR templates from the **default branch of your fork (`main`)**. Add
 
 ---
 
+### Task 6 — GitHub Community Engagement (1 pt)
+
+**Objective:** Explore GitHub's social features that support collaboration and discovery.
+
+**Actions Required:**
+1. **Star** the course repository
+2. **Star** the [simple-container-com/api](https://github.com/simple-container-com/api) project — a promising open-source tool for container management
+3. **Follow** your professor and TAs on GitHub:
+   - Professor: [@Cre-eD](https://github.com/Cre-eD)
+   - TA: [@marat-biriushev](https://github.com/marat-biriushev)
+   - TA: [@pierrepicaud](https://github.com/pierrepicaud)
+4. **Follow** at least 3 classmates from the course
+
+**Document in labs/submission1.md:**
+
+Add a "GitHub Community" section (after Challenges & Solutions) with 1-2 sentences explaining:
+- Why starring repositories matters in open source
+- How following developers helps in team projects and professional growth
+
+<details>
+<summary>💡 GitHub Social Features</summary>
+
+**Why Stars Matter:**
+
+**Discovery & Bookmarking:**
+- Stars help you bookmark interesting projects for later reference
+- Star count indicates project popularity and community trust
+- Starred repos appear in your GitHub profile, showing your interests
+
+**Open Source Signal:**
+- Stars encourage maintainers (shows appreciation)
+- High star count attracts more contributors
+- Helps projects gain visibility in GitHub search and recommendations
+
+**Professional Context:**
+- Shows you follow best practices and quality projects
+- Indicates awareness of industry tools and trends
+
+**Why Following Matters:**
+
+**Networking:**
+- See what other developers are working on
+- Discover new projects through their activity
+- Build professional connections beyond the classroom
+
+**Learning:**
+- Learn from others' code and commits
+- See how experienced developers solve problems
+- Get inspiration for your own projects
+
+**Collaboration:**
+- Stay updated on classmates' work
+- Easier to find team members for future projects
+- Build a supportive learning community
+
+**Career Growth:**
+- Follow thought leaders in your technology stack
+- See trending projects in real-time
+- Build visibility in the developer community
+
+**GitHub Best Practices:**
+- Star repos you find useful (not spam)
+- Follow developers whose work interests you
+- Engage meaningfully with the community
+- Your GitHub activity shows employers your interests and involvement
+
+</details>
+
+---
+
 ## How to Submit
 
 1. Create a branch for this lab and push it to your fork:
@@ -148,6 +218,7 @@ GitHub loads PR templates from the **default branch of your fork (`main`)**. Add
    ```text
    - [x] Task 1 done — OWASP Juice Shop deployment + triage report
    - [x] Task 2 done — PR template setup + verification
+   - [x] Task 6 done — GitHub community engagement
    ```
 
 4. **Copy the PR URL** and submit it via **Moodle before the deadline**.
@@ -157,9 +228,10 @@ GitHub loads PR templates from the **default branch of your fork (`main`)**. Add
 ## Acceptance Criteria
 
 - ✅ Branch `feature/lab1` exists with commits for each task
-- ✅ File `labs/submission1.md` contains required triage report for Tasks 1-2
+- ✅ File `labs/submission1.md` contains required triage report for Tasks 1, 2, and 6
 - ✅ OWASP Juice Shop successfully deployed and documented
 - ✅ File `.github/pull_request_template.md` exists on **main** branch
+- ✅ GitHub community engagement completed (stars and follows)
 - ✅ PR from `feature/lab1` → **course repo main branch** is open
 - ✅ PR link submitted via Moodle before the deadline
 - ✅ **No Juice Shop source code** copied into repo—only lab artifacts
@@ -170,8 +242,9 @@ GitHub loads PR templates from the **default branch of your fork (`main`)**. Add
 
 | Criterion                                                | Points |
 | -------------------------------------------------------- | -----: |
-| Task 1 — OWASP Juice Shop deployment + triage report    |  **6** |
+| Task 1 — OWASP Juice Shop deployment + triage report    |  **5** |
 | Task 2 — PR template setup + verification               |  **4** |
+| Task 6 — GitHub community engagement                     |  **1** |
 | **Total**                                                | **10** |
 
 ---
