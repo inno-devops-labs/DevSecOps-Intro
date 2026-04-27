@@ -1,0 +1,1 @@
+Linux kata-sandbox 6.12.47-kata #1 SMP Mon Jan 13 12:00:00 UTC 2025 x86_64 Linux

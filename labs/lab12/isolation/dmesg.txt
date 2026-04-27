@@ -1,0 +1,7 @@
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+[    0.000000] Linux version 6.12.47-kata #1 SMP Mon Jan 13 12:00:00 UTC 2025
+[    0.000000] Command line: console=hvc0 root=/dev/vda1 rootflags=ro rootfstype=ext4
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] ACPI: RSDP 0x00000000000F05B0 000024 (v02 BOCHS )
+[    0.000000] ACPI: IRQ0 used by override.

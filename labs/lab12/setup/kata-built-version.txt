@@ -1,0 +1,4 @@
+containerd-shim-kata-v2
+kata-runtime  : 3.14.0
+kata-commit   : 3a8b2c1d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b
+kata-go       : go1.21.6 linux/amd64
