@@ -1,0 +1,172 @@
+[
+    {
+        "Id": "2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d",
+        "Created": "2026-04-27T15:20:40.123639332Z",
+        "Path": "/nodejs/bin/node",
+        "Args": [
+            "/juice-shop/build/app.js"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "Pid": 9306,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-04-27T15:20:40.717540811Z",
+            "FinishedAt": ""
+        },
+        "Image": "docker.io/bkimminich/juice-shop:v19.0.0",
+        "ResolvConfPath": "/var/lib/nerdctl/1935db59/containers/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d/resolv.conf",
+        "HostnamePath": "/var/lib/nerdctl/1935db59/containers/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d/hostname",
+        "HostsPath": "/var/lib/nerdctl/1935db59/etchosts/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d/hosts",
+        "LogPath": "/var/lib/nerdctl/1935db59/containers/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d-json.log",
+        "Name": "juice-runc",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "AppArmorProfile": "",
+        "HostConfig": {
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "driver": "json-file",
+                "address": "/run/containerd/containerd.sock"
+            },
+            "PortBindings": {
+                "3000/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "3012"
+                    }
+                ]
+            },
+            "CgroupnsMode": "",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": [
+                "65532"
+            ],
+            "IpcMode": "private",
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "ReadonlyRootfs": false,
+            "UTSMode": "",
+            "ShmSize": 0,
+            "Sysctls": {
+                "net.ipv4.ip_unprivileged_port_start": "0"
+            },
+            "Runtime": "io.containerd.runc.v2",
+            "CpusetMems": "",
+            "CpusetCpus": "",
+            "CpuQuota": 0,
+            "CpuShares": 0,
+            "CpuPeriod": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "Memory": 0,
+            "MemorySwap": 0,
+            "OomKillDisable": false,
+            "Devices": null,
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": []
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/var/lib/nerdctl/1935db59/containers/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d/resolv.conf",
+                "Destination": "/etc/resolv.conf",
+                "Mode": "bind,rprivate",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/var/lib/nerdctl/1935db59/etchosts/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d/hosts",
+                "Destination": "/etc/hosts",
+                "Mode": "bind,rprivate",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/var/lib/nerdctl/1935db59/containers/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d/hostname",
+                "Destination": "/etc/hostname",
+                "Mode": "bind,rprivate",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "2f812cb6852a",
+            "User": "65532",
+            "AttachStdin": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt",
+                "HOSTNAME=2f812cb6852a"
+            ],
+            "Image": "docker.io/bkimminich/juice-shop:v19.0.0",
+            "Labels": {
+                "io.containerd.image.config.stop-signal": "SIGTERM",
+                "maintainer": "Bjoern Kimminich <bjoern.kimminich@owasp.org>",
+                "nerdctl/auto-remove": "false",
+                "nerdctl/dns": "{\"DNSServers\":null,\"DNSResolvConfOptions\":null,\"DNSSearchDomains\":null}",
+                "nerdctl/extraHosts": "[]",
+                "nerdctl/host-config": "{\"BlkioWeight\":0,\"CidFile\":\"\",\"Devices\":null}",
+                "nerdctl/hostname": "2f812cb6852a",
+                "nerdctl/ipc": "{\"mode\":\"private\"}",
+                "nerdctl/log-config": "{\"driver\":\"json-file\",\"address\":\"/run/containerd/containerd.sock\"}",
+                "nerdctl/log-uri": "binary:///usr/local/bin/nerdctl?_NERDCTL_INTERNAL_LOGGING=%2Fvar%2Flib%2Fnerdctl%2F1935db59",
+                "nerdctl/name": "juice-runc",
+                "nerdctl/namespace": "default",
+                "nerdctl/networks": "[\"bridge\"]",
+                "nerdctl/platform": "linux/amd64",
+                "nerdctl/state-dir": "/var/lib/nerdctl/1935db59/containers/default/2f812cb6852ab38ec2191621ac7444ca6c4bd0486a9936386e4c3e1e9ef3fa7d",
+                "nerdctl/user": "65532",
+                "org.opencontainers.image.authors": "Bjoern Kimminich <bjoern.kimminich@owasp.org>",
+                "org.opencontainers.image.created": "”2025-09-04T05:38:11Z”",
+                "org.opencontainers.image.description": "Probably the most modern and sophisticated insecure web application",
+                "org.opencontainers.image.documentation": "https://help.owasp-juice.shop",
+                "org.opencontainers.image.licenses": "MIT",
+                "org.opencontainers.image.revision": "36870cb",
+                "org.opencontainers.image.source": "https://github.com/juice-shop/juice-shop",
+                "org.opencontainers.image.title": "OWASP Juice Shop",
+                "org.opencontainers.image.url": "https://owasp-juice.shop",
+                "org.opencontainers.image.vendor": "Open Worldwide Application Security Project",
+                "org.opencontainers.image.version": "19.0.0"
+            }
+        },
+        "NetworkSettings": {
+            "Ports": {
+                "3000/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "3012"
+                    }
+                ]
+            },
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "10.4.0.8",
+            "IPPrefixLen": 24,
+            "MacAddress": "32:f9:4d:30:9b:aa",
+            "Networks": {
+                "unknown-eth0": {
+                    "IPAddress": "10.4.0.8",
+                    "IPPrefixLen": 24,
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "32:f9:4d:30:9b:aa"
+                }
+            }
+        }
+    }
+]
+

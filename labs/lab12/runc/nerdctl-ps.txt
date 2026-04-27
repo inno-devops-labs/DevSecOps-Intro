@@ -1,0 +1,2 @@
+CONTAINER ID    IMAGE                                      COMMAND                   CREATED               STATUS    PORTS                     NAMES
+2f812cb6852a    docker.io/bkimminich/juice-shop:v19.0.0    "/nodejs/bin/node /j…"    About a minute ago    Up        0.0.0.0:3012->3000/tcp    juice-runc

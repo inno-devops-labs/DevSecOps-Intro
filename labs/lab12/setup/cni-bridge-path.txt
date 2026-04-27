@@ -1,0 +1,1 @@
+-rwxr-xr-x 1 root root 3140480 Jun 23  2025 /opt/cni/bin/bridge

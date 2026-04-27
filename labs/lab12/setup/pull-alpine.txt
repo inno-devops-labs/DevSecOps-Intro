@@ -1,0 +1,58 @@
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.1 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.2 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.3 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.4 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.5 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.6 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.7 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.8 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 0.9 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.0 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.1 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.2 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.3 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.4 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.5 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.6 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.7 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.8 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 1.9 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 2.0 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 2.1 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 2.2 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 2.3 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19: resolving      |[32m[0m--------------------------------------| 
+elapsed: 2.4 s                 total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:b58899f069c47216f6002a6850143dc6fae0d35eb8b0df9300bbe6327b9c2171: exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+config-sha256:83b2b6703a620bf2e001ab57f7adc414d891787b3c59859b1b62909e48dd2242:   exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+elapsed: 2.5 s                                                                    total:   0.0 B (0.0 B/s)                                         
+docker.io/library/alpine:3.19:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+index-sha256:6baf43584bcb78f2e5847d1de515f23499913ac9f12bdf834811a3145eb11ca1:    exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+manifest-sha256:b58899f069c47216f6002a6850143dc6fae0d35eb8b0df9300bbe6327b9c2171: exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+config-sha256:83b2b6703a620bf2e001ab57f7adc414d891787b3c59859b1b62909e48dd2242:   exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
+elapsed: 2.6 s                                                                    total:   0.0 B (0.0 B/s)                                         

@@ -1,0 +1,2 @@
+=== HTTP Latency Test (juice-runc) ===
+avg=0.0031s min=0.0024s max=0.0061s n=50
