@@ -1,0 +1,3 @@
+=== Kernel Modules Count ===
+Host kernel modules: 208
+Kata guest kernel modules: 72

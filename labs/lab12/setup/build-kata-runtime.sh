@@ -21,11 +21,15 @@ docker run --rm \
   -e CARGO_NET_GIT_FETCH_WITH_CLI=true \
   -v "${WORK_DIR}":/work \
   -v "${OUT_DIR}":/out \
-  rust:1.75-bookworm bash -lc '
+  rust:bookworm bash -lc '
     set -euo pipefail
     apt-get update && apt-get install -y --no-install-recommends \
-      git make gcc pkg-config ca-certificates musl-tools libseccomp-dev && \
+      git make gcc g++ cmake jq pkg-config ca-certificates musl-tools libseccomp-dev && \
       update-ca-certificates || true
+
+    # musl-tools provides x86_64-linux-musl-gcc, but some crates look for x86_64-linux-musl-g++ during CMake probes.
+    if [ ! -e /usr/bin/x86_64-linux-musl-g++ ]; then ln -s /usr/bin/g++ /usr/bin/x86_64-linux-musl-g++; fi
+
 
     # Ensure cargo/rustup are available
     export PATH=/usr/local/cargo/bin:$PATH
