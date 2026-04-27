@@ -1,0 +1,5 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name	: Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz
+Kata VM CPU:
+model name	: QEMU Virtual CPU version 2.5+

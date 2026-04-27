@@ -1,0 +1,1 @@
+Linux 4bd2f5e49d9c 6.12.47 #1 SMP PREEMPT_DYNAMIC Thu Jan  9 04:34:51 UTC 2025 aarch64 Linux

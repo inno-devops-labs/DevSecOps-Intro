@@ -30,3 +30,4 @@
 192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
 192.168.65.1 - - [20/Apr/2026:19:05:33 +0000] "POST /rest/user/login HTTP/2.0" 429 162 "-" "curl/8.7.1" rt=0.000 uct=- urt=-
 192.168.65.1 - - [20/Apr/2026:19:08:58 +0000] "GET / HTTP/2.0" 200 75002 "-" "curl/8.7.1" rt=0.026 uct=0.004 urt=0.026
+192.168.65.1 - - [21/Apr/2026:14:22:23 +0000] "GET / HTTP/1.1" 308 164 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:149.0) Gecko/20100101 Firefox/149.0" rt=0.000 uct=- urt=-
