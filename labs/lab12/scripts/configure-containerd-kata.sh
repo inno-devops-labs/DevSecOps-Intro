@@ -3,7 +3,7 @@ set -euo pipefail
 
 # configure-containerd-kata.sh
 # Idempotently ensure containerd has the Kata runtime configured:
-#   [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata]
+#   [plugins."io.containerd.cri.v1.runtime".containerd.runtimes.kata]
 #     runtime_type = "io.containerd.kata.v2"
 #
 # Usage:
@@ -29,26 +29,30 @@ ensure_default() {
 }
 
 detect_header() {
-  # Prefer v3 split-CRI path if present; otherwise fallback to grpc path
-  if grep -q "^\[plugins\.'io\.containerd\.cri\.v1\.runtime'\]" "$CONF"; then
-    echo "[plugins.'io.containerd.cri.v1.runtime'.containerd.runtimes.kata]"
+  # Prefer modern CRI v1.runtime path if any related table exists; otherwise fallback to legacy grpc path.
+  if grep -Eq "^\[plugins\.[\"']io\.containerd\.cri\.v1\.runtime[\"']([.].*)?\]" "$CONF"; then
+    echo '[plugins."io.containerd.cri.v1.runtime".containerd.runtimes.kata]'
   else
-    echo "[plugins.'io.containerd.grpc.v1.cri'.containerd.runtimes.kata]"
+    echo '[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata]'
   fi
 }
 
 insert_or_update_kata() {
   local header
   header=$(detect_header)
-  local value="  runtime_type = 'io.containerd.kata.v2'"
+  local value='  runtime_type = "io.containerd.kata.v2"'
 
-  # Process file: update runtime_type inside the kata table if it exists,
-  # otherwise append a new table at the end.
+  # Process file: keep exactly one runtime_type inside the target kata table.
+  # If table does not exist, append it once at EOF.
   awk -v hdr="$header" -v val="$value" '
-    BEGIN { inside=0; updated=0 }
+    BEGIN { inside=0; seen=0; updated=0 }
     {
       if ($0 == hdr) {
-        print $0; inside=1; next
+        seen=1
+        inside=1
+        updated=0
+        print $0
+        next
       }
       if (inside) {
         if ($0 ~ /^\[/) {
@@ -57,28 +61,29 @@ insert_or_update_kata() {
           print $0
           next
         }
-        if ($0 ~ /^\s*runtime_type\s*=\s*/){
-          print val; updated=1; next
+        if ($0 ~ /^[[:space:]]*runtime_type[[:space:]]*=[[:space:]]*/) {
+          if (!updated) {
+            print val
+            updated=1
+          }
+          next
         }
-        print $0; next
+        print $0
+        next
       }
       print $0
     }
     END {
       if (inside && !updated) {
         print val
-      } else if (!inside && NR > 0) {
-        # Check if header ever appeared; if not, append it.
-        # We can infer by searching the output later, but simpler: do a second pass.
+      }
+      if (!seen) {
+        print ""
+        print hdr
+        print val
       }
     }
   ' "$CONF" > "$TMP"
-
-  if ! grep -qF "$header" "$TMP"; then
-    {
-      printf '\n%s\n%s\n' "$header" "$value"
-    } >> "$TMP"
-  fi
 
   install -m 0644 "$TMP" "$CONF"
 }

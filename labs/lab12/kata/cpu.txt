@@ -1,0 +1,1 @@
+model name	: Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz

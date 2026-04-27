@@ -1,0 +1,7 @@
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+[    0.000000] Linux version 6.12.47 (builder@kata) (x86_64-linux-musl-gcc (GCC) 13.3.0, GNU ld (GNU Binutils) 2.42) #1 SMP PREEMPT_DYNAMIC Wed Apr 23 11:41:29 UTC 2026
+[    0.000000] Command line: tsc=reliable no_timer_check rcupdate.rcu_expedited=1 i8042.noaux i8042.nomux cryptomgr.notests net.ifnames=0 pci=lastbus=0 quiet systemd.unit=kata-containers.target
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000003fffffff] usable

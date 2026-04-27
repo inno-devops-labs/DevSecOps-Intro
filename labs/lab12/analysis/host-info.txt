@@ -1,0 +1,5 @@
+date_utc=2026-04-26T14:18:33Z
+host_uname=Linux lab12-host 6.8.0-58-generic #60-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 14 18:29:48 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+cpu_virtualization_flags=16
+containerd_version=containerd github.com/containerd/containerd 1.7.27 05044ec0a9a75232cad458027ca83437aae3f4da
+nerdctl_version=nerdctl version 2.2.0

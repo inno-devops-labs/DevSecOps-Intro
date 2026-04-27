@@ -1,0 +1,3 @@
+=== Kernel Version Comparison ===
+Host kernel (runc uses this): 6.8.0-58-generic
+Kata guest kernel: Linux version 6.12.47 (builder@kata) (x86_64-linux-musl-gcc (GCC) 13.3.0, GNU ld (GNU Binutils) 2.42) #1 SMP PREEMPT_DYNAMIC Wed Apr 23 11:41:29 UTC 2026
