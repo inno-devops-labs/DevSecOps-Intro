@@ -1,0 +1,5 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name	: Intel i7-8550U (8) @ 4.000GHz
+Kata VM CPU:
+model name	: Intel(R) Xeon(R) Processor

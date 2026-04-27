@@ -1,0 +1,8 @@
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+time="2026-04-27T16:33:37Z" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+[    0.000000] Linux version 6.18.15 (@1612ad5dd3e1) (gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0) #1 SMP Sat Apr 18 10:30:20 UTC 2026
+[    0.000000] Command line: console=hvc0 root=/dev/vda1 quiet systemd.unified_cgroup_hierarchy=1
+[    0.000000] Hypervisor detected: KVM
+[    0.000000] e820: BIOS-provided physical RAM map:
+[    0.000000] Memory: 524288K/524288K available (8192K kernel code, 1024K rwdata, 2048K rodata)
