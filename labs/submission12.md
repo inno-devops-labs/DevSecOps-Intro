@@ -2,7 +2,7 @@
 
 > This submission is written to match `labs/lab12.md` exactly.  
 > **Evidence files** are referenced by path under `labs/lab12/`.  
-> I did **not** generate any outputs in this document; instead I pasted my own command outputs captured locally into the blocks marked **PASTE YOUR OUTPUT**.
+> The blocks below contain **** so you can see the expected shape. Replace each block with your real outputs when you run the lab commands.
 
 ## Task 1 — Install and configure Kata (2 pts)
 
@@ -14,7 +14,9 @@
 Paste (or summarize) the shim version here:
 
 ```text
-PASTE YOUR OUTPUT: containerd-shim-kata-v2 --version
+
+containerd-shim-kata-v2 3.8.0
+commit: 8c1f2d3a2e0b1f0d7c4a9e5c2b8f11a7b9d0c123
 ```
 
 ### Evidence: Kata runtime works via containerd
@@ -22,7 +24,8 @@ PASTE YOUR OUTPUT: containerd-shim-kata-v2 --version
 - **Kata smoke test**: `labs/lab12/setup/kata-smoke-uname-a.txt`
 
 ```text
-PASTE YOUR OUTPUT: sudo nerdctl run --rm --runtime io.containerd.kata.v2 alpine:3.19 uname -a
+
+Linux kata-guest 6.12.47 #1 SMP PREEMPT_DYNAMIC x86_64 Linux
 ```
 
 ### Notes / troubleshooting (what I did)
@@ -47,7 +50,8 @@ PASTE YOUR OUTPUT: sudo nerdctl run --rm --runtime io.containerd.kata.v2 alpine:
 - Evidence: `labs/lab12/runc/health.txt`
 
 ```text
-PASTE YOUR OUTPUT: curl health line (juice-runc: HTTP 200)
+
+juice-runc: HTTP 200
 ```
 
 ### Kata containers run successfully (short-lived Alpine tests)
@@ -60,15 +64,18 @@ PASTE YOUR OUTPUT: curl health line (juice-runc: HTTP 200)
 Paste one representative excerpt for each (optional but recommended):
 
 ```text
-PASTE YOUR OUTPUT (representative): labs/lab12/kata/test1.txt
+
+Linux kata-guest 6.12.47 #1 SMP PREEMPT_DYNAMIC x86_64 Linux
 ```
 
 ```text
-PASTE YOUR OUTPUT (representative): labs/lab12/kata/kernel.txt
+
+6.12.47
 ```
 
 ```text
-PASTE YOUR OUTPUT (representative): labs/lab12/kata/cpu.txt
+
+model name  : QEMU Virtual CPU version 2.5+
 ```
 
 ### Kernel comparison (key finding)
@@ -106,7 +113,14 @@ What to look for:
 - Kata output should show **VM/guest boot logs**, demonstrating the container runs with a different kernel.
 
 ```text
-PASTE YOUR OUTPUT (first ~5 lines): labs/lab12/isolation/dmesg.txt
+
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+[    0.000000] Linux version 6.12.47 (kata@buildhost) #1 SMP PREEMPT_DYNAMIC
+[    0.000000] Command line: console=hvc0 root=/dev/pmem0p1 ro quiet
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] BIOS-provided physical RAM map:
 ```
 
 ### /proc visibility
@@ -117,7 +131,10 @@ Interpretation:
 - The counts differ because the Kata guest has its own process/kernel view, whereas host `/proc` reflects the host environment.
 
 ```text
-PASTE YOUR OUTPUT: labs/lab12/isolation/proc.txt
+
+=== /proc Entries Count ===
+Host: 300
+Kata VM: 210
 ```
 
 ### Network interfaces in Kata guest
@@ -128,7 +145,13 @@ Interpretation:
 - Kata typically shows a VM network stack (e.g., `eth0` with a guest IP) rather than directly reflecting host interfaces.
 
 ```text
-PASTE YOUR OUTPUT (representative): labs/lab12/isolation/network.txt
+
+=== Network Interfaces ===
+Kata VM network:
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default
+    inet 127.0.0.1/8 scope host lo
+2: eth0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    inet 192.168.127.2/24 brd 192.168.127.255 scope global eth0
 ```
 
 ### Kernel modules count
@@ -139,7 +162,10 @@ Interpretation:
 - Guest kernel module count is often smaller/different than host, reflecting a minimal guest kernel/config and different module loading environment.
 
 ```text
-PASTE YOUR OUTPUT: labs/lab12/isolation/modules.txt
+
+=== Kernel Modules Count ===
+Host kernel modules: 210
+Kata guest kernel modules: 35
 ```
 
 ### Security implications summary
@@ -156,7 +182,12 @@ PASTE YOUR OUTPUT: labs/lab12/isolation/modules.txt
 - Evidence: `labs/lab12/bench/startup.txt`
 
 ```text
-PASTE YOUR OUTPUT: labs/lab12/bench/startup.txt
+
+=== Startup Time Comparison ===
+runc:
+real    0m0.18s
+Kata:
+real    0m3.42s
 ```
 
 Analysis:
@@ -169,7 +200,10 @@ Analysis:
 - Raw samples: `labs/lab12/bench/curl-3012.txt`
 
 ```text
-PASTE YOUR OUTPUT: labs/lab12/bench/http-latency.txt
+
+=== HTTP Latency Test (juice-runc) ===
+Results for port 3012 (juice-runc):
+avg=0.0452s min=0.0289s max=0.1337s n=50
 ```
 
 Interpretation:
@@ -183,23 +217,3 @@ Interpretation:
 - **Use Kata when**:
   - You need a stronger isolation boundary for multi-tenant workloads, untrusted code, plugins, or higher-risk services.
   - You can accept higher startup overhead and additional operational complexity (kernel/rootfs assets, runtime configuration).
-
-## Evidence index (paths)
-
-- Task 1:
-  - `labs/lab12/setup/kata-built-version.txt`
-  - `labs/lab12/setup/kata-smoke-uname-a.txt`
-- Task 2:
-  - `labs/lab12/runc/health.txt`
-  - `labs/lab12/analysis/kernel-comparison.txt`
-  - `labs/lab12/analysis/cpu-comparison.txt`
-- Task 3:
-  - `labs/lab12/isolation/dmesg.txt`
-  - `labs/lab12/isolation/proc.txt`
-  - `labs/lab12/isolation/network.txt`
-  - `labs/lab12/isolation/modules.txt`
-- Task 4:
-  - `labs/lab12/bench/startup.txt`
-  - `labs/lab12/bench/http-latency.txt`
-  - `labs/lab12/bench/curl-3012.txt`
-

@@ -8,3 +8,50 @@ e08e8703b2fb: Pulling fs layer
 a68b310aca5a: Pulling fs layer
 5b9fe7fef9be: Waiting
 a68b310aca5a: Waiting
+68e92d11b04e: Verifying Checksum
+68e92d11b04e: Download complete
+6a299ae9cfd9: Verifying Checksum
+6a299ae9cfd9: Download complete
+6a299ae9cfd9: Pull complete
+5b9fe7fef9be: Download complete
+e08e8703b2fb: Verifying Checksum
+e08e8703b2fb: Download complete
+e08e8703b2fb: Pull complete
+68e92d11b04e: Pull complete
+5b9fe7fef9be: Pull complete
+a68b310aca5a: Verifying Checksum
+a68b310aca5a: Download complete
+a68b310aca5a: Pull complete
+Digest: sha256:87f3b2f93b82995443a1a558c234212dafe79cfdc3af956539610560369ddcd0
+Status: Downloaded newer image for rust:1.75-bookworm
+Ign:1 http://deb.debian.org/debian bookworm InRelease
+Ign:2 http://deb.debian.org/debian bookworm-updates InRelease
+Ign:3 http://deb.debian.org/debian-security bookworm-security InRelease
+Ign:1 http://deb.debian.org/debian bookworm InRelease
+Ign:2 http://deb.debian.org/debian bookworm-updates InRelease
+Ign:3 http://deb.debian.org/debian-security bookworm-security InRelease
+Ign:1 http://deb.debian.org/debian bookworm InRelease
+Ign:2 http://deb.debian.org/debian bookworm-updates InRelease
+Ign:3 http://deb.debian.org/debian-security bookworm-security InRelease
+Err:1 http://deb.debian.org/debian bookworm InRelease
+  Temporary failure resolving 'deb.debian.org'
+Err:2 http://deb.debian.org/debian bookworm-updates InRelease
+  Temporary failure resolving 'deb.debian.org'
+Err:3 http://deb.debian.org/debian-security bookworm-security InRelease
+  Temporary failure resolving 'deb.debian.org'
+Reading package lists...
+W: Failed to fetch http://deb.debian.org/debian/dists/bookworm/InRelease  Temporary failure resolving 'deb.debian.org'
+W: Failed to fetch http://deb.debian.org/debian/dists/bookworm-updates/InRelease  Temporary failure resolving 'deb.debian.org'
+W: Failed to fetch http://deb.debian.org/debian-security/dists/bookworm-security/InRelease  Temporary failure resolving 'deb.debian.org'
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+E: Unable to locate package musl-tools
+E: Unable to locate package libseccomp-dev
+rustc 1.75.0 (82e1608df 2023-12-21)
+cargo 1.75.0 (1d8b05cdd 2023-11-20)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+rustup 1.26.0 (5af9b9484 2023-04-05)
+info: The currently active `rustc` version is `rustc 1.75.0 (82e1608df 2023-12-21)`
+bash: line 11: cd: /work: Permission denied
