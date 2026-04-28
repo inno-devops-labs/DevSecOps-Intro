@@ -1,0 +1,61 @@
+rules:
+  - id: lab10-express-open-redirect
+    languages:
+      - javascript
+      - typescript
+    severity: WARNING
+    message: Unvalidated redirect target can allow open redirect attacks.
+    patterns:
+      - pattern-either:
+          - pattern: $RES.redirect($REQ.query.$PARAM)
+          - pattern: $RES.redirect($REQ.body.$PARAM)
+          - pattern: $RES.redirect($PARAM)
+    metadata:
+      category: security
+      cwe:
+        - "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')"
+      owasp:
+        - A01:2021 - Broken Access Control
+
+  - id: lab10-hardcoded-jwt-secret
+    languages:
+      - javascript
+      - typescript
+    severity: ERROR
+    message: Hardcoded JWT secret or signing key detected.
+    patterns:
+      - pattern-either:
+          - pattern: jwt.sign($DATA, "...", ...)
+          - pattern: jwt.verify($TOKEN, "...", ...)
+          - pattern: $SECRET = "..."
+      - metavariable-regex:
+          metavariable: $SECRET
+          regex: (?i).*(jwt|secret|key).*
+    metadata:
+      category: security
+      cwe:
+        - "CWE-798: Use of Hard-coded Credentials"
+      owasp:
+        - A07:2021 - Identification and Authentication Failures
+
+  - id: lab10-child-process-command-injection
+    languages:
+      - javascript
+      - typescript
+    severity: ERROR
+    message: User-controlled data in child_process execution can lead to command injection.
+    patterns:
+      - pattern-either:
+          - pattern: child_process.exec($CMD, ...)
+          - pattern: exec($CMD, ...)
+          - pattern: shell.exec($CMD, ...)
+      - pattern-inside: |
+          function ... (..., $REQ, ...) {
+            ...
+          }
+    metadata:
+      category: security
+      cwe:
+        - "CWE-78: OS Command Injection"
+      owasp:
+        - A03:2021 - Injection

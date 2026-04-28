@@ -1,0 +1,37 @@
+# Metrics Snapshot - Lab 10
+
+- Date captured: 2026-04-27
+- DefectDojo URL: http://localhost:8081
+- Product Type: Engineering
+- Product: Juice Shop
+- Engagement: Labs Security Testing
+- Active findings:
+  - Critical: 0
+  - High: 5
+  - Medium: 7
+  - Low: 5
+  - Informational: 23
+- Open vs. closed by severity:
+  - Critical: 0 open, 0 closed
+  - High: 5 open, 0 closed
+  - Medium: 7 open, 0 closed
+  - Low: 5 open, 0 closed
+  - Informational: 23 open, 0 closed
+- Verified vs. Mitigated notes: 40 findings are active, 0 are verified, and 0 are mitigated. This is a first-import baseline before triage and remediation workflow starts.
+- Tool import counts:
+  - Nuclei: 21 active findings
+  - ZAP: 10 active findings
+  - Semgrep: 9 active findings
+  - Trivy: 0 active vulnerability findings in the local filesystem scan
+  - Grype: not imported; the optional report was not present
+- Recurring categories:
+  - CWE-798: 5 hardcoded JWT/secret findings
+  - CWE-601: 4 open redirect findings
+  - CWE-693: 3 security header/protection mechanism findings
+  - CWE-200: 3 information exposure findings
+  - Missing security headers without a mapped CWE: 10 informational detections
+- SLA outlook:
+  - Due within 14 days: 0
+  - High-severity Semgrep findings are due on 2026-05-27
+  - Medium findings are due on 2026-07-26
+  - Low findings are due on 2026-08-25

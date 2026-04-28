@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DefectDojo Lab 10 Report - Juice Shop</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 32px; color: #202124; line-height: 1.45; }
+    h1, h2 { color: #1f3a5f; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0 24px; }
+    th, td { border: 1px solid #ccd2d8; padding: 8px 10px; text-align: left; }
+    th { background: #eef3f8; }
+    .meta { color: #5f6368; }
+  </style>
+</head>
+<body>
+  <h1>DefectDojo Lab 10 Report - Juice Shop</h1>
+  <p class="meta">Captured on 2026-04-27 from local DefectDojo at http://localhost:8081.</p>
+
+  <h2>Executive Summary</h2>
+  <p>The Labs Security Testing engagement contains 40 active findings after importing Nuclei, ZAP, Semgrep, and Trivy scan outputs. The current baseline has no mitigated or verified findings yet, so this report represents the starting point for vulnerability management and response.</p>
+
+  <h2>Severity Mix</h2>
+  <table>
+    <tr><th>Severity</th><th>Active</th><th>Verified</th><th>Mitigated</th></tr>
+    <tr><td>Critical</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>High</td><td>5</td><td>0</td><td>0</td></tr>
+    <tr><td>Medium</td><td>7</td><td>0</td><td>0</td></tr>
+    <tr><td>Low</td><td>5</td><td>0</td><td>0</td></tr>
+    <tr><td>Informational</td><td>23</td><td>0</td><td>0</td></tr>
+  </table>
+
+  <h2>Findings by Tool</h2>
+  <table>
+    <tr><th>Tool</th><th>Imported Findings</th><th>Notes</th></tr>
+    <tr><td>Nuclei</td><td>21</td><td>Mostly informational detections plus one medium Prometheus metrics exposure.</td></tr>
+    <tr><td>ZAP</td><td>10</td><td>Passive baseline warnings from the unauthenticated Juice Shop crawl.</td></tr>
+    <tr><td>Semgrep</td><td>9</td><td>Local Lab 10 rules found hardcoded secret and open redirect patterns.</td></tr>
+    <tr><td>Trivy</td><td>0</td><td>Filesystem scan completed, but no vulnerability records were present in the generated JSON.</td></tr>
+    <tr><td>Grype</td><td>0</td><td>Optional report was not available locally.</td></tr>
+  </table>
+
+  <h2>Recurring Categories</h2>
+  <table>
+    <tr><th>CWE</th><th>Count</th><th>Primary Source</th></tr>
+    <tr><td>CWE-798</td><td>5</td><td>Semgrep hardcoded JWT/secret findings</td></tr>
+    <tr><td>CWE-601</td><td>4</td><td>Semgrep open redirect findings</td></tr>
+    <tr><td>CWE-693</td><td>3</td><td>ZAP security header findings</td></tr>
+    <tr><td>CWE-200</td><td>3</td><td>Nuclei/ZAP information disclosure findings</td></tr>
+  </table>
+
+  <h2>SLA Outlook</h2>
+  <p>No findings are due within the next 14 days. High-severity Semgrep findings have a 2026-05-27 SLA expiration date; medium findings are due on 2026-07-26; low findings are due on 2026-08-25.</p>
+
+  <h2>Artifacts</h2>
+  <ul>
+    <li>CSV findings export: findings.csv</li>
+    <li>Raw API export: findings-api.json</li>
+    <li>Metrics snapshot: metrics-snapshot.md</li>
+  </ul>
+</body>
+</html>
+
