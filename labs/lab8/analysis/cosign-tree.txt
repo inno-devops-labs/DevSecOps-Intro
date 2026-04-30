@@ -1,0 +1,7 @@
+📦 Supply Chain Security Related artifacts for an image: localhost:5000/juice-shop@sha256:772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5
+└── 🔗 https://slsa.dev/provenance/v0.2 artifacts via OCI referrer: localhost:5000/juice-shop@sha256:3eb970ac8ac0a0ddad81c888a393f4e81cc6ba254e0400afa2cfa63eb319441f
+   └── 🍒 sha256:a1a20a40070faab491ba0bfd74e305a26503c3489b26fd2b6aafa065f0c20a61
+└── 🔗 https://cyclonedx.org/bom artifacts via OCI referrer: localhost:5000/juice-shop@sha256:87983371364ea8507ff285064f0defdaece014a66b0ec8528de859421d66d83b
+   └── 🍒 sha256:831bcdf5a4d7248a02320f11073c7e41ff4dd1b204595dead8cdabd71bbf94ad
+└── 🔗 https://sigstore.dev/cosign/sign/v1 artifacts via OCI referrer: localhost:5000/juice-shop@sha256:e697e19e9a90754a5c2ddef40a6a78914e1d9194997ed2377c59e633fd659864
+   └── 🍒 sha256:6b9d24871afef0c8a06808639da8aa3acf006f0fedc61260179ff91b3109ad81

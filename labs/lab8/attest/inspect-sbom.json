@@ -1,0 +1,28 @@
+{
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "predicateType": "https://cyclonedx.org/bom",
+  "subject": [
+    {
+      "name": "localhost:5000/juice-shop",
+      "digest": {
+        "sha256": "772d62349859e4fe00737a68e3b3c80b1cb0cd1d2c9dc8ca3cbdcc50dcbff3a5"
+      }
+    }
+  ],
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "componentCount": 3532,
+  "rootComponent": {
+    "bom-ref": "74a13d56af4aed47",
+    "name": "bkimminich/juice-shop",
+    "type": "container",
+    "version": "v19.0.0"
+  },
+  "generatedAt": "2026-03-31T15:04:58Z",
+  "tool": {
+    "author": "anchore",
+    "name": "syft",
+    "type": "application",
+    "version": "1.42.1"
+  }
+}
