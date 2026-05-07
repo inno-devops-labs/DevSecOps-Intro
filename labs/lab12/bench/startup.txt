@@ -1,0 +1,7 @@
+=== Startup Time Comparison ===
+runc:
+real 0.57
+test
+Kata:
+real 5.95
+test

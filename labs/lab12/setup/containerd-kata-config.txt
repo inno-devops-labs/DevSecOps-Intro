@@ -1,0 +1,2 @@
+33:[plugins.'io.containerd.grpc.v1.cri'.containerd.runtimes.kata]
+34:  runtime_type = 'io.containerd.kata.v2'

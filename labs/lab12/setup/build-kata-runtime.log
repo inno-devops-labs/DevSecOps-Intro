@@ -1,0 +1,224 @@
+Building Kata runtime in Docker...
+Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8792 kB]
+Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [299 kB]
+Fetched 9352 kB in 2s (5084 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+make is already the newest version (4.3-4.1).
+gcc is already the newest version (4:12.2.0-3).
+g++ is already the newest version (4:12.2.0-3).
+pkg-config is already the newest version (1.8.1-1).
+pkg-config set to manually installed.
+The following additional packages will be installed:
+  cmake-data git-man libarchive13 libjq1 libjsoncpp25 libonig5 librhash0
+  libseccomp2 libuv1 musl musl-dev
+Suggested packages:
+  cmake-doc cmake-format elpa-cmake-mode ninja-build gettext-base
+  git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb
+  git-cvs git-mediawiki git-svn lrzip seccomp
+Recommended packages:
+  less linux-musl-dev
+The following NEW packages will be installed:
+  cmake cmake-data jq libarchive13 libjq1 libjsoncpp25 libonig5 librhash0
+  libseccomp-dev libuv1 musl musl-dev musl-tools
+The following packages will be upgraded:
+  ca-certificates git git-man libseccomp2
+4 upgraded, 13 newly installed, 0 to remove and 166 not upgraded.
+Need to get 22.4 MB of archives.
+After this operation, 47.9 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libseccomp2 amd64 2.5.4-1+deb12u1 [46.8 kB]
+Get:2 http://deb.debian.org/debian bookworm/main amd64 ca-certificates all 20230311+deb12u1 [155 kB]
+Get:3 http://deb.debian.org/debian bookworm/main amd64 libarchive13 amd64 3.6.2-1+deb12u3 [343 kB]
+Get:4 http://deb.debian.org/debian bookworm/main amd64 libjsoncpp25 amd64 1.9.5-4 [78.6 kB]
+Get:5 http://deb.debian.org/debian bookworm/main amd64 librhash0 amd64 1.4.3-3 [134 kB]
+Get:6 http://deb.debian.org/debian bookworm/main amd64 libuv1 amd64 1.44.2-1+deb12u1 [136 kB]
+Get:7 http://deb.debian.org/debian bookworm/main amd64 cmake-data all 3.25.1-1 [2026 kB]
+Get:8 http://deb.debian.org/debian bookworm/main amd64 cmake amd64 3.25.1-1 [8692 kB]
+Get:9 http://deb.debian.org/debian bookworm/main amd64 git amd64 1:2.39.5-0+deb12u3 [7264 kB]
+Get:10 http://deb.debian.org/debian bookworm/main amd64 git-man all 1:2.39.5-0+deb12u3 [2053 kB]
+Get:11 http://deb.debian.org/debian bookworm/main amd64 libonig5 amd64 6.9.8-1 [188 kB]
+Get:12 http://deb.debian.org/debian bookworm/main amd64 libjq1 amd64 1.6-2.1+deb12u1 [134 kB]
+Get:13 http://deb.debian.org/debian bookworm/main amd64 jq amd64 1.6-2.1+deb12u1 [63.7 kB]
+Get:14 http://deb.debian.org/debian bookworm/main amd64 libseccomp-dev amd64 2.5.4-1+deb12u1 [90.8 kB]
+Get:15 http://deb.debian.org/debian bookworm/main amd64 musl amd64 1.2.3-1 [406 kB]
+Get:16 http://deb.debian.org/debian bookworm/main amd64 musl-dev amd64 1.2.3-1 [587 kB]
+Get:17 http://deb.debian.org/debian bookworm/main amd64 musl-tools amd64 1.2.3-1 [42.3 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 22.4 MB in 2s (10.4 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23259 files and directories currently installed.)
+Preparing to unpack .../libseccomp2_2.5.4-1+deb12u1_amd64.deb ...
+Unpacking libseccomp2:amd64 (2.5.4-1+deb12u1) over (2.5.4-1+b3) ...
+Setting up libseccomp2:amd64 (2.5.4-1+deb12u1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23258 files and directories currently installed.)
+Preparing to unpack .../00-ca-certificates_20230311+deb12u1_all.deb ...
+Unpacking ca-certificates (20230311+deb12u1) over (20230311) ...
+Selecting previously unselected package libarchive13:amd64.
+Preparing to unpack .../01-libarchive13_3.6.2-1+deb12u3_amd64.deb ...
+Unpacking libarchive13:amd64 (3.6.2-1+deb12u3) ...
+Selecting previously unselected package libjsoncpp25:amd64.
+Preparing to unpack .../02-libjsoncpp25_1.9.5-4_amd64.deb ...
+Unpacking libjsoncpp25:amd64 (1.9.5-4) ...
+Selecting previously unselected package librhash0:amd64.
+Preparing to unpack .../03-librhash0_1.4.3-3_amd64.deb ...
+Unpacking librhash0:amd64 (1.4.3-3) ...
+Selecting previously unselected package libuv1:amd64.
+Preparing to unpack .../04-libuv1_1.44.2-1+deb12u1_amd64.deb ...
+Unpacking libuv1:amd64 (1.44.2-1+deb12u1) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../05-cmake-data_3.25.1-1_all.deb ...
+Unpacking cmake-data (3.25.1-1) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../06-cmake_3.25.1-1_amd64.deb ...
+Unpacking cmake (3.25.1-1) ...
+Preparing to unpack .../07-git_1%3a2.39.5-0+deb12u3_amd64.deb ...
+Unpacking git (1:2.39.5-0+deb12u3) over (1:2.39.2-1.1) ...
+Preparing to unpack .../08-git-man_1%3a2.39.5-0+deb12u3_all.deb ...
+Unpacking git-man (1:2.39.5-0+deb12u3) over (1:2.39.2-1.1) ...
+Selecting previously unselected package libonig5:amd64.
+Preparing to unpack .../09-libonig5_6.9.8-1_amd64.deb ...
+Unpacking libonig5:amd64 (6.9.8-1) ...
+Selecting previously unselected package libjq1:amd64.
+Preparing to unpack .../10-libjq1_1.6-2.1+deb12u1_amd64.deb ...
+Unpacking libjq1:amd64 (1.6-2.1+deb12u1) ...
+Selecting previously unselected package jq.
+Preparing to unpack .../11-jq_1.6-2.1+deb12u1_amd64.deb ...
+Unpacking jq (1.6-2.1+deb12u1) ...
+Selecting previously unselected package libseccomp-dev:amd64.
+Preparing to unpack .../12-libseccomp-dev_2.5.4-1+deb12u1_amd64.deb ...
+Unpacking libseccomp-dev:amd64 (2.5.4-1+deb12u1) ...
+Selecting previously unselected package musl:amd64.
+Preparing to unpack .../13-musl_1.2.3-1_amd64.deb ...
+Unpacking musl:amd64 (1.2.3-1) ...
+Selecting previously unselected package musl-dev:amd64.
+Preparing to unpack .../14-musl-dev_1.2.3-1_amd64.deb ...
+Unpacking musl-dev:amd64 (1.2.3-1) ...
+Selecting previously unselected package musl-tools.
+Preparing to unpack .../15-musl-tools_1.2.3-1_amd64.deb ...
+Unpacking musl-tools (1.2.3-1) ...
+Setting up libseccomp-dev:amd64 (2.5.4-1+deb12u1) ...
+Setting up libarchive13:amd64 (3.6.2-1+deb12u3) ...
+Setting up ca-certificates (20230311+deb12u1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+Updating certificates in /etc/ssl/certs...
+rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2 added, 0 removed; done.
+Setting up libuv1:amd64 (1.44.2-1+deb12u1) ...
+Setting up libjsoncpp25:amd64 (1.9.5-4) ...
+Setting up musl:amd64 (1.2.3-1) ...
+Setting up librhash0:amd64 (1.4.3-3) ...
+Setting up git-man (1:2.39.5-0+deb12u3) ...
+Setting up cmake-data (3.25.1-1) ...
+Setting up libonig5:amd64 (6.9.8-1) ...
+Setting up libjq1:amd64 (1.6-2.1+deb12u1) ...
+Setting up musl-dev:amd64 (1.2.3-1) ...
+Setting up git (1:2.39.5-0+deb12u3) ...
+Setting up jq (1.6-2.1+deb12u1) ...
+Setting up cmake (3.25.1-1) ...
+Setting up musl-tools (1.2.3-1) ...
+Processing triggers for libc-bin (2.36-9+deb12u4) ...
+Processing triggers for ca-certificates (20230311+deb12u1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+rustc 1.75.0 (82e1608df 2023-12-21)
+cargo 1.75.0 (1d8b05cdd 2023-11-20)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+rustup 1.26.0 (5af9b9484 2023-04-05)
+info: The currently active `rustc` version is `rustc 1.75.0 (82e1608df 2023-12-21)`
+info: syncing channel updates for '1.93-x86_64-unknown-linux-gnu'
+info: latest update on 2026-02-12, rust version 1.93.1 (01f6ddf75 2026-02-11)
+info: downloading component 'cargo'
+info: downloading component 'rust-std'
+info: downloading component 'rustc'
+info: installing component 'cargo'
+info: installing component 'rust-std'
+info: installing component 'rustc'
+info: downloading component 'rust-std' for 'x86_64-unknown-linux-musl'
+info: installing component 'rust-std' for 'x86_64-unknown-linux-musl'
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /work/kata-containers/src/agent/Cargo.toml
+workspace: /work/kata-containers/Cargo.toml
+containerd-shim-kata-v2 - version 3.30.0 (commit 5f6512ac938af9134753dc07e9fd70ccfb69cc26)
+
+• Project:
+  name: Kata Containers
+  url: https://github.com/kata-containers
+  component: containerd-shim-kata-v2
+
+• Target: containerd-shim-kata-v2
+
+• Architecture: x86_64
+
+• Rust:
+  cargo: cargo 1.93.1 (083ac5135 2025-12-15)
+  rustc: rustc 1.93.1 (01f6ddf75 2026-02-11)
+  rustup: rustup 1.26.0 (5af9b9484 2023-04-05)
+  toolchain: 1.93-x86_64-unknown-linux-gnu (overridden by '/work/kata-containers/rust-toolchain.toml')
+
+• Hypervisors:
+	Default: qemu
+	Known: clh-runtime-rs dragonball firecracker qemu remote
+	Available for this architecture: clh-runtime-rs dragonball firecracker qemu remote
+
+• Summary:
+
+	destination install path (DESTDIR) : /
+	binary installation path (BINDIR) : /usr/local/bin
+	binaries to install :
+	 - /usr/local/bin/containerd-shim-kata-v2
+	configs to install (CONFIGS) :
+	 - config/configuration-clh-runtime-rs.toml
+ 	 - config/configuration-dragonball.toml
+ 	 - config/configuration-qemu-coco-dev-runtime-rs.toml
+ 	 - config/configuration-qemu-runtime-rs.toml
+ 	 - config/configuration-qemu-se-runtime-rs.toml
+ 	 - config/configuration-qemu-snp-runtime-rs.toml
+ 	 - config/configuration-qemu-tdx-runtime-rs.toml
+ 	 - config/configuration-remote.toml
+ 	 - config/configuration-rs-fc.toml
+	install paths (CONFIG_PATHS) :
+	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-clh-runtime-rs.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-dragonball.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-qemu-coco-dev-runtime-rs.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-qemu-se-runtime-rs.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-qemu-snp-runtime-rs.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-qemu-tdx-runtime-rs.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-remote.toml
+ 	 - /usr/share/defaults/kata-containers/runtime-rs/configuration-rs-fc.toml
+	alternate config paths (SYSCONFIG_PATHS) : 
+	 - /etc/kata-containers/configuration-clh-runtime-rs.toml
+ 	 - /etc/kata-containers/configuration-dragonball.toml
+ 	 - /etc/kata-containers/configuration-qemu-coco-dev-runtime-rs.toml
+ 	 - /etc/kata-containers/configuration-qemu-runtime-rs.toml
+ 	 - /etc/kata-containers/configuration-qemu-se-runtime-rs.toml
+ 	 - /etc/kata-containers/configuration-qemu-snp-runtime-rs.toml
+ 	 - /etc/kata-containers/configuration-qemu-tdx-runtime-rs.toml
+ 	 - /etc/kata-containers/configuration-remote.toml
+ 	 - /etc/kata-containers/configuration-rs-fc.toml
+	default install path for qemu (CONFIG_PATH) : /usr/share/defaults/kata-containers/runtime-rs/configuration.toml
+	default alternate config path (SYSCONFIG) : /etc/kata-containers/configuration.toml
+	qemu hypervisor path (QEMUPATH) : /usr/bin/qemu-system-x86_64
+	clh-runtime-rs hypervisor path (CLHPATH) : /usr/bin/cloud-hypervisor
+	firecracker hypervisor path (FCPATH) : /usr/bin/firecracker
+	assets path (PKGDATADIR) : /usr/share/kata-containers
+	shim path (PKGLIBEXECDIR) : /usr/libexec/kata-containers
+
+Kata Containers containerd shim (Rust): id: io.containerd.kata.v2, version: 3.30.0, commit: 5f6512ac938af9134753dc07e9fd70ccfb69cc26
+Done. Binary saved to: /home/dart/Programming/DevSecOps-Intro/labs/lab12/setup/kata-out/containerd-shim-kata-v2

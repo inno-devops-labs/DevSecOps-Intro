@@ -1,0 +1,6 @@
+kata-build/
+kata-out/containerd-shim-kata-v2
+nerdctl/
+kata-static-*.tar.zst
+cni/
+cni-plugins-*.tgz

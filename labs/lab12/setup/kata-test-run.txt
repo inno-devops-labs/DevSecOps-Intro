@@ -1,0 +1,1 @@
+time="2026-05-07T10:14:27+03:00" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""

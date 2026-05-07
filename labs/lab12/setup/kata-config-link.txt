@@ -1,0 +1,1 @@
+lrwxrwxrwx    1 root     root            86 May  7 07:11 /host/etc/kata-containers/runtime-rs/configuration.toml -> /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml

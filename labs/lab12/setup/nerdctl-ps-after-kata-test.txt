@@ -1,0 +1,2 @@
+CONTAINER ID    IMAGE                            COMMAND       CREATED          STATUS     PORTS    NAMES
+b9b6ad3abf32    docker.io/library/alpine:3.19    "uname -a"    3 minutes ago    Unknown             alpine-b9b6a

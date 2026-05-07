@@ -1,0 +1,2 @@
+/opt/cni/bin/bridge
+/opt/cni/bin/loopback
