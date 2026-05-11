@@ -1,0 +1,1 @@
+Linux kata-a9c4e17b52fd 6.12.47-52 #1 SMP Mon May 11 10:14:27 UTC 2026 x86_64 Linux

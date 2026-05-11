@@ -1,0 +1,5 @@
+=== HTTP Latency Test (juice-runc) ===
+Results for port 3012 (juice-runc):
+avg=0.0201s min=0.0170s max=0.0240s n=50
+
+Baseline HTTP latency under runc is low and stable in this local scenario.

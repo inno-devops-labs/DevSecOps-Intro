@@ -1,0 +1,9 @@
+=== dmesg Access Test ===
+Kata VM (separate kernel boot logs):
+[    0.000000] Linux version 6.12.47-52 (kata@builder)
+[    0.000000] Command line: tsc=reliable no_timer_check
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] random: crng init done
+
+Boot-time kernel log inside container indicates a distinct guest kernel lifecycle.

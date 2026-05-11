@@ -1,0 +1,5 @@
+=== /proc Entries Count ===
+Host: 214
+Kata VM: 98
+
+Smaller /proc surface in Kata VM suggests reduced host-level process visibility.

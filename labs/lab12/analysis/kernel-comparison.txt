@@ -1,0 +1,5 @@
+=== Kernel Version Comparison ===
+Host kernel (runc uses this): 7.0.0-15-generic
+Kata guest kernel: Linux version 6.12.47-52 (kata@builder) #1 SMP Mon May 11 14:52:41 UTC 2026
+
+The host and guest kernel versions differ, which indicates VM-backed isolation for Kata.

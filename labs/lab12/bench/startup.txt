@@ -1,0 +1,8 @@
+=== Startup Time Comparison ===
+runc:
+real\t0m0.43s
+
+Kata:
+real\t0m3.88s
+
+Kata startup includes VM boot and initialization overhead.

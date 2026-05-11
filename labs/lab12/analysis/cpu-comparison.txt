@@ -1,0 +1,8 @@
+=== CPU Model Comparison ===
+Host CPU:
+model name\t: AMD Ryzen 5 7500F 6-Core Processor
+
+Kata VM CPU:
+model name\t: QEMU Virtual CPU version 2.5+
+
+Kata exposes a virtual CPU model from the microVM layer.
