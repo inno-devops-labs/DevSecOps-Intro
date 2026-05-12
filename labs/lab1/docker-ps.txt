@@ -1,0 +1,1 @@
+juice-shop	Up 3 minutes	127.0.0.1:3000->3000/tcp

@@ -1,0 +1,10 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "Apple Juice (1000ml)",
+      "description": "The all-time classic.",
+      "price": 1.99,
+      "deluxePrice": 0.99,
+      "image": "apple_juice.jpg",
