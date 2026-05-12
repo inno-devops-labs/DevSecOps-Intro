@@ -1,5 +1,6 @@
 # Task 1
 
+**I did the lab but forgot to add the assets folder and then started a new lab, therefore the screenshots are missing, but they are not required in the assignment, so I hope I won't get penalised**
 ## Successful launch and login
 ![](assets/Screenshot%202026-05-12%20at%2020-22-19%20DefectDojo.png)
 
