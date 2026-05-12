@@ -6,7 +6,7 @@
 
 # Task 2
 ## Successful import
-![](assets/image.png)
+![](assets/imported.png)
 
 # Task 3
 
