@@ -1,0 +1,15 @@
+=== virtualization flags ===
+0
+
+=== /dev/kvm ===
+ls: cannot access '/dev/kvm': No such file or directory
+
+=== containerd ===
+containerd github.com/containerd/containerd/v2 2.2.1 
+
+=== nerdctl ===
+nerdctl version 2.2.0
+
+=== kata shim ===
+/usr/local/bin/containerd-shim-kata-v2
+Kata Containers containerd shim (Golang): id: "io.containerd.kata.v2", version: 3.30.0, commit: 5540f50198140c444aa8eeac8ee17208bdd4bab7

@@ -1,0 +1,1 @@
+Kata Containers containerd shim (Golang): id: "io.containerd.kata.v2", version: 3.30.0, commit: 5540f50198140c444aa8eeac8ee17208bdd4bab7
