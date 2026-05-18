@@ -1,0 +1,6 @@
+{
+  "_type": "https://slsa.dev/provenance/v1",
+  "buildType": "manual",
+  "builder": {"id": "local"},
+  "metadata": {"buildStartedOn": "2026-05-18T09:58:49Z"}
+}
