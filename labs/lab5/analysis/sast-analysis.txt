@@ -1,5 +1,5 @@
 ﻿=== SAST Analysis Report ===
-Files scanned: 791
+Files scanned: 1014
 Findings: 26
 ERROR: 8
 WARNING: 18

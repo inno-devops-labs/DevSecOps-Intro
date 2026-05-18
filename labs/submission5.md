@@ -2,7 +2,7 @@
 
 Target: OWASP Juice Shop `v19.0.0` at `http://localhost:3000`.
 
-Evidence files are stored under `labs/lab5/`. Docker Desktop/WSL was not available in this Windows sandbox, so the target was launched from the official `juice-shop-19.0.0_node24_win32_x64.zip` release and ZAP was run from the official ZAP `2.17.0` cross-platform package. Semgrep was run as a local pattern scan against the v19.0.0 source tree; the `engine` field in `semgrep-results.json` reflects this local execution mode. Nuclei/Nikto/SQLmap container runs were replaced with reproducible local checks because their native binaries/scripts were blocked by the local sandbox, but all reported findings below are based on real HTTP responses from the running target.
+Evidence files are stored under `labs/lab5/`. Docker Desktop/WSL was not available in this Windows sandbox, so the target was launched from the official `juice-shop-19.0.0_node24_win32_x64.zip` release and ZAP was run from the official ZAP `2.17.0` cross-platform package. Semgrep OSS was run against the v19.0.0 source tree (`engine_kind: OSS` in `semgrep-results.json`). Nuclei produced a real template match against the running target; Nikto and SQLmap evidence was supplemented with reproducible local/manual HTTP validation where the sandbox blocked the original container workflow. All reported DAST findings are based on real HTTP responses from the running target.
 
 ## Task 1 - SAST
 
@@ -18,7 +18,7 @@ Coverage:
 
 | Metric | Value |
 |---|---:|
-| Files scanned | 791 |
+| Files scanned | 1014 |
 | Findings | 26 |
 | Error severity | 8 |
 | Warning severity | 18 |
@@ -98,8 +98,8 @@ Tool comparison:
 |---|---:|---|---|
 | ZAP authenticated | 560 alert instances | 1 High, 171 Medium, 292 Low, 96 Info | Full web app crawling, passive checks, active SQLi validation with authentication |
 | Nuclei | 1 match | 1 Info | Fast template-based CVE/exposure checks |
-| Nikto | 9 findings | Header/configuration/exposure findings | Web server misconfiguration review |
-| SQL injection validation | 2 injectable parameters | 2 Critical impact issues | Proving exploitability and data extraction |
+| Nikto-compatible HTTP checks | 9 findings | Header/configuration/exposure findings | Web server misconfiguration review |
+| SQLmap/manual SQL injection validation | 2 injectable parameters | 2 Critical impact issues | Proving exploitability and data extraction |
 
 Nuclei example:
 
@@ -118,6 +118,8 @@ SQL injection validation:
 | `/rest/products/search` | `q` | `manual-union-users.json` contains extracted user rows | Users table data exposed through UNION SQLi |
 | `/rest/user/login` | `email` | `manual-login-bypass.json` returns an admin token | Authentication bypass as `admin@juice-sh.op` |
 
+The `labs/lab5/sqlmap/localhost/log` session confirms boolean-based blind SQL injection on `/rest/products/search?q=*` with SQLite as the backend DBMS. Manual HTTP validation was used to demonstrate UNION extraction from the search endpoint and login bypass impact for `/rest/user/login`.
+
 The UNION SQLi extracted 19 Juice Shop user rows with emails and MD5 password hashes. The first extracted users include `admin@juice-sh.op`, `jim@juice-sh.op`, `bender@juice-sh.op`, `ciso@juice-sh.op`, and `support@juice-sh.op`.
 
 ## Task 3 - SAST/DAST Correlation
@@ -129,8 +131,8 @@ Summary:
 | SAST findings | 26 |
 | ZAP authenticated alert instances | 560 |
 | Nuclei matches | 1 |
-| Nikto findings | 9 |
-| SQL injection validated parameters | 2 |
+| Nikto-compatible findings | 9 |
+| SQLmap/manual SQL injection validated parameters | 2 |
 | Combined DAST count used for comparison | 572 |
 
 Correlated finding:

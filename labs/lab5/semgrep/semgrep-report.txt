@@ -1,36 +1,87 @@
-﻿Semgrep-compatible SAST report for OWASP Juice Shop v19.0.0
-Scanned files: 791
-Findings: 8
+Semgrep OSS SAST report for OWASP Juice Shop v19.0.0
+Source: labs/lab5/semgrep/juice-shop-19.0.0
+Semgrep version: 1.162.0
+Scanned files: 1014
+Findings: 26
+ERROR: 8
+WARNING: 18
 
-[ERROR] typescript.sequelize.security.sql-injection routes/search.ts:23
-  User-controlled q parameter is interpolated into a Sequelize SQL string.
-  models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`) // vuln-code-snippet vuln-line unionSqlInjectionChallenge dbSchemaChallenge
+This human-readable report is synchronized with labs/lab5/semgrep/semgrep-results.json.
 
-[ERROR] typescript.jwt.security.hardcoded-private-key lib/insecurity.ts:23
-  RSA private key is hardcoded in source and used to sign JWTs.
-  const privateKey = '-----BEGIN RSA PRIVATE KEY-----\r\nMIICXAIBAAKBgQDNwqLEe9wgTXCbC7+RPdDbBbeqjdbs4kOPOIGzqLpXvJXlxxW8iMz0EaM4BKUqYsIa+ndv3NAn2RxCd5ubVdJJcX43zO6Ko0TFEZx/65gY3BE0O6syCEmUP4qbSd6exou/F+WTISzbQ5FBVPVmhnYhG/kpwt/cIxK5iUn5hm+4tQIDAQABAoGBAI+8xiPoOrA+KMnG/T4jJsG6TsHQcDHvJi7o1IKC/hnIXha0atTX5AUkRRce95qSfvKFweXdJXSQ0JMGJyfuXgU6dI0TcseFRfewXAa/ssxAC+iUVR6KUMh1PE2wXLitfeI6JLvVtrBYswm2I7CtY0q8n5AGimHWVXJPLfGV7m0BAkEA+fqFt2LXbLtyg6wZyxMA/cnmt5Nt3U2dAu77MzFJvibANUNHE4HPLZxjGNXN+a6m0K6TD4kDdh5HfUYLWWRBYQJBANK3carmulBwqzcDBjsJ0YrIONBpCAsXxk8idXb8jL9aNIg15Wumm2enqqObahDHB5jnGOLmbasizvSVqypfM9UCQCQl8xIqy+YgURXzXCN+kwUgHinrutZms87Jyi+D8Br8NY0+Nlf+zHvXAomD2W5CsEK7C+8SLBr3k/TsnRWHJuECQHFE9RA2OP8WoaLPuGCyFXaxzICThSRZYluVnWkZtxsBhW2W8z1b8PvWUE7kMy7TnkzeJS2LSnaNHoyxi7IaPQUCQCwWU4U+v4lD7uYBw00Ga/xt+7+UqFPlPVdz1yyr4q24Zxaw0LgmuEvgU5dycq8N7JxjTubX0MIRR+G9fmDBBl8=\r\n-----END RSA PRIVATE KEY-----'
+[ERROR] javascript.sequelize.security.audit.sequelize-injection-express routes/search.ts:23
+  Sequelize raw query receives user-controlled search input; use parameterized queries or replacements.
 
-[ERROR] typescript.crypto.security.weak-md5 lib/insecurity.ts:43
-  MD5 is used for password hashing.
-  export const hash = (data: string) => crypto.createHash('md5').update(data).digest('hex')
+[ERROR] javascript.sequelize.security.audit.sequelize-injection-express routes/login.ts:34
+  Login query receives user-controlled email/password input; this can enable SQL injection and authentication bypass.
 
-[WARNING] typescript.crypto.security.hardcoded-hmac-secret lib/insecurity.ts:44
-  Hardcoded HMAC secret is used for coupon signing.
-  export const hmac = (data: string) => crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj').update(data).digest('hex')
+[ERROR] javascript.lang.security.audit.code-string-concat routes/userProfile.ts:62
+  Express request data flows to eval(); this can lead to arbitrary code execution.
 
-[WARNING] typescript.lang.security.eval-use routes/captcha.ts:23
-  eval() executes dynamically generated expression.
-  const answer = eval(expression).toString() // eslint-disable-line no-eval
+[ERROR] yaml.github-actions.security.run-shell-injection .github/workflows/update-challenges-ebook.yml:21
+  GitHub context interpolation is used directly in a run step, allowing shell injection from untrusted workflow data.
 
-[WARNING] typescript.yaml.security.unsafe-yaml-load routes/fileUpload.ts:116
-  yaml.load() is executed on uploaded YAML content inside a VM context.
-  const yamlString = vm.runInContext('JSON.stringify(yaml.load(data))', sandbox, { timeout: 2000 })
+[ERROR] javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/dbSchemaChallenge_1.ts:5
+  Challenge codefix snippet contains a Sequelize raw query tainted by user input.
 
-[WARNING] typescript.express.security.permissive-cors server.ts:182
-  Global CORS middleware allows broad cross-origin access.
-  app.use(cors())
+[ERROR] javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/dbSchemaChallenge_3.ts:11
+  Challenge codefix snippet contains a Sequelize raw query tainted by user input.
 
-[WARNING] typescript.redirect.security.substring-allowlist lib/insecurity.ts:138
-  Redirect allowlist uses substring matching via url.includes().
-  allowed = allowed || url.includes(allowedUrl) // vuln-code-snippet vuln-line redirectChallenge
+[ERROR] javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/unionSqlInjectionChallenge_1.ts:6
+  Challenge codefix snippet contains a Sequelize raw query tainted by user input.
 
+[ERROR] javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/unionSqlInjectionChallenge_3.ts:10
+  Challenge codefix snippet contains a Sequelize raw query tainted by user input.
+
+[WARNING] javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret lib/insecurity.ts:56
+  JWT signing secret is hardcoded in source; move signing material to managed secrets and rotate exposed keys.
+
+[WARNING] javascript.express.security.injection.raw-html-format routes/chatbot.ts:197
+  User-controlled data is formatted into raw HTML, creating XSS risk.
+
+[WARNING] javascript.express.security.audit.express-res-sendfile routes/fileServer.ts:33
+  User-controlled path data reaches res.sendFile(); validate and canonicalize paths.
+
+[WARNING] javascript.express.security.audit.express-res-sendfile routes/keyServer.ts:14
+  User-controlled path data reaches res.sendFile(); validate and canonicalize paths.
+
+[WARNING] javascript.express.security.audit.express-res-sendfile routes/logfileServer.ts:14
+  User-controlled path data reaches res.sendFile(); validate and canonicalize paths.
+
+[WARNING] javascript.express.security.audit.express-res-sendfile routes/quarantineServer.ts:14
+  User-controlled path data reaches res.sendFile(); validate and canonicalize paths.
+
+[WARNING] javascript.express.security.audit.possible-user-input-redirect routes/redirect.ts:19
+  User-controlled URL participates in redirect handling; enforce strict allowlisting.
+
+[WARNING] javascript.express.security.audit.express-open-redirect routes/redirect.ts:19
+  Redirect logic may allow open redirects if the destination is not strictly validated.
+
+[WARNING] javascript.lang.security.audit.unknown-value-with-script-tag routes/videoHandler.ts:58
+  Untrusted value is embedded into a script tag; sanitize or encode before rendering.
+
+[WARNING] javascript.lang.security.audit.unknown-value-with-script-tag routes/videoHandler.ts:71
+  Untrusted value is embedded into a script tag; sanitize or encode before rendering.
+
+[WARNING] javascript.express.security.audit.express-check-directory-listing server.ts:269
+  Static file serving can expose directory contents; disable directory listing.
+
+[WARNING] javascript.express.security.audit.express-check-directory-listing server.ts:273
+  Static file serving can expose directory contents; disable directory listing.
+
+[WARNING] javascript.express.security.audit.express-check-directory-listing server.ts:277
+  Static file serving can expose directory contents; disable directory listing.
+
+[WARNING] javascript.express.security.audit.express-check-directory-listing server.ts:281
+  Static file serving can expose directory contents; disable directory listing.
+
+[WARNING] generic.html-templates.security.unquoted-attribute-var frontend/src/app/navbar/navbar.component.html:17
+  Template attribute variable is unquoted; quote template values to reduce XSS risk.
+
+[WARNING] generic.html-templates.security.unquoted-attribute-var frontend/src/app/purchase-basket/purchase-basket.component.html:15
+  Template attribute variable is unquoted; quote template values to reduce XSS risk.
+
+[WARNING] generic.html-templates.security.unquoted-attribute-var frontend/src/app/search-result/search-result.component.html:40
+  Template attribute variable is unquoted; quote template values to reduce XSS risk.
+
+[WARNING] generic.html-templates.security.unquoted-attribute-var views/dataErasureForm.hbs:21
+  Template attribute variable is unquoted; quote template values to reduce XSS risk.
