@@ -1,0 +1,11 @@
+=== Package Detection Comparison ===
+
+Packages detected by both tools: 1130
+Packages only detected by Syft: 3
+Packages only detected by Trivy: 0
+
+=== Vulnerability Detection Overlap ===
+
+CVEs found by Grype: 101
+CVEs found by Trivy: 100
+Common CVEs: 95
