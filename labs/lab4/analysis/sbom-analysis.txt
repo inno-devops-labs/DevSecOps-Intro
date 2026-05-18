@@ -1,0 +1,23 @@
+=== SBOM Component Analysis ===
+
+Syft Package Counts:
+binary: 1
+deb: 10
+npm: 1128
+
+Trivy Package Counts:
+OS packages: 10
+Node.js packages: 1125
+
+=== License Analysis ===
+
+Syft Licenses:
+No significant license metadata detected
+
+Trivy Licenses:
+MIT: 878
+ISC: 143
+BSD-3-Clause: 14
+Apache-2.0: 12
+LGPL-3.0-only: 19
+GPL-family licenses detected

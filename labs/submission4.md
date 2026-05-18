@@ -1,4 +1,3 @@
-```markdown
 # Lab 4 — SBOM Generation & Software Composition Analysis
 
 ## Task 1 — SBOM Generation with Syft and Trivy (4 pts)
@@ -196,6 +195,29 @@ The application uses a wide variety of open source licenses. Most packages use p
 
 ---
 
+## Generated Artifacts
+
+### SBOM Files
+- `labs/lab4/syft/juice-shop-syft-native.json`
+- `labs/lab4/syft/juice-shop-syft-table.txt`
+- `labs/lab4/trivy/juice-shop-trivy-detailed.json`
+
+### Vulnerability Scan Reports
+- `labs/lab4/syft/grype-vuln-results.json`
+- `labs/lab4/trivy/trivy-vuln-detailed.json`
+- `labs/lab4/trivy/trivy-licenses.json`
+
+### Comparison & Analysis Outputs
+- `labs/lab4/comparison/accuracy-analysis.txt`
+- `labs/lab4/comparison/common-packages.txt`
+- `labs/lab4/comparison/grype-cves.txt`
+- `labs/lab4/comparison/syft-only.txt`
+- `labs/lab4/comparison/trivy-only.txt`
+- `labs/lab4/analysis/sbom-analysis.txt`
+- `labs/lab4/analysis/vulnerability-analysis.txt`
+
+---
+
 ## Conclusion
 
 Lab 4 successfully demonstrated SBOM generation and Software Composition Analysis using both specialized (Syft+Grype) and all-in-one (Trivy) toolchains. Key findings include:
@@ -203,4 +225,3 @@ Lab 4 successfully demonstrated SBOM generation and Software Composition Analysi
 - Trivy provides better license detection out-of-the-box
 - Critical vulnerabilities found in jsonwebtoken, vm2, and other dependencies require immediate remediation
 - For most use cases, Trivy's all-in-one approach is more practical
-```
