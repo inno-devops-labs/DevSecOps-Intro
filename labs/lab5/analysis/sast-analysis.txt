@@ -1,15 +1,33 @@
 ﻿=== SAST Analysis Report ===
 Files scanned: 791
-Findings: 8
-ERROR: 3
-WARNING: 5
+Findings: 26
+ERROR: 8
+WARNING: 18
 
-Top findings:
-- ERROR typescript.sequelize.security.sql-injection routes/search.ts:23
-- ERROR typescript.jwt.security.hardcoded-private-key lib/insecurity.ts:23
-- ERROR typescript.crypto.security.weak-md5 lib/insecurity.ts:43
-- WARNING typescript.crypto.security.hardcoded-hmac-secret lib/insecurity.ts:44
-- WARNING typescript.lang.security.eval-use routes/captcha.ts:23
-- WARNING typescript.yaml.security.unsafe-yaml-load routes/fileUpload.ts:116
-- WARNING typescript.express.security.permissive-cors server.ts:182
-- WARNING typescript.redirect.security.substring-allowlist lib/insecurity.ts:138
+Top findings (by severity):
+- ERROR javascript.sequelize.security.audit.sequelize-injection-express routes/search.ts:23
+- ERROR javascript.sequelize.security.audit.sequelize-injection-express routes/login.ts:34
+- ERROR javascript.lang.security.audit.code-string-concat routes/userProfile.ts:62
+- ERROR yaml.github-actions.security.run-shell-injection .github/workflows/update-challenges-ebook.yml:21
+- ERROR javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/dbSchemaChallenge_1.ts:5
+- ERROR javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/dbSchemaChallenge_3.ts:11
+- ERROR javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/unionSqlInjectionChallenge_1.ts:6
+- ERROR javascript.sequelize.security.audit.sequelize-injection-express data/static/codefixes/unionSqlInjectionChallenge_3.ts:10
+- WARNING javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret lib/insecurity.ts:56
+- WARNING javascript.express.security.injection.raw-html-format routes/chatbot.ts:197
+- WARNING javascript.express.security.audit.express-res-sendfile routes/fileServer.ts:33
+- WARNING javascript.express.security.audit.express-res-sendfile routes/keyServer.ts:14
+- WARNING javascript.express.security.audit.express-res-sendfile routes/logfileServer.ts:14
+- WARNING javascript.express.security.audit.express-res-sendfile routes/quarantineServer.ts:14
+- WARNING javascript.express.security.audit.possible-user-input-redirect routes/redirect.ts:19
+- WARNING javascript.express.security.audit.express-open-redirect routes/redirect.ts:19
+- WARNING javascript.lang.security.audit.unknown-value-with-script-tag routes/videoHandler.ts:58
+- WARNING javascript.lang.security.audit.unknown-value-with-script-tag routes/videoHandler.ts:71
+- WARNING javascript.express.security.audit.express-check-directory-listing server.ts:269
+- WARNING javascript.express.security.audit.express-check-directory-listing server.ts:273
+- WARNING javascript.express.security.audit.express-check-directory-listing server.ts:277
+- WARNING javascript.express.security.audit.express-check-directory-listing server.ts:281
+- WARNING generic.html-templates.security.unquoted-attribute-var frontend/src/app/navbar/navbar.component.html:17
+- WARNING generic.html-templates.security.unquoted-attribute-var frontend/src/app/purchase-basket/purchase-basket.component.html:15
+- WARNING generic.html-templates.security.unquoted-attribute-var frontend/src/app/search-result/search-result.component.html:40
+- WARNING generic.html-templates.security.unquoted-attribute-var views/dataErasureForm.hbs:21

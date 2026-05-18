@@ -1,9 +1,17 @@
-﻿{
+{
     "total":  1,
     "bySeverity":  [
                        {
                            "severity":  "info",
                            "count":  1
                        }
-                   ]
+                   ],
+    "findings":  [
+                     {
+                         "template":  "swagger-api",
+                         "severity":  "info",
+                         "matched-at":  "http://localhost:3000/api-docs/swagger.yaml",
+                         "description":  "Public Swagger API was detected."
+                     }
+                 ]
 }

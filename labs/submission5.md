@@ -19,21 +19,21 @@ Coverage:
 | Metric | Value |
 |---|---:|
 | Files scanned | 791 |
-| Findings | 8 |
-| Error severity | 3 |
-| Warning severity | 5 |
+| Findings | 26 |
+| Error severity | 8 |
+| Warning severity | 18 |
 
-Top findings:
+Top 5 critical findings:
 
 | # | Type | File | Line | Severity |
 |---:|---|---|---:|---|
-| 1 | SQL Injection | `routes/search.ts` | 23 | Error |
-| 2 | Hardcoded RSA private key for JWT signing | `lib/insecurity.ts` | 23 | Error |
-| 3 | Weak password hashing with MD5 | `lib/insecurity.ts` | 43 | Error |
-| 4 | Hardcoded HMAC secret | `lib/insecurity.ts` | 44 | Warning |
-| 5 | Dynamic code execution with `eval()` | `routes/captcha.ts` | 23 | Warning |
+| 1 | SQL Injection (Sequelize user-input taint) | `routes/search.ts` | 23 | Error |
+| 2 | SQL Injection (Sequelize user-input taint) | `routes/login.ts` | 34 | Error |
+| 3 | Code execution — user input flows to `eval()` | `routes/userProfile.ts` | 62 | Error |
+| 4 | GitHub Actions shell injection via `${{github.*}}` interpolation | `.github/workflows/update-challenges-ebook.yml` | 21 | Error |
+| 5 | Hardcoded JWT secret in source | `lib/insecurity.ts` | 56 | Warning |
 
-Additional SAST findings include unsafe YAML parsing of uploaded content in `routes/fileUpload.ts:116`, global permissive CORS in `server.ts:182`, and substring-based redirect allowlist matching in `lib/insecurity.ts:138`.
+Additional ERROR findings: SQL injection patterns in `data/static/codefixes/dbSchemaChallenge_1.ts:5`, `dbSchemaChallenge_3.ts:11`, `unionSqlInjectionChallenge_1.ts:6`, `unionSqlInjectionChallenge_3.ts:10` (intentional challenge code, but confirms the vulnerable pattern). Additional WARNING findings include path traversal via `res.sendFile` in 4 server routes, XSS via unquoted template variables in 4 frontend files, open redirect in `routes/redirect.ts:19`, XSS via unvalidated `<script>` tag content in `routes/videoHandler.ts`, and directory listing enabled at 4 static-serve points in `server.ts`.
 
 ## Task 2 - DAST
 
@@ -97,15 +97,13 @@ Tool comparison:
 | Tool/check | Findings | Severity breakdown | Best use case |
 |---|---:|---|---|
 | ZAP authenticated | 560 alert instances | 1 High, 171 Medium, 292 Low, 96 Info | Full web app crawling, passive checks, active SQLi validation with authentication |
-| Nuclei-compatible template checks | 8 matches | 3 Medium, 1 Low, 4 Info | Fast header/exposure checks |
-| Nikto-compatible HTTP checks | 9 findings | Header/configuration/exposure findings | Web server misconfiguration review |
+| Nuclei | 1 match | 1 Info | Fast template-based CVE/exposure checks |
+| Nikto | 9 findings | Header/configuration/exposure findings | Web server misconfiguration review |
 | SQL injection validation | 2 injectable parameters | 2 Critical impact issues | Proving exploitability and data extraction |
 
-Nuclei-compatible examples:
+Nuclei example:
 
-- Missing Content-Security-Policy header.
-- Permissive CORS wildcard origin.
-- Publicly accessible `/ftp/`, `/robots.txt`, `/sitemap.xml`, `/security.txt`.
+- Public Swagger API exposure at `/api-docs/swagger.yaml` (Info, template `swagger-api`). Swagger UI accessible with no authentication, leaking full API surface including admin endpoints.
 
 Nikto-compatible examples:
 
@@ -128,25 +126,25 @@ Summary:
 
 | Source | Count |
 |---|---:|
-| SAST findings | 8 |
+| SAST findings | 26 |
 | ZAP authenticated alert instances | 560 |
-| Nuclei-compatible matches | 8 |
-| Nikto-compatible findings | 9 |
+| Nuclei matches | 1 |
+| Nikto findings | 9 |
 | SQL injection validated parameters | 2 |
-| Combined DAST count used for comparison | 579 |
+| Combined DAST count used for comparison | 572 |
 
 Correlated finding:
 
-- SAST identifies SQL injection in `routes/search.ts:23`.
-- ZAP confirms SQL injection dynamically on `/rest/products/search?q=apple%27`.
+- SAST identifies SQL injection in `routes/search.ts:23` (Sequelize taint via `express-sequelize-injection` rule).
+- ZAP confirms SQL injection dynamically on `/rest/products/search?q=apple%27` (High severity alert).
 - SQL injection validation proves impact by extracting 19 user rows from `Users`.
 
 Found only by SAST:
 
-- Hardcoded RSA private key in `lib/insecurity.ts:23`.
-- Weak MD5 password hashing in `lib/insecurity.ts:43`.
-- Hardcoded HMAC secret in `lib/insecurity.ts:44`.
-- Dangerous `eval()`/`yaml.load()` code patterns.
+- Hardcoded JWT secret in `lib/insecurity.ts:56` (never observable at runtime from outside).
+- Code execution via `eval()` tainted by user input in `routes/userProfile.ts:62`.
+- GitHub Actions shell injection via `${{github.event.*}}` interpolation in CI workflow.
+- Path traversal potential via `res.sendFile` in `routes/fileServer.ts`, `keyServer.ts`, `logfileServer.ts`, `quarantineServer.ts`.
 
 Found only by DAST:
 
