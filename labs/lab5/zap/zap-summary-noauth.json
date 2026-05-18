@@ -1,0 +1,19 @@
+﻿{
+    "mode":  "noauth",
+    "urlCount":  30,
+    "alertCount":  73,
+    "risks":  [
+                  {
+                      "risk":  "Informational",
+                      "count":  6
+                  },
+                  {
+                      "risk":  "Low",
+                      "count":  26
+                  },
+                  {
+                      "risk":  "Medium",
+                      "count":  41
+                  }
+              ]
+}

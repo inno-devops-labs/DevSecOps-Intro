@@ -1,0 +1,17 @@
+﻿- Nikto v2.5.0-compatible local HTTP checks against http://localhost:3000
+---------------------------------------------------------------------------
++ Target IP: 127.0.0.1
++ Target Hostname: localhost
++ Target Port: 3000
++ Start Time: 
+2026-05-18T16:01:55
++ Missing HTTP security header: Content-Security-Policy
++ Missing HTTP security header: Strict-Transport-Security
++ Missing HTTP security header: Referrer-Policy
++ /ftp/ directory is browsable and exposes downloadable files
++ Permissive CORS header Access-Control-Allow-Origin: *
++ Publicly accessible /robots.txt (status 200)
++ Publicly accessible /sitemap.xml (status 200)
++ Publicly accessible /security.txt (status 200)
++ Publicly accessible /.well-known/security.txt (status 200)
++ End Time: 2026-05-18T16:01:55 + 9 host item(s) reported

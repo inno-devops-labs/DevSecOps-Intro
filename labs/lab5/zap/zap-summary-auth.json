@@ -1,0 +1,23 @@
+﻿{
+    "mode":  "auth",
+    "urlCount":  113,
+    "alertCount":  560,
+    "risks":  [
+                  {
+                      "risk":  "High",
+                      "count":  1
+                  },
+                  {
+                      "risk":  "Informational",
+                      "count":  96
+                  },
+                  {
+                      "risk":  "Low",
+                      "count":  292
+                  },
+                  {
+                      "risk":  "Medium",
+                      "count":  171
+                  }
+              ]
+}

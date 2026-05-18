@@ -1,0 +1,8 @@
+﻿{"template-id":"missing-csp","info":{"name":"Missing Content-Security-Policy","severity":"medium"},"matched":"http://localhost:3000/"}
+{"template-id":"missing-hsts","info":{"name":"Missing Strict-Transport-Security","severity":"low"},"matched":"http://localhost:3000/"}
+{"template-id":"cors-permissive","info":{"name":"Permissive CORS wildcard origin","severity":"medium"},"matched":"http://localhost:3000/"}
+{"template-id":"exposed-ftp","info":{"name":"Publicly accessible /ftp/","severity":"medium"},"matched":"http://localhost:3000/ftp/"}
+{"template-id":"exposed-robots.txt","info":{"name":"Publicly accessible /robots.txt","severity":"info"},"matched":"http://localhost:3000/robots.txt"}
+{"template-id":"exposed-sitemap.xml","info":{"name":"Publicly accessible /sitemap.xml","severity":"info"},"matched":"http://localhost:3000/sitemap.xml"}
+{"template-id":"exposed-security.txt","info":{"name":"Publicly accessible /security.txt","severity":"info"},"matched":"http://localhost:3000/security.txt"}
+{"template-id":"exposed-.well-known-security.txt","info":{"name":"Publicly accessible /.well-known/security.txt","severity":"info"},"matched":"http://localhost:3000/.well-known/security.txt"}

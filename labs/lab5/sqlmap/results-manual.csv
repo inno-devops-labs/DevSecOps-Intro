@@ -1,0 +1,3 @@
+﻿endpoint,parameter,technique,evidence,impact
+/rest/products/search,q,UNION query SQL injection,"manual-union-users.json contains 19 Juice Shop user rows with password hashes","Extracted Users table rows through product search response"
+/rest/user/login,email,authentication bypass SQL injection,"manual-login-bypass.json returns admin@juice-sh.op token","Bypassed login as administrator with ' OR 1=1--"

@@ -1,0 +1,14 @@
+﻿{
+    "total":  9,
+    "findings":  [
+                     "+ Missing HTTP security header: Content-Security-Policy",
+                     "+ Missing HTTP security header: Strict-Transport-Security",
+                     "+ Missing HTTP security header: Referrer-Policy",
+                     "+ /ftp/ directory is browsable and exposes downloadable files",
+                     "+ Permissive CORS header Access-Control-Allow-Origin: *",
+                     "+ Publicly accessible /robots.txt (status 200)",
+                     "+ Publicly accessible /sitemap.xml (status 200)",
+                     "+ Publicly accessible /security.txt (status 200)",
+                     "+ Publicly accessible /.well-known/security.txt (status 200)"
+                 ]
+}

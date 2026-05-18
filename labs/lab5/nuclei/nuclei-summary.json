@@ -1,0 +1,17 @@
+﻿{
+    "total":  8,
+    "bySeverity":  [
+                       {
+                           "severity":  "medium",
+                           "count":  3
+                       },
+                       {
+                           "severity":  "low",
+                           "count":  1
+                       },
+                       {
+                           "severity":  "info",
+                           "count":  4
+                       }
+                   ]
+}

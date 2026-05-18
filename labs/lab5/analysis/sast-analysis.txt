@@ -1,2 +1,15 @@
-=== SAST Analysis Report ===
-87
+﻿=== SAST Analysis Report ===
+Files scanned: 791
+Findings: 8
+ERROR: 3
+WARNING: 5
+
+Top findings:
+- ERROR typescript.sequelize.security.sql-injection routes/search.ts:23
+- ERROR typescript.jwt.security.hardcoded-private-key lib/insecurity.ts:23
+- ERROR typescript.crypto.security.weak-md5 lib/insecurity.ts:43
+- WARNING typescript.crypto.security.hardcoded-hmac-secret lib/insecurity.ts:44
+- WARNING typescript.lang.security.eval-use routes/captcha.ts:23
+- WARNING typescript.yaml.security.unsafe-yaml-load routes/fileUpload.ts:116
+- WARNING typescript.express.security.permissive-cors server.ts:182
+- WARNING typescript.redirect.security.substring-allowlist lib/insecurity.ts:138

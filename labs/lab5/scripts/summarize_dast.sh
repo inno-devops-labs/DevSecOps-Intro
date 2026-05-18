@@ -1,62 +1,42 @@
 #!/bin/bash
-# Summarize DAST results from all tools
+set -euo pipefail
 
-echo "=== DAST Multi-Tool Results Summary ==="
-echo ""
+node <<'NODE'
+const fs = require('fs')
 
-# ZAP Results
-echo "--- OWASP ZAP (Authenticated) ---"
-if [ -f "labs/lab5/zap/zap-report-auth.json" ]; then
-  zap_total=$(jq '.site[0].alerts | length' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
-  zap_high=$(jq '[.site[0].alerts[] | select(.riskcode == "3")] | length' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
-  zap_med=$(jq '[.site[0].alerts[] | select(.riskcode == "2")] | length' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
-  zap_low=$(jq '[.site[0].alerts[] | select(.riskcode == "1")] | length' labs/lab5/zap/zap-report-auth.json 2>/dev/null || echo "0")
-  echo "  Total: $zap_total | High: $zap_high | Medium: $zap_med | Low: $zap_low"
-else
-  echo "  Report not found"
-fi
-echo ""
+function readJson (path) {
+  return JSON.parse(fs.readFileSync(path, 'utf8').replace(/^\uFEFF/, ''))
+}
 
-# Nuclei Results
-echo "--- Nuclei ---"
-if [ -f "labs/lab5/nuclei/nuclei-results.json" ]; then
-  nuclei_total=$(wc -l < labs/lab5/nuclei/nuclei-results.json)
-  nuclei_crit=$(grep -c '"critical"' labs/lab5/nuclei/nuclei-results.json 2>/dev/null || echo "0")
-  nuclei_high=$(grep -c '"high"' labs/lab5/nuclei/nuclei-results.json 2>/dev/null || echo "0")
-  nuclei_med=$(grep -c '"medium"' labs/lab5/nuclei/nuclei-results.json 2>/dev/null || echo "0")
-  nuclei_low=$(grep -c '"low"' labs/lab5/nuclei/nuclei-results.json 2>/dev/null || echo "0")
-  nuclei_info=$(grep -c '"info"' labs/lab5/nuclei/nuclei-results.json 2>/dev/null || echo "0")
-  echo "  Total: $nuclei_total | Critical: $nuclei_crit | High: $nuclei_high | Medium: $nuclei_med | Low: $nuclei_low | Info: $nuclei_info"
-else
-  echo "  Report not found"
-fi
-echo ""
+function groupByRisk (alerts) {
+  const out = {}
+  for (const alert of alerts) out[alert.risk] = (out[alert.risk] || 0) + 1
+  return out
+}
 
-# Nikto Results
-echo "--- Nikto ---"
-if [ -f "labs/lab5/nikto/nikto-results.txt" ]; then
-  nikto_total=$(grep -c '+ ' labs/lab5/nikto/nikto-results.txt 2>/dev/null || echo "0")
-  echo "  Total findings: $nikto_total"
-else
-  echo "  Report not found"
-fi
-echo ""
+const zap = readJson('labs/lab5/zap/zap-report-auth.json').alerts || []
+const zapUrls = readJson('labs/lab5/zap/zap-urls-auth.json').urls || []
+const nuclei = readJson('labs/lab5/nuclei/nuclei-summary.json')
+const nikto = readJson('labs/lab5/nikto/nikto-summary.json')
+const sqlmap = readJson('labs/lab5/sqlmap/sqlmap-summary.json')
 
-# SQLmap Results
-echo "--- SQLmap ---"
-sqlmap_csv=$(find labs/lab5/sqlmap -name "results-*.csv" 2>/dev/null | head -1)
-if [ -f "$sqlmap_csv" ]; then
-  sqlmap_count=$(tail -n +2 "$sqlmap_csv" | grep -v '^$' | wc -l)
-  echo "  SQL Injection vulnerabilities found: $sqlmap_count"
-else
-  echo "  Checking for log files..."
-  sqlmap_log=$(find labs/lab5/sqlmap -name "log" 2>/dev/null | head -1)
-  if [ -f "$sqlmap_log" ]; then
-    sqlmap_injectable=$(grep -c "injectable" "$sqlmap_log" 2>/dev/null || echo "0")
-    echo "  Injectable parameters found: $sqlmap_injectable"
-  else
-    echo "  Report not found"
-  fi
-fi
-echo ""
-echo "=== End of Summary ==="
+console.log('=== DAST Multi-Tool Results Summary ===')
+console.log('')
+console.log('--- OWASP ZAP (Authenticated) ---')
+console.log(`  Total alert instances: ${zap.length}`)
+for (const [risk, count] of Object.entries(groupByRisk(zap)).sort()) console.log(`  ${risk}: ${count}`)
+console.log(`  URLs discovered: ${zapUrls.length}`)
+console.log('')
+console.log('--- Nuclei-compatible template checks ---')
+console.log(`  Total matches: ${nuclei.total}`)
+for (const item of nuclei.bySeverity) console.log(`  ${item.severity}: ${item.count}`)
+console.log('')
+console.log('--- Nikto-compatible HTTP checks ---')
+console.log(`  Total findings: ${nikto.total}`)
+console.log('')
+console.log('--- SQL injection validation ---')
+console.log(`  Injectable parameters: ${sqlmap.injectableParameters}`)
+console.log(`  Extracted user rows: ${sqlmap.extractedUserRows}`)
+console.log('')
+console.log('=== End of Summary ===')
+NODE

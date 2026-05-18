@@ -1,0 +1,36 @@
+﻿{
+    "injectableParameters":  2,
+    "extractedUserRows":  19,
+    "firstUsers":  [
+                       {
+                           "id":  1,
+                           "description":  "admin@juice-sh.op",
+                           "price":  "0192023a7bbd73250516f069df18b500",
+                           "deluxePrice":  "admin"
+                       },
+                       {
+                           "id":  2,
+                           "description":  "jim@juice-sh.op",
+                           "price":  "e541ca7ecf72b8d1286474fc613e5e45",
+                           "deluxePrice":  "customer"
+                       },
+                       {
+                           "id":  3,
+                           "description":  "bender@juice-sh.op",
+                           "price":  "0c36e517e3fa95aabf1bbffc6744a4ef",
+                           "deluxePrice":  "customer"
+                       },
+                       {
+                           "id":  5,
+                           "description":  "ciso@juice-sh.op",
+                           "price":  "861917d5fa5f1172f931dc700d81a8fb",
+                           "deluxePrice":  "deluxe"
+                       },
+                       {
+                           "id":  6,
+                           "description":  "support@juice-sh.op",
+                           "price":  "3869433d74e3d0c86fd25562f836bc82",
+                           "deluxePrice":  "admin"
+                       }
+                   ]
+}

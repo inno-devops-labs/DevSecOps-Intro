@@ -1,0 +1,7 @@
+﻿{
+    "authentication":  {
+                           "token":  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIiLCJwcm9maWxlSW1hZ2UiOiJhc3NldHMvcHVibGljL2ltYWdlcy91cGxvYWRzL2RlZmF1bHRBZG1pbi5wbmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDUtMTggMTA6MjY6MTEuMjYyICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDUtMTggMTA6MjY6MTEuMjYyICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc3OTEwOTI3Mn0.buWFf-jYxrDI6AgWq7KLX10D04hM1Xcp6_ex7je5E6f6jnlyjp9Aki0iuB9rARHQlnuTdMWfD4Y_i8ir8lm-0r5SW-2ysbLfYdBJRrm8mPBZlmuiN0qAwVyYNFisCtw7RfMuFjuw2O9yZEr6nzvvuT8C4zoQtJ5Rp_kYwC0ovl8",
+                           "bid":  1,
+                           "umail":  "admin@juice-sh.op"
+                       }
+}

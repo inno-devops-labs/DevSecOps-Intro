@@ -1,22 +1,15 @@
-=== SAST/DAST Correlation Report ===
-Security Testing Results Summary:
+﻿=== SAST/DAST Correlation Report ===
 
-SAST (Semgrep): 87 code-level findings
-DAST (ZAP authenticated): 24 alerts
-DAST (Nuclei): 18 template matches
-DAST (Nikto): 12 server issues
-DAST (SQLmap): 2 SQL injection vulnerabilities
+SAST findings: 8
+ZAP no-auth: 30 URLs, 73 alert instances
+ZAP authenticated: 113 URLs, 560 alert instances
+Nuclei-compatible checks: 8 matches
+Nikto-compatible checks: 9 findings
+SQL injection validation: 2 injectable parameters, 19 extracted user rows
 
-Key Insights:
+Combined DAST finding count used in submission: 579
 
-SAST (Static Analysis):
-  - Finds code-level vulnerabilities before deployment
-  - Detects: hardcoded secrets, SQL injection patterns, insecure crypto
-  - Fast feedback in development phase
-
-DAST (Dynamic Analysis):
-  - Finds runtime configuration and deployment issues
-  - Detects: missing security headers, authentication flaws, server misconfigs
-  - Authenticated scanning reveals 60%+ more attack surface
-
-Recommendation: Use BOTH approaches for comprehensive security coverage
+Correlation:
+- SAST and DAST both confirm SQL injection in routes/search.ts and /rest/products/search?q.
+- SAST finds hardcoded RSA private key, MD5 hashing, hardcoded HMAC secret, eval/yaml.load patterns that black-box scans cannot inspect.
+- DAST finds runtime CSP/CORS/header/directory-listing issues and proves SQL injection exploitability with 19 user rows extracted.
