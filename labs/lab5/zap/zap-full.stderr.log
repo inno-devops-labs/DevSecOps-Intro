@@ -1,0 +1,38 @@
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences <init>
+WARNING: Could not create windows registry node Software\JavaSoft\Prefs\owasp at root 0xcf4. Windows RegCreateKeyEx(...) returned error code 5.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences WindowsRegOpenKey1
+WARNING: Trying to recreate Windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001.
+May 18, 2026 3:52:48 PM java.util.prefs.WindowsPreferences openKey
+WARNING: Could not open windows registry node Software\JavaSoft\Prefs\owasp\jbrofuzz at root 0xffffffff80000001. Windows RegOpenKey(...) returned error code 2.

@@ -1,17 +1,9 @@
 ﻿{
-    "total":  8,
+    "total":  1,
     "bySeverity":  [
                        {
-                           "severity":  "medium",
-                           "count":  3
-                       },
-                       {
-                           "severity":  "low",
-                           "count":  1
-                       },
-                       {
                            "severity":  "info",
-                           "count":  4
+                           "count":  1
                        }
                    ]
 }

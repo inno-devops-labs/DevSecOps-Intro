@@ -1,0 +1,4 @@
+
+C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\tools\zap\core\ZAP_2.17.0>if exist "C:\Users\zhidk\ZAP\.ZAP_JVM.properties" (set /p jvmopts= 0<"C:\Users\zhidk\ZAP\.ZAP_JVM.properties" )  else (set jvmopts=-Xmx512m ) 
+
+C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\tools\zap\core\ZAP_2.17.0>java -Xmx512m -jar zap-2.17.0.jar -daemon -host 127.0.0.1 -port 8090 -config api.disablekey=true -dir C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\zap\home 

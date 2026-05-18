@@ -1,0 +1,1655 @@
+663 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\config.xml
+903 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\session
+909 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\dirbuster
+913 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\fuzzers
+915 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin
+1044 [main] INFO  org.zaproxy.zap.DaemonBootstrap - ZAP 2.17.0 started 18/05/2026, 15:45:15 with home: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\ cores: 16 maxMemory: 1 GB
+1086 [main] INFO  org.parosproxy.paros.common.AbstractParam - Setting config api.disablekey = true was null
+2189 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Installed add-ons: [[id=ascanrules, version=78.0.0], [id=bruteforce, version=20.0.0], [id=callhome, version=0.20.0], [id=commonlib, version=1.39.0], [id=database, version=0.9.0], [id=diff, version=18.0.0], [id=gettingStarted, version=20.0.0], [id=help, version=22.0.0], [id=invoke, version=17.0.0], [id=network, version=0.25.0], [id=oast, version=0.24.0], [id=onlineMenu, version=15.0.0], [id=pscan, version=0.6.0], [id=pscanrules, version=70.0.0], [id=quickstart, version=53.0.0], [id=reports, version=0.43.0], [id=reveal, version=10.0.0], [id=scanpolicies, version=0.7.0], [id=spider, version=0.18.0], [id=tips, version=16.0.0]]
+2191 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Loading extensions
+2784 [ZAP-daemon] INFO  org.zaproxy.addon.network.internal.TlsUtils - Using supported SSL/TLS protocols: [TLSv1.2, TLSv1.3]
+3050 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Extensions loaded
+3239 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Auto-update Extension - Allows ZAP to check for updates
+3248 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Options Extension - Options Extension
+3249 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Edit Menu Extension - Edit Menu Extension
+3249 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing API Extension - Provides a rest based API for controlling and accessing ZAP
+3260 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing History Extension - History Extension
+3262 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionReveal - Show hidden fields and enable disabled fields
+3263 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Search Extension - Search messages for strings and regular expressions
+3264 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Breakpoint Extension - Allows you to intercept and modify requests and responses
+3267 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Extension - Passive scanner
+3267 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alerts Extension - Allows you to view and manage alerts
+3269 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Extension - Active scanner, heavily based on the original Paros active scanner, but with additional tests added
+3280 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Standard Menus Extension - A set of common popup menus for miscellaneous tasks
+3281 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionBruteForce - Forced browsing of files and directories using code from the OWASP DirBuster tool
+3283 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Compare Extension - Compares 2 sessions and generates an HTML file showing the differences
+3283 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionInvoke - Invoke external applications passing context related information such as URLs and parameters
+3284 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Anti-CSRF Extension - Handles anti cross site request forgery (CSRF) tokens
+3291 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Extension - Authentication Extension
+3308 [ZAP-daemon] INFO  org.zaproxy.zap.extension.authentication.ExtensionAuthentication - Loaded authentication method types: [Form-based Authentication, HTTP/NTLM Authentication, Manual Authentication, Script-based Authentication, JSON-based Authentication]
+3312 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Users Extension - Users Extension
+3312 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Parameters Extension - Summarise and analyse FORM and URL parameters as well as cookies
+3314 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Script Extension - Script integration
+3325 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Forced User Extension - Forced User Extension
+3326 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Sessions Extension - Extension handling HTTP sessions
+3328 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionDiff - ExtensionDiff
+3329 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Post Table View Extension - HTTP Panel Post Table View Extension
+3329 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Session Management Extension - Session Management Extension
+3334 [ZAP-daemon] INFO  org.zaproxy.zap.extension.sessions.ExtensionSessionManagement - Loaded session management method types: [Cookie-based Session Management, HTTP Authentication Session Management, Script-based Session Management]
+3335 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Form Table View Extension - HTTP Panel Form Table View Extension
+3336 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Core UI Extension - Core UI related functionality.
+3336 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authorization Extension - Authorization Extension
+3337 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Refresh Sites Tree Extension - Adds menu item to refresh the Sites tree
+3338 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Help Extension - ZAP User Guide
+3338 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Call Home - Handles all of the calls to ZAP services
+3340 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Network Extension - Provides core networking capabilities.
+3372 [ZAP-daemon] INFO  org.zaproxy.addon.network.ConnectionOptions - Unsafe SSL/TLS renegotiation disabled.
+3375 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Extension Configuration Extension - Allows you to configure which extensions are loaded when ZAP starts
+3376 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Combined HTTP Panels Extension - Combined HTTP Panels Extension
+3376 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Hex View Extension - HTTP Panel Hex View Extension
+3377 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Image View Extension - HTTP Panel Image View Extension
+3377 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Query Table View Extension - HTTP Panel Query Table View Extension
+3379 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Syntax Highlighter View Extension - HTTP Panel Syntax Highlighter View Extension
+3379 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Keyboard Configuration Extension - Adds support for configurable keyboard shortcuts for all of the ZAP menus.
+3380 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Scanner Rule Configuration Extension - Active and passive rule configuration
+3383 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Statistics Extension - Statistics
+3385 [ZAP-daemon] INFO  org.zaproxy.zap.extension.stats.ExtensionStats - Start recording in memory stats
+3387 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Custom Pages Extension - Custom Pages Definition
+3387 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Rules - Release status active scan rules
+3388 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Common Library - A library of shared functionality
+3389 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Database Extension - Provides databases and persistence capabilities.
+3390 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionGettingStarted - The ZAP Getting Started Guide
+3391 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Out-of-band Application Security Testing - Adds Out-of-band Application Security Testing functionality.
+3405 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionOnlineMenu - The Online menu links
+3406 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scanner Extension - Provides core passive scanning capabilities.
+3431 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Rules - Release status passive scan rules.
+3433 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start panel  - Adds the Quick Start panel for scanning and exploring applications
+3434 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Spider Integration - Adds the option to use the traditional Spider in the Quick Start scan.
+3436 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Report Generator - Templated and themed report generation functionality
+3438 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Spider Extension - Spider used for automatically finding URIs on a site.
+3469 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionTipsAndTricks - Tips and Tricks
+4798 [ZAP-daemon] INFO  org.zaproxy.addon.oast.services.callback.CallbackService - Started callback service on 0.0.0.0:56216
+5101 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Anti-clickjacking Header
+5102 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Application Error Disclosure
+5102 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Big Redirect Detected (Potential Sensitive Information Leak)
+5102 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Re-examine Cache-control Directives
+5103 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Charset Mismatch
+5103 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Content Security Policy (CSP) Header Not Set
+5104 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: CSP
+5104 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Content-Type Header Missing
+5105 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie No HttpOnly Flag
+5105 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Loosely Scoped Cookie
+5105 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie without SameSite Attribute
+5105 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie Without Secure Flag
+5106 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cross-Domain Misconfiguration
+5106 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cross-Domain JavaScript Source File Inclusion
+5107 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Absence of Anti-CSRF Tokens
+5107 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Directory Browsing
+5108 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Hash Disclosure
+5108 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Heartbleed OpenSSL Vulnerability (Indicative)
+5108 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: In Page Banner Information Leak
+5109 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Private IP Disclosure
+5109 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Session ID in URL Rewrite
+5110 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Debug Error Messages
+5110 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Sensitive Information in URL
+5110 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Sensitive Information in HTTP Referrer Header
+5111 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Suspicious Comments
+5111 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Weak Authentication Method
+5111 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTP to HTTPS Insecure Transition in Form Post
+5112 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTPS to HTTP Insecure Transition in Form Post
+5112 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Insecure JSF ViewState
+5113 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Java Serialization Object
+5113 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Reverse Tabnabbing
+5114 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Secure Pages Include Mixed Content
+5114 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Modern Web Application
+5114 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: PII Disclosure
+5114 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Script Served From Malicious Domain (polyfill)
+5115 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Retrieved from Cache
+5115 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTP Server Response Header
+5115 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Strict-Transport-Security Header
+5117 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Sub Resource Integrity Attribute Missing
+5117 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Timestamp Disclosure
+5117 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable Charset
+5118 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie Poisoning
+5118 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable HTML Element Attribute (Potential XSS)
+5118 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable JavaScript Event (XSS)
+5118 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Off-site Redirect
+5119 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Username Hash Found
+5119 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Viewstate
+5119 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-AspNet-Version Response Header
+5120 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Backend-Server Header Information Leak
+5120 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-ChromeLogger-Data (XCOLD) Header Information Leak
+5121 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Content-Type-Options Header Missing
+5121 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Debug-Token Information Leak
+5121 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+5121 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: ZAP is Out of Date
+5123 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Stats Passive Scan Rule
+5127 [ZAP-daemon] INFO  org.zaproxy.addon.network.ExtensionNetwork - Creating new root CA certificate.
+5924 [ZAP-daemon] INFO  org.zaproxy.addon.network.ExtensionNetwork - New root CA certificate created.
+7973 [ZAP-daemon] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - There is/are 9 newer addons
+21714 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon quickstart v56.0.0
+21730 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon quickstart v56.0.0
+21736 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\API.policy
+21740 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\API.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21743 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Default Policy.policy
+21746 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Default Policy.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21747 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Dev CICD.policy
+21750 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Dev CICD.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21751 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Dev Full.policy
+21754 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Dev Full.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21755 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Dev Standard.policy
+21758 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Dev Standard.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21760 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Pen Test.policy
+21764 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\Pen Test.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21766 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\QA CICD.policy
+21769 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\QA CICD.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21770 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\QA Full.policy
+21774 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\QA Full.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21776 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\QA Standard.policy
+21779 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\policies\QA Standard.policy
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21785 [ZAP-DownloadInstaller] WARN  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - It's recommended to restart ZAP. Not all add-ons were successfully uninstalled: [[id=scanpolicies, version=0.7.0]]
+21790 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\json\hidden_files.json
+21795 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\json\hidden_files.json
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+21798 [ZAP-DownloadInstaller] WARN  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - It's recommended to restart ZAP. Not all add-ons were successfully uninstalled: [[id=ascanrules, version=78.0.0]]
+21809 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon spider v0.20.0
+21837 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon spider v0.20.0
+22197 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon commonlib v1.41.0
+22250 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Stats Passive Scan Rule
+22620 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Anti-clickjacking Header
+22621 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Application Error Disclosure
+22622 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Big Redirect Detected (Potential Sensitive Information Leak)
+22622 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Re-examine Cache-control Directives
+22623 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Charset Mismatch
+22623 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Content Security Policy (CSP) Header Not Set
+22624 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: CSP
+22624 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Content-Type Header Missing
+22625 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie No HttpOnly Flag
+22625 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Loosely Scoped Cookie
+22625 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie without SameSite Attribute
+22627 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie Without Secure Flag
+22627 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cross-Domain Misconfiguration
+22627 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cross-Domain JavaScript Source File Inclusion
+22628 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Absence of Anti-CSRF Tokens
+22628 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Directory Browsing
+22628 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Hash Disclosure
+22628 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Heartbleed OpenSSL Vulnerability (Indicative)
+22629 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: In Page Banner Information Leak
+22629 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Private IP Disclosure
+22630 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Session ID in URL Rewrite
+22630 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Debug Error Messages
+22631 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Sensitive Information in URL
+22631 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Sensitive Information in HTTP Referrer Header
+22631 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Suspicious Comments
+22632 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Weak Authentication Method
+22632 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTP to HTTPS Insecure Transition in Form Post
+22632 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTPS to HTTP Insecure Transition in Form Post
+22632 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Insecure JSF ViewState
+22633 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Java Serialization Object
+22634 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Reverse Tabnabbing
+22634 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Secure Pages Include Mixed Content
+22634 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Modern Web Application
+22635 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: PII Disclosure
+22635 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Script Served From Malicious Domain (polyfill)
+22637 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Retrieved from Cache
+22637 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTP Server Response Header
+22638 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Strict-Transport-Security Header
+22638 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Sub Resource Integrity Attribute Missing
+22639 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Timestamp Disclosure
+22639 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable Charset
+22639 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie Poisoning
+22640 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable HTML Element Attribute (Potential XSS)
+22640 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable JavaScript Event (XSS)
+22640 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Off-site Redirect
+22641 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Username Hash Found
+22641 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Viewstate
+22641 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-AspNet-Version Response Header
+22642 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Backend-Server Header Information Leak
+22642 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-ChromeLogger-Data (XCOLD) Header Information Leak
+22642 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Content-Type-Options Header Missing
+22643 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Debug-Token Information Leak
+22643 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+22643 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: ZAP is Out of Date
+22784 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon commonlib v1.41.0
+23146 [ZAP-DownloadInstaller] INFO  org.parosproxy.paros.network.SSLConnector - Reading supported SSL/TLS protocols...
+23147 [ZAP-DownloadInstaller] INFO  org.parosproxy.paros.network.SSLConnector - Using a SSLEngine...
+23151 [ZAP-DownloadInstaller] INFO  org.parosproxy.paros.network.SSLConnector - Done reading supported SSL/TLS protocols: [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3]
+27303 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\pkcs11-drivers.xml
+27306 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\pkcs11-drivers.xml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27309 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - An error occurred while uninstalling libraries for [id=network, version=0.25.0]
+java.nio.file.AccessDeniedException: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\addOnData\network\0.25.0\libs\bcmail-jdk18on-1.83.jar
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:89)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:273)
+	at java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:104)
+	at java.base/java.nio.file.Files.delete(Files.java:1152)
+	at org.zaproxy.zap.control.AddOnInstaller$1.visitFile(AddOnInstaller.java:621)
+	at org.zaproxy.zap.control.AddOnInstaller$1.visitFile(AddOnInstaller.java:616)
+	at java.base/java.nio.file.Files.walkFileTree(Files.java:2786)
+	at java.base/java.nio.file.Files.walkFileTree(Files.java:2857)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteDir(AddOnInstaller.java:614)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnLibs(AddOnInstaller.java:583)
+	at org.zaproxy.zap.control.AddOnLoader.deleteAddOn(AddOnLoader.java:754)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:716)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27312 [ZAP-DownloadInstaller] WARN  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - It's recommended to restart ZAP. Not all add-ons were successfully uninstalled: [[id=network, version=0.25.0]]
+27316 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\xml\URL-information-disclosure-messages.txt
+27319 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\xml\URL-information-disclosure-messages.txt
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27320 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\xml\application_errors.xml
+27323 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\xml\application_errors.xml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27324 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\xml\debug-error-messages.txt
+27327 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\xml\debug-error-messages.txt
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27330 [ZAP-DownloadInstaller] WARN  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - It's recommended to restart ZAP. Not all add-ons were successfully uninstalled: [[id=pscanrules, version=70.0.0]]
+27395 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\Messages.properties
+27397 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27397 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\report.html
+27400 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\report.html
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27401 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\Chart.min.css
+27403 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\Chart.min.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27404 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\Chart.min.js
+27406 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\Chart.min.js
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27407 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\bootstrap.bundle.min.js
+27409 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\bootstrap.bundle.min.js
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27410 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\bootstrap.min.css
+27413 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\bootstrap.min.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27414 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\main.css
+27416 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\main.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27417 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\main.js
+27420 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\main.js
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27421 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\normalize.css
+27425 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\normalize.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27426 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\zap-by-checkmarx.png
+27429 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\resources\zap-by-checkmarx.png
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27431 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\template.yaml
+27435 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\high-level-report\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27436 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\Messages.properties
+27439 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27440 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\report.html
+27444 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\report.html
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27445 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\chart.min.css
+27448 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\chart.min.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27450 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\chart.min.js
+27454 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\chart.min.js
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27455 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\common.css
+27458 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\common.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27460 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\console.css
+27463 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\console.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27465 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\construction.css
+27468 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\construction.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27469 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\corporate.css
+27473 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\corporate.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27474 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\marketing.css
+27478 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\marketing.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27479 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\mountain.css
+27483 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\mountain.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27484 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\mountain.jpg
+27487 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\mountain.jpg
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27489 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\nature.css
+27492 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\nature.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27493 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\ocean.css
+27495 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\ocean.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27496 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\plutonium.css
+27501 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\plutonium.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27502 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\skyline.css
+27505 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\skyline.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27506 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\skyline.jpg
+27510 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\skyline.jpg
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27511 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\technology.css
+27513 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\technology.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27515 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\zap32x32.png
+27517 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\resources\zap32x32.png
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27518 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\template.yaml
+27521 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\modern\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27523 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\Messages.properties
+27526 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27527 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\report.html
+27531 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\report.html
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27532 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\normalize\LICENSE.md
+27535 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\normalize\LICENSE.md
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27536 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\normalize\normalize.css
+27540 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\normalize\normalize.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27541 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\themes\original\colors.css
+27544 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\themes\original\colors.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27545 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\themes\original\main.css
+27548 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\themes\original\main.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27550 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\zap32x32.png
+27555 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\resources\zap32x32.png
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27556 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\template.yaml
+27560 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\risk-confidence-html\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27561 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\sarif-json\README.md
+27566 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\sarif-json\README.md
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27569 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\sarif-json\report.json
+27573 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\sarif-json\report.json
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27574 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\sarif-json\template.yaml
+27578 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\sarif-json\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27579 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\Messages.properties
+27584 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27585 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\report.html
+27590 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\report.html
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27591 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\Chart.min.css
+27594 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\Chart.min.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27595 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\Chart.min.js
+27601 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\Chart.min.js
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27602 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\common.css
+27605 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\common.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27606 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\dark.css
+27610 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\dark.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27611 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\light.css
+27614 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\light.css
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27615 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\zap-by-checkmarx.png
+27619 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\resources\zap-by-checkmarx.png
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27620 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\template.yaml
+27623 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html-plus\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27625 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html\Messages.properties
+27629 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27630 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html\report.html
+27633 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html\report.html
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27635 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html\template.yaml
+27639 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-html\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27640 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json-plus\Messages.properties
+27644 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json-plus\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27645 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json-plus\report.json
+27650 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json-plus\report.json
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27651 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json-plus\template.yaml
+27655 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json-plus\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27656 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json\report.json
+27661 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json\report.json
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27662 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json\template.yaml
+27666 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-json\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27667 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-md\Messages.properties
+27671 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-md\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27672 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-md\report.md
+27677 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-md\report.md
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27678 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-md\template.yaml
+27684 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-md\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27684 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-pdf\Messages.properties
+27688 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-pdf\Messages.properties
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27691 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-pdf\report.html
+27694 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-pdf\report.html
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27696 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-pdf\template.yaml
+27703 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-pdf\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27704 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml-plus\report.xml
+27708 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml-plus\report.xml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27710 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml-plus\template.yaml
+27713 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml-plus\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27715 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml\report.xml
+27719 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml\report.xml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27720 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to delete: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml\template.yaml
+27724 [ZAP-DownloadInstaller] ERROR org.zaproxy.zap.control.AddOnInstaller - Failed to uninstall file C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\reports\traditional-xml\template.yaml
+java.lang.NullPointerException: Cannot read the array length because "<local1>" is null
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirs(AddOnInstaller.java:866)
+	at org.zaproxy.zap.control.AddOnInstaller.deleteEmptyDirsCreatedForAddOnFiles(AddOnInstaller.java:855)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnFiles(AddOnInstaller.java:801)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:222)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27729 [ZAP-DownloadInstaller] WARN  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - It's recommended to restart ZAP. Not all add-ons were successfully uninstalled: [[id=reports, version=0.43.0]]
+27735 [ZAP-DownloadInstaller] ERROR org.zaproxy.addon.callhome.ExtensionCallHome - Expected '200 OK' but got '0 '
+java.io.IOException: Expected '200 OK' but got '0 '
+	at org.zaproxy.addon.callhome.ExtensionCallHome.sendServiceRequest(ExtensionCallHome.java:219)
+	at org.zaproxy.addon.callhome.ExtensionCallHome.uploadTelemetrySessionData(ExtensionCallHome.java:378)
+	at org.zaproxy.addon.callhome.ExtensionCallHome.destroy(ExtensionCallHome.java:473)
+	at org.parosproxy.paros.extension.ExtensionLoader.removeExtension(ExtensionLoader.java:1574)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnExtension(AddOnInstaller.java:368)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstallAddOnExtensions(AddOnInstaller.java:343)
+	at org.zaproxy.zap.control.AddOnInstaller.softUninstall(AddOnInstaller.java:252)
+	at org.zaproxy.zap.control.AddOnInstaller.uninstall(AddOnInstaller.java:220)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOnImpl(AddOnLoader.java:706)
+	at org.zaproxy.zap.control.AddOnLoader.removeAddOn(AddOnLoader.java:646)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstall(ExtensionAutoUpdate.java:1278)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOns(ExtensionAutoUpdate.java:1652)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.uninstallAddOn(ExtensionAutoUpdate.java:1638)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.install(ExtensionAutoUpdate.java:1229)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.lambda$installNewExtensions$1(ExtensionAutoUpdate.java:659)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate.installNewExtensions(ExtensionAutoUpdate.java:655)
+	at org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate$3.run(ExtensionAutoUpdate.java:574)
+27740 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon callhome v0.21.0
+27750 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon callhome v0.21.0
+27802 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\scanpolicies-alpha-0.8.0.zap
+27803 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\callhome-release-0.21.0.zap
+27803 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\quickstart-release-56.zap
+27803 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\pscanrules-release-73.zap
+27804 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\ascanrules-release-82.zap
+27804 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\spider-release-0.20.0.zap
+27804 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\commonlib-release-1.41.0.zap
+27804 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\reports-release-0.45.0.zap
+27805 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\home\plugin\network-beta-0.27.0.zap
+27805 [ZAP-daemon] ERROR org.zaproxy.zap.DaemonBootstrap - Unsupported option '-host'.;
+java.lang.Exception: Unsupported option '-host'.;
+	at org.parosproxy.paros.CommandLine.parse(CommandLine.java:365)
+	at org.parosproxy.paros.CommandLine.parse(CommandLine.java:247)
+	at org.parosproxy.paros.extension.ExtensionLoader.hookCommandLineListener(ExtensionLoader.java:1131)
+	at org.zaproxy.zap.DaemonBootstrap$1.run(DaemonBootstrap.java:91)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

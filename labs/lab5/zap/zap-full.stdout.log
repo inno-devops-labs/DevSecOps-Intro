@@ -1,0 +1,544 @@
+638 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\fullhome2\config.xml
+787 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\fullhome2\session
+936 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\fullhome2\dirbuster
+951 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\fullhome2\fuzzers
+952 [main] INFO  org.parosproxy.paros.Constant - Creating directory C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\fullhome2\plugin
+1057 [main] INFO  org.zaproxy.zap.DaemonBootstrap - ZAP 2.17.0 started 18/05/2026, 15:52:40 with home: C:\Users\zhidk\OneDrive\F0A5~1\Study\DEVSEC~1\DEVSEC~1\labs\lab5\zap\fullhome2\ cores: 16 maxMemory: 1 GB
+1087 [main] INFO  org.parosproxy.paros.common.AbstractParam - Setting config api.disablekey = true was null
+1088 [main] INFO  org.parosproxy.paros.common.AbstractParam - Setting config api.addrs.addr.name = .* was null
+1089 [main] INFO  org.parosproxy.paros.common.AbstractParam - Setting config api.addrs.addr.regex = true was null
+4862 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Installed add-ons: [[id=alertFilters, version=26.0.0], [id=ascanrules, version=78.0.0], [id=authhelper, version=0.34.0], [id=automation, version=0.58.0], [id=bruteforce, version=20.0.0], [id=callhome, version=0.20.0], [id=client, version=0.20.0], [id=commonlib, version=1.39.0], [id=database, version=0.9.0], [id=diff, version=18.0.0], [id=directorylistv1, version=9.0.0], [id=domxss, version=23.0.0], [id=encoder, version=1.8.0], [id=exim, version=0.16.0], [id=formhandler, version=6.8.0], [id=fuzz, version=13.16.0], [id=gettingStarted, version=20.0.0], [id=graaljs, version=0.12.0], [id=graphql, version=0.29.0], [id=help, version=22.0.0], [id=hud, version=0.19.0], [id=insights, version=0.0.1], [id=invoke, version=17.0.0], [id=network, version=0.25.0], [id=oast, version=0.24.0], [id=onlineMenu, version=15.0.0], [id=openapi, version=48.0.0], [id=postman, version=0.9.0], [id=pscan, version=0.6.0], [id=pscanrules, version=70.0.0], [id=quickstart, version=53.0.0], [id=replacer, version=21.0.0], [id=reports, version=0.43.0], [id=requester, version=7.9.0], [id=retest, version=0.11.0], [id=retire, version=0.52.0], [id=reveal, version=10.0.0], [id=scanpolicies, version=0.7.0], [id=scripts, version=45.17.0], [id=selenium, version=15.43.0], [id=sequence, version=9.0.0], [id=soap, version=29.0.0], [id=spider, version=0.18.0], [id=spiderAjax, version=23.29.0], [id=tips, version=16.0.0], [id=webdriverlinux, version=169.0.0], [id=webdrivermacos, version=169.0.0], [id=webdriverwindows, version=170.0.0], [id=websocket, version=35.0.0], [id=zest, version=48.11.0]]
+4863 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Loading extensions
+5358 [ZAP-daemon] INFO  org.zaproxy.addon.network.internal.TlsUtils - Using supported SSL/TLS protocols: [TLSv1.2, TLSv1.3]
+5817 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Extensions loaded
+6372 [ZAP-daemon] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:hsqldb:file:C:/Users/zhidk/OneDrive/F0A5~1/Study/DEVSEC~1/DEVSEC~1/labs/lab5/zap/fullhome2/session/untitled1 (HSQL Database Engine 2.7)
+6435 [ZAP-daemon] INFO  org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Schema history table "PUBLIC"."AUTHHELPER_FLYWAY_SCHEMA_HISTORY" does not exist yet
+6439 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 6 migrations (execution time 00:00.017s)
+6453 [ZAP-daemon] INFO  org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory - Creating Schema History table "PUBLIC"."AUTHHELPER_FLYWAY_SCHEMA_HISTORY" with baseline ...
+6508 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbBaseline - Successfully baselined schema with version: 0
+6532 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "PUBLIC": 0
+6557 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version "1 - Create tables"
+6584 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version "2 - Create storage tables"
+6600 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version "3 - Improve diags"
+6621 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version "4 - Web element selector"
+6637 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version "5 - Af plan"
+6655 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "PUBLIC" to version "6 - Auth report data"
+6675 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 6 migrations to schema "PUBLIC", now at version v6 (execution time 00:00.035s)
+9472 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Auto-update Extension - Allows ZAP to check for updates
+9477 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Options Extension - Options Extension
+9478 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Edit Menu Extension - Edit Menu Extension
+9478 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing API Extension - Provides a rest based API for controlling and accessing ZAP
+9486 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing History Extension - History Extension
+9487 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionReveal - Show hidden fields and enable disabled fields
+9488 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Search Extension - Search messages for strings and regular expressions
+9490 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Breakpoint Extension - Allows you to intercept and modify requests and responses
+9493 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Extension - Passive scanner
+9493 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alerts Extension - Allows you to view and manage alerts
+9496 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Extension - Active scanner, heavily based on the original Paros active scanner, but with additional tests added
+9504 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionSequence - ExtensionSequence
+9505 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Standard Menus Extension - A set of common popup menus for miscellaneous tasks
+9505 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionBruteForce - Forced browsing of files and directories using code from the OWASP DirBuster tool
+9508 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Compare Extension - Compares 2 sessions and generates an HTML file showing the differences
+9509 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionInvoke - Invoke external applications passing context related information such as URLs and parameters
+9510 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Anti-CSRF Extension - Handles anti cross site request forgery (CSRF) tokens
+9516 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Extension - Authentication Extension
+9524 [ZAP-daemon] INFO  org.zaproxy.zap.extension.authentication.ExtensionAuthentication - Loaded authentication method types: [Form-based Authentication, HTTP/NTLM Authentication, Manual Authentication, Script-based Authentication, JSON-based Authentication]
+9526 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Users Extension - Users Extension
+9528 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Parameters Extension - Summarise and analyse FORM and URL parameters as well as cookies
+9529 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Script Extension - Script integration
+9534 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionScripts - Scripting console, supports all JSR 223 scripting languages
+9544 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Forced User Extension - Forced User Extension
+9545 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Sessions Extension - Extension handling HTTP sessions
+9547 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionZest - Zest is a specialized scripting language, originally, from Mozilla specifically designed to be used in security tools
+9647 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionDiff - ExtensionDiff
+9649 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Post Table View Extension - HTTP Panel Post Table View Extension
+9650 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Encoder Addon - Adds support for scriptable encoders to ZAP.
+9650 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Session Management Extension - Session Management Extension
+9658 [ZAP-daemon] INFO  org.zaproxy.zap.extension.sessions.ExtensionSessionManagement - Loaded session management method types: [Cookie-based Session Management, HTTP Authentication Session Management, Script-based Session Management]
+9660 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Form Table View Extension - HTTP Panel Form Table View Extension
+9660 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSockets Support - Capture messages from WebSockets with the ability to set breakpoints.
+9688 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP/WSDL Support - Allows you to import a WSDL file containing operations which ZAP will access, adding them to the Sites tree.
+9692 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Core UI Extension - Core UI related functionality.
+9693 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authorization Extension - Authorization Extension
+9694 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Requester - Allows to manually edit and send messages.
+9708 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing AJAX Spider - AJAX Spider, uses Crawljax
+9717 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebDriver Provider - Provides WebDrivers to control several browsers using Selenium and includes HtmlUnit browser.
+9750 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Refresh Sites Tree Extension - Adds menu item to refresh the Sites tree
+9751 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Help Extension - ZAP User Guide
+9752 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Call Home - Handles all of the calls to ZAP services
+9754 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Network Extension - Provides core networking capabilities.
+9793 [ZAP-daemon] INFO  org.zaproxy.addon.network.ConnectionOptions - Unsafe SSL/TLS renegotiation disabled.
+9796 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Extension Configuration Extension - Allows you to configure which extensions are loaded when ZAP starts
+9797 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Combined HTTP Panels Extension - Combined HTTP Panels Extension
+9797 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Hex View Extension - HTTP Panel Hex View Extension
+9798 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Image View Extension - HTTP Panel Image View Extension
+9798 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Query Table View Extension - HTTP Panel Query Table View Extension
+9798 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Syntax Highlighter View Extension - HTTP Panel Syntax Highlighter View Extension
+9799 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Keyboard Configuration Extension - Adds support for configurable keyboard shortcuts for all of the ZAP menus.
+9799 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Scanner Rule Configuration Extension - Active and passive rule configuration
+9802 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Statistics Extension - Statistics
+9803 [ZAP-daemon] INFO  org.zaproxy.zap.extension.stats.ExtensionStats - Start recording in memory stats
+9804 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Custom Pages Extension - Custom Pages Definition
+9804 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionAlertFilters - Context alert rules filter
+9806 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alert Filters Automation - Alert Filters Automation Framework Integration
+9810 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Rules - Release status active scan rules
+9811 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Helper - Authentication Helper
+9818 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Client Spider Browser Based Authentication Support - Enables browser based authentication when performing an authenticated Client Spider scan.
+9820 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Helper Reports - Authentication Helper Reports
+9822 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing AJAX Spider Browser Based Authentication Support - Enables browser based authentication when performing an authenticated AJAX Spider scan.
+9824 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Automation Framework - Provides functionality to simplify using ZAP in an automated manner
+9827 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionClientIntegration - Client Side Integration
+9832 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Client Spider Automation - Client Spider Automation Framework Integration
+9835 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Client Zest Script Recording Support - Allows recording client events as Zest scripts.
+9837 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Common Library - A library of shared functionality
+9838 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Database Extension - Provides databases and persistence capabilities.
+9839 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionDomXSS - DOM XSS Active Scan Rule
+9927 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Import/Export - Import and Export functionality supporting multiple formats.
+9930 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Import/Export Automation - Import/Export Automation Framework Integration
+9933 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionFormHandler - This extension allows a user to change the default values used for generated content (e.g. spiders, importers).
+9937 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Advance Fuzzer - Provides the foundation for concrete message types (for example, HTTP, WebSockets) expose fuzzer implementations.
+9939 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Fuzzer - Allows to fuzz HTTP messages.
+9940 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionGettingStarted - The ZAP Getting Started Guide
+9941 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraalVM JavaScript Engine Extension - Provides the GraalVM JavaScript engine for ZAP scripting.
+9968 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionGraphQl - Allows you to inspect and attack GraphQL endpoints.
+9975 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraphQL Automation - GraphQL Automation Framework Integration
+9977 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraphQL Spider - GraphQL Spider Integration
+9978 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionHUD - Heads Up Display
+10294 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionHUDlaunch - ExtensionHUDlaunch
+10296 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionInsights - Insights Extension
+10299 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alert Filters Automation - Alert Filters Automation Framework Integration
+10301 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Insights Reports Extension - Adds Insights to the report data
+10302 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Out-of-band Application Security Testing - Adds Out-of-band Application Security Testing functionality.
+10315 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OAST Scripts - Adds OAST scripts.
+10316 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionOnlineMenu - The Online menu links
+10317 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Import - Allows you to spider and import OpenAPI (Swagger) definitions 
+10319 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Automation - OpenAPI Automation Framework Integration
+10321 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Spider - OpenAPI Spider Integration
+10325 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Postman Import - Allows you to spider and import Postman collections
+10326 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Postman Automation - Postman Automation Framework Integration
+10328 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scanner Extension - Provides core passive scanning capabilities.
+10351 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scanner Automation Framework Extension - Provides jobs and result data related to the passive scanner.
+10352 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Rules - Release status passive scan rules.
+10353 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start panel  - Adds the Quick Start panel for scanning and exploring applications
+10355 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Ajax Spider integration - Add the option to use the Ajax Spider in the Quick Start scan
+10356 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start HUD Integration - HUD integration for the quick start panel
+10356 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Browser Launcher - Launch browsers preset proxying through ZAP
+10357 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Spider Integration - Adds the option to use the traditional Spider in the Quick Start scan.
+10358 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Match and Replace - Easy way to replace strings in requests and responses
+10362 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Replacer Automation - Replacer Automation Framework Integration
+10364 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Report Generator - Templated and themed report generation functionality
+10367 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Report Generation Automation Integration - Report Generation Automation Integration
+10370 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Retest - Facilitates the verification of presence/absence of certain alerts.
+10371 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Scripts Automation Framework Integration - Scripts Automation
+10379 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Sequence Automation - Sequence Automation Framework Integration
+10384 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP Automation - SOAP Automation Framework Integration
+10387 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP Spider - SOAP Spider Integration
+10387 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Spider Extension - Spider used for automatically finding URIs on a site.
+10410 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Spider Automation - Spider Automation Integration
+10414 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Ajax Spider Automation - Ajax Spider Automation Framework Integration
+10416 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionTipsAndTricks - Tips and Tricks
+10417 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSocket Fuzzer - Allows to fuzz WebSocket messages.
+10417 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSocket Message Editor - Provides the WebSocket Message Editor dialogues.
+10906 [ZAP-daemon] ERROR org.zaproxy.addon.client.ExtensionClientIntegration - Failed to get or create Firefox profile zap-client-profile
+11149 [ZAP-daemon] INFO  org.zaproxy.addon.oast.services.callback.CallbackService - Started callback service on 0.0.0.0:65405
+11154 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Authentication Request Identified
+11156 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Session Management Response Identified
+11156 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Verification Request Identified
+11190 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Anti-clickjacking Header
+11191 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Application Error Disclosure
+11191 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Big Redirect Detected (Potential Sensitive Information Leak)
+11191 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Re-examine Cache-control Directives
+11192 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Charset Mismatch
+11193 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Content Security Policy (CSP) Header Not Set
+11193 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: CSP
+11194 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Content-Type Header Missing
+11194 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie No HttpOnly Flag
+11194 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Loosely Scoped Cookie
+11195 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie without SameSite Attribute
+11195 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie Without Secure Flag
+11195 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cross-Domain Misconfiguration
+11196 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cross-Domain JavaScript Source File Inclusion
+11196 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Absence of Anti-CSRF Tokens
+11196 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Directory Browsing
+11197 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Hash Disclosure
+11197 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Heartbleed OpenSSL Vulnerability (Indicative)
+11197 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: In Page Banner Information Leak
+11198 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Private IP Disclosure
+11198 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Session ID in URL Rewrite
+11198 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Debug Error Messages
+11199 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Sensitive Information in URL
+11199 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Sensitive Information in HTTP Referrer Header
+11200 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Information Disclosure - Suspicious Comments
+11200 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Weak Authentication Method
+11200 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTP to HTTPS Insecure Transition in Form Post
+11200 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTPS to HTTP Insecure Transition in Form Post
+11201 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Insecure JSF ViewState
+11202 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Java Serialization Object
+11202 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Reverse Tabnabbing
+11202 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Secure Pages Include Mixed Content
+11203 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Modern Web Application
+11203 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: PII Disclosure
+11203 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Script Served From Malicious Domain (polyfill)
+11203 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Retrieved from Cache
+11204 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: HTTP Server Response Header
+11204 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Strict-Transport-Security Header
+11204 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Sub Resource Integrity Attribute Missing
+11205 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Timestamp Disclosure
+11205 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable Charset
+11205 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Cookie Poisoning
+11206 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable HTML Element Attribute (Potential XSS)
+11206 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: User Controllable JavaScript Event (XSS)
+11207 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Off-site Redirect
+11207 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Username Hash Found
+11207 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Viewstate
+11208 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-AspNet-Version Response Header
+11208 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Backend-Server Header Information Leak
+11208 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-ChromeLogger-Data (XCOLD) Header Information Leak
+11209 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Content-Type-Options Header Missing
+11209 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: X-Debug-Token Information Leak
+11209 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+11210 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: ZAP is Out of Date
+11211 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Vulnerable JS Library (Powered by Retire.js)
+11213 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Script Passive Scan Rules
+11215 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: WSDL File Detection
+11216 [ZAP-daemon] INFO  org.zaproxy.addon.pscan.internal.ScanRuleManager - Loaded passive scan rule: Stats Passive Scan Rule
+11216 [ZAP-daemon] INFO  org.zaproxy.zap.extension.quickstart.ExtensionQuickStart - Shh! No check-for-news - silent mode enabled
+11216 [ZAP-daemon] INFO  org.zaproxy.addon.network.ExtensionNetwork - Creating new root CA certificate.
+11836 [ZAP-daemon] INFO  org.zaproxy.addon.network.ExtensionNetwork - New root CA certificate created.
+11851 [ZAP-daemon] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Shh! No check-for-update - silent mode enabled
+11852 [ZAP-daemon] INFO  org.zaproxy.addon.callhome.ExtensionCallHome - Shh! Silent mode or telemetry turned off
+11864 [ZAP-daemon] INFO  org.zaproxy.addon.network.ExtensionNetwork - ZAP is now listening on 127.0.0.1:8090
+46433 [ZAP-SpiderInitThread-0] INFO  org.zaproxy.addon.spider.SpiderThread - Starting spidering scan on http://localhost:3000 at 2026-05-18T15:53:25.723+0300
+46435 [ZAP-SpiderInitThread-0] INFO  org.zaproxy.addon.spider.Spider - Spider initializing...
+46446 [ZAP-SpiderInitThread-0] INFO  org.zaproxy.addon.spider.Spider - Starting spider...
+64636 [ZAP-SpiderThreadPool-0-thread-24] INFO  org.zaproxy.addon.spider.Spider - Spidering process is complete. Shutting down...
+64639 [ZAP-SpiderShutdownThread-0] INFO  org.zaproxy.addon.spider.SpiderThread - Spider scanning complete: true on http://localhost:3000 at 2026-05-18T15:53:43.930+0300
+103525 [ZAP-IO-Server-1-1] WARN  org.zaproxy.zap.extension.api.API - Bad request to API endpoint [/JSON/replacer/action/removeRule/] from [127.0.0.1]:
+org.zaproxy.zap.extension.api.ApiException: DOES_NOT_EXIST (description)
+	at org.zaproxy.zap.extension.replacer.ReplacerAPI.handleApiAction(ReplacerAPI.java:189)
+	at org.zaproxy.zap.extension.api.API.handleApiRequest(API.java:538)
+	at org.zaproxy.addon.network.internal.server.http.handlers.ZapApiHandler.handleApiRequest(ZapApiHandler.java:111)
+	at org.zaproxy.addon.network.internal.server.http.handlers.ZapApiHandler.handleRequest(ZapApiHandler.java:85)
+	at org.zaproxy.addon.network.internal.server.http.handlers.ZapApiHandler.handleMessage(ZapApiHandler.java:70)
+	at org.zaproxy.addon.network.internal.server.http.MainServerHandler.notifyMessageHandlers(MainServerHandler.java:151)
+	at org.zaproxy.addon.network.internal.server.http.MainServerHandler.processMessage(MainServerHandler.java:131)
+	at org.zaproxy.addon.network.internal.server.http.LocalServerHandler.processMessage(LocalServerHandler.java:67)
+	at org.zaproxy.addon.network.internal.server.http.MainServerHandler.process(MainServerHandler.java:94)
+	at org.zaproxy.addon.network.internal.server.http.MainServerHandler.lambda$channelRead0$0(MainServerHandler.java:82)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+103949 [ZAP-SpiderInitThread-1] INFO  org.zaproxy.addon.spider.SpiderThread - Starting spidering scan on http://localhost:3000 at 2026-05-18T15:54:23.240+0300
+103949 [ZAP-SpiderInitThread-1] INFO  org.zaproxy.addon.spider.Spider - Spider initializing...
+103956 [ZAP-SpiderInitThread-1] INFO  org.zaproxy.addon.spider.Spider - Starting spider...
+104105 [ZAP-SpiderThreadPool-1-thread-11] WARN  org.zaproxy.addon.spider.UrlCanonicalizer - Host could not be reliably evaluated from: https://pwning.owasp-juice.shop%5C (on base http://localhost:3000/rest/admin/application-configuration)
+105518 [ZAP-SpiderThreadPool-1-thread-7] WARN  org.zaproxy.addon.spider.UrlCanonicalizer - Host could not be reliably evaluated from: http://htmledit.squarefree.com%5C (on base http://localhost:3000/api/Challenges)
+110298 [ZAP-SpiderThreadPool-1-thread-15] INFO  org.zaproxy.addon.spider.Spider - Spidering process is complete. Shutting down...
+110301 [ZAP-SpiderShutdownThread-1] INFO  org.zaproxy.addon.spider.SpiderThread - Spider scanning complete: true on http://localhost:3000 at 2026-05-18T15:54:29.592+0300
+116059 [ZAP-IO-Server-1-1] INFO  org.parosproxy.paros.core.scanner.Scanner - scanner with ID 0 started
+116898 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - Scanning 113 node(s) from http://localhost:3000
+116899 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | PathTraversalScanRule strength MEDIUM threshold MEDIUM
+117773 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | PathTraversalScanRule in 0.875s with 30 message(s) sent and 0 alert(s) raised.
+117773 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | RemoteFileIncludeScanRule strength MEDIUM threshold MEDIUM
+118325 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | RemoteFileIncludeScanRule in 0.552s with 20 message(s) sent and 0 alert(s) raised.
+118325 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SourceCodeDisclosureWebInfScanRule strength MEDIUM threshold MEDIUM
+118335 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | ShellShockScanRule strength MEDIUM threshold MEDIUM
+119782 [ZAP-ActiveScanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SourceCodeDisclosureWebInfScanRule in 1.457s with 60 message(s) sent and 0 alert(s) raised.
+119783 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | ShellShockScanRule in 1.448s with 4 message(s) sent and 0 alert(s) raised.
+119784 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | HeartBleedActiveScanRule strength MEDIUM threshold MEDIUM
+119786 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SourceCodeDisclosureCve20121823ScanRule strength MEDIUM threshold MEDIUM
+119791 [ZAP-ActiveScanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | HeartBleedActiveScanRule in 0.007s with 3 message(s) sent and 0 alert(s) raised.
+126130 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SourceCodeDisclosureCve20121823ScanRule in 6.344s with 18 message(s) sent and 0 alert(s) raised.
+126131 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | RemoteCodeExecutionCve20121823ScanRule strength MEDIUM threshold MEDIUM
+128371 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | RemoteCodeExecutionCve20121823ScanRule in 2.241s with 226 message(s) sent and 0 alert(s) raised.
+128371 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | ExternalRedirectScanRule strength MEDIUM threshold MEDIUM
+129888 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | ExternalRedirectScanRule in 1.517s with 18 message(s) sent and 0 alert(s) raised.
+129888 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | ServerSideIncludeScanRule strength MEDIUM threshold MEDIUM
+130272 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | ServerSideIncludeScanRule in 0.384s with 8 message(s) sent and 0 alert(s) raised.
+130273 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | CrossSiteScriptingScanRule strength MEDIUM threshold MEDIUM
+130600 [ZAP-ActiveScanner-1] INFO  org.apache.hc.client5.http.impl.classic.ZapHttpRequestRetryExec - Recoverable I/O exception (java.net.SocketException) caught when processing request to {}->http://localhost:3000
+130669 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | CrossSiteScriptingScanRule in 0.396s with 10 message(s) sent and 0 alert(s) raised.
+130669 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | PersistentXssPrimeScanRule strength MEDIUM threshold MEDIUM
+130969 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | PersistentXssPrimeScanRule in 0.3s with 2 message(s) sent and 0 alert(s) raised.
+130970 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | PersistentXssSpiderScanRule strength MEDIUM threshold MEDIUM
+137791 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | PersistentXssSpiderScanRule in 6.821s with 113 message(s) sent and 0 alert(s) raised.
+137791 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | PersistentXssScanRule strength MEDIUM threshold MEDIUM
+138050 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | PersistentXssScanRule in 0.259s with 0 message(s) sent and 0 alert(s) raised.
+138052 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SqlInjectionScanRule strength MEDIUM threshold MEDIUM
+138638 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SqlInjectionScanRule in 0.588s with 25 message(s) sent and 1 alert(s) raised.
+138639 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SqlInjectionMySqlTimingScanRule strength MEDIUM threshold MEDIUM
+139141 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SqlInjectionMySqlTimingScanRule in 0.502s with 20 message(s) sent and 0 alert(s) raised.
+139142 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SqlInjectionHypersonicTimingScanRule strength MEDIUM threshold MEDIUM
+139833 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SqlInjectionHypersonicTimingScanRule in 0.692s with 20 message(s) sent and 0 alert(s) raised.
+139833 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SqlInjectionOracleTimingScanRule strength MEDIUM threshold MEDIUM
+140237 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SqlInjectionOracleTimingScanRule in 0.404s with 10 message(s) sent and 0 alert(s) raised.
+140238 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SqlInjectionPostgreSqlTimingScanRule strength MEDIUM threshold MEDIUM
+140633 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SqlInjectionPostgreSqlTimingScanRule in 0.396s with 10 message(s) sent and 0 alert(s) raised.
+140634 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SqlInjectionSqLiteTimingScanRule strength MEDIUM threshold MEDIUM
+141081 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SqlInjectionSqLiteTimingScanRule in 0.447s with 17 message(s) sent and 0 alert(s) raised.
+141082 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | DomXssScanRule strength MEDIUM threshold MEDIUM
+141780 [ZAP-ActiveScanner-23] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141781 [ZAP-ActiveScanner-31] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-27] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-28] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-18] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-25] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-29] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-30] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-24] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141780 [ZAP-ActiveScanner-26] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141782 [ZAP-ActiveScanner-9] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141786 [ZAP-ActiveScanner-10] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141840 [ZAP-ActiveScanner-13] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141867 [ZAP-ActiveScanner-6] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141875 [ZAP-ActiveScanner-17] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141888 [ZAP-ActiveScanner-2] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141895 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - skipped plugin [failed to start or connect to the browser] http://localhost:3000 | DomXssScanRule in 0.813s with 0 message(s) sent and 0 alert(s) raised.
+141896 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SqlInjectionMsSqlTimingScanRule strength MEDIUM threshold MEDIUM
+141935 [ZAP-ActiveScanner-5] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141986 [ZAP-ActiveScanner-20] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+141999 [ZAP-ActiveScanner-4] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142034 [ZAP-ActiveScanner-22] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142071 [ZAP-ActiveScanner-15] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142086 [ZAP-ActiveScanner-19] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142133 [ZAP-ActiveScanner-8] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142141 [ZAP-ActiveScanner-1] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142169 [ZAP-ActiveScanner-11] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142173 [ZAP-ActiveScanner-14] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142234 [ZAP-ActiveScanner-3] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142251 [ZAP-ActiveScanner-0] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142284 [ZAP-ActiveScanner-21] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142302 [ZAP-ActiveScanner-7] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142317 [ZAP-ActiveScanner-12] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142347 [ZAP-ActiveScanner-16] WARN  org.zaproxy.zap.extension.domxss.DomXssScanRule - Skipping scanner, failed to start browser: Could not start a new session. Response code 500. Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line 
+Host info: host: 'INNO_KIBORG', ip: '192.168.56.1'
+Build info: version: '4.39.0', revision: '126f156aee'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:firefoxOptions: {args: [-headless], prefs: {browser.tabs.documentchannel: false, devtools.jsonview.enabled: false, dom.serviceWorkers.enabled: true, network.captive-portal-service.enabled: false, network.proxy.allow_hijacking_localhost: true, network.proxy.http: 127.0.0.1, network.proxy.http_port: 49334, network.proxy.no_proxies_on: , network.proxy.share_proxy_settings: true, network.proxy.ssl: 127.0.0.1, network.proxy.ssl_port: 49334, network.proxy.type: 1, remote.active-protocols: 1}}, unhandledPromptBehavior: ignore, webSocketUrl: true}]}]
+142568 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SqlInjectionMsSqlTimingScanRule in 0.673s with 20 message(s) sent and 0 alert(s) raised.
+142569 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | Log4ShellScanRule strength MEDIUM threshold MEDIUM
+142572 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - skipped plugin [no Active Scan OAST service is selected] http://localhost:3000 | Log4ShellScanRule in 0.002s with 0 message(s) sent and 0 alert(s) raised.
+142572 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | Spring4ShellScanRule strength MEDIUM threshold MEDIUM
+142624 [ZAP-ActiveScanner-3] INFO  org.apache.hc.client5.http.impl.classic.ZapHttpRequestRetryExec - Recoverable I/O exception (java.net.SocketException) caught when processing request to {}->http://localhost:3000
+142625 [ZAP-ActiveScanner-8] INFO  org.apache.hc.client5.http.impl.classic.ZapHttpRequestRetryExec - Recoverable I/O exception (java.net.SocketException) caught when processing request to {}->http://localhost:3000
+149895 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | Spring4ShellScanRule in 7.323s with 227 message(s) sent and 0 alert(s) raised.
+149895 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | React2ShellScanRule strength MEDIUM threshold MEDIUM
+149897 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | CodeInjectionScanRule strength MEDIUM threshold MEDIUM
+149899 [ZAP-ActiveScanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | React2ShellScanRule in 0.004s with 1 message(s) sent and 0 alert(s) raised.
+150384 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | CodeInjectionScanRule in 0.486s with 16 message(s) sent and 0 alert(s) raised.
+150384 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | CommandInjectionScanRule strength MEDIUM threshold MEDIUM
+151133 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | CommandInjectionScanRule in 0.748s with 38 message(s) sent and 0 alert(s) raised.
+151133 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | XpathInjectionScanRule strength MEDIUM threshold MEDIUM
+151447 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | XpathInjectionScanRule in 0.314s with 6 message(s) sent and 0 alert(s) raised.
+151448 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | XxeScanRule strength MEDIUM threshold MEDIUM
+151747 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | XxeScanRule in 0.299s with 0 message(s) sent and 0 alert(s) raised.
+151749 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | PaddingOracleScanRule strength MEDIUM threshold MEDIUM
+151982 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | PaddingOracleScanRule in 0.233s with 0 message(s) sent and 0 alert(s) raised.
+151982 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | CloudMetadataScanRule strength MEDIUM threshold MEDIUM
+151984 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SstiScanRule strength MEDIUM threshold MEDIUM
+152118 [ZAP-ActiveScanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | CloudMetadataScanRule in 0.136s with 9 message(s) sent and 0 alert(s) raised.
+152682 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SstiScanRule in 0.698s with 28 message(s) sent and 0 alert(s) raised.
+152683 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SstiBlindScanRule strength MEDIUM threshold MEDIUM
+153222 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SstiBlindScanRule in 0.539s with 24 message(s) sent and 0 alert(s) raised.
+153222 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | CommandInjectionTimingScanRule strength MEDIUM threshold MEDIUM
+153871 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | CommandInjectionTimingScanRule in 0.649s with 32 message(s) sent and 0 alert(s) raised.
+153872 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | DirectoryBrowsingScanRule strength MEDIUM threshold MEDIUM
+160802 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | DirectoryBrowsingScanRule in 6.93s with 113 message(s) sent and 0 alert(s) raised.
+160804 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | HttpOnlySiteScanRule strength MEDIUM threshold MEDIUM
+160805 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | BufferOverflowScanRule strength MEDIUM threshold MEDIUM
+160932 [ZAP-ActiveScanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | HttpOnlySiteScanRule in 0.128s with 0 message(s) sent and 0 alert(s) raised.
+161120 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | BufferOverflowScanRule in 0.315s with 2 message(s) sent and 0 alert(s) raised.
+161121 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | FormatStringScanRule strength MEDIUM threshold MEDIUM
+161414 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | FormatStringScanRule in 0.293s with 6 message(s) sent and 0 alert(s) raised.
+161415 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | CrlfInjectionScanRule strength MEDIUM threshold MEDIUM
+161822 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | CrlfInjectionScanRule in 0.407s with 14 message(s) sent and 0 alert(s) raised.
+161822 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | ParameterTamperScanRule strength MEDIUM threshold MEDIUM
+162196 [ZAP-ActiveScanner-1] INFO  org.apache.hc.client5.http.impl.classic.ZapHttpRequestRetryExec - Recoverable I/O exception (java.net.SocketException) caught when processing request to {}->http://localhost:3000
+162232 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | ParameterTamperScanRule in 0.408s with 14 message(s) sent and 0 alert(s) raised.
+162232 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | ElmahScanRule strength MEDIUM threshold MEDIUM
+162233 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | TraceAxdScanRule strength MEDIUM threshold MEDIUM
+162275 [ZAP-ActiveScanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | ElmahScanRule in 0.042s with 1 message(s) sent and 0 alert(s) raised.
+162819 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | TraceAxdScanRule in 0.586s with 29 message(s) sent and 0 alert(s) raised.
+162820 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | HtAccessScanRule strength MEDIUM threshold MEDIUM
+163392 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | HtAccessScanRule in 0.572s with 29 message(s) sent and 0 alert(s) raised.
+163392 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | EnvFileScanRule strength MEDIUM threshold MEDIUM
+163983 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | EnvFileScanRule in 0.591s with 29 message(s) sent and 0 alert(s) raised.
+163984 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | HiddenFilesScanRule strength MEDIUM threshold MEDIUM
+164008 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SpringActuatorScanRule strength MEDIUM threshold MEDIUM
+164011 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | ExponentialEntityExpansionScanRule strength MEDIUM threshold MEDIUM
+164021 [ZAP-ActiveScanner-1] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SpringActuatorScanRule in 0.013s with 2 message(s) sent and 0 alert(s) raised.
+164260 [ZAP-ActiveScanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | HiddenFilesScanRule in 0.275s with 52 message(s) sent and 0 alert(s) raised.
+164305 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | ExponentialEntityExpansionScanRule in 0.294s with 0 message(s) sent and 0 alert(s) raised.
+164305 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | XsltInjectionScanRule strength MEDIUM threshold MEDIUM
+164765 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | XsltInjectionScanRule in 0.46s with 16 message(s) sent and 0 alert(s) raised.
+164767 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | HttpsAsHttpScanRule strength MEDIUM threshold MEDIUM
+165007 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | HttpsAsHttpScanRule in 0.24s with 0 message(s) sent and 0 alert(s) raised.
+165008 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | GetForPostScanRule strength MEDIUM threshold MEDIUM
+165297 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | GetForPostScanRule in 0.289s with 0 message(s) sent and 0 alert(s) raised.
+165297 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | UserAgentScanRule strength MEDIUM threshold MEDIUM
+232690 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - skipped plugin [exceeded max rule time] http://localhost:3000 | UserAgentScanRule in 67.393s with 1350 message(s) sent and 39 alert(s) raised.
+232691 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | ScriptsActiveScanner strength MEDIUM threshold MEDIUM
+232695 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - skipped plugin [no scripts enabled] http://localhost:3000 | ScriptsActiveScanner in 0.003s with 0 message(s) sent and 0 alert(s) raised.
+232695 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SOAPActionSpoofingActiveScanRule strength MEDIUM threshold MEDIUM
+233120 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SOAPActionSpoofingActiveScanRule in 0.425s with 0 message(s) sent and 0 alert(s) raised.
+233121 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - start host http://localhost:3000 | SOAPXMLInjectionActiveScanRule strength MEDIUM threshold MEDIUM
+233361 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host/plugin http://localhost:3000 | SOAPXMLInjectionActiveScanRule in 0.24s with 0 message(s) sent and 0 alert(s) raised.
+233362 [ZAP-Scanner-0] INFO  org.parosproxy.paros.core.scanner.HostProcess - completed host http://localhost:3000 in 117.263s with 40 alert(s) raised.
+233363 [Thread-6] INFO  org.parosproxy.paros.core.scanner.Scanner - scanner with ID 0 completed in 117.303s

@@ -1,0 +1,30 @@
+info: Detected Node.js version [1mv24.12.0[22m ([32mOK[39m)
+info: Detected OS [1mwin32[22m ([32mOK[39m)
+info: Detected CPU [1mx64[22m ([32mOK[39m)
+info: Configuration [1mdefault[22m validated ([32mOK[39m)
+info: Entity models [1m20[22m of [1m20[22m are initialized ([32mOK[39m)
+info: Required file [1mserver.js[22m is present ([32mOK[39m)
+info: Required file [1mmain.js[22m is present ([32mOK[39m)
+info: Required file [1mstyles.css[22m is present ([32mOK[39m)
+info: Required file [1mindex.html[22m is present ([32mOK[39m)
+info: Required file [1mtutorial.js[22m is present ([32mOK[39m)
+info: Required file [1mruntime.js[22m is present ([32mOK[39m)
+info: Required file [1mvendor.js[22m is present ([32mOK[39m)
+info: Port [1m3000[22m is available ([32mOK[39m)
+info: Chatbot training data [1mbotDefaultTrainingData.json[22m validated ([32mOK[39m)
+info: Domain [1mhttps://www.alchemy.com/[22m is reachable ([32mOK[39m)
+info: [36mServer listening on port [1m3000[22m[39m
+info: [32mSolved[39m 2-star [36mweakPasswordChallenge[39m (Password Strength)
+info: Cheat score for tutorial [36mweakPasswordChallenge[39m solved in 0min (expected ~2min) with hints allowed: [31m0.7659666666666667[39m
+info: [32mSolved[39m 2-star [36mloginAdminChallenge[39m (Login Admin)
+info: Cheat score for coupled tutorial [36mloginAdminChallenge[39m solved in 0min (expected ~0min) with hints allowed: [32m0[39m
+info: [32mSolved[39m 1-star [36mdirectoryListingChallenge[39m (Confidential Document)
+info: Cheat score for [36mdirectoryListingChallenge[39m solved in 147min (expected ~2min) with hints allowed and 100% expected preceding URL interaction: [32m0[39m
+info: [32mSolved[39m 1-star [36merrorHandlingChallenge[39m (Error Handling)
+info: Cheat score for trivial [36merrorHandlingChallenge[39m solved in 0min (expected ~0min) with hints allowed: [32m0[39m
+info: [32mSolved[39m 2-star [36mbasketAccessChallenge[39m (View Basket)
+info: Cheat score for tutorial [36mbasketAccessChallenge[39m solved in 1min (expected ~2min) with hints allowed: [33m0.4647916666666667[39m
+info: [32mSolved[39m 4-star [36munionSqlInjectionChallenge[39m (User Credentials)
+info: Cheat score for [36munionSqlInjectionChallenge[39m solved in 7min (expected ~8min) with hints allowed: [32m0.17500625000000003[39m
+info: [32mSolved[39m 2-star [36msecurityPolicyChallenge[39m (Security Policy)
+info: Cheat score for [36msecurityPolicyChallenge[39m solved in 1min (expected ~4min) with hints allowed: [31m0.8187291666666667[39m

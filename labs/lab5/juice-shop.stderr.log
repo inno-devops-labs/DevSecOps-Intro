@@ -1,0 +1,31 @@
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+Error
+    at Database.<anonymous> (C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\node_modules\sequelize\lib\dialects\sqlite\query.js:185:27)
+    at C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\node_modules\sequelize\lib\dialects\sqlite\query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\node_modules\sequelize\lib\dialects\sqlite\query.js:183:12)
+    at C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\node_modules\sequelize\lib\sequelize.js:315:28
+    at async SQLiteQueryInterface.createTable (C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\node_modules\sequelize\lib\dialects\abstract\query-interface.js:98:12)
+    at async User.sync (C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\node_modules\sequelize\lib\model.js:942:7)
+    at async Sequelize.sync (C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\node_modules\sequelize\lib\sequelize.js:377:9)
+    at async Object.start (C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\build\server.js:677:5)
+    at async app (C:\Users\zhidk\OneDrive\Рабочий стол\Study\DevSecOps\DevSecOps-Intro\labs\lab5\runtime-tar\juice-shop_19.0.0\build\app.js:33:5) {
+  name: 'SequelizeDatabaseError',
+  parent: [Error: SQLITE_IOERR: disk I/O error] {
+    errno: 10,
+    code: 'SQLITE_IOERR',
+    sql: "CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` VARCHAR(255) DEFAULT '', `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255), `role` VARCHAR(255) DEFAULT 'customer', `deluxeToken` VARCHAR(255) DEFAULT '', `lastLoginIp` VARCHAR(255) DEFAULT '0.0.0.0', `profileImage` VARCHAR(255) DEFAULT '/assets/public/images/uploads/default.svg', `totpSecret` VARCHAR(255) DEFAULT '', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `deletedAt` DATETIME);"
+  },
+  original: [Error: SQLITE_IOERR: disk I/O error] {
+    errno: 10,
+    code: 'SQLITE_IOERR',
+    sql: "CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` VARCHAR(255) DEFAULT '', `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255), `role` VARCHAR(255) DEFAULT 'customer', `deluxeToken` VARCHAR(255) DEFAULT '', `lastLoginIp` VARCHAR(255) DEFAULT '0.0.0.0', `profileImage` VARCHAR(255) DEFAULT '/assets/public/images/uploads/default.svg', `totpSecret` VARCHAR(255) DEFAULT '', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `deletedAt` DATETIME);"
+  },
+  sql: "CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` VARCHAR(255) DEFAULT '', `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255), `role` VARCHAR(255) DEFAULT 'customer', `deluxeToken` VARCHAR(255) DEFAULT '', `lastLoginIp` VARCHAR(255) DEFAULT '0.0.0.0', `profileImage` VARCHAR(255) DEFAULT '/assets/public/images/uploads/default.svg', `totpSecret` VARCHAR(255) DEFAULT '', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `deletedAt` DATETIME);",
+  parameters: {}
+}
+
+Node.js v24.12.0

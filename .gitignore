@@ -1,0 +1,22 @@
+# Local tool/runtime downloads for lab 5
+labs/lab5/downloads/
+labs/lab5/runtime/
+labs/lab5/runtime-tar/
+labs/lab5/tools/
+labs/lab5/semgrep/juice-shop-19.0.0/
+labs/lab5/zap/home*/
+labs/lab5/zap/fullhome*/
+
+# sqlmap runtime output
+labs/lab5/sqlmap/host.docker.internal/
+labs/lab5/sqlmap/localhost/
+labs/lab5/sqlmap-tool/
+
+# Local helper/install scratch space
+.tmp/
+.pip-cache/
+.npm-cache/
+.venv-tools/
+.semgrep-wheel-extract/
+semgrep120-extract/
+.codex-sitecustomize/
