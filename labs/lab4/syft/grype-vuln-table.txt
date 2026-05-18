@@ -1,0 +1,191 @@
+NAME                  INSTALLED          FIXED IN                            TYPE    VULNERABILITY        SEVERITY    EPSS           RISK   
+ip                    2.0.1                                                  npm     GHSA-2p57-rm9w-gvfp  High        84.3% (99th)   65.8   
+vm2                   3.9.17             3.9.18                              npm     GHSA-whpj-8f3w-67p5  Critical    65.5% (98th)   61.6   
+vm2                   3.9.17                                                 npm     GHSA-g644-9gfx-q4q4  Critical    36.3% (97th)   34.1   
+jsonwebtoken          0.1.0              4.2.2                               npm     GHSA-c7hr-j4mj-j2w6  Critical    37.5% (97th)   33.7   
+jsonwebtoken          0.4.0              4.2.2                               npm     GHSA-c7hr-j4mj-j2w6  Critical    37.5% (97th)   33.7   
+vm2                   3.9.17             3.10.0                              npm     GHSA-cchq-frgv-rjh5  Critical    5.0% (89th)    4.7    
+lodash                2.4.2              4.17.12                             npm     GHSA-jf85-cpcp-j695  Critical    3.2% (87th)    2.9    
+lodash                2.4.2              4.17.21                             npm     GHSA-35jh-r3h4-6jhm  High        3.3% (87th)    2.4    
+lodash.set            4.3.2                                                  npm     GHSA-p6mc-m468-83gw  High        3.2% (87th)    2.4    
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2025-15467       High        2.6% (85th)    2.1    
+moment                2.0.0              2.29.2                              npm     GHSA-8hfj-j24r-96c4  High        2.3% (84th)    1.7    
+moment                2.0.0              2.11.2                              npm     GHSA-87vv-r9j6-g5qv  Medium      2.7% (86th)    1.6    
+engine.io             4.1.2              6.2.1                               npm     GHSA-r7qp-cfhv-p84w  Medium      2.1% (84th)    1.2    
+crypto-js             3.3.0              4.2.0                               npm     GHSA-xwcq-pm8m-c4vf  Critical    1.1% (77th)    1.0    
+sanitize-html         1.4.2              2.12.1                              npm     GHSA-rm97-x556-q36h  Medium      1.8% (83rd)    0.9    
+ws                    7.4.6              7.5.10                              npm     GHSA-3h5v-q93c-6h6q  High        0.5% (67th)    0.4    
+got                   8.3.2              11.8.5                              npm     GHSA-pfrx-2q88-qq97  Medium      0.8% (74th)    0.4    
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2025-69420       High        0.5% (66th)    0.4    
+tar                   4.4.19             6.2.1                               npm     GHSA-f5x3-32g6-xq36  Medium      0.6% (71st)    0.4    
+lodash                2.4.2              4.17.11                             npm     GHSA-4xc9-xhrj-v574  High        0.5% (64th)    0.4    
+sanitize-html         1.4.2              2.7.1                               npm     GHSA-cgfm-xwp7-2cvr  High        0.4% (63rd)    0.3    
+vm2                   3.9.17             3.9.18                              npm     GHSA-p5gc-c584-jj6v  Medium      0.6% (68th)    0.3    
+moment                2.0.0              2.19.3                              npm     GHSA-446m-mv8f-q348  High        0.3% (55th)    0.2    
+handlebars            4.7.7              4.7.9                               npm     GHSA-2w6w-674q-4c4q  Critical    0.2% (45th)    0.2    
+multer                1.4.5-lts.2        2.0.1                               npm     GHSA-g5hg-p3ph-g8qg  High        0.2% (48th)    0.2    
+socket.io-parser      4.0.5              4.2.3                               npm     GHSA-cqmj-92xf-r6r9  Medium      0.3% (54th)    0.2    
+notevil               1.3.3                                                  npm     GHSA-8g4m-cjm2-96wq  Medium      0.3% (53rd)    0.2    
+braces                2.3.2              3.0.3                               npm     GHSA-grv7-fg5c-xmjg  High        0.2% (45th)    0.2    
+express-jwt           0.1.3              6.0.0                               npm     GHSA-6g6m-m6h5-w9gf  High        0.2% (44th)    0.2    
+vm2                   3.9.17             3.11.0                              npm     GHSA-v37h-5mfm-c47c  Critical    0.2% (37th)    0.2    
+vm2                   3.9.17             3.11.0                              npm     GHSA-grj5-jjm8-h35p  Critical    0.2% (36th)    0.2    
+sanitize-html         1.4.2              2.3.2                               npm     GHSA-mjxr-4v3x-q3m4  Medium      0.3% (52nd)    0.1    
+sanitize-html         1.4.2              2.3.1                               npm     GHSA-rjqq-98f6-6j3r  Medium      0.3% (52nd)    0.1    
+lodash                2.4.2              4.17.5                              npm     GHSA-fvqr-27wr-82fm  Medium      0.2% (48th)    0.1    
+sanitize-html         1.4.2              1.11.4                              npm     GHSA-xc6g-ggrc-qq4r  Medium      0.3% (52nd)    0.1    
+sanitize-html         1.4.2              1.4.3                               npm     GHSA-3j7m-hmh3-9jmp  Medium      0.2% (47th)    0.1    
+multer                1.4.5-lts.2        2.0.0                               npm     GHSA-44fp-w29j-9vj5  High        0.2% (38th)    0.1    
+http-cache-semantics  3.8.1              4.1.1                               npm     GHSA-rc47-6667-2j5j  High        0.2% (38th)    0.1    
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2026-22796       Medium      0.2% (45th)    0.1    
+vm2                   3.9.17             3.10.5                              npm     GHSA-qvjj-29qf-hp7p  Critical    0.1% (30th)    0.1    
+dottie                2.0.6              2.0.7                               npm     GHSA-r5mx-6wc6-7h9w  Medium      0.2% (37th)    < 0.1  
+validator             13.15.15           13.15.22                            npm     GHSA-vghf-hv5q-vc2g  High        0.1% (29th)    < 0.1  
+socket.io             3.1.2              4.6.2                               npm     GHSA-25hc-qcg6-38wj  Medium      0.1% (33rd)    < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-vwrp-x96c-mhwq  Critical    < 0.1% (23rd)  < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-55hx-c926-fr95  Critical    < 0.1% (23rd)  < 0.1  
+libc6                 2.36-9+deb12u10                                        deb     CVE-2018-20796       Negligible  1.5% (81st)    < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2025-69419       High        < 0.1% (25th)  < 0.1  
+micromatch            3.1.10             4.0.8                               npm     GHSA-952p-6rrq-rcjv  Medium      0.1% (31st)    < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.19-1~deb12u2                    deb     CVE-2026-28389       High        < 0.1% (24th)  < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.19-1~deb12u2                    deb     CVE-2026-28390       High        < 0.1% (24th)  < 0.1  
+cookie                0.4.2              0.7.0                               npm     GHSA-pxg6-pf52-xh8x  Low         0.2% (42nd)    < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2025-69421       High        < 0.1% (23rd)  < 0.1  
+vm2                   3.9.17             3.11.3                              npm     GHSA-248r-7h7q-cr24  Critical    < 0.1% (19th)  < 0.1  
+vm2                   3.9.17             3.11.2                              npm     GHSA-9qj6-qjgg-37qq  Critical    < 0.1% (19th)  < 0.1  
+node                  22.18.0            20.20.0, *22.22.0, 24.13.0, 25.3.0  binary  CVE-2025-59465       High        < 0.1% (22nd)  < 0.1  
+jsonwebtoken          0.1.0              9.0.0                               npm     GHSA-8cf7-32gw-wr33  High        < 0.1% (21st)  < 0.1  
+jsonwebtoken          0.4.0              9.0.0                               npm     GHSA-8cf7-32gw-wr33  High        < 0.1% (21st)  < 0.1  
+handlebars            4.7.7              4.7.9                               npm     GHSA-9cx6-37pm-9jff  High        < 0.1% (22nd)  < 0.1  
+multer                1.4.5-lts.2        2.1.1                               npm     GHSA-5528-5vmv-3xc2  High        < 0.1% (20th)  < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u14                     deb     CVE-2025-15281       High        < 0.1% (21st)  < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u14                     deb     CVE-2026-4437        High        < 0.1% (20th)  < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u14                     deb     CVE-2026-4046        High        < 0.1% (20th)  < 0.1  
+socket.io-parser      4.0.5              4.2.6                               npm     GHSA-677m-j7p3-52f9  High        < 0.1% (18th)  < 0.1  
+libc6                 2.36-9+deb12u10    (won't fix)                         deb     CVE-2026-5450        Critical    < 0.1% (15th)  < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-47x8-96vw-5wg6  Critical    < 0.1% (14th)  < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-qcp4-v2jj-fjx8  Critical    < 0.1% (14th)  < 0.1  
+vm2                   3.9.17             3.10.2                              npm     GHSA-99p7-6v5w-7xg8  Critical    < 0.1% (14th)  < 0.1  
+libc6                 2.36-9+deb12u10                                        deb     CVE-2019-1010025     Negligible  0.8% (74th)    < 0.1  
+path-to-regexp        0.1.12             0.1.13                              npm     GHSA-37ch-88jc-xwx2  High        < 0.1% (16th)  < 0.1  
+vm2                   3.9.17             3.11.2                              npm     GHSA-9vg3-4rfj-wgcm  Critical    < 0.1% (13th)  < 0.1  
+libc6                 2.36-9+deb12u10                                        deb     CVE-2019-9192        Negligible  0.8% (74th)    < 0.1  
+qs                    6.13.0             6.14.1                              npm     GHSA-6rw7-vpxm-498p  Medium      < 0.1% (21st)  < 0.1  
+handlebars            4.7.7              4.7.9                               npm     GHSA-3mfm-83xf-c92r  High        < 0.1% (14th)  < 0.1  
+libc6                 2.36-9+deb12u10    (won't fix)                         deb     CVE-2026-5928        High        < 0.1% (14th)  < 0.1  
+lodash                4.17.21            4.18.0                              npm     GHSA-r5fr-rjxr-66jc  High        < 0.1% (13th)  < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.19-1~deb12u2                    deb     CVE-2026-28387       High        < 0.1% (13th)  < 0.1  
+libc6                 2.36-9+deb12u10    (won't fix)                         deb     CVE-2026-5435        High        < 0.1% (14th)  < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u11                     deb     CVE-2025-4802        High        < 0.1% (13th)  < 0.1  
+vm2                   3.9.17             3.11.1                              npm     GHSA-8hg8-63c5-gwmx  Critical    < 0.1% (10th)  < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-hw58-p9xv-2mjh  High        < 0.1% (12th)  < 0.1  
+libc6                 2.36-9+deb12u10                                        deb     CVE-2019-1010024     Negligible  0.6% (70th)    < 0.1  
+node                  22.18.0            20.20.0, *22.22.0, 24.13.0, 25.3.0  binary  CVE-2026-21637       High        < 0.1% (13th)  < 0.1  
+multer                1.4.5-lts.2        2.0.0                               npm     GHSA-4pg4-qvpc-4q3h  High        < 0.1% (12th)  < 0.1  
+multer                1.4.5-lts.2        2.0.2                               npm     GHSA-fjgf-rc76-4x9p  High        < 0.1% (12th)  < 0.1  
+handlebars            4.7.7              4.7.9                               npm     GHSA-2qvq-rjwj-gvw9  Medium      < 0.1% (19th)  < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-6785-pvv7-mvg7  High        < 0.1% (12th)  < 0.1  
+jsonwebtoken          0.1.0              9.0.0                               npm     GHSA-hjrf-2m68-5959  Medium      < 0.1% (18th)  < 0.1  
+jsonwebtoken          0.4.0              9.0.0                               npm     GHSA-hjrf-2m68-5959  Medium      < 0.1% (18th)  < 0.1  
+picomatch             2.3.1              2.3.2                               npm     GHSA-3v7f-55p6-f55p  Medium      < 0.1% (17th)  < 0.1  
+picomatch             4.0.3              4.0.4                               npm     GHSA-3v7f-55p6-f55p  Medium      < 0.1% (17th)  < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.17-1~deb12u3                    deb     CVE-2025-9232        Medium      < 0.1% (16th)  < 0.1  
+ip-address            10.0.1             10.1.1                              npm     GHSA-v2v4-37r5-5v8g  Medium      < 0.1% (16th)  < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.17-1~deb12u3                    deb     CVE-2025-9230        High        < 0.1% (11th)  < 0.1  
+validator             13.15.15           13.15.20                            npm     GHSA-9965-vmph-33xx  Medium      < 0.1% (15th)  < 0.1  
+minimatch             3.0.5              3.1.3                               npm     GHSA-7r86-cg39-jmmj  High        < 0.1% (10th)  < 0.1  
+minimatch             3.0.8              3.1.3                               npm     GHSA-7r86-cg39-jmmj  High        < 0.1% (10th)  < 0.1  
+minimatch             3.1.2              3.1.3                               npm     GHSA-7r86-cg39-jmmj  High        < 0.1% (10th)  < 0.1  
+minimatch             5.1.6              5.1.8                               npm     GHSA-7r86-cg39-jmmj  High        < 0.1% (10th)  < 0.1  
+minimatch             9.0.5              9.0.7                               npm     GHSA-7r86-cg39-jmmj  High        < 0.1% (10th)  < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.19-1~deb12u2                    deb     CVE-2026-31790       High        < 0.1% (10th)  < 0.1  
+sanitize-html         1.4.2              2.0.0-beta                          npm     GHSA-qhxp-v273-g94h  Medium      < 0.1% (14th)  < 0.1  
+libc6                 2.36-9+deb12u10    (won't fix)                         deb     CVE-2026-6238        Medium      < 0.1% (14th)  < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.19-1~deb12u2                    deb     CVE-2026-28388       High        < 0.1% (9th)   < 0.1  
+node                  22.18.0            20.20.0, *22.22.0, 24.13.0, 25.3.0  binary  CVE-2025-55131       High        < 0.1% (10th)  < 0.1  
+tar-fs                2.1.3              2.1.4                               npm     GHSA-vj76-c3g6-qr5v  High        < 0.1% (8th)   < 0.1  
+handlebars            4.7.7              4.7.9                               npm     GHSA-xhpv-hc6g-r9c6  High        < 0.1% (9th)   < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u14                     deb     CVE-2026-4438        Medium      < 0.1% (13th)  < 0.1  
+node                  22.18.0            20.20.2, *22.22.2, 24.14.1, 25.8.2  binary  CVE-2026-21710       High        < 0.1% (9th)   < 0.1  
+minimatch             3.0.5              3.1.3                               npm     GHSA-3ppc-4f35-3m26  High        < 0.1% (7th)   < 0.1  
+minimatch             3.0.8              3.1.3                               npm     GHSA-3ppc-4f35-3m26  High        < 0.1% (7th)   < 0.1  
+minimatch             3.1.2              3.1.3                               npm     GHSA-3ppc-4f35-3m26  High        < 0.1% (7th)   < 0.1  
+minimatch             5.1.6              5.1.7                               npm     GHSA-3ppc-4f35-3m26  High        < 0.1% (7th)   < 0.1  
+minimatch             9.0.5              9.0.6                               npm     GHSA-3ppc-4f35-3m26  High        < 0.1% (7th)   < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-mpf8-4hx2-7cjg  Medium      < 0.1% (10th)  < 0.1  
+node                  22.18.0            20.20.0, *22.22.0, 24.13.0, 25.3.0  binary  CVE-2025-59466       High        < 0.1% (8th)   < 0.1  
+lodash                4.17.21            4.17.23                             npm     GHSA-xxjr-mmjv-4gpg  Medium      < 0.1% (10th)  < 0.1  
+libc6                 2.36-9+deb12u10                                        deb     CVE-2010-4756        Negligible  0.4% (60th)    < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-wp5r-2gw5-m7q7  Medium      < 0.1% (11th)  < 0.1  
+minimatch             3.0.5              3.1.4                               npm     GHSA-23c5-xmqv-rm74  High        < 0.1% (7th)   < 0.1  
+minimatch             3.0.8              3.1.4                               npm     GHSA-23c5-xmqv-rm74  High        < 0.1% (7th)   < 0.1  
+minimatch             3.1.2              3.1.4                               npm     GHSA-23c5-xmqv-rm74  High        < 0.1% (7th)   < 0.1  
+minimatch             5.1.6              5.1.8                               npm     GHSA-23c5-xmqv-rm74  High        < 0.1% (7th)   < 0.1  
+minimatch             9.0.5              9.0.7                               npm     GHSA-23c5-xmqv-rm74  High        < 0.1% (7th)   < 0.1  
+glob                  10.4.5             10.5.0                              npm     GHSA-5j98-mcp5-4vw2  High        < 0.1% (7th)   < 0.1  
+node                  22.18.0            20.20.2, *22.22.2, 24.14.1, 25.8.2  binary  CVE-2026-21717       Medium      < 0.1% (9th)   < 0.1  
+js-yaml               3.14.1             3.14.2                              npm     GHSA-mh29-5h37-fv8m  Medium      < 0.1% (10th)  < 0.1  
+tar                   4.4.19             7.5.7                               npm     GHSA-34x7-hfp2-rc4v  High        < 0.1% (6th)   < 0.1  
+tar                   6.2.1              7.5.7                               npm     GHSA-34x7-hfp2-rc4v  High        < 0.1% (6th)   < 0.1  
+tar                   7.4.3              7.5.7                               npm     GHSA-34x7-hfp2-rc4v  High        < 0.1% (6th)   < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u14                     deb     CVE-2026-0915        High        < 0.1% (6th)   < 0.1  
+qs                    6.13.0             6.14.2                              npm     GHSA-w7fw-mjwx-w883  Low         < 0.1% (15th)  < 0.1  
+file-type             16.5.4             21.3.1                              npm     GHSA-5v7r-6r5c-r473  Medium      < 0.1% (9th)   < 0.1  
+multer                1.4.5-lts.2        2.1.0                               npm     GHSA-v52c-386h-88mc  High        < 0.1% (5th)   < 0.1  
+multer                1.4.5-lts.2        2.1.0                               npm     GHSA-xf7r-hgr6-v32p  High        < 0.1% (5th)   < 0.1  
+libc6                 2.36-9+deb12u10                                        deb     CVE-2019-1010023     Negligible  0.3% (54th)    < 0.1  
+sequelize             6.37.7             6.37.8                              npm     GHSA-6457-6jrx-69cr  High        < 0.1% (5th)   < 0.1  
+vm2                   3.9.17             3.11.0                              npm     GHSA-v27g-jcqj-v8rw  Medium      < 0.1% (7th)   < 0.1  
+lodash                2.4.2              4.18.0                              npm     GHSA-f23m-r3pf-42rh  Medium      < 0.1% (7th)   < 0.1  
+lodash                4.17.21            4.18.0                              npm     GHSA-f23m-r3pf-42rh  Medium      < 0.1% (7th)   < 0.1  
+picomatch             2.3.1              2.3.2                               npm     GHSA-c2c7-rcm5-vvqj  High        < 0.1% (5th)   < 0.1  
+picomatch             4.0.3              4.0.4                               npm     GHSA-c2c7-rcm5-vvqj  High        < 0.1% (5th)   < 0.1  
+brace-expansion       1.1.12             1.1.13                              npm     GHSA-f886-m6hf-6m8v  Medium      < 0.1% (6th)   < 0.1  
+brace-expansion       2.0.2              2.0.3                               npm     GHSA-f886-m6hf-6m8v  Medium      < 0.1% (6th)   < 0.1  
+node                  22.18.0            20.20.0, *22.22.0, 24.13.0, 25.3.0  binary  CVE-2025-55130       Critical    < 0.1% (3rd)   < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2025-68160       Medium      < 0.1% (7th)   < 0.1  
+jsonwebtoken          0.1.0              9.0.0                               npm     GHSA-qwph-4952-7xr6  Medium      < 0.1% (5th)   < 0.1  
+jsonwebtoken          0.4.0              9.0.0                               npm     GHSA-qwph-4952-7xr6  Medium      < 0.1% (5th)   < 0.1  
+libssl3               3.0.17-1~deb12u2                                       deb     CVE-2025-27587       Negligible  0.2% (44th)    < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2026-22795       Medium      < 0.1% (5th)   < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u14                     deb     CVE-2026-0861        High        < 0.1% (1st)   < 0.1  
+node                  22.18.0            20.20.2, *22.22.2, 24.14.1, 25.8.2  binary  CVE-2026-21714       Medium      < 0.1% (4th)   < 0.1  
+jws                   0.2.6              3.2.3                               npm     GHSA-869p-cjfg-cm3x  High        < 0.1% (1st)   < 0.1  
+tar                   4.4.19             7.5.11                              npm     GHSA-9ppj-qmqm-q256  High        < 0.1% (0th)   < 0.1  
+tar                   6.2.1              7.5.11                              npm     GHSA-9ppj-qmqm-q256  High        < 0.1% (0th)   < 0.1  
+tar                   7.4.3              7.5.11                              npm     GHSA-9ppj-qmqm-q256  High        < 0.1% (0th)   < 0.1  
+handlebars            4.7.7              4.7.9                               npm     GHSA-xjpj-3mr7-gcpf  High        < 0.1% (0th)   < 0.1  
+tar                   4.4.19             7.5.10                              npm     GHSA-qffp-2rhf-9h96  High        < 0.1% (0th)   < 0.1  
+tar                   6.2.1              7.5.10                              npm     GHSA-qffp-2rhf-9h96  High        < 0.1% (0th)   < 0.1  
+tar                   7.4.3              7.5.10                              npm     GHSA-qffp-2rhf-9h96  High        < 0.1% (0th)   < 0.1  
+node                  22.18.0            20.20.2, *22.22.2, 24.14.1, 25.8.2  binary  CVE-2026-21713       Medium      < 0.1% (1st)   < 0.1  
+tar                   4.4.19             7.5.4                               npm     GHSA-r6q2-hw4h-h46w  High        < 0.1% (0th)   < 0.1  
+tar                   6.2.1              7.5.4                               npm     GHSA-r6q2-hw4h-h46w  High        < 0.1% (0th)   < 0.1  
+tar                   7.4.3              7.5.4                               npm     GHSA-r6q2-hw4h-h46w  High        < 0.1% (0th)   < 0.1  
+libc6                 2.36-9+deb12u10                                        deb     CVE-2019-1010022     Negligible  0.1% (31st)    < 0.1  
+tar                   4.4.19             7.5.8                               npm     GHSA-83g3-92jg-28cx  High        < 0.1% (0th)   < 0.1  
+tar                   6.2.1              7.5.8                               npm     GHSA-83g3-92jg-28cx  High        < 0.1% (0th)   < 0.1  
+tar                   7.4.3              7.5.8                               npm     GHSA-83g3-92jg-28cx  High        < 0.1% (0th)   < 0.1  
+diff                  4.0.2              4.0.4                               npm     GHSA-73rr-hh4g-fpgx  Low         < 0.1% (5th)   < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.19-1~deb12u2                    deb     CVE-2026-31789       Critical    < 0.1% (0th)   < 0.1  
+tar                   4.4.19             7.5.3                               npm     GHSA-8qq5-rm4j-mr97  High        < 0.1% (0th)   < 0.1  
+tar                   6.2.1              7.5.3                               npm     GHSA-8qq5-rm4j-mr97  High        < 0.1% (0th)   < 0.1  
+tar                   7.4.3              7.5.3                               npm     GHSA-8qq5-rm4j-mr97  High        < 0.1% (0th)   < 0.1  
+libc6                 2.36-9+deb12u10    2.36-9+deb12u13                     deb     CVE-2025-8058        Medium      < 0.1% (1st)   < 0.1  
+@tootallnate/once     1.1.2              3.0.1                               npm     GHSA-vpq2-c234-7xj6  Low         < 0.1% (4th)   < 0.1  
+@tootallnate/once     2.0.0              3.0.1                               npm     GHSA-vpq2-c234-7xj6  Low         < 0.1% (4th)   < 0.1  
+node                  22.18.0            20.20.0, *22.22.0, 24.13.0, 25.3.0  binary  CVE-2025-55132       Medium      < 0.1% (1st)   < 0.1  
+libssl3               3.0.17-1~deb12u2   3.0.18-1~deb12u2                    deb     CVE-2025-69418       Medium      < 0.1% (0th)   < 0.1  
+gcc-12-base           12.2.0-14+deb12u1                                      deb     CVE-2022-27943       Negligible  < 0.1% (15th)  < 0.1  
+libgcc-s1             12.2.0-14+deb12u1                                      deb     CVE-2022-27943       Negligible  < 0.1% (15th)  < 0.1  
+libgomp1              12.2.0-14+deb12u1                                      deb     CVE-2022-27943       Negligible  < 0.1% (15th)  < 0.1  
+libstdc++6            12.2.0-14+deb12u1                                      deb     CVE-2022-27943       Negligible  < 0.1% (15th)  < 0.1  
+node                  22.18.0            20.20.2, *22.22.2, 24.14.1, 25.8.2  binary  CVE-2026-21715       Low         < 0.1% (0th)   < 0.1  
+node                  22.18.0            20.20.2, *22.22.2, 24.14.1, 25.8.2  binary  CVE-2026-21716       Low         < 0.1% (0th)   < 0.1  
+marsdb                0.6.11                                                 npm     GHSA-5mrr-rgp6-x4gr  Critical    N/A            N/A    
+sanitize-html         1.4.2                                                  npm     GHSA-rpr9-rxv7-x643  Critical    N/A            N/A    
+jws                   0.2.6              3.0.0                               npm     GHSA-gjcw-v447-2w7q  High        N/A            N/A    
+base64url             0.0.6              3.0.0                               npm     GHSA-rvg8-pwq2-xj7q  Medium      N/A            N/A    
+handlebars            4.7.7              4.7.9                               npm     GHSA-7rx3-28cr-v5wh  Medium      N/A            N/A    
+vm2                   3.9.17             3.11.2                              npm     GHSA-2cm2-m3w5-gp2f  Medium      N/A            N/A    
+handlebars            4.7.7              4.7.9                               npm     GHSA-442j-39wm-28r2  Low         N/A            N/A

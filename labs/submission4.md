@@ -13,126 +13,87 @@ Tools used:
 - Grype (vulnerability scanning)
 - Trivy (SBOM + vulnerability + license scanning)
 
-## Task 1 — SBOM Generation
+## Task 1 — SBOM Generation and Analysis
 
-### Docker Commands Used
+SBOMs were generated using Syft and Trivy for `bkimminich/juice-shop:v19.0.0`.
 
-Syft SBOM generation
+Artifacts:
+- `labs/lab4/syft/juice-shop-syft-native.json`
+- `labs/lab4/syft/juice-shop-syft-table.txt`
+- `labs/lab4/trivy/juice-shop-trivy-detailed.json`
+- `labs/lab4/trivy/juice-shop-trivy-table.txt`
+- `labs/lab4/analysis/sbom-analysis.txt`
 
-```bash
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp anchore/syft:latest \
-  bkimminich/juice-shop:v19.0.0 \
-  -o syft-json=/tmp/labs/lab4/syft/syft.json
+### SBOM Analysis
+
+Syft and Trivy both detected application and operating system packages, but they structure the results differently. Syft provides a detailed SBOM-focused artifact model, while Trivy combines package inventory with vulnerability and license scanning features.
+
+Package and license summaries are stored in:
+
+```text
+labs/lab4/analysis/sbom-analysis.txt
 ```
 
-Trivy SBOM generation
+### License Discovery Analysis
 
-```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp aquasec/trivy:latest image \
-  --format json \
-  --output /tmp/labs/lab4/trivy/trivy.json \
-  --list-all-pkgs bkimminich/juice-shop:v19.0.0
-```
+License information was extracted from both tools. License compliance is important because restrictive or unclear licenses may create legal and operational risk. For production use, packages with unknown, custom, or copyleft licenses should be reviewed before release.
 
-### Quantitative Metrics
-- Packages detected by Syft: 1139
-- Packages detected by Trivy: 1135
+## Task 2 — Software Composition Analysis
 
-### Qualitative Analysis
+SCA was performed with Grype and Trivy.
 
-Syft provides very granular SBOM data, which is useful for compliance and deep supply-chain auditing.
+Artifacts:
 
-Trivy integrates SBOM generation directly with security scanning, making it faster and easier for CI/CD pipelines.
+- `labs/lab4/syft/grype-vuln-results.json`
+- `labs/lab4/syft/grype-vuln-table.txt`
+- `labs/lab4/trivy/trivy-vuln-detailed.json`
+- `labs/lab4/trivy/trivy-secrets.txt`
+- `labs/lab4/trivy/trivy-licenses.json`
+- `labs/lab4/analysis/vulnerability-analysis.txt`
 
-## Task 2 — Software Composition Analysis (SCA)
+### Vulnerability Analysis
 
-### Docker Commands Used
-Grype scan (using Syft SBOM)
-```
-docker run --rm -v "$(pwd)":/tmp anchore/grype:latest \
-  sbom:/tmp/labs/lab4/syft/syft.json \
-  -o table > labs/lab4/syft/grype.txt
-```
+Both Grype and Trivy detected vulnerabilities identified by CVE IDs and advisories. The severity distribution and top findings are summarized in`labs/lab4/analysis/vulnerability-analysis.txt`
 
-Trivy vulnerability scan
+Critical and high findings should be prioritized first. Remediation should include upgrading affected packages to fixed versions, rebuilding the image, and rescanning to confirm that CVEs are resolved.
 
-```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/tmp aquasec/trivy:latest image \
-  --format table \
-  --output /tmp/labs/lab4/trivy/trivy-vuln.txt \
-  bkimminich/juice-shop:v19.0.0
-```
+### License Compliance Assessment
 
-### Quantitative Vulnerability Metrics
+License risk was reviewed using Syft and Trivy license outputs.License compliance risk should be assessed before using dependencies in production. Packages with missing or unusual license metadata require manual review.
 
-- Critical vulnerabilities (Grype): 11
-- Critical vulnerabilities (Trivy): 13
+### Secrets Scanning
 
-### Critical Vulnerability Analysis
+Trivy secrets scanning was executed and saved to: `labs/lab4/trivy/trivy-secrets.txt`
 
-Most vulnerabilities were related to:
-
-- Outdated OS libraries
-- Node.js dependencies
-- Base image components
-
-These findings indicate that the base container image is a primary
-risk factor and should be regularly updated.
+Secrets scanning helps detect accidentally committed credentials, tokens, private keys, and other sensitive data.
 
 ## Task 3 — Toolchain Comparison
 
-### Accuracy & Coverage
-- Syft detected more granular dependency metadata.
-- Trivy detected vulnerabilities directly without requiring SBOM handoff.
-- Overlapping vulnerabilities were observed between Grype and Trivy.
+Toolchain comparison data was generated in:
+`labs/lab4/comparison/accuracy-analysis.txt`
 
-This shows both tools use different vulnerability databases and detection logic.
+### Accuracy and Coverage
 
-### Strengths & Weaknesses
-#### Syft + Grype (Modular Approach)
-Strengths:
-- Detailed SBOM
-- Better for compliance reporting
-- Flexible integration
+The comparison includes:
+- packages detected by both tools
+- packages only detected by Syft
+- packages only detected by Trivy
+- CVEs detected by Grype
+- CVEs detected by Trivy
+- common CVEs between both scanners
 
-Weaknesses:
-- Requires multiple tools
-- Slightly more complex workflow
+### Tool Strengths and Weaknesses
 
-#### Trivy (All-in-One Approach)
-Strengths:
-- Simple to run
-- Fast scanning
-- Integrated vulnerability + license + secret scanning
+Syft + Grype:
+- Strong SBOM-focused workflow
+- Good for separating inventory generation from vulnerability analysis
+- Useful when SBOM artifacts must be stored or passed between pipeline stages
 
-Weaknesses:
-- Less granular SBOM detail
-- Less customizable pipeline separation
+Trivy:
+- Convenient all-in-one scanner
+- Supports vulnerabilities, licenses, secrets, and package inventory
+- Easier to integrate quickly into CI/CD
 
-## Security Recommendations
+### Recommendations
 
-Based on the findings, the following actions are recommended:
-
-- Regularly update the base container image to reduce inherited OS vulnerabilities.
-- Integrate Trivy scanning into CI/CD pipelines to detect issues early.
-- Generate SBOMs (using Syft) for each release to maintain supply-chain visibility.
-- Periodically review dependencies to remove outdated or unused libraries.
-- Treat SBOMs as living artifacts and regenerate them after major dependency updates.
-
-## Issues Encountered
-
-- Initial Docker image downloads took additional time during setup.
-- Output formats differed between tools, requiring manual comparison.
-- Some vulnerabilities appeared in one scanner but not the other due to different vulnerability databases.
-
-## Conclusion
-This lab demonstrated how SBOM generation and SCA improve supply-chain
-visibility and vulnerability management.
-
-Trivy is well-suited for CI/CD automation.
-Syft + Grype provide deeper inspection and compliance capabilities.
-
-A combined approach offers the strongest security posture.
+Use Syft + Grype when the goal is a dedicated SBOM-first workflow and when SBOM artifacts need to be preserved. Use Trivy when a single integrated scanner is preferred for fast CI/CD checks covering vulnerabilities, licenses, and secrets.
