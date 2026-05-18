@@ -1,0 +1,2 @@
+﻿Verified OK
+Blob verification succeeded with exit code 0.
