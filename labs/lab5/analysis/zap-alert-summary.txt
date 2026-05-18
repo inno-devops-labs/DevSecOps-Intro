@@ -1,0 +1,32 @@
+﻿=== ZAP Alert Summary ===
+
+Unauthenticated ZAP:
+- URLs discovered: 95
+- Alert types: 12
+- Severity breakdown:
+Informational (Medium): 4
+Low (Medium): 4
+Low (Low): 2
+Medium (High): 1
+Medium (Medium): 1
+
+Authenticated ZAP:
+- Traditional spider URLs discovered: 112
+- AJAX spider URLs discovered: 615
+- Alert types: 13
+- Severity breakdown:
+Informational (Medium): 3
+Low (Medium): 3
+Medium (High): 2
+Medium (Medium): 2
+High (Low): 1
+Informational (High): 1
+Low (Low): 1
+
+Evidence:
+- labs/lab5/zap/zap-report-noauth.json
+- labs/lab5/zap/zap-report-auth.json
+- labs/lab5/analysis/zap-noauth-console.txt
+- labs/lab5/analysis/zap-auth-console.txt
+- labs/lab5/analysis/zap-auth-alerts.csv
+- labs/lab5/analysis/zap-noauth-alerts.csv

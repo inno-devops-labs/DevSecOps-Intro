@@ -1,0 +1,47 @@
+﻿=== SAST/DAST Correlation Report ===
+
+Security Testing Results Summary:
+
+SAST:
+- Semgrep findings: 26
+- Files with Semgrep findings: 21
+- Semgrep scan coverage: 1014 targets scanned, 140 rules, ~99.9% parsed lines
+
+DAST:
+- ZAP authenticated alert types: 13
+- Nuclei template matches: 0
+- Nikto reported server findings/items: 162
+- SQLmap confirmed SQL injection vulnerabilities: 1
+
+Approximate combined DAST finding count:
+176
+
+Key correlation points:
+
+1. SQL injection correlation:
+- Semgrep found code-level Sequelize SQL injection patterns, including /src/routes/login.ts:34.
+- SQLmap dynamically confirmed SQL injection on /rest/products/search?q=*.
+- This shows how SAST can identify risky query construction patterns, while DAST confirms exploitability at runtime.
+
+2. XSS / client-side injection correlation:
+- Semgrep found raw HTML formatting and unquoted template variables.
+- ZAP can detect runtime web application issues through crawling and active scanning.
+- This combination helps cover both source-code template risks and runtime browser-facing attack surface.
+
+3. Information disclosure and configuration:
+- Nikto found runtime server exposure issues, including /ftp/ in robots.txt and potentially interesting backup/cert file paths.
+- These are deployment/runtime findings that are not always visible from source code scanning alone.
+
+SAST-only examples:
+- Hardcoded JWT secret in /src/lib/insecurity.ts.
+- GitHub Actions run shell injection risk in .github/workflows/update-challenges-ebook.yml.
+- Express sendFile path traversal patterns in source routes.
+
+DAST-only examples:
+- Runtime HTTP headers and security header configuration.
+- Publicly reachable /ftp/ path from robots.txt.
+- Runtime SQL injection confirmation by SQLmap.
+- Large authenticated attack surface discovered by ZAP AJAX spider.
+
+Conclusion:
+SAST and DAST are complementary. SAST gives early code-level feedback before deployment, while DAST validates runtime behavior, configuration, authentication scope, and exploitability.

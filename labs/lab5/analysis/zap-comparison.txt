@@ -1,0 +1,23 @@
+﻿=== ZAP Authenticated vs Unauthenticated Comparison ===
+
+Unauthenticated ZAP baseline:
+- Total URLs discovered: 95
+- Evidence: labs/lab5/analysis/zap-noauth-console.txt
+- Reports:
+  - labs/lab5/zap/report-noauth.html
+  - labs/lab5/zap/zap-report-noauth.json
+
+Authenticated ZAP Automation Framework:
+- Traditional spider URLs discovered: 112
+- AJAX spider URLs discovered: 615
+- Active scan completed
+- Automation plan succeeded
+- Evidence: labs/lab5/analysis/zap-auth-console.txt
+- Reports:
+  - labs/lab5/zap/report-auth.html
+  - labs/lab5/zap/zap-report-auth.json
+
+Security interpretation:
+Authenticated scanning discovered a much larger dynamic attack surface than unauthenticated baseline scanning.
+The AJAX spider found 615 URLs, compared to 95 URLs in the unauthenticated baseline scan.
+This matters because authenticated scans can reach user-specific and admin/application endpoints that are invisible to anonymous users.

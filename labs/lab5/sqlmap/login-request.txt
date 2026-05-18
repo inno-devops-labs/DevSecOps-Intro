@@ -1,0 +1,8 @@
+POST http://127.0.0.1:3000/rest/user/login HTTP/1.1
+Host: 127.0.0.1:3000
+User-Agent: sqlmap-lab5
+Accept: application/json, text/plain, */*
+Content-Type: application/json
+Connection: close
+
+{"email":"*","password":"test"}

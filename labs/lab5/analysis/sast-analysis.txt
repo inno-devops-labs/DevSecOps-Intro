@@ -1,0 +1,20 @@
+﻿=== SAST Analysis Report ===
+
+Tool: Semgrep
+Rulesets: p/security-audit, p/owasp-top-ten
+Target: OWASP Juice Shop v19.0.0 source code
+
+Scan summary:
+- Total findings: 26
+- Files with findings: 21
+- Targets scanned according to Semgrep output: 1014
+- Rules run according to Semgrep output: 140
+- Parsed lines according to Semgrep output: ~99.9%
+
+Severity breakdown:
+WARNING: 18
+ERROR: 8
+
+Top findings are saved in:
+- labs/lab5/analysis/semgrep-top-findings.tsv
+- labs/lab5/analysis/semgrep-top-findings.csv

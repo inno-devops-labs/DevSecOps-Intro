@@ -1,0 +1,60 @@
+﻿=== DAST Summary ===
+
+ZAP unauthenticated:
+- URL discovery: 95 URLs
+- Evidence:
+  - labs/lab5/zap/report-noauth.html
+  - labs/lab5/zap/zap-report-noauth.json
+  - labs/lab5/analysis/zap-noauth-console.txt
+
+ZAP authenticated:
+- Traditional spider: 112 URLs
+- AJAX spider: 615 URLs
+- Active scan: completed
+- Automation plan succeeded
+- Evidence:
+  - labs/lab5/zap/report-auth.html
+  - labs/lab5/zap/zap-report-auth.json
+  - labs/lab5/analysis/zap-auth-console.txt
+  - labs/lab5/analysis/zap-comparison.txt
+
+Nuclei:
+- Template matches: 0
+- Interpretation: no template matches were produced in this local scan.
+- Evidence:
+  - labs/lab5/nuclei/nuclei-results.json
+  - labs/lab5/analysis/nuclei-console.txt
+
+Nikto:
+- Reported server findings/items: 162
+- Example findings:
+  - Access-Control-Allow-Origin: *
+  - X-XSS-Protection header is not defined
+  - robots.txt exposes /ftp/
+  - Potentially interesting backup/cert files discovered
+- Evidence:
+  - labs/lab5/nikto/nikto-results.txt
+  - labs/lab5/analysis/nikto-console.txt
+
+SQLmap:
+- Search endpoint: SQL injection confirmed on /rest/products/search?q=*
+- Search backend DBMS: SQLite
+- Login endpoint: login request was corrected and validated separately with curl; SQLmap login result is recorded in sqlmap-login-console.txt.
+
+Search endpoint indicators:
+  - [13:20:49] [INFO] URI parameter '#1*' appears to be 'AND boolean-based blind - WHERE or HAVING clause' injectable (with --string="The")
+  - URI parameter '#1*' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+  - Parameter: #1* (URI)
+  - [13:20:50] [INFO] the back-end DBMS is SQLite
+  - back-end DBMS: SQLite
+
+
+Login endpoint indicators:
+
+
+Evidence:
+  - labs/lab5/analysis/login-test-raw-fixed.txt
+  - labs/lab5/analysis/sqlmap-search-console.txt
+  - labs/lab5/analysis/sqlmap-login-console.txt
+  - labs/lab5/sqlmap/login-request.txt
+  - labs/lab5/sqlmap/

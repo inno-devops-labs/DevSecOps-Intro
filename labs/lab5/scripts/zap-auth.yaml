@@ -1,0 +1,66 @@
+﻿env:
+  contexts:
+    - name: "JuiceShop"
+      urls:
+        - "http://127.0.0.1:3000"
+      includePaths:
+        - "http://127.0.0.1:3000.*"
+      excludePaths: []
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://127.0.0.1:3000/#/login"
+          loginRequestUrl: "http://127.0.0.1:3000/rest/user/login"
+          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+        verification:
+          method: "response"
+          loggedInRegex: "authentication"
+          loggedOutRegex: "Invalid email or password"
+          pollFrequency: 60
+          pollUnits: "requests"
+      sessionManagement:
+        method: "cookie"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+
+jobs:
+  - type: "spider"
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      url: "http://127.0.0.1:3000"
+      maxDuration: 3
+
+  - type: "spiderAjax"
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      url: "http://127.0.0.1:3000"
+      maxDuration: 5
+
+  - type: "passiveScan-wait"
+    parameters:
+      maxDuration: 5
+
+  - type: "activeScan"
+    parameters:
+      context: "JuiceShop"
+      user: "admin"
+      maxScanDurationInMins: 10
+
+  - type: "report"
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "report-auth.html"
+      reportTitle: "Juice Shop Authenticated ZAP Report"
+
+  - type: "report"
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/zap"
+      reportFile: "zap-report-auth.json"
+      reportTitle: "Juice Shop Authenticated ZAP JSON Report"
