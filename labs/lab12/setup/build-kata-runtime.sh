@@ -44,7 +44,7 @@ docker run --rm \
     make
 
     # Collect the produced binary
-    f=$(find target -type f -name containerd-shim-kata-v2 | head -n1)
+    f="$(find /work/kata-containers/target -type f -name containerd-shim-kata-v2 | head -n1)"
     if [ -z "$f" ]; then
       echo "ERROR: built binary not found" >&2; exit 1
     fi
