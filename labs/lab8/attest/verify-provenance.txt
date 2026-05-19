@@ -1,0 +1,21 @@
+{
+  "builder": {
+    "id": "student@local"
+  },
+  "buildType": "manual-local-demo",
+  "invocation": {
+    "configSource": {},
+    "parameters": {
+      "image": "localhost:5001/juice-shop@sha256:872efcc03cc16e8c4e2377202117a218be83aa1d05eb22297b248a325b400bd7"
+    }
+  },
+  "metadata": {
+    "buildStartedOn": "2026-03-29T20:48:53Z",
+    "completeness": {
+      "parameters": true,
+      "environment": false,
+      "materials": false
+    },
+    "reproducible": false
+  }
+}
