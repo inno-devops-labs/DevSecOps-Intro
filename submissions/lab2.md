@@ -75,3 +75,34 @@ Hardening applied in `labs/lab2/threagile-model-secure.yaml`:
 ### Honesty check
 
 The total did **not** drop more than 50% (23 → 23, **0%** change). Encrypting links and storage removed several obvious misconfiguration findings, but declaring a new DB/storage communication link surfaced **sql-nosql-injection**, **path-traversal**, and **missing-authentication** on that path — a realistic trade-off in threat modeling. These hardening changes are **high leverage for the issues they target** (cleartext creds, data-at-rest) with modest YAML edits, yet eliminating the remaining elevated risks would require application-level controls (auth between tiers, input validation, identity store, CSP) — substantially more engineering than flipping protocol/encryption fields.
+
+---
+
+## Bonus Task: Auth Flow Threat Model
+
+Model file: `labs/lab2/threagile-model-auth.yaml` (written from scratch, 7 communication links, 5 data assets).
+
+### Risk count
+
+| Severity | Count |
+|----------|------:|
+| Critical | 0 |
+| High | 0 |
+| Elevated | 16 |
+| Medium | 25 |
+| Low | 9 |
+| **Total** | **50** |
+
+Source: `labs/lab2/output-auth/risks.json` (Threagile v0.9.1).
+
+### Three auth-specific risks (NOT in the baseline model's top 5)
+
+1. **`missing-authentication-second-factor@user-browser>login-and-register@user-browser@auth-api`** — STRIDE: **S (Spoofing)** — Mitigation: Require MFA (TOTP/WebAuthn) on login and registration, especially before issuing JWTs with elevated claims.
+
+2. **`sql-nosql-injection@auth-api@credential-store@auth-api>verify-credentials`** — STRIDE: **T (Tampering)** — Mitigation: Use parameterized queries / ORM bindings for all credential lookups so login input cannot alter the SQL query structure.
+
+3. **`missing-vault@credential-store`** — STRIDE: **I (Information Disclosure)** — Mitigation: Store password hashes and JWT signing keys in a secrets manager (Vault/KMS) instead of plain container filesystem paths readable after container compromise.
+
+### Reflection
+
+The focused auth model surfaced **login-path risks** — missing MFA, SQL injection on credential verification, and missing secrets vault — that the baseline architecture model never prioritized because its top findings were generic transport issues (HTTP links, reverse proxy) and app-wide XSS. Feature-level modeling also exposed **JWT verification hops** (`missing-authentication` on auth-api→jwt-service and protected-api→jwt-service) as distinct trust gaps rather than folding them into a monolithic “Juice Shop Application” asset.
