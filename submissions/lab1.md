@@ -102,10 +102,10 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - [x] Following [@Cre-eD](https://github.com/Cre-eD) (professor)
 - [x] Following [@Naghme98](https://github.com/Naghme98) (TA)
 - [x] Following [@pierrepicaud](https://github.com/pierrepicaud) (TA)
-- [ ] Following 3+ classmates:
-  - [ ] @________
-  - [ ] @________
-  - [ ] @________
+- [x] Following 3+ classmates:
+  - [x] [@Clothj](https://github.com/Clothj)
+  - [x] [@GurbanG](https://github.com/GurbanG)
+  - [x] [@SharapaGorg](https://github.com/SharapaGorg)
 
 ### Why it matters
 
