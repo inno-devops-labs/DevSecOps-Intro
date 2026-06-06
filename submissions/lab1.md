@@ -58,3 +58,12 @@ Which of these are MISSING?
 ## GitHub Community
 
 Starring repositories bookmarks useful projects for later, signals trust and popularity to other developers, and helps maintainers gain visibility for their work. Following developers keeps me updated on what teammates and the wider community are building, helps me discover new projects through their activity, and builds professional connections useful for future collaboration.
+
+## Bonus: CI Smoke Test
+
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on main
+- Permissions: `contents: read` (workflow level)
+- Run URL (green): https://github.com/Basinkse21/DevSecOps-Intro/actions/runs/27057942363
+- Workflow run duration: ~17s
+- Smoke test result: smoke-test succeeded, Juice Shop returned healthy
