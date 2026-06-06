@@ -53,7 +53,7 @@ Which of these are MISSING?
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
 - Checklist items: clear title; no secrets/large files; submission file exists
-- Auto-fill verified: [ ] Yes — to confirm when opening the PR
+- Auto-fill verified: [x] Yes — opening a PR from a feature branch into `main` of my fork auto-populated the description with the full template (Goal / Changes / Testing / Artifacts + 3-item checklist), confirmed before any manual edits. Screenshot attached.
 
 ## GitHub Community
 
