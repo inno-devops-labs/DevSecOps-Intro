@@ -96,8 +96,8 @@ Followed classmates: @0xsmk, @Basinkse21, @prudenz1
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): _to be filled after PR is created and Actions complete_
-- Workflow run duration: _to be filled after run completes_
+- Run URL (must be green): https://github.com/JoraXD/DevSecOps-Intro/actions/runs/27154170994/job/80152612574
+- Workflow run duration: 18s
 - Curl response excerpt:
   ```
   {"version":"20.0.0"}
