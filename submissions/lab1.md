@@ -65,9 +65,9 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 - A06)
 - [ ] `X-Frame-Options`
 
 ### Top 3 Risks Observed (2-3 sentences each, in your own words)
-1. **Missing Content Security Policy** - The application response does not include a `Content-Security-Policy` header. This weakens browser-side protection against injected scripts and makes XSS-style issues more dangerous. This maps to **OWASP Top 10:2025 A03: Injection**.
-2. **No Strict-Transport-Security header** - The application does not send a `Strict-Transport-Security` header. In a real deployment this would mean the browser is not forced to use secure transport in future connections, which increases the impact of downgrade or interception scenarios. This maps to **OWASP Top 10:2025 A02: Cryptographic Failures**.
-3. **Client-side storage of authentication token** - Browser storage contained a JWT-like token associated with the authenticated session. If an attacker can execute JavaScript in the browser or steal client-side storage, that token could be abused for session hijacking or account misuse. This maps to **OWASP Top 10:2025 A07: Identification and Authentication Failures**.
+1. **Missing Content Security Policy** - The application response does not include a `Content-Security-Policy` header. This is a security hardening gap that weakens browser-side protection against injected scripts and can increase the impact of XSS-related issues. This maps to **OWASP Top 10:2025 A02: Security Misconfiguration**.
+2. **No Strict-Transport-Security header** - The application does not send a `Strict-Transport-Security` header. In a real deployment, this would mean the browser is not instructed to enforce HTTPS for future connections, which reflects an insecure server-side security configuration. This maps to **OWASP Top 10:2025 A02: Security Misconfiguration**.
+3. **Client-side storage of authentication token** - Browser storage contained a JWT-like token associated with the authenticated session. Storing sensitive session material in a client-accessible context increases the impact of XSS or client-side compromise and reflects a weak security design choice. This maps to **OWASP Top 10:2025 A06: Insecure Design**.
 
 ### Screenshots
 - Screenshot 1 - Juice Shop landing page (attached in PR)
