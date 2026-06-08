@@ -88,3 +88,14 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 - A06)
 ## GitHub Community
 
 Starring repositories matters in open source because it helps signal that a project is useful, makes it easier to find again later, and gives maintainers visible community support. Following developers is helpful in team projects and professional growth because it gives better visibility into what others are building, how they work, and what tools or practices are worth learning from.
+
+## Bonus: CI Smoke Test
+
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on `main`
+- Run URL (must be green): `[paste GitHub Actions run URL here]`
+- Workflow run duration: `[paste duration here]`
+- Curl response excerpt:
+  ```
+  [paste the "HTTP/1.1 200 OK" excerpt from the workflow logs here]
+  ```
