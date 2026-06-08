@@ -118,9 +118,24 @@ Stars on GitHub are a simple and clear way to understand how trustworthy a resou
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on `main`
-- Run URL (must be green): ``
-- Workflow run duration: `60`
+- Run URL (must be green): `https://github.com/Nopef/DevSecOps-Intro/actions/runs/27152617259`
+- Workflow run duration: `23`
 - Curl response excerpt:
-  ```
-  w
-  ```
+```
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Mon, 08 Jun 2026 16:41:57 GMT
+ETag: W/"26af-19ea81cc11a"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 9903
+Vary: Accept-Encoding
+Date: Mon, 08 Jun 2026 16:41:57 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```
