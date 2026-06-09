@@ -31,5 +31,5 @@ jobs:
       
       - name: Verify homepage returns 200
         run: |
-          curl --silent --fail http://localhost:3000/rest/admin/application-version
+          curl -v http://localhost:3000/rest/admin/application-version
           echo "smoke test passed"
