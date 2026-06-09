@@ -139,7 +139,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 
 ### Why stars matter
 
-Starring repositories helps open source projects gain visibility, attract contributors, and shows maintainers that their work is valued. Following developers keeps you updated on their activity, fosters collaboration in team projects, and exposes you to best practices and new techniques that accelerate your professional growth.
+Starring repositories helps open source projects gain visibility, attract contributors, and shows maintainers that their work is valued. Following developers keeps you updated on their activity, fosters collaboration in team projects, and exposes you to best practices and new techniques that accelerate your professional growth. 
 
 ## Bonus: CI Smoke Test
 
