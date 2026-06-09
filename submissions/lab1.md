@@ -77,3 +77,10 @@ a high star count is often the first thing engineers check before adopting an
 open-source tool. Following teammates and professors surfaces their activity in
 your GitHub feed, which is a real habit in DevSecOps teams where you want
 visibility into what libraries or tools your colleagues are evaluating.
+
+## Bonus: CI Smoke Test
+
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on main
+- PR URL: https://github.com/inno-devops-labs/DevSecOps-Intro/pull/934
+- Note: Checks tab shows 0 — Actions may be disabled for fork PRs on this repo
