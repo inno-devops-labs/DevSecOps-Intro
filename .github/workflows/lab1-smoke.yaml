@@ -15,11 +15,6 @@ jobs:
         image: bkimminich/juice-shop:v20.0.0
         ports:
           - 3000:3000
-        options: >-
-          --health-cmd="curl --silent --fail http://localhost:3000/rest/admin/application-version || exit 1"
-          --health-interval=5s
-          --health-timeout=3s
-          --health-retries=10
     steps:
       - name: Wait for Juice Shop to be ready
         run: |
