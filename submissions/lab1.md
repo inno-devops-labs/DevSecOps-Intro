@@ -58,3 +58,10 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 1. HTTP instead of HTTPS, lack of Strict-Transport-Security (A06: Security Misconfiguration). A hacker could intercept a user's traffic in a local network.
 2. Lack of Content-Security-Policy (A04: Injection). A hacker could inject their own code onto the page through some parameters, and the browser will execute that code.
 3. I pressed a button that required an account and saw a 401 error with a detailed description ("Parameter "key" is required and cannot be empty") in the console, before being prompted to log in. The error should be hidden from the user; otherwise, a hacker could try and guess the parameter "key". It is A05: Insecure Design.
+
+## PR Template Setup
+
+- File: `.github/PULL_REQUEST_TEMPLATE.md`
+- Sections included: Goal / Changes / Testing / Artifacts & Screenshots
+- Checklist items: Title is clear (feat(labN): <topic> style); No secrets/large temp files committed; Submission file at submissions/labN.md exists
+- Auto-fill verified: [ ] Yes — PR description showed my template. No, it didn't. I probably messed up with commits, but I don't know for sure what happened.
