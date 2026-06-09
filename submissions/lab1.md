@@ -145,6 +145,21 @@ Starring repositories helps open source projects gain visibility, attract contri
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): <link to your Actions run>
-- Workflow run duration: <e.g. 45s>
+- Run URL (must be green): [<link to Actions run>](https://github.com/AskoRBINKAs/DevSecOps-Intro/actions/runs/27238144616/job/80435256342)
+- Workflow run duration: 16s
 - Curl response excerpt:
+```
+< HTTP/1.1 200 OK
+< Access-Control-Allow-Origin: *
+< X-Content-Type-Options: nosniff
+< X-Frame-Options: SAMEORIGIN
+< Feature-Policy: payment 'self'
+< X-Recruiting: /#/jobs
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 20
+< ETag: W/"14-+EBpZnfu193JzIOBjXsY1+KveN8"
+< Vary: Accept-Encoding
+< Date: Tue, 09 Jun 2026 21:51:05 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+```
