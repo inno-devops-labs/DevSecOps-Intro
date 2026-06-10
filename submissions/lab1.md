@@ -103,8 +103,8 @@ Following developers on GitHub surfaces their activity — new repos they create
 
 - **Workflow file:** `.github/workflows/lab1-smoke.yml`
 - **Trigger:** `pull_request` on `main`
-- **Run URL (must be green):** `<link to your GitHub Actions run>`
-- **Workflow run duration:** `<e.g. 52s>`
+- **Run URL (must be green):** Workflow file present at `.github/workflows/lab1-smoke.yml`; Actions did not trigger on fork PR (expected for external contributors to course repo)
+- **Workflow run duration:** N/A — workflow not triggered on fork PR
 - **Curl response excerpt:**
   ```
   HTTP 200
