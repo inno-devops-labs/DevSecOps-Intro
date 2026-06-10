@@ -114,10 +114,28 @@ Why: Starring in the open source community helps discovery and signals interest;
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): <link to your Actions run>
-- Workflow run duration: <e.g. 45s>
+- Run URL (must be green): [<link to your Actions run>](https://github.com/IamdLite/DevSecOps-Intro/actions/runs/27287731734/job/80599483714?pr=1)
+- Workflow run duration: 22s
 - Curl response excerpt:
-`<paste your "HTTP/1.1 200 OK ..." block>`
+```
+Run curl --silent --fail -I http://localhost:3000 | head -n 20
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Wed, 10 Jun 2026 15:41:12 GMT
+ETag: W/"26af-19eb231dc77"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 9903
+Vary: Accept-Encoding
+Date: Wed, 10 Jun 2026 15:41:13 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```
 
 ---
 
