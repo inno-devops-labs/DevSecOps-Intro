@@ -12,7 +12,7 @@ Lab 1 submission: Juice Shop deployed, triage report completed, and CI smoke tes
 
 ## Artifacts & Screenshots
 - See `submissions/lab1.md` for the full report.
-- Actions run: [ВСТАВЬ СЮДА ССЫЛКУ НА GREEN ACTIONS RUN, КОГДА ОН БУДЕТ ГОТОВ]
+- Actions run: [link]
 
 ---
 ### Checklist
