@@ -84,3 +84,17 @@ Keep-Alive: timeout=5
 ## GitHub community
 * Why starring repositories matters in open source: tars increase an open-source project's visibility in GitHub search results and signal community trust. A higher star count often correlates with project maturity and adoption. Starring a repository also bookmarks it for future reference and displays it on one's GitHub profile, indicating personal interests and areas of expertise.
 * How following developers helps in team projects and professional growth: Following developers surfaces their public activity in the GitHub feed — repositories they create, fork, and star. This enables discovery of new tools and workflows, facilitates learning from more experienced developers, and helps build a professional network. Within the course context, following classmates simplifies collaboration and mutual support. Professionally, a well-curated GitHub network can lead to job referrals and collaborative opportunities.
+
+
+## Bonus: CI Smoke Test
+
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on main
+- Run URL: (ссылка появится после того, как создадите PR)
+- Workflow run duration: (посмотрите в GitHub Actions после запуска)
+- Curl response excerpt:
+
+⏳ Waiting for Juice Shop to start...
+✅ Juice Shop is ready!
+Found ~46 products
+
