@@ -18,10 +18,3 @@ curl http://127.0.0.1:3000/api/products | head -c 200
 ```
 
 ## Artifacts & Screenshots
-
-## PR Template Setup
-
-- File: `.github/PULL_REQUEST_TEMPLATE.md`
-- Sections included: Goal / Changes / Testing / Artifacts & Screenshots
-- Checklist items: <list yours>
-- Auto-fill verified: [ ] Yes — PR description showed my template (screenshot or link to draft PR)
