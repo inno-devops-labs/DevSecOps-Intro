@@ -38,6 +38,17 @@ data_assets:
     availability: operational
     justification_cia_rating: "Session state is needed for authentication continuity."
 
+  refresh-token:
+    id: refresh-token
+    description: "Long-lived refresh tokens used to obtain new JWTs without re-authentication."
+    usage: business
+    owner: Lab Student
+    quantity: few
+    confidentiality: restricted
+    integrity: important
+    availability: operational
+    justification_cia_rating: "Refresh tokens allow session continuation and must be protected and stored securely."
+
 technical_assets:
 
   User Browser:
@@ -134,6 +145,7 @@ technical_assets:
     justification_cia_rating: "Holds signing keys; high integrity requirement."
     data_assets_processed:
       - jwt-token
+      - refresh-token
 
   User DB:
     id: user-db
@@ -155,6 +167,7 @@ technical_assets:
     justification_cia_rating: "Contains credential hashes and PII."
     data_assets_stored:
       - credentials
+      - refresh-token
 
   Admin Endpoint:
     id: admin-endpoint
@@ -181,6 +194,13 @@ technical_assets:
         protocol: https
         authentication: token
         authorization: enduser-identity-propagation
+        usage: business
+      Admin->UserDB:
+        target: user-db
+        description: "Admin queries to inspect or manage user records."
+        protocol: jdbc-encrypted
+        authentication: token
+        authorization: admin-role
         usage: business
 
 trust_boundaries:

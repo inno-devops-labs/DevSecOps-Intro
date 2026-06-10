@@ -11,18 +11,18 @@
 | **Total** | **23** |
 
 ### Top 5 risks (paste from `jq` output)
-1. **missing-authentication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Missing Authentication covering communication link To App from Reverse Proxy to Juice Shop Application; severity elevated; affecting `juice-shop`
-2. **cross-site-scripting@juice-shop** — Cross-Site Scripting (XSS) risk at Juice Shop Application; severity elevated; affecting `juice-shop`
-3. **unencrypted-communication@user-browser>direct-to-app-no-proxy@user-browser@juice-shop** — Unencrypted Communication on Direct to App (no proxy) between User Browser and Juice Shop Application; severity elevated; affecting `user-browser`
-4. **unencrypted-communication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Unencrypted Communication on To App between Reverse Proxy and Juice Shop Application; severity elevated; affecting `reverse-proxy`
-5. **unencrypted-asset@juice-shop** — Unencrypted Technical Asset named Juice Shop Application; severity medium; affecting `juice-shop`
+1. **unencrypted-asset@juice-shop** — Unencrypted Technical Asset named Juice Shop Application; severity medium; affecting `juice-shop`
+2. **unencrypted-asset@persistent-storage** — Unencrypted Technical Asset named Persistent Storage; severity medium; affecting `persistent-storage`
+3. **missing-identity-store@reverse-proxy** — Missing Identity Store in the threat model (example asset Reverse Proxy); severity medium; affecting `reverse-proxy`
+4. **missing-authentication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Missing Authentication covering communication link To App from Reverse Proxy to Juice Shop Application; severity elevated; affecting `juice-shop`
+5. **cross-site-request-forgery@juice-shop@user-browser>direct-to-app-no-proxy** — Cross-Site Request Forgery risk involving the Direct-to-App (no proxy) path; severity medium; affecting `juice-shop`
 
 ### STRIDE mapping (Lecture 2 slide 7)
 - missing-authentication: **A** — attacker can bypass authentication on the app-facing reverse-proxy link.
-- cross-site-scripting: **S** — attacker can inject script into the browser session and act as the user.
-- unencrypted communication (Direct to App): **I/D** — unprotected traffic can be intercepted or modified.
-- unencrypted communication (To App): **I/D** — internal HTTP traffic exposes session/token traffic in the container network.
-- unencrypted asset (Juice Shop Application): **D** — the app asset is not encrypted and sensitive data can be disclosed.
+- cross-site-request-forgery: **S** — an attacker can cause a user's browser to perform actions without their intent, effectively acting as the user.
+- unencrypted communication (Direct to App): **I/D** — unprotected traffic can be intercepted (Disclosure) or modified (Tampering).
+- unencrypted communication (To App): **I/D** — internal HTTP traffic exposes session/token traffic in the container network to interception or modification.
+- unencrypted asset (Juice Shop Application / Persistent Storage): **D** — the asset is not encrypted and sensitive data can be disclosed if accessed.
 
 ### Trust boundary observation
 The `Direct to App (no proxy)` arrow crosses the untrusted Internet trust boundary directly into `Juice Shop Application`. This path is attractive because it bypasses the reverse proxy controls and exposes authentication/session data to attackers.
