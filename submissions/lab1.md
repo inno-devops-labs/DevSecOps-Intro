@@ -102,7 +102,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 - A06)
   - Title is clear (`feat(labN): <topic>` style)
   - No secrets/large temp files committed
   - Submission file at `submissions/labN.md` exists
-- Auto-fill verified: [ ] No - TODO: push `feature/lab1`, open a draft PR, and confirm the PR description is pre-filled.
+- Auto-fill verified: [ ] No - PR #947 was opened successfully, but the template did not auto-fill because this PR introduces `.github/PULL_REQUEST_TEMPLATE.md` for the first time. The PR body was filled manually with the same required sections.
 
 ## GitHub Community
 
@@ -119,10 +119,12 @@ Stars matter in open source because they act as both bookmarks and public signal
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): TODO: add the GitHub Actions run URL after opening the PR.
-- Workflow run duration: TODO: copy from the GitHub Actions run.
+- Run URL (must be green): N/A so far - upstream PR #947 shows `Checks 0`, so GitHub did not run the newly-added workflow on this fork PR.
+- Workflow run duration: N/A - no workflow run was created by GitHub for this PR.
 - Curl response excerpt:
 
   ```text
-  TODO: paste the workflow output showing HTTP 200 after the PR workflow runs.
+  N/A - no GitHub Actions run was created. Local equivalent check passed:
+  curl -s -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:3000
+  HTTP 200
   ```
