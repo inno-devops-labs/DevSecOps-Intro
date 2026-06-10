@@ -1,36 +1,39 @@
 threagile_version: 1.0.0
 
-title: OWASP Juice Shop — Local Lab Threat Model (secure variant)
-date: 2026-06-10
+title: OWASP Juice Shop — Local Lab Threat Model  
+date: 2025-09-18
 
 author:
   name: Student Name
   homepage: https://example.edu
 
 management_summary_comment: >
-  Hardened variant: enforces HTTPS for user traffic, enables encryption at rest for
-  persistent storage, documents use of prepared statements for DB access, and avoids
-  plaintext log writes.
+  Threat model for a local OWASP Juice Shop setup. Users access the app  
+  either directly via HTTP on port 3000 or through an optional reverse proxy that  
+  terminates TLS and adds security headers. The app runs in a container  
+  and writes data to a host-mounted volume (for database, uploads, logs).  
+  Optional outbound notifications (e.g., a challenge-solution WebHook) can be configured for integrations.
 
-business_criticality: important
+business_criticality: important  # archive, operational, important, critical, mission-critical
 
 business_overview:
   description: >
-    Hardened variant of the baseline Juice Shop threat model with a small set of
-    targeted configuration changes to illustrate risk delta.
+    Training environment for DevSecOps. This model covers a deliberately vulnerable  
+    web application (OWASP Juice Shop) running locally in a Docker container. The focus is on a minimal architecture, STRIDE threat analysis, and actionable mitigations for the identified risks.
+
+  images:
+    # - dfd.png: Data Flow Diagram (if exported from the tool)
 
 technical_overview:
   description: >
-    See baseline model. This secure variant forces HTTPS between browser and app
-    (even for direct-local access), enables encryption for host storage, and
-    annotates DB communications as using parameterized queries.
+    A user’s web browser connects to the Juice Shop application (Node.js/Express server) either directly on **localhost:3000** (HTTP) or via a **reverse proxy** on ports 80/443 (with HTTPS). The Juice Shop server may issue outbound requests to external services (e.g., a configured **WebHook** for solved challenge notifications). All application data (the SQLite database, file uploads, logs) is stored on the host’s filesystem via a mounted volume. Key trust boundaries include the **Internet** (user & external services) → **Host** (local machine/VM) → **Container Network** (isolated app container).
   images: []
 
 questions:
   Do you expose port 3000 beyond localhost?: ""
-  Do you use a reverse proxy with TLS and security headers?: "yes"
+  Do you use a reverse proxy with TLS and security headers?: ""
   Are any outbound integrations (webhooks) configured?: ""
-  Is any sensitive data stored in logs or files?: "no-plaintext"
+  Is any sensitive data stored in logs or files?: ""
 
 abuse_cases:
   Credential Stuffing / Brute Force: >
@@ -48,8 +51,10 @@ security_requirements:
   Secrets management: Protect secret keys and credentials (JWT signing keys, OAuth client secrets) – keep them out of code repos and avoid logging them.
 
 tags_available:
+  # Relevant technologies and environment tags
   - docker
   - nodejs
+  # Data and asset tags
   - pii
   - auth
   - tokens
@@ -64,9 +69,10 @@ tags_available:
   - volume
   - saas
   - webhook
-  - egress
+  # Communication tags
   - primary
   - direct
+  - egress
 
 # =========================
 # DATA ASSETS
@@ -239,8 +245,8 @@ technical_assets:
         target: juice-shop
         description: "Proxy forwarding to app (HTTPS on 3000 internally)."
         protocol: https
-        authentication: none
-        authorization: none
+        authentication: session-id
+        authorization: technical-user
         tags: []
         vpn: false
         ip_filtered: false
@@ -264,7 +270,7 @@ technical_assets:
     tags: ["app", "nodejs"]
     internet: false
     machine: container
-    encryption: none
+    encryption: data-with-symmetric-shared-key
     owner: Lab Owner
     confidentiality: internal
     integrity: important
@@ -296,13 +302,12 @@ technical_assets:
         usage: business
         data_assets_sent:
           - orders
-      To Persistent Storage:
+      To DB:
         target: persistent-storage
-        description: "DB and file writes use parameterized queries (prepared statements). Logs are written to an encrypted destination."
+        description: "App uses prepared statements / parameterized queries when accessing the database."
         protocol: jdbc-encrypted
-        authentication: none
-        authorization: none
-        tags: ["storage"]
+        authentication: credentials
+        authorization: technical-user
         vpn: false
         ip_filtered: false
         readonly: false
@@ -311,6 +316,9 @@ technical_assets:
           - user-accounts
           - orders
           - product-catalog
+          - tokens-sessions
+        data_assets_received:
+          - logs
 
   Persistent Storage:
     id: persistent-storage
@@ -325,7 +333,7 @@ technical_assets:
     tags: ["storage", "volume"]
     internet: false
     machine: virtual
-    encryption: data-with-symmetric-shared-key
+    encryption: none
     owner: Lab Owner
     confidentiality: internal
     integrity: important
@@ -420,3 +428,19 @@ shared_runtimes:
     tags: ["docker"]
     technical_assets_running:
       - juice-shop
+      # If the reverse proxy is containerized, include it:
+      # - reverse-proxy
+
+# =========================
+# INDIVIDUAL RISK CATEGORIES (optional)
+# =========================
+individual_risk_categories: {}
+
+# =========================
+# RISK TRACKING (optional)
+# =========================
+risk_tracking: {}
+
+# (Optional diagram layout tweaks can be added here)
+#diagram_tweak_edge_layout: spline
+#diagram_tweak_layout_left_to_right: true

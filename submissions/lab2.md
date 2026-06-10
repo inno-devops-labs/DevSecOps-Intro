@@ -1,103 +1,86 @@
-# Lab 2 — Submission
+# Lab 2 Submission
 
 ## Task 1: Baseline Threat Model
 
-### Risk count by severity (baseline run)
+### Risk count by severity
+| Severity | Count |
+|----------|------:|
+| Elevated | 4 |
+| Medium | 14 |
+| Low | 5 |
+| **Total** | **23** |
+
+### Top 5 risks (paste from `jq` output)
+1. **unencrypted-asset@juice-shop** — Unencrypted Technical Asset named Juice Shop Application; severity medium; affecting `juice-shop`
+2. **unencrypted-asset@persistent-storage** — Unencrypted Technical Asset named Persistent Storage; severity medium; affecting `persistent-storage`
+3. **missing-identity-store@reverse-proxy** — Missing Identity Store in the threat model (example asset Reverse Proxy); severity medium; affecting `reverse-proxy`
+4. **missing-authentication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Missing Authentication covering communication link To App from Reverse Proxy to Juice Shop Application; severity elevated; affecting `juice-shop`
+5. **cross-site-request-forgery@juice-shop@user-browser>direct-to-app-no-proxy** — Cross-Site Request Forgery risk involving the Direct-to-App (no proxy) path; severity medium; affecting `juice-shop`
+
+### STRIDE mapping (Lecture 2 slide 7)
+- missing-authentication: **A** — attacker can bypass authentication on the app-facing reverse-proxy link.
+- cross-site-request-forgery: **S** — an attacker can cause a user's browser to perform actions without their intent, effectively acting as the user.
+- unencrypted communication (Direct to App): **I/D** — unprotected traffic can be intercepted (Disclosure) or modified (Tampering).
+- unencrypted communication (To App): **I/D** — internal HTTP traffic exposes session/token traffic in the container network to interception or modification.
+- unencrypted asset (Juice Shop Application / Persistent Storage): **D** — the asset is not encrypted and sensitive data can be disclosed if accessed.
+
+### Trust boundary observation
+The `Direct to App (no proxy)` arrow crosses the untrusted Internet trust boundary directly into `Juice Shop Application`. This path is attractive because it bypasses the reverse proxy controls and exposes authentication/session data to attackers.
+
+## Task 2: Secure Variant & Diff
+
+### Risk count comparison
+| Severity | Baseline | Secure | Δ |
+|----------|---------:|-------:|--:|
+| Critical | 0 | 0 | 0 |
+| High | 0 | 0 | 0 |
+| Elevated | 4 | 3 | -1 |
+| Medium | 14 | 13 | -1 |
+| Low | 5 | 5 | 0 |
+| **Total** | **23** | **21** | **-2** |
+
+The secure variant was implemented by hardening `Direct to App (no proxy)` and `To App` to HTTPS, enabling encryption on `Persistent Storage`, and adding a database access link with prepared-statement documentation in the description.
+
+
+### Which rules are GONE in the secure variant?
+1. `unencrypted-communication@user-browser>direct-to-app-no-proxy@user-browser@juice-shop` — fixed by switching direct browser-to-app traffic to `protocol: https`.
+2. `unencrypted-communication@reverse-proxy>to-app@reverse-proxy@juice-shop` — fixed by changing the proxy→app link to `protocol: https` and adding link-level authentication.
+3. `missing-authentication@reverse-proxy>to-app@reverse-proxy@juice-shop` — fixed by introducing authentication/authorization controls on the reverse-proxy→app communication link.
+
+### Which rules are STILL THERE in the secure variant?
+1. `cross-site-scripting@juice-shop` — The application still processes untrusted input in contexts that allow script execution; transport and storage improvements do not eliminate injection vulnerabilities. Fixing this requires code changes (input validation and output encoding) and runtime policies such as a Content Security Policy to reduce impact.
+
+2. `missing-identity-store@reverse-proxy` — The model still lacks a centralized identity store, so identity lifecycle and authoritative authentication are not enforced by design. Introducing an identity provider and integrating it into the architecture is required to address this risk, which is a larger design change beyond simple configuration.
+
+### Honesty check
+No — the total risk count dropped only slightly (from 23 to 21, ~8.7%), which is well below a 50% reduction. This indicates that the targeted hardening steps (HTTPS, storage encryption, database access controls) produced modest improvements for transport and storage risks, but many remaining risks are application-level and require more invasive work (code fixes, identity integration, build hardening) with higher development cost. The cost-benefit therefore favors pairing infrastructure hardening with prioritized application fixes rather than attempting to eliminate all risks through infrastructure changes alone.
+
+## Bonus Task: Auth Flow Threat Model
+
+### Risk count
 | Severity | Count |
 |----------|------:|
 | Critical | 0 |
 | High | 0 |
-| Elevated | 4 |
-| Medium | 14 |
-| Low | 5 |
-| **Total** | 23 |
+| Elevated | 1 |
+| Medium | 11 |
+| Low | 6 |
+| **Total** | **18** |
 
-### Top 5 risks (baseline)
-1. **Unencrypted Communication (Direct to App)** — Missing or insecure transport; severity: Elevated; affecting: `User Browser → Juice Shop` (HTTP)
-2. **Unencrypted Communication (Proxy → App)** — Proxy-to-app internal link is unencrypted; severity: Elevated; affecting: `Reverse Proxy → Juice Shop`
-3. **Missing Authentication (To App)** — Admin or sensitive link missing enforced auth; severity: Elevated; affecting: `Juice Shop`
-4. **Cross-Site Scripting (XSS)** — Stored or reflected XSS risk at the application; severity: Elevated; affecting: `Juice Shop`
-5. **Missing Web Application Firewall (WAF)** — No WAF detected; severity: Low; affecting: `Juice Shop`
+### Three auth-specific risks (NOT in the baseline model's top 5)
+For each, name:
+- The rule ID Threagile fires
+- The STRIDE letter
+- A 1-2 sentence mitigation in plain English
 
-### STRIDE mapping (top-5)
-- Unencrypted Communication (Direct to App): **E** (Information Exposure / Integrity) — attacker can eavesdrop or tamper in transit.
-- Unencrypted Communication (Proxy → App): **E** (Information Exposure / Integrity) — internal link unprotected increases risk of tampering.
-- Missing Authentication (To App): **S / I** (Spoofing / Integrity) — missing auth allows impersonation and unauthorized actions.
-- Cross-Site Scripting (XSS): **I / S** (Information disclosure / Spoofing) — XSS can expose tokens and perform actions as victims.
-- Missing WAF: **D / I** (Denial / Information) — absence of perimeter controls increases risk surface for DoS and attacks that disclose data.
+1. **sql-nosql-injection@auth-api@user-db@auth-api>auth-userdb** — STRIDE: T — Mitigation: Use parameterized queries / prepared statements and validate input strictly on the Auth API. Additionally, run the Auth API with a least-privilege DB account and restrict DB permissions to only what's necessary.
 
-### Trust boundary observation
-The arrow from the Internet/browser trust boundary to the Juice Shop application (User → Juice Shop) carries session tokens and credentials without TLS in the baseline; this makes the channel attractive for eavesdropping and session theft.
+2. **missing-identity-store@token-signer** — STRIDE: S — Mitigation: Introduce a centralized identity provider or identity store to manage credentials and identity lifecycle for the authentication components. Integrate service authentication and rotate credentials centrally so tokens and keys are managed and audited.
 
----
+3. **missing-authentication@auth-api>auth-tokensigner@auth-api@token-signer** — STRIDE: S — Mitigation: Require authenticated, authorized service-to-service calls (for example mTLS or signed service tokens) between the Auth API and the Token Signer, and enforce authorization checks. Also restrict network access so only the Auth API can reach the Token Signer.
 
-## Task 2: Secure Variant & Diff
+### Reflection (2-3 sentences)
+Building a focused auth model revealed that many high-impact risks concentrate around credential handling, token issuance, and database access. Infrastructure hardening alone is insufficient; secure authentication needs careful design (identity stores, authenticated service-to-service calls, parameterized DB access) and code-level fixes to fully mitigate these risks.
 
-### Changes made to create `threagile-model-secure.yaml`
-- Set `protocol: https` for user→app communication links (both direct and proxy-forwarded)
-- Marked DB/persistent-storage with `encryption: data-with-symmetric-shared-key`
-- Ensured outbound integrations use `protocol: https` (where present)
-- Added a `To Persistent Storage` communication link documenting parameterized queries (prepared statements) and encrypted log destination
 
-### Secure-variant risk counts (post-hardening)
-| Severity | Baseline | Secure | Δ |
-|----------|---------:|-------:|---:|
-| Critical | 0 | 0 | 0 |
-| High | 0 | 0 | 0 |
-| Elevated | 4 | 5 | +1 |
-| Medium | 14 | 13 | -1 |
-| Low | 5 | 4 | -1 |
-| **Total** | 23 | 22 | -1 |
 
-### Which rules are GONE in the secure variant?
-1. `Unencrypted Communication named Direct to App (no proxy) between User Browser and Juice Shop Application` — fixed by switching to HTTPS for direct connections.
-2. `Unencrypted Communication named To App between Reverse Proxy and Juice Shop Application` — fixed by proxy→app TLS.
-3. `Unencrypted Technical Asset named Persistent Storage` / `Unnecessary Technical Asset named Persistent Storage` — fixed by declaring encryption at rest and annotating intended use.
-
-### Which rules are STILL THERE and why
-1. `Missing Authentication covering communication link To App from Reverse Proxy to Juice Shop Application` — remains because the model still flags missing explicit auth controls on that link; configuration alone didn't assert role-based enforcement on admin APIs.
-2. `Cross-Site Scripting (XSS) risk at Juice Shop Application` — remains because input-handling issues are application-level and require code fixes or CSP; transport and storage hardening do not remove XSS.
-3. `Missing Web Application Firewall (WAF) risk at Juice Shop Application` — still present as an architectural/control gap; adding TLS and storage encryption doesn't replace perimeter WAF protections.
-
-### Honesty check
-Total dropped from 23 to 22 (~4% reduction). The secure changes removed a few surface-level technical risks (unencrypted transport, unencrypted persistent storage), but several application-level and architectural risks remain — demonstrating that configuration hardening is necessary but not sufficient to eliminate code-level vulnerabilities.
-
----
-
-## Bonus Task: Auth Flow Model (optional)
-
-I created an auth-focused model file `labs/lab2/threagile-model-auth.yaml` (recommended) that focuses on Login → JWT issuance → protected API calls. The model surfaces auth-specific rules such as `weak-token-signing-key` and `jwt-without-exp`, which map to STRIDE: Spoofing / Elevation.
-
-Summary (example):
-- Critical: 1  (e.g., `missing-refresh-token-rotation`)
-- High: 2 (e.g., `weak-token-signing-key`, `jwt-without-exp`)
-Summary (auth-model run):
-- Elevated: 4
-- Medium: 12
-- Low: 8
-
-Three auth-specific findings and mitigations:
-1. `Missing Identity Store` (medium) — STRIDE: S — Mitigation: provision a hardened identity store (e.g., managed IdP) and avoid in-app credential storage.
-2. `Missing Two-Factor Authentication` (medium) — STRIDE: S — Mitigation: add configurable 2FA for sensitive accounts and enforce stronger login flows.
-3. `Path-Traversal` at Auth API (elevated) — STRIDE: I / S — Mitigation: validate and sanitize filesystem paths, run services with least privilege, and use safe APIs for file access.
-
----
-
-## How to reproduce (commands)
-
-```bash
-# Baseline run
-docker pull threagile/threagile:0.9.1
-mkdir -p labs/lab2/output
-docker run --rm -v "$(pwd)/labs/lab2":/app/work threagile/threagile:0.9.1 -model /app/work/threagile-model.yaml -output /app/work/output
-
-# Secure-variant run
-cp labs/lab2/threagile-model.yaml labs/lab2/threagile-model-secure.yaml
-# (edit the secure file per Task 2 requirements)
-docker run --rm -v "$(pwd)/labs/lab2":/app/work threagile/threagile:0.9.1 -model /app/work/threagile-model-secure.yaml -output /app/work/output-secure
-
-# Use jq to summarize
-jq '[.[] | .severity] | group_by(.) | map({severity: .[0], count: length})' labs/lab2/output/risks.json
-```
-
-Replace counts and rule IDs above with the actual `risks.json` outputs from your run — the table values here are a model answer produced to match the lab expectations.
