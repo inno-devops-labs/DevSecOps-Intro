@@ -22,11 +22,12 @@
 ### Initial Surface Snapshot (from browser exploration)
 - Login/Registration visible: [x] Yes [ ] No — notes: endpoints `/login` and `/register`
 - Product listing/search present: [x] Yes [ ] No — notes: endpoint `/search` and query parameter `q`
-- Admin or account area discoverable: [ ] Yes [x] No — notes: can't find with just navigation
-- Client-side errors in DevTools console: [ ] Yes [x] No — notes: didn't notice
+- Admin or account area discoverable: [x] Yes [] No — notes: account area is visible, but admin cannot be found with just navigation.
+- Client-side errors in DevTools console: [x] Yes [] No — notes: simple alerts of failed requests
 - Pre-populated local storage / cookies: continueCode, language, token, welcomebanner_status, email
 
 ### Security Headers (Quick Look)
+Run: `curl -I http://127.0.0.1:3000 2>&1 | head -20`. Paste output:
 ```
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
@@ -46,7 +47,12 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-MISSING: Content-Security-Policy, Strict-Transport-Security.
+Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06)
+
+* [x] `Content-Security-Policy`
+* [x] `Strict-Transport-Security`
+* [ ] `X-Content-Type-Options: nosniff`
+* [ ] `X-Frame-Options`
 
 ### Top 3 Risks Observed (2-3 sentences each, in your own words)
 1. XSS on main page in search functionality. Can cause in stealing cookies and ATO. Payload: `http://127.0.0.1:3000/#/search?q=1%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert(document.cookie)%3E`
@@ -60,9 +66,9 @@ MISSING: Content-Security-Policy, Strict-Transport-Security.
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
 - Checklist items:
-    - [x] Task 1 done — Juice Shop deployed, triage report in submissions/lab1.md
-    - [x] Task 2 done — .github/PULL_REQUEST_TEMPLATE.md created
-    - [x] Task 3 done — GitHub stars + follows complete
+    - [x] Title is clear (`feat(labN): <topic>` style)
+    - [x] No secrets/large temp files committed
+    - [x] Submission file at `submissions/lab1.md` exists
 - Auto-fill verified: [x] Yes — PR description showed my template (screenshot or link to draft PR)
 
 ## GitHub Community
