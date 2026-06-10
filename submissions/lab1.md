@@ -87,9 +87,24 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): <link to your Actions run>
-- Workflow run duration: <e.g. 45s>
+- Run URL (must be green): [link](https://github.com/wannebetheshy/DevSecOps-Intro/actions/runs/27266269902/job/80524004413)
+- Workflow run duration: 19s
 - Curl response excerpt:
   ```
-  <paste your "HTTP/1.1 200 OK ..." block>
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Wed, 10 Jun 2026 09:18:25 GMT
+ETag: W/"26af-19eb0d36913"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 9903
+Vary: Accept-Encoding
+Date: Wed, 10 Jun 2026 09:18:25 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
   ```
