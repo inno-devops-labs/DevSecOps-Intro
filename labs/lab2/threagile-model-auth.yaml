@@ -1,0 +1,209 @@
+title: "Juice Shop Authentication Threat Model"
+version: "1.0"
+date: "2026-06-10"
+author:
+  name: "DevSecOps Student"
+management_summary: "Threat model covering authentication, session handling, and authorization for OWASP Juice Shop."
+business_criticality: "important"
+
+trust_boundaries:
+  public_network:
+    id: "public_network"
+    type: "network-dedicated-hoster"
+    description: "Untrusted external network (Internet)"
+    technical_assets_inside:
+      - "web_client"
+  runtime_env:
+    id: "runtime_env"
+    type: "network-dedicated-hoster"
+    description: "Containerized runtime environment"
+    technical_assets_inside:
+      - "auth_service"
+      - "jwt_signer"
+      - "admin_endpoint"
+      - "user_store"
+
+data_assets:
+  user_cred:
+    id: "user_cred"
+    description: "User login credentials (username/password)"
+    usage: "business"
+    owner: "users"
+    quantity: "many"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+  session_token:
+    id: "session_token"
+    description: "Signed JWT representing an active session"
+    usage: "business"
+    owner: "system"
+    quantity: "many"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+  signing_secret:
+    id: "signing_secret"
+    description: "Cryptographic key used to sign JWTs"
+    usage: "business"
+    owner: "system"
+    quantity: "very-few"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+  admin_ops:
+    id: "admin_ops"
+    description: "Requests to perform administrative operations"
+    usage: "business"
+    owner: "system"
+    quantity: "few"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+
+technical_assets:
+  web_client:
+    id: "web_client"
+    type: "external-entity"
+    description: "User's web browser (client side)"
+    usage: "business"
+    size: "component"
+    technology: "browser"
+    machine: "physical"
+    encryption: "none"
+    owner: "users"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: true
+    out_of_scope: false
+    data_assets_processed: []
+    data_assets_stored: []
+    communication_links:
+      send_login:
+        target: "auth_service"
+        description: "Submit login credentials"
+        protocol: "https"
+        authentication: "none"
+        authorization: "none"
+        usage: "business"
+        data_assets_sent:
+          - "user_cred"
+        data_assets_received:
+          - "session_token"
+      call_admin:
+        target: "admin_endpoint"
+        description: "Perform admin action"
+        protocol: "https"
+        authentication: "session-id"
+        authorization: "enduser-identity-propagation"
+        usage: "business"
+        data_assets_sent:
+          - "session_token"
+          - "admin_ops"
+        data_assets_received: []
+
+  auth_service:
+    id: "auth_service"
+    type: "process"
+    description: "Authentication API service"
+    usage: "business"
+    size: "component"
+    technology: "web-server"
+    machine: "virtual"
+    encryption: "none"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_stored: []
+    data_assets_processed:
+      - "user_cred"
+      - "session_token"
+    communication_links:
+      generate_token:
+        target: "jwt_signer"
+        description: "Request JWT signing"
+        protocol: "local-file-access"
+        authentication: "none"
+        authorization: "none"
+        usage: "business"
+        data_assets_sent:
+          - "user_cred"
+        data_assets_received:
+          - "session_token"
+      verify_creds:
+        target: "user_store"
+        description: "Validate user credentials against database"
+        protocol: "jdbc-encrypted"
+        authentication: "credentials"
+        authorization: "none"
+        usage: "business"
+        data_assets_sent:
+          - "user_cred"
+        data_assets_received:
+          - "user_cred"
+
+  jwt_signer:
+    id: "jwt_signer"
+    type: "process"
+    description: "Internal signing component"
+    usage: "business"
+    size: "component"
+    technology: "library"
+    machine: "virtual"
+    encryption: "none"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_stored: []
+    data_assets_processed:
+      - "signing_secret"
+      - "session_token"
+    communication_links: {}
+
+  admin_endpoint:
+    id: "admin_endpoint"
+    type: "process"
+    description: "Administrative API"
+    usage: "business"
+    size: "component"
+    technology: "web-server"
+    machine: "virtual"
+    encryption: "none"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_stored: []
+    data_assets_processed:
+      - "session_token"
+      - "admin_ops"
+    communication_links: {}
+
+  user_store:
+    id: "user_store"
+    type: "datastore"
+    description: "User credential storage"
+    usage: "business"
+    size: "component"
+    technology: "database"
+    machine: "virtual"
+    encryption: "data-with-symmetric-shared-key"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_processed: []
+    data_assets_stored:
+      - "user_cred"
+    communication_links: {}
