@@ -1,17 +1,17 @@
 ## Pull Request Template
 
-### Lab
-- Lab 1
+## Goal
+One-sentence description of what this PR delivers.
 
-### Summary
-- What does this PR change?
-- Why is this change needed?
+## Changes
+- List files added or modified
 
-### Files changed
-- Confirm this PR contains only Lab 1 work.
+## Testing
+- Commands run and observed output
 
-### Testing
-- How did you verify the changes?
+## Artifacts & Screenshots
+- Links to submission files and images
 
-### Notes
-- Any notes for the reviewer.
+- [ ] Title uses `feat(labN): <topic>` style
+- [ ] No secrets/large temp files committed
+- [ ] `submissions/labN.md` present
