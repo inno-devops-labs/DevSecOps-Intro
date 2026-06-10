@@ -90,7 +90,8 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - Run URL (must be green): [link](https://github.com/wannebetheshy/DevSecOps-Intro/actions/runs/27266269902/job/80524004413)
 - Workflow run duration: 19s
 - Curl response excerpt:
-  ```
+
+```
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
 X-Content-Type-Options: nosniff
@@ -107,4 +108,4 @@ Vary: Accept-Encoding
 Date: Wed, 10 Jun 2026 09:18:25 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
-  ```
+```
