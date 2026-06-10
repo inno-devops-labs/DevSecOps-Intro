@@ -12,7 +12,7 @@
 ### Deployment Details
 - Run command used: `docker run -d --name juice-shop -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.0.0`
 - Access URL: http://127.0.0.1:3000
-- Network exposure: 127.0.0.1 only? Yes
+- Network exposure: 127.0.0.1 only? [x] Yes [ ] No (explain if No)
 - Container restart policy: default `no`
 
 ### Health Check
@@ -20,10 +20,10 @@
 - API check (first 200 chars of `/rest/products`): {"status":"success","data":[{"id":1,"name":"Apple Juice (1000ml)","description":"The all-time classic.","price":1.99,"deluxePrice":0.99,"image":"apple_juice.jpg","createdAt":"2026-06-10T10:26:09.077Z"
 
 ### Initial Surface Snapshot (from browser exploration)
-- Login/Registration visible: Yes — notes: endpoints `/login` and `/register`
-- Product listing/search present: Yes — notes: endpoint `/search` and query parameter `q`
-- Admin or account area discoverable: No — notes: can't find with just navigation
-- Client-side errors in DevTools console: No — notes: didn't notice
+- Login/Registration visible: [x] Yes [ ] No — notes: endpoints `/login` and `/register`
+- Product listing/search present: [x] Yes [ ] No — notes: endpoint `/search` and query parameter `q`
+- Admin or account area discoverable: [ ] Yes [x] No — notes: can't find with just navigation
+- Client-side errors in DevTools console: [ ] Yes [x] No — notes: didn't notice
 - Pre-populated local storage / cookies: continueCode, language, token, welcomebanner_status, email
 
 ### Security Headers (Quick Look)
@@ -59,5 +59,11 @@ MISSING: Content-Security-Policy, Strict-Transport-Security.
 
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
-- Checklist items: <list yours>
-- Auto-fill verified: [ ] Yes — PR description showed my template (screenshot or link to draft PR)
+- Checklist items:
+  - Title is clear (feat(lab1): juice shop deploy + PR template + triage report)
+  - No secrets/large temp files committed
+  - Submission file at submissions/lab1.md exists
+- Auto-fill verified: [x] Yes — PR description showed my template (screenshot or link to draft PR)
+
+## GitHub Community
+Starring repositories signals appreciation and increases project visibility, helping maintainers gauge interest and attract contributors. Following developers keeps you updated on their work, fosters collaboration in team projects, and exposes you to best practices for professional growth
