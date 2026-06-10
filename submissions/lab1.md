@@ -73,7 +73,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
 - Checklist items: Title is clear, No secrets/large temp files committed, Submission file at submissions/labN.md exists
-- Auto-fill verified: [x] Yes — PR description showed my template ()
+- Auto-fill verified: [x] Yes — PR description showed my template
 
 ## GitHub Community
 
