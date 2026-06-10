@@ -11,11 +11,11 @@
 | **Total** | **23** |
 
 ### Top 5 risks (paste from `jq` output)
-1. **unencrypted-asset@juice-shop** — Unencrypted Technical Asset named Juice Shop Application; severity medium; affecting `juice-shop`
-2. **unencrypted-asset@persistent-storage** — Unencrypted Technical Asset named Persistent Storage; severity medium; affecting `persistent-storage`
-3. **missing-identity-store@reverse-proxy** — Missing Identity Store in the threat model (example asset Reverse Proxy); severity medium; affecting `reverse-proxy`
-4. **missing-authentication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Missing Authentication covering communication link To App from Reverse Proxy to Juice Shop Application; severity elevated; affecting `juice-shop`
-5. **cross-site-request-forgery@juice-shop@user-browser>direct-to-app-no-proxy** — Cross-Site Request Forgery risk involving the Direct-to-App (no proxy) path; severity medium; affecting `juice-shop`
+1. **unencrypted-asset@juice-shop** — Unencrypted Technical Asset named Juice Shop Application; severity medium; affecting `juice-shop`.
+2. **unencrypted-asset@persistent-storage** — Unencrypted Technical Asset named Persistent Storage; severity medium; affecting `persistent-storage`.
+3. **missing-identity-store@reverse-proxy** — Missing Identity Store in the threat model (example asset Reverse Proxy); severity medium; affecting `reverse-proxy`.
+4. **missing-authentication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Missing Authentication covering communication link To App from Reverse Proxy to Juice Shop Application; severity elevated; affecting `juice-shop`.
+5. **cross-site-request-forgery@juice-shop@user-browser>direct-to-app-no-proxy** — Cross-Site Request Forgery risk involving the Direct-to-App (no proxy) path; severity medium; affecting `juice-shop`.
 
 ### STRIDE mapping (Lecture 2 slide 7)
 - missing-authentication: **A** — attacker can bypass authentication on the app-facing reverse-proxy link.
