@@ -60,9 +60,9 @@ MISSING: Content-Security-Policy, Strict-Transport-Security.
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
 - Checklist items:
-  - Title is clear (feat(lab1): juice shop deploy + PR template + triage report)
-  - No secrets/large temp files committed
-  - Submission file at submissions/lab1.md exists
+    - [x] Task 1 done — Juice Shop deployed, triage report in submissions/lab1.md
+    - [x] Task 2 done — .github/PULL_REQUEST_TEMPLATE.md created
+    - [x] Task 3 done — GitHub stars + follows complete
 - Auto-fill verified: [x] Yes — PR description showed my template (screenshot or link to draft PR)
 
 ## GitHub Community
