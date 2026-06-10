@@ -73,8 +73,8 @@ Keep-Alive: timeout=5
 Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06):
 - [x] `Content-Security-Policy` — missing
 - [x] `Strict-Transport-Security` — missing (site served over HTTP)
-- [ ] `X-Content-Type-Options: nosniff`
-- [ ] `X-Frame-Options`
+- [ ] `X-Content-Type-Options: nosniff` —  present
+- [ ] `X-Frame-Options` — present
 
 ### Top 3 Risks Observed (2-3 sentences each)
 
