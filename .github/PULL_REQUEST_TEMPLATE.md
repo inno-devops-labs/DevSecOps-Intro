@@ -14,6 +14,6 @@ Provide a 1-sentence summary of what this PR delivers.
 - Link to submission file.
 
 ### Checklist
-- [ ] Title is clear (`feat(lab01): <topic>` style)
+- [ ] Title is clear (`feat(lab1): <topic>` style)
 - [ ] No secrets/large temp files committed
-- [ ] Submission file at `submissions/submission01.md` exists
+- [ ] Submission file at `submissions/lab1.md` exists

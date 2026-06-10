@@ -70,9 +70,52 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 ## PR Template Setup
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
-- Checklist items: Title is clear, No secrets/large temp files committed, Submission file at `submissions/submission01.md` exists
+- Checklist items: Title is clear, No secrets/large temp files committed, Submission file at `submissions/lab1.md` exists
 - Auto-fill verified: [x] Yes — PR description showed my template.
 
 ## GitHub Community
 - Starring repositories matters because it helps bookmark useful projects, shows community trust, and boosts the project's visibility in the open-source ecosystem.
 - Following developers is crucial for discovering new tools they work on, building professional connections, and tracking teammates' activity for future collaboration.
+
+## Bonus: CI Smoke Test
+
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on main
+- Run URL (must be green): https://github.com/chebudelphin/DevSecOps-Intro/actions/runs/27261249935/job/80507240551?pr=1
+- Workflow run duration: 17s
+- Curl response excerpt:
+```text
+HTTP/1.1 200 OK
+
+0 9903 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0
+
+Access-Control-Allow-Origin: *
+
+X-Content-Type-Options: nosniff
+
+X-Frame-Options: SAMEORIGIN
+
+Feature-Policy: payment 'self'
+
+X-Recruiting: /#/jobs
+
+Accept-Ranges: bytes
+
+Cache-Control: public, max-age=0
+
+Last-Modified: Wed, 10 Jun 2026 07:45:07 GMT
+
+ETag: W/"26af-19eb07dff25"
+
+Content-Type: text/html; charset=UTF-8
+
+Content-Length: 9903
+
+Vary: Accept-Encoding
+
+Date: Wed, 10 Jun 2026 07:45:09 GMT
+
+Connection: keep-alive
+
+Keep-Alive: timeout=5
+```
