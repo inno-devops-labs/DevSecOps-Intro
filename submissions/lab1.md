@@ -6,7 +6,7 @@
 - Asset: OWASP Juice Shop (local lab instance)
 - Image: `bkimminich/juice-shop:v20.0.0`
 - Image digest: `sha256:99779f57113bd47312e8fe7b264ff402ee41da76ddda7f2fc842a92ad51827ce` (from `docker inspect juice-shop --format '{{.Image}}'`)
-- Host OS: Linux (detected by the container runtime)
+- Host OS: Ubuntu 24.04 
 - Docker version: `Docker version 29.4.0, build 9d7ad9f`
 
 ### Deployment Details
@@ -18,7 +18,7 @@
     bkimminich/juice-shop:v20.0.0
   ```
 - Access URL: http://127.0.0.1:3000
-- Network exposure: 127.0.0.1 only — container bound to localhost
+- Network exposure: 127.0.0.1 only? [x] Yes [ ] No — container bound to localhost
 - Container restart policy: default (`no`)
 
 ### Health Check
@@ -37,9 +37,9 @@ API check (first 200 chars of `/api/Products`):
   ```
 
 ### Initial Surface Snapshot (from browser exploration)
-- Login/Registration visible: Yes — account menu has Login/Register
-- Product listing/search present: Yes — products displayed on landing page
-- Admin or account area discoverable: Admin endpoints under `/rest/admin/` discovered via API probe
+- Login/Registration visible: [x] Yes [ ] No — notes: account menu has Login/Register
+- Product listing/search present: [x] Yes [ ] No — notes: products displayed on landing page
+- Admin or account area discoverable: Admin endpoints under `/rest/admin/` discovered via API probe, hidden admin endpoint discoverable via `/#/administration`
 - Client-side errors in DevTools console: None observed during initial load
 - Pre-populated local storage / cookies: Local storage contains `challenge_*` keys and UI state
 
