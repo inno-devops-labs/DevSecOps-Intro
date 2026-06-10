@@ -1,19 +1,22 @@
 ## Goal
-Deploy OWASP Juice Shop locally and perform an initial security assessment including health checks, API exploration, and risk identification.
+Perform baseline threat modeling on OWASP Juice Shop, then implement a secure variant with risk reduction analysis, including an authentication-focused threat model.
 
 ## Changes
-- Added `submissions/lab1.md` with deployment details, health check results, and top 3 OWASP Top 10:2025 risks
-- Added `.github/PULL_REQUEST_TEMPLATE.md` for future PR consistency
+- Added `submissions/lab2.md` with baseline risk table, top‑5 risks, STRIDE mapping, and trust boundary observation
+- Added secure variant risk comparison table and explanation of eliminated vs. remaining risks
+- Added bonus section: authentication flow threat model with 3 auth‑specific risks (OWASP Top 10:2025)
 
 ## Testing
-- Deployed locally via `docker run -d --name juice-shop -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.0.0`
-- Verified HTTP 200 and API responses on localhost
+- Ran Threagile baseline: `threagile -model threagile-model.yaml -output output/`
+- Applied hardening changes (HTTPS, encryption, prepared statements) and re‑ran Threagile on `threagile-model-secure.yaml`
+- Compared `baseline-counts.json` vs `secure-counts.json` to verify risk reduction
 
 ## Artifacts & Screenshots
-- Report included in `submissions/lab1.md`
+- Baseline report excerpt in `submissions/lab2.md` (risk counts, top‑5, STRIDE)
+- Secure variant diff table and explanation
+- Auth‑flow model description and 3 identified risks
 
 ## Checklist
-- [x] Task 1 done — Juice Shop deployed, triage report in submissions/lab1.md
-- [x] Task 2 done — .github/PULL_REQUEST_TEMPLATE.md created
-- [ ] Task 3 done — GitHub stars + follows complete
-- [x] Bonus done — lab1-smoke.yml runs green on this PR
+- [x] Task 1 — Baseline risk table + top‑5 with STRIDE mapping
+- [x] Task 2 — Secure variant + risk diff table (incl. Δ by severity)
+- [ ] Bonus — Auth‑flow model + 3 auth‑specific risks mapped to OWASP Top 10:2025
