@@ -1,0 +1,286 @@
+threagile_version: 0.9.1
+
+title: OWASP Juice Shop — Authentication Threat Model
+
+date: 2026-06-10
+
+author:
+  name: Semen Nadutkin
+  homepage: https://github.com/semyonnadutkin
+
+management_summary_comment: >
+  Minimal authentication and authorization threat model for OWASP Juice Shop.
+  The model focuses on credential handling, JWT issuance and verification,
+  session management, and authorization of administrative operations.
+
+business_criticality: important
+
+questions: {}
+
+tags_available:
+  - auth
+  - jwt
+
+data_assets:
+
+  Credentials:
+    id: credentials
+    description: Username and password used for authentication
+    usage: business
+    origin: Browser
+    owner: Users
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+
+  JWT Token:
+    id: jwt-token
+    description: Signed JWT used for authenticated requests
+    usage: business
+    origin: Token Signer
+    owner: Juice Shop
+    quantity: many
+    confidentiality: confidential
+    integrity: mission-critical
+    availability: important
+
+  User Session State:
+    id: session-state
+    description: Authenticated user session information
+    usage: business
+    origin: Auth API
+    owner: Juice Shop
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+
+  Admin Operation Requests:
+    id: admin-operations
+    description: Requests performing privileged administrative actions
+    usage: business
+    origin: Browser
+    owner: Administrators
+    quantity: many
+    confidentiality: internal
+    integrity: mission-critical
+    availability: important
+
+  JWT Signing Keys:
+    id: jwt-signing-keys
+    description: Secret keys used to sign and verify JWT tokens
+    usage: business
+    origin: Token Signer
+    owner: Juice Shop
+    quantity: few
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: critical
+
+trust_boundaries:
+
+  Internet:
+    id: internet
+    description: Untrusted external network
+    type: network-cloud-provider
+
+  Container:
+    id: container
+    description: Internal application environment
+    type: execution-environment
+
+technical_assets:
+
+  Browser:
+    id: browser
+    description: User web browser
+    type: external-entity
+    usage: business
+    size: system
+    technology: browser
+    machine: virtual
+    encryption: transparent
+    internet: true
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    out_of_scope: false
+    owner: User
+    confidentiality: confidential
+    integrity: operational
+    availability: operational
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - admin-operations
+
+    communication_links:
+
+      Login and Registration:
+        target: auth-api
+        protocol: https
+        usage: business
+        authentication: none
+        authorization: none
+        data_assets_sent:
+          - credentials
+
+      Authenticated Requests:
+        target: auth-api
+        protocol: https
+        usage: business
+        authentication: token
+        authorization: enduser-identity-propagation
+        data_assets_sent:
+          - jwt-token
+
+      Admin Requests:
+        target: admin-endpoint
+        protocol: https
+        usage: business
+        authentication: token
+        authorization: enduser-identity-propagation
+        data_assets_sent:
+          - jwt-token
+          - admin-operations
+
+  Auth API:
+    id: auth-api
+    description: Juice Shop authentication endpoint
+    type: process
+    usage: business
+    size: service
+    technology: web-application
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    internet: false
+    multi_tenant: false
+    redundant: true
+    custom_developed_parts: true
+    out_of_scope: false
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+
+    data_assets_processed:
+      - credentials
+      - session-state
+      - jwt-token
+
+    data_assets_stored:
+      - session-state
+
+    communication_links:
+
+      Credential Lookup:
+        target: user-db
+        protocol: jdbc-encrypted
+        usage: business
+        authentication: credentials
+        authorization: technical-user
+        data_assets_sent:
+          - credentials
+
+      Request JWT:
+        target: token-signer
+        protocol: https
+        usage: business
+        authentication: credentials
+        authorization: technical-user
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+
+      Verify JWT:
+        target: token-signer
+        protocol: https
+        usage: business
+        authentication: credentials
+        authorization: technical-user
+        data_assets_sent:
+          - jwt-token
+
+  Token Signer:
+    id: token-signer
+    description: JWT signing and verification component
+    type: process
+    usage: business
+    size: service
+    technology: identity-provider
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    internet: false
+    multi_tenant: false
+    redundant: true
+    custom_developed_parts: true
+    out_of_scope: false
+    owner: Juice Shop
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: important
+
+    data_assets_processed:
+      - jwt-token
+      - jwt-signing-keys
+
+    data_assets_stored:
+      - jwt-signing-keys
+
+  User DB:
+    id: user-db
+    description: Credential store
+    type: datastore
+    usage: business
+    size: service
+    technology: database
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    internet: false
+    multi_tenant: false
+    redundant: true
+    custom_developed_parts: false
+    out_of_scope: false
+    owner: Juice Shop
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+
+    data_assets_stored:
+      - credentials
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: Administrative API endpoint
+    type: process
+    usage: business
+    size: service
+    technology: web-application
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    internet: false
+    multi_tenant: false
+    redundant: true
+    custom_developed_parts: true
+    out_of_scope: false
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: mission-critical
+    availability: important
+
+    data_assets_processed:
+      - jwt-token
+      - admin-operations
+
+    communication_links:
+
+      Verify JWT And Role:
+        target: token-signer
+        protocol: https
+        usage: business
+        authentication: credentials
+        authorization: technical-user
+        data_assets_sent:
+          - jwt-token
