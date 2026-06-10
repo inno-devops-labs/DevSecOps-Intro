@@ -1,5 +1,7 @@
 # Lab 1 — Submission
 
+## Task 1 — Deploy Juice Shop & Triage Report (6 pts)
+
 ## Triage Report: OWASP Juice Shop
 
 ### Scope & Asset
@@ -30,25 +32,26 @@ API check (first 200 chars of `/api/Products`):
   ```
 
 - Product count from `/api/Products`: `46`
-- Container uptime (sample):
+- Container uptime: Up 12 hours
 
   ```text
-  juice-shop   Up 5 seconds   127.0.0.1:3000->3000/tcp
+  juice-shop   Up 12 hours   127.0.0.1:3000->3000/tcp
   ```
 
 ### Initial Surface Snapshot (from browser exploration)
-- Login/Registration visible: [x] Yes [ ] No — notes: account menu has Login/Register
-- Product listing/search present: [x] Yes [ ] No — notes: products displayed on landing page
-- Admin or account area discoverable: Admin endpoints under `/rest/admin/` discovered via API probe, hidden admin endpoint discoverable via `/#/administration`
-- Client-side errors in DevTools console: None observed during initial load
-- Pre-populated local storage / cookies: Local storage contains `challenge_*` keys and UI state
+- Login/Registration visible: [x] Yes [ ] No — notes: account menu has Login/Register.
+- Product listing/search present: [x] Yes [ ] No — notes: products displayed on landing page.
+- Admin or account area discoverable: [x] Yes [ ] No — notes: Admin endpoints under `/rest/admin/` discovered via API probe, hidden admin endpoint discoverable via `/#/administration`, unauthorized access to critical configuration via `/rest/admin/application-configuration`.
+- Client-side errors in DevTools console: [ ] Yes [x] No — notes: None observed during initial load.
+- Pre-populated local storage / cookies: Local storage empty, cookies include: `continueCode`, `cookieconsent_status`, `language`, `welcomebanner_status`.
 
 ### Security Headers (Quick Look)
-Run: `curl -I http://127.0.0.1:3000 | head -20`
-
-Example output (trimmed):
+Run: `curl -I http://127.0.0.1:3000 | head -20`. Paste output:
 
 ```
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0  9903    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
 X-Content-Type-Options: nosniff
@@ -62,21 +65,29 @@ ETag: W/"26af-19eaf24c181"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 9903
 Vary: Accept-Encoding
-Date: Wed, 10 Jun 2026 01:28:41 GMT
+Date: Wed, 10 Jun 2026 03:05:31 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-Missing headers observed:
-- `Content-Security-Policy` — missing
-- `Strict-Transport-Security` — missing (site served over HTTP)
+Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06):
+- [x] `Content-Security-Policy` — missing
+- [x] `Strict-Transport-Security` — missing (site served over HTTP)
+- [ ] `X-Content-Type-Options: nosniff`
+- [ ] `X-Frame-Options`
 
 ### Top 3 Risks Observed (2-3 sentences each)
-1. **Missing transport-layer protection** — The application is served over HTTP; sensitive tokens and session data can be exposed. Maps to OWASP Top 10:2025 A03 (Sensitive Data Exposure).
 
-2. **Exposed admin endpoints** — Admin API surface under `/rest/admin/*` is discoverable and may be improperly protected; maps to A05 (Broken Access Control).
+1. **Missing Content-Security-Policy (and HSTS).**
+   No CSP header is returned, so the browser has no policy to restrict script
+   sources which widens the blast radius of any XSS injection. The absence of
+   `Strict-Transport-Security` also allows downgrade to cleartext HTTP.  These are insecure default header settings. Mapping: **OWASP Top 10:2025 — A02 Security Misconfiguration.**
 
-3. **Sensitive data in client storage** — Local storage contains challenge and state artifacts which could leak secrets if an XSS exists; maps to A06 (Security Misconfiguration / Sensitive Data Exposure).
+2. **Permissive CORS: `Access-Control-Allow-Origin: *`.**
+   The API allows any origin to read its responses. Combined with unauthenticated data endpoints like `/api/Products`, this lets a third-party site query and exfiltrate content from a victim's browser leading to an access-control failure. Mapping: **OWASP Top 10:2025 — A01 Broken Access Control.**
+
+3. **Information disclosure / fingerprinting.**
+   The custom `X-Recruiting: /#/jobs` header and `/rest/admin/application-version` (version 20.0.0) leak unnecessary detail. These leaks make it trivial to fingerprint the stack and target known CVEs matching the exact version a configuration that exposes more than it should. Mapping: **OWASP Top 10:2025 — A02 Security Misconfiguration.**
 
 ---
 
@@ -86,61 +97,27 @@ Missing headers observed:
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
 - Checklist included: Title style, No secrets/large files, `submissions/labN.md` present
 - Auto-fill verification: To verify, push `feature/lab1` and open a draft PR — the PR description should pre-fill with this template.
-
-Template (example):
-
-```markdown
-## Goal
-One-sentence description of what this PR delivers.
-
-## Changes
-- List files added or modified
-
-## Testing
-- Commands run and observed output
-
-## Artifacts & Screenshots
-- Links to submission files and images
-
-- [ ] Title uses `feat(labN): <topic>` style
-- [ ] No secrets/large temp files committed
-- [ ] `submissions/labN.md` present
-```
-
 ---
 
-## GitHub Community
+## Task 3 — GitHub Community Engagement (1 pt)
 
 - Starred: DevSecOps-Intro (course repo), simple-container-com/api
 - Followed: @Cre-eD, @Naghme98, @pierrepicaud, and three classmates
 
-Why: Starring helps discovery and signals interest; following instructors and peers enables collaboration and timely updates.
+Why: Starring in the open source community helps discovery and signals interest; following instructors and peers enables collaboration and timely updates. It can also serve as a token of appreciation for maintainers/contributors and helps for bookmarking purposes.
 
 ---
 
-## Bonus: CI Smoke Test (notes)
+## Bonus Task — Smoke-Test Workflow in GitHub Actions (2 pts)
 
-The smoke-test workflow (`.github/workflows/lab1-smoke.yml`) should:
+## Bonus: CI Smoke Test
 
-- Trigger: `pull_request` on `main`
-- Use `ubuntu-latest` runner
-- Set `permissions: { contents: read }` at workflow level
-- Pull `bkimminich/juice-shop:v20.0.0` and run it, then poll `/rest/admin/application-version` up to 60s
-- Fail the job if the endpoint never returns HTTP 200
-
----
-
-## Commands run (copyable)
-
-```bash
-docker run -d --name juice-shop -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.0.0
-docker ps --filter name=juice-shop --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
-curl -s -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:3000
-curl -s http://127.0.0.1:3000/api/Products | jq '.data | length'
-curl -s http://127.0.0.1:3000/rest/admin/application-version | jq
-```
-
-Replace host-specific fields (image digest, host OS, exact docker ps uptime) with the outputs from running these commands on your machine.
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on main
+- Run URL (must be green): <link to your Actions run>
+- Workflow run duration: <e.g. 45s>
+- Curl response excerpt:
+`<paste your "HTTP/1.1 200 OK ..." block>`
 
 ---
 
