@@ -73,3 +73,13 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
 - Checklist items: Title is clear, No secrets/large temp files committed, Submission file exists
 - Auto-fill verified: [x] Yes — PR description showed my template (screenshot or link to draft PR)
+
+## GitHub Community
+
+Starring repositories helps developers bookmark interesting projects, shows support to maintainers, and makes projects more visible to others. Following developers on GitHub helps build professional connections and discover new projects.
+
+Stars given to:
+- inno-devops-labs/DevSecOps-Intro
+- simple-container-com/api
+
+Following: @Cre-eD, @Naghme98, @pierrepicaud, and 3 classmates.
