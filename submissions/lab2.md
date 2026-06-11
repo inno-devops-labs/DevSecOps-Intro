@@ -68,6 +68,7 @@ The total risk count dropped from **23** to **20**, which is about **13.0%**. Th
 docker run --rm -v "<repo>/labs/lab2:/app/work" threagile/threagile:0.9.1 -model /app/work/threagile-model.yaml -output /app/work/output -generate-risks-excel=false -generate-tags-excel=false
 
 docker run --rm -v "<repo>/labs/lab2:/app/work" threagile/threagile:0.9.1 -model /app/work/threagile-model-secure.yaml -output /app/work/output-secure -generate-risks-excel=false -generate-tags-excel=false
+```
 
 ## Generated artifacts
 
@@ -81,4 +82,5 @@ docker run --rm -v "<repo>/labs/lab2:/app/work" threagile/threagile:0.9.1 -model
 ## Note on Excel output
 
 `risks.xlsx` generation was disabled with `-generate-risks-excel=false` / `-generate-tags-excel=false` because the local Threagile XLSX generation failed on an Excel worksheet name length limit. PDF, JSON, and diagram generation completed successfully, and the risk counts were verified from the generated PDF reports and `risks.json`.
+
 
