@@ -85,9 +85,9 @@ Required sections (the template must include all four):
 
 Required checklist (the template must include all three items):
 
-- [ ] Title is clear (`feat(labN): <topic>` style)
-- [ ] No secrets/large temp files committed
-- [ ] Submission file at `submissions/labN.md` exists
+- [x] Title is clear (`feat(labN): <topic>` style)
+- [x] No secrets/large temp files committed
+- [x] Submission file at `submissions/labN.md` exists
 
 > **Hint:** GitHub auto-detects `.github/PULL_REQUEST_TEMPLATE.md` and pre-fills the PR description box. To test, push the branch and open a PR draft — the template should appear before you write a single word.
 
@@ -132,7 +132,7 @@ wrote
 
 ### B.3: Document in `submissions/lab1.md`
 
-```markdown
+
 ## Bonus: CI Smoke Test
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
@@ -140,7 +140,7 @@ wrote
 - Run URL (must be green): [url](https://github.com/MikeNovikoff/DevSecOps-Intro-Mike/actions/runs/27370603870)
 - Workflow run duration: <17s>
 - Curl response excerpt:
-  ```
+```
   Run curl --silent --fail --head http://localhost:3000
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
@@ -159,5 +159,5 @@ Date: Thu, 11 Jun 2026 19:02:13 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-  ```
+
 ```
