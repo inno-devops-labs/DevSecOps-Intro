@@ -98,7 +98,7 @@ Required checklist (the template must include all three items):
 
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts / Checklist / Personal Notes
-- Checklist items: <list yours>
+- Checklist items: Title is clear (`feat(labN): <topic>`), No secrets/large temp files committed, `submissions/labN.md` exists
 - Auto-fill verified: [x] Yes — PR description showed my template [pr](embeddings/l1_pr.png)
 
 
