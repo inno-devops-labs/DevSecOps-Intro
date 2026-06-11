@@ -59,7 +59,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 1. **Missing Security Headers (OWASP A05/A06)** — Several security-related HTTP headers are missing, including Content-Security-Policy and Strict-Transport-Security. Missing headers can make the application more vulnerable to attacks such as XSS or protocol downgrade attacks. This is related to OWASP Top 10 A05: Security Misconfiguration.
 2. **Public API Exposure (OWASP A01)** — Several API endpoints appear accessible without authentication. Public endpoints increase the application's attack surface and may expose data that should be protected if access controls are not properly implemented. This relates to OWASP A01: Broken Access Control.
 3. **Client-Side Data Storage (OWASP A01)** — The application stores data in browser local storage. While the observed values are not sensitive, storing security-relevant information in local storage can increase the impact of cross-site scripting attacks. This is related to OWASP A01: Broken Access Control and general client-side security concerns.
-```
+
 
 
 
@@ -106,32 +106,6 @@ Required checklist (the template must include all three items):
 
 ## Task 3 — GitHub Community Engagement (1 pt)
 
-**Objective:** Explore GitHub's social features that support collaboration and discovery.
-
-**Actions Required:**
-1. **Star** the course repository
-2. **Star** the [simple-container-com/api](https://github.com/simple-container-com/api) project — a promising open-source tool for container management
-3. **Follow** your professor and TAs on GitHub:
-   - Professor: [@Cre-eD](https://github.com/Cre-eD)
-   - TA: [@Naghme98](https://github.com/Naghme98)
-   - TA: [@pierrepicaud](https://github.com/pierrepicaud)
-4. **Follow** at least 3 classmates from the course
-
-
-
-<summary>💡 GitHub Social Features</summary>
-
-**Why Stars Matter:**
-- Stars help you bookmark interesting projects for later reference
-- Star count indicates project popularity and community trust
-- Starred repos appear in your GitHub profile, showing your interests
-- Stars encourage maintainers and help projects gain visibility
-
-**Why Following Matters:**
-- See what other developers are working on
-- Discover new projects through their activity
-- Build professional connections beyond the classroom
-- Stay updated on classmates' work for future collaboration
 
 ## GitHub Community
 
@@ -145,11 +119,6 @@ Following developers helps me learn from their work, discover new projects, and 
 ---
 
 ## Bonus Task — Smoke-Test Workflow in GitHub Actions (2 pts)
-
-> 🌟 **Genuinely challenging — not just wiring.** This task previews Lecture 4 (CI/CD Security). You'll write a real workflow that runs Juice Shop in CI and verifies it works.
-
-**Objective:** Create `.github/workflows/lab1-smoke.yml` that, on every PR, pulls Juice Shop, runs it as a service, curls the homepage, and fails the build if Juice Shop doesn't respond healthy.
-
 ### B.1: Write the workflow
 
 wrote
