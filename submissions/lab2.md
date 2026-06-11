@@ -17,8 +17,8 @@
 
 1. **cross-site-scripting@juice-shop** — Cross-Site Scripting (XSS) risk at Juice Shop Application; severity Elevated; affecting Juice Shop Application.
 2. **missing-authentication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Missing Authentication covering communication link To App from Reverse Proxy to Juice Shop Application; severity Elevated; affecting Juice Shop Application / Reverse Proxy communication.
-3. **unencrypted-communication@user-browser>direct-to-app-no-proxy@user-browser@juice-shop** — Unencrypted Communication named Direct to App (no proxy) between User Browser and Juice Shop Application transferring authentication data; severity Elevated; affecting User Browser → Juice Shop Application.
-4. **unencrypted-communication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Unencrypted Communication named To App between Reverse Proxy and Juice Shop Application; severity Elevated; affecting Reverse Proxy → Juice Shop Application.
+3. **unencrypted-communication@user-browser>direct-to-app-no-proxy@user-browser@juice-shop** — Unencrypted Communication named Direct to App (no proxy) between User Browser and Juice Shop Application transferring authentication data; severity Elevated; affecting User Browser to Juice Shop Application.
+4. **unencrypted-communication@reverse-proxy>to-app@reverse-proxy@juice-shop** — Unencrypted Communication named To App between Reverse Proxy and Juice Shop Application; severity Elevated; affecting Reverse Proxy to Juice Shop Application.
 5. **container-baseimage-backdooring@juice-shop** — Container Base Image Backdooring risk at Juice Shop Application; severity Medium; affecting Juice Shop Application.
 
 ### STRIDE mapping
@@ -31,7 +31,7 @@
 
 ### Trust boundary observation
 
-One trust-boundary-crossing arrow visible in the data-flow diagram is **User Browser → Juice Shop Application** via **Direct to App (no proxy)**. This arrow is attractive to an attacker because it crosses from the Internet/user-controlled side into the application container and transfers authentication/session data. If the link is unencrypted or weakly protected, it becomes a high-value place for credential theft, session interception, and request manipulation.
+One trust-boundary-crossing arrow visible in the data-flow diagram is **User Browser to Juice Shop Application** via **Direct to App (no proxy)**. This arrow is attractive to an attacker because it crosses from the Internet/user-controlled side into the application container and transfers authentication/session data. If the link is unencrypted or weakly protected, it becomes a high-value place for credential theft, session interception, and request manipulation.
 
 ## Task 2: Secure Variant & Diff
 
@@ -82,5 +82,3 @@ docker run --rm -v "<repo>/labs/lab2:/app/work" threagile/threagile:0.9.1 -model
 ## Note on Excel output
 
 `risks.xlsx` generation was disabled with `-generate-risks-excel=false` / `-generate-tags-excel=false` because the local Threagile XLSX generation failed on an Excel worksheet name length limit. PDF, JSON, and diagram generation completed successfully, and the risk counts were verified from the generated PDF reports and `risks.json`.
-
-
