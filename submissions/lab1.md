@@ -99,7 +99,7 @@ Required checklist (the template must include all three items):
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts / Checklist / Personal Notes
 - Checklist items: Title is clear (`feat(labN): <topic>`), No secrets/large temp files committed, `submissions/labN.md` exists
-- Auto-fill verified: [x] Yes — PR description showed my template [pr](embeddings/l1_pr.png)
+- Auto-fill verified: [x] Yes — PR description showed my template [pr](embeddings/l1_pr.png) or [pr on github](https://github.com/MikeNovikoff/DevSecOps-Intro-Mike/pull/2/commits/7cc7549e3a16558a963ae2dafb41d6c8b8dafc20)
 
 
 ---
@@ -117,11 +117,6 @@ Required checklist (the template must include all three items):
    - TA: [@pierrepicaud](https://github.com/pierrepicaud)
 4. **Follow** at least 3 classmates from the course
 
-**Add to `submissions/lab1.md`:**
-
-A "GitHub Community" section with 1-2 sentences explaining:
-- Why starring repositories matters in open source
-- How following developers helps in team projects and professional growth
 
 <details>
 <summary>💡 GitHub Social Features</summary>
@@ -137,6 +132,13 @@ A "GitHub Community" section with 1-2 sentences explaining:
 - Discover new projects through their activity
 - Build professional connections beyond the classroom
 - Stay updated on classmates' work for future collaboration
+
+## GitHub Community
+
+Starring repositories helps developers bookmark useful projects and shows support for maintainers. Popular repositories with many stars are often easier to discover and have stronger community engagement.
+
+Following developers helps me learn from their work, discover new projects, and stay informed about updates in technologies that interest me. It also makes collaboration easier in team environments and helps build a professional network.
+
 
 </details>
 
