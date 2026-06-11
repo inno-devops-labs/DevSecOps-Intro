@@ -69,7 +69,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
   - Title is clear (`feat(labN): <topic>` style)
   - No secrets/large temp files committed
   - Submission file at `submissions/labN.md` exists
-- Auto-fill verified: [ ] Yes — pending until I open a draft PR and GitHub shows the template in the PR description.
+- Auto-fill verified: [ ] No — the template file exists at `.github/PULL_REQUEST_TEMPLATE.md`, but it did not auto-fill for the first PR because this PR introduces the template itself. The PR body was filled manually using the same template structure.
 
 ## GitHub Community
 
@@ -79,6 +79,11 @@ Starring repositories matters in open source because it helps make useful projec
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on `main`
-- Run URL (must be green): pending until the PR is opened and GitHub Actions runs
-- Workflow run duration: pending
-- Curl response excerpt: pending
+- Run URL (must be green): https://github.com/Troshkins/DevSecOps-Intro/actions/runs/27350872180
+- Workflow run duration: 21s
+- Curl response excerpt: 
+Waiting for Juice Shop... attempt 1/30
+{"version":"20.0.0"}
+Juice Shop version endpoint is healthy
+0s
+Homepage returned HTTP 200
