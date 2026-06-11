@@ -107,8 +107,26 @@ Starring repositories matters because it helps bookmark useful open-source proje
 
 ## Bonus: CI Smoke Test
 
-- Workflow file: `.github/workflows/lab1-smoke.yml`
-- Trigger: `pull_request` on main
-- Run URL: paste the green GitHub Actions run URL here after opening the PR.
-- Workflow run duration: paste duration here after the run finishes.
-- Curl response excerpt: paste the successful `HTTP/1.1 200 OK` / version response block here after the run finishes.
+* Workflow file: `.github/workflows/lab1-smoke.yml`
+* Trigger: `pull_request` on main and manual `workflow_dispatch`
+* Run URL: https://github.com/m1d0rfeed/DevSecOps-Intro/actions/runs/27338466060/job/80768758602
+* Workflow run duration: 17s
+* Curl response excerpt:
+
+```text
+{"version":"20.0.0"}
+Juice Shop is healthy
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Content-Type: text/html; charset=UTF-8
+Content-Length: 9903
+Connection: keep-alive
+Keep-Alive: timeout=5
+```

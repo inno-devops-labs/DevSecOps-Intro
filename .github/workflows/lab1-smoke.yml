@@ -1,6 +1,7 @@
 ﻿name: Lab 1 Juice Shop smoke test
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: [ main ]
 
