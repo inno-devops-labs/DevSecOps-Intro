@@ -81,3 +81,4 @@ docker run --rm -v "<repo>/labs/lab2:/app/work" threagile/threagile:0.9.1 -model
 ## Note on Excel output
 
 `risks.xlsx` generation was disabled with `-generate-risks-excel=false` / `-generate-tags-excel=false` because the local Threagile XLSX generation failed on an Excel worksheet name length limit. PDF, JSON, and diagram generation completed successfully, and the risk counts were verified from the generated PDF reports and `risks.json`.
+
