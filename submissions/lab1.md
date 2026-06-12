@@ -69,4 +69,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - File: `.github/PULL_REQUEST_TEMPLATE.md`
 - Sections included: Goal / Changes / Testing / Artifacts & Screenshots
 - Checklist items: Title is clear / No secrets or large temp files / Submission file exists
-- Auto-fill verified: [x] Yes — PR description showed my template (screenshot or link to draft PR)
+- Auto-fill verified: [x] Yes — PR description showed my template (https://github.com/zeitrin/DevSecOps-Intro/pull/1)
+
+## GitHub Community
+Stars in open source act as bookmarks and as a trust signal at the same time: the more stars a project has, the higher its visibility and the easier it is for other developers to discover a useful tool. Following developers helps you track their activity, learn about new projects, and build professional connections — in team work this makes coordination and sharing of work easier.
