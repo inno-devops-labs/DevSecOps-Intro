@@ -1,4 +1,4 @@
-name: Lab 1 Juice Shop Smoke Test
+1name: Lab 1 Juice Shop Smoke Test
 
 on:
   pull_request:
