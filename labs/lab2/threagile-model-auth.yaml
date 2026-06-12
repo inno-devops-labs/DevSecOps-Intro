@@ -1,0 +1,370 @@
+threagile_version: 1.0.0
+
+title: Juice Shop Authentication Flow
+date: "2026-06-13"
+
+author:
+  name: Your Name
+  homepage: https://github.com/ratteperk
+
+management_summary_comment: >
+  Focused threat model of the JWT-based authentication flow in OWASP Juice Shop.
+  Covers login, JWT issuance, session management, and admin access control.
+
+business_criticality: critical
+
+business_overview:
+  description: >
+    Authentication subsystem of OWASP Juice Shop. Handles user login,
+    JWT token issuance, session management, and role-based admin access.
+
+technical_overview:
+  description: >
+    Browser authenticates via /rest/user/login endpoint. Server validates
+    credentials against user database, issues JWT signed with private key.
+    JWT is stored in browser localStorage and sent in Authorization header
+    for subsequent requests. Admin endpoints verify JWT signature and role.
+
+questions:
+  Is JWT signing key stored securely?: ""
+  Are tokens validated server-side on each request?: ""
+  Is there token expiration and refresh mechanism?: ""
+  Is admin role verified server-side on each admin request?: ""
+
+abuse_cases:
+  JWT Forgery: >
+    Attacker forges JWT with admin role using weak or stolen signing key.
+  Token Theft via XSS: >
+    Attacker steals JWT from localStorage via XSS vulnerability.
+  Brute Force Login: >
+    Attacker attempts repeated login attempts to guess credentials.
+  SQL Injection on Login: >
+    Attacker injects SQL via login form to bypass authentication.
+
+security_requirements:
+  JWT Signing Key Protection: >
+    Store JWT signing keys in HSM or vault, not in application config.
+  Token Expiration: >
+    Enforce short TTL (15min) and implement refresh token rotation.
+  Server-Side Validation: >
+    Validate JWT signature and expiration on every protected request.
+  Secure Token Storage: >
+    Use HttpOnly cookies instead of localStorage to prevent XSS theft.
+
+tags_available:
+  - auth
+  - jwt
+  - nodejs
+  - browser
+  - database
+  - pii
+  - library
+  - docker
+
+data_assets:
+
+  Credentials:
+    id: credentials
+    description: "Username + password (hashed with bcrypt)."
+    usage: business
+    tags: ["auth", "pii"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      User credentials must be protected to prevent account takeover.
+
+  JWT Token:
+    id: jwt-token
+    description: "JSON Web Token for session authentication."
+    usage: business
+    tags: ["auth", "jwt"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      JWT tokens grant access to user sessions. Compromise allows session hijacking.
+
+  Signing Key:
+    id: signing-key
+    description: "Private key for JWT signing (RSA/ECDSA)."
+    usage: business
+    tags: ["auth"]
+    origin: application
+    owner: Lab Owner
+    quantity: few
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      Compromise of signing key allows forging arbitrary JWT tokens with any role.
+
+  Admin Requests:
+    id: admin-requests
+    description: "Administrative operations requiring elevated privileges."
+    usage: business
+    tags: ["auth"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Admin operations must be protected from unauthorized access.
+
+technical_assets:
+
+  Browser:
+    id: browser
+    description: "End-user web browser (client)."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    size: system
+    technology: browser
+    tags: ["browser"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: External User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Client controlled by end user."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Browser to Auth API:
+        target: auth-api
+        description: "Login and registration requests."
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+      Browser to Admin Endpoint:
+        target: admin-endpoint
+        description: "Authenticated requests with JWT in Authorization header."
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - admin-requests
+        data_assets_received: []
+
+  Auth API:
+    id: auth-api
+    description: "Authentication API endpoint (/rest/user/login)."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-server
+    tags: ["nodejs", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "Handles authentication logic."
+    multi_tenant: true
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Auth to Token Signer:
+        target: token-signer
+        description: "Request JWT signing."
+        protocol: in-process-library-call
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received: []
+      Auth to User DB:
+        target: user-db
+        description: "Validate credentials against database."
+        protocol: jdbc-encrypted
+        authentication: credentials
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received: []
+
+  Token Signer:
+    id: token-signer
+    description: "JWT signing and verification component."
+    type: process
+    technology: library
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    tags: ["jwt", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: "Handles JWT signing keys."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - jwt-token
+    data_assets_stored:
+      - signing-key
+    data_formats_accepted: []
+    communication_links: {}
+
+  User DB:
+    id: user-db
+    description: "User database (SQLite) storing credential hashes."
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: database
+    tags: ["database"]
+    internet: false
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Stores user credentials."
+    multi_tenant: true
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - credentials
+    data_formats_accepted: []
+    communication_links: {}
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: "Admin API endpoint requiring JWT with admin role."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-server
+    tags: ["nodejs", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Handles admin operations."
+    multi_tenant: true
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - admin-requests
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Admin Verifies JWT:
+        target: token-signer
+        description: "Verify JWT signature and extract role."
+        protocol: in-process-library-call
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received: []
+
+trust_boundaries:
+
+  Internet:
+    id: internet
+    description: "Untrusted public network."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - browser
+    trust_boundaries_nested:
+      - container
+
+  Container:
+    id: container
+    description: "Docker container network."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - auth-api
+      - token-signer
+      - user-db
+      - admin-endpoint
+    trust_boundaries_nested: []
+
+shared_runtimes:
+
+  Docker Container:
+    id: docker-container
+    description: "Docker container runtime."
+    tags: ["docker"]
+    technical_assets_running:
+      - auth-api
+      - token-signer
+      - user-db
+      - admin-endpoint
