@@ -1,0 +1,454 @@
+threagile_version: 1.0.0
+
+# Focused threat model: OWASP Juice Shop authentication flow only.
+# Written from scratch for Lab 2 Bonus Task — login -> JWT issuance -> JWT-authenticated
+# API access -> admin endpoint authorization. Deliberately models Juice Shop AS-IS
+# (raw SQL in the login route, hardcoded JWT signing key, JWT kept in browser storage).
+
+title: Juice Shop Auth Flow
+
+date: 2026-06-12
+
+author:
+  name: Student Name
+  homepage: https://example.edu
+
+management_summary_comment: >
+  Feature-level threat model of the Juice Shop authentication flow. A browser submits
+  credentials to the Auth API, which looks them up in the user credential store and asks
+  the token component to sign a JWT. Subsequent requests carry the JWT in the
+  Authorization header; the admin endpoint additionally requires an admin role claim.
+
+business_criticality: important
+
+business_overview:
+  description: >
+    Authentication is the gate in front of every other Juice Shop feature. This model
+    zooms into that single flow to surface spoofing (STRIDE-S) and elevation-of-privilege
+    (STRIDE-E) risks that the coarse architecture-level model cannot see.
+  images: []
+
+technical_overview:
+  description: >
+    The browser logs in via HTTPS against the Auth API (Node.js/Express route). The Auth
+    API queries the user credential store (SQLite) — in Juice Shop the login route builds
+    the SQL statement by string concatenation. On success the in-process token component
+    signs a JWT with a signing key shipped inside the application code. The browser keeps
+    the JWT in localStorage and sends it on every API call; admin operations hit a separate
+    endpoint that checks the role claim after the token component verifies the signature.
+  images: []
+
+questions:
+  Is the JWT signing key rotated or stored outside the code base?: ""
+  Are admin role checks enforced server-side on every admin route?: ""
+
+abuse_cases:
+  SQL Injection Login Bypass: >
+    The login route concatenates user input into SQL, allowing authentication bypass
+    (' OR 1=1--) and extraction of credential hashes.
+  JWT Forgery: >
+    If the signing key leaks (it is hardcoded) or the algorithm can be downgraded to
+    'none', attackers mint tokens with an admin role claim.
+  Credential Stuffing: >
+    Replay of breached username/password pairs against the login endpoint, unhindered
+    without a second factor or lockout.
+
+security_requirements:
+  Parameterized queries: All credential lookups must use prepared statements / bind parameters.
+  Key management: The JWT signing key must live in a vault/KMS, not in source code.
+  Algorithm allowlist: JWT verification must pin the expected algorithm (reject 'none' and downgrades).
+  Second factor: Offer/enforce 2FA on login, with rate limiting and lockout against stuffing.
+  Server-side role checks: Admin authorization decided server-side from verified claims only.
+
+tags_available:
+  - nodejs
+  - auth
+  - jwt
+  - browser
+  - sqlite
+
+# =========================
+# DATA ASSETS
+# =========================
+data_assets:
+
+  Credentials:
+    id: credentials
+    description: "Username + password submitted at login/registration; password hashes at rest."
+    usage: business
+    tags: ["auth"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Raw passwords in transit and hashes at rest; disclosure enables account takeover
+      and integrity loss enables silent credential replacement.
+
+  JWT Token:
+    id: jwt-token
+    description: "Signed JWT issued at login, sent in the Authorization header on every API call."
+    usage: business
+    tags: ["auth", "jwt"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      A stolen or forged token IS the identity; integrity of the signature is the whole
+      security guarantee of the session mechanism.
+
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: "Asymmetric key pair used to sign/verify JWTs (hardcoded in Juice Shop source)."
+    usage: business
+    tags: ["auth", "jwt"]
+    origin: application
+    owner: Lab Owner
+    quantity: very-few
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: critical
+    justification_cia_rating: >
+      Whoever holds the private key can mint arbitrary identities including admin;
+      it is the single highest-value secret in the auth flow.
+
+  User Session State:
+    id: session-state
+    description: "Server-side view of the authenticated user: id, email, role claims embedded in the token."
+    usage: business
+    tags: ["auth"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Tampering with role claims (user -> admin) is a direct elevation-of-privilege path.
+
+  Admin Operation Requests:
+    id: admin-requests
+    description: "Requests to admin-only endpoints (user administration, challenge resets)."
+    usage: business
+    tags: ["auth"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: few
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      Admin operations change other users' data and application state; unauthorized
+      execution is the end goal of most attacks on the auth flow.
+
+# =========================
+# TECHNICAL ASSETS
+# =========================
+technical_assets:
+
+  User Browser:
+    id: user-browser
+    description: "End-user browser; keeps the issued JWT in localStorage between requests."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    justification_out_of_scope:
+    size: system
+    technology: browser
+    tags: ["browser"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: External User
+    confidentiality: confidential
+    integrity: operational
+    availability: operational
+    justification_cia_rating: >
+      Client controlled by the end user (potentially an attacker); holds the bearer
+      token, so XSS in the client leaks the session.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - admin-requests
+    data_assets_stored:
+      - jwt-token
+    data_formats_accepted:
+      - json
+    communication_links:
+      Login and Register:
+        target: auth-api
+        description: "Credential submission at login/registration (HTTPS POST /rest/user/login)."
+        protocol: https
+        authentication: credentials
+        authorization: none
+        tags: ["auth"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+      API Calls with JWT:
+        target: auth-api
+        description: "Authenticated API calls carrying the JWT in the Authorization: Bearer header."
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["auth", "jwt"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - session-state
+      Admin Operations:
+        target: admin-endpoint
+        description: "Admin-only operations; JWT must carry an admin role claim."
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["auth", "jwt"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - admin-requests
+        data_assets_received:
+          - session-state
+
+  Auth API:
+    id: auth-api
+    description: "Juice Shop login/registration/user routes (Node.js/Express)."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["nodejs", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Front door of the auth flow; processes raw credentials and issues sessions, and
+      contains the deliberately vulnerable SQL login route.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - session-state
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Credential Lookup:
+        target: user-db
+        description: "Login route queries the credential store. Juice Shop builds this SQL by string concatenation (no prepared statements) — modeled as-is."
+        protocol: sql-access-protocol
+        authentication: credentials
+        authorization: technical-user
+        tags: ["auth"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - credentials
+      Request JWT Signing:
+        target: token-service
+        description: "After credential verification, the API requests a signed JWT for the user's claims (in-process jsonwebtoken library call)."
+        protocol: in-process-library-call
+        authentication: none
+        authorization: none
+        tags: ["jwt"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - session-state
+        data_assets_received:
+          - jwt-token
+
+  Token Service:
+    id: token-service
+    description: "JWT signing/verification component (jsonwebtoken library; key pair shipped in the application source)."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: library
+    tags: ["nodejs", "jwt"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: important
+    justification_cia_rating: >
+      Holds and uses the JWT signing key; a compromise here forges any identity in the
+      system, including admin.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - session-state
+      - jwt-signing-key
+    data_assets_stored:
+      - jwt-signing-key
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  User DB:
+    id: user-db
+    description: "Credential store (Users table in the Juice Shop SQLite database)."
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: identity-store-database
+    tags: ["sqlite", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Stores every user's credential hashes and roles; unencrypted SQLite file in the
+      container filesystem as shipped.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - credentials
+    data_formats_accepted:
+      - file
+    communication_links: {}
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: "Admin-only routes (user administration); requires an admin role claim in the verified JWT."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["nodejs", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      Executes privileged operations based on token claims; the target of every
+      elevation-of-privilege path in this flow.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - admin-requests
+      - jwt-token
+      - session-state
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      JWT Verification:
+        target: token-service
+        description: "Signature + role-claim verification of the presented JWT on every admin request (in-process library call)."
+        protocol: in-process-library-call
+        authentication: none
+        authorization: none
+        tags: ["jwt"]
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - session-state
+
+# =========================
+# TRUST BOUNDARIES
+# =========================
+trust_boundaries:
+
+  Internet:
+    id: internet
+    description: "Untrusted public network where the user (or attacker) browser lives."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - user-browser
+    trust_boundaries_nested:
+      - container
+
+  Container:
+    id: container
+    description: "Juice Shop application container (all auth components run in one Node.js process)."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - auth-api
+      - token-service
+      - user-db
+      - admin-endpoint
+    trust_boundaries_nested: []
+
+# =========================
+# SHARED RUNTIMES
+# =========================
+shared_runtimes:
+
+  Juice Shop Node Process:
+    id: juice-shop-node-process
+    description: "Single Node.js process: auth routes, token signing, and the SQLite file share one runtime."
+    tags: ["nodejs"]
+    technical_assets_running:
+      - auth-api
+      - token-service
+      - user-db
+      - admin-endpoint
+
+individual_risk_categories: {}
+
+risk_tracking: {}
