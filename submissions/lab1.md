@@ -117,9 +117,14 @@ I starred the course repository and `simple-container-com/api` because stars hel
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): To be added after opening the PR and running GitHub Actions.
-- Workflow run duration: To be added after the workflow completes.
+- Run URL (must be green): https://github.com/L10nff/DevSecOps-Intro/actions/runs/27427299771/job/81068293276
+- Workflow run duration: 19s
 - Curl response excerpt:
   ```text
-  To be added from the successful GitHub Actions run logs.
+  HTTP/1.1 200 OK
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Content-Type: text/html; charset=UTF-8
+  Content-Length: 9903
   ```
