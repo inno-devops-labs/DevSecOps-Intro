@@ -85,3 +85,14 @@ projects and signals trust and popularity to the wider community, which encourag
 to keep developing their work. Following developers lets you stay updated on their activity,
 discover new tools through their contributions, and build professional connections that extend
 beyond the classroom into the industry.
+
+## Bonus: CI Smoke Test
+
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on main
+- Run URL (green): https://github.com/ruslanglvv/DevSecOps-Intro/actions/runs/27401690324/job/80981014870?pr=1
+- Workflow run duration: ~50s
+- Curl response excerpt:
+```
+  HTTP status: 200
+```
