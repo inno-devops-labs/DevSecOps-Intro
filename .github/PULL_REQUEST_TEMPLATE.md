@@ -19,5 +19,6 @@ curl -s -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:3000
 curl -s http://127.0.0.1:3000/api/Products | jq '.data | length'
 curl -s http://127.0.0.1:3000/rest/admin/application-version | jq
 curl -I http://127.0.0.1:3000 2>&1 | head -20
-'''
+```
+Observed result: Juice Shop started successfully, homepage returned HTTP 200, and API/version endpoints responded.
 
