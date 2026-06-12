@@ -1,24 +1,35 @@
 ## Goal
 
-This PR delivers Lab 1: OWASP Juice Shop deployment, triage report, and course PR workflow setup.
+This PR delivers Lab N work: <briefly describe what this lab adds>.
 
 ## Changes
 
-- Added `submissions/lab1.md` with Juice Shop deployment and triage report.
-- Added `.github/PULL_REQUEST_TEMPLATE.md` for future lab submissions.
-- Documented testing commands, observations, security headers, risks, and GitHub community engagement.
+* Added/updated `submissions/labN.md`.
+* Added/updated lab-related configuration files.
+* Documented testing steps, observed output, and required artifacts.
 
 ## Testing
 
 Commands used:
 
 ```bash
-docker run -d --name juice-shop -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.0.0
-docker ps --filter name=juice-shop
-curl -s -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:3000
-curl -s http://127.0.0.1:3000/api/Products | jq '.data | length'
-curl -s http://127.0.0.1:3000/rest/admin/application-version | jq
-curl -I http://127.0.0.1:3000 2>&1 | head -20
+<paste commands used to verify the lab>
 ```
-Observed result: Juice Shop started successfully, homepage returned HTTP 200, and API/version endpoints responded.
+
+Observed output:
+
+```text
+<paste important output here>
+```
+
+## Artifacts & Screenshots
+
+* `submissions/labN.md`
+* <add links to screenshots, workflow runs, or other artifacts if needed>
+
+## Checklist
+
+* [ ] Title is clear (`feat(labN): <topic>` style)
+* [ ] No secrets/large temp files committed
+* [ ] Submission file at `submissions/labN.md` exists
 
