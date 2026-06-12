@@ -21,8 +21,11 @@
   ```
   {"status":"success","data":[{"id":1,"name":"Apple Juice (1000ml)","description":"The all-time classic.","price":1.99,"deluxePrice":0.99,"image":"apple_juice.jpg","createdAt":"2026-06-12T07:50:35.288Z"
   ```
-- Container uptime: CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS              PORTS                      NAMES
-                    bb50bda1c2c1   bkimminich/juice-shop:v20.0.0   "/nodejs/bin/node /j…"   2 minutes ago   Up About a minute   127.0.0.1:3000->3000/tcp   juice-shop
+- Container uptime:
+```
+ CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS              PORTS                      NAMES
+ bb50bda1c2c1   bkimminich/juice-shop:v20.0.0   "/nodejs/bin/node /j…"   2 minutes ago   Up About a minute   127.0.0.1:3000->3000/tcp   juice-shop
+```
 
 ### Initial Surface Snapshot (from browser exploration)
 - Login/Registration visible: [x] Yes [ ] No — notes: Account menu is available in the top-right corner and provides Login options.
@@ -82,7 +85,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
   - Title is clear (`feat(labN): <topic>` style)
   - No secrets/large temp files committed
   - Submission file at `submissions/labN.md` exists
-- Auto-fill verified: [ ] Yes — PR description showed my template (screenshot or link to draft PR)
+- Auto-fill verified: [ ] Yes — GitHub did not auto-fill the PR description during creation, but `.github/PULL_REQUEST_TEMPLATE.md` exists and both PR descriptions were filled manually using the template. 
 
 ## GitHub Community
 
@@ -100,9 +103,16 @@ Starring repositories matters because it helps useful open-source projects becom
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on `main`
-- Run URL (must be green): `<will be added after opening PR>`
-- Workflow run duration: `<will be added after workflow run>`
+- Run URL (must be green): `https://github.com/Esqavator/DevSecOps-Intro/actions/runs/27420024599/job/81042827263?pr=1`
+- Workflow run duration: `17s`
 - Curl response excerpt:
 
 ```text
-<will be added after workflow run>
+{"version":"20.0.0"}
+Juice Shop is ready
+Homepage HTTP status: 200
+
+## Submission Links
+
+- PR to course repository: `https://github.com/inno-devops-labs/DevSecOps-Intro/pull/1000`
+- PR to my fork: `https://github.com/Esqavator/DevSecOps-Intro/pull/1`
