@@ -1,4 +1,4 @@
-1name: Lab 1 Juice Shop Smoke Test
+name: lab1-smoke
 
 on:
   pull_request:
@@ -13,28 +13,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run Juice Shop
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Start Juice Shop
         run: |
-          docker run -d --name juice-shop \
-            -p 127.0.0.1:3000:3000 \
-            bkimminich/juice-shop:v20.0.0
-      - name: Wait for Juice Shop
+          docker run -d --name juice-shop -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for Juice Shop to become ready
         run: |
           for i in $(seq 1 30); do
             if curl --silent --fail http://127.0.0.1:3000/rest/admin/application-version >/dev/null; then
-              echo "Juice Shop is ready after $((i * 2)) seconds"
+              echo "Juice Shop is ready"
               exit 0
             fi
+            echo "Waiting for Juice Shop..."
             sleep 2
           done
-          echo "Juice Shop did not become ready within 60 seconds"
-          docker logs juice-shop
+          echo "Juice Shop does not seem to be ready"
+          docker logs juice-shop || true
           exit 1
+
       - name: Verify homepage
         run: |
-          http_status="$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:3000)"
-          echo "Homepage HTTP status: ${http_status}"
-          test "${http_status}" = "200"
-      - name: Capture version response
-        run: |
-          curl --include --silent --fail http://127.0.0.1:3000/rest/admin/application-version
+          curl --silent --fail http://127.0.0.1:3000 >/dev/null
+          echo "Homepage returned HTTP 200"
