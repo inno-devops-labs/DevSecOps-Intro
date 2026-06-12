@@ -96,4 +96,6 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
   - [ ] No secrets/large temp files committed
   - [ ] Submission file at `submissions/labN.md` exists
 
-- Auto-fill verified: [ ] Yes — PR description showed my template (screenshot or link to draft PR)
+- Auto-fill verified: [x] Yes — PR description showed my template (screenshot or link to draft PR)
+
+![alt text](image-lab1.png)
