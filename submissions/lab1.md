@@ -78,7 +78,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - [x] Following Professor [@Cre-eD](https://github.com/Cre-eD)
 - [x] Following TA [@Naghme98](https://github.com/Naghme98)
 - [x] Following TA [@pierrepicaud](https://github.com/pierrepicaud)
-- [x] Following 3+ classmates: `<, @username2, @username3>`
+- [x] Following 3+ classmates
 
 ### Why Stars Matter in Open Source
 Stars are the currency of attention in the open-source ecosystem. A repository with 1000+ stars attracts more contributors and sponsors than an equivalent one with 10 stars.
