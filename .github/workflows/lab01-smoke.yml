@@ -1,0 +1,31 @@
+name: lab01-smoke
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Juice Shop
+        run: |
+          docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for Juice Shop to be healthy
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version >/dev/null; then
+              echo "Juice Shop is up after ~$((i * 2))s"
+              curl -i http://localhost:3000/rest/admin/application-version
+              exit 0
+            fi
+            echo "Attempt $i: not ready yet, sleeping 2s..."
+            sleep 2
+          done
+          echo "Juice Shop did not become healthy within timeout"
+          docker logs juice-shop
+          exit 1
