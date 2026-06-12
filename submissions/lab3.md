@@ -16,3 +16,23 @@ Output of `git log --show-signature -1`:
 
 ### One-paragraph reflection
 A forged-author commit lets an attacker push code under someone else's name — for example, an attacker who gains write access could commit a backdoor and set the author field to a senior engineer's name and email, making it look like that engineer introduced the vulnerability (Repudiation: the real engineer could later deny it, but so could the actual attacker, and the audit trail can't distinguish them). The green Verified badge makes this attack visible because it cryptographically ties the commit to a specific SSH/GPG key that only the real author possesses — an attacker without that private key can set any author name/email they want, but the commit will show as "Unverified," immediately flagging it as suspicious during code review or an incident investigation.
+
+## Task 2: Pre-commit + gitleaks
+
+### `.pre-commit-config.yaml`
+```yaml
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: detect-private-key
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+```
+
+### `pre-commit install` output
