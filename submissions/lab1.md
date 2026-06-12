@@ -89,7 +89,9 @@ Which of these are MISSING?
   - Title is clear (`feat(labN): <topic>` style)
   - No secrets/large temp files committed
   - Submission file at `submissions/labN.md` exists
-- Auto-fill verified: [ ] Pending - draft PR will be created after the first push.
+- Auto-fill verified: [x] Yes - draft PRs were opened and their descriptions used the required template sections:
+  - Course PR: https://github.com/inno-devops-labs/DevSecOps-Intro/pull/1004
+  - Fork workflow verification PR: https://github.com/4rni4ka/DevSecOps-Intro/pull/1
 
 ## GitHub Community
 
@@ -105,9 +107,19 @@ Starring repositories matters because it bookmarks useful open-source projects a
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): Pending - workflow run starts after the draft PR is opened.
-- Workflow run duration: Pending
+- Run URL (green): https://github.com/4rni4ka/DevSecOps-Intro/actions/runs/27425310794
+- Workflow run duration: about 14 seconds for the `Smoke-test Juice Shop` job (started `2026-06-12T15:24:44Z`, completed `2026-06-12T15:24:58Z`)
 - Curl response excerpt:
   ```text
-  Pending - will be copied from the green GitHub Actions run.
+  {"version":"20.0.0"}
+  Homepage HTTP status: 200
+  HTTP/1.1 200 OK
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Feature-Policy: payment 'self'
+  X-Recruiting: /#/jobs
+  Content-Type: application/json; charset=utf-8
+  Content-Length: 20
+  {"version":"20.0.0"}
   ```
