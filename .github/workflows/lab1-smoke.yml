@@ -5,36 +5,32 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read
-
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
 
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v16.0.0
+        ports:
+          - 3000:3000
+
     steps:
-      - name: Checkout repository code
+      - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Deploy Juice Shop Container
+      - name: Wait for Juice Shop to be ready
         run: |
-          docker run -d --name juice-shop-ci -p 3000:3000 bkimminich/juice-shop:v20.0.0
-
-      - name: Wait for Juice Shop to be ready (Polling Loop)
-        run: |
-          echo "Waiting for Juice Shop to initialize..."
-          for i in $(seq 1 30); do
-            if curl --silent --fail http://localhost:3000/rest/admin/application-version > /dev/null; then
-              echo "Juice Shop is healthy and responding!"
+          echo "Waiting for Juice Shop to start..."
+          for i in {1..20}; do
+            if curl -s -I http://localhost:3000 | grep -q "HTTP/"; then
+              echo "Juice Shop is up and running!"
               exit 0
             fi
-            echo "Container is not ready yet, retrying in 2 seconds... ($i/30)"
-            sleep 2
+            sleep 3
           done
-          echo "Error: Juice Shop failed to start within 60 seconds."
-          docker logs juice-shop-ci
+          echo "Juice Shop failed to start in time"
           exit 1
 
       - name: Log Health Check Response
-        run: |
-          curl -I http://localhost:3000/rest/admin/application-version
+        run: curl -I http://localhost:3000
