@@ -85,7 +85,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
   - Title is clear (`feat(labN): <topic>` style)
   - No secrets/large temp files committed
   - Submission file at `submissions/labN.md` exists
-- Auto-fill verified: [ ] Yes — GitHub did not auto-fill the PR description during creation, but `.github/PULL_REQUEST_TEMPLATE.md` exists and both PR descriptions were filled manually using the template. 
+- Auto-fill verified: [x] Yes — PR description showed my template 
 
 ## GitHub Community
 

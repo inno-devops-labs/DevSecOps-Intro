@@ -12,9 +12,9 @@ Briefly describe what this PR delivers.
 
 Commands executed and observed results:
 
-TEXT_BLOCK_START
+```
 <paste commands and outputs here>
-TEXT_BLOCK_END
+```
 
 ## Artifacts & Screenshots
 
