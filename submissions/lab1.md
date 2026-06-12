@@ -74,3 +74,13 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - Auto-fill verified: [x] Yes — PR description showed my template (screenshot or link to draft PR):
 <img width="1611" height="779" alt="image" src="https://github.com/user-attachments/assets/dfe1b0c2-f222-4c17-babe-435ff52acc08" />
 
+## GitHub Community
+
+- Starred repositories: course repo, simple-container-com/api
+- Followed: @Cre-eD, @Naghme98, @pierrepicaud, @MikeNovikoff, @jestersw, @ZeNik77
+
+**Why starring repositories matters in open source:**
+Stars help developers bookmark interesting projects for later reference and serve as a social signal of project quality and community trust. Star count indicates popularity and helps maintainers gauge interest in their work.
+
+**How following developers helps in team projects and professional growth:**
+Following developers allows you to discover new projects through their activity, stay updated on classmates' work for future collaboration, and build professional connections beyond the classroom. It creates a network effect where you can learn from others' contributions and coding patterns.
