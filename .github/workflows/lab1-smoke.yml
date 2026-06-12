@@ -13,7 +13,11 @@ jobs:
   smoke-test:
     runs-on: ubuntu-latest
     
-    steps:
+    steps:on:
+  push:
+    branches: [ main, feature/** ]
+  pull_request:
+    branches: [ main ]
       - name: Checkout code
         uses: actions/checkout@v4
 
