@@ -1,0 +1,31 @@
+name: Lab 01 Smoke Test
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v20.0.0
+        ports:
+          - 3000:3000
+    steps:
+      - name: Wait for Juice Shop to be ready
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version >/dev/null; then
+              echo "Juice Shop is up!"
+              curl -s -o /dev/null -w "HTTP Status: %{http_code}\n" http://localhost:3000
+              exit 0
+            fi
+            echo "Waiting... $i"
+            sleep 2
+          done
+          echo "Timeout reached"
+          exit 1

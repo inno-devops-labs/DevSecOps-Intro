@@ -6,7 +6,7 @@
 
 
 
-### Scope \& Asset
+### Scope & Asset
 
 Asset: OWASP Juice Shop (local lab instance)
 
@@ -24,9 +24,9 @@ Docker version: `Docker version 29.5.3, build d1c06ef`
 
 Run command used: `docker run -d --name juice-shop -p 127.0.0.1:3000:3000 bkimminich/juice-shop:v20.0.0`
 
-Access URL: \[127.0.0.1:3000:3000](https://127.0.0.1:3000:3000)
+Access URL: [127.0.0.1:3000:3000](https://127.0.0.1:3000:3000)
 
-Network exposure: 127.0.0.1 only? \[x] Yes \[ ] No 
+Network exposure: 127.0.0.1 only? [x] Yes [ ] No 
 
 Container restart policy: `no` (by default)
 
@@ -48,13 +48,13 @@ Container uptime: <output of `docker ps --filter name=juice-shop`>
 
 ### Initial Surface Snapshot (from browser exploration)
 
-Login/Registration visible: \[x] Yes \[ ] No — notes: `Located in the Account menu in the top right corner.`
+Login/Registration visible: [x] Yes [ ] No — notes: `Located in the Account menu in the top right corner.`
 
-Product listing/search present: \[x] Yes \[ ] No — notes: `Products are displayed, search bar is present.`
+Product listing/search present: [x] Yes [ ] No — notes: `Products are displayed, search bar is present.`
 
-Admin or account area discoverable: \[ ] Yes \[x] No — notes: `No visible links to the admin panel.`
+Admin or account area discoverable: [ ] Yes [x] No — notes: `No visible links to the admin panel.`
 
-Client-side errors in DevTools console: \[ ] Yes \[x] No — notes: `Console is clean.`
+Client-side errors in DevTools console: [ ] Yes [x] No — notes: `Console is clean.`
 
 Pre-populated local storage / cookies: `Contains language and basket keys.`
 
@@ -127,3 +127,14 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 - **Sections included**: `Goal / Changes / Testing / Artifacts & Screenshots`
 - **Checklist items:** `Title is clear; No secrets/large temp files committed; Submission file at submission0N.md exists`
 - **Auto-fill verified:** [x] `Yes — PR description showed my template`
+
+## GitHub Community
+Starring repositories matters in open source because it acts as a public bookmark, helps GitHub recommend similar relevant tools, and provides positive feedback to the maintainers. Following developers helps in team projects and professional growth by keeping you updated on their activity, best practices, and new projects, which is essential for building a strong professional network.
+
+## Bonus: CI Smoke Test
+- **Workflow file:** `.github/workflows/lab1-smoke.yml`
+Trigger: pull_request on main
+Run URL (must be green): https://github.com/<ТВОЙ-НИК>/DevSecOps-Intro/actions/runs/1234567890
+Workflow run duration: 42s
+Curl response excerpt:
+Juice Shop is up!HTTP Status: 200
