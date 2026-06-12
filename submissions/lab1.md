@@ -90,9 +90,26 @@ Starring repositories matters in open source because it bookmarks useful project
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
 - Trigger: `pull_request` on main
-- Run URL (must be green): pending until the PR is opened and GitHub Actions runs
-- Workflow run duration: pending until the PR workflow finishes
+- Run URL: https://github.com/wyroxx/DevSecOps-Intro/actions/runs/27414596512
+- Workflow run duration: 20s
 - Curl response excerpt:
   ```
-  pending until the green GitHub Actions run is available
+  Run curl -sI http://127.0.0.1:3000 | head -20
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Fri, 12 Jun 2026 12:06:39 GMT
+ETag: W/"26af-19ebbba2516"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 9903
+Vary: Accept-Encoding
+Date: Fri, 12 Jun 2026 12:06:39 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
   ```
