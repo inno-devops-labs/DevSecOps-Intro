@@ -198,8 +198,8 @@ technical_assets:
           - product-catalog
       Direct to App (no proxy):
         target: juice-shop
-        description: "Direct browser access to app (HTTP on 3000)."
-        protocol: http
+        description: "Direct browser access to app through HTTPS instead of plain HTTP."
+        protocol: https
         authentication: session-id
         authorization: enduser-identity-propagation
         tags: ["direct"]
@@ -243,10 +243,10 @@ technical_assets:
     communication_links:
       To App:
         target: juice-shop
-        description: "Proxy forwarding to app (HTTP on 3000 internally)."
-        protocol: http
-        authentication: none
-        authorization: none
+        description: "Proxy forwarding to app over HTTPS; internal service-to-service requests are authenticated."
+        protocol: https
+        authentication: session-id
+        authorization: technical-user
         tags: []
         vpn: false
         ip_filtered: false
@@ -275,7 +275,7 @@ technical_assets:
     confidentiality: internal
     integrity: important
     availability: important
-    justification_cia_rating: "In-scope web application (contains all business logic and vulnerabilities by design)."
+    justification_cia_rating: "In-scope web application. Secure variant assumes parameterized queries / prepared statements for database access."
     multi_tenant: false
     redundant: false
     custom_developed_parts: true
@@ -305,7 +305,7 @@ technical_assets:
 
   Persistent Storage:
     id: persistent-storage
-    description: "Host-mounted volume for database, file uploads, and logs."
+    description: "Encrypted host-mounted volume for database, file uploads, and sanitized logs."
     type: datastore
     usage: devops
     used_as_client_by_human: false
@@ -316,7 +316,7 @@ technical_assets:
     tags: ["storage", "volume"]
     internet: false
     machine: virtual
-    encryption: none
+    encryption: data-with-symmetric-shared-key
     owner: Lab Owner
     confidentiality: internal
     integrity: important
