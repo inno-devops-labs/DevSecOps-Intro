@@ -98,8 +98,14 @@ Which of these are MISSING?
 - Starred repositories:
   - `inno-devops-labs/DevSecOps-Intro`
   - `simple-container-com/api`
-- Follow actions: blocked by the current `gh` token scope. The token has `gist`, `read:org`, `repo`, and `workflow`, but GitHub requires the `user` scope for `PUT /user/following/{username}`.
-- Planned follows after `gh auth refresh -h github.com -s user`: `Cre-eD`, `Naghme98`, `pierrepicaud`, `SamiKO228`, `tayaorshulskaya-oss`, `kvakz`.
+- Followed course staff:
+`Cre-eD`
+`Naghme98`
+`pierrepicaud`
+- Followed classmates:
+`SamiKO228`
+`tayaorshulskaya-oss`
+`kvakz`
 
 Starring repositories matters because it bookmarks useful open-source projects and gives maintainers a public signal that the project is useful. Following developers helps with discovery in team projects because their activity surfaces related work, reviews, forks, and collaboration patterns.
 
