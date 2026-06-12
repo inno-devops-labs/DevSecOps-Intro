@@ -85,3 +85,13 @@ Stars help developers bookmark interesting projects for later reference and serv
 
 **How following developers helps in team projects and professional growth:**
 Following developers allows you to discover new projects through their activity, stay updated on classmates' work for future collaboration, and build professional connections beyond the classroom. It creates a network effect where you can learn from others' contributions and coding patterns.
+
+
+## Bonus: CI Smoke Test
+
+- Workflow file: `.github/workflows/lab1-smoke.yml`
+- Trigger: `pull_request` on main
+- Run URL (must be green): https://github.com/ratteperk/DevSecOps-Intro/actions/runs/27430641733
+- Workflow run duration: 18s
+- Curl response excerpt: {"version":"20.0.0"}Juice Shop is ready!
+
