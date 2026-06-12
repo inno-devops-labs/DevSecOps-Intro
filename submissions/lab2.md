@@ -29,3 +29,29 @@
 ### Trust boundary observation
 Arrow: User Browser (Internet) -> Juice Shop Application (Container).
 Why attractive: It crosses the main trust boundary from the untrusted internet directly to the app without encryption (HTTP), making it the easiest target for Man-in-the-Middle attacks to steal credentials.
+
+
+## Task 2: Secure Variant & Diff
+
+### Risk count comparison
+| Severity | Baseline | Secure | Δ |
+|----------|---------:|-------:|--:|
+| Critical | 0 | 0 | 0 |
+| High | 0 | 0 | 0 |
+| Elevated | 4 | 5 | +1 |
+| Medium | 14 | 14 | 0 |
+| Low | 5 | 5 | 0 |
+| **Total** | 23 | 24 | +1 |
+
+### Which rules are GONE in the secure variant?
+1. `unencrypted-communication` (Reverse Proxy to App) — fixed by changing protocol from http to https
+2. `insecure-data-storage` (Persistent Storage) — fixed by adding encryption: data-with-symmetric-shared-key
+3. `missing-transport-layer-encryption` (WebHook) — already was https, no change needed
+
+### Which rules are STILL THERE in the secure variant?
+1. `missing-authentication` — Still present because we only encrypted communication but didn't add authentication middleware to protect endpoints. The Reverse Proxy to App link still has `authentication: none`.
+2. `cross-site-scripting` — XSS vulnerability remains because encrypting transport doesn't fix input validation issues in the application code. This requires code-level changes, not just configuration.
+
+### Honesty check
+Did the total drop more than 50%? No, it actually increased by 1 (23 → 24).
+This happened because I added two new communication links (To Database and To Logging) to demonstrate prepared statements and encrypted logging, which introduced new risks. The encryption changes fixed some risks but the new links created others. To truly reduce risks, I would need to add authentication to the new links and ensure all security requirements are declared. This shows that threat modeling is iterative — each change needs to be carefully evaluated to avoid introducing new vulnerabilities while fixing old ones.
