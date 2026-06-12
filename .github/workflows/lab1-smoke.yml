@@ -1,8 +1,10 @@
 name: Lab1 Smoke Test
 
 on:
+  push:
+    branches: [ main, feature/** ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, feature/** ]
 
 permissions:
   contents: read
