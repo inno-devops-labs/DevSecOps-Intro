@@ -105,20 +105,22 @@ Extra note: `Access-Control-Allow-Origin: *` is also very permissive. It is okay
   - Title is clear (`feat(labN): <topic>` style)
   - No secrets/large temp files committed
   - Submission file at `submissions/labN.md` exists
-- Auto-fill verified: [ ] Yes - pending GitHub draft PR. The local file path and required sections are present; I will confirm the auto-filled description after pushing `feature/lab1`.
+- Auto-fill verified: [x] Yes - the PR description box pre-filled with the template before any manual edits (screenshot below). Note: auto-fill did not work while the template existed only on `feature/lab1`; it started working after the template was also pushed to the fork's default branch (`main`), since GitHub reads PR templates from a default branch rather than the feature branch.
+
+![PR template auto-fill on the compare page](img/lab1-pr-template-autofill.png)
 
 ## GitHub Community
 
 Starring the course repository and `simple-container-com/api` matters because stars work both as bookmarks for me and as small visibility signals for maintainers. Following the professor, TAs, and classmates is useful because it turns GitHub into a lightweight activity feed: I can notice what people are building, compare lab approaches, and find collaborators faster.
 
-Manual GitHub UI checklist before submitting:
+Manual GitHub UI checklist (all done from the `alberto-de-swerto` account):
 
-- [ ] Star course repository
-- [ ] Star `simple-container-com/api`
-- [ ] Follow `@Cre-eD`
-- [ ] Follow `@Naghme98`
-- [ ] Follow `@pierrepicaud`
-- [ ] Follow at least 3 classmates
+- [x] Star course repository
+- [x] Star `simple-container-com/api`
+- [x] Follow `@Cre-eD`
+- [x] Follow `@Naghme98`
+- [x] Follow `@pierrepicaud`
+- [x] Follow at least 3 classmates
 
 ## Bonus: CI Smoke Test
 
