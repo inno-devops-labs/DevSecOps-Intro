@@ -56,13 +56,19 @@ Output of the `git commit` that gitleaks blocked:
 
 ### Before
 ```
-[paste output of: git log --oneline before rewrite]
+ba9c76e (HEAD -> main) docs: add usage notes
+0afb204 feat: empty log
+0cde15a feat: add config
+8a8d948 init
 ```
 Output of `git log -p | grep -c 'ghp_'`: **2**
 
 ### After
 ```
-[paste output of: git log --oneline after rewrite]
+5d18498 (HEAD -> main) docs: add usage notes
+4d0f9ed feat: empty log
+0373b55 feat: add config
+eb63517 init
 ```
 Output of `git log -p | grep -c 'ghp_'`: **0**
 Output of `git log -p | grep -c 'REDACTED'`: **2**
