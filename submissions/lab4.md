@@ -1,4 +1,4 @@
-# Lab 4 — Submission Template
+# Lab 4 — SBOM Generation & Software Composition Analysis on Juice Shop
 
 ## Task 1: Syft + Grype on Juice Shop
 
