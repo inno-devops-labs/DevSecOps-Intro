@@ -10,12 +10,17 @@
 ### Local verification
 Output of `git log --show-signature -1`:
 ```
-[paste output here - it should include a good SSH signature for your configured email]
+commit 61b2853e6f42d1b92483dd10cccaabb5834545e6
+Good "git" signature for ro.ivanov@innopolis.university with ED25519 key SHA256:[REDACTED]
+Author: eraegar <romaxim2006@gmail.com>
+Date:   Wed Jun 17 23:45:54 2026 +0300
+
+    feat(lab3): SSH signing, gitleaks hooks, and history rewrite notes
 ```
 
 ### GitHub verification
-- Direct link to your most recent commit on GitHub: [paste commit URL here]
-- Screenshot of the Verified badge: [attach in PR or link here]
+- Direct link to your most recent commit on GitHub: [add after push]
+- Screenshot of the Verified badge: [attach in PR or link after push]
 
 ### One-paragraph reflection (2-3 sentences)
 In a real team, an unsigned or forged-author commit could let someone deny responsibility for a change or impersonate another developer when introducing malicious code. A visible Verified badge does not prove the code is safe, but it makes authorship tampering much easier to detect and strengthens the audit trail for reviews and incident response.
