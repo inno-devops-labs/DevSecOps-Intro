@@ -45,7 +45,30 @@ pre-commit installed at .git/hooks/pre-commit
 ### The blocked commit
 Output of the `git commit` that gitleaks blocked:
 ```
-[paste the failing gitleaks hook output here]
+Detect hardcoded secrets.................................................Failed
+- hook id: gitleaks
+- exit code: 1
+
+○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+Finding:     GH_PAT=REDACTED
+Secret:      REDACTED
+RuleID:      github-pat
+Entropy:     4.143943
+File:        submissions/leak-attempt.txt
+Line:        2
+Fingerprint: submissions/leak-attempt.txt:github-pat:2
+
+11:17PM INF 0 commits scanned.
+11:17PM INF scanned ~101 bytes (101 bytes) in 22.4ms
+11:17PM WRN leaks found: 1
+
+detect private key.......................................................Passed
+check for added large files..............................................Passed
 ```
 
 ### Tune-out exercise
