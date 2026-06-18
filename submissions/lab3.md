@@ -19,7 +19,8 @@ Date:   Thu Jun 18 09:14:42 2026 +0300
 ### GitHub verification
 - Direct link to your most recent commit on GitHub: https://github.com/lashmanovSergey/DevSecOps-Intro/commit/11f47153d89f944ab64471e1fdd0e4d40a82aef4
     - Sorry, I didn't have email address in my github config, so there was 3 attempt to get verified commit. But I did it :)
-- Screenshot of the Verified badge: ![alt text](image.png)
+- Screenshot of the Verified badge:
+![alt text](image.png)
 
 ### One-paragraph reflection (2-3 sentences)
 What STRIDE-R (Repudiation) scenario would a forged-author commit enable in a real
