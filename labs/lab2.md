@@ -369,6 +369,7 @@ PR checklist body:
 - 🚨 **`docker: invalid reference format`** — make sure you wrote `threagile/threagile:0.9.1` not `threagile:v0.9.1` (no namespace).
 - 🚨 **Output directory empty after run** — Threagile needs write access. Verify the volume mount `-v "$(pwd)/labs/lab2":/app/work` and that `output/` exists with write perms before running.
 - 🚨 **`undefined protocol: xyz`** — Threagile validates protocol enums. Common typo: `JDBC-encrypted` (capitalized) — use lowercase `jdbc-encrypted`.
+- 🚨 **`the sheet name length exceeds the 31 characters limit`** — Threagile uses your model's `title:` as the Excel sheet name in `risks.xlsx`; Excel caps sheet names at 31 characters. Keep `title:` short (≤ 31 chars). The run dies at the Excel step, so you get JSONs and diagrams but no `risks.xlsx`/`report.pdf`. (The `Fontconfig error` lines are harmless noise — ignore them.)
 - 🚨 **PDF is huge / slow to open** — that's normal. Use `risks.json` + `jq` for fast iteration; open the PDF only for the final report.
 - 🚨 **Secure variant has MORE risks than baseline** — usually means you added a new asset without declaring its security requirements. Threagile rules can fire on new assets you accidentally introduced; review your diff carefully.
 - 🚨 **"My auth-flow model has 50 risks!"** — that's usually because you copied the baseline model and trimmed it. Build the auth model **from scratch** — minimum viable assets + links + data. Threagile rules multiply on under-specified models.
