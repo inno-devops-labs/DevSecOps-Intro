@@ -4,19 +4,20 @@
 
 ### Local configuration
 - `git config --global gpg.format` → ssh
-- `git config --global user.signingkey` → <ВСТАВЬ вывод: путь к твоему .pub ключу, напр. /Users/имя/.ssh/id_ed25519.pub>
+- `git config --global user.signingkey` → /Users/kamil/.ssh/id_ed25519.pub
 - `git config --global commit.gpgsign` → true
 
 ### Local verification
 Output of `git log --show-signature -1`:
 ```
-<ВСТАВЬ СЮДА весь вывод команды git log --show-signature -1.
-Внутри должна быть строка: Good "git" signature for <твоя_почта>>
+commit 81fd8745e104a7e411a8963e9be680a30eae9242 (HEAD -> feature/lab3)
+Good "git" signature for kamilgiz2006@gmail.com with ED25519 key SHA256:...
+
 ```
 
 ### GitHub verification
-- Direct link to your most recent commit on GitHub: <ВСТАВЬ ссылку на коммит, напр. https://github.com/<твой_логин>/<форк>/commit/<хэш>>
-- Screenshot of the Verified badge: <ВСТАВЬ скриншот зелёного бейджа Verified — см. инструкцию ниже, как добавить картинку в PR>
+- Direct link to your most recent commit on GitHub: https://github.com/chuchundra5269/DevSecOps-Intro/commit/81fd8745e104a7e411a8963e9be680a30eae9242
+- Screenshot of the Verified badge: ![Verified badge](verified.png)
 
 ### One-paragraph reflection (2-3 sentences)
 Without commit signing, anyone can set `git config user.name`/`user.email` to a colleague's
@@ -49,15 +50,33 @@ repos:
 
 ### `pre-commit install` output
 ```
-<ВСТАВЬ вывод команды pre-commit install — должна быть строка:
-pre-commit installed at .git/hooks/pre-commit>
+pre-commit installed at .git/hooks/pre-commit
 ```
 
 ### The blocked commit
 Output of the `git commit` that gitleaks blocked (the failing hook output):
 ```
-<ВСТАВЬ сюда вывод заблокированного коммита из шага 3.7 —
-там виден gitleaks с FAILED, ID правила (напр. github-pat) и redacted-находка>
+Detect hardcoded secrets.................................................Failed
+- hook id: gitleaks
+- exit code: 1
+
+○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+Finding:     GH_PAT=REDACTED
+Secret:      REDACTED
+RuleID:      github-pat
+Entropy:     4.143943
+File:        submissions/leak-attempt.txt
+Line:        2
+Fingerprint: submissions/leak-attempt.txt:github-pat:2
+
+5:57PM INF 0 commits scanned.
+5:57PM INF scanned ~101 bytes (101 bytes) in 14.5ms
+5:57PM WRN leaks found: 1
 ```
 
 ### Tune-out exercise
@@ -82,13 +101,19 @@ Output of the `git commit` that gitleaks blocked (the failing hook output):
 
 ### Before
 ```
-<ВСТАВЬ вывод: git log --oneline (до перезаписи, в песочнице /tmp/lab3-bonus)>
+03aa971 (HEAD -> main) docs: add usage notes
+4c58100 feat: empty log
+2c6c21c feat: add config
+50b7f2e init
 ```
 Output of `git log -p | grep -c 'ghp_'`: **2**
 
 ### After
 ```
-<ВСТАВЬ вывод: git log --oneline (после git filter-repo)>
+d8e0e02 (HEAD -> main) docs: add usage notes
+780aa79 feat: empty log
+1fa72d2 feat: add config
+f154480 init
 ```
 Output of `git log -p | grep -c 'ghp_'`: **0**
 Output of `git log -p | grep -c 'REDACTED'`: **2**
