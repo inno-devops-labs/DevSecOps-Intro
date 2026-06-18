@@ -5,7 +5,7 @@
 ### SBOM stats
 - `juice-shop.cdx.json` component count: 3069
 - `juice-shop.cdx.json` size: 1834867
-- `juice-shop.spdx.json` component count: 0
+- `juice-shop.spdx.json` component count: 909
 
 ### Grype severity breakdown (paste table or JSON)
 | Severity | Count |
