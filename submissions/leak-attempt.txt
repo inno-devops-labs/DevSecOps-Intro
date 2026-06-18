@@ -1,0 +1,2 @@
+# This is a deliberate fake secret for Lab 3 testing
+GH_PAT=ghp_16C7e42F292c6912E7710c838347Ae178B4a
