@@ -19,8 +19,9 @@ Date:   Thu Jun 18 17:04:36 2026 +0300
 ```
 
 ### GitHub verification
-- Direct link to your most recent commit on GitHub: <to be added after push>
-- Screenshot of the Verified badge: <to be added after push>
+- Latest commit (docs update): https://github.com/wannebetheshy/DevSecOps-Intro/commit/cdf834e428199df34a611a8878e05d7e48e16ffc
+- First lab3 commit: https://github.com/wannebetheshy/DevSecOps-Intro/commit/198206d60ddcb453193e67a8ff05665c270ee83c
+- Screenshot of the Verified badge: ![Verified badge](verified-badge.png)
 
 ### One-paragraph reflection
 A forged-author commit allows an attacker (or a malicious insider) to plant backdoors, sabotage releases, or comply fraud while attributing the change to a trusted colleague — perfect Repudiation under STRIDE-R: the actual actor can deny the action, and the framed developer cannot prove their innocence. Without signing, `git log --author` is trivially spoofable via `git commit --author "trusted@example.com"`. The Verified badge breaks this attack by binding the commit to the SSH private key only the real author possesses: a commit showing "Unverified" next to a trusted name is an immediate red flag that triggers investigation rather than silent acceptance.
