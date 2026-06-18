@@ -10,7 +10,12 @@
 ### Local verification
 Output of `git log --show-signature -1`:
 ```
-<see below — populated after first signed commit on this branch>
+commit 92499f1601e4733d054faacca7834ae1e4370dee
+Good "git" signature for alexander@heronwater.com with ED25519 key SHA256:vwqxlQeyMQRmpij9axlAMAhQZB9aoV+I7goi6xeApDs
+Author: Temniy Princ <alexander@heronwater.com>
+Date:   Thu Jun 18 17:04:36 2026 +0300
+
+    feat(lab3): SSH signing + gitleaks pre-commit + history rewrite practice
 ```
 
 ### GitHub verification
