@@ -20,8 +20,9 @@ Date:   Thu Jun 18 22:53:23 2026 +0300
 (Full `git log --show-signature -1` output verified locally; SHA256 fingerprint truncated here to avoid gitleaks false positive on commit.)
 
 ### GitHub verification
-- Direct link to your most recent commit on GitHub: https://github.com/prudenz1/DevSecOps-Intro/commit/773bdad1e322438f3065c2da482f2005606cc860
-- Screenshot of the Verified badge: badge appears after uploading the SSH public key as a **Signing Key** at GitHub → Settings → SSH and GPG keys (key type must be Signing, not Authentication only).
+- Direct link to signed commit: https://github.com/prudenz1/DevSecOps-Intro/commit/773bdad1e322438f3065c2da482f2005606cc860
+- Latest commit on PR (also Verified): https://github.com/prudenz1/DevSecOps-Intro/commit/315a7b7
+- Verified badge: **confirmed** — GitHub API returns `verified: true, reason: valid` after uploading the SSH key as a **Signing Key**.
 
 ### One-paragraph reflection (2-3 sentences)
 In a real team, a forged-author commit (STRIDE-R / Repudiation) lets an attacker push malicious code while framing a colleague — during an incident review, the victim cannot prove they did not author the change, and auditors lose a reliable attribution chain. The green **Verified** badge on GitHub ties each commit to a known SSH signing key registered to a specific account, so an unsigned or wrongly signed commit stands out immediately in the PR timeline and blocks the "it wasn't me" repudiation scenario.
