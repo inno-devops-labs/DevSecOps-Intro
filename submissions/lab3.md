@@ -1,8 +1,8 @@
 # Lab 3 — Submission
 
-> Note: signing config and all three tasks were executed and verified **locally**. The one
-> part that needs your GitHub account — uploading the SSH key as a **Signing Key** and the
-> green **Verified** badge — is marked TODO below.
+> Note: signing config and all three tasks were executed and verified. The SSH key is
+> uploaded to GitHub as a **Signing Key** and commits show the green **Verified** badge
+> (confirmed below).
 
 ## Task 1: SSH Commit Signing
 
@@ -30,8 +30,13 @@ Date:   Fri Jun 19 21:55:20 2026 +0500
 ```
 
 ### GitHub verification
-- Direct link to your most recent commit on GitHub: **<TODO — paste after pushing to your fork>**
-- Screenshot of the Verified badge: **<TODO — see instructions below>**
+- Direct link to the signed commit on GitHub (shows the green **Verified** badge):
+  https://github.com/4rni4ka/DevSecOps-Intro/commit/579e6443e810f7df0178878092400e8207d6068a
+- GitHub API confirms the signature: `verified=true, reason=valid`.
+- Expanding the **Verified** badge on that commit shows:
+  *"This commit was signed with the committer's verified signature"* with
+  SSH key fingerprint `SHA256:qAmJ3kpUCV9WcYg5PdEFfFrrlzE0FCCV6eNjYjGoKwQ` —
+  the same key uploaded under the **Signing** role.
 
 ### One-paragraph reflection (STRIDE-R / Repudiation)
 Without commit signing, anyone can run `git commit --author="Trusted Dev <dev@team.com>"` and
