@@ -68,7 +68,10 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
   - [ ] Title is clear (`feat(labN): <topic>` style)
   - [ ] No secrets/large temp files committed
   - [ ] Submission file at `submissions/labN.md` exists
-- Auto-fill verified: [ ] Yes — PR description showed my template (screenshot or link to draft PR)
+- Auto-fill verified: 
+  - [x] Yes — PR description showed my template BUT
+  PR Template is supposed to be in the main branch of the base repository for it to apply to PRs from forks. My file only works for PRs within my own fork.
+  <img src="lab1_PRscreenshot.png" width="500">
 
 ## GitHub Community
 
