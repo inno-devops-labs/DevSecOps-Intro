@@ -20,8 +20,8 @@ Output of `git log --show-signature -1`:
 
 ### GitHub verification
 
-- Direct link to your most recent commit on GitHub: WILL_PASTE_AFTER_PUSH
-- Screenshot of the Verified badge: WILL_ADD_SCREENSHOT_IN_PR
+- Direct link to a verified commit on GitHub: https://github.com/L10nff/DevSecOps-Intro/commit/0a9ab63122327d9679a16d5de50fabd61bbbd008
+- Screenshot of the Verified badge: attached in PR description
 
 ### One-paragraph reflection
 
