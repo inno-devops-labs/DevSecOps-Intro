@@ -11,18 +11,27 @@
 
 ### Local verification
 
-The final Lab 3 commit was created with SSH signing enabled. Local verification command:
+The Lab 3 commit was created with SSH signing enabled. Local verification command:
 
 ```bash
 git log --show-signature -1
 ```
 
-The concrete output will be recorded after the signed Lab 3 commit is created.
+```text
+commit fe867dd86f46f57dbda991a8c88d8989d0d55c4e
+Good "git" signature for is.gainullin@innopolis.university with ED25519 key SHA256:/4A7JBbJxjw9fFpAfe//7GEGCMUQu+sR1Mm2m2hTG90
+Author:     bimbiriim <is.gainullin@innopolis.university>
+AuthorDate: Fri Jun 19 12:58:25 2026 +0300
+Commit:     bimbiriim <is.gainullin@innopolis.university>
+CommitDate: Fri Jun 19 12:58:25 2026 +0300
+
+    feat(lab3): configure secure git hooks and submission
+```
 
 ### GitHub verification
 
 - Branch prepared for PR: `feature/lab3`
-- Direct signed commit link after push: to be updated after the signed commit is pushed.
+- Direct signed commit link after push: `https://github.com/Walkerino/DevSecOps-Intro/commit/fe867dd86f46f57dbda991a8c88d8989d0d55c4e`
 - GitHub "Verified" badge prerequisite: the public key from `/home/bimbiriim/.ssh/id_ed25519.pub` must be added in GitHub as an SSH **Signing Key**, not only as an authentication key.
 
 ### Reflection
