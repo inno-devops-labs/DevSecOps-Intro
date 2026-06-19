@@ -21,8 +21,8 @@ Date:   Fri Jun 19 17:56:42 2026 +0300
 ```
 
 ### GitHub verification
-- Direct link to your most recent commit on GitHub: [https://github.com/IamdLite/DevSecOps-Intro/commit/be4fa4bba05c3d549d449bfebd20d6c8ac15c96d]
-- Screenshot of the Verified badge: [PLACEHOLDER: path/to/screenshot.png]
+- Direct link to your most recent commit on GitHub: [https://github.com/IamdLite/DevSecOps-Intro/commit/cc0de71853e2ac0a9a0ac53e27db6f4290fd5e4f]
+- Screenshot of the Verified badge: ["https://github.com/user-attachments/assets/0d7957ad-7320-4874-9253-3ddb39697703]
 
 ### One-paragraph reflection (2-3 sentences)
 A forged-author commit enables a **repudiation** scenario where a malicious actor injects vulnerable code under a trusted developer's name, allowing the attacker to later deny responsibility while the team wastes time blaming the wrong person. The **Verified badge** (via GPG or SSH signing) makes this attack visible by cryptographically linking the commit to a specific key, so any unsigned or wrongly-signed commit immediately flags that the author claim is untrustworthy—forcing the attacker to either forge the signature (infeasible without the key) or reveal the tampering.
