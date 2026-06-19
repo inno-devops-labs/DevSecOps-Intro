@@ -11,7 +11,12 @@
 
 Output of `git log --show-signature -1`:
 
-    WILL_PASTE_AFTER_FINAL_COMMIT
+    commit 445b42369135670e1c54e860934546c2ec25a962 (HEAD -> feature/lab3)
+Good "git" signature for darkdeathinvader@gmail.com with ED25519 key SHA256:[REDACTED]
+Author: Gleb Shvetsov <darkdeathinvader@gmail.com>
+Date:   Fri Jun 19 20:16:12 2026 +0300
+
+    feat(lab3): SSH signing + gitleaks pre-commit + history rewrite practice
 
 ### GitHub verification
 
