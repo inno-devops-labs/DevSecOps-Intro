@@ -19,6 +19,7 @@ Date:   Fri Jun 19 19:43:01 2026 +0300
 ### GitHub verification
 - Direct link to my most recent commit on github: https://github.com/witch2256/DevSecOps-Intro/commit/31d8292493e6a4a2f296ccb3fcc8bfc9c4c9f668
 - Screenshot of the Verified badge:
+  ![verified-badge.png](verified-badge.png)
 
 ### One-paragraph reflection
 If an attacker can forde a commit author, they can inject malicious code and later deny having done so, causing confusion and undermining thust in the codebase. Signed commits protect the team from both external impersonation and internal disputes about who introduced a change.
