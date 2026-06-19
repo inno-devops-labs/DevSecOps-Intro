@@ -116,3 +116,48 @@ Fingerprint: submissions/leak-attempt.txt:github-pat:2
    training material, not real production code. Path exclusions should be scoped as
    narrowly as possible and revisited periodically, since they create a permanent
    blind spot rather than a one-time exception.
+
+## Bonus: History Rewrite
+
+### Before
+b6f2bc1 (HEAD -> master) docs: add usage notes
+
+f7fb46f feat: empty log
+
+62c3a01 feat: add config
+
+588ead6 init
+Output of `git log -p | grep -c 'ghp_'`: **2**
+
+### After
+a165efb (HEAD -> master) docs: add usage notes
+
+b6df365 feat: empty log
+
+e231768 feat: add config
+
+04d6129 init
+Output of `git log -p | grep -c 'ghp_'`: **0**
+Output of `git log -p | grep -c 'REDACTED'`: **2**
+
+### The two-step pattern in real life
+1. `git filter-repo --replace-text replacements.txt` — rewrite locally
+2. **Rotate the leaked credential** — the rewrite only removes the secret from
+   *this copy* of history. Anyone who already cloned, forked, or cached the repo
+   (including CI logs, GitHub's own caches, or search-indexing services) still has
+   the old secret in their copy. The only way to actually neutralize the leak is to
+   revoke/rotate the real credential at its source (e.g. regenerate the GitHub PAT).
+   Rewriting history is cleanup; rotation is remediation.
+
+### Two real-world gotchas you discovered (2 sentences each)
+1. `git filter-repo` refused to run with "this does not look like a fresh clone" —
+   not because of an existing remote (the lab's hint), but because the reflog
+   already had more than one entry from my `git init` + commit sequence. I had to
+   use `--force` to proceed, which taught me the safety check is really about
+   "has anything already happened in this repo," not just remotes.
+2. The first rewrite attempt silently failed: the count for `ghp_AAAA` stayed at 2
+   even after filter-repo reported success. The cause was a UTF-8 BOM
+   (`EF BB BF`) at the start of my replacement file, added automatically by
+   PowerShell's `Out-File -Encoding utf8`. Switching to `-Encoding ascii` removed
+   the BOM and the replacement worked on the second attempt — a reminder that
+   filter-repo matches text literally, byte for byte.
