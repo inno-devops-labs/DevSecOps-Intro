@@ -22,8 +22,6 @@
 
 <!-- Links to files in this PR, image embeds where useful -->
 
----
-
 ### Checklist
 
 - [ ] Title is clear (`feat(labN): <topic>` style)
