@@ -11,12 +11,12 @@
 
 Output of `git log --show-signature -1`:
 
-    commit 445b42369135670e1c54e860934546c2ec25a962 (HEAD -> feature/lab3)
-Good "git" signature for darkdeathinvader@gmail.com with ED25519 key SHA256:[REDACTED]
-Author: Gleb Shvetsov <darkdeathinvader@gmail.com>
-Date:   Fri Jun 19 20:16:12 2026 +0300
+    commit 106953fd0f09d437148fb774199bd81ce913ac17 (HEAD -> feature/lab3)
+    Good "git" signature for darkdeathinvader@gmail.com with ED25519 key SHA256:[REDACTED]
+    Author: Gleb Shvetsov <darkdeathinvader@gmail.com>
+    Date:   Fri Jun 19 20:19:17 2026 +0300
 
-    feat(lab3): SSH signing + gitleaks pre-commit + history rewrite practice
+        docs(lab3): add local signature verification output
 
 ### GitHub verification
 
