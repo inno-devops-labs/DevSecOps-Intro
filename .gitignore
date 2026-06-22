@@ -19,6 +19,10 @@ labs/lab10/work/dd/
 labs/lab11/logs/
 labs/lab11/reverse-proxy/certs/
 labs/lab12/results/
+labs/lab4/grype-from-sbom.json
+labs/lab4/grype-from-sbom.txt
+labs/lab4/trivy.json
+labs/lab4/trivy.txt
 
 # Standard
 __pycache__/

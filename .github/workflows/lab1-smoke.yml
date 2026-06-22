@@ -1,0 +1,45 @@
+name: Lab 1 Smoke Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run OWASP Juice Shop
+        run: |
+          docker run -d --name juice-shop \
+            -p 127.0.0.1:3000:3000 \
+            bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for Juice Shop to become healthy
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:3000/rest/admin/application-version; then
+              echo
+              echo "Juice Shop version endpoint is healthy"
+              exit 0
+            fi
+
+            echo "Waiting for Juice Shop... attempt $i/30"
+            sleep 2
+          done
+
+          echo "Juice Shop did not become healthy within 60 seconds"
+          docker logs juice-shop
+          exit 1
+
+      - name: Verify homepage returns HTTP 200
+        run: |
+          curl --silent --fail --show-error http://127.0.0.1:3000 > /dev/null
+          echo "Homepage returned HTTP 200"

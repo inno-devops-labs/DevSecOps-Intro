@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: seed-juice-shop-writable-paths
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require("fs");
+              const copyContents = (source, destination) => {
+                fs.mkdirSync(destination, { recursive: true });
+                if (!fs.existsSync(source)) return;
+                for (const entry of fs.readdirSync(source)) {
+                  fs.cpSync(`${source}/${entry}`, `${destination}/${entry}`, { recursive: true });
+                }
+              };
+              copyContents("/juice-shop/data", "/writable-data");
+              copyContents("/juice-shop/frontend/dist", "/writable-frontend-dist");
+              copyContents("/juice-shop/.well-known", "/writable-well-known");
+              copyContents("/juice-shop/i18n", "/writable-i18n");
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          volumeMounts:
+            - name: data
+              mountPath: /writable-data
+            - name: frontend-dist
+              mountPath: /writable-frontend-dist
+            - name: well-known
+              mountPath: /writable-well-known
+            - name: i18n
+              mountPath: /writable-i18n
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: data
+              mountPath: /juice-shop/data
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist
+            - name: well-known
+              mountPath: /juice-shop/.well-known
+            - name: i18n
+              mountPath: /juice-shop/i18n
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
+        - name: frontend-dist
+          emptyDir: {}
+        - name: well-known
+          emptyDir: {}
+        - name: i18n
+          emptyDir: {}
