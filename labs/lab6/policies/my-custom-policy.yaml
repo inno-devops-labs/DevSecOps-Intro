@@ -1,0 +1,14 @@
+metadata:
+  name: "Ensure taggable AWS resources have an Environment tag"
+  id: "CKV2_CUSTOM_1"
+  category: "CONVENTION"
+  severity: "MEDIUM"
+
+scope:
+  provider: aws
+
+definition:
+  cond_type: "attribute"
+  resource_types: "taggable"
+  attribute: "tags.Environment"
+  operator: "exists"
