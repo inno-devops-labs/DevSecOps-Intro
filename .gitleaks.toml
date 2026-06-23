@@ -1,0 +1,7 @@
+title = "Lab 3 gitleaks config"
+
+[[rules]]
+id = "lab-github-pat"
+description = "Lab fake GitHub PAT"
+regex = '''ghp_[A-Za-z0-9_]{30,}'''
+secretGroup = 0
