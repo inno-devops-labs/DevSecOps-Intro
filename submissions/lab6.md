@@ -1,7 +1,5 @@
 # Lab 6 — Submission
 
-> Lab 6 complete (Task 1 + Task 2 + Bonus).
-
 ---
 
 ## Task 1: Checkov on Terraform
@@ -18,7 +16,7 @@
 |------------------|------:|
 | `null` | **78** |
 
-Checkov не заполняет Critical/High/Medium/Low в JSON без Prisma Cloud API key (`--bc-api-key`). С `--skip-download` / `BC_SKIP_MAPPING=TRUE` (offline) все 78 failed checks имеют `"severity": null` — это ожидаемо, не баг скана. Passed/failed/total (**49 / 78 / 127**) — из `.summary`. KICS (Task 2) severity заполнен, т.к. не зависит от Prisma API.
+*idk I just get severity: null*
 
 ### Top 5 rule IDs (by frequency)
 
