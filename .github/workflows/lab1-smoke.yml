@@ -1,0 +1,51 @@
+name: Lab 1 Smoke Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull Juice Shop image
+        run: docker pull bkimminich/juice-shop:v20.0.0
+
+      - name: Run Juice Shop
+        run: |
+          docker run -d --name juice-shop \
+            -p 127.0.0.1:3000:3000 \
+            bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for Juice Shop to become healthy
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:3000/rest/admin/application-version; then
+              echo
+              echo "Juice Shop is healthy"
+              exit 0
+            fi
+
+            echo "Waiting for Juice Shop... attempt $i/30"
+            sleep 2
+          done
+
+          echo "Juice Shop did not become healthy within 60 seconds"
+          docker logs juice-shop
+          exit 1
+
+      - name: Verify homepage returns HTTP 200
+        run: |
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000)
+          echo "Homepage HTTP status: $STATUS_CODE"
+
+          if [ "$STATUS_CODE" != "200" ]; then
+            echo "Expected HTTP 200, got $STATUS_CODE"
+            docker logs juice-shop
+            exit 1
+          fi
