@@ -1,0 +1,228 @@
+threagile_version: 1.0.0
+title: Juice Shop Auth Focused Model
+date: 2026-06-10
+management_summary_comment: >
+  Focused model for authentication flow used in Lab 2 bonus task.
+
+business_criticality: important
+
+data_assets:
+  credentials:
+    id: credentials
+    description: "Username and password credentials submitted by users."
+    usage: business
+    owner: Lab Student
+    quantity: few
+    confidentiality: restricted
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Credentials are sensitive and need protection."
+  jwt-token:
+    id: jwt-token
+    description: "JWT issued by the auth service and used for API calls."
+    usage: business
+    owner: Lab Student
+    quantity: few
+    confidentiality: internal
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Tokens grant access and must be protected."
+  user-session:
+    id: user-session
+    description: "Session state stored by the auth/API for logged-in users."
+    usage: business
+    owner: Lab Student
+    quantity: many
+    confidentiality: internal
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Session state is needed for authentication continuity."
+
+  refresh-token:
+    id: refresh-token
+    description: "Long-lived refresh tokens used to obtain new JWTs without re-authentication."
+    usage: business
+    owner: Lab Student
+    quantity: few
+    confidentiality: restricted
+    integrity: important
+    availability: operational
+    justification_cia_rating: "Refresh tokens allow session continuation and must be protected and stored securely."
+
+technical_assets:
+
+  User Browser:
+    id: user-browser
+    description: "End-user web browser (client)."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    size: system
+    technology: browser
+    tags: []
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: Lab Student
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Client controlled by end user."
+    data_assets_processed:
+      - credentials
+    communication_links:
+      Browser->Auth:
+        target: auth-api
+        description: "User submits credentials to Auth API (login/register)."
+        protocol: https
+        authentication: none
+        authorization: none
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+
+  Auth API:
+    id: auth-api
+    description: "Authentication API endpoint (issues JWTs)."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-service-rest
+    tags: []
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Student
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "Auth API handles authentication flows."
+    data_assets_processed:
+      - credentials
+      - jwt-token
+    communication_links:
+      Auth->TokenSigner:
+        target: token-signer
+        description: "Requests JWT signing from the token service."
+        protocol: https
+        authentication: none
+        authorization: technical-user
+        usage: business
+        data_assets_sent:
+          - jwt-token
+      Auth->UserDB:
+        target: user-db
+        description: "Verify credentials against user database using parameterized queries."
+        protocol: jdbc-encrypted
+        authentication: credentials
+        authorization: technical-user
+        usage: business
+        data_assets_sent:
+          - credentials
+
+  Token Signer:
+    id: token-signer
+    description: "Service that issues and verifies JWTs (holds signing keys)."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: web-service-rest
+    tags: []
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Student
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: "Holds signing keys; high integrity requirement."
+    data_assets_processed:
+      - jwt-token
+      - refresh-token
+
+  User DB:
+    id: user-db
+    description: "Database storing user credential hashes and profile data."
+    type: datastore
+    usage: devops
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: database
+    tags: []
+    internet: false
+    machine: virtual
+    encryption: data-with-symmetric-shared-key
+    owner: Lab Student
+    confidentiality: restricted
+    integrity: important
+    availability: important
+    justification_cia_rating: "Contains credential hashes and PII."
+    data_assets_stored:
+      - credentials
+      - refresh-token
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: "Admin UI/API that requires admin-role via JWT."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-service-rest
+    tags: []
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Student
+    confidentiality: restricted
+    integrity: important
+    availability: important
+    justification_cia_rating: "Admin functions require elevated protection."
+    communication_links:
+      Admin->TokenSigner:
+        target: token-signer
+        description: "Token verification requests."
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        usage: business
+      Admin->UserDB:
+        target: user-db
+        description: "Admin queries to inspect or manage user records."
+        protocol: jdbc-encrypted
+        authentication: token
+        authorization: admin-role
+        usage: business
+
+trust_boundaries:
+  Internet:
+    id: internet
+    description: "Untrusted public network."
+    type: network-dedicated-hoster
+    technical_assets_inside:
+      - user-browser
+
+  Container Network:
+    id: container-network
+    description: "Container network hosting services."
+    type: network-dedicated-hoster
+    technical_assets_inside:
+      - auth-api
+      - token-signer
+      - user-db
+      - admin-endpoint
+
+shared_runtimes: {}
+
+# Minimal metadata
+name: Juice Shop Auth Flow (focused)
+version: 1.0
