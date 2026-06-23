@@ -1,0 +1,14 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure S3 bucket has Environment tag
+  category: GENERAL_SECURITY
+  severity: MEDIUM
+  guideline: |
+    S3 buckets must include an Environment tag for ownership, cost allocation,
+    and blast-radius control in multi-account deployments (organizational tagging policy).
+definition:
+  cond_type: attribute
+  resource_types:
+    - aws_s3_bucket
+  attribute: tags.Environment
+  operator: exists
