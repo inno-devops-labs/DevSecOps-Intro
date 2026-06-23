@@ -28,3 +28,6 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+labs/lab4/grype-from-sbom.*
+labs/lab4/trivy.*
