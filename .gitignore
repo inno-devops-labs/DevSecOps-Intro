@@ -26,5 +26,6 @@ __pycache__/
 *.pyo
 node_modules/
 .venv/
+.cache/
 .DS_Store
 *.swp
