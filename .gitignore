@@ -28,3 +28,9 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+labs/lab4/grype-from-sbom.json
+labs/lab4/grype-from-sbom.txt
+labs/lab4/trivy.json
+labs/lab4/trivy.txt
+labs/lab5/zap-auth.yaml
+labs/lab6/results/
