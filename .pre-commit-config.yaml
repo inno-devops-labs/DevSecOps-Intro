@@ -1,0 +1,22 @@
+# Pre-commit hooks for Lab 3 — secret scanning + basic hygiene
+# Run once: pre-commit install
+# gitleaks-system uses the locally installed gitleaks binary (v8.x) — no Go/Docker needed.
+
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0
+    hooks:
+      - id: gitleaks-system
+        # upstream gitleaks-system hook lacks this; without it pre-commit passes
+        # filenames and `gitleaks git` errors ("accepts at most 1 arg").
+        pass_filenames: false
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: detect-private-key
+        # labs/lab6 ships a deliberately-vulnerable private key (a future-lab fixture,
+        # not a real secret) — exclude it so full-repo runs aren't blocked by it.
+        exclude: '^labs/lab6/vulnerable-iac/'
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
