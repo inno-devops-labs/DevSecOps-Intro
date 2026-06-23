@@ -1,0 +1,14 @@
+DAST Multi-Tool Results Summary
+Generated: Tue Jun 23 23:08:21 MSK 2026
+
+=== ZAP ===
+  Not yet generated (run authenticated ZAP scan first)
+
+=== Nuclei ===
+  Not yet generated (run Nuclei scan first)
+
+=== Nikto ===
+  Not yet generated (run Nikto scan first)
+
+=== SQLmap ===
+  Not yet generated (run SQLmap scans first)
