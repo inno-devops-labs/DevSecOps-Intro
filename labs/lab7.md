@@ -226,7 +226,7 @@ trivy k8s --namespace juice-shop \
 
 ### 7.8: Document in `submissions/lab7.md`
 
-```markdown
+````markdown
 ## Task 2: Kubernetes Hardening
 
 ### Manifests (paste relevant snippets)
@@ -258,7 +258,7 @@ Output of `kubectl get pod -n juice-shop -l app=juice-shop`:
 ### What broke and how you fixed it (2-3 sentences)
 `readOnlyRootFilesystem: true` likely broke Juice Shop. What paths did it need to write?
 How did you fix it (which emptyDir mounts)?
-```
+````
 
 ---
 
@@ -316,7 +316,7 @@ conftest test /tmp/bad-pod.yaml --policy labs/lab7/policies
 
 ### B.3: Document in `submissions/lab7.md`
 
-```markdown
+````markdown
 ## Bonus: Conftest Policy
 
 ### Policy (paste labs/lab7/policies/pod-hardening.rego)
@@ -337,7 +337,7 @@ conftest test /tmp/bad-pod.yaml --policy labs/lab7/policies
 ### What this prevents at CI time (2-3 sentences)
 Reference Lecture 7 slide 16 (admission control diagram). What Class of bug does this
 policy catch BEFORE `kubectl apply` runs? Why is catching at CI-time better than at admission-time?
-```
+````
 
 ---
 

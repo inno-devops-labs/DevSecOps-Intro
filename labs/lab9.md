@@ -144,7 +144,7 @@ grep "Write to /tmp by container" labs/lab9/falco/logs/falco.log | head -5
 
 ### 9.6: Document in `submissions/lab9.md`
 
-```markdown
+````markdown
 # Lab 9 — Submission
 
 ## Task 1: Runtime Detection with Falco
@@ -175,7 +175,7 @@ Falco log line showing your custom rule:
 Your custom "write to /tmp" rule will fire on legitimate uses too (logging frameworks
 often write to /tmp). What's your tuning approach? (2-3 sentences referencing the
 `exceptions:` block vs `and not proc.name=...` patterns from Lecture 9.)
-```
+````
 
 ---
 
@@ -237,7 +237,7 @@ conftest test labs/lab9/manifests/bad-pod-no-resources.yaml \
 
 ### 9.10: Document in `submissions/lab9.md`
 
-```markdown
+````markdown
 ## Task 2: Conftest Policy-as-Code
 
 ### My policy file (paste labs/lab9/policies/extra/hardening.rego)
@@ -263,7 +263,7 @@ conftest test labs/lab9/manifests/bad-pod-no-resources.yaml \
 ### Why CI-time vs admission-time (Lecture 9 slide 9)
 2-3 sentences. CI-time Conftest happens during PR review; admission-time Conftest happens at
 `kubectl apply`. What's the operational benefit of running BOTH (defense in depth)?
-```
+````
 
 ---
 
@@ -311,7 +311,7 @@ grep "Cryptominer" labs/lab9/falco/logs/falco.log
 
 ### B.4: Document in `submissions/lab9.md`
 
-```markdown
+````markdown
 ## Bonus: Cryptominer Detection Rule
 
 ### Rule (paste)
@@ -328,7 +328,7 @@ grep "Cryptominer" labs/lab9/falco/logs/falco.log
 - Which 2 indicators did you use and why?
 - What does this miss? (i.e., the false-negative case — e.g., obfuscated mining over HTTPS)
 - How would you combine this with the Lecture 9 SLA matrix?
-```
+````
 
 ---
 

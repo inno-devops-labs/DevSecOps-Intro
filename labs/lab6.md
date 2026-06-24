@@ -254,7 +254,7 @@ jq '.results.failed_checks[] | select(.check_id | startswith("CKV2_CUSTOM_"))' \
 
 ### B.5: Document in `submissions/lab6.md`
 
-```markdown
+````markdown
 ## Bonus: Custom Checkov Policy
 
 ### Policy file (paste full contents of labs/lab6/policies/my-custom-policy.yaml)
@@ -271,7 +271,7 @@ Output of `jq '.results.failed_checks[] | select(.check_id | startswith("CKV2_CU
 ### Why this rule matters
 2-3 sentences: what real-world incident or compliance requirement does your custom policy address?
 (References to specific incidents or NIST/CIS controls strengthen the answer.)
-```
+````
 
 ---
 
