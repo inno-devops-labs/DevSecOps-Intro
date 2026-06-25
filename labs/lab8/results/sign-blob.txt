@@ -1,0 +1,3 @@
+Using payload from: labs/lab8/results/my-tool.tar.gz
+Signing artifact...
+Wrote bundle to file labs/lab8/results/my-tool.tar.gz.bundle
