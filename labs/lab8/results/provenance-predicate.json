@@ -1,0 +1,14 @@
+{
+  "builder": {
+    "id": "https://localhost/lab8-student"
+  },
+  "buildType": "https://github.com/innopolis/devsecops-intro/lab8/local-build",
+  "invocation": {
+    "configSource": {
+      "uri": "https://github.com/Troshkins/DevSecOps-Intro.git",
+      "digest": {
+        "sha1": "793db4a3fedb0c88e41ba639a40de29e47070f20"
+      }
+    }
+  }
+}
