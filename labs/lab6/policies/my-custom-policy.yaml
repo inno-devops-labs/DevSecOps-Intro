@@ -1,0 +1,17 @@
+# Custom Checkov policy — Lab 6 bonus
+# Rule: every RDS instance must require IAM database authentication.
+# Not shipped as a Checkov built-in, but it's a real CIS/least-privilege control:
+# IAM auth removes long-lived DB passwords (which this sample hardcodes) and gives
+# you central revocation + CloudTrail auditing of who connected.
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure RDS instances require IAM database authentication"
+  category: "IAM"
+  severity: "HIGH"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_db_instance"
+  attribute: "iam_database_authentication_enabled"
+  operator: "equals"
+  value: true
