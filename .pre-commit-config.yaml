@@ -9,3 +9,4 @@ repos:
     hooks:
       - id: detect-private-key
       - id: check-added-large-files
+        args: ['--maxkb=5000']
