@@ -28,3 +28,7 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# Lab 5 regenerable scanner outputs and source clone
+labs/lab5/results/
+labs/lab5/semgrep/juice-shop/
