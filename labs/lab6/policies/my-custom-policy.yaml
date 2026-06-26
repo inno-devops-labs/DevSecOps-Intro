@@ -1,0 +1,11 @@
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure every S3 bucket carries a DataClassification tag"
+  category: "GENERAL_SECURITY"
+  severity: "HIGH"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_s3_bucket"
+  attribute: "tags.DataClassification"
+  operator: "exists"
