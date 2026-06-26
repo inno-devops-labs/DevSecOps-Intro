@@ -1,0 +1,12 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure RDS instances enable IAM database authentication
+  category: DATABASE_CONFIGURATION
+  severity: HIGH
+definition:
+  cond_type: attribute
+  resource_types:
+    - aws_db_instance
+  attribute: iam_database_authentication_enabled
+  operator: equals
+  value: true
