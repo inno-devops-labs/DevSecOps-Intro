@@ -1,0 +1,11 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: "Ensure S3 buckets include a CostCenter tag"
+  category: "CONVENTION"
+  severity: "MEDIUM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_s3_bucket"
+  attribute: "tags.CostCenter"
+  operator: "exists"
