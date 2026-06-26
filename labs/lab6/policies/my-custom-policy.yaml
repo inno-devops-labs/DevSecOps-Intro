@@ -1,0 +1,11 @@
+metadata:
+  id: CKV_CUSTOM_1
+  name: S3 buckets must have server-side encryption configured
+  category: ENCRYPTION
+  severity: HIGH
+definition:
+  cond_type: attribute
+  resource_types:
+    - aws_s3_bucket
+  attribute: server_side_encryption_configuration
+  operator: exists
