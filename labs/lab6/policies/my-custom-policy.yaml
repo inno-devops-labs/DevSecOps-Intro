@@ -1,0 +1,13 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: "Ensure S3 buckets have Project tag set to lab6"
+  category: "GENERAL_SECURITY"
+  severity: "MEDIUM"
+
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_s3_bucket"
+  attribute: "tags.Project"
+  operator: "equals"
+  value: "lab6"
