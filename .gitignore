@@ -28,3 +28,10 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+labs/lab10/work/
+patch.json
+patch2.json
+eng.json
+grype-cves.txt
+trivy-cves.txt
