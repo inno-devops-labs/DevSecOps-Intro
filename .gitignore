@@ -28,3 +28,5 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+labs/lab5/results/
+labs/lab5/semgrep/
