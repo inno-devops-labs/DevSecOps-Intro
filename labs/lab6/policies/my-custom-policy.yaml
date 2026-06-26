@@ -1,0 +1,27 @@
+# Custom Checkov policy — Lab 6 Bonus
+# Org-specific rule NOT in Checkov's built-in catalog: mandatory ownership tags.
+# Rationale: cost-allocation + incident-response require every S3 bucket to carry
+# Environment / Owner / CostCenter tags. Built-in Checkov has no "required tag set"
+# policy (tag conventions are organization-specific), so we encode it ourselves.
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure every S3 bucket carries mandatory ownership tags (Environment, Owner, CostCenter)"
+  category: "CONVENTION"
+  severity: "HIGH"
+definition:
+  and:
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.Environment"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.Owner"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.CostCenter"
+      operator: "exists"
