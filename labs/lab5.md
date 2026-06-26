@@ -97,7 +97,9 @@ docker run --rm --network lab5-net \
 
 ```bash
 # The provided zap-auth.yaml drives the Automation Framework
+# _JAVA_OPTIONS caps ZAP's JVM heap; without it the active scan OOM-kills the container
 docker run --rm --network lab5-net \
+  -e _JAVA_OPTIONS="-Xmx512m" \
   -v "$(pwd)/labs/lab5:/zap/wrk" \
   ghcr.io/zaproxy/zaproxy:stable \
   zap.sh -cmd -autorun /zap/wrk/scripts/zap-auth.yaml -port 8090
@@ -369,7 +371,8 @@ PR checklist body:
 <details>
 <summary>⚠️ Common Pitfalls</summary>
 
-- 🚨 **`zap-auth.yaml` "context not found"** — the YAML hardcodes Juice Shop running at `juice-shop:3000` (Docker network internal name). If you renamed the container or didn't put both on the same `lab5-net` network, ZAP can't reach it.
+- 🚨 **`zap-auth.yaml` "context not found"** — the YAML targets `juice-shop:3000` (Docker network internal name). If you renamed the container or didn't attach both to the same `lab5-net` network, ZAP can't reach it. The container name in `docker run --name` must match exactly.
+- 🚨 **Active scan dies silently (CPU 100% → container exit)** — ZAP's active scan is memory-hungry. The `_JAVA_OPTIONS="-Xmx512m"` flag in step 5.3 caps the JVM heap; omitting it lets ZAP consume all available RAM until the container is OOM-killed with no error message.
 - 🚨 **Auth scan finds 0 alerts** — the `loginRequestBody` in `zap-auth.yaml` ships with the default Juice Shop admin creds (`admin@juice-sh.op` / `admin123`). If you changed them, auth scan logs in as anonymous and only sees unauth surface.
 - 🚨 **`zap.sh -port 8090` instead of default 8080** — added in the plumbing because the previous lab version conflicted with users running things on 8080. Don't change it unless you also change the YAML.
 - 🚨 **Semgrep `Parse error: ...`** — Juice Shop's TS sources occasionally hit edge cases. Add `--exclude='**/test/**'` to skip test fixtures if a single parse error blocks the whole scan.
