@@ -1,0 +1,2 @@
+falco/logs/*.log
+falco/rules/falco-sandbox_rules.yaml
