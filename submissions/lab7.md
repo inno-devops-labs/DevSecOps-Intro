@@ -11,6 +11,28 @@
 
 *(Trivy 0.71.1, `--severity HIGH,CRITICAL` on `bkimminich/juice-shop:v20.0.0`.)*
 
+### Dockerfile misconfig scan (Task 7.2)
+Intentionally bad Dockerfile (`FROM node:latest`, `USER root`, `EXPOSE 22`, `ADD https://...`):
+
+| Check ID | Severity | Finding |
+|----------|----------|---------|
+| DS-0002 | HIGH | Last `USER` is `root` — container escape risk |
+
+```
+Tests: 20 (SUCCESSES: 19, FAILURES: 1)
+Failures: 1 (HIGH: 1, CRITICAL: 0)
+```
+
+> **Retry note:** first attempt failed (`TLS handshake timeout` downloading Trivy check bundle → `Detected config files: num=0`). After check bundle cached (`sha256:1583562f…`, downloaded via subsequent `trivy k8s`), rescan in a clean directory succeeded.
+
+### Rescan comparison (old vs new)
+| Scan | Run 1 (17:18) | Run 2 (17:53) | Delta |
+|------|--------------:|--------------:|-------|
+| Image HIGH/CRITICAL | 48 (5 Crit + 43 High) | 48 (5 Crit + 43 High) | **identical** |
+| With fix available | 46 | 46 | **identical** |
+| Dockerfile config | 0 files (bundle timeout) | 1 HIGH (DS-0002) | **now works** |
+| Trivy check bundle | not cached | cached | downloaded |
+
 ### Top 10 CVEs with fixes
 | CVE | Severity | Package | Installed | Fix |
 |-----|----------|---------|-----------|-----|
