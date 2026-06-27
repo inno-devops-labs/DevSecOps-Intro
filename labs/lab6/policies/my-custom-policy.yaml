@@ -1,0 +1,14 @@
+---
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure all taggable AWS resources declare the project ownership tag"
+  category: "CONVENTION"
+  severity: "MEDIUM"
+  guideline: "Internal tagging standard: every cloud resource must identify its owning project"
+scope:
+  provider: "aws"
+definition:
+  cond_type: "attribute"
+  resource_types: "taggable"
+  attribute: "tags.project"
+  operator: "exists"
