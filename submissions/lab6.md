@@ -2,18 +2,11 @@
 
 ## Task 1: Checkov on Terraform
 
-### Terraform scan
-- Total checks: 127
-- Passed: 49
-- Failed: 78
-
-| Severity | Count |
-|----------|------:|
-| Critical | N/A |
-| High | N/A |
-| Medium | N/A |
-| Low | N/A |
-*Open-source Checkov does not show severity in JSON output (it's a paid Prism Cloud feature).*
+### Terraform scan (passed/failed per framework)
+| Framework | Passed | Failed |
+|-----------|-------:|-------:|
+| terraform | 49 | 78 |
+| secrets | 0 | 2 |
 
 ### Top 5 rule IDs (by frequency)
 | Rule ID | Count | What it checks |
@@ -27,9 +20,9 @@
 ### Module-leverage analysis
 Looking at the top 5 Terraform rules, the most impactful fix would be to address rule CKV_AWS_289, which appear 4 times. Since these are likely related to specific resource types (e.g., S3 buckets or IAM roles), fixing the module that defines these resources would eliminate multiple findings at once. For example, if CKV_AWS_289 checks for missing encryption, adding `encryption = true` at the module level would fix all 4 occurrences.
 
-## Task 2: KICS on Ansible
+## Task 2: Task 2: KICS on Ansible + Pulumi
 
-### Severity breakdown
+### Ansible — severity breakdown
 | Severity | Count |
 |----------|------:|
 | HIGH | 9 |
@@ -37,7 +30,16 @@ Looking at the top 5 Terraform rules, the most impactful fix would be to address
 | LOW | 1 |
 | INFO | 0 |
 
-### Top 5 KICS queries (by frequency)
+### Pulumi — severity breakdown
+| Severity | Count |
+|----------|------:|
+| CRITICAL | 1 |
+| HIGH | 2 |
+| MEDIUM | 1 |
+| LOW | 0 |
+| INFO | 2 |
+
+### Top 5 KICS queries — Ansible (by frequency)
 | Query | Severity | Count |
 |-------|----------|------:|
 | Passwords And Secrets - Generic Password | HIGH | 6 |
