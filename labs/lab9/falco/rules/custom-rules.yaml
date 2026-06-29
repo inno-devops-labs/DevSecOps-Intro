@@ -1,0 +1,19 @@
+# labs/lab9/falco/rules/custom-rules.yaml
+- rule: "Write to /tmp by container"
+  desc: "Detects writes to /tmp inside any container"
+  condition: open_write and container.id != host and fd.name startswith /tmp/
+  output: "Write to /tmp by container (container=%container.name user=%user.name file=%fd.name cmdline=%proc.cmdline)"
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: "Possible Cryptominer Activity"
+  desc: "Detects container connecting to common mining-pool ports or running known miner processes"
+  condition: >
+    container.id != host and 
+    (
+      (evt.type = connect and fd.sport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)) or
+      (proc.name in (xmrig, ethminer, cgminer, t-rex, claymore))
+    )
+  output: "Possible Cryptominer Activity (container=%container.name proc=%proc.name target=%fd.name)"
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
