@@ -29,3 +29,7 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+labs/lab11/reverse-proxy/certs/
+labs/lab11/logs/
+labs/lab11/results/
