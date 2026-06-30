@@ -1,0 +1,12 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    restart: unless-stopped
+    ports:
+      - "8444:8080"
+    environment:
+      - PARANOIA=1
+      - PROXY_SSL=0
+      - BACKEND=http://juice:3000
+    depends_on:
+      - juice
