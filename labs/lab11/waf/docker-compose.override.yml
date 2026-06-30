@@ -1,0 +1,21 @@
+services:
+  waf-nginx:
+    image: owasp/modsecurity-crs:nginx
+    privileged: true
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "8888:8080"
+      - "8443:8443"
+    environment:
+      - PARANOIA_LEVEL=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+      - MODSEC_RULES_FILE=/opt/owasp-crs/crs-setup.conf
+      - PROXY_PASS=http://juice:3000
+    volumes:
+      - ./logs/waf:/var/log/modsec:rw
+    command: ["nginx", "-g", "daemon off;"]
+
+
