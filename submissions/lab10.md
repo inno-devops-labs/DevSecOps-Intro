@@ -19,7 +19,8 @@
 | 5 | Semgrep JSON Report | semgrep.json |                22 |
 | 5 | ZAP Scan | auth-report.json |                 0 |
 | 6 | Checkov Scan | results_json.json |                80 |
-| 6 | KICS Scan | results.json |                10 |
+| 6 | KICS Scan | kics-ansible/results.json |                10 |
+| 6 | KICS Scan | kics-pulumi/results.json | 0 |
 | 7 | Trivy Scan (image) | trivy-image.json |               106 |
 | 7 | Trivy Operator Scan | trivy-k8s.json |                 0 |
 | **Total raw imports** | | |               268 |
