@@ -1,0 +1,1 @@
+OK: SBOM from attestation matches Lab 4 SBOM
