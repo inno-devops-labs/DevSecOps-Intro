@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: seed-writable-state
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              fs.cpSync('/juice-shop/data', '/work/data', { recursive: true });
+              fs.cpSync('/juice-shop/ftp', '/work/ftp', { recursive: true });
+              fs.cpSync('/juice-shop/frontend/dist/frontend', '/work/frontend', { recursive: true });
+              fs.cpSync('/juice-shop/i18n', '/work/i18n', { recursive: true });
+              fs.cpSync('/juice-shop/.well-known', '/work/well-known', { recursive: true });
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: data
+              mountPath: /work/data
+            - name: ftp
+              mountPath: /work/ftp
+            - name: frontend-dist
+              mountPath: /work/frontend
+            - name: i18n
+              mountPath: /work/i18n
+            - name: well-known
+              mountPath: /work/well-known
+            - name: tmp
+              mountPath: /tmp
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 768Mi
+          readinessProbe:
+            httpGet:
+              path: /rest/admin/application-version
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /rest/admin/application-version
+              port: http
+            initialDelaySeconds: 45
+            periodSeconds: 20
+            timeoutSeconds: 3
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: data
+              mountPath: /juice-shop/data
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: uploads
+              mountPath: /juice-shop/uploads
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: well-known
+              mountPath: /juice-shop/.well-known
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
+        - name: uploads
+          emptyDir: {}
+        - name: frontend-dist
+          emptyDir: {}
+        - name: i18n
+          emptyDir: {}
+        - name: well-known
+          emptyDir: {}
