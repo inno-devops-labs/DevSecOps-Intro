@@ -11,8 +11,10 @@ services:
     depends_on:
       - juice
     ports:
-      - "8080:8080"   # HTTP (will redirect to HTTPS)
-      - "8443:8443"   # HTTPS
+      - "80:80"     # HTTP (redirects to HTTPS)
+      - "443:443"   # HTTPS
+      # On rootless Docker or if 80/443 are taken, remap (e.g. "8080:80","8443:443")
+      # and adjust the verification URLs accordingly.
     volumes:
       - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./reverse-proxy/certs:/etc/nginx/certs:ro

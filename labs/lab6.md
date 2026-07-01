@@ -5,7 +5,7 @@
 ![points](https://img.shields.io/badge/points-10%2B2-orange)
 ![tech](https://img.shields.io/badge/tech-Checkov%20%2B%20KICS-informational)
 
-> **Goal:** Scan vulnerable Terraform + Pulumi with Checkov, scan vulnerable Ansible with KICS, then (bonus) write a custom Checkov policy for a project-specific rule.
+> **Goal:** Scan vulnerable Terraform with Checkov, scan vulnerable Ansible + Pulumi with KICS, then (bonus) write a custom Checkov policy for a project-specific rule.
 > **Deliverable:** A PR from `feature/lab6` with `submissions/lab6.md` (findings tables + analysis) and (bonus) a custom Checkov policy file. Submit PR link via Moodle.
 
 ---
@@ -13,8 +13,8 @@
 ## Overview
 
 In this lab you will practice:
-- **Checkov 3.x** on Terraform + Pulumi (~2,500 built-in policies, including 800+ graph-based) — Lecture 6
-- **KICS** on Ansible (~2,400 Rego-based queries) — Lecture 6
+- **Checkov 3.x** on Terraform (~2,500 built-in policies, including 800+ graph-based) — Lecture 6
+- **KICS** on Ansible + Pulumi (~2,400 Rego-based queries) — Lecture 6
 - **Triage at the module level** (Lecture 6 slide 17 — one fix at module level closes many findings)
 - (Bonus) Writing a **custom Checkov policy** in YAML for a project-specific rule
 
@@ -59,10 +59,10 @@ mkdir -p labs/lab6/results
 ```
 
 > **Plumbing provided** (in `labs/lab6/vulnerable-iac/`):
-> - `terraform/` — deliberately misconfigured AWS resources (S3, IAM, RDS, EKS)
-> - `pulumi/` — deliberately misconfigured GCP resources (Python Pulumi)
+> - `terraform/` — deliberately misconfigured AWS resources (IAM, RDS, DynamoDB, security groups)
+> - `pulumi/` — deliberately misconfigured AWS resources (Python + YAML)
 > - `ansible/` — deliberately misconfigured Linux hardening playbook
-> - `README.md` — documents which CKV_* / KICS rules each file targets
+> - `README.md` — documents the vulnerability classes each file targets
 
 ---
 
@@ -82,50 +82,45 @@ checkov -d labs/lab6/vulnerable-iac/terraform \
 
 ### 6.2: Triage by rule frequency
 
+Checkov scans the directory with several frameworks at once (`terraform` and `secrets`), so
+`results_json.json` is a JSON **array** — one object per framework. Open-source Checkov doesn't
+assign severities (that's a Prisma Cloud feature), so you triage by **how often each rule fires**:
+the most frequent rule is the one a single module-level fix can clear in bulk (Lecture 6 slide 17).
+
 ```bash
-# Top 5 rule IDs by count (Lecture 6 slide 17 — module-level leverage)
-jq '[.results.failed_checks[].check_id] | group_by(.) | map({rule: .[0], count: length}) |
-    sort_by(-.count) | .[:5]' \
+# Top 5 rule IDs by count — the highest-leverage fixes
+jq '[.[].results.failed_checks[]?.check_id]
+    | group_by(.) | map({rule: .[0], count: length})
+    | sort_by(-.count) | .[:5]' \
   labs/lab6/results/checkov-terraform/results_json.json
 
-# Severity breakdown
-jq '[.results.failed_checks[].severity] | group_by(.) | map({severity: .[0], count: length})' \
+# Passed / failed per framework
+jq 'map({framework: .check_type, passed: .summary.passed, failed: .summary.failed})' \
   labs/lab6/results/checkov-terraform/results_json.json
 ```
 
-### 6.4: Document in `submissions/lab6.md`
+### 6.3: Document in `submissions/lab6.md`
 
 ```markdown
 # Lab 6 — Submission
 
-## Task 1: Checkov on Terraform + Pulumi
+## Task 1: Checkov on Terraform
 
-### Terraform scan
-- Total checks: <n>
-- Passed: <n>
-- Failed: <n>
-
-| Severity | Count |
-|----------|------:|
-| Critical | <n> |
-| High | <n> |
-| Medium | <n> |
-| Low | <n> |
+### Terraform scan (passed/failed per framework)
+| Framework | Passed | Failed |
+|-----------|-------:|-------:|
+| terraform | <n> | <n> |
+| secrets | <n> | <n> |
 
 ### Top 5 rule IDs (by frequency)
 | Rule ID | Count | What it checks |
 |---------|------:|----------------|
 | <CKV_AWS_*> | <n> | <1-line description> |
 
-### Pulumi scan
-| Severity | Count |
-|----------|------:|
-| ... |
-
 ### Module-leverage analysis (Lecture 6 slide 17)
 Looking at your top-5 Terraform rules, which ONE fix would eliminate the most findings if applied
-at the module level? (2-3 sentences. e.g., "If the S3 module had `block_public_acls = true` as default,
-the 8 findings of CKV_AWS_56 would all go away.")
+at the module level? (2-3 sentences. e.g., "If the shared IAM policy dropped its `Resource: "*"`
+wildcard, the CKV_AWS_355/289/290 findings on every policy would collapse into one fix.")
 ```
 
 ---
@@ -136,7 +131,7 @@ the 8 findings of CKV_AWS_56 would all go away.")
 
 **Objective:** Run KICS against the Ansible playbook AND the Pulumi source; see how Rego-based queries surface different findings than Checkov, and demonstrate KICS's broader format coverage.
 
-### 6.5: Run KICS on Ansible
+### 6.4: Run KICS on Ansible
 
 ```bash
 docker run --rm \
@@ -147,7 +142,7 @@ docker run --rm \
        --report-formats json,sarif
 ```
 
-### 6.5b: Run KICS on Pulumi (natively supported)
+### 6.4b: Run KICS on Pulumi (natively supported)
 
 ```bash
 docker run --rm \
@@ -158,25 +153,32 @@ docker run --rm \
        --report-formats json,sarif
 ```
 
-### 6.6: Analyze
+### 6.5: Analyze
+
+Each scan wrote its own `results.json` (`kics-ansible/` and `kics-pulumi/`). KICS reports a single
+JSON object with a `.queries` array, and — unlike Checkov — it assigns severities, so here you can
+triage by severity as well as frequency.
 
 ```bash
-# Severity breakdown
-jq '[.queries[].severity] | group_by(.) | map({severity: .[0], count: length})' \
-  labs/lab6/results/kics/results.json
+# Severity breakdown — for each scan
+for scan in kics-ansible kics-pulumi; do
+  echo "== $scan =="
+  jq '[.queries[].severity] | group_by(.) | map({severity: .[0], count: length})' \
+    labs/lab6/results/$scan/results.json
+done
 
-# Top queries by impact
-jq '[.queries[] | {query: .query_name, severity, count: (.files | length)}] |
-    sort_by(-.count) | .[:5]' \
-  labs/lab6/results/kics/results.json
+# Top queries by impact (Ansible shown; repeat for kics-pulumi)
+jq '[.queries[] | {query: .query_name, severity, count: (.files | length)}]
+    | sort_by(-.count) | .[:5]' \
+  labs/lab6/results/kics-ansible/results.json
 ```
 
-### 6.7: Document in `submissions/lab6.md`
+### 6.6: Document in `submissions/lab6.md`
 
 ```markdown
-## Task 2: KICS on Ansible
+## Task 2: KICS on Ansible + Pulumi
 
-### Severity breakdown
+### Ansible — severity breakdown
 | Severity | Count |
 |----------|------:|
 | HIGH | <n> |
@@ -184,7 +186,16 @@ jq '[.queries[] | {query: .query_name, severity, count: (.files | length)}] |
 | LOW | <n> |
 | INFO | <n> |
 
-### Top 5 KICS queries (by frequency)
+### Pulumi — severity breakdown
+| Severity | Count |
+|----------|------:|
+| CRITICAL | <n> |
+| HIGH | <n> |
+| MEDIUM | <n> |
+| LOW | <n> |
+| INFO | <n> |
+
+### Top 5 KICS queries — Ansible (by frequency)
 | Query | Severity | Files |
 |-------|----------|------:|
 | <name> | <sev> | <n> |
@@ -247,8 +258,9 @@ checkov -d labs/lab6/vulnerable-iac/terraform \
 ### B.4: Verify your policy fires
 
 ```bash
-# Look for your custom rule ID in the results
-jq '.results.failed_checks[] | select(.check_id | startswith("CKV2_CUSTOM_"))' \
+# Look for your custom rule ID among the failed checks
+jq '[.[].results.failed_checks[]?]
+    | map(select(.check_id | startswith("CKV2_CUSTOM_")))' \
   labs/lab6/results/checkov-custom/results_json.json
 ```
 
@@ -263,7 +275,7 @@ jq '.results.failed_checks[] | select(.check_id | startswith("CKV2_CUSTOM_"))' \
 ```
 
 ### Rule fires
-Output of `jq '.results.failed_checks[] | select(.check_id | startswith("CKV2_CUSTOM_"))'`:
+Output of the B.4 jq (must show ≥1 failed check whose `check_id` starts with `CKV2_CUSTOM_`):
 ```
 <paste — must show ≥1 failed check with YOUR rule ID>
 ```
@@ -289,8 +301,8 @@ git push -u origin feature/lab6
 PR checklist body:
 
 ```text
-- [x] Task 1 — Checkov on Terraform + Pulumi with top-5 rules and module-leverage analysis
-- [ ] Task 2 — KICS on Ansible with Checkov-vs-KICS comparison
+- [x] Task 1 — Checkov on Terraform with top-5 rules and module-leverage analysis
+- [ ] Task 2 — KICS on Ansible + Pulumi with Checkov-vs-KICS comparison
 - [ ] Bonus — Custom Checkov policy demonstrably firing on the vulnerable sample
 ```
 
@@ -299,14 +311,14 @@ PR checklist body:
 ## Acceptance Criteria
 
 ### Task 1 (6 pts)
-- ✅ Checkov runs complete for both Terraform and Pulumi
-- ✅ Severity tables match actual JSON output (no placeholders)
-- ✅ Top-5 rules table populated with real CKV_AWS_*/CKV_GCP_* IDs + descriptions
+- ✅ Checkov scan completes on the Terraform sample
+- ✅ Passed/failed table matches actual JSON output (no placeholders)
+- ✅ Top-5 rules table populated with real CKV_AWS_* IDs + descriptions
 - ✅ Module-leverage analysis identifies ONE concrete fix with multi-finding impact
 
 ### Task 2 (4 pts)
-- ✅ KICS scan completes on the Ansible sample
-- ✅ Severity + top-5 tables populated with real query names
+- ✅ KICS scan completes on both the Ansible and Pulumi samples
+- ✅ Ansible + Pulumi severity tables and the Ansible top-5 table use real values
 - ✅ Checkov-vs-KICS comparison has substantive 2-3-sentence answers per question
 
 ### Bonus Task (2 pts)
@@ -321,8 +333,8 @@ PR checklist body:
 
 | Task | Points | Criteria |
 |------|-------:|----------|
-| **Task 1** — Checkov | **6** | Terraform + Pulumi scans + top-5 rules + module-leverage analysis |
-| **Task 2** — KICS | **4** | Ansible scan + Checkov-vs-KICS comparison with concrete examples |
+| **Task 1** — Checkov | **6** | Terraform scan + top-5 rules + module-leverage analysis |
+| **Task 2** — KICS | **4** | Ansible + Pulumi scans + Checkov-vs-KICS comparison with concrete examples |
 | **Bonus Task** — Custom policy | **2** | Valid YAML schema + actually firing on vulnerable resource + business justification |
 | **Total** | **12** | 10 main + 2 bonus |
 
@@ -344,12 +356,11 @@ PR checklist body:
 <details>
 <summary>⚠️ Common Pitfalls</summary>
 
-- 🚨 **`pulumi preview --json` fails with "no Pulumi.yaml found"** — use the pre-rendered fallback `labs/lab6/vulnerable-iac/pulumi/pulumi-state-rendered.json` (shipped as plumbing).
-- 🚨 **Checkov scans 0 files** — `-d` expects a DIRECTORY; `-f` expects a single file. Pulumi's rendered state is `-f`; Terraform is `-d`.
-- 🚨 **KICS finds 0 issues on Ansible** — make sure the path includes the playbook YAML (`-p .../ansible/`). KICS sometimes silently skips files it doesn't recognize as Ansible. Check `kics list-platforms` to verify Ansible is in the supported list (it is).
-- 🚨 **Custom policy doesn't fire** — the most common cause is `attribute` path typos. Test on a known-failing resource first (e.g., your custom S3 rule on a bucket without your required block). Add `severity: HIGH` even if you don't need it; Checkov is picky about required fields.
-- 🚨 **`CKV_CUSTOM_*` ID conflicts with built-ins** — use `CKV2_CUSTOM_1+` (the `2` prefix marks graph rules and avoids collisions with the built-in numerical sequence).
-- 💡 **Read the plumbing README** — `labs/lab6/vulnerable-iac/README.md` lists which Checkov/KICS rules each vulnerable file is designed to trigger. Useful for sanity-checking your scans found what they should.
+- 🚨 **Checkov scans 0 files** — `-d` expects a DIRECTORY (the whole `terraform/` folder); `-f` expects a single file. This lab uses `-d`.
+- 🚨 **KICS finds 0 issues on Ansible** — point `-p` at the playbook directory (`-p .../ansible/`). Run `kics list-platforms` to confirm Ansible is supported (it is).
+- 🚨 **Custom policy doesn't fire** — usually an `attribute` path typo. Test on a known-failing resource first, and always include a `severity:` field; Checkov is strict about required fields.
+- 🚨 **`CKV_CUSTOM_*` ID collides with a built-in** — use `CKV2_CUSTOM_1+`; the `2` prefix marks graph rules and stays clear of the built-in sequence.
+- 💡 **Read the plumbing README** — `labs/lab6/vulnerable-iac/README.md` lists the vulnerability classes each file targets, so you can sanity-check that your scans found what they should.
 
 </details>
 
