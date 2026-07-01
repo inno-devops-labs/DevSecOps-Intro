@@ -1,0 +1,25 @@
+- Nikto v2.1.5
+---------------------------------------------------------------------------
++ Target IP:          127.0.0.1
++ Target Hostname:    localhost
++ Target Port:        3001
++ Start Time:         2026-06-26 20:46:16 (GMT0)
+---------------------------------------------------------------------------
++ Server: No banner retrieved
++ Server leaks inodes via ETags, header found with file /, fields: 0xW/124fa 0x19f05a4be56 
++ Uncommon header 'access-control-allow-origin' found, with contents: *
++ Uncommon header 'x-recruiting' found, with contents: /#/jobs
++ Uncommon header 'x-content-type-options' found, with contents: nosniff
++ Uncommon header 'feature-policy' found, with contents: payment 'self'
++ Uncommon header 'x-frame-options' found, with contents: SAMEORIGIN
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ File/dir '/ftp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ "robots.txt" contains 1 entry which should be manually viewed.
++ Uncommon header 'access-control-allow-methods' found, with contents: GET,HEAD,PUT,PATCH,POST,DELETE
++ OSVDB-3092: /css: This might be interesting...
++ OSVDB-3092: /ftp/: This might be interesting...
++ OSVDB-3092: /public/: This might be interesting...
++ 6544 items checked: 2 error(s) and 12 item(s) reported on remote host
++ End Time:           2026-06-26 20:47:29 (GMT0) (73 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested

@@ -1,0 +1,40 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 910 files tracked by git with 674 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      27     607          Community     674                                                                
+  ts               84     471                                                                                           
+  json              3     103                                                                                           
+  yaml             19      87                                                                                           
+  html              1      76                                                                                           
+  solidity          1      17                                                                                           
+  js               78      13                                                                                           
+  dockerfile        4       1                                                                                           
+  bash              1       1                                                                                           
+                                                                                                                        
+Warning: 1 timeout error(s) in /src/frontend/src/assets/private/three.js when running the following rules:
+[javascript.express.security.injection.raw-html-format.raw-html-format]
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 26 (26 blocking)
+ • Rules run: 140
+ • Targets scanned: 910
+ • Parsed lines: ~99.9%
+ • Scan skipped: 
+   ◦ Files larger than  files 1.0 MB: 8
+   ◦ Files matching .semgrepignore patterns: 139
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 140 rules on 910 files: 26 findings.
+
+📢 Too many findings? Try Semgrep Pro for more powerful queries and less noise.
+   See https://sg.run/false-positives.

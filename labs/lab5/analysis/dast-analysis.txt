@@ -1,0 +1,5 @@
+=== DAST Analysis Report ===
+ZAP unique alert types: 12 (87 raw instances)
+Nuclei findings: 22
+Nikto findings: 14
+SQLmap: SQL injection CONFIRMED on GET param 'q' (boolean-based blind + time-based blind, SQLite)
