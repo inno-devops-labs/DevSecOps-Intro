@@ -160,7 +160,7 @@ cosign verify \
 
 ### 8.6: Document in `submissions/lab8.md`
 
-```markdown
+````markdown
 # Lab 8 — Submission
 
 ## Task 1: Sign + Tamper Demo
@@ -196,7 +196,7 @@ Output of `cosign verify` on tampered digest:
 ### Why digest binding matters (Lecture 8 slide 6)
 2-3 sentences. The tampered re-tag pointed to a DIFFERENT digest; your signature was bound to the
 ORIGINAL digest. What would have broken if Cosign had signed the tag instead?
-```
+````
 
 ---
 
@@ -271,7 +271,7 @@ cosign verify-attestation \
 
 ### 8.9: Document in `submissions/lab8.md`
 
-```markdown
+````markdown
 ## Task 2: SBOM + Provenance Attestations
 
 ### SBOM attestation
@@ -292,7 +292,7 @@ cosign verify-attestation \
 Lecture 8 slide 12 + Lecture 9 slide 4 — at K8s admission time, a Kyverno verify-images policy
 can require BOTH signatures AND specific attestation predicates. What's the operational difference
 between a "signed but no SBOM" image and a "signed with SBOM" image when the next Log4Shell hits?
-```
+````
 
 ---
 
@@ -374,7 +374,7 @@ cat /tmp/blob-tamper.txt    # paste this into submission
 
 ### B.5: Document in `submissions/lab8.md`
 
-```markdown
+````markdown
 ## Bonus: Blob Signing (Codecov 2021 mitigation)
 
 ### Sign + verify
@@ -394,7 +394,7 @@ Codecov's bash uploader was distributed via `curl | bash` without signature veri
 If their CI consumers had been running `cosign verify-blob` before `bash`-ing the script,
 how would the attack have failed? Reference Lecture 8 slide 14 + the specific cosign command
 that would have caught it.
-```
+````
 
 ---
 

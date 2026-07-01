@@ -30,7 +30,7 @@ In this lab you will practice:
 **You should have from Labs 4-9** (regenerate if missing):
 - Lab 4: `juice-shop.cdx.json`, `grype-from-sbom.json`, `trivy.json`
 - Lab 5: `auth-report.json` (ZAP), `semgrep.json`
-- Lab 6: `checkov-terraform/results_json.json`, `kics/results.json`
+- Lab 6: `checkov-terraform/results_json.json`, `kics-ansible/results.json`, `kics-pulumi/results.json`
 - Lab 7: `trivy-image.json`, `trivy-k8s.json`
 - Lab 8: `verify-original.json` (Cosign verify output)
 - Lab 9: `falco/logs/falco.log` (custom alerts)
@@ -58,8 +58,9 @@ mkdir -p labs/lab10/work
 ```
 
 > **Plumbing provided** (in `labs/lab10/imports/`):
-> - Import script that maps the Lab 4-9 file paths to DefectDojo scan-type names
-> - Sample environment variables file
+> - `run-imports.sh` — imports every Lab 4-7 report into DefectDojo (paths resolved
+>   from the repo root; portable to stock macOS bash 3.2)
+> - `env.sample` — the environment variables the script reads (`DD_URL`, `DD_TOKEN`, …)
 
 ---
 
@@ -132,7 +133,7 @@ echo "Engagement: $ENGAGEMENT_ID"
 
 ### 10.4: Import scan files
 
-For each prior lab, run:
+For each prior lab, run (from the repo root):
 
 ```bash
 # Template — repeat for each scan type
@@ -140,7 +141,7 @@ curl -X POST "$DD_URL/api/v2/import-scan/" \
   -H "Authorization: Token $DD_TOKEN" \
   -F "scan_type=Trivy Scan" \
   -F "engagement=$ENGAGEMENT_ID" \
-  -F "file=@../../lab7/results/trivy-image.json"
+  -F "file=@labs/lab7/results/trivy-image.json"
 ```
 
 Scan-type names to use:
@@ -152,12 +153,18 @@ Scan-type names to use:
 | 5 | `semgrep.json` | `Semgrep JSON Report` |
 | 5 | `auth-report.json` | `ZAP Scan` |
 | 6 | `checkov-terraform/results_json.json` | `Checkov Scan` |
-| 6 | `kics/results.json` | `KICS Scan` |
+| 6 | `kics-ansible/results.json` | `KICS Scan` |
+| 6 | `kics-pulumi/results.json` | `KICS Scan` |
 | 7 | `trivy-image.json` | `Trivy Scan` |
 | 7 | `trivy-k8s.json` | `Trivy Operator Scan` |
 | 9 | `falco/logs/falco.log` | (custom-format — skip if not supported, document instead) |
 
-Use the importer script in `labs/lab10/imports/import-all.sh` to automate.
+To automate all of the above, just run the importer — it reuses the `DD_URL` + `DD_TOKEN`
+you exported in 10.2 (see `labs/lab10/imports/env.sample` for every variable it reads):
+
+```bash
+bash labs/lab10/imports/run-imports.sh
+```
 
 ### 10.5: Verify import + dedup
 
@@ -197,7 +204,8 @@ curl -s -H "Authorization: Token $DD_TOKEN" \
 | 5 | Semgrep JSON Report | semgrep.json | <n> |
 | 5 | ZAP Scan | auth-report.json | <n> |
 | 6 | Checkov Scan | results_json.json | <n> |
-| 6 | KICS Scan | results.json | <n> |
+| 6 | KICS Scan | kics-ansible/results.json | <n> |
+| 6 | KICS Scan | kics-pulumi/results.json | <n> |
 | 7 | Trivy Scan (image) | trivy-image.json | <n> |
 | 7 | Trivy Operator Scan | trivy-k8s.json | <n> |
 | **Total raw imports** | | | <SUM> |

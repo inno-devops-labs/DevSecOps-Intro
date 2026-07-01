@@ -191,61 +191,41 @@ vulnerable-iac/
 
 ---
 
-## 🛠️ Tools to Use
+## 🛠️ Tools Used in This Lab
 
-Students should scan this code with:
+| Format | Tool | Why |
+|--------|------|-----|
+| **Terraform** | **Checkov 3.x** | ~2,500 built-in policies; native HCL support (Task 1) |
+| **Pulumi** | **KICS (Checkmarx)** | First-class Pulumi YAML support; Checkov has no Pulumi framework (Task 2) |
+| **Ansible** | **KICS (Checkmarx)** | Comprehensive Rego-based Ansible queries (Task 2) |
+| **Policy-as-Code** | **Custom Checkov policy (YAML)** | Catch organization-specific rules the catalog doesn't ship (Bonus) |
 
-### Terraform
-- **tfsec**: Fast Terraform security scanner
-- **Checkov**: Policy-as-code security scanner
-- **Terrascan**: OPA-based compliance scanner
-
-### Pulumi
-- **KICS (Checkmarx)**: Open-source scanner with first-class Pulumi YAML support
-  - Dedicated Pulumi queries catalog (AWS/Azure/GCP/Kubernetes)
-  - Auto-detects Pulumi platform
-  - Provides comprehensive security analysis
-
-### Ansible
-- **KICS (Checkmarx)**: Open-source scanner with comprehensive Ansible security queries
-  - Dedicated Ansible queries catalog
-  - Auto-detects Ansible playbooks
-  - Provides comprehensive security analysis
-
-### Policy-as-Code
-- **Conftest/OPA**: Custom policy enforcement for all IaC types
+See `labs/lab6.md` for the exact commands.
 
 ---
 
 ## 📋 Expected Student Outcomes
 
 Students should:
-1. Identify all 80+ security vulnerabilities across Terraform, Pulumi, and Ansible code
-   - Note: Pulumi code includes both Python and YAML formats for comprehensive analysis
-2. Compare detection capabilities of different tools
-3. Compare security issues between declarative (Terraform HCL) and programmatic (Pulumi Python/YAML) IaC
+1. Surface the security vulnerabilities across the Terraform, Pulumi, and Ansible samples
+   - Note: Pulumi code includes both Python and YAML formats; KICS scans the YAML
+2. Triage findings by rule frequency (Checkov) and severity (KICS) to find the highest-leverage fixes
+3. Compare how Checkov (HCL) and KICS (Rego) surface different findings on the same resource types
 4. Evaluate KICS's first-class Pulumi support and query catalog
-5. Understand false positives vs true positives
-6. Write custom policies to catch organizational-specific issues
-7. Provide remediation steps for each vulnerability class
-8. Recommend tool selection strategies for CI/CD pipelines
+5. Write a custom Checkov policy to catch an organization-specific rule the catalog doesn't ship
+6. Reason about tool selection (Checkov vs KICS) for a CI/CD pipeline
 
 ---
 
 ## 🔧 How to Use (Students)
 
-```bash
-# Copy vulnerable code to your lab directory
-cp -r vulnerable-iac/terraform/* labs/lab6/terraform/
-cp -r vulnerable-iac/pulumi/* labs/lab6/pulumi/
-cp -r vulnerable-iac/ansible/* labs/lab6/ansible/
+Scan these samples in place — no copying needed. Follow `labs/lab6.md` step by step:
 
-# Scan with multiple tools (see lab6.md for commands)
-docker run --rm -v "$(pwd)/labs/lab6/terraform":/src aquasec/tfsec:latest /src
-docker run --rm -v "$(pwd)/labs/lab6/terraform":/tf bridgecrew/checkov:latest -d /tf
-docker run -t --rm -v "$(pwd)/labs/lab6/pulumi":/src checkmarx/kics:latest scan -p /src -o /src/kics-report --report-formats json,html
-# ... and more
-```
+- **Task 1** — `checkov -d labs/lab6/vulnerable-iac/terraform ...`
+- **Task 2** — `kics scan -p .../ansible/` and `kics scan -p .../pulumi/`
+- **Bonus** — re-run Checkov with `--external-checks-dir labs/lab6/policies`
+
+> Don't fix these files — analyze them. The findings are the deliverable.
 
 ---
 
@@ -269,15 +249,12 @@ docker run -t --rm -v "$(pwd)/labs/lab6/pulumi":/src checkmarx/kics:latest scan 
 ## ✅ Validation
 
 To verify students have completed the lab successfully, check that they:
-- [ ] Identified at least 20 Terraform vulnerabilities
-- [ ] Identified at least 15 Pulumi vulnerabilities
-- [ ] Identified at least 15 Ansible vulnerabilities
-- [ ] Compared at least 4 scanning tools (tfsec, Checkov for Terraform, KICS for Pulumi, Terrascan, ansible-lint)
-- [ ] Analyzed differences between Terraform (HCL) and Pulumi (Python/YAML) security issues
-- [ ] Evaluated KICS's Pulumi-specific query catalog and platform support
-- [ ] Created at least 3 custom OPA policies
-- [ ] Provided remediation guidance
-- [ ] Explained tool selection rationale
+- [ ] Ran Checkov on the Terraform sample and reported real findings (top-5 rules + passed/failed)
+- [ ] Ran KICS on both the Ansible and Pulumi samples and reported real severities
+- [ ] Compared Checkov (HCL) vs KICS (Rego) with concrete examples
+- [ ] Identified a module-level fix that clears multiple Terraform findings at once
+- [ ] (Bonus) Wrote a custom Checkov policy that demonstrably fires on the sample
+- [ ] Explained Checkov-vs-KICS tool selection rationale
 
 ---
 
