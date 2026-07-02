@@ -1,6 +1,6 @@
 services:
   juice:
-    image: bkimminich/juice-shop:v19.0.0
+    image: bkimminich/juice-shop@sha256:2765a26de7647609099a338d5b7f61085d95903c8703bb70f03fcc4b12f0818d  # juice-shop v19.0.0, pinned by digest
     ports: ["3006:3000"]
     user: "10001:10001"
     read_only: true
