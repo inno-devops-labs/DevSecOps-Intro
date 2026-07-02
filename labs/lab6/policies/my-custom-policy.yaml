@@ -1,0 +1,12 @@
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure every RDS instance is classified as restricted data"
+  category: "CONVENTION"
+  severity: "MEDIUM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_db_instance"
+  attribute: "tags.DataClassification"
+  operator: "equals"
+  value: "restricted"
