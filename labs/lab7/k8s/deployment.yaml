@@ -1,0 +1,161 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop-sa
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+      # Writable application directories contain seed files in the image.
+      # The init container copies those files into emptyDir volumes before
+      # the main container starts with a read-only root filesystem.
+      initContainers:
+        - name: initialize-writable-directories
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          command:
+            - /nodejs/bin/node
+          args:
+            - -e
+            - |
+              const fs = require('fs');
+              const path = require('path');
+
+              const copies = [
+                ['/juice-shop/data', '/writable/data'],
+                ['/juice-shop/ftp', '/writable/ftp'],
+                ['/juice-shop/i18n', '/writable/i18n'],
+                ['/juice-shop/logs', '/writable/logs'],
+                ['/juice-shop/frontend/dist', '/writable/frontend-dist'],
+                ['/juice-shop/.well-known/csaf', '/writable/csaf']
+              ];
+
+              for (const [source, destination] of copies) {
+                fs.mkdirSync(destination, { recursive: true });
+                if (!fs.existsSync(source)) {
+                  continue;
+                }
+                for (const entry of fs.readdirSync(source)) {
+                  fs.cpSync(
+                    path.join(source, entry),
+                    path.join(destination, entry),
+                    { recursive: true, force: true }
+                  );
+                }
+              }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: data
+              mountPath: /writable/data
+            - name: ftp
+              mountPath: /writable/ftp
+            - name: i18n
+              mountPath: /writable/i18n
+            - name: logs
+              mountPath: /writable/logs
+            - name: frontend-dist
+              mountPath: /writable/frontend-dist
+            - name: csaf
+              mountPath: /writable/csaf
+
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 18
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 6
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: data
+              mountPath: /juice-shop/data
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist
+            - name: csaf
+              mountPath: /juice-shop/.well-known/csaf
+
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
+        - name: i18n
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: frontend-dist
+          emptyDir: {}
+        - name: csaf
+          emptyDir: {}
