@@ -1,0 +1,4 @@
+Lab 4 SBOM components:
+3068
+Attested SBOM components:
+3068
