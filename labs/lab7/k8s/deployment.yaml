@@ -1,0 +1,181 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 0
+        fsGroup: 0
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: initialize-writable-directories
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          command: ["/nodejs/bin/node", "-e"]
+          args:
+            - |
+              const fs = require("node:fs");
+              const path = require("node:path");
+
+              function copyTree(source, destination) {
+                fs.mkdirSync(destination, { recursive: true });
+
+                if (!fs.existsSync(source)) {
+                  return;
+                }
+
+                for (const entry of fs.readdirSync(source, {
+                  withFileTypes: true
+                })) {
+                  const src = path.join(source, entry.name);
+                  const dst = path.join(destination, entry.name);
+
+                  if (entry.isDirectory()) {
+                    copyTree(src, dst);
+                  } else if (entry.isFile()) {
+                    fs.copyFileSync(src, dst);
+                  }
+                }
+              }
+
+              for (const directory of [
+                "logs",
+                "data",
+                "ftp",
+                "uploads",
+                "frontend/dist",
+                "i18n",
+                ".well-known"
+              ]) {
+                copyTree(
+                  `/juice-shop/${directory}`,
+                  `/work/${directory}`
+                );
+              }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 25m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          volumeMounts:
+            - name: logs
+              mountPath: /work/logs
+            - name: data
+              mountPath: /work/data
+            - name: ftp
+              mountPath: /work/ftp
+            - name: uploads
+              mountPath: /work/uploads
+            - name: frontend-dist
+              mountPath: /work/frontend/dist
+            - name: i18n
+              mountPath: /work/i18n
+            - name: well-known
+              mountPath: /work/.well-known
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 750m
+              memory: 768Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 24
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 45
+            periodSeconds: 15
+            timeoutSeconds: 3
+            failureThreshold: 5
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: data
+              mountPath: /juice-shop/data
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: uploads
+              mountPath: /juice-shop/uploads
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: well-known
+              mountPath: /juice-shop/.well-known
+            - name: legacy-logs
+              mountPath: /usr/src/app/logs
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 128Mi
+        - name: logs
+          emptyDir:
+            sizeLimit: 128Mi
+        - name: data
+          emptyDir:
+            sizeLimit: 512Mi
+        - name: ftp
+          emptyDir:
+            sizeLimit: 256Mi
+        - name: uploads
+          emptyDir:
+            sizeLimit: 256Mi
+        - name: frontend-dist
+          emptyDir:
+            sizeLimit: 256Mi
+        - name: i18n
+          emptyDir:
+            sizeLimit: 64Mi
+        - name: well-known
+          emptyDir:
+            sizeLimit: 16Mi
+        - name: legacy-logs
+          emptyDir:
+            sizeLimit: 128Mi
