@@ -1,0 +1,169 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: seed-writable-paths
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          command:
+            - /nodejs/bin/node
+          args:
+            - -e
+            - |
+              const fs = require('fs');
+              const path = require('path');
+              function copyDir(src, dst) {
+                fs.mkdirSync(dst, { recursive: true });
+                for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
+                  const from = path.join(src, entry.name);
+                  const to = path.join(dst, entry.name);
+                  if (entry.isDirectory()) {
+                    copyDir(from, to);
+                  } else {
+                    fs.copyFileSync(from, to);
+                  }
+                }
+              }
+              copyDir('/juice-shop/data', '/writable-data');
+              copyDir('/juice-shop/ftp', '/writable-ftp');
+              copyDir('/juice-shop/uploads', '/writable-uploads');
+              copyDir('/juice-shop/.well-known', '/writable-well-known');
+              copyDir('/juice-shop/i18n', '/writable-i18n');
+              copyDir('/juice-shop/frontend/dist/frontend', '/writable-frontend');
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          volumeMounts:
+            - name: data
+              mountPath: /writable-data
+            - name: ftp
+              mountPath: /writable-ftp
+            - name: uploads
+              mountPath: /writable-uploads
+            - name: well-known
+              mountPath: /writable-well-known
+            - name: i18n
+              mountPath: /writable-i18n
+            - name: frontend
+              mountPath: /writable-frontend
+            - name: tmp
+              mountPath: /tmp
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: data
+              mountPath: /juice-shop/data
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: uploads
+              mountPath: /juice-shop/uploads
+            - name: well-known
+              mountPath: /juice-shop/.well-known
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: frontend
+              mountPath: /juice-shop/frontend/dist/frontend
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
+        - name: uploads
+          emptyDir: {}
+        - name: well-known
+          emptyDir: {}
+        - name: i18n
+          emptyDir: {}
+        - name: frontend
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  type: ClusterIP
+  selector:
+    app: juice-shop
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
