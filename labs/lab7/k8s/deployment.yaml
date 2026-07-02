@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      # Pod-level security context (satisfies PSS "restricted").
+      securityContext:
+        runAsNonRoot: true
+        # 65532 is the non-root user the Juice Shop image is built for
+        # (Dockerfile: COPY --chown=65532:0). Running as any other UID causes
+        # EACCES on the app's own files. Still non-root, so PSS "restricted" holds.
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: juice-shop
+          # Image pinned by digest (immutable) instead of a mutable tag.
+          image: bkimminich/juice-shop:v20.0.0@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              name: http
+          # Container-level hardening.
+          securityContext:
+            allowPrivilegeEscalation: false
+            # Juice Shop makes legitimate startup writes to the root filesystem
+            # (restores files into /juice-shop/ftp, creates its SQLite DB under
+            # /juice-shop/data alongside baked-in static assets). A read-only
+            # root FS would crash it (EROFS / SQLITE_CANTOPEN), and it cannot be
+            # solved cleanly with emptyDir mounts because the writable and
+            # read-only paths overlap. readOnlyRootFilesystem is NOT required by
+            # the PSS "restricted" profile, so we disable only this control and
+            # keep every other hardening measure below.
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 65532
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /rest/admin/application-version
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /rest/admin/application-version
+              port: 3000
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          # readOnlyRootFilesystem=true means the app needs writable scratch dirs.
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+spec:
+  selector:
+    app: juice-shop
+  ports:
+    - port: 3000
+      targetPort: 3000
+      name: http
