@@ -1,0 +1,47 @@
+name: Lab 1 — Juice Shop Smoke Test
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Smoke-test Juice Shop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Juice Shop container
+        run: |
+          docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for Juice Shop to respond
+        run: |
+          for i in $(seq 1 30); do
+            echo "Attempt $i/30..."
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version >/dev/null 2>&1; then
+              echo "✅ Juice Shop healthy on attempt $i"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "❌ Juice Shop did not become healthy"
+          docker logs juice-shop || true
+          exit 1
+
+      - name: Curl homepage
+        run: |
+          echo "=== Response headers ==="
+          curl --silent --fail -I http://localhost:3000 2>&1 | head -n 20
+          echo ""
+          echo "=== Version check ==="
+          curl --silent --fail http://localhost:3000/rest/admin/application-version
+
+      - name: Stop container
+        if: always()
+        run: |
+          docker stop juice-shop || true
