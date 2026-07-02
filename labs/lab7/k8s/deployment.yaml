@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: copy-app
+          image: bkimminich/juice-shop:v20.0.0
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              const path = require('path');
+              function copyDir(src, dest) {
+                if (!fs.existsSync(dest)) fs.mkdirSync(dest, {recursive: true});
+                for (const item of fs.readdirSync(src)) {
+                  const srcPath = path.join(src, item);
+                  const destPath = path.join(dest, item);
+                  if (fs.statSync(srcPath).isDirectory()) copyDir(srcPath, destPath);
+                  else fs.copyFileSync(srcPath, destPath);
+                }
+              }
+              copyDir('/juice-shop', '/app');
+              fs.mkdirSync('/app/logs', {recursive: true});
+              console.log('Init completed');
+          volumeMounts:
+            - name: app
+              mountPath: /app
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop:v20.0.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: 500m
+            requests:
+              memory: 256Mi
+              cpu: 250m
+          volumeMounts:
+            - name: app
+              mountPath: /juice-shop
+            - name: tmp
+              mountPath: /tmp
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: app
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
