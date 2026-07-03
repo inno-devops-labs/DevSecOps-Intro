@@ -3,10 +3,10 @@
 
 set -e
 
-NOAUTH="labs/lab5/zap/zap-report-noauth.json"
-AUTH="labs/lab5/zap/zap-report-auth.json"
-OUT="labs/lab5/analysis/zap-comparison.txt"
-mkdir -p labs/lab5/analysis
+NOAUTH="${1:-labs/lab5/results/baseline-report.json}"
+AUTH="${2:-labs/lab5/results/auth-report.json}"
+OUT="${3:-labs/lab5/results/zap-comparison.txt}"
+mkdir -p "$(dirname "$OUT")"
 
 parse_report() {
   local file="$1"
@@ -29,8 +29,6 @@ by_risk = {'3': 0, '2': 0, '1': 0, '0': 0}
 risk_names = {'3': 'High', '2': 'Medium', '1': 'Low', '0': 'Info'}
 
 for site in sites:
-    if 'localhost:3000' not in site.get('@name', ''):
-        continue
     for alert in site.get('alerts', []):
         risk = alert.get('riskcode', '0')
         by_risk[risk] = by_risk.get(risk, 0) + 1
@@ -43,8 +41,6 @@ for code in ['3','2','1','0']:
 # count unique URLs scanned
 urls = set()
 for site in sites:
-    if 'localhost:3000' not in site.get('@name', ''):
-        continue
     for alert in site.get('alerts', []):
         for inst in alert.get('instances', []):
             urls.add(inst.get('uri', ''))

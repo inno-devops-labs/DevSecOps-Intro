@@ -123,7 +123,7 @@ curl -skI https://localhost | tee labs/lab11/results/headers.txt
 
 ### 11.4: Document in `submissions/lab11.md`
 
-```markdown
+````markdown
 # Lab 11 — BONUS — Submission
 
 ## Task 1: TLS + Security Headers
@@ -155,7 +155,7 @@ curl -skI https://localhost | tee labs/lab11/results/headers.txt
 - Referrer-Policy: ...
 - Permissions-Policy: ...
 - Content-Security-Policy: ...
-```
+````
 
 ---
 
@@ -212,7 +212,7 @@ Write the 7-step runbook described in Reading 11 (Detect expiry → Order → Va
 
 ### 11.8: Document in `submissions/lab11.md`
 
-```markdown
+````markdown
 ## Task 2: Production Posture
 
 ### Rate limit proof
@@ -243,7 +243,7 @@ Write the 7-step runbook described in Reading 11 (Detect expiry → Order → Va
 
 ### What OCSP stapling buys you (2-3 sentences, reference Reading 11)
 Why is OCSP stapling useful for production but not for a self-signed lab cert?
-```
+````
 
 ---
 
@@ -313,7 +313,7 @@ docker compose exec waf cat /var/log/modsec/audit.log | tail -50 \
 
 ### B.5: Document in `submissions/lab11.md`
 
-```markdown
+````markdown
 ## Bonus: WAF Sidecar with OWASP CRS
 
 ### Setup choice
@@ -344,7 +344,7 @@ Rule ID: **<e.g. 942100>** — OWASP CRS rule name: **<e.g. SQL Injection Attack
 What does the WAF buy you that Lecture 5's SAST + DAST + the L7 Conftest gate didn't already?
 What does it COST you? (FP risk at higher paranoia levels; ops overhead; cert/config sprawl.)
 When would you NOT deploy a WAF in front of a service?
-```
+````
 
 ---
 

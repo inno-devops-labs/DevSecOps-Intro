@@ -99,7 +99,7 @@ trivy config /tmp/Dockerfile-bad --severity HIGH,CRITICAL --format table
 ```bash
 # Top 10 CVEs with fixes (Lecture 7 slide 9 — "fix available AND severity ≥ HIGH first")
 jq '[.Results[].Vulnerabilities[]? | select(.FixedVersion != null) |
-    {cve: .VulnerabilityID, severity: .Severity, pkg: .PkgName, fix: .FixedVersion}] |
+    {cve: .VulnerabilityID, severity: .Severity, pkg: .PkgName, installed: .InstalledVersion, fix: .FixedVersion}] |
     sort_by(.severity) | .[:10]' \
   labs/lab7/results/trivy-image.json
 ```
@@ -215,18 +215,18 @@ kubectl -n juice-shop describe pod -l app=juice-shop | grep -A 3 -i "security co
 ### 7.7: Trivy K8s scan
 
 ```bash
-trivy k8s --namespace juice-shop \
+trivy k8s --include-namespaces juice-shop \
   --severity HIGH,CRITICAL \
   --format json --output labs/lab7/results/trivy-k8s.json
 
-trivy k8s --namespace juice-shop \
+trivy k8s --include-namespaces juice-shop \
   --severity HIGH,CRITICAL \
   --report=summary
 ```
 
 ### 7.8: Document in `submissions/lab7.md`
 
-```markdown
+````markdown
 ## Task 2: Kubernetes Hardening
 
 ### Manifests (paste relevant snippets)
@@ -258,7 +258,7 @@ Output of `kubectl get pod -n juice-shop -l app=juice-shop`:
 ### What broke and how you fixed it (2-3 sentences)
 `readOnlyRootFilesystem: true` likely broke Juice Shop. What paths did it need to write?
 How did you fix it (which emptyDir mounts)?
-```
+````
 
 ---
 
@@ -316,7 +316,7 @@ conftest test /tmp/bad-pod.yaml --policy labs/lab7/policies
 
 ### B.3: Document in `submissions/lab7.md`
 
-```markdown
+````markdown
 ## Bonus: Conftest Policy
 
 ### Policy (paste labs/lab7/policies/pod-hardening.rego)
@@ -337,7 +337,7 @@ conftest test /tmp/bad-pod.yaml --policy labs/lab7/policies
 ### What this prevents at CI time (2-3 sentences)
 Reference Lecture 7 slide 16 (admission control diagram). What Class of bug does this
 policy catch BEFORE `kubectl apply` runs? Why is catching at CI-time better than at admission-time?
-```
+````
 
 ---
 

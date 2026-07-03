@@ -106,7 +106,7 @@ cat labs/lab12/results/kata-kernel.txt
 
 ### 12.3: Document in `submissions/lab12.md`
 
-```markdown
+````markdown
 # Lab 12 — BONUS — Submission
 
 ## Task 1: Install + Hello-World
@@ -137,7 +137,7 @@ cat labs/lab12/results/kata-kernel.txt
 ### Why the kernel differs (Reading 12)
 Reading 12 explains the model. Reference Lecture 7 slide 14 — runc CVE-2024-21626 ("Leaky Vessels").
 What does the kernel difference imply for that attack class? (2-3 sentences.)
-```
+````
 
 ---
 
@@ -193,7 +193,7 @@ done | tee labs/lab12/results/io-bench.txt
 
 ### 12.6: Document in `submissions/lab12.md`
 
-```markdown
+````markdown
 ## Task 2: Isolation + Performance
 
 ### Isolation: /dev diff
@@ -229,7 +229,7 @@ kata:
 When is the security gain (separate kernel, runc-CVE class blocked) worth the cost?
 When isn't it? Give one example each (e.g., "multi-tenant SaaS workloads = yes;
 single-tenant batch jobs = no").
-```
+````
 
 ---
 
@@ -286,7 +286,7 @@ sudo cat /tmp/lab12-target
 
 ### B.4: Document in `submissions/lab12.md`
 
-```markdown
+````markdown
 ## Bonus: Container-Escape PoC
 
 ### Vector chosen
@@ -329,7 +329,7 @@ Host verification:
 - Why does Kata block what runc allows? (Reference: Kata's micro-VM filesystem IS NOT the host filesystem — bind mounts are virtualized via virtio-fs/9p inside the VM.)
 - What real-world threat does this map to? (Multi-tenant CI runners running `--privileged` containers; misconfigured Kubernetes pods.)
 - What does this NOT block? (Pure side-channel attacks on the kernel itself, cross-tenant timing attacks. Reading 12's "Confidential Containers" section is where THOSE get defenses.)
-```
+````
 
 ---
 

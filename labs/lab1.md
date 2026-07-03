@@ -95,7 +95,7 @@ Open `http://127.0.0.1:3000` in your browser. Note what you see:
 
 Create `submissions/lab1.md` and **fill in the template below** with your real observations. Don't paraphrase — record what you actually saw.
 
-```markdown
+````markdown
 # Lab 1 — Submission
 
 ## Triage Report: OWASP Juice Shop
@@ -115,7 +115,7 @@ Create `submissions/lab1.md` and **fill in the template below** with your real o
 
 ### Health Check
 - HTTP code on `/`: <should be 200>
-- API check (first 200 chars of `/rest/products`):
+- API check (first 200 chars of `/api/Products`):
   ```
   <paste output>
   ```
@@ -143,7 +143,7 @@ Which of these are MISSING? (cross-reference Lecture 1 OWASP Top 10:2025 — A06
 1. **<risk name>** — <why it matters; map to one OWASP Top 10:2025 category>
 2. **<risk name>** — <why; map to OWASP>
 3. **<risk name>** — <why; map to OWASP>
-```
+````
 
 ### 1.4: Cleanup (when done)
 
@@ -274,7 +274,7 @@ A "GitHub Community" section with 1-2 sentences explaining:
 
 ### B.3: Document in `submissions/lab1.md`
 
-```markdown
+````markdown
 ## Bonus: CI Smoke Test
 
 - Workflow file: `.github/workflows/lab1-smoke.yml`
@@ -285,7 +285,7 @@ A "GitHub Community" section with 1-2 sentences explaining:
   ```
   <paste your "HTTP/1.1 200 OK ..." block>
   ```
-```
+````
 
 ---
 
@@ -316,7 +316,7 @@ PR checklist (paste this into your PR body):
 
 ### Task 1 (6 pts)
 - ✅ Juice Shop v20.0.0 container running on `127.0.0.1:3000` (proof: `docker ps` output in submission)
-- ✅ Homepage returns HTTP 200; `/rest/products` returns a JSON list
+- ✅ Homepage returns HTTP 200; `/api/Products` returns a JSON list
 - ✅ Triage report has all six sections filled in with **real** values (no template placeholders left)
 - ✅ At least three security headers are correctly identified as present or missing
 - ✅ Top 3 risks each mapped to an OWASP Top 10:2025 category (A01–A10)

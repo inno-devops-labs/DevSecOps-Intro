@@ -70,10 +70,10 @@ graph LR
 
 ```mermaid
 flowchart LR
-    Dev[👩‍💻 Dev] -.--> Build[🏗️]
-    Ops[🖥️ Ops] -.--> Build
-    Sec[🛡️ Sec] -.--> Build
-    Build --> DevSecOps[🚀 DevSecOps<br/>Continuous, automated security<br/>at every stage]
+    Dev["👩‍💻 Dev"] -.-> Build["🏗️ Build"]
+    Ops["🖥️ Ops"] -.-> Build
+    Sec["🛡️ Sec"] -.-> Build
+    Build --> DevSecOps["🚀 DevSecOps<br/>Continuous, automated security<br/>at every stage"]
 
     style DevSecOps fill:#FF9800,color:#fff
 ```
