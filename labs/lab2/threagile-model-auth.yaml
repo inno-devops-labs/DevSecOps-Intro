@@ -1,0 +1,333 @@
+threagile_version: 1.0.0
+title: Juice Shop Auth Flow
+date: 2026-06-10
+author:
+  name: Nik-ari-ai
+business_criticality: important
+questions: {}
+abuse_cases: {}
+security_requirements: {}
+tags_available: []
+
+data_assets:
+
+  Credentials:
+    id: credentials
+    description: User login credentials (username and password)
+    usage: business
+    tags: []
+    origin: User
+    owner: Lab Owner
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Account takeover if leaked.
+
+  JWT Token:
+    id: jwt-token
+    description: Signed JWT issued after login and sent on each request
+    usage: business
+    tags: []
+    origin: Auth API
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Session impersonation if stolen or forged.
+
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: Secret key used to sign and verify JWTs
+    usage: business
+    tags: []
+    origin: Token Service
+    owner: Lab Owner
+    quantity: very-few
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Full auth bypass if the signing key leaks.
+
+  Session State:
+    id: session-state
+    description: User session state derived from the JWT
+    usage: business
+    tags: []
+    origin: Auth API
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: important
+    availability: important
+    justification_cia_rating: Session data exposure.
+
+  Admin Request:
+    id: admin-request
+    description: Privileged admin operation requested with an admin-role JWT
+    usage: business
+    tags: []
+    origin: User
+    owner: Lab Owner
+    quantity: few
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Privilege escalation if admin checks are weak.
+
+technical_assets:
+
+  User Browser:
+    id: browser
+    description: End-user browser
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: true
+    justification_out_of_scope: User-controlled client.
+    size: component
+    technology: browser
+    tags: []
+    internet: true
+    machine: physical
+    encryption: none
+    owner: User
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: Standard browser client.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - admin-request
+    data_assets_stored:
+      - jwt-token
+    data_formats_accepted:
+      - json
+    communication_links:
+      Login Request:
+        target: auth-api
+        description: User submits credentials to log in or register
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+          - session-state
+      Authenticated Request:
+        target: auth-api
+        description: Browser calls protected API with JWT in Authorization header
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - session-state
+      Admin Request Flow:
+        target: admin-endpoint
+        description: Browser calls admin endpoint, JWT must carry admin role
+        protocol: https
+        authentication: token
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - admin-request
+        data_assets_received:
+          - session-state
+
+  Auth API:
+    id: auth-api
+    description: Authentication API (login, register, JWT issuance)
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-service-rest
+    tags: []
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Handles credentials and issues tokens.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - session-state
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Sign Token:
+        target: token-service
+        description: Auth API asks the token service to sign a new JWT
+        protocol: https
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+      Verify Credentials:
+        target: cred-store
+        description: Auth API checks submitted credentials against the user store
+        protocol: https
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - credentials
+
+  Token Service:
+    id: token-service
+    description: Signs and verifies JWTs using the signing key
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-server
+    tags: []
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Holds the JWT signing key.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - jwt-signing-key
+    data_assets_stored:
+      - jwt-signing-key
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Credential Store:
+    id: cred-store
+    description: User database storing credential hashes
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: database
+    tags: []
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Stores all user credentials.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+    data_assets_stored:
+      - credentials
+    data_formats_accepted: []
+    communication_links: {}
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: Privileged admin API requiring an admin-role JWT
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-service-rest
+    tags: []
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: Performs privileged operations.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - admin-request
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+trust_boundaries:
+
+  Internet:
+    id: internet-boundary
+    description: Untrusted internet zone
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - browser
+    trust_boundaries_nested:
+      - container-boundary
+
+  Container Network:
+    id: container-boundary
+    description: Application container network
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - auth-api
+      - token-service
+      - cred-store
+      - admin-endpoint
+    trust_boundaries_nested: []
