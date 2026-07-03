@@ -1,0 +1,138 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.20
+
+
+Preparing Scan Assets: Done
+
+
+
+
+[38;2;237;213;126mUnpinned Package Version[0m, Severity: [38;2;237;213;126mLOW[0m, Results: 1
+[1mDescription:[0m Setting state to latest performs an update and installs additional packages possibly resulting in performance degradation or loss of service
+[1mPlatform:[0m Ansible
+[1mCWE:[0m 706
+[1mRisk Score:[0m 4.1
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/ansible-queries/c05e2c20-0a2c-4686-b1f8-5f0a5612d4e8
+
+	[38;2;237;213;126m[1]:[0m ../../src/deploy.yml:[38;2;34;187;51m99[0m
+
+		098:         name: myapp
+[38;2;240;173;78m		099:         state: latest  # Should pin specific version
+[0m		100:         update_cache: yes
+
+
+[38;2;187;33;36mPasswords And Secrets - Password in URL[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 2
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mRisk Score:[0m 7.8
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/deploy.yml:[38;2;34;187;51m72[0m
+
+		071:       git:
+[38;2;240;173;78m		072:         repo: <SECRET-MASKED-ON-PURPOSE>/company/repo.git'
+[0m		073:         dest: /var/www/myapp
+
+
+	[38;2;187;33;36m[2]:[0m ../../src/deploy.yml:[38;2;34;187;51m16[0m
+
+		015:     # SECURITY ISSUE #3 - Database connection string with credentials
+[38;2;240;173;78m		016:     db_connection: <SECRET-MASKED-ON-PURPOSE>:5432/myapp"
+[0m		017:   
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Secret[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mRisk Score:[0m 7.8
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/inventory.ini:[38;2;34;187;51m20[0m
+
+		019: db_admin_password=<SECRET-MASKED-ON-PURPOSE>
+[38;2;240;173;78m		020: api_secret_key=<SECRET-MASKED-ON-PURPOSE>
+[0m		021: 
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 6
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mRisk Score:[0m 7.8
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/inventory.ini:[38;2;34;187;51m5[0m
+
+		004: [webservers]
+[38;2;240;173;78m		005: web1.example.com ansible_user=root ansible_password=<SECRET-MASKED-ON-PURPOSE>
+[0m		006: web2.example.com ansible_user=root ansible_ssh_pass=RootPass123!
+
+
+	[38;2;187;33;36m[2]:[0m ../../src/inventory.ini:[38;2;34;187;51m19[0m
+
+		018: ansible_become_password=<SECRET-MASKED-ON-PURPOSE>
+[38;2;240;173;78m		019: db_admin_password=<SECRET-MASKED-ON-PURPOSE>
+[0m		020: api_secret_key=<SECRET-MASKED-ON-PURPOSE>
+
+
+	[38;2;187;33;36m[3]:[0m ../../src/inventory.ini:[38;2;34;187;51m10[0m
+
+		009: # SECURITY ISSUE #36 - Using root user and default port
+[38;2;240;173;78m		010: db1.example.com ansible_user=root ansible_port=22 ansible_password=<SECRET-MASKED-ON-PURPOSE>
+[0m		011: 
+
+
+	[38;2;187;33;36m[4]:[0m ../../src/inventory.ini:[38;2;34;187;51m18[0m
+
+		017: # SECURITY ISSUE #38 - Global variables with secrets
+[38;2;240;173;78m		018: ansible_become_password=<SECRET-MASKED-ON-PURPOSE>
+[0m		019: db_admin_password=<SECRET-MASKED-ON-PURPOSE>
+
+
+	[38;2;187;33;36m[5]:[0m ../../src/configure.yml:[38;2;34;187;51m16[0m
+
+		015:     
+[38;2;240;173;78m		016:     admin_password: <SECRET-MASKED-ON-PURPOSE>
+[0m		017:   
+
+
+	[38;2;187;33;36m[6]:[0m ../../src/deploy.yml:[38;2;34;187;51m12[0m
+
+		011:     # SECURITY ISSUE #1 - Hardcoded password in playbook!
+[38;2;240;173;78m		012:     db_password: <SECRET-MASKED-ON-PURPOSE>
+[0m		013:     # SECURITY ISSUE #2 - Hardcoded API key!
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 9
+[38;2;255;114;19mMEDIUM[0m: 0
+[38;2;237;213;126mLOW[0m: 1
+[38;2;91;192;222mINFO[0m: 0
+TOTAL: 10
+
+Generating Reports: Done
