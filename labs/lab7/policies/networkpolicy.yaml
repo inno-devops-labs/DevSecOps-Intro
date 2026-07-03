@@ -1,0 +1,66 @@
+# 1) Базовый default-deny для всего namespace (и Ingress, и Egress)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: juice-shop
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+
+---
+# 2) Точечный allow для juice-shop: ingress только с localhost / port-forward
+#    (в kind/k3d port-forward идёт через kube-apiserver -> kubelet, поэтому
+#    отдельного ingress namespaceSelector не требуется — трафик приходит
+#    напрямую на Pod IP; правило ниже дополнительно разрешает трафик
+#    из того же namespace, если позже добавите Ingress-controller).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-juice-shop-ingress
+  namespace: juice-shop
+spec:
+  podSelector:
+    matchLabels:
+      app: juice-shop
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector: {}
+      ports:
+        - protocol: TCP
+          port: 3000
+
+---
+# 3) Egress: разрешаем только DNS (kube-system) и HTTPS наружу
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-juice-shop-egress
+  namespace: juice-shop
+spec:
+  podSelector:
+    matchLabels:
+      app: juice-shop
+  policyTypes:
+    - Egress
+  egress:
+    # DNS to kube-system (CoreDNS)
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # HTTPS egress (например, для внешних API, если понадобятся)
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: TCP
+          port: 443
