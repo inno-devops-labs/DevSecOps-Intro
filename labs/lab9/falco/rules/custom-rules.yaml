@@ -1,0 +1,47 @@
+- list: miner_ports
+  items: [3333, 4444, 5555, 7777, 14444, 19999, 45700]
+
+- list: miner_processes
+  items: [xmrig, ethminer, cgminer, t-rex, claymore]
+
+- list: miner_test_clients
+  items: [nc, ncat, netcat]
+
+- rule: Write to /tmp by container
+  desc: Detect a containerized process writing under /tmp.
+  condition: >
+    open_write
+    and container.id != host
+    and fd.name startswith /tmp
+  output: >
+    Write to /tmp by container
+    (container=%container.name user=%user.name file=%fd.name command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Possible Cryptominer Activity
+  desc: Detect container network activity that resembles common mining-pool traffic.
+  condition: >
+    container.id != host
+    and (
+      (evt.type = connect
+       and fd.sport in (miner_ports)
+       and (proc.name in (miner_processes)
+            or proc.name in (miner_test_clients)
+            or fd.sip.name contains "minexmr"))
+      or
+      (spawned_process
+       and proc.name in (miner_test_clients)
+       and (proc.cmdline contains " 3333"
+            or proc.cmdline contains " 4444"
+            or proc.cmdline contains " 5555"
+            or proc.cmdline contains " 7777"
+            or proc.cmdline contains " 14444"
+            or proc.cmdline contains " 19999"
+            or proc.cmdline contains " 45700"))
+    )
+  output: >
+    Possible Cryptominer Activity
+    (container=%container.name process=%proc.name command=%proc.cmdline target=%fd.sip:%fd.sport target_name=%fd.sip.name)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
