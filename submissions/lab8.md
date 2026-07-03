@@ -5,100 +5,130 @@
 ### Registry + image push
 - Registry container: `lab8-registry` running on `localhost:5000`
 - Image pushed: `localhost:5000/juice-shop:v20.0.0`
-- Image digest: `localhost:5000/juice-shop@sha256:8c76bce948965bcb2ad33c24a659d58f307d679ff48ec253a3d29138329f3c0d`
+- Image digest: `localhost:5000/juice-shop@sha256:28870b9d2bec49e605d6ebbf4b22ed1ec1ca0a72347ef19217bbbb21ea44e3fe`
+
 
 ### Signing
+- Output of `cosign sign` (just the success line is fine):
 ```
+tlog entry created with index: 2039164774
 Pushing signature to: localhost:5000/juice-shop
 ```
 
 ### Verification (PASSED)
 Output of `cosign verify` on original digest:
 ```json
-Verification for localhost:5000/juice-shop@sha256:8c76bce948965bcb2ad33c24a659d58f307d679ff48ec253a3d29138329f3c0d --
-The following checks were performed on each of these signatures:
-  - The cosign claims were validated
-  - The signatures were verified against the specified public key
 
-[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop"},"image":{"docker-manifest-digest":"sha256:8c76bce948965bcb2ad33c24a659d58f307d679ff48ec253a3d29138329f3c0d"},"type":"cosign container image signature"},"optional":null}]
+[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop"},"image":{"docker-manifest-digest":"sha256:28870b9d2bec49e605d6ebbf4b22ed1ec1ca0a72347ef19217bbbb21ea44e3fe"},"type":"cosign container image signature"},"optional":{"Bundle":{"SignedEntryTimestamp":"MEQCIAgRzokPiWhbjvX2Iyu3SUDSO9uCRSPNoxedBC+izPrwAiABR7QVdlerjwOJjbXg8R6kYjLpMZ10l/aMXx78dxv06Q==","Payload":{"body":"eyJhcGlWZXJzaW9uIjoiMC4wLjEiLCJraW5kIjoiaGFzaGVkcmVrb3JkIiwic3BlYyI6eyJkYXRhIjp7Imhhc2giOnsiYWxnb3JpdGhtIjoic2hhMjU2IiwidmFsdWUiOiI3OTgwNzhjNTlhMGYxNjdiYWFhYTc4ZjkwM2E3MWIwZGI5NThhMTk3ZWU1ZGZiOWIzNTA0ZTQ2MzAwNWQ0MTlhIn19LCJzaWduYXR1cmUiOnsiY29udGVudCI6Ik1FWUNJUUR0ME5VcVJxQW9aYmlZVU5vRkVSeXNRdmg0YVIyQzdER0R6Ri9oaDJMSHZnSWhBSlhMczJGV3hqRDZ5VWxMdUVVa1lyd21zOENpeWtSS3VnQWcwb1M4Q1NIQyIsInB1YmxpY0tleSI6eyJjb250ZW50IjoiTFMwdExTMUNSVWRKVGlCUVZVSk1TVU1nUzBWWkxTMHRMUzBLVFVacmQwVjNXVWhMYjFwSmVtb3dRMEZSV1VsTGIxcEplbW93UkVGUlkwUlJaMEZGVjFSV1FVUkVUV0pJTVVWTlYzTTViWEZ6TjNwVGJtcG9SRkZpT0FwQ1ltUTBWM1Z5YlVwa04wSTFhMHBUTUhCMFoxTm1ZM1pYTUdsdE5raFdOMFkxWldSSk5rUm5OblppV2pGVWMydGxkSFp4UVhoVGRXNTNQVDBLTFMwdExTMUZUa1FnVUZWQ1RFbERJRXRGV1MwdExTMHRDZz09In19fX0=","integratedTime":1782927076,"logIndex":2039164774,"logID":"c0d23d6ad406973f9559f3ba2d1ca01f84147d8ffc5b8445c224f98b9591801d"}}}}]
 ```
 
 ### Tamper Demo (FAILED — correctly)
-Pushed `alpine:3.20` re-tagged as `localhost:5000/juice-shop:v20.0.0-tampered` (digest `sha256:6c2a97...`):
+Output of `cosign verify` on tampered digest:
 ```
-WARNING: Skipping tlog verification is an insecure practice that lacks of transparency and auditability verification for the signature.
 Error: no signatures found
-error during command execution: no signatures found
+main.go:69: error during command execution: no signatures found
 ```
 
 ### Sanity — original still verifies
 ```
-Verification for localhost:5000/juice-shop@sha256:8c76bce... --
+Verification for localhost:5000/juice-shop@sha256:28870b9d2bec49e605d6ebbf4b22ed1ec1ca0a72347ef19217bbbb21ea44e3fe --
 The following checks were performed on each of these signatures:
   - The cosign claims were validated
   - The signatures were verified against the specified public key
-[{"critical":{"identity":{"docker-reference":"localhost:5000/juice-shop"},...},"optional":null}]
 ```
 
 ### Why digest binding matters (Lecture 8 slide 6)
-Cosign signs the **immutable content-addressable digest** (`sha256:8c76...`), not the mutable tag string `v20.0.0`. When the attacker pushed `alpine:3.20` under the same tag, it got a completely different digest (`sha256:6c2a97...`) — and Cosign found no signature attached to that digest in the registry. If Cosign had signed the tag instead, any image pushed under that tag label would inherit the "valid signature" status, making the tamper completely undetectable. Digest binding ensures that what you signed is exactly what runs — not just a name that any image can occupy.
+Cosign signs the digest (@sha256:...), not the tag (:v20.0.0). Tags are mutable so an attacker could push a malicious image under the same tag. If Cosign had signed the tag, the signature would still pass verification after the malicious push. Signing the digest ensures that the signature is bound to the exact image content, making tag substitution detectable.
 
----
 
 ## Task 2: SBOM + Provenance Attestations
 
 ### SBOM attestation
 - Attached: yes (`cosign attest --type cyclonedx` exit 0)
-- Verify-attestation decoded payload:
+- Verify-attestation output (first 30 lines of decoded payload):
 ```json
 {
-  "type": "https://in-toto.io/Statement/v0.1",
+  "_type": "https://in-toto.io/Statement/v0.1",
   "predicateType": "https://cyclonedx.org/bom",
-  "components": 3069
+  "subject": [
+    {
+      "name": "localhost:5000/juice-shop",
+      "digest": {
+        "sha256": "28870b9d2bec49e605d6ebbf4b22ed1ec1ca0a72347ef19217bbbb21ea44e3fe"
+      }
+    }
+  ],
+  "predicate": {
+    "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+    "bomFormat": "CycloneDX",
+    "components": [
+      {
+        "author": "Benjamin Byholm <bbyholm@abo.fi> (https://github.com/kkoopa/), Mathias Küsel (https://github.com/mathiask88/)",
+        "bom-ref": "pkg:npm/1to2@1.0.0?package-id=3cea2309a653e6ed",
+        "cpe": "cpe:2.3:a:nodejs:1to2:1.0.0:*:*:*:*:*:*:*",
+        "description": "NAN 1 -> 2 Migration Script",
+        "externalReferences": [
+          {
+            "type": "distribution",
+            "url": "git://github.com/nodejs/nan.git"
+          }
+        ],
+        "licenses": [
+          {
+            "license": {
+              "id": "MIT"
+            }
+          }
+        ],
+        "name": "1to2",
+        "properties": [
+          {
+            "name": "syft:package:foundBy",
+            "value": "javascript-package-cataloger"
+          },
+          {
+            "name": "syft:package:language",
+            "value": "javascript"
+          },
+          {
+            "name": "syft:package:type",
+            "value": "npm"
+          }
+        ],
+        "type": "library",
+        "version": "1.0.0"
+      }
+    ]
+  }
 }
 ```
-- Component count matches Lab 4 source: **yes** (3069 = 3069)
-- diff between Lab 4 SBOM and extracted-from-attestation SBOM: *(empty — identical content)*
+- Component count matches Lab 4 source: yes
+- diff between Lab 4 SBOM and the extracted-from-attestation SBOM: ` ` (empty diff = success)
 
 ### Provenance attestation
-- Attached: yes (`cosign attest --type slsaprovenance` exit 0)
-- Builder ID: `https://localhost/lab8-student`
-- buildType: `https://example.com/lab8/local-build`
-- Verified decoded payload:
-```json
-{
-  "type": "https://in-toto.io/Statement/v0.1",
-  "predicateType": "https://slsa.dev/provenance/v0.2",
-  "builder": "https://localhost/lab8-student"
-}
-```
+- Attached: yes
+- Builder ID in predicate: `https://github.com/ironveils/DevSecOps-Intro`
+- buildType in predicate: `https://github.com/ironveils/DevSecOps-Intro/lab8`
 
 ### What this gives a Lab 9 verifier
-A "signed but no SBOM" image tells you the bytes haven't been tampered with since signing — but when the next Log4Shell drops at 2 AM, you still have to pull every running image and re-scan it to know which services use the vulnerable library. A "signed with SBOM" image carries the full component inventory *as a verifiable attestation*: a Kyverno policy in Lab 9 can run `cosign verify-attestation --type cyclonedx` at admission time and compare the embedded SBOM against a known-bad package list before the pod starts — no re-scan required. The SBOM attestation turns a reactive "did we ship Log4j?" fire drill into a proactive O(1) lookup against a cryptographically verified manifest.
+At K8s admission time, a verifier can require both signature AND SBOM attestation. A "signed but no SBOM" image proves who built it, but doesn't help with incident response. A "signed with SBOM" image provides a machine-readable inventory of all components: when the next Log4Shell drops, the team can instantly query which images contain the vulnerable library without re-scanning or re-pulling the image.
 
----
 
 ## Bonus: Blob Signing (Codecov 2021 mitigation)
 
 ### Sign + verify
 - Signed: `my-tool.tar.gz` + `my-tool.tar.gz.bundle`
-- Verify-blob success:
+- Verify-blob success output:
 ```
 WARNING: Skipping tlog verification is an insecure practice that lacks of transparency and auditability verification for the blob.
 Verified OK
 ```
 
 ### Tamper test failed (correctly)
-After appending `"MALICIOUS PAYLOAD"` to the tarball:
 ```
-WARNING: Skipping tlog verification is an insecure practice that lacks of transparency and auditability verification for the blob.
 Error: invalid signature when validating ASN.1 encoded signature
-error during command execution: invalid signature when validating ASN.1 encoded signature
+main.go:74: error during command execution: invalid signature when validating ASN.1 encoded signature
 ```
 
 ### Codecov 2021 mitigation
-In the Codecov attack (Lecture 8 slide 14), attackers modified the bash uploader script distributed at a static URL — consumers downloading via `curl | bash` had no way to detect the substitution because there was no integrity check. If Codecov had published a Cosign bundle alongside the script and documented the verification step, any CI consumer running:
-```bash
-cosign verify-blob --key codecov.pub --bundle codecov-uploader.bundle codecov-uploader.sh
-```
-would have received `Error: invalid signature` immediately — the attacker's modified bytes would not match the signature Codecov produced over the legitimate bytes. The key insight from Lecture 8 slide 14 is that `cosign sign-blob` binds the signature to the exact byte sequence, so even a single-byte change (like the attacker's injected credential-exfiltration payload) causes verification to fail before the script ever executes.
+Codecov's bash uploader was distributed via `curl | bash` without signature verification. If consumers had been running `cosign verify-blob` before piping to bash, the attacker's modified script would have failed verification because its digest would not match the signed one. The attack would have been detected before execution.
