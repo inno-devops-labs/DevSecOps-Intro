@@ -1,0 +1,11 @@
+# YOUR TASK: namespace with PSS labels
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: juice-shop
+  labels:
+    # PSS enforce: restricted (Lecture 7 slide 11)
+    # Pick all three: enforce, warn, audit — all set to restricted
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/audit: restricted
