@@ -1,0 +1,11 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure every S3 bucket has a lifecycle configuration
+  category: GENERAL_SECURITY
+  severity: HIGH
+definition:
+  cond_type: attribute
+  resource_types:
+    - aws_s3_bucket
+  attribute: lifecycle_rule
+  operator: exists
