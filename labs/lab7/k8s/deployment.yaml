@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop-sa
+      automountServiceAccountToken: false
+      # ---- Pod-level securityContext (PSS restricted) ----
+      # Image is distroless, ships as USER 65532 (non-root), entrypoint
+      # /nodejs/bin/node build/app.js. We run as that uid and do NOT override cmd.
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      # readOnlyRootFilesystem makes the root FS immutable. Juice Shop writes to
+      # these paths at startup (confirmed by EROFS crashes + docker diff):
+      #   - /juice-shop/data                          (SQLite DB + reads seed files)
+      #   - /juice-shop/frontend/dist/frontend        (restores promo assets)
+      #   - /juice-shop/.well-known/csaf              (rewrites provider-metadata)
+      #   - /juice-shop/logs , /juice-shop/ftp        (created fresh at runtime)
+      # The three seed-bearing dirs must be pre-populated or an empty mount hides
+      # their files. This init copies them (via the image's own node binary, since
+      # there is no shell) into the writable volumes before the app starts.
+      initContainers:
+        - name: seed
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              fs.cpSync('/juice-shop/data', '/seed/data', {recursive: true});
+              fs.cpSync('/juice-shop/frontend/dist/frontend', '/seed/frontend', {recursive: true});
+              fs.cpSync('/juice-shop/.well-known/csaf', '/seed/csaf', {recursive: true});
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: data
+              mountPath: /seed/data
+            - name: frontend-dist
+              mountPath: /seed/frontend
+            - name: csaf
+              mountPath: /seed/csaf
+      containers:
+        - name: juice-shop
+          # Native entrypoint (/nodejs/bin/node build/app.js) — NOT overridden.
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          ports:
+            - containerPort: 3000
+              name: http
+          # ---- Container-level securityContext (PSS restricted) ----
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: data
+              mountPath: /juice-shop/data
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: csaf
+              mountPath: /juice-shop/.well-known/csaf
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
+        - name: frontend-dist
+          emptyDir: {}
+        - name: csaf
+          emptyDir: {}
