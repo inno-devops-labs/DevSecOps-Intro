@@ -1,0 +1,137 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: prepare-writable-data
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          args:
+            - -e
+            - |
+              const fs = require('fs');
+              fs.cpSync('/juice-shop/data', '/work/data', { recursive: true });
+              fs.cpSync('/juice-shop/ftp', '/work/ftp', { recursive: true });
+              fs.cpSync('/juice-shop/i18n', '/work/i18n', { recursive: true });
+              fs.cpSync('/juice-shop/frontend/dist/frontend', '/work/frontend-dist', { recursive: true });
+              fs.cpSync('/juice-shop/.well-known/csaf', '/work/csaf', { recursive: true });
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 25m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          volumeMounts:
+            - name: data
+              mountPath: /work/data
+            - name: ftp
+              mountPath: /work/ftp
+            - name: i18n
+              mountPath: /work/i18n
+            - name: frontend-dist
+              mountPath: /work/frontend-dist
+            - name: csaf
+              mountPath: /work/csaf
+            - name: tmp
+              mountPath: /tmp
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 768Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 45
+            periodSeconds: 20
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: data
+              mountPath: /juice-shop/data
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: csaf
+              mountPath: /juice-shop/.well-known/csaf
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 128Mi
+        - name: logs
+          emptyDir:
+            sizeLimit: 128Mi
+        - name: data
+          emptyDir:
+            sizeLimit: 256Mi
+        - name: ftp
+          emptyDir:
+            sizeLimit: 256Mi
+        - name: i18n
+          emptyDir:
+            sizeLimit: 128Mi
+        - name: frontend-dist
+          emptyDir:
+            sizeLimit: 512Mi
+        - name: csaf
+          emptyDir:
+            sizeLimit: 32Mi
