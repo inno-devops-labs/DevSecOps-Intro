@@ -19,20 +19,51 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
         seccompProfile:
           type: RuntimeDefault
+      # readOnlyRootFilesystem makes the root FS immutable. Juice Shop writes to
+      # these paths at startup (confirmed by EROFS crashes + docker diff):
+      #   - /juice-shop/data                          (SQLite DB + reads seed files)
+      #   - /juice-shop/frontend/dist/frontend        (restores promo assets)
+      #   - /juice-shop/.well-known/csaf              (rewrites provider-metadata)
+      #   - /juice-shop/logs , /juice-shop/ftp        (created fresh at runtime)
+      # The three seed-bearing dirs must be pre-populated or an empty mount hides
+      # their files. This init copies them (via the image's own node binary, since
+      # there is no shell) into the writable volumes before the app starts.
+      initContainers:
+        - name: seed
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              fs.cpSync('/juice-shop/data', '/seed/data', {recursive: true});
+              fs.cpSync('/juice-shop/frontend/dist/frontend', '/seed/frontend', {recursive: true});
+              fs.cpSync('/juice-shop/.well-known/csaf', '/seed/csaf', {recursive: true});
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: data
+              mountPath: /seed/data
+            - name: frontend-dist
+              mountPath: /seed/frontend
+            - name: csaf
+              mountPath: /seed/csaf
       containers:
         - name: juice-shop
-          # TODO: замени digest на значение из твоего Lab 4 SBOM
-          # (labs/lab4/juice-shop.cdx.json -> component.purl / metadata.component)
-          # или получи заново: docker inspect --format='{{index .RepoDigests 0}}' bkimminich/juice-shop:v20.0.0
-          image: bkimminich/juice-shop@sha256:REPLACE_WITH_DIGEST_FROM_LAB4
+          # Native entrypoint (/nodejs/bin/node build/app.js) — NOT overridden.
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
           ports:
             - containerPort: 3000
               name: http
+          # ---- Container-level securityContext (PSS restricted) ----
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -41,45 +72,33 @@ spec:
           resources:
             requests:
               cpu: "100m"
-              memory: "128Mi"
+              memory: "256Mi"
             limits:
               cpu: "500m"
-              memory: "256Mi"
+              memory: "512Mi"
           volumeMounts:
             - name: tmp
               mountPath: /tmp
             - name: logs
-              mountPath: /usr/src/app/logs
+              mountPath: /juice-shop/logs
+            - name: ftp
+              mountPath: /juice-shop/ftp
             - name: data
-              mountPath: /usr/src/app/data
-          readinessProbe:
-            httpGet:
-              path: /rest/admin/application-version
-              port: 3000
-            initialDelaySeconds: 10
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /rest/admin/application-version
-              port: 3000
-            initialDelaySeconds: 15
-            periodSeconds: 10
+              mountPath: /juice-shop/data
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: csaf
+              mountPath: /juice-shop/.well-known/csaf
       volumes:
         - name: tmp
           emptyDir: {}
         - name: logs
           emptyDir: {}
+        - name: ftp
+          emptyDir: {}
         - name: data
           emptyDir: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: juice-shop
-  namespace: juice-shop
-spec:
-  selector:
-    app: juice-shop
-  ports:
-    - port: 3000
-      targetPort: 3000
+        - name: frontend-dist
+          emptyDir: {}
+        - name: csaf
+          emptyDir: {}
