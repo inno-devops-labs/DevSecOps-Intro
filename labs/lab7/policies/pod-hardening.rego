@@ -1,16 +1,15 @@
 package main
 
-# Ожидаемый путь к спеке пода внутри Deployment
 pod_spec := input.spec.template.spec
 
-# 1. Pod-level: runAsNonRoot должен быть true
+# 1. Pod-level:
 deny[msg] {
     input.kind == "Deployment"
     not pod_spec.securityContext.runAsNonRoot == true
     msg := sprintf("%s: pod securityContext.runAsNonRoot must be true", [input.metadata.name])
 }
 
-# 2. Container-level: readOnlyRootFilesystem должен быть true у КАЖДОГО контейнера
+# 2. Container-level: 
 deny[msg] {
     input.kind == "Deployment"
     container := pod_spec.containers[_]
@@ -18,7 +17,7 @@ deny[msg] {
     msg := sprintf("%s: container '%s' must set securityContext.readOnlyRootFilesystem = true", [input.metadata.name, container.name])
 }
 
-# 3. Container-level: allowPrivilegeEscalation должен быть false у КАЖДОГО контейнера
+# 3. Container-level:
 deny[msg] {
     input.kind == "Deployment"
     container := pod_spec.containers[_]
@@ -26,7 +25,7 @@ deny[msg] {
     msg := sprintf("%s: container '%s' must set securityContext.allowPrivilegeEscalation = false", [input.metadata.name, container.name])
 }
 
-# 4. Container-level: capabilities.drop должен содержать "ALL"
+# 4. Container-level: 
 deny[msg] {
     input.kind == "Deployment"
     container := pod_spec.containers[_]
@@ -34,7 +33,7 @@ deny[msg] {
     msg := sprintf("%s: container '%s' must drop ALL capabilities (securityContext.capabilities.drop = [\"ALL\"])", [input.metadata.name, container.name])
 }
 
-# 5. (доп. страховка) securityContext вообще отсутствует у контейнера
+# 5.
 deny[msg] {
     input.kind == "Deployment"
     container := pod_spec.containers[_]
