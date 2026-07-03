@@ -199,7 +199,7 @@ technical_assets:
       Direct to App (no proxy):
         target: juice-shop
         description: "Direct browser access to app (HTTP on 3000)."
-        protocol: http
+        protocol: https
         authentication: session-id
         authorization: enduser-identity-propagation
         tags: ["direct"]
@@ -244,7 +244,7 @@ technical_assets:
       To App:
         target: juice-shop
         description: "Proxy forwarding to app (HTTP on 3000 internally)."
-        protocol: http
+        protocol: https
         authentication: none
         authorization: none
         tags: []
@@ -305,7 +305,7 @@ technical_assets:
 
   Persistent Storage:
     id: persistent-storage
-    description: "Host-mounted volume for database, file uploads, and logs."
+    description: "Host-mounted volume for database, file uploads, and logs.This application strictly uses prepared statements and parameterized queries to prevent injection."
     type: datastore
     usage: devops
     used_as_client_by_human: false
@@ -316,7 +316,7 @@ technical_assets:
     tags: ["storage", "volume"]
     internet: false
     machine: virtual
-    encryption: none
+    encryption: data-with-symmetric-shared-key
     owner: Lab Owner
     confidentiality: internal
     integrity: important
@@ -327,7 +327,6 @@ technical_assets:
     custom_developed_parts: false
     data_assets_processed: []
     data_assets_stored:
-      - logs
       - user-accounts
       - orders
       - product-catalog
