@@ -12,13 +12,13 @@
 | Rule ID       | Count | What it checks |
 |---------------|------:|----------------|
 | CKV_AWS_289   | 4     | IAM policies must not allow permissions management without constraints |
-| CKV_AWS_355   | 4     | No IAM policy document allows "*" as a resource for restrictable actions |
-| CKV_AWS_23    | 3     | Ensure every security group rule has a description |
+| CKV_AWS_355   | 4     | No IAM policy document allows "*" as a resource |
+| CKV_AWS_23    | 3     | Every security group rule must have a description |
 | CKV_AWS_288   | 3     | IAM policies must not allow data exfiltration |
 | CKV_AWS_290   | 3     | IAM policies must not allow write access without constraints |
 
 ### Module-leverage analysis
-Four of the five most frequent rules target IAM policies (CKV_AWS_289, 355, 288, 290). If a shared IAM module replaces `Resource: "*"` and `Action: "*"` with scoped permissions, these **14 findings** (4+4+3+3) disappear with a single module-level fix. Adding a mandatory description to all security group rules (CKV_AWS_23) brings the total to 17 out of 78 failed checks — roughly 22% of all problems solved by changing two module defaults.
+Fixing the shared IAM module (scoping `Resource` and `Action`) eliminates **14 findings** (CKV_AWS_289/355/288/290). Adding descriptions to security group rules covers 3 more — **22% of failures with two module changes**.
 
 ---
 
@@ -29,7 +29,6 @@ Four of the five most frequent rules target IAM policies (CKV_AWS_289, 355, 288,
 |----------|------:|
 | HIGH     | 9     |
 | LOW      | 1     |
-| TOTAL    | 10    |
 
 ### Pulumi — severity breakdown
 | Severity | Count |
@@ -38,17 +37,40 @@ Four of the five most frequent rules target IAM policies (CKV_AWS_289, 355, 288,
 | HIGH     | 2     |
 | MEDIUM   | 1     |
 | INFO     | 2     |
-| TOTAL    | 6     |
 
-### Top KICS queries — Ansible (by frequency)
+### Top KICS queries — Ansible
 | Query | Severity | Files |
 |-------|----------|------:|
-| Passwords And Secrets - Generic Password | HIGH | 6 |
-| Passwords And Secrets - Password in URL | HIGH | 2 |
-| Passwords And Secrets - Generic Secret | HIGH | 1 |
+| Generic Password | HIGH | 6 |
+| Password in URL | HIGH | 2 |
+| Generic Secret | HIGH | 1 |
 | Unpinned Package Version | LOW | 1 |
 
-### Checkov vs KICS — when to use which?
-- **Checkov excels at Terraform:** with 2,500+ built-in policies and graph-based checks (CKV2_), it provides broad coverage of AWS resources (IAM, S3, RDS, security groups) and makes it easy to identify high-leverage module fixes.
-- **KICS excels at Ansible and Pulumi:** it natively parses Ansible playbooks, inventory files, and Pulumi YAML, catching hardcoded secrets and configuration gaps (e.g., unencrypted DynamoDB, EC2 without monitoring) that Checkov cannot see because it lacks those parsers.
-- **A finding only KICS caught:** KICS flagged "DynamoDB Table Not Encrypted" (HIGH) in Pulumi — a basic absence of encryption. Checkov's closest Terraform rule (CKV_AWS_119) only checks the type of encryption key (KMS vs. AWS managed), not whether encryption exists at all.
+### Checkov vs KICS
+- **Checkov** covers Terraform broadly with 2,500+ rules and graph checks.
+- **KICS** natively parses Ansible/Pulumi and catches secrets/config gaps Checkov misses.
+- **Unique find:** KICS found "DynamoDB Table Not Encrypted" in Pulumi; Checkov only checks key type, not absence.
+
+---
+
+## Bonus: Custom Checkov Policy
+
+### Policy (`labs/lab6/policies/my-custom-policy.yaml`)
+```yaml
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure S3 bucket has lifecycle configuration
+  category: GENERAL_SECURITY
+  severity: HIGH
+definition:
+  and:
+    - cond_type: attribute
+      resource_types:
+        - aws_s3_bucket
+      attribute: lifecycle_rule
+      operator: exists
+### Result
+Both S3 buckets (`public_data`, `unencrypted_data`) flagged — **2/2 FAILED**.
+
+### Why it matters
+Prevents unlimited accumulation of old versions (cost/blast radius). Supports CIS 2.1.1 and NIST SC-28. Relevant to Capital One 2019 breach.
