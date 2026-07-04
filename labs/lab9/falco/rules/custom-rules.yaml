@@ -1,0 +1,10 @@
+- rule: "Possible Cryptominer Activity"
+  desc: "Detects execution of known miner processes"
+  condition: >
+    evt.type = execve and 
+    container.id != "host" and 
+    (proc.name in (xmrig, ethminer, cgminer, t-rex, claymore) or 
+    proc.cmdline contains "xmrig")
+  output: "Possible Cryptominer Activity detected (container=%container.name process=%proc.name cmdline=%proc.cmdline)"
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
