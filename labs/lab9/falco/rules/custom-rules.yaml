@@ -1,0 +1,24 @@
+- rule: "Write to /tmp by container"
+  desc: Detects execution of processes that write to /tmp inside a container, indicating possible malware staging or log tampering.
+  condition: >
+    spawned_process and
+    container and
+    proc.cmdline contains "/tmp" and
+    not proc.name in (apt, apt-get, dpkg, yum, pip, pip3, sh, bash)
+  output: >
+    Process referencing /tmp spawned in container
+    (container=%container.name user=%user.name cmd=%proc.cmdline parent=%proc.pname)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: "Possible Cryptominer Activity"
+  desc: Detects known cryptominer process names inside a container.
+  condition: >
+    spawned_process and
+    container and
+    proc.name in (xmrig, ethminer, cgminer, t-rex, claymore, nbminer, gminer, minerd, cpuminer)
+  output: >
+    Possible cryptominer process detected in container
+    (container=%container.name proc=%proc.name cmdline=%proc.cmdline parent=%proc.pname)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
