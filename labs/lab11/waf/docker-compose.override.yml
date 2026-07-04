@@ -1,0 +1,20 @@
+services:
+  # ModSecurity v3 + OWASP CRS (nginx connector) — blocks attacks before they reach Juice Shop
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "On"
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+    ports:
+      - "8080:8080"   # WAF HTTP endpoint (separate from Nginx HTTPS on 443)
+    volumes:
+      - ./waf/logs:/var/log/modsec:rw
