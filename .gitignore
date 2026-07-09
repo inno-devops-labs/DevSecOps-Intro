@@ -29,3 +29,7 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# Lab 10 local DefectDojo instance
+labs/lab10/work/dd/
+labs/lab10/work/*.json
