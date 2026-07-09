@@ -22,12 +22,12 @@ deny contains msg if {
 
 deny contains msg if {
   svc := containers[_]
-  not has_value(svc.cap_drop, "ALL")
+  not has_value(object.get(svc, "cap_drop", []), "ALL")
   msg := "services must drop ALL capabilities"
 }
 
 warn contains msg if {
   svc := containers[_]
-  not has_value(svc.security_opt, "no-new-privileges:true")
+  not has_value(object.get(svc, "security_opt", []), "no-new-privileges:true")
   msg := "services should enable no-new-privileges"
 }
