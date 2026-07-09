@@ -1,12 +1,12 @@
-\# Lab 9 — Submission
+# Lab 9 — Submission
 
 
 
-\## Task 1: Runtime Detection with Falco
+## Task 1: Runtime Detection with Falco
 
 
 
-\### Baseline alert A — Terminal shell in container
+### Baseline alert A — Terminal shell in container
 
 JSON alert from Falco logs (paste the most relevant lines):
 
@@ -16,7 +16,7 @@ JSON alert from Falco logs (paste the most relevant lines):
 
 ```
 
-\### Baseline alert B — Read sensitive file untrusted (cat /etc/shadow)
+### Baseline alert B — Read sensitive file untrusted (cat /etc/shadow)
 
 ```json
 
@@ -24,7 +24,7 @@ JSON alert from Falco logs (paste the most relevant lines):
 
 ```
 
-\### Custom rule (labs/lab9/falco/rules/custom-rules.yaml)
+### Custom rule (labs/lab9/falco/rules/custom-rules.yaml)
 
 ```yaml
 
@@ -42,7 +42,7 @@ JSON alert from Falco logs (paste the most relevant lines):
 
 ```
 
-\### Custom rule fired
+### Custom rule fired
 
 Falco log line showing your custom rule:
 
@@ -52,15 +52,15 @@ Falco log line showing your custom rule:
 
 ```
 
-\### Tuning consideration
+### Tuning consideration
 
 Using the exceptions: block is the preferred tuning approach for specific known-good processes (like logging frameworks) because it allows explicitly defining allowed behavior without cluttering the main condition. If the list of exceptions grows too large or is too specific to a single process name, using and not proc.name=... directly in the condition might be simpler, but exceptions are more readable and maintainable for complex rules.
 
 
 
-\## Task 2: Conftest Policy-as-Code
+## Task 2: Conftest Policy-as-Code
 
-\### My policy file (labs/lab9/policies/extra/hardening.rego)
+### My policy file (labs/lab9/policies/extra/hardening.rego)
 
 ```rego
 
@@ -112,7 +112,7 @@ deny contains msg if {
 
 ```
 
-\### Compliant manifest passes (juice-hardened.yaml)
+### Compliant manifest passes (juice-hardened.yaml)
 
 ```text
 
@@ -120,7 +120,7 @@ deny contains msg if {
 
 ```
 
-\### Non-compliant manifest fails (juice-unhardened.yaml)
+### Non-compliant manifest fails (juice-unhardened.yaml)
 
 ```text
 
@@ -134,7 +134,7 @@ FAIL - /project/labs/lab9/manifests/k8s/juice-unhardened.yaml - main - Container
 
 ```
 
-\### Compose policy generalizes (shipped compose-security.rego)
+### Compose policy generalizes (shipped compose-security.rego)
 
 ```text
 
@@ -156,15 +156,15 @@ FAIL - /project/labs/lab9/results/bad-compose.yml - compose.security - services 
 
 ```
 
-\### Why CI-time vs admission-time
+### Why CI-time vs admission-time
 
 Running Conftest at CI-time provides immediate feedback to developers during PR review, preventing insecure manifests from ever being merged. Admission-time acts as a defense-in-depth backstop at the cluster API server (kubectl apply), catching any manifests that bypassed CI (e.g., manual kubectl commands), ensuring no non-compliant resources run in production.
 
 
 
-\## Bonus: Cryptominer Detection Rule
+## Bonus: Cryptominer Detection Rule
 
-\### Rule
+### Rule
 
 ```yaml
 
@@ -184,7 +184,7 @@ Running Conftest at CI-time provides immediate feedback to developers during PR 
 
 ```
 
-\### Triggered alert
+### Triggered alert
 
 ```json
 
@@ -192,7 +192,7 @@ Running Conftest at CI-time provides immediate feedback to developers during PR 
 
 ```
 
-\### Reflection
+### Reflection
 
 I used the fd.rport (remote port) matching known mining pool ports (like 3333) as the network indicator. This misses obfuscated mining over HTTPS (port 443) or DNS-based mining, which would require payload inspection or DNS query analysis. Integrating this with the Lecture 9 SLA matrix, this rule provides high-signal runtime detection but requires tuning to avoid false positives from legitimate tools using those ports.
 
