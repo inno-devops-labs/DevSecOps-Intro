@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: good-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: good-pod
+  template:
+    metadata:
+      labels:
+        app: good-pod
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+        - name: app
+          image: alpine@sha256:91ef0af9f435b5d41d6e8dac8e63f146d1c7b4a5f0a0c0e8e8e8e8e8e8e8e8e8
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
