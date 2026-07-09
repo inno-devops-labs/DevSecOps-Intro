@@ -1,0 +1,5 @@
+[allowlist]
+  description = "Allow documentation examples in submissions"
+  paths = [
+    '''submissions/lab3\.md''',
+  ]
