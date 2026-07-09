@@ -1,0 +1,36 @@
+name: Lab 1 Smoke Test
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v20.0.0
+        ports:
+          - 3000:3000
+    steps:
+      - name: Wait for Juice Shop to start
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version >/dev/null; then
+              echo "Juice Shop ready after attempt $i"
+              curl --silent http://localhost:3000/rest/admin/application-version
+              exit 0
+            fi
+            echo "Attempt $i/30 — not ready yet, sleeping 2s..."
+            sleep 2
+          done
+          echo "Juice Shop did not start within 60 seconds"
+          exit 1
+
+      - name: Smoke test homepage (HTTP 200)
+        run: |
+          curl --silent --fail --include http://localhost:3000/ | tee /tmp/homepage-response.txt | head -20
+          grep -q "HTTP/.* 200" /tmp/homepage-response.txt
