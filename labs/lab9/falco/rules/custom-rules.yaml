@@ -1,0 +1,47 @@
+# Lab 9 — custom Falco rules
+
+# Task 1 (9.4): detect any write to /tmp from inside a container.
+# Reuses Falco's shipped macros: open_write (a file opened for writing)
+# and container (container.id != host).
+- rule: Write to /tmp by container
+  desc: >
+    A process running inside a container wrote to a file under /tmp.
+    Often benign (build/cache/logging), but /tmp writes are a common
+    staging area for dropped payloads, so we surface them as drift.
+  condition: >
+    open_write
+    and container
+    and fd.name startswith /tmp/
+  output: >
+    Write to /tmp inside container
+    (container=%container.name user=%user.name file=%fd.name cmd=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+# Bonus (B.2): detect a cryptominer network/process pattern.
+# Combines TWO indicators (OR'd, so either alone is enough to alert):
+#   1. an outbound connection to a well-known mining-pool port, and
+#   2. a process whose name matches a well-known miner binary.
+- list: cryptominer_ports
+  items: [3333, 4444, 5555, 7777, 14444, 19999, 45700]
+
+- list: cryptominer_procs
+  items: [xmrig, ethminer, cgminer, t-rex, claymore, minerd, xmr-stak]
+
+- rule: Possible Cryptominer Activity
+  desc: >
+    A container either connected to a port commonly used by mining pools
+    or ran a process named like a known miner. Classic post-exploitation
+    behaviour (e.g. the Tesla 2018 exposed-dashboard incident).
+  condition: >
+    container
+    and (
+      (evt.type in (connect, sendto, sendmsg) and fd.sport in (cryptominer_ports))
+      or proc.name in (cryptominer_procs)
+    )
+  output: >
+    Possible cryptominer activity
+    (container=%container.name process=%proc.name cmd=%proc.cmdline
+     target=%fd.name sport=%fd.sport)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
