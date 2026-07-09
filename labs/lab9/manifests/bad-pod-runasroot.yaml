@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad-pod-runasroot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bad-pod-runasroot
+  template:
+    metadata:
+      labels:
+        app: bad-pod-runasroot
+    spec:
+      containers:
+        - name: app
+          image: alpine@sha256:91ef0af9f435b5d41d6e8dac8e63f146d1c7b4a5f0a0c0e8e8e8e8e8e8e8e8e8
+          securityContext:
+            runAsNonRoot: false
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            limits:
+              memory: "128Mi"
