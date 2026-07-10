@@ -1,0 +1,41 @@
+- rule: Write to /tmp by container
+  desc: >
+    Detects any process inside a container writing to a file under /tmp.
+    Container filesystems should be immutable at runtime; writes to /tmp
+    are a common dropper/staging indicator.
+  condition: >
+    open_write
+    and container
+    and fd.name startswith /tmp/
+  output: >
+    Write under /tmp detected in container
+    (file=%fd.name user=%user.name command=%proc.cmdline
+     container=%container.name id=%container.id image=%container.image.repository)
+  priority: WARNING
+  tags: [container, drift, filesystem]
+
+- rule: Possible Cryptominer Activity
+  desc: >
+    Detects a container process whose executable path or name matches a
+    known cryptominer, OR an outbound connection to a port commonly used
+    by mining pools. Two independent indicators raise confidence over
+    either signal alone.
+  condition: >
+    container
+    and (
+      (evt.type = connect and fd.rport in (3333, 4444, 5555, 7777, 14444, 19999, 45700))
+      or
+      (spawned_process and (
+        proc.name in (xmrig, ethminer, cgminer, t-rex, claymore, minerd, nbminer)
+        or proc.exepath endswith /xmrig
+        or proc.exepath endswith /minerd
+        or proc.cmdline contains "stratum+tcp"
+      ))
+    )
+  output: >
+    Possible cryptominer activity in container
+    (process=%proc.name exe=%proc.exepath command=%proc.cmdline
+     connection=%fd.name rport=%fd.rport container=%container.name
+     id=%container.id image=%container.image.repository)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control, T1496]
