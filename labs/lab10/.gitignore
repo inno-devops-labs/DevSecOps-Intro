@@ -1,0 +1,5 @@
+work/dd/
+work/*.log
+work/dd-ids.env
+imports/env.sh
+imports/import-*.json
