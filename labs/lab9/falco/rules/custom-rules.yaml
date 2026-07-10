@@ -1,0 +1,35 @@
+- list: mining_pool_ports
+  items: [3333, 4444, 5555, 7777, 14444, 19999, 45700]
+
+- list: known_miner_processes
+  items: [xmrig, ethminer, cgminer, t-rex, claymore]
+
+- rule: Write to /tmp by container
+  desc: Detect creation or modification of files below /tmp from inside a container
+  condition: >
+    open_write
+    and container.id != host
+    and fd.name startswith /tmp/
+  output: >
+    Write to /tmp by container
+    (container=%container.name container_id=%container.id
+    user=%user.name process=%proc.name command=%proc.cmdline file=%fd.name)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Possible Cryptominer Activity
+  desc: Detect a container connecting to a common mining-pool port or using a known miner process name
+  condition: >
+    container.id != host
+    and evt.type=connect
+    and (
+      fd.rport in (mining_pool_ports)
+      or proc.name in (known_miner_processes)
+    )
+  output: >
+    Possible Cryptominer Activity
+    (container=%container.name container_id=%container.id
+    process=%proc.name command=%proc.cmdline
+    server=%fd.sip:%fd.sport remote=%fd.rip:%fd.rport fd=%fd.name)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
