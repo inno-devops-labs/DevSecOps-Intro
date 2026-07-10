@@ -1,0 +1,34 @@
+- rule: Write to /tmp by container
+  desc: Detect file writes to /tmp originating inside any container (not the host)
+  condition: >
+    open_write
+    and container.id != host
+    and fd.name startswith /tmp/
+  output: >
+    Write to /tmp inside container
+    (container=%container.name user=%user.name file=%fd.name cmd=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Possible Cryptominer Activity
+  desc: >
+    Detect potential cryptomining by combining independent indicators from the
+    lab threat table: outbound connection to a known mining-pool port, a DNS
+    lookup of a known pool hostname, or a known miner process name. Any single
+    indicator is sufficient to alert (OR-composition) since these signals appear
+    at different stages of a mining compromise.
+  condition: >
+    container.id != host
+    and (
+      (evt.type in (connect, sendto) and (fd.sport in (3333, 4444, 5555, 7777, 14444, 19999, 45700) or fd.rport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)))
+      or
+      (evt.type = connect and fd.sockfamily = ip and fd.cip.name contains "minexmr")
+      or
+      (evt.type in (execve, execveat) and proc.name in (xmrig, ethminer, cgminer, t-rex, claymore, minerd, cpuminer))
+    )
+  output: >
+    Possible cryptominer activity in container
+    (container=%container.name process=%proc.name cmd=%proc.cmdline
+     connection=%fd.name sport=%fd.sport user=%user.name)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
