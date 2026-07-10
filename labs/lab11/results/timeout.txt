@@ -1,0 +1,8 @@
+Connecting to ::1
+Can't use SSL_get_servername
+depth=0 CN=juice.local
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN=juice.local
+verify return:1
+A8330000:error:0A000126:SSL routines::unexpected eof while reading:../openssl-3.5.5/ssl/record/rec_layer_s3.c:698:

@@ -1,0 +1,16 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      BACKEND: "http://juice:3000"
+      PARANOIA: "1"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsecurity/audit.log"
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./waf-logs:/var/log/modsecurity:rw

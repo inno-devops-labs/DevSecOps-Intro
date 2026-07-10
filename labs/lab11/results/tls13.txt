@@ -1,0 +1,8 @@
+Connecting to ::1
+Can't use SSL_get_servername
+depth=0 CN=juice.local
+verify error:num=18:self-signed certificate
+CONNECTION ESTABLISHED
+Protocol version: TLSv1.3
+Ciphersuite: TLS_AES_256_GCM_SHA384
+Peer certificate: CN=juice.local
