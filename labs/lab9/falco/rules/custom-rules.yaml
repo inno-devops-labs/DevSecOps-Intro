@@ -1,0 +1,36 @@
+- rule: Write to /tmp by container
+  desc: Detect successful file opens for writing below /tmp from inside a container
+  condition: >
+    open_write and
+    container.id != host and
+    fd.name startswith /tmp/
+  output: >
+    Write to /tmp by container
+    (container=%container.name user=%user.name file=%fd.name command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+  exceptions:
+    - name: allowed_package_manager_tmp_writes
+      fields: proc.name
+      comps: in
+      values: [apk]
+
+- rule: Possible Cryptominer Activity
+  desc: Detect successful container connections to common mining-pool ports or known miner process execution
+  condition: >
+    container.id != host and
+    (
+      (
+        evt.type = connect and
+        evt.dir = < and
+        fd.sockfamily = ip and
+        fd.sport in (3333, 4444, 5555, 7777, 14444, 19999, 45700) and
+        (evt.rawres >= 0 or evt.res = EINPROGRESS)
+      ) or
+      (spawned_process and proc.name in (xmrig, ethminer, cgminer, "t-rex", claymore))
+    )
+  output: >
+    Possible Cryptominer Activity
+    (container=%container.name process=%proc.name command=%proc.cmdline target=%fd.name server_ip=%fd.sip server_port=%fd.sport result=%evt.res)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
