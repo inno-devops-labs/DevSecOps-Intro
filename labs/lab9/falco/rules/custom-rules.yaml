@@ -1,0 +1,39 @@
+- rule: Container Write Activity in /tmp
+  desc: Identify processes that create or modify files under /tmp within a container
+  condition: open_write and container.id != host and fd.name startswith /tmp/
+  output: Container process wrote to /tmp (container=%container.name user=%user.name file=%fd.name command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- list: recognized_mining_processes
+  items: [xmrig, ethminer, cgminer, t-rex, claymore]
+
+- rule: Suspected Cryptocurrency Mining Behavior
+  desc: Identify container activity involving typical mining-pool ports or recognized cryptocurrency-mining processes
+  condition: >
+    container.id != host
+    and
+    (
+      (
+        evt.type=connect
+        and
+        (
+          fd.sport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)
+          or evt.args endswith ":3333"
+          or evt.args endswith ":4444"
+          or evt.args endswith ":5555"
+          or evt.args endswith ":7777"
+          or evt.args endswith ":14444"
+          or evt.args endswith ":19999"
+          or evt.args endswith ":45700"
+        )
+      )
+      or
+      (
+        evt.type in (execve, execveat)
+        and proc.name in (recognized_mining_processes)
+      )
+    )
+  output: Suspected cryptocurrency-mining behavior detected (container=%container.name process=%proc.name command=%proc.cmdline target=%evt.args connection=%fd.name)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
