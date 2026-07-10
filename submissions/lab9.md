@@ -32,7 +32,7 @@ Falco log line showing your custom rule:
 ### Tuning consideration (Lecture 9 slide 8)
 Your custom "write to /tmp" rule will fire on legitimate uses too (logging frameworks
 often write to /tmp). What's your tuning approach?
-*Ответ:* Мой подход заключается в использовании блока `exceptions:` для белого списка известных легитимных приложений, либо в явном исключении процессов в самом правиле через `and not proc.name in (fluentd, logstash, ...)`. Это позволяет эффективно снизить количество ложных срабатываний и сфокусироваться только на подозрительной активности.
+*Answer:* My approach involves using the `exceptions:` block to whitelist known legitimate applications, or explicitly excluding processes in the rule itself via `and not proc.name in (fluentd, logstash, ...)`. This effectively reduces false positives and focuses only on suspicious activity.
 
 ---
 
@@ -101,7 +101,7 @@ FAIL - bad-compose.yml - compose.security - services must set read_only: true
 ```
 
 ### Why CI-time vs admission-time (Lecture 9 slide 9)
-*Ответ:* CI-time проверки Conftest предотвращают попадание манифестов с плохой безопасностью в git-репозиторий и обеспечивают немедленную обратную связь для разработчиков. Проверки Admission-time выполняются перед деплоем и обеспечивают строгую гарантию того, что никакие изменения в кластере, даже вне CI, не нарушают политики безопасности. Комбинация этих двух методов обеспечивает мощную защиту эшелонированного типа (defense in depth).
+*Answer:* CI-time Conftest checks prevent manifests with poor security from entering the git repository and provide immediate feedback to developers. Admission-time checks are executed before deployment and provide a strict guarantee that no cluster changes, even outside of CI, violate security policies. The combination of these two methods provides a powerful defense in depth.
 
 ---
 
@@ -124,8 +124,8 @@ FAIL - bad-compose.yml - compose.security - services must set read_only: true
 
 ### Reflection (2-3 sentences)
 - Which 2 indicators did you use and why?
-*Ответ:* Я использовал порты известных пулов (fd.sport) и названия распространенных программ-майнеров (proc.name). Эти индикаторы покрывают большинство стандартных атак: как скрипткидди, использующих стандартные программы, так и модифицированные программы, обращающиеся на стандартные порты пулов.
+*Answer:* I used known pool ports (fd.sport) and names of common miner programs (proc.name). These indicators cover most standard attacks: both script kiddies using standard programs and modified programs communicating with standard pool ports.
 - What does this miss? (i.e., the false-negative case — e.g., obfuscated mining over HTTPS)
-*Ответ:* Это правило не обнаружит майнеры, которые подключаются через стандартные порты вроде HTTPS (443) или перенаправляют трафик через прокси с нестандартными портами. Также оно пропустит майнеры с переименованным бинарным файлом, которые используют неизвестные пулы, или майнинг на основе веб-сценариев.
+*Answer:* This rule will not detect miners connecting over standard ports like HTTPS (443) or routing traffic through proxies with non-standard ports. It will also miss miners with renamed binaries using unknown pools, or web-script-based mining.
 - How would you combine this with the Lecture 9 SLA matrix?
-*Ответ:* При срабатывании алерта (приоритет CRITICAL) необходимо немедленно автоматизировать изоляцию пода или удаление контейнера, так как это явный признак C2-активности или исполнения вредоноса. Для расследования следует использовать дамп памяти, поскольку майнер может быстро потреблять ресурсы и представлять финансовый риск для инфраструктуры.
+*Answer:* Upon alert trigger (CRITICAL priority), pod isolation or container termination must be immediately automated, as this is a clear sign of C2 activity or malware execution. Memory dumps should be used for investigation, as a miner can rapidly consume resources and pose a financial risk to the infrastructure.
