@@ -1,0 +1,32 @@
+- rule: Write to /tmp by container
+  desc: Detects a process inside a container writing to /tmp
+  condition: >
+    open_write and
+    container.id != host and
+    fd.name startswith /tmp/
+  output: >
+    Write to /tmp by container (container=%container.name user=%user.name
+    file=%fd.name proc=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- list: miner_ports
+  items: [3333, 4444, 5555, 7777, 14444, 19999, 45700]
+
+- list: miner_proc_names
+  items: [xmrig, ethminer, cgminer, t-rex, claymore, minerd]
+
+- rule: Possible Cryptominer Activity
+  desc: >
+    Container making an outbound connection to a known mining-pool port, or
+    running a known cryptominer process. Combines two indicators (destination
+    port + process name) so it fires on either signal.
+  condition: >
+    evt.type = connect and
+    container.id != host and
+    (fd.sport in (miner_ports) or proc.name in (miner_proc_names))
+  output: >
+    Possible cryptominer activity (container=%container.name proc=%proc.cmdline
+    connection=%fd.name sport=%fd.sport)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
