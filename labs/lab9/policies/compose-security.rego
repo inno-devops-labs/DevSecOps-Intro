@@ -1,5 +1,7 @@
 package compose.security
 
+import rego.v1
+
 containers := input.services
 
 # Helper: true if array arr contains value v
