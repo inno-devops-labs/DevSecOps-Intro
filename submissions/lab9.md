@@ -54,7 +54,7 @@ Falco log line showing your custom rule:
 ```
 
 ### Tuning consideration (Lecture 9 slide 8)
-Легитимные процессы (Java, Node.js, логгеры) тоже пишут в `/tmp`, поэтому правило будет шуметь. Я бы добавила `exceptions:` блок с `comps` по `proc.name` и `container.image.repository` для известных образов, а для остальных — `and not proc.name in (java, node)` в condition. Так мы отсекаем ожидаемое поведение без ослабления детекта для неизвестных контейнеров.
+Legitimate processes (Java, Node.js, loggers) also write to `/tmp`, so the rule will generate noise. I would add an `exceptions:` block with `comps` for `proc.name` and `container.image.repository` for known images, and for the rest — `and not proc.name in (java, node)` in the condition. This filters out expected behavior without weakening detection for unknown containers.
 
 ---
 
@@ -136,7 +136,7 @@ FAIL - bad-compose.yml - services must drop ALL capabilities
 ```
 
 ### Why CI-time vs admission-time (Lecture 9 slide 9)
-Conftest в CI ловит нарушения на этапе PR — до мержа и деплоя, это дешевле и быстрее для разработчиков. Admission-time (Kyverno, OPA Gatekeeper) блокирует `kubectl apply` в кластере, даже если кто-то обошёл CI. Запуск обоих даёт defense-in-depth: CI предотвращает попадание плохих манифестов в репозиторий, admission — последний рубеж на границе кластера.
+Conftest in CI catches violations at PR time — before merge and deployment, which is cheaper and faster for developers. Admission-time (Kyverno, OPA Gatekeeper) blocks `kubectl apply` in the cluster, even if someone bypassed CI. Running both provides defense-in-depth: CI prevents bad manifests from entering the repository, admission is the last line of defense at the cluster boundary.
 
 ---
 
@@ -166,6 +166,7 @@ Conftest в CI ловит нарушения на этапе PR — до мер�
 ```
 
 ### Reflection (2-3 sentences)
-- Использовала два индикатора: исходящее соединение на типичные mining-pool порты (3333, 4444 и др.) и запуск известных miner-процессов (xmrig, ethminer). Порт ловит сетевой паттерн даже при переименованном бинарнике, имя процесса — быстрый сигнал при стандартных майнерах.
-- Пропускает: майнинг через HTTPS/WebSocket на 443, пулы на нестандартных портах, переименованные/упакованные бинарники.
-- По SLA-матрице из лекции 9: CRITICAL-алерт → немедленный triage (остановка пода / изоляция сети), затем корреляция с baseline Falco-правилами и эскалация в incident response в течение минут, а не часов.
+- I used two indicators: outgoing connections to typical mining pool ports (3333, 4444, etc.) and execution of known miner processes (xmrig, ethminer). The port-based detection catches the network pattern even if the binary is renamed, while process name provides a fast signal for standard miners.
+- This approach may miss: mining via HTTPS/WebSocket on port 443, pools using non-standard ports, or renamed/packed binaries.
+- According to the SLA matrix from Lecture 9: CRITICAL alert → immediate triage (pod termination / network isolation), then correlation with baseline Falco rules and escalation to incident response within minutes, not hours.
+```
