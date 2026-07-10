@@ -1,0 +1,19 @@
+- rule: Write to tmp by container
+  desc: Detect writes to /tmp via shell redirect in a container
+  condition: >
+    evt.type = execve 
+    and container 
+    and proc.cmdline contains "> /tmp/"
+  output: "Write to /tmp detected (user=%user.name cmd=%proc.cmdline container=%container.name)"
+  priority: WARNING
+  tags: [container, drift, custom]
+
+- rule: Reconnaissance in container
+  desc: Detect whoami/id commands in a container
+  condition: >
+    evt.type = execve 
+    and container 
+    and proc.cmdline contains "whoami"
+  output: "Reconnaissance detected (user=%user.name cmd=%proc.cmdline container=%container.name)"
+  priority: WARNING
+  tags: [container, recon, custom]
