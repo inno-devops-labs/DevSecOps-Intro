@@ -29,3 +29,6 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# Lab 9 — regeneratable scan outputs
+labs/lab9/results/

