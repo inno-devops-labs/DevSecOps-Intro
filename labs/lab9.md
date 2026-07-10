@@ -41,7 +41,7 @@ You need:
 - **Docker** (Falco runs containerized)
 - **`jq`**
 - **`conftest`** v0.68.x — `brew install conftest` (Lab 7 bonus used this if you did it)
-- **Linux host with kernel ≥ 5.8** (for modern eBPF). On macOS/Windows, Docker Desktop's Linux VM is fine
+- **A Linux kernel with eBPF + BTF** (for Falco's modern driver). Native Linux and WSL2 (kernel ≥ 5.8) work out of the box. **macOS — including Apple Silicon — does NOT work through Docker Desktop**: its LinuxKit VM kernel ships without BTF, so Falco runs but detects nothing. Use **Colima** instead — see Common Pitfalls → "macOS / Apple Silicon"
 
 ```bash
 git switch main && git pull
@@ -54,8 +54,8 @@ mkdir -p labs/lab9/{falco/{rules,logs},policies/extra,analysis}
 ```
 
 > **Plumbing provided** (already in `labs/lab9/`):
-> - [`labs/lab9/manifests/`](lab9/manifests/) — sample K8s manifests of varying compliance (pass + fail cases)
-> - [`labs/lab9/policies/`](lab9/policies/) — starter Conftest policies (you'll extend them)
+> - [`labs/lab9/manifests/`](lab9/manifests/) — `k8s/juice-{hardened,unhardened}.yaml` + `compose/juice-compose.yml`
+> - [`labs/lab9/policies/`](lab9/policies/) — starter Conftest policies for both shapes (`k8s-security.rego`, `compose-security.rego`)
 >
 > Read these files before writing your own — they show the Rego style + sample manifest shape.
 
@@ -102,12 +102,12 @@ sleep 5
 # Trigger A: Terminal shell in container — built-in rule
 docker exec -it lab9-target /bin/sh -lc 'echo "shell-in-container test"'
 
-# Trigger B: Container drift — write under /usr/local/bin
-docker exec --user 0 lab9-target /bin/sh -lc 'echo "drift" > /usr/local/bin/drift.txt'
+# Trigger B: Read a sensitive file — built-in "Read sensitive file untrusted" rule
+docker exec lab9-target /bin/sh -lc 'cat /etc/shadow'
 
 # Wait a few seconds, then check Falco alerts
 sleep 3
-grep -E "(Terminal shell|Write below)" labs/lab9/falco/logs/falco.log | head -10
+grep -E "(Terminal shell|Read sensitive file)" labs/lab9/falco/logs/falco.log | head -10
 ```
 
 ### 9.4: Write 1 custom Falco rule
@@ -123,9 +123,10 @@ Create `labs/lab9/falco/rules/custom-rules.yaml`:
 #   - priority: WARNING
 #   - tags: [container, drift]
 #
-# Hint: existing default rules write under /usr/local/bin — yours is similar but
-#       /tmp is a different path. Look at /etc/falco/falco_rules.yaml for the macro
-#       open_write to understand the syntax.
+# Hint: Falco ships the `open_write` macro — read it inside the container:
+#       docker exec falco cat /etc/falco/falco_rules.yaml | grep -A2 'macro: open_write'
+#       Your rule combines open_write + a container check (container.id != host) +
+#       fd.name startswith /tmp/.
 ```
 
 Falco auto-reloads rules in `/etc/falco/rules.d/`. To force reload after editing:
@@ -155,7 +156,7 @@ JSON alert from Falco logs (paste the most relevant lines):
 <paste>
 ```
 
-### Baseline alert B — Container drift (write below binary dir)
+### Baseline alert B — Read sensitive file untrusted (`cat /etc/shadow`)
 ```json
 <paste>
 ```
@@ -183,19 +184,22 @@ often write to /tmp). What's your tuning approach? (2-3 sentences referencing th
 
 > ⏭️ Optional. Skipping won't affect future labs.
 
-**Objective:** Write Rego policies for Conftest that catch ≥3 K8s manifest hardening issues at CI time.
+**Objective:** Write Rego policies for Conftest that catch ≥3 K8s manifest hardening issues at CI time, then run the shipped compose policy to see the same `deny[msg]` skill generalize to a second target shape.
 
 ### 9.7: Read the provided manifests + starter policies
 
 ```bash
-ls labs/lab9/manifests/
-# Should show: good-pod.yaml, bad-pod-runasroot.yaml, bad-pod-no-resources.yaml, etc.
+ls labs/lab9/manifests/k8s/
+# Should show: juice-hardened.yaml (compliant), juice-unhardened.yaml (non-compliant)
 
 ls labs/lab9/policies/
-# Should show: starter Rego files demonstrating Conftest patterns
+# Two starter policies, one per target shape:
+#   k8s-security.rego      (package k8s.security)     — K8s Deployments (input.spec.template.spec)
+#   compose-security.rego  (package compose.security) — docker-compose  (input.services)
 
 cat labs/lab9/policies/*.rego
-# Read the starter policies — your task extends them
+# Read both — note how the SAME deny[msg] pattern adapts to two different input shapes.
+# Task 2 has you EXTEND the K8s one (9.8) and RUN the compose one (9.9).
 ```
 
 ### 9.8: Write your Conftest policies
@@ -219,20 +223,42 @@ Add to `labs/lab9/policies/extra/`:
 #     (requires Rego v1 — recent OPA/Conftest versions)
 ```
 
-### 9.9: Run Conftest against good + bad manifests
+### 9.9: Run Conftest — your K8s policy + the shipped compose policy
+
+**A. Your K8s policy** (`policies/extra/`) against the shipped manifests:
 
 ```bash
-# Good manifest — should PASS
-conftest test labs/lab9/manifests/good-pod.yaml \
+# Compliant manifest — should PASS (0 failures)
+conftest test labs/lab9/manifests/k8s/juice-hardened.yaml \
   --policy labs/lab9/policies/extra/
 
-# Bad manifest #1 — should FAIL with deny messages
-conftest test labs/lab9/manifests/bad-pod-runasroot.yaml \
+# Non-compliant manifest — should FAIL with multiple deny messages
+# (juice-unhardened has no securityContext, no resources, and a :latest tag,
+#  so it trips several of your rules at once)
+conftest test labs/lab9/manifests/k8s/juice-unhardened.yaml \
   --policy labs/lab9/policies/extra/
+```
 
-# Bad manifest #2 — should FAIL
-conftest test labs/lab9/manifests/bad-pod-no-resources.yaml \
-  --policy labs/lab9/policies/extra/
+**B. The shipped compose policy** — same `deny[msg]` skill, a different target shape.
+It declares `package compose.security`, so Conftest needs `--namespace compose.security`
+to find its rules (Conftest defaults to the `main` namespace):
+
+```bash
+# Shipped hardened compose — should PASS
+conftest test labs/lab9/manifests/compose/juice-compose.yml \
+  --policy labs/lab9/policies/compose-security.rego \
+  --namespace compose.security
+
+# A deliberately unhardened compose — should FAIL (no user / read_only / cap_drop)
+cat > /tmp/bad-compose.yml <<'EOF'
+services:
+  app:
+    image: nginx:latest
+    ports: ["8080:80"]
+EOF
+conftest test /tmp/bad-compose.yml \
+  --policy labs/lab9/policies/compose-security.rego \
+  --namespace compose.security
 ```
 
 ### 9.10: Document in `submissions/lab9.md`
@@ -245,19 +271,21 @@ conftest test labs/lab9/manifests/bad-pod-no-resources.yaml \
 <paste>
 ```
 
-### Good manifest passes
+### Compliant manifest passes (juice-hardened.yaml)
 ```
 <paste conftest output — 0 failures>
 ```
 
-### Bad manifest 1 fails (runAsRoot)
+### Non-compliant manifest fails (juice-unhardened.yaml)
 ```
-<paste conftest output — deny messages>
+<paste conftest output — must show ≥2 distinct deny messages,
+ e.g. runAsNonRoot + allowPrivilegeEscalation + dropped capabilities>
 ```
 
-### Bad manifest 2 fails (no resources)
+### Compose policy generalizes (shipped compose-security.rego)
 ```
-<paste conftest output>
+<paste both runs — PASS on juice-compose.yml, FAIL on /tmp/bad-compose.yml —
+ showing the same deny[msg] pattern works on input.services>
 ```
 
 ### Why CI-time vs admission-time (Lecture 9 slide 9)
@@ -279,7 +307,7 @@ Common cryptominer indicators (any 2 are sufficient for the rule):
 
 | Indicator | Pattern |
 |---|---|
-| Connection to mining pool port | `tcp.dport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)` |
+| Connection to mining pool port | `fd.sport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)` |
 | DNS query for known pool hostname | `evt.type=connect and fd.sockfamily=ip and fd.cip.name contains "minexmr"` |
 | Process name matches known miner | `proc.name in (xmrig, ethminer, cgminer, t-rex, claymore)` |
 | High CPU + low network ratio | (Out of scope — needs metrics) |
@@ -361,7 +389,7 @@ PR checklist body:
 
 ```text
 - [x] Task 1 — 2 baseline + 1 custom Falco alert with tuning discussion
-- [ ] Task 2 — ≥3 Conftest rules, passing on good manifest, failing on bad
+- [ ] Task 2 — ≥3 Conftest rules (K8s pass/fail) + shipped compose policy run
 - [ ] Bonus — Cryptominer detection rule with triggered alert
 ```
 
@@ -371,15 +399,16 @@ PR checklist body:
 
 ### Task 1 (6 pts)
 - ✅ Falco running with modern eBPF (verify with `docker logs falco | grep -i engine`)
-- ✅ Both baseline alerts (Terminal shell + Container drift) appear in Falco logs
+- ✅ Both baseline alerts (Terminal shell + Read sensitive file) appear in Falco logs
 - ✅ Custom rule `custom-rules.yaml` exists with required fields
 - ✅ Custom rule fires (visible in Falco log after the test trigger)
 - ✅ Tuning consideration mentions `exceptions:` block OR `and not` pattern with reasoning
 
 ### Task 2 (4 pts)
 - ✅ ≥3 Rego rules in `labs/lab9/policies/extra/`
-- ✅ Good manifest PASSES (0 failures from conftest)
-- ✅ ≥2 bad manifests FAIL with clear deny messages
+- ✅ Compliant manifest (`juice-hardened.yaml`) PASSES (0 failures from conftest)
+- ✅ Non-compliant manifest (`juice-unhardened.yaml`) FAILS with ≥2 distinct deny messages
+- ✅ Shipped `compose-security.rego` run shown — PASS on `juice-compose.yml`, FAIL on a bad compose
 - ✅ CI-vs-admission answer demonstrates understanding of defense-in-depth
 
 ### Bonus Task (2 pts)
@@ -394,7 +423,7 @@ PR checklist body:
 | Task | Points | Criteria |
 |------|-------:|----------|
 | **Task 1** — Falco runtime | **6** | 2 baseline + 1 custom alert + tuning discussion |
-| **Task 2** — Conftest policies | **4** | 3+ Rego rules + good passes + bad fails + CI/admission reasoning |
+| **Task 2** — Conftest policies | **4** | 3+ Rego rules + K8s good/bad + shipped compose policy run + CI/admission reasoning |
 | **Bonus Task** — Cryptominer rule | **2** | 2+ indicators + triggered alert + reflection on FN + SLA |
 | **Total** | **12** | 10 main + 2 bonus |
 
@@ -417,6 +446,15 @@ PR checklist body:
 <summary>⚠️ Common Pitfalls</summary>
 
 - 🚨 **Falco fails to start with "engine.kind not detected"** — your kernel might be < 5.8 (no modern eBPF). Fall back to the legacy eBPF driver: add `-e FALCO_BPF_PROBE=""` to the docker run command.
+- 🚨 **macOS / Apple Silicon — Falco starts but detects nothing** — Docker Desktop runs a stripped LinuxKit VM whose kernel ships without BTF (and the raw tracepoints Falco's modern-eBPF probe attaches to), so Falco loads cleanly and stays blind. This is **not** a CPU/arch problem — the image is multi-arch (arm64 included) — it's the VM kernel. Fix: give Falco a real Ubuntu kernel via **Colima** (free, Homebrew, a Lima-based Docker backend whose VM has BTF):
+  ```bash
+  brew install colima docker
+  colima start --cpu 4 --memory 6 --disk 30
+  # Gate check — must print "BTF OK" before you bother running Falco:
+  colima ssh -- test -f /sys/kernel/btf/vmlinux && echo "BTF OK"
+  ```
+  Colima becomes your Docker backend, so steps 9.1–9.5 run **unchanged** (clone the repo under your home dir — Colima mounts `$HOME` into the VM). The universal 5-second check for *any* environment: `test -f /sys/kernel/btf/vmlinux` — present ⇒ modern eBPF attaches; absent (Docker Desktop) ⇒ Falco is blind. Task 2 (Conftest) is pure userspace — `brew install conftest` and run it natively on macOS, no VM needed. *(A plain Ubuntu VM via multipass/Lima/UTM works too; Colima is just the least-disruptive since it keeps the Docker CLI workflow.)*
+- 🚨 **Falco dies with `could not initialize inotify handler`** — WSL2 / crowded-Docker hosts hit the default `fs.inotify.max_user_instances=128` (same wall as Lab 7). Two fixes: (a) as root, `sysctl -w fs.inotify.max_user_instances=1024`; or (b) if you can't sudo, append `-o watch_config_files=false` to the `falco ...` command — Falco then starts without the file watcher, and you reload rules manually with the `SIGHUP` step below (which doesn't need inotify).
 - 🚨 **No alerts fire after triggering** — Falco needs a few seconds to load rules. Wait 5+ seconds between starting Falco and triggering. Also confirm rules loaded with `docker logs falco | grep -i "loaded rule"`.
 - 🚨 **Custom rule has YAML parse error and silently doesn't load** — `docker logs falco | grep -i error` shows the parse error. Common cause: indentation. Validate with `yq eval . custom-rules.yaml`.
 - 🚨 **`docker kill --signal=SIGHUP falco`** — used to reload rules; if you instead `docker restart falco`, the log file gets truncated.
