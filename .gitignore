@@ -29,3 +29,7 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# Lab 10 — API token, scan outputs, DefectDojo clone
+labs/lab10/results/
+~/lab10-defectdojo/
