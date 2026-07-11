@@ -1,0 +1,5 @@
+linux/arm64
+ Kernel Version: 6.12.68-linuxkit
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: aarch64
