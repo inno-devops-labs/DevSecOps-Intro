@@ -1,0 +1,13 @@
+HTTP/1.1 308 Permanent Redirect
+Server: nginx
+Date: Sat, 11 Jul 2026 14:09:44 GMT
+Content-Type: text/html
+Content-Length: 164
+Connection: keep-alive
+Location: https://localhost/
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Content-Security-Policy-Report-Only: default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
+

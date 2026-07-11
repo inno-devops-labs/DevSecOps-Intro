@@ -1,0 +1,20 @@
+HTTP/2 200 
+server: nginx
+date: Sat, 11 Jul 2026 14:09:44 GMT
+content-type: text/html; charset=UTF-8
+content-length: 9903
+access-control-allow-origin: *
+feature-policy: payment 'self'
+x-recruiting: /#/jobs
+accept-ranges: bytes
+cache-control: public, max-age=0
+last-modified: Sat, 11 Jul 2026 14:08:24 GMT
+etag: W/"26af-19f518209a1"
+vary: Accept-Encoding
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), microphone=(), geolocation=()
+content-security-policy-report-only: default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
+

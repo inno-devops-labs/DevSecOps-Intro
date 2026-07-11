@@ -1,0 +1,34 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:4.10.0-nginx-alpine-202501050801
+    restart: unless-stopped
+
+    depends_on:
+      - nginx
+
+    ports:
+      - "9443:8080"
+
+    environment:
+      BACKEND: "https://nginx:443"
+      PROXY_SSL_VERIFY: "off"
+      SERVER_NAME: "localhost"
+      PORT: "8080"
+
+      MODSEC_RULE_ENGINE: "On"
+
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/var/log/modsec_audit.log"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+      MODSEC_AUDIT_LOG_FORMAT: "Native"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      MODSEC_AUDIT_LOG_RELEVANT_STATUS: "^(?:5|4(?!04))"
+
+    volumes:
+      - ./waf/logs/audit.log:/var/log/modsec_audit.log

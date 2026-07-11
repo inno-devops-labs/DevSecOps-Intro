@@ -1,0 +1,35 @@
+---uflKcgyl---A--
+[11/Jul/2026:14:38:45 +0000] 178378072510.240585 172.27.0.1 44018 172.27.0.4 8080
+---uflKcgyl---B--
+GET /rest/products/search?q=%27%20OR%201%3D1-- HTTP/1.1
+Host: localhost:9443
+User-Agent: curl/8.21.0
+Accept: */*
+
+---uflKcgyl---D--
+
+---uflKcgyl---E--
+<html>\x0d\x0a<head><title>403 Forbidden</title></head>\x0d\x0a<body>\x0d\x0a<center><h1>403 Forbidden</h1></center>\x0d\x0a<hr><center>nginx</center>\x0d\x0a</body>\x0d\x0a</html>\x0d\x0a
+
+---uflKcgyl---F--
+HTTP/1.1 403
+Server: nginx
+Date: Sat, 11 Jul 2026 14:38:45 GMT
+Content-Length: 146
+Content-Type: text/plain
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+Access-Control-Allow-Headers: *
+
+---uflKcgyl---H--
+ModSecurity: Warning. detected SQLi using libinjection. [file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf"] [line "46"] [id "942100"] [rev ""] [msg "SQL Injection Attack Detected via libinjection"] [data "Matched Data: s&1c found within ARGS:q: ' OR 1=1--"] [severity "2"] [ver "OWASP_CRS/4.10.0"] [maturity "0"] [accuracy "0"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-sqli"] [tag "paranoia-level/1"] [tag "OWASP_CRS"] [tag "capec/1000/152/248/66"] [tag "PCI/6.5.2"] [hostname "172.27.0.4"] [uri "/rest/products/search"] [unique_id "178378072510.240585"] [ref "v28,10"]
+ModSecurity: Access denied with code 403 (phase 2). Matched "Operator `Ge' with parameter `5' against variable `TX:BLOCKING_INBOUND_ANOMALY_SCORE' (Value: `5' ) [file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-949-BLOCKING-EVALUATION.conf"] [line "222"] [id "949110"] [rev ""] [msg "Inbound Anomaly Score Exceeded (Total Score: 5)"] [data ""] [severity "0"] [ver "OWASP_CRS/4.10.0"] [maturity "0"] [accuracy "0"] [tag "modsecurity"] [tag "anomaly-evaluation"] [tag "OWASP_CRS"] [hostname "172.27.0.4"] [uri "/rest/products/search"] [unique_id "178378072510.240585"] [ref ""]
+
+---uflKcgyl---I--
+
+---uflKcgyl---J--
+
+---uflKcgyl---Z--
+
