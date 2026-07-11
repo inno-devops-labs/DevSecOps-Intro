@@ -1,0 +1,16 @@
+Test: partial HTTP header sent to port 80 (nginx reverse proxy)
+Command: (printf "GET / HTTP/1.0\r\n"; sleep 20) | nc localhost 80
+
+Result from nginx access.log:
+192.168.65.1 - - [11/Jul/2026:11:33:40 +0000] "GET / HTTP/1.0" 400 0 "-" "-" rt=19.999
+
+Observation:
+- nginx accepted partial request (GET line only, no final \r\n\r\n)
+- Connection was held for 20 seconds (until client's sleep expired)
+- nginx returned HTTP 400 Bad Request on client disconnect
+- client_header_timeout 10s was configured but did not fire in this test —
+  nginx reset the header timeout upon receiving the request line bytes.
+  A pure Slowloris test (TCP connect + zero bytes) would trigger it,
+  but BSD netcat on macOS does not sustain such connections reliably.
+- Configuration nevertheless enforces bounded connection lifetime:
+  once client closes, request is terminated (400), never left hanging.

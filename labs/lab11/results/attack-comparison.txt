@@ -1,0 +1,2 @@
+no-waf: HTTP 500
+with-waf: HTTP 403
