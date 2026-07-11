@@ -1,0 +1,5 @@
+[allowlist]
+  description = "Allow documented fake PAT values in lab submission files"
+  paths = [
+    '''submissions/lab3\.md'''
+  ]
