@@ -1,0 +1,26 @@
+# Bonus — WAF sidecar: OWASP ModSecurity v3 + Core Rule Set (CRS 3.3.10) (owasp/modsecurity-crs:nginx-alpine).
+# Sits as its own reverse proxy to Juice Shop, blocking (SecRuleEngine On) at paranoia level 1.
+# Reachable on https://localhost:8443 — compare against the plain-nginx path on :443.
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      SSL_PORT: "8443"
+      MODSEC_RULE_ENGINE: "On"          # block, not DetectionOnly
+      PARANOIA: "1"                      # production-safe starting point
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      MODSEC_TLS_MIN_VERSION: "TLSv1.3"
+      SERVER_NAME: "localhost"
+    ports:
+      - "8443:8443"                      # HTTPS through the WAF
+    volumes:
+      - ./waf/modsec-logs:/var/log/modsec:rw
