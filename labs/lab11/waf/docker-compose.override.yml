@@ -1,0 +1,28 @@
+# Lab 11 Bonus — ModSecurity v3 + OWASP CRS in front of Juice Shop
+# Approach (c): ModSecurity v3 (OWASP CRS docs are richer than Coraza).
+# Exposes HTTP :9080 so we can compare nginx-alone (:8443) vs WAF without
+# fighting the image's built-in TLS paths.
+
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "9080:8080"   # HTTP WAF edge (compare to nginx HTTPS :8443)
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "On"
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      BLOCKING_PARANOIA: "1"
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsecurity/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "Native"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+      SERVER_NAME: "localhost"
+    volumes:
+      - ./results/modsec:/var/log/modsecurity:rw
