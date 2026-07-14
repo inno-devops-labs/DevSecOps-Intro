@@ -99,7 +99,7 @@ trivy config /tmp/Dockerfile-bad --severity HIGH,CRITICAL --format table
 ```bash
 # Top 10 CVEs with fixes (Lecture 7 slide 9 — "fix available AND severity ≥ HIGH first")
 jq '[.Results[].Vulnerabilities[]? | select(.FixedVersion != null) |
-    {cve: .VulnerabilityID, severity: .Severity, pkg: .PkgName, fix: .FixedVersion}] |
+    {cve: .VulnerabilityID, severity: .Severity, pkg: .PkgName, installed: .InstalledVersion, fix: .FixedVersion}] |
     sort_by(.severity) | .[:10]' \
   labs/lab7/results/trivy-image.json
 ```
@@ -215,11 +215,11 @@ kubectl -n juice-shop describe pod -l app=juice-shop | grep -A 3 -i "security co
 ### 7.7: Trivy K8s scan
 
 ```bash
-trivy k8s --namespace juice-shop \
+trivy k8s --include-namespaces juice-shop \
   --severity HIGH,CRITICAL \
   --format json --output labs/lab7/results/trivy-k8s.json
 
-trivy k8s --namespace juice-shop \
+trivy k8s --include-namespaces juice-shop \
   --severity HIGH,CRITICAL \
   --report=summary
 ```

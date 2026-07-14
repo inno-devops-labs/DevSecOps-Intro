@@ -1,6 +1,6 @@
 # Lab 11 — BONUS — Submission
 
-> Ports: host `8080`/`8443` map to nginx (80/443 already taken by another stack).
+> Ports: nginx listens on container `80`/`443` (course default). Local proofs below used host remap `8080:80` / `8443:443` because another stack already held 80/443.
 > WAF edge: `http://localhost:9080` (ModSecurity CRS sidecar).
 
 ## Task 1: TLS + Security Headers
@@ -10,15 +10,15 @@
 ```nginx
   # HTTP → HTTPS redirect
   server {
-    listen 8080;
-    listen [::]:8080;
+    listen 80;
+    listen [::]:80;
     server_name _;
-    return 308 https://$host:8443$request_uri;
+    return 308 https://$host$request_uri;
   }
 
   server {
-    listen 8443 ssl;
-    listen [::]:8443 ssl;
+    listen 443 ssl;
+    listen [::]:443 ssl;
     http2 on;
     server_name _;
 
@@ -136,7 +136,7 @@ OCSP stapling lets the server present a fresh CA-signed revocation status during
 - WAF used: **ModSecurity v3** (`owasp/modsecurity-crs:nginx-alpine`) — choice (c) from the lab (richer CRS docs than Coraza)
 - OWASP CRS version: **3.3.10** (what the official image ships as of this run; config path v3)
 - Paranoia level: **1**
-- Edge: `http://localhost:9080` → Juice Shop; nginx-alone remains on `https://localhost:8443`
+- Edge: `http://localhost:9080` → Juice Shop; nginx-alone remains on `https://localhost` (or remapped `:8443`)
 
 ### Attack payload sent
 `GET /rest/products/search?q=' OR 1=1--` (URL-encoded)
