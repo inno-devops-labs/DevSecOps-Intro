@@ -1,0 +1,24 @@
+# ModSecurity v3 + OWASP CRS v4 sidecar in front of Nginx.
+# no-waf:  https://localhost:443
+# with-waf: https://localhost:8443
+
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    container_name: lab11-waf
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    environment:
+      BACKEND: "http://nginx:8080"
+      BLOCKING_PARANOIA: "1"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      SERVER_NAME: "localhost-waf"
+      SSL_PORT: "8443"
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./logs:/var/log/modsec:rw
