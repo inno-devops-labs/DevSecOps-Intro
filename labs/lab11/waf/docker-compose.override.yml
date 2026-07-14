@@ -1,0 +1,42 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:4.25.1-nginx-lts
+    restart: unless-stopped
+
+    depends_on:
+      - nginx
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      # WAF proxies accepted traffic to the internal Nginx listener.
+      BACKEND: "http://nginx:8081"
+
+      SERVER_NAME: "localhost-waf"
+      PORT: "8080"
+      NGINX_ALWAYS_TLS_REDIRECT: "off"
+
+      # ModSecurity blocking mode.
+      MODSEC_RULE_ENGINE: "On"
+
+      # OWASP CRS production-safe starting level.
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+
+      # Audit logging.
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "Native"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+
+      ERRORLOG: "/var/log/modsec/error.log"
+      LOGLEVEL: "warn"
+
+      # Avoid irrelevant OCSP warning for the generated lab certificate.
+      SSL_OCSP_STAPLING: "off"
+
+    volumes:
+      - ./waf/logs:/var/log/modsec:rw
