@@ -1,0 +1,11 @@
+configured client_header_timeout: 10s
+observed connection lifetime: 10s
+result: nginx closed TLS connection before the incomplete header was finished
+Connecting to ::1
+depth=0 CN=localhost
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN=localhost
+verify return:1
+801EBFEE01000000:error:0A000126:SSL routines::unexpected eof while reading:ssl/record/rec_layer_s3.c:703:
+801EBFEE01000000:error:0A000197:SSL routines:SSL_shutdown:shutdown while in init:ssl/ssl_lib.c:2804:

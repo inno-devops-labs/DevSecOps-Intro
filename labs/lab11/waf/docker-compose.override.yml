@@ -1,0 +1,44 @@
+services:
+  waf-audit-init:
+    image: nginx:stable-alpine
+    user: "0:0"
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["chown -R 101:101 /var/log/modsec"]
+    restart: "no"
+    volumes:
+      - waf-audit:/var/log/modsec
+
+  waf:
+    # Pinned build: ModSecurity v3 + OWASP CRS 4.28.0 (multi-arch).
+    image: owasp/modsecurity-crs:4.28.0-nginx-alpine-202607100407
+    restart: unless-stopped
+    depends_on:
+      nginx:
+        condition: service_started
+      waf-audit-init:
+        condition: service_completed_successfully
+    ports:
+      # Host 8080 is commonly occupied by local development services.
+      - "8081:8080"
+      - "8443:8443"
+    environment:
+      BACKEND: https://nginx:443
+      SERVER_NAME: localhost
+      PORT: "8080"
+      SSL_PORT: "8443"
+      PROXY_SSL_VERIFY: "off"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_AUDIT_LOG: /var/log/modsec/audit.log
+      MODSEC_AUDIT_LOG_FORMAT: JSON
+      MODSEC_AUDIT_LOG_PARTS: ABIJDEFHZ
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      REPORTING_LEVEL: "2"
+    volumes:
+      - waf-audit:/var/log/modsec
+
+volumes:
+  waf-audit:

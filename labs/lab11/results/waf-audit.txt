@@ -1,0 +1,59 @@
+{
+  "transaction": {
+    "request": {
+      "method": "GET",
+      "http_version": "2.0",
+      "hostname": "localhost",
+      "uri": "/rest/products/search?q=1%27%20OR%20%271%27%3D%271",
+      "headers": {
+        "user-agent": "curl/8.7.1",
+        "accept": "*/*",
+        "host": "localhost:8443"
+      }
+    },
+    "response": {
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "http_code": 403,
+      "headers": {
+        "Server": "nginx\u0000",
+        "Date": "Tue, 14 Jul 2026 18:24:12 GMT",
+        "Content-Length": "146",
+        "Content-Type": "text/plain",
+        "Access-Control-Allow-Origin": "*",
+        "Connection": "close",
+        "Access-Control-Max-Age": "3600",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "*"
+      }
+    },
+    "messages": [
+      {
+        "message": "SQL Injection Attack Detected via libinjection",
+        "rule_id": "942100",
+        "data": "Matched Data: s&sos found within ARGS:q: 1' OR '1'='1",
+        "severity": "2",
+        "tags": [
+          "application-multi",
+          "language-multi",
+          "platform-multi",
+          "attack-sqli",
+          "paranoia-level/1",
+          "OWASP_CRS",
+          "OWASP_CRS/ATTACK-SQLI",
+          "capec/1000/152/248/66"
+        ]
+      },
+      {
+        "message": "Inbound Anomaly Score Exceeded (Total Score: 5)",
+        "rule_id": "949110",
+        "data": "",
+        "severity": "0",
+        "tags": [
+          "modsecurity",
+          "anomaly-evaluation",
+          "OWASP_CRS"
+        ]
+      }
+    ]
+  }
+}

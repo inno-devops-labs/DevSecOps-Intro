@@ -1,0 +1,4 @@
+NAME            IMAGE                                                    COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+lab11-juice-1   bkimminich/juice-shop:v20.0.0                            "/nodejs/bin/node /j…"   juice     8 minutes ago   Up 8 minutes             3000/tcp
+lab11-nginx-1   nginx:stable-alpine                                      "/docker-entrypoint.…"   nginx     8 minutes ago   Up Less than a second    0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp
+lab11-waf-1     owasp/modsecurity-crs:4.28.0-nginx-alpine-202607100407   "/docker-entrypoint.…"   waf       4 minutes ago   Up 4 minutes (healthy)   0.0.0.0:8443->8443/tcp, [::]:8443->8443/tcp, 0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp
