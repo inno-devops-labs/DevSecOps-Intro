@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bad-pod-runasroot
+spec:
+  containers:
+  - name: app
+    image: nginx:latest
+    securityContext:
+      allowPrivilegeEscalation: true
+    resources:
+      limits:
+        memory: "128Mi"
