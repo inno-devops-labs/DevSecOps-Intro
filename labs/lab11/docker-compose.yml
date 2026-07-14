@@ -6,7 +6,7 @@ services:
       - "3000"
 
   nginx:
-    image: nginx:stable-alpine
+    image: nginx:stable
     restart: unless-stopped
     depends_on:
       - juice

@@ -1,0 +1,19 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    ports:
+      - "8443:8443"
+    environment:
+      PARANOIA: 1
+      ANOMALY_INBOUND: 5
+      ANOMALY_OUTBOUND: 4
+      MODE: block
+      SSL_PORT: 8443
+      BACKEND: http://nginx:80
+      PROXY: 1
+    volumes:
+      - ./waf/modsec-override.conf:/etc/modsecurity.d/overrides/include-overrides.conf:ro
+      - ./waf/logs:/var/log/modsecurity:rw
