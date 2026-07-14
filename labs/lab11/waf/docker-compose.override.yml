@@ -1,0 +1,10 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    container_name: lab11-waf
+    ports:
+      - "8080:80"
+    environment:
+      - SEC_RULE_ENGINE=On
+      - PARANOIA=1
+      - BACKEND=http://juice:3000
