@@ -1,0 +1,25 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:4.25.1-nginx-alpine-202607051007
+    restart: unless-stopped
+    depends_on:
+      - juice
+      - nginx
+    ports:
+      - "8443:8443"
+    environment:
+      BACKEND: "http://juice:3000"
+      SERVER_NAME: "localhost"
+      PORT: "8080"
+      SSL_PORT: "8443"
+      MODSEC_RULE_ENGINE: "On"
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "Native"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+    volumes:
+      - ./waf/logs/audit.log:/var/log/modsec/audit.log:rw
