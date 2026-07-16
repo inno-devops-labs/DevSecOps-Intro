@@ -1,0 +1,43 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:4.28.0-nginx-alpine-202607100407
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    ports:
+      - "8081:8080"
+      - "9443:8443"
+    environment:
+      BACKEND: "https://nginx:8443"
+      SERVER_NAME: "localhost"
+      PORT: "8080"
+      SSL_PORT: "8443"
+      SSL_PROTOCOLS: "TLSv1.3"
+      SSL_PREFER_CIPHERS: "off"
+      PROXY_SSL_VERIFY: "off"
+      PROXY_SSL_PROTOCOLS: "TLSv1.3"
+      RESOLVERS: "127.0.0.11"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "Native"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      ERRORLOG: "/var/log/modsec/error.log"
+      LOGLEVEL: "warn"
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      ALLOWED_HTTP_VERSIONS: "HTTP/1.1 HTTP/2 HTTP/2.0"
+    volumes:
+      - ./reverse-proxy/certs/localhost.crt:/etc/nginx/conf/server.crt:ro
+      - ./reverse-proxy/certs/localhost.key:/etc/nginx/conf/server.key:ro
+      - ./waf/logs:/var/log/modsec:rw
+    networks:
+      - lab11
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  lab11:
+    external: false
