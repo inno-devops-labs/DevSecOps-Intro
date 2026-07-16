@@ -1,0 +1,199 @@
+name: Lab 12 Kata vs runc
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ feature/lab12 ]
+    paths: [ '.github/workflows/lab12-kata.yml' ]
+
+permissions:
+  contents: read
+
+jobs:
+  kata-vs-runc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare results dir
+        run: mkdir -p labs/lab12/results
+
+      - name: Host environment
+        run: |
+          set -xeo pipefail
+          uname -a | tee labs/lab12/results/host-uname.txt
+          ls -la /dev/kvm
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq cpu-checker zstd jq
+          sudo kvm-ok
+
+      - name: Confirm containerd is present (Docker's containerd.io)
+        run: |
+          set -xeo pipefail
+          sudo systemctl status containerd --no-pager || true
+          containerd --version | tee labs/lab12/results/containerd-version.txt
+
+      - name: Install CNI plugins (for nerdctl default networking)
+        run: |
+          set -euo pipefail
+          CNI_VER=v1.5.1
+          sudo mkdir -p /opt/cni/bin
+          curl -fsSL "https://github.com/containernetworking/plugins/releases/download/${CNI_VER}/cni-plugins-linux-amd64-${CNI_VER}.tgz" \
+            | sudo tar -xz -C /opt/cni/bin
+
+      - name: Install nerdctl
+        run: |
+          set -euo pipefail
+          NERDCTL_VER=1.7.7
+          curl -fsSL -o /tmp/nerdctl.tar.gz \
+            "https://github.com/containerd/nerdctl/releases/download/v${NERDCTL_VER}/nerdctl-${NERDCTL_VER}-linux-amd64.tar.gz"
+          sudo tar -xzf /tmp/nerdctl.tar.gz -C /usr/local/bin nerdctl
+          nerdctl --version | tee labs/lab12/results/nerdctl-version.txt
+
+      - name: Sanity check runc container before touching Kata
+        run: |
+          set -euo pipefail
+          sudo nerdctl run --rm alpine:3.20 echo "runc sanity OK"
+
+      - name: Install Kata assets
+        run: |
+          set -xeo pipefail
+          sudo bash labs/lab12/scripts/install-kata-assets.sh
+          cat /opt/kata/VERSION | tee labs/lab12/results/kata-version.txt
+          ls -la /opt/kata/bin/
+
+      - name: Put Kata binaries on containerd's PATH
+        run: |
+          set -euo pipefail
+          # containerd resolves shim binaries (e.g. containerd-shim-kata-v2) via
+          # its own PATH when starting a runtime by runtime_type name. The
+          # systemd unit's PATH doesn't include /opt/kata/bin, so containerd
+          # fails with "binary not installed ... file does not exist" even
+          # though the file is present on disk. Symlink the Kata binaries
+          # into /usr/local/bin, which is on containerd's default PATH.
+          for f in /opt/kata/bin/*; do
+            sudo ln -sf "$f" "/usr/local/bin/$(basename "$f")"
+          done
+          which containerd-shim-kata-v2
+          sudo systemctl restart containerd
+          sleep 3
+
+      - name: Configure containerd for Kata
+        run: |
+          set -xeo pipefail
+          sudo bash labs/lab12/scripts/configure-containerd-kata.sh
+          grep -A 2 "runtimes.kata" /etc/containerd/config.toml | tee labs/lab12/results/containerd-kata-config.txt
+          sudo systemctl restart containerd
+          sleep 3
+          sudo systemctl status containerd --no-pager || true
+
+      - name: "Task 1 — hello-world on both runtimes"
+        run: |
+          set -xeo pipefail
+          sudo nerdctl run --rm alpine:3.20 sh -c "uname -a; head -3 /proc/cpuinfo" \
+            | tee labs/lab12/results/runc-kernel.txt
+
+          sudo nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 \
+            sh -c "uname -a; head -3 /proc/cpuinfo" \
+            | tee labs/lab12/results/kata-kernel.txt
+
+      - name: "Task 2 — isolation: /dev + capabilities"
+        run: |
+          set -xeo pipefail
+          sudo nerdctl run --rm alpine:3.20 ls /dev > labs/lab12/results/runc-devs.txt
+          sudo nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 ls /dev \
+            > labs/lab12/results/kata-devs.txt
+          diff labs/lab12/results/runc-devs.txt labs/lab12/results/kata-devs.txt \
+            > labs/lab12/results/dev-diff.txt || true
+          cat labs/lab12/results/dev-diff.txt
+
+          sudo nerdctl run --rm alpine:3.20 sh -c "grep ^Cap /proc/1/status" \
+            > labs/lab12/results/runc-caps.txt
+          sudo nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 \
+            sh -c "grep ^Cap /proc/1/status" \
+            > labs/lab12/results/kata-caps.txt
+          cat labs/lab12/results/runc-caps.txt labs/lab12/results/kata-caps.txt
+
+      - name: "Task 2 — startup benchmark (5 runs each)"
+        run: |
+          set -xeo pipefail
+          for runtime in runc kata; do
+            RUNTIME_FLAG=""
+            [ "$runtime" = "kata" ] && RUNTIME_FLAG="--runtime=io.containerd.kata.v2"
+            echo "=== $runtime ==="
+            for i in 1 2 3 4 5; do
+              START=$(date +%s.%N)
+              sudo nerdctl run --rm $RUNTIME_FLAG alpine:3.20 echo "hello" > /dev/null
+              END=$(date +%s.%N)
+              echo "$i: $(echo "$END - $START" | bc) s"
+            done
+          done | tee labs/lab12/results/startup-bench.txt
+
+      - name: "Task 2 — I/O benchmark"
+        run: |
+          set -xeo pipefail
+          for runtime in runc kata; do
+            RUNTIME_FLAG=""
+            [ "$runtime" = "kata" ] && RUNTIME_FLAG="--runtime=io.containerd.kata.v2"
+            echo "=== $runtime I/O ==="
+            sudo nerdctl run --rm $RUNTIME_FLAG alpine:3.20 \
+              sh -c 'dd if=/dev/zero of=/dev/null bs=1M count=100 2>&1' | grep "copied"
+          done | tee labs/lab12/results/io-bench.txt
+
+      - name: "Bonus — escape PoC vector B: runc succeeds"
+        run: |
+          set -xeo pipefail
+          sudo touch /tmp/lab12-target
+          sudo chown root:root /tmp/lab12-target
+          echo "original" | sudo tee /tmp/lab12-target
+
+          sudo nerdctl run --rm --privileged -v /tmp:/host_tmp alpine:3.20 \
+            sh -c 'echo "OVERWRITTEN BY RUNC CONTAINER" > /host_tmp/lab12-target && cat /host_tmp/lab12-target' \
+            | tee labs/lab12/results/runc-escape-attempt.txt
+
+          sudo cat /tmp/lab12-target | tee labs/lab12/results/runc-escape-host-verify.txt
+
+      - name: "Bonus — escape PoC vector B: Kata blocked (--privileged, as specified)"
+        run: |
+          set -x
+          echo "original" | sudo tee /tmp/lab12-target
+
+          # NOTE: this is expected to fail to even start on this CI runner —
+          # see labs/lab12/results/kata-escape-attempt-privileged.txt for why
+          # (documented in the submission). Don't let it abort the job; the
+          # non-privileged fallback below is the clean apples-to-apples test.
+          sudo nerdctl run --rm --runtime=io.containerd.kata.v2 --privileged -v /tmp:/host_tmp alpine:3.20 \
+            sh -c 'echo "ATTEMPTED OVERWRITE FROM KATA" > /host_tmp/lab12-target 2>&1 && cat /host_tmp/lab12-target; echo "---host view---"' \
+            > labs/lab12/results/kata-escape-attempt-privileged.txt 2>&1 || true
+          cat labs/lab12/results/kata-escape-attempt-privileged.txt
+
+          sudo cat /tmp/lab12-target | tee labs/lab12/results/kata-escape-host-verify-privileged.txt
+
+      - name: "Bonus — escape PoC vector B: Kata blocked (bind mount only, no --privileged)"
+        run: |
+          set -xeo pipefail
+          echo "original" | sudo tee /tmp/lab12-target
+
+          sudo nerdctl run --rm --runtime=io.containerd.kata.v2 -v /tmp:/host_tmp alpine:3.20 \
+            sh -c 'echo "ATTEMPTED OVERWRITE FROM KATA" > /host_tmp/lab12-target 2>&1 && cat /host_tmp/lab12-target; echo "---host view---"' 2>&1 \
+            | tee labs/lab12/results/kata-escape-attempt.txt
+
+          sudo cat /tmp/lab12-target | tee labs/lab12/results/kata-escape-host-verify.txt
+
+      - name: Print all result files to the job log
+        if: always()
+        run: |
+          for f in labs/lab12/results/*; do
+            echo "===== $f ====="
+            cat "$f"
+            echo
+          done
+
+      - name: Upload results as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab12-results
+          path: labs/lab12/results/
+          retention-days: 14

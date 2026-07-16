@@ -1,0 +1,29 @@
+name: Lab 12 KVM Check
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ feature/lab12 ]
+    paths: [ '.github/workflows/lab12-kvm-check.yml' ]
+
+permissions:
+  contents: read
+
+jobs:
+  kvm-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for /dev/kvm and virtualization support
+        run: |
+          echo "=== uname ==="
+          uname -a
+          echo "=== /dev/kvm ==="
+          ls -la /dev/kvm || echo "NO /dev/kvm"
+          echo "=== cpuinfo virtualization flags ==="
+          grep -E 'vmx|svm' /proc/cpuinfo | head -1 || echo "no vmx/svm flag"
+          echo "=== kvm-ok (if installable) ==="
+          sudo apt-get update -qq && sudo apt-get install -y -qq cpu-checker
+          sudo kvm-ok || true
+          echo "=== permissions ==="
+          groups
+          ls -la /dev/kvm 2>&1

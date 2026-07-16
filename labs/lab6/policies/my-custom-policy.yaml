@@ -1,0 +1,15 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure RDS instances have Performance Insights enabled
+  category: LOGGING
+  severity: LOW
+scope:
+  provider: aws
+definition:
+  and:
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: performance_insights_enabled
+      operator: equals
+      value: "true"
