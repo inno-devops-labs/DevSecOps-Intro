@@ -1,0 +1,1 @@
+Linux lab12-kvm 6.8.0-51-generic #52-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 10 13:32:16 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux

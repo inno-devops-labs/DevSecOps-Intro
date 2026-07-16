@@ -1,0 +1,2 @@
+FATA[0000] failed to create shim task: failed to create container: host PID namespace is not supported by the Kata runtime
+exit_code=1

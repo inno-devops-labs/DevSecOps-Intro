@@ -1,0 +1,4 @@
+Linux 45d93243e5fd 6.12.48 #1 SMP Thu Jun 18 08:44:10 UTC 2026 x86_64 Linux
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6

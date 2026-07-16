@@ -1,0 +1,16 @@
+--- runc-devs.txt	2026-07-12 10:25:41.117245000 +0000
++++ kata-devs.txt	2026-07-12 10:25:43.894031000 +0000
+@@ -2,6 +2,7 @@
+ core
+ fd
+ full
++hvc0
+ mqueue
+ null
+ ptmx
+@@ -13,4 +14,5 @@
+ stdout
+ tty
+ urandom
++vsock
+ zero
