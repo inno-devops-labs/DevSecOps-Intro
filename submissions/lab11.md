@@ -1,0 +1,391 @@
+# Lab 11 — BONUS — Submission
+
+## Task 1: TLS + Security Headers
+
+### nginx.conf (SSL + header sections)
+
+```nginx
+user nginx;
+worker_processes auto;
+pid /var/run/nginx.pid;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+
+  sendfile on;
+  server_tokens off;
+  gzip off;
+  keepalive_timeout 10s;
+
+  log_format security '$remote_addr - $remote_user [$time_local] '
+                      '"$request" $status $body_bytes_sent '
+                      '"$http_referer" "$http_user_agent" '
+                      'rt=$request_time uct=$upstream_connect_time '
+                      'urt=$upstream_response_time';
+  access_log /var/log/nginx/access.log security;
+  error_log /var/log/nginx/error.log warn;
+
+  upstream juice {
+    server juice:3000;
+    keepalive 32;
+  }
+
+  limit_req_zone $binary_remote_addr zone=login:10m rate=10r/m;
+  limit_conn_zone $binary_remote_addr zone=conn:10m;
+  limit_req_status 429;
+  limit_conn_status 429;
+
+  map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+  }
+
+  client_body_timeout 10s;
+  client_header_timeout 10s;
+  send_timeout 10s;
+  proxy_read_timeout 30s;
+  proxy_send_timeout 30s;
+  proxy_connect_timeout 5s;
+
+  proxy_http_version 1.1;
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_set_header Connection $connection_upgrade;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Accept-Encoding "";
+
+  proxy_hide_header X-Powered-By;
+  proxy_hide_header Strict-Transport-Security;
+  proxy_hide_header X-Content-Type-Options;
+  proxy_hide_header X-Frame-Options;
+  proxy_hide_header Referrer-Policy;
+  proxy_hide_header Permissions-Policy;
+  proxy_hide_header Content-Security-Policy;
+  proxy_hide_header Content-Security-Policy-Report-Only;
+
+  server {
+    listen 8080;
+    listen [::]:8080;
+    server_name localhost juice.local _;
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+    add_header Content-Security-Policy-Report-Only "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:" always;
+
+    return 308 https://$host:8443$request_uri;
+  }
+
+  server {
+    listen 8443 ssl;
+    listen [::]:8443 ssl;
+    http2 on;
+    server_name localhost juice.local _;
+
+    ssl_certificate /etc/nginx/certs/localhost.crt;
+    ssl_certificate_key /etc/nginx/certs/localhost.key;
+
+    ssl_protocols TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    # ssl_ciphers does not select TLS 1.3 suites in current OpenSSL/Nginx.
+    # The TLS 1.3 allowlist is therefore applied with ssl_conf_command.
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_conf_command Ciphersuites TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256;
+    ssl_ecdh_curve X25519:secp384r1;
+
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+    ssl_session_tickets off;
+
+    # Enable only with a publicly trusted certificate that contains an OCSP URL.
+    # ssl_stapling on;
+    # ssl_stapling_verify on;
+    # resolver 1.1.1.1 8.8.8.8 valid=300s;
+    # resolver_timeout 5s;
+
+    client_max_body_size 2m;
+    limit_conn conn 50;
+
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+    add_header Content-Security-Policy-Report-Only "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:" always;
+
+    location = /rest/user/login {
+      limit_req zone=login burst=5 nodelay;
+      limit_req_log_level warn;
+      proxy_pass http://juice;
+    }
+
+    location / {
+      proxy_pass http://juice;
+    }
+  }
+}
+
+```
+
+### A. HTTPS redirect proof
+
+```text
+HTTP/1.1 308 Permanent Redirect
+Server: nginx
+Date: Thu, 16 Jul 2026 20:01:43 GMT
+Content-Type: text/html
+Content-Length: 164
+Connection: keep-alive
+Location: https://localhost:8443/
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:
+```
+
+The lab stack publishes Nginx on host ports `8080` and `8443`; therefore the redirect target uses `https://localhost:8443` rather than privileged host port 443.
+
+### B. TLS 1.3 proof
+
+```text
+Connecting to ::1
+depth=0 CN=juice.local
+verify error:num=18:self-signed certificate
+CONNECTION ESTABLISHED
+Protocol version: TLSv1.3
+Ciphersuite: TLS_AES_256_GCM_SHA384
+Peer certificate: CN=juice.local
+Hash used: SHA256
+Signature type: rsa_pss_rsae_sha256
+Verification error: self-signed certificate
+Peer Temp Key: X25519, 253 bits
+DONE
+```
+
+### C. Security headers proof
+
+```text
+HTTP/2 200 
+server: nginx
+date: Thu, 16 Jul 2026 20:01:44 GMT
+content-type: text/html; charset=UTF-8
+content-length: 9903
+access-control-allow-origin: *
+feature-policy: payment 'self'
+x-recruiting: /#/jobs
+accept-ranges: bytes
+cache-control: public, max-age=0
+last-modified: Thu, 16 Jul 2026 20:01:41 GMT
+etag: W/"26af-19f6c854726"
+vary: Accept-Encoding
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), microphone=(), geolocation=()
+content-security-policy-report-only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:
+```
+
+### What each header defends against
+
+- **HSTS:** Forces supported browsers to use HTTPS for the configured lifetime, reducing protocol-downgrade and SSL-stripping opportunities after the first trusted visit.
+- **X-Content-Type-Options: nosniff:** Stops browsers from reinterpreting a response as a different MIME type, which limits content-sniffing attacks.
+- **X-Frame-Options: DENY:** Prevents the application from being embedded in frames and protects users from clickjacking overlays.
+- **Referrer-Policy:** Restricts how much URL information is sent in the `Referer` header when users navigate to another origin.
+- **Permissions-Policy:** Disables camera, microphone and geolocation access for this origin unless the policy is deliberately changed.
+- **Content-Security-Policy-Report-Only:** Evaluates a restrictive resource-loading policy and reports violations without immediately breaking the Juice Shop frontend during the tuning phase.
+
+## Task 2: Production Posture
+
+### Rate limit proof
+
+| HTTP class/code | Count out of 60 |
+|-----------------|----------------:|
+| 2xx | 0 |
+| 429 | 54 |
+| Other 4xx | 6 |
+| 5xx | 0 |
+
+Raw command output:
+
+```text
+6 401
+  54 429
+```
+
+The login route is limited to 10 requests per minute per client address with a burst allowance of five requests. Rejected requests use HTTP `429` instead of the Nginx default `503`.
+
+### Timeout enforced
+
+```text
+Connection closed by Nginx after 10.1s with no response body
+```
+
+The test opens a real TLS connection, sends an incomplete HTTP header and waits. Nginx closes the connection when `client_header_timeout 10s` expires.
+
+### Cipher hardening
+
+```text
+Protocol version: TLSv1.3
+Ciphersuite: TLS_AES_256_GCM_SHA384
+Peer Temp Key: X25519, 253 bits
+```
+
+TLS is restricted to version 1.3. The accepted TLS 1.3 suites are configured with `ssl_conf_command Ciphersuites`, because current Nginx/OpenSSL builds do not use `ssl_ciphers` to select TLS 1.3 suites. The preferred key-exchange curve is X25519, with secp384r1 retained as a fallback.
+
+### Cert rotation runbook (7 steps)
+
+1. **Detect expiry:** Monitor the certificate `notAfter` date with an automated check and alert before the renewal window, for example at 30, 14 and 7 days remaining.
+2. **Order new cert:** Request a replacement from the approved CA or ACME service using the existing domain set and an authorized account.
+3. **Validate:** Verify the certificate chain, SAN entries, private-key match and expiry dates in a staging path before deployment.
+4. **Atomic swap:** Write the new certificate and key to versioned files, update symlinks atomically, run `nginx -t`, and reload Nginx without stopping active connections.
+5. **Verify:** Confirm the served certificate, TLS 1.3 negotiation, security headers and application health from an external client.
+6. **Rollback plan:** Keep the previous known-good certificate and key available so the symlinks can be restored and Nginx reloaded immediately if validation fails.
+7. **Audit:** Record the requester, CA order identifier, certificate fingerprint, deployment time, validation evidence and any rollback action in the change log.
+
+### What OCSP stapling buys you
+
+OCSP stapling allows a production server to attach a recent CA-signed revocation response to the TLS handshake, reducing client-side latency and avoiding a separate privacy-leaking request to the CA responder. It is not useful for this lab certificate because the certificate is self-signed and has no public CA OCSP responder or verifiable chain.
+
+## Bonus: WAF Sidecar with OWASP CRS
+
+### Setup choice
+
+- WAF used: ModSecurity v3 with the official OWASP CRS Nginx container
+- OWASP CRS version: `4.28.0`
+- Container tag: `4.28.0-nginx-alpine-202607100407`
+- Paranoia level: `1`
+- Public lab endpoint: `https://localhost:9443`
+- Backend: hardened Nginx at `https://nginx:8443`
+- Rule engine: blocking mode (`On`)
+- Audit log: `/var/log/modsec/audit.log`
+
+ModSecurity v3 was selected instead of Coraza because the course explicitly accepts either implementation and the official CRS container provides a direct, reproducible reverse-proxy setup with mature documentation and audit logging.
+
+### Attack payload sent
+
+`GET /rest/products/search?q=' OR 1=1--` (URL-encoded)
+
+### Before WAF (Nginx alone)
+
+```text
+no-waf: HTTP 500
+```
+
+### After WAF
+
+```text
+with-waf: HTTP 403
+```
+
+### Audit log excerpt
+
+```text
+---mFbaGoHs---A--
+[16/Jul/2026:20:02:09 +0000] 178423212964.524618 192.168.65.1 40095 172.20.0.4 8443
+---mFbaGoHs---B--
+GET / HTTP/2.0
+user-agent: curl/8.7.1
+accept: */*
+host: localhost:9443
+
+---mFbaGoHs---D--
+
+---mFbaGoHs---E--
+<!--\x0a  ~ Copyright (c) 2014-2026 Bjoern Kimminich & the OWASP Juice Shop contributors.\x0a  ~ SPDX-License-Identifier: MIT\x0a  -->\x0a\x0a<!doctype html>\x0a<html lang="en" data-beasties-container>\x0a<head>\x0a  <meta charset="utf-8">\x0a  <title>OWASP Juice Shop</title>\x0a  <meta name="description" content="Probably the most modern and sophisticated insecure web application">\x0a  <meta name="viewport" content="width=device-width, initial-scale=1">\x0a  <link rel="preconnect" href="https://fonts.googleapis.com">\x0a  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\x0a  <style>@font-face{font-family:'VT323';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/vt323/v18/pxiKyp0ihIEF2isQFJXGdg.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'VT323';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/vt323/v18/pxiKyp0ihIEF2isRFJXGdg.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'VT323';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/vt323/v18/pxiKyp0ihIEF2isfFJU.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style>\x0a  <link id="favicon" rel="icon" type="image/x-icon" href="assets/public/favicon_js.ico">\x0a  <script>\x0a    window.addEventListener("load", function(){\x0a      window.cookieconsent.initialise({\x0a        "palette": {\x0a          "popup": { "background": "var(--theme-primary)", "text": "var(--theme-text)" },\x0a          "button": { "background": "var(--theme-accent)", "text": "var(--theme-text)" }\x0a        },\x0a        "theme": "classic",\x0a        "position": "bottom-right",\x0a        "content": { "message": "This website uses fruit cookies to ensure you get the juiciest tracking experience.", "dismiss": "Me want it!", "link": "But me wait!", "href": "https://www.youtube.com/watch?v=9PnbKL3wuH4" }\x0a      })});\x0a  </script>\x0a<style>.bluegrey-lightgreen-theme{--mat-sys-background:#121316;--mat-sys-error:#ffb4ab;--mat-sys-error-container:#93000a;--mat-sys-inverse-on-surface:#2f3033;--mat-sys-inverse-primary:#005cbb;--mat-sys-inverse-surface:#e3e2e6;--mat-sys-on-background:#e3e2e6;--mat-sys-on-error:#690005;--mat-sys-on-error-container:#ffdad6;--mat-sys-on-primary:#002f65;--mat-sys-on-primary-container:#d7e3ff;--mat-sys-on-primary-fixed:#001b3f;--mat-sys-on-primary-fixed-variant:#00458f;--mat-sys-on-secondary:#283041;--mat-sys-on-secondary-container:#dae2f9;--mat-sys-on-secondary-fixed:#131c2b;--mat-sys-on-secondary-fixed-variant:#3e4759;--mat-sys-on-surface:#e3e2e6;--mat-sys-on-surface-variant:#e0e2ec;--mat-sys-on-tertiary:#173800;--mat-sys-on-tertiary-container:#82ff10;--mat-sys-on-tertiary-fixed:#0b2000;--mat-sys-on-tertiary-fixed-variant:#245100;--mat-sys-outline:#8e9099;--mat-sys-outline-variant:#44474e;--mat-sys-primary:#abc7ff;--mat-sys-primary-container:#00458f;--mat-sys-primary-fixed:#d7e3ff;--mat-sys-primary-fixed-dim:#abc7ff;--mat-sys-scrim:#000000;--mat-sys-secondary:#bec6dc;--mat-sys-secondary-container:#3e4759;--mat-sys-secondary-fixed:#dae2f9;--mat-sys-secondary-fixed-dim:#bec6dc;--mat-sys-shadow:#000000;--mat-sys-surface:#121316;--mat-sys-surface-bright:#38393c;--mat-sys-surface-container:#1f2022;--mat-sys-surface-container-high:#292a2c;--mat-sys-surface-container-highest:#343537;--mat-sys-surface-container-low:#1a1b1f;--mat-sys-surface-container-lowest:#0d0e11;--mat-sys-surface-dim:#121316;--mat-sys-surface-tint:#abc7ff;--mat-sys-surface-variant:#44474e;--mat-sys-tertiary:#70e000;--mat-sys-tertiary-container:#245100;--mat-sys-tertiary-fixed:#82ff10;--mat-sys-tertiary-fixed-dim:#70e000;--mat-sys-neutral-variant20:#2d3038;--mat-sys-neutral10:#1a1b1f;--mat-sys-level0:0px 0px 0px 0px rgba(0, 0, 0, .2), 0px 0px 0px 0px rgba(0, 0, 0, .14), 0px 0px 0px 0px rgba(0, 0, 0, .12);--mat-sys-level1:0px 2px 1px -1px rgba(0, 0, 0, .2), 0px 1px 1px 0px rgba(0, 0, 0, .14), 0px 1px 3px 0px rgba(0, 0, 0, .12);--mat-sys-level2:0px 3px 3px -2px rgba(0, 0, 0, .2), 0px 3px 4px 0px rgba(0, 0, 0, .14), 0px 1px 8px 0px rgba(0, 0, 0, .12);--mat-sys-level3:0px 3px 5px -1px rgba(0, 0, 0, .2), 0px 6px 10px 0px rgba(0, 0, 0, .14), 0px 1px 18px 0px rgba(0, 0, 0, .12);--mat-sys-level4:0px 5px 5px -3px rgba(0, 0, 0, .2), 0px 8px 10px 1px rgba(0, 0, 0, .14), 0px 3px 14px 2px rgba(0, 0, 0, .12);--mat-sys-level5:0px 7px 8px -4px rgba(0, 0, 0, .2), 0px 12px 17px 2px rgba(0, 0, 0, .14), 0px 5px 22px 4px rgba(0, 0, 0, .12);--mat-sys-corner-extra-large:28px;--mat-sys-corner-extra-large-top:28px 28px 0 0;--mat-sys-corner-extra-small:4px;--mat-sys-corner-extra-small-top:4px 4px 0 0;--mat-sys-corner-full:9999px;--mat-sys-corner-large:16px;--mat-sys-corner-large-end:0 16px 16px 0;--mat-sys-corner-large-start:16px 0 0 16px;--mat-sys-corner-large-top:16px 16px 0 0;--mat-sys-corner-medium:12px;--mat-sys-corner-none:0;--mat-sys-corner-small:8px;--mat-sys-dragged-state-layer-opacity:.16;--mat-sys-focus-state-layer-opacity:.12;--mat-sys-hover-state-layer-opacity:.08;--mat-sys-pressed-state-layer-opacity:.12;color:var(--mat-sys-on-surface);background-color:var(--mat-sys-surface)}html{font-family:var(--mat-sys-body-medium-font, Roboto, "Helvetica Neue", sans-serif)}.bluegrey-lightgreen-theme{--theme-primary:#438fff;--theme-primary-lighter:rgb(97.6, 161.229787234, 255);--theme-primary-light:rgb(118, 173.3829787234, 255);--theme-primary-darker:rgb(36.4, 124.770212766, 255);--theme-primary-dark:rgb(16, 112.6170212766, 255);--theme-primary-fade-10:#438fff;--theme-primary-fade-20:#438fff;--theme-primary-fade-30:#438fff;--theme-primary-fade-40:#438fff;--theme-primary-fade-50:#438fff;--theme-accent:#50a400;--theme-accent-lighter:rgb(94.9268292683, 194.6, 0);--theme-accent-light:rgb(104.8780487805, 215, 0);--theme-accent-darker:rgb(65.0731707317, 133.4, 0);--theme-accent-dark:rgb(55.1219512195, 113, 0);--theme-accent-fade-10:#50a400;--theme-accent-fade-20:#50a400;--theme-accent-fade-30:#50a400;--theme-accent-fade-40:#50a400;--theme-accent-fade-50:#50a400;--theme-warn:#ffb4ab;--theme-warn-lighter:rgb(255, 207.3214285714, 201.6);--theme-warn-light:rgb(255, 225.5357142857, 222);--theme-warn-darker:rgb(255, 152.6785714286, 140.4);--theme-warn-dark:rgb(255, 134.4642857143, 120);--theme-warn-fade-10:#ffb4ab;--theme-warn-fade-20:#ffb4ab;--theme-warn-fade-30:#ffb4ab;--theme-warn-fade-40:#ffb4ab;--theme-warn-fade-50:#ffb4ab;--theme-text:#e3e2e6;--theme-text-lighter:rgb(242.8666666667, 242.4333333333, 244.1666666667);--theme-text-light:rgb(253.4444444444, 253.3888888889, 253.6111111111);--theme-text-darker:rgb(200.5555555556, 198.6111111111, 206.3888888889);--theme-text-dark:rgb(160.8888888889, 157.5277777778, 170.9722222222);--theme-text-fade-10:#e3e2e6;--theme-text-fade-20:#e3e2e6;--theme-text-fade-30:#e3e2e6;--theme-text-fade-40:#e3e2e6;--theme-text-fade-50:#e3e2e6;--theme-text-invert-15:rgb(197.15, 196.45, 199.25);--theme-text-invert-30:rgb(167.3, 166.9, 168.5);--theme-background:#1f2022;--theme-background-lighter:rgb(45.5938461538, 47.0646153846, 50.0061538462);--theme-background-light:rgb(55.3230769231, 57.1076923077, 60.6769230769);--theme-background-darker:rgb(16.4061538462, 16.9353846154, 17.9938461538);--theme-background-dark:rgb(6.6769230769, 6.8923076923, 7.3230769231);--theme-background-darkest:hsl(220, 4.6153846154%, -1.2549019608%);--theme-thumbnail-border:1px solid #abc7ff;--mdc-filled-text-field-container-color:#0000;--mdc-filled-text-field-disabled-container-color:#0000;--theme-background:#3e3e3e;--theme-background-lighter:#4a4a4a;--theme-background-light:#5a5a5a;--theme-background-darker:#333638;--theme-background-dark:#303030;--theme-background-darkest:#2b2b2b;--theme-text:#e8ecef;--theme-text-lighter:#f2f5f7;--theme-text-light:#fff;--theme-text-darker:#b8c0c7;--theme-text-dark:#7f8a93;--mat-sys-surface:#333638;--mat-sys-on-surface:#e8ecef;--mat-sys-surface-container:#3e3e3e;--mat-sys-surface-container-high:#404244;--mat-sys-on-surface-variant:#b8c0c7;--mat-sys-outline:#5a5a5a;--mat-sys-outline-variant:#404244}.bluegrey-lightgreen-theme{--theme-warn:#f44336;--theme-warn-lighter:rgb(245.5877358491, 94.1358490566, 83.0122641509);--theme-warn-light:rgb(246.6462264151, 112.2264150943, 102.3537735849);--theme-warn-darker:rgb(242.4122641509, 39.8641509434, 24.9877358491);--theme-warn-dark:rgb(234.1839622642, 27.9622641509, 12.8160377358);--theme-warn-fade-10:#f44336;--theme-warn-fade-20:#f44336;--theme-warn-fade-30:#f44336;--theme-warn-fade-40:#f44336;--theme-warn-fade-50:#f44336;--mat-sys-error:#f44336;--mat-sys-on-error:#fff}@media screen and (-webkit-min-device-pixel-ratio:0){}</style><link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.css"></noscript></head>\x0a<body class="bluegrey-lightgreen-theme">\x0a  <app-root></app-root>\x0a<link rel="modulepreload" href="chunk-SCY7YOCS.js"><link rel="modulepreload" href="chunk-PX7UKXVL.js"><link rel="modulepreload" href="chunk-GNBEOV4E.js"><link rel="modulepreload" href="chunk-7O3TTE7G.js"><link rel="modulepreload" href="chunk-JCQ5N7PA.js"><link rel="modulepreload" href="chunk-UNFVUBM2.js"><link rel="modulepreload" href="chunk-524KQQJQ.js"><link rel="modulepreload" href="chunk-SI2GTEZM.js"><link rel="modulepreload" href="chunk-ZO2KHBRB.js"><link rel="modulepreload" href="chunk-7AKA75AX.js"><script src="polyfills.js" type="module"></script><script src="scripts.js" defer></script><script src="main.js" type="module"></script></body>\x0a</html>\x0a
+
+---mFbaGoHs---F--
+HTTP/2.0 200
+Accept-Ranges: bytes
+Referrer-Policy: strict-origin-when-cross-origin
+X-Recruiting: /#/jobs
+Access-Control-Allow-Origin: *
+Feature-Policy: payment 'self'
+Date: Thu, 16 Jul 2026 20:02:09 GMT
+Cache-Control: public, max-age=0
+Last-Modified: Thu, 16 Jul 2026 20:01:41 GMT
+Last-Modified: Thu, 16 Jul 2026 20:01:41 GMT
+ETag: W/"26af-19f6c854726"
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+Connection: close
+Content-Type: text/html; charset=UTF-8
+Content-Length: 9903
+Server: nginx
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss:
+X-Frame-Options: DENY
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Access-Control-Allow-Headers: *
+
+---mFbaGoHs---H--
+
+---mFbaGoHs---I--
+
+---mFbaGoHs---J--
+
+---mFbaGoHs---Z--
+
+---mFbaGoHs---A--
+[16/Jul/2026:20:02:09 +0000] 17842321293.293734 192.168.65.1 35551 172.20.0.4 8443
+---mFbaGoHs---B--
+GET /rest/products/search?q='%20OR%201=1-- HTTP/2.0
+user-agent: curl/8.7.1
+accept: */*
+host: localhost:9443
+
+---mFbaGoHs---D--
+
+---mFbaGoHs---E--
+<html>\x0d\x0a<head><title>403 Forbidden</title></head>\x0d\x0a<body>\x0d\x0a<center><h1>403 Forbidden</h1></center>\x0d\x0a<hr><center>nginx</center>\x0d\x0a</body>\x0d\x0a</html>\x0d\x0a
+
+---mFbaGoHs---F--
+HTTP/2.0 403
+Server: nginx
+Date: Thu, 16 Jul 2026 20:02:09 GMT
+Content-Length: 146
+Content-Type: text/plain
+Access-Control-Allow-Origin: *
+Connection: close
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+Access-Control-Allow-Headers: *
+
+---mFbaGoHs---H--
+ModSecurity: Warning. detected SQLi using libinjection. [file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf"] [line "46"] [id "942100"] [rev ""] [msg "SQL Injection Attack Detected via libinjection"] [data "Matched Data: s&1c found within ARGS:q: ' OR 1=1--"] [severity "2"] [ver "OWASP_CRS/4.28.0"] [maturity "0"] [accuracy "0"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-sqli"] [tag "paranoia-level/1"] [tag "OWASP_CRS"] [tag "OWASP_CRS/ATTACK-SQLI"] [tag "capec/1000/152/248/66"] [hostname "localhost"] [uri "/rest/products/search"] [unique_id "17842321293.293734"] [ref "v28,10"]
+ModSecurity: Access denied with code 403 (phase 2). Matched "Operator `Ge' with parameter `5' against variable `TX:BLOCKING_INBOUND_ANOMALY_SCORE' (Value: `5' ) [file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-949-BLOCKING-EVALUATION.conf"] [line "222"] [id "949110"] [rev ""] [msg "Inbound Anomaly Score Exceeded (Total Score: 5)"] [data ""] [severity "0"] [ver "OWASP_CRS/4.28.0"] [maturity "0"] [accuracy "0"] [tag "modsecurity"] [tag "anomaly-evaluation"] [tag "OWASP_CRS"] [hostname "localhost"] [uri "/rest/products/search"] [unique_id "17842321293.293734"] [ref ""]
+
+---mFbaGoHs---I--
+
+---mFbaGoHs---J--
+
+---mFbaGoHs---Z--
+```
+
+Expected SQL-injection detections are in the CRS `942xxx` family. The exact rule ID must be taken from the generated audit log rather than assumed in advance.
+
+### Tradeoff analysis
+
+The WAF adds runtime inspection for malicious request patterns that can still reach a deployed service despite SAST, DAST and policy gates. This introduces tuning work, false-positive risk, extra latency, additional certificate and configuration ownership, and more logs to operate. I would avoid a WAF when the service has no HTTP attack surface, when equivalent controls already exist in a managed ingress, or when the team cannot monitor and tune blocking decisions safely.
+
+## Files created
+
+- `labs/lab11/docker-compose.yml`
+- `labs/lab11/reverse-proxy/nginx.conf`
+- `labs/lab11/scripts/generate-certs.sh`
+- `labs/lab11/scripts/run-lab.sh`
+- `labs/lab11/scripts/slow-header-test.py`
+- `labs/lab11/scripts/render-report.py`
+- `labs/lab11/waf/docker-compose.override.yml`
+- `labs/lab11/results/*`
+- `submissions/lab11.md`
