@@ -1,0 +1,25 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    ports:
+      - "8081:8081"
+    environment:
+      BACKEND: "https://nginx:8443"
+      PROXY_SSL_VERIFY: "off"
+      PORT: "8081"
+      SERVER_NAME: "localhost"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      MODSEC_REQ_BODY_ACCESS: "On"
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+    volumes:
+      - ./logs/modsec:/var/log/modsec:rw
