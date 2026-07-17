@@ -1,0 +1,22 @@
+services:
+  waf:
+    image: ghcr.io/coreruleset/coraza-crs:caddy-alpine
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    ports:
+      - "8080:8080"
+    environment:
+      BACKEND: "nginx:80"
+      PORT: "8080"
+      CORAZA_RULE_ENGINE: "On"
+      CORAZA_AUDIT_ENGINE: "RelevantOnly"
+      CORAZA_AUDIT_LOG: "/var/log/coraza/audit.log"
+      CORAZA_AUDIT_LOG_FORMAT: "Native"
+      CORAZA_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      BLOCKING_PARANOIA: "1"
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+    volumes:
+      - ./waf/logs:/var/log/coraza:rw
