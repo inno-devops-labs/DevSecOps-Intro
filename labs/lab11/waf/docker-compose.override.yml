@@ -1,0 +1,11 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - BACKEND=http://juice:3000
+    depends_on:
+      - juice
