@@ -1,0 +1,23 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    container_name: lab11-waf
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    environment:
+      BACKEND: "https://nginx:8443"
+      PROXY_SSL_VERIFY: "no"
+      PORT: "8080"
+
+      MODSEC_RULE_ENGINE: "on"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG_RELEVANT_STATUS: "^(?:5|4(?!04))"
+      MODSEC_AUDIT_LOG: "/dev/stdout"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+
+      PARANOIA: "1"
+      BLOCKING_PARANOIA: "1"
+      TX_ANOMALY_SCORE_THRESHOLD: "5"
+    ports:
+      - "8090:8080"
