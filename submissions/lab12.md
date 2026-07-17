@@ -1,12 +1,12 @@
-\# Lab 12 — BONUS — Submission
+# Lab 12 — BONUS — Submission
 
 
 
-\## Task 1: Install + Hello-World
+## Task 1: Install + Hello-World
 
 
 
-\### Host environment
+### Host environment
 
 \- Kernel (host): Linux lab12-host 6.5.0-14-generic #14-Ubuntu SMP PREEMPT\_DYNAMIC
 
@@ -16,7 +16,7 @@
 
 
 
-\### Kata installation
+### Kata installation
 
 \- Kata version: 3.2.0
 
@@ -32,7 +32,7 @@
 
 
 
-\### Kernel inside containers
+### Kernel inside containers
 
 \*\*runc:\*\*
 
@@ -62,7 +62,7 @@ vendor\_id       : GenuineIntel
 
 
 
-\### Why the kernel differs (Reading 12)
+### Why the kernel differs (Reading 12)
 
 Reading 12 explains the model. Reference Lecture 7 slide 14 — runc CVE-2024-21626 ("Leaky Vessels").
 
@@ -70,15 +70,15 @@ With runc, containers share the host kernel, so a kernel exploit or runtime CVE 
 
 
 
-\---
+---
 
 
 
-\## Task 2: Isolation + Performance
+## Task 2: Isolation + Performance
 
 
 
-\### Isolation: /dev diff
+### Isolation: /dev diff
 
 ```diff
 
@@ -132,7 +132,7 @@ With runc, containers share the host kernel, so a kernel exploit or runtime CVE 
 
 
 
-\### Isolation: capability sets
+### Isolation: capability sets
 
 runc:
 
@@ -163,15 +163,11 @@ CapBnd: 00000000a80425fb
 ```
 
 
-
-\### Startup time (5-run avg)
+### Startup time (5-run avg)
 
 | Runtime | Avg startup (s) |
-
 |---------|----------------:|
-
 | runc | 0.42 |
-
 | kata | 2.15 |
 
 
@@ -180,33 +176,30 @@ CapBnd: 00000000a80425fb
 
 
 
-\### I/O throughput (100MB dd)
+### I/O throughput (100MB dd)
 
 | Runtime | Throughput |
-
 |---------|-----------|
-
 | runc | 12.4 GB/s |
-
 | kata | 1.3 GB/s |
 
 
 
-\### Trade-off analysis (3-4 sentences, Reading 12 framing)
+### Trade-off analysis (3-4 sentences, Reading 12 framing)
 
 The security gain of a separate kernel is worth the cost for multi-tenant SaaS workloads or untrusted CI/CD runners where container escape CVEs pose a direct cross-tenant breach risk. It isn't worth the cost for single-tenant batch jobs or trusted internal microservices where the 5x startup latency and I/O overhead severely degrade performance without a proportional threat model justification.
 
 
 
-\---
+---
 
 
 
-\## Bonus: Container-Escape PoC
+## Bonus: Container-Escape PoC
 
 
 
-\### Vector chosen
+### Vector chosen
 
 \- \*\*Option:\*\* B (Privileged-container host write)
 
@@ -214,7 +207,7 @@ The security gain of a separate kernel is worth the cost for multi-tenant SaaS w
 
 
 
-\### runc: escape succeeds
+### runc: escape succeeds
 
 Command:
 
@@ -248,7 +241,7 @@ OVERWRITTEN BY RUNC CONTAINER
 
 
 
-\### Kata: escape blocked
+### Kata: escape blocked
 
 Command:
 
@@ -270,7 +263,7 @@ Container output:
 
 ATTEMPTED OVERWRITE FROM KATA
 
-\---host view---
+---host view---
 
 ```
 
@@ -286,7 +279,7 @@ original
 
 
 
-\### Threat model implication (3-4 sentences, Reading 12 framing)
+### Threat model implication (3-4 sentences, Reading 12 framing)
 
 Kata blocks what runc allows because Kata's micro-VM filesystem IS NOT the host filesystem — bind mounts are virtualized via virtio-fs/9p inside the VM, so writing to `/host\_tmp` only affects the VM's temporary view, not the actual host `/tmp`. This maps directly to multi-tenant CI runners running `--privileged` containers or misconfigured Kubernetes pods, where a compromised container could tamper with host binaries. This does NOT block pure side-channel attacks on the kernel itself or cross-tenant timing attacks; Reading 12's "Confidential Containers" section is where THOSE get defenses.
 
