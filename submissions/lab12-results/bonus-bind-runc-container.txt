@@ -1,0 +1,2 @@
++ nerdctl run --rm --privileged -v /tmp:/host_tmp alpine:3.20 sh -c echo "OVERWRITTEN BY RUNC CONTAINER" > /host_tmp/lab12-target && cat /host_tmp/lab12-target
+OVERWRITTEN BY RUNC CONTAINER
