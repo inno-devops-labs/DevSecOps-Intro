@@ -291,15 +291,3 @@ with-waf: HTTP 000
 ### Tradeoff analysis
 
 The WAF adds runtime inspection for malicious request patterns that can still reach a deployed service despite SAST, DAST and policy gates. This introduces tuning work, false-positive risk, extra latency, additional certificate and configuration ownership, and more logs to operate. I would avoid a WAF when the service has no HTTP attack surface, when equivalent controls already exist in a managed ingress, or when the team cannot monitor and tune blocking decisions safely.
-
-## Files created
-
-- `labs/lab11/docker-compose.yml`
-- `labs/lab11/reverse-proxy/nginx.conf`
-- `labs/lab11/scripts/generate-certs.sh`
-- `labs/lab11/scripts/run-lab.sh`
-- `labs/lab11/scripts/slow-header-test.py`
-- `labs/lab11/scripts/render-report.py`
-- `labs/lab11/waf/docker-compose.override.yml`
-- `labs/lab11/results/*`
-- `submissions/lab11.md`
