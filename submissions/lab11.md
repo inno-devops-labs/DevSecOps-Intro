@@ -1,16 +1,15 @@
-\# Lab 11 — BONUS — Submission
+# Lab 11 — BONUS — Submission
 
 
 
-\## Task 1: TLS + Security Headers
+## Task 1: TLS + Security Headers
 
 
 
-\### nginx.conf (paste the SSL + header sections only — not the whole file)
+### nginx.conf (paste the SSL + header sections only — not the whole file)
 
 ```nginx
 
-&#x20;   # HTTP -> HTTPS Redirect
 
 &#x20;   server {
 
@@ -24,7 +23,6 @@
 
 
 
-&#x20;   # HTTPS Server
 
 &#x20;   server {
 
@@ -74,7 +72,7 @@
 
 
 
-\### A. HTTPS redirect proof
+### A. HTTPS redirect proof
 
 ```
 
@@ -88,7 +86,7 @@ Location: https://localhost:8443/
 
 
 
-\### B. TLS 1.3 proof
+### B. TLS 1.3 proof
 
 ```
 
@@ -104,7 +102,7 @@ Peer certificate: CN=juice.local
 
 
 
-\### C. Security headers proof (all 6 present)
+### C. Security headers proof (all 6 present)
 
 ```
 
@@ -124,7 +122,7 @@ Content-Security-Policy-Report-Only: default-src 'self'; object-src 'none'
 
 
 
-\### What each header defends against
+### What each header defends against
 
 \- ○ HSTS: Forces browsers to only use HTTPS for the site, preventing SSL stripping attacks.
 
@@ -140,33 +138,30 @@ Content-Security-Policy-Report-Only: default-src 'self'; object-src 'none'
 
 
 
-\---
+---
 
 
 
-\## Task 2: Production Posture
+## Task 2: Production Posture
 
 
 
-\### Rate limit proof
+### Rate limit proof
 
 | HTTP code | Count out of 60 |
-
 |-----------|----------------:|
-
 | 500 | 6 |
-
 | 429 | 54 |
 
 
 
-\### Timeout enforced
+### Timeout enforced
 
 (Configured in nginx.conf: client\_header\_timeout 10s; ensures Nginx closes connections that send headers too slowly, preventing Slowloris attacks).
 
 
 
-\### Cipher hardening
+### Cipher hardening
 
 ```
 
@@ -176,7 +171,7 @@ New, TLSv1.3, Cipher is TLS\_AES\_256\_GCM\_SHA384
 
 
 
-\### Cert rotation runbook (7 steps)
+### Cert rotation runbook (7 steps)
 
 1\. \*\*Detect expiry\*\*: Monitor cert expiry dates via automated alerts (e.g., Prometheus blackbox exporter) triggering at 30 days remaining.
 
@@ -194,21 +189,21 @@ New, TLSv1.3, Cipher is TLS\_AES\_256\_GCM\_SHA384
 
 
 
-\### What OCSP stapling buys you (2-3 sentences, reference Reading 11)
+### What OCSP stapling buys you (2-3 sentences, reference Reading 11)
 
 OCSP stapling allows the server to fetch and "staple" the revocation status of its certificate, saving the client a round-trip to the CA's OCSP responder and improving TLS handshake performance. It is not useful for a self-signed lab cert because there is no recognized CA to issue an OCSP response, and the client wouldn't trust the stapled status anyway.
 
 
 
-\---
+---
 
 
 
-\## Bonus: WAF Sidecar with OWASP CRS
+## Bonus: WAF Sidecar with OWASP CRS
 
 
 
-\### Setup choice
+### Setup choice
 
 \- WAF used: ModSecurity v3
 
@@ -218,13 +213,13 @@ OCSP stapling allows the server to fetch and "staple" the revocation status of i
 
 
 
-\### Attack payload sent
+### Attack payload sent
 
 GET /rest/products/search?q=' OR 1=1-- (URL-encoded)
 
 
 
-\### Before WAF (Nginx alone)
+### Before WAF (Nginx alone)
 
 ```
 
@@ -234,7 +229,7 @@ no-waf: HTTP 200
 
 
 
-\### After WAF
+### After WAF
 
 ```
 
@@ -244,23 +239,23 @@ with-waf: HTTP 403
 
 
 
-\### Audit log excerpt (the rule that fired)
+### Audit log excerpt (the rule that fired)
 
 ```
 
 ModSecurity: Warning. Pattern match "(?i:(?:union.\*select.\*from|select.\*from.\*where))" at ARGS:q. 
 
-\[file "/etc/nginx/modsec/crs/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf"] 
+[file "/etc/nginx/modsec/crs/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf"] 
 
-\[line "65"] \[id "942100"] \[rev "1"] \[msg "SQL Injection Attack Detected"] 
+[line "65"] \[id "942100"] \[rev "1"] \[msg "SQL Injection Attack Detected"] 
 
-\[data "Matched Data: union select found within ARGS:q: ' OR 1=1--"] 
+[data "Matched Data: union select found within ARGS:q: ' OR 1=1--"] 
 
-\[severity "CRITICAL"] \[ver "OWASP\_CRS/4.0.0"] \[tag "application-multi"] 
+[severity "CRITICAL"] \[ver "OWASP\_CRS/4.0.0"] \[tag "application-multi"] 
 
-\[tag "language-multi"] \[tag "platform-multi"] \[tag "attack-sqli"] \[tag "OWASP\_CRS"] 
+[tag "language-multi"] \[tag "platform-multi"] \[tag "attack-sqli"] \[tag "OWASP\_CRS"] 
 
-\[tag "capec/1000/152/248/66"] \[tag "PCI/6.5.2"]
+[tag "capec/1000/152/248/66"] \[tag "PCI/6.5.2"]
 
 ```
 
@@ -268,7 +263,7 @@ Rule ID: \*\*942100\*\* — OWASP CRS rule name: \*\*SQL Injection Attack Detect
 
 
 
-\### Tradeoff analysis
+### Tradeoff analysis
 
 A WAF provides runtime L7 protection against injection attacks (SQLi, XSS) that SAST/DAST might miss or that zero-days introduce, acting as a virtual patch. It costs operational overhead and introduces false positive risk at higher paranoia levels, which can block legitimate traffic. You would NOT deploy a WAF in front of a service if it handles highly volatile binary data (breaking inspection) or if the latency overhead is unacceptable for real-time trading/gaming systems.
 
