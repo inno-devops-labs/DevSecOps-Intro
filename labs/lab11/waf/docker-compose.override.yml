@@ -1,0 +1,43 @@
+# Bonus — ModSecurity v3 + OWASP CRS sidecar in front of the app.
+#
+# We use the official OWASP image `owasp/modsecurity-crs:nginx-alpine`, which
+# ships nginx + ModSecurity v3 + OWASP CRS v4.x pre-wired and driven by env vars.
+#
+# Topology: client -> waf (ModSec+CRS, :8080) -> juice:3000
+# The hardened nginx (Task 1/2) stays up on :80/:443 as the *no-WAF* baseline,
+# so we can send the same payload down both paths and compare (blocked vs. passed).
+#
+# Run with:
+#   docker compose -f docker-compose.yml -f waf/docker-compose.override.yml up -d
+
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    # For strict "CRS v4.x" compliance, pin a dated v4 tag instead, e.g.:
+    #   image: owasp/modsecurity-crs:4.20.0-nginx-alpine-202511100111
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "8080:8080"          # HTTP entrypoint for the WAF path
+    environment:
+      # ---- proxy target ----
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      SERVER_NAME: "localhost"
+
+      # ---- ModSecurity engine: BLOCK, don't just detect ----
+      MODSEC_RULE_ENGINE: "On"
+
+      # ---- OWASP CRS: production-safe paranoia level 1 ----
+      PARANOIA: "1"
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+
+      # ---- audit log: ship to stdout (Native = readable rule lines) so `docker logs`
+      #      shows every matched CRS rule (942xxx SQLi) + the final 949110 block ----
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/dev/stdout"
+      MODSEC_AUDIT_LOG_FORMAT: "Native"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
