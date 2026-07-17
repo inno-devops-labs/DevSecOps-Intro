@@ -1,0 +1,35 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:4-nginx-202607160307
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      SERVER_NAME: localhost
+      BACKEND: https://nginx:443
+      PORT: "8080"
+      SSL_PORT: "8443"
+      SSL_CERT_FILE: /etc/nginx/certs/localhost.crt
+      SSL_CERT_KEY_FILE: /etc/nginx/certs/localhost.key
+      SSL_PROTOCOLS: TLSv1.3
+      SSL_CIPHERS: EECDH+AESGCM:EDH+AESGCM
+      SSL_PREFER_CIPHERS: "off"
+      PROXY_SSL_VERIFY: "off"
+      PROXY_SSL_PROTOCOLS: TLSv1.3
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: RelevantOnly
+      MODSEC_AUDIT_LOG: /var/log/modsec/audit.log
+      MODSEC_AUDIT_LOG_FORMAT: Native
+      MODSEC_AUDIT_LOG_PARTS: ABIJDEFHZ
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      REPORTING_LEVEL: "4"
+    volumes:
+      - ./reverse-proxy/certs:/etc/nginx/certs:ro
+    tmpfs:
+      - /var/log/modsec:mode=1777
