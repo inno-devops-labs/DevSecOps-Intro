@@ -1,0 +1,2 @@
+time="2026-07-17T20:26:34Z" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+time="2026-07-17T20:26:41Z" level=fatal msg="failed to create shim task: Others(\"failed to handle message create container\\n\\nCaused by:\\n    0: get host path failed\\n    1: No such file or directory (os error 2)\")"

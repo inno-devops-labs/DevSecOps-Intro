@@ -1,0 +1,4 @@
+=== runc I/O ===
+104857600 bytes (100.0MB) copied, 0.004009 seconds, 24.4GB/s
+=== kata I/O ===
+104857600 bytes (100.0MB) copied, 0.007280 seconds, 13.4GB/s
