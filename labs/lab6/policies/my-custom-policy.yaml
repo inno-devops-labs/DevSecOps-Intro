@@ -1,0 +1,10 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure S3 buckets have a lifecycle configuration
+  category: STORAGE
+  severity: MEDIUM
+definition:
+  and:
+    - cond_type: attribute
+      attribute: lifecycle_rule
+      operator: exists
