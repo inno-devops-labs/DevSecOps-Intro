@@ -1,0 +1,28 @@
+# Lab 11 Bonus — ModSecurity v3 + OWASP CRS sidecar in front of Juice Shop
+# Usage:
+#   docker compose -f docker-compose.yml -f waf/docker-compose.override.yml up -d
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+      - nginx
+    ports:
+      - "8080:8080"   # HTTP (optional)
+      - "8443:8443"   # HTTPS — compare against nginx:443
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      SSL_PORT: "8443"
+      MODSEC_RULE_ENGINE: "On"
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      # Writable by nginx user (parent /var/log/modsecurity is root-owned)
+      MODSEC_AUDIT_LOG: "/var/log/modsecurity/audit/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+      TZ: "UTC"
