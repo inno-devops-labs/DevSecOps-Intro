@@ -1,0 +1,33 @@
+# waf/docker-compose.override.yml
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    container_name: waf
+    environment:
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      ALLOWED_METHODS: "GET HEAD POST PUT DELETE OPTIONS PATCH"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsecurity/audit/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      BACKEND: "https://nginx:443"
+      PROXY_SSL: "on"
+      PROXY_SSL_VERIFY: "off"
+      PROXY_SSL_CERT: "/etc/nginx/conf/server.crt"
+      PROXY_SSL_CERT_KEY: "/etc/nginx/conf/server.key"
+      PORT: "8080"
+      SERVER_NAME: "localhost-waf"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - nginx
+    networks:
+      - default
+
+networks:
+  default:
+    external: true
+    name: lab11_default
