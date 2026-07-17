@@ -1,0 +1,14 @@
+apiVersion: ckv2.io/v1
+kind: CheckovPolicy
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure S3 buckets have lifecycle configuration
+  category: GENERAL_SECURITY
+  severity: HIGH
+definition:
+  and:
+    - cond_type: resource
+      resource_types:
+        - aws_s3_bucket
+      attribute: lifecycle_rule
+      operator: exists
