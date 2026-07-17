@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  waf:
+    build:
+      context: .
+      dockerfile: waf/Dockerfile
+    image: devsecops-lab11-waf:crs-4.25.1
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    ports:
+      - "8443:8443"
+    environment:
+      BACKEND: https://nginx:443
+      PROXY_SSL: "on"
+      PROXY_SSL_VERIFY: "off"
+      PROXY_SSL_PROTOCOLS: TLSv1.3
+      SERVER_NAME: localhost
+      SERVER_TOKENS: "off"
+      PORT: "8080"
+      SSL_PORT: "8443"
+      SSL_PROTOCOLS: TLSv1.3
+      SSL_OCSP_STAPLING: "off"
+      NGINX_ALWAYS_TLS_REDIRECT: "on"
+      NGINX_X_FORWARDED_PORT: "8443"
+      NGINX_X_FORWARDED_PROTO: https
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_AUDIT_LOG: /var/log/modsec/audit.log
+      MODSEC_AUDIT_LOG_FORMAT: Native
+      MODSEC_AUDIT_LOG_PARTS: ABIJDEFHZ
+      MODSEC_AUDIT_LOG_TYPE: Serial
+      MODSEC_REQ_BODY_ACCESS: "On"
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      REPORTING_LEVEL: "2"
+    volumes:
+      - ./reverse-proxy/certs/localhost.crt:/etc/nginx/conf/server.crt:ro
+      - ./reverse-proxy/certs/localhost.key:/etc/nginx/conf/server.key:ro
+      - waf-audit:/var/log/modsec
+
+volumes:
+  waf-audit:
