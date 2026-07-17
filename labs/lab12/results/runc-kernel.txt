@@ -1,0 +1,4 @@
+Linux be6c2de605fc 6.12.33+kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.12.33-1kali1 (2025-06-25) x86_64 Linux
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
