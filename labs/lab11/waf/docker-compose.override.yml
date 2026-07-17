@@ -1,0 +1,22 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "8080:8080"   # HTTP entrypoint in front of the WAF (kept plain HTTP for the
+                       # lab — see submissions/lab11.md for why this stays out of the
+                       # TLS-terminating nginx chain used in Task 1/2)
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      # OWASP CRS: paranoia level 1 (production-safe starting point per Reading 11 —
+      # higher levels false-positive on legitimate traffic without weeks of tuning)
+      PARANOIA: "1"
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      # SecRuleEngine On (block), not DetectionOnly — we want it to actually reject
+      MODSEC_RULE_ENGINE: "On"
+      # Audit log full request/response for the payloads that trip a rule
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
