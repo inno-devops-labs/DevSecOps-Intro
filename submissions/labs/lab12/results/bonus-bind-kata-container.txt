@@ -1,0 +1,10 @@
+SKIPPED AS AN INVALID ISOLATION TEST.
+
+A writable host bind mount explicitly grants the container access to the
+selected host path. Kata transports such mounts into the guest through its
+shared-filesystem mechanism, normally virtio-fs. Therefore, the fact that a
+Kata workload can write to an explicitly provided writable bind mount does
+not demonstrate a VM escape.
+
+During the attempted experiment, startup of the writable virtio-fs mount
+also failed to complete reliably under nested virtualization.

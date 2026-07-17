@@ -1,0 +1,23 @@
+* containerd.service - containerd container runtime
+     Loaded: loaded (/lib/systemd/system/containerd.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2026-07-17 11:55:12 EDT; 3s ago
+       Docs: https://containerd.io
+    Process: 9104 ExecStartPre=/sbin/modprobe overlay (code=exited, status=0/SUCCESS)
+   Main PID: 9105 (containerd)
+      Tasks: 23
+     Memory: 78.2M
+     CGroup: /system.slice/containerd.service
+             |-1998 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 0f1b51a1c76dbcdebfae45ab3a79b301b783e379fcd4dd86ff696c001332f1c5 -address /run/containerd/containerd.sock
+             |-8927 /opt/kata/runtime-rs/bin/containerd-shim-kata-v2 -id 0dead0d386bb8bfe4986081886c24d6044d66816d0dafe7e85b76bc1ebca84d1 -namespace default -address /run/containerd/containerd.sock -publish-binary /usr/bin/containerd
+             `-9105 /usr/bin/containerd
+
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206199536-04:00" level=info msg="skip loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." error="skip plugin: tracing endpoint not configured" type=io.containerd.tracing.processor.v1
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206208725-04:00" level=info msg="loading plugin \"io.containerd.internal.v1.tracing\"..." type=io.containerd.internal.v1
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206217871-04:00" level=info msg="skip loading plugin \"io.containerd.internal.v1.tracing\"..." error="skip plugin: tracing endpoint not configured" type=io.containerd.internal.v1
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206538563-04:00" level=info msg="loading plugin \"io.containerd.grpc.v1.healthcheck\"..." type=io.containerd.grpc.v1
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206555713-04:00" level=info msg="loading plugin \"io.containerd.nri.v1.nri\"..." type=io.containerd.nri.v1
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206564937-04:00" level=info msg="NRI interface is disabled by configuration."
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206716785-04:00" level=info msg=serving... address=/run/containerd/containerd.sock.ttrpc
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206745517-04:00" level=info msg=serving... address=/run/containerd/containerd.sock
+Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206788777-04:00" level=info msg="containerd successfully booted in 0.042209s"
+Jul 17 11:55:12 remnux systemd[1]: Started containerd container runtime.

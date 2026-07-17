@@ -1,0 +1,5 @@
+runc_container_exit=0
+runc_host_value=OVERWRITTEN BY RUNC CONTAINER
+kata_container_exit=SKIPPED_INVALID_VECTOR
+kata_host_value=not-applicable
+reason=writable host bind mounts are explicitly shared resources, not a valid Kata escape boundary test

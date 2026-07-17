@@ -1,0 +1,6 @@
+=== loaded KVM modules ===
+kvm_intel             380928  0
+kvm                  1019904  1 kvm_intel
+
+=== /dev/kvm ===
+crw-rw----+ 1 root kvm 10, 232 Jul 17 11:55 /dev/kvm

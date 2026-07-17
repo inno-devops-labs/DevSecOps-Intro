@@ -1,0 +1,6 @@
++ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 sh -c uname -a; echo "--- cpuinfo ---"; head -3 /proc/cpuinfo
+Linux 1c60be6cde44 6.18.35 #1 SMP Mon Jun 15 12:55:58 UTC 2026 x86_64 Linux
+--- cpuinfo ---
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
