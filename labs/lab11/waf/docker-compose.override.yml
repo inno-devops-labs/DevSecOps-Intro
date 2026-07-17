@@ -1,0 +1,27 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:4.8.0-nginx
+    container_name: waf
+    hostname: localhost-waf
+    ports:
+      - "8443:8080"
+    environment:
+      SERVERNAME: localhost-waf
+      BACKEND: https://nginx:443
+      BACKEND_SSL_VERIFY: "off"
+      PARANOIA: 1
+      BLOCKING_PARANOIA: 1
+      MODSEC_RULE_ENGINE: "On"
+      ANOMALY_INBOUND: 5
+      ANOMALY_OUTBOUND: 4
+    volumes:
+      - ./reverse-proxy/certs/localhost.crt:/etc/nginx/conf/server.crt:ro
+      - ./reverse-proxy/certs/localhost.key:/etc/nginx/conf/server.key:ro
+      - ./waf/modsecurity-override.conf:/etc/modsecurity.d/modsecurity-override.conf:ro
+      - waf-audit-log:/var/log/modsec
+    depends_on:
+      - juice
+      - nginx
+
+volumes:
+  waf-audit-log:
