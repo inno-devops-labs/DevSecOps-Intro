@@ -1,0 +1,34 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      # Proxy straight to Juice Shop so we isolate the WAF's effect
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      SERVER_NAME: "localhost"
+
+      # SecRuleEngine On -- actually block, not DetectionOnly
+      MODSEC_RULE_ENGINE: "On"
+
+      # Production-safe starting point
+      PARANOIA: "1"
+
+      # Anomaly scoring thresholds (CRS v4 defaults)
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+
+      # Audit logging -- serial log to a file we can read
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/var/log/modsecurity/audit.log"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+
+      MODSEC_REQ_BODY_ACCESS: "On"
+    ports:
+      - "8444:8080"
+    volumes:
+      - ./logs/modsec:/var/log/modsecurity:rw
