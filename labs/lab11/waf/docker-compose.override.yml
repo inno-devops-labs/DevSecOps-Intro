@@ -1,0 +1,11 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:3.3-nginx
+    ports:
+      - "8443:80"
+    environment:
+      - BACKEND=http://nginx:80
+      - PARANOIA=1
+      - SEC_RULE_ENGINE=On
+    depends_on:
+      - nginx
