@@ -1,0 +1,41 @@
+# Bonus Task — ModSecurity v3 + OWASP CRS v4 WAF sidecar, in front of the hardened Nginx.
+#
+# Topology:
+#   client ──▶ waf (8080/8443) ──▶ nginx (443, TLS 1.3 + headers) ──▶ juice (3000)
+#
+# The base stack still exposes nginx directly on 80/443 (the "no-WAF" path), so the
+# same SQLi payload can be sent both ways:
+#   - no-waf : https://localhost/...        → nginx proxies it happily (Juice Shop answers)
+#   - with-waf: http://localhost:8080/...   → CRS scores it, returns 403 before it reaches nginx
+#
+# Image ships ModSecurity v3 + OWASP CRS v4.x. We run it as an inbound-blocking WAF
+# at paranoia level 1 (production-safe starting point), auditing to /var/log/modsec/audit.log.
+services:
+  waf:
+    image: owasp/modsecurity-crs:4.25-nginx-alpine-lts   # OWASP CRS v4.x (LTS)
+    restart: unless-stopped
+    depends_on:
+      - nginx
+    ports:
+      - "8080:8080"   # HTTP  front door (used for the with-waf probe)
+      - "8443:8443"   # HTTPS front door (optional)
+    environment:
+      # --- upstream: sit in front of the hardened Nginx (self-signed → don't verify) ---
+      BACKEND: "https://nginx:443"
+      PROXY_SSL_VERIFY: "off"
+      SERVER_NAME: "localhost"
+      PORT: "8080"
+      SSL_PORT: "8443"
+      # --- ModSecurity engine: BLOCK, not just detect ---
+      MODSEC_RULE_ENGINE: "On"
+      PARANOIA: "1"                     # production-safe starting point
+      ANOMALY_INBOUND: "5"             # block when inbound anomaly score >= 5
+      ANOMALY_OUTBOUND: "4"
+      # --- audit logging: single serial file, include request body parts ---
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG_TYPE: "Serial"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+      MODSEC_AUDIT_LOG_PARTS: "ABIJDEFHZ"
+    volumes:
+      - ./logs/modsec:/var/log/modsec:rw
