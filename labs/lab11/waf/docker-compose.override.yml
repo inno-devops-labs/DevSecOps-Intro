@@ -1,0 +1,13 @@
+version: '3'
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    ports:
+      - "8080:8080"
+    environment:
+      - BACKEND=https://nginx:443
+      - PARANOIA=1
+      - SEC_RULE_ENGINE=On
+      - MODSEC_AUDIT_LOG=/var/log/modsec/audit.log
+      - PORT=8080
+      - PROXY_SSL_VERIFY=off
