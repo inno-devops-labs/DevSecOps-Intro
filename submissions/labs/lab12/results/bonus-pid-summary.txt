@@ -1,4 +1,0 @@
-runc_container_exit=0
-runc_host_value=OVERWRITTEN THROUGH HOST PID NAMESPACE
-kata_container_exit=1
-kata_host_value=original

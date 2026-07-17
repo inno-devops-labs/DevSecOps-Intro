@@ -1,4 +1,0 @@
-runc version 1.1.12-0ubuntu2~20.04.1
-spec: 1.0.2-dev
-go: go1.21.1
-libseccomp: 2.5.1

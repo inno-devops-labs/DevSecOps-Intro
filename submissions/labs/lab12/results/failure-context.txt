@@ -1,5 +1,0 @@
-stage=original bind-mount bonus experiment
-date=2026-07-17T11:56:40-04:00
-user=uid=1000(remnux) gid=1000(remnux) groups=1000(remnux),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),114(lpadmin),115(sambashare),133(wireshark),998(docker)
-pwd=/home/remnux/DevSecOps-Intro
-root=/home/remnux/DevSecOps-Intro

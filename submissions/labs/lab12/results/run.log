@@ -1,384 +1,0 @@
-
-============================================================
-==> Repository preflight
-============================================================
-/home/remnux/DevSecOps-Intro
- M .gitignore
- M labs/lab11/docker-compose.yml
- M labs/lab12/scripts/install-kata-assets.sh
- M labs/lab5/scripts/zap-auth.yaml
-?? PR_BODY.md
-?? lab11-results.tar.gz
-?? lab12-results.tar.gz
-?? lab6-scan-results.tar.gz
-?? lab6-scan-results.tar.gz.sha256
-?? lab7-evidence.tar.gz
-?? lab7-final-results.tar.gz
-?? lab7-run.log
-?? lab9-results-20260710-134049.tar.gz
-?? lab9-results-20260710-134049/
-?? lab9-results-20260710-134616.tar.gz
-?? lab9-results-20260710-134616/
-?? lab9-results-20260710-135010.tar.gz
-?? lab9-results-20260710-135010/
-?? lab9-results-20260710-135239.tar.gz
-?? lab9-results-20260710-135239/
-?? lab9-results-20260710-135541.tar.gz
-?? lab9-results-20260710-135541/
-?? lab9-results-20260710-135841.tar.gz
-?? lab9-results-20260710-135841/
-?? lab9-results-20260710-140103.tar.gz
-?? lab9-results-20260710-140103/
-?? lab9-results-20260710-140418.tar.gz
-?? lab9-results-20260710-140418/
-?? lab9-results-20260710-140713.tar.gz
-?? lab9-results-20260710-140713/
-?? lab9-results-20260710-140952.tar.gz
-?? lab9-results-20260710-140952/
-?? lab9-results-20260710-141244.tar.gz
-?? lab9-results-20260710-141244/
-?? labs/lab11/results/
-?? labs/lab11/run-and-collect.sh
-?? labs/lab11/scripts/
-?? labs/lab4/
-?? labs/lab5/analysis/
-?? labs/lab5/zap/
-?? labs/lab8/
-?? labs/lab9/analysis/
-?? vulnerability-db_v6.1.7_2026-06-18T00:59:35Z_1781769478.tar.zst
-?? vulnerability-db_v6.1.7_2026-06-18T00:59:35Z_1781769478.tar.zst.aria2
-feature/lab12
-7f777bf2b97dee0362254be52e4d9aba16948893
-
-============================================================
-==> Host and KVM preflight
-============================================================
-Linux remnux 5.15.0-139-generic #149~20.04.1-Ubuntu SMP Wed Apr 16 08:29:56 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
-5.15.0-139-generic
-NAME="Ubuntu"
-VERSION="20.04.6 LTS (Focal Fossa)"
-ID=ubuntu
-ID_LIKE=debian
-PRETTY_NAME="Ubuntu 20.04.6 LTS"
-VERSION_ID="20.04"
-HOME_URL="https://www.ubuntu.com/"
-SUPPORT_URL="https://help.ubuntu.com/"
-BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
-PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
-VERSION_CODENAME=focal
-UBUNTU_CODENAME=focal
-Architecture:                         x86_64
-CPU op-mode(s):                       32-bit, 64-bit
-Byte Order:                           Little Endian
-Address sizes:                        46 bits physical, 48 bits virtual
-CPU(s):                               4
-On-line CPU(s) list:                  0-3
-Thread(s) per core:                   1
-Core(s) per socket:                   4
-Socket(s):                            1
-NUMA node(s):                         1
-Vendor ID:                            GenuineIntel
-CPU family:                           6
-Model:                                170
-Model name:                           Intel(R) Core(TM) Ultra 9 185H
-Stepping:                             4
-CPU MHz:                              3071.998
-BogoMIPS:                             6143.99
-Virtualization:                       VT-x
-Hypervisor vendor:                    KVM
-Virtualization type:                  full
-L1d cache:                            192 KiB
-L1i cache:                            256 KiB
-L2 cache:                             8 MiB
-L3 cache:                             96 MiB
-NUMA node0 CPU(s):                    0-3
-Vulnerability Gather data sampling:   Not affected
-Vulnerability Itlb multihit:          Not affected
-Vulnerability L1tf:                   Not affected
-Vulnerability Mds:                    Not affected
-Vulnerability Meltdown:               Not affected
-Vulnerability Mmio stale data:        Not affected
-Vulnerability Reg file data sampling: Not affected
-Vulnerability Retbleed:               Not affected
-Vulnerability Spec rstack overflow:   Not affected
-Vulnerability Spec store bypass:      Vulnerable
-Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
-Vulnerability Spectre v2:             Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI SW loop, KVM SW loop
-Vulnerability Srbds:                  Not affected
-Vulnerability Tsx async abort:        Not affected
-Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single tpr_shadow vnmi flexpriority ept vpid fsgsbase bmi1 avx2 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
-=== loaded KVM modules ===
-kvm_intel             380928  0
-kvm                  1019904  1 kvm_intel
-
-=== /dev/kvm ===
-crw-rw----+ 1 root kvm 10, 232 Jul 17 11:55 /dev/kvm
-
-============================================================
-==> Checking base dependencies
-============================================================
-All base commands are already installed.
-
-============================================================
-==> Checking containerd
-============================================================
-containerd github.com/containerd/containerd 1.7.24 
-
-============================================================
-==> Checking nerdctl
-============================================================
-nerdctl version 2.3.4
-
-============================================================
-==> Starting containerd
-============================================================
-active
-* containerd.service - containerd container runtime
-     Loaded: loaded (/lib/systemd/system/containerd.service; enabled; vendor preset: enabled)
-     Active: active (running) since Fri 2026-07-17 11:55:09 EDT; 2s ago
-       Docs: https://containerd.io
-    Process: 9037 ExecStartPre=/sbin/modprobe overlay (code=exited, status=0/SUCCESS)
-   Main PID: 9038 (containerd)
-      Tasks: 23
-     Memory: 78.3M
-     CGroup: /system.slice/containerd.service
-             |-1998 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 0f1b51a1c76dbcdebfae45ab3a79b301b783e379fcd4dd86ff696c001332f1c5 -address /run/containerd/containerd.sock
-             |-8927 /opt/kata/runtime-rs/bin/containerd-shim-kata-v2 -id 0dead0d386bb8bfe4986081886c24d6044d66816d0dafe7e85b76bc1ebca84d1 -namespace default -address /run/containerd/containerd.sock -publish-binary /usr/bin/containerd
-             `-9038 /usr/bin/containerd
-
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942403933-04:00" level=info msg="loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." type=io.containerd.tracing.processor.v1
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942414504-04:00" level=info msg="skip loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." error="skip plugin: tracing endpoint not configured" type=io.containerd.tracing.processor.v1
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942424115-04:00" level=info msg="loading plugin \"io.containerd.internal.v1.tracing\"..." type=io.containerd.internal.v1
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942430837-04:00" level=info msg="skip loading plugin \"io.containerd.internal.v1.tracing\"..." error="skip plugin: tracing endpoint not configured" type=io.containerd.internal.v1
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942436127-04:00" level=info msg="loading plugin \"io.containerd.grpc.v1.healthcheck\"..." type=io.containerd.grpc.v1
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942442667-04:00" level=info msg="loading plugin \"io.containerd.nri.v1.nri\"..." type=io.containerd.nri.v1
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942448246-04:00" level=info msg="NRI interface is disabled by configuration."
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942633379-04:00" level=info msg=serving... address=/run/containerd/containerd.sock.ttrpc
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942656607-04:00" level=info msg=serving... address=/run/containerd/containerd.sock
-Jul 17 11:55:09 remnux containerd[9038]: time="2026-07-17T11:55:09.942686346-04:00" level=info msg="containerd successfully booted in 0.028186s"
-
-============================================================
-==> Installing and configuring Kata
-============================================================
-Using already installed Kata version: 3.32.0
-Kata runtime-rs configuration:
-/opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
-Kata shim:
-/opt/kata/runtime-rs/bin/containerd-shim-kata-v2
-Updated /etc/containerd/config.toml with Kata runtime: io.containerd.kata.v2
-Restart containerd to apply: sudo systemctl restart containerd
-active
-* containerd.service - containerd container runtime
-     Loaded: loaded (/lib/systemd/system/containerd.service; enabled; vendor preset: enabled)
-     Active: active (running) since Fri 2026-07-17 11:55:12 EDT; 3s ago
-       Docs: https://containerd.io
-    Process: 9104 ExecStartPre=/sbin/modprobe overlay (code=exited, status=0/SUCCESS)
-   Main PID: 9105 (containerd)
-      Tasks: 23
-     Memory: 78.2M
-     CGroup: /system.slice/containerd.service
-             |-1998 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 0f1b51a1c76dbcdebfae45ab3a79b301b783e379fcd4dd86ff696c001332f1c5 -address /run/containerd/containerd.sock
-             |-8927 /opt/kata/runtime-rs/bin/containerd-shim-kata-v2 -id 0dead0d386bb8bfe4986081886c24d6044d66816d0dafe7e85b76bc1ebca84d1 -namespace default -address /run/containerd/containerd.sock -publish-binary /usr/bin/containerd
-             `-9105 /usr/bin/containerd
-
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206199536-04:00" level=info msg="skip loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." error="skip plugin: tracing endpoint not configured" type=io.containerd.tracing.processor.v1
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206208725-04:00" level=info msg="loading plugin \"io.containerd.internal.v1.tracing\"..." type=io.containerd.internal.v1
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206217871-04:00" level=info msg="skip loading plugin \"io.containerd.internal.v1.tracing\"..." error="skip plugin: tracing endpoint not configured" type=io.containerd.internal.v1
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206538563-04:00" level=info msg="loading plugin \"io.containerd.grpc.v1.healthcheck\"..." type=io.containerd.grpc.v1
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206555713-04:00" level=info msg="loading plugin \"io.containerd.nri.v1.nri\"..." type=io.containerd.nri.v1
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206564937-04:00" level=info msg="NRI interface is disabled by configuration."
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206716785-04:00" level=info msg=serving... address=/run/containerd/containerd.sock.ttrpc
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206745517-04:00" level=info msg=serving... address=/run/containerd/containerd.sock
-Jul 17 11:55:12 remnux containerd[9105]: time="2026-07-17T11:55:12.206788777-04:00" level=info msg="containerd successfully booted in 0.042209s"
-Jul 17 11:55:12 remnux systemd[1]: Started containerd container runtime.
-[plugins.'io.containerd.grpc.v1.cri'.containerd.runtimes.kata]
-  runtime_type = 'io.containerd.kata.v2'
-
-============================================================
-==> Recording versions
-============================================================
-containerd github.com/containerd/containerd 1.7.24 
-nerdctl version 2.3.4
-runc version 1.1.12-0ubuntu2~20.04.1
-spec: 1.0.2-dev
-go: go1.21.1
-libseccomp: 2.5.1
-3.32.0
-
-============================================================
-==> Pulling alpine:3.20
-============================================================
-docker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.1 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.2 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.3 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.4 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.5 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.6 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.7 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.8 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 0.9 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.0 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.1 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.2 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.3 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.4 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.5 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.6 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.7 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.8 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 1.9 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.0 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.1 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.2 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.3 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.4 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.5 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.6 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.7 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.8 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 2.9 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 3.0 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20: resolving      |[32m[0m--------------------------------------| 
-elapsed: 3.1 s                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2Kdocker.io/library/alpine:3.20:                                                 resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
-index-sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc: exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
-elapsed: 3.2 s                                                                 total:   0.0 B (0.0 B/s)                                         
-[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2Kdocker.io/library/alpine:3.20:                                                    resolved       |[32m++++++++++++++++++++++++++++++++++++++[0m| 
-index-sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc:    exists         |[32m++++++++++++++++++++++++++++++++++++++[0m| 
-manifest-sha256:c64c687cbea9300178b30c95835354e34c4e4febc4badfe27102879de0483b5e: done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
-config-sha256:bf8527eb54c3680e728d5b4b383a8ba730d72dae7236fbc8dff97ed6b224a731:   done           |[32m++++++++++++++++++++++++++++++++++++++[0m| 
-elapsed: 3.3 s                                                                    total:   0.0 B (0.0 B/s)                                         
-
-============================================================
-==> Collecting kernel identity for runc and Kata
-============================================================
---- runc ---
-+ nerdctl run --rm alpine:3.20 sh -c uname -a; echo "--- cpuinfo ---"; head -3 /proc/cpuinfo
-Linux 9730d7860109 5.15.0-139-generic #149~20.04.1-Ubuntu SMP Wed Apr 16 08:29:56 UTC 2025 x86_64 Linux
---- cpuinfo ---
-processor	: 0
-vendor_id	: GenuineIntel
-cpu family	: 6
---- kata ---
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 sh -c uname -a; echo "--- cpuinfo ---"; head -3 /proc/cpuinfo
-Linux 1c60be6cde44 6.18.35 #1 SMP Mon Jun 15 12:55:58 UTC 2026 x86_64 Linux
---- cpuinfo ---
-processor	: 0
-vendor_id	: GenuineIntel
-cpu family	: 6
-host_release=5.15.0-139-generic
-runc_release=run
-kata_release=run
-WARNING: runc kernel release does not equal host release.
-
-============================================================
-==> Collecting /dev and capability evidence
-============================================================
-+ nerdctl run --rm alpine:3.20 sh -c ls -1 /dev | sort
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 sh -c ls -1 /dev | sort
-+ nerdctl run --rm alpine:3.20 sh -c grep ^Cap /proc/1/status
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 sh -c grep ^Cap /proc/1/status
---- /dev diff ---
---- /home/remnux/DevSecOps-Intro/labs/lab12/results/runc-devs.txt	2026-07-17 11:55:25.857191627 -0400
-+++ /home/remnux/DevSecOps-Intro/labs/lab12/results/kata-devs.txt	2026-07-17 11:55:32.264393747 -0400
-@@ -1,4 +1,3 @@
--core
- fd
- full
- mqueue
---- runc capabilities ---
-CapInh:	0000000000000000
-CapPrm:	00000000a80425fb
-CapEff:	00000000a80425fb
-CapBnd:	00000000a80425fb
-CapAmb:	0000000000000000
---- kata capabilities ---
-CapInh:	0000000000000000
-CapPrm:	00000000a80425fb
-CapEff:	00000000a80425fb
-CapBnd:	00000000a80425fb
-CapAmb:	0000000000000000
-
-============================================================
-==> Running cold-start benchmark
-============================================================
-Warming up runc once
-+ nerdctl run --rm alpine:3.20 true
-Warming up Kata once
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 true
-+ nerdctl run --rm alpine:3.20 true
-runc,1,0.526595584
-+ nerdctl run --rm alpine:3.20 true
-runc,2,0.552260352
-+ nerdctl run --rm alpine:3.20 true
-runc,3,0.481219072
-+ nerdctl run --rm alpine:3.20 true
-runc,4,0.423924224
-+ nerdctl run --rm alpine:3.20 true
-runc,5,0.372067072
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 true
-kata,1,7.855792128
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 true
-kata,2,7.574585856
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 true
-kata,3,7.067718144
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 true
-kata,4,6.545513984
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 true
-kata,5,7.210876160
-runc_samples=0.526595584,0.552260352,0.481219072,0.423924224,0.372067072
-runc_average=0.471213261
-runc_median=0.481219072
-kata_samples=7.855792128,7.574585856,7.067718144,6.545513984,7.210876160
-kata_average=7.250897254
-kata_median=7.210876160
-cold_start_overhead_ratio=15.3877
-
-============================================================
-==> Running course-prescribed 100 MiB /dev/null benchmark
-============================================================
-+ nerdctl run --rm alpine:3.20 sh -c LC_ALL=C dd if=/dev/zero of=/dev/null bs=1M count=100 2>&1
-+ nerdctl run --rm --runtime=io.containerd.kata.v2 alpine:3.20 sh -c LC_ALL=C dd if=/dev/zero of=/dev/null bs=1M count=100 2>&1
---- runc I/O ---
-100+0 records in
-100+0 records out
-104857600 bytes (100.0MB) copied, 0.004719 seconds, 20.7GB/s
---- Kata I/O ---
-100+0 records in
-100+0 records out
-104857600 bytes (100.0MB) copied, 0.023807 seconds, 4.1GB/s
-
-============================================================
-==> Bonus experiment 1: exact bind-mount vector from the assignment
-============================================================
-OVERWRITTEN BY RUNC CONTAINER

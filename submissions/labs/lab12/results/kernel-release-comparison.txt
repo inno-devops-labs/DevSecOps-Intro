@@ -1,3 +1,0 @@
-host_release=5.15.0-139-generic
-runc_release=5.15.0-139-generic
-kata_release=6.18.35
