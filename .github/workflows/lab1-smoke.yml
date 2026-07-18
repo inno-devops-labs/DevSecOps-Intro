@@ -1,0 +1,42 @@
+name: Lab 1 Juice Shop Smoke Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Juice Shop
+        run: |
+          docker run -d --name juice-shop \
+            -p 127.0.0.1:3000:3000 \
+            bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for Juice Shop
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:3000/rest/admin/application-version >/dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          docker logs juice-shop
+          exit 1
+
+      - name: Verify homepage
+        run: |
+          status="$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000)"
+          echo "HTTP ${status}"
+          test "${status}" = "200"
+
+      - name: Show version
+        run: |
+          curl -s http://127.0.0.1:3000/rest/admin/application-version
