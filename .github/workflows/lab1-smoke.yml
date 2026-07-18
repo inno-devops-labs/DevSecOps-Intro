@@ -1,0 +1,52 @@
+name: Lab 1 Smoke Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: Juice Shop smoke test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Start Juice Shop
+        run: |
+          docker run -d --name juice-shop \
+            -p 127.0.0.1:3000:3000 \
+            bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for Juice Shop
+        run: |
+          ready=0
+
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:3000/rest/admin/application-version; then
+              echo
+              ready=1
+              break
+            fi
+
+            echo "Waiting for Juice Shop (${i}/30)"
+            sleep 2
+          done
+
+          if [ "$ready" -ne 1 ]; then
+            echo "Juice Shop did not become ready within 60 seconds"
+            docker logs juice-shop
+            exit 1
+          fi
+
+      - name: Verify homepage HTTP 200
+        run: |
+          status="$(curl --silent --output /tmp/juice-shop-home.html --write-out '%{http_code}' http://127.0.0.1:3000)"
+          echo "Homepage HTTP status: ${status}"
+          test "$status" = "200"
+
+      - name: Capture curl response excerpt
+        run: |
+          curl -sI http://127.0.0.1:3000 | head -20
