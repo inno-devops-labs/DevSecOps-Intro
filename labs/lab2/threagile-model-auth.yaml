@@ -1,0 +1,417 @@
+threagile_version: 1.0.0
+
+# Lab 2 bonus: focused auth-flow model written from scratch.
+title: OWASP Juice Shop Auth Flow Threat Model
+date: 2026-06-12
+author:
+  name: lisoon
+
+management_summary_comment: >
+  Focused STRIDE threat model for the OWASP Juice Shop authentication flow:
+  browser login/register, JWT issuance, JWT verification, session state, and admin endpoint access.
+
+business_criticality: important
+
+business_overview:
+  description: >
+    The model focuses only on authentication and authorization decisions around Juice Shop users and admins.
+
+technical_overview:
+  description: >
+    Browser clients submit credentials to an Auth API. The Auth API reads the user credential store,
+    asks a token component to issue JWTs, and protected API/admin endpoints verify JWT claims before
+    accepting user or admin operations.
+
+questions: {}
+
+abuse_cases:
+  Credential Stuffing: >
+    As an attacker I want to replay stolen credentials against the login endpoint to obtain a valid JWT.
+  JWT Forgery: >
+    As an attacker I want to forge or tamper with JWT claims to impersonate another user or become admin.
+  Admin Endpoint Abuse: >
+    As an attacker I want to reach admin functionality without a valid admin role.
+
+security_requirements:
+  Secure Authentication: Authentication must use HTTPS, salted password hashing, and rate limiting.
+  Token Integrity: JWT tokens must be signed with protected keys and verified on every protected request.
+  Least Privilege Authorization: Admin endpoints must enforce role checks server-side.
+
+tags_available:
+  - browser
+  - auth
+  - jwt
+  - database
+  - admin
+  - session
+
+data_assets:
+  Credentials:
+    id: credentials
+    description: Username and password submitted during login or registration.
+    usage: business
+    tags:
+      - auth
+    origin: End User
+    owner: Juice Shop
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      Credentials are highly sensitive because compromise enables account takeover.
+
+  JWT Token:
+    id: jwt-token
+    description: Signed JSON Web Token returned to the browser and reused on protected requests.
+    usage: business
+    tags:
+      - jwt
+    origin: Juice Shop Auth API
+    owner: Juice Shop
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      JWT integrity is critical because tampered claims can lead to spoofing and privilege escalation.
+
+  User Session State:
+    id: user-session-state
+    description: Client-side and server-side state associated with authenticated user activity.
+    usage: business
+    tags:
+      - session
+    origin: Juice Shop
+    owner: Juice Shop
+    quantity: many
+    confidentiality: confidential
+    integrity: important
+    availability: operational
+    justification_cia_rating: >
+      Session state controls continuity of authenticated activity and must not be tampered with.
+
+  Admin Operation Requests:
+    id: admin-operation-requests
+    description: Requests to admin-only endpoints and actions.
+    usage: business
+    tags:
+      - admin
+    origin: Browser
+    owner: Juice Shop
+    quantity: few
+    confidentiality: restricted
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      Admin operations can modify sensitive application state and must be protected from unauthorized access.
+
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: Secret or private key used to sign and verify JWT tokens.
+    usage: business
+    tags:
+      - jwt
+      - auth
+    origin: Juice Shop
+    owner: Juice Shop
+    quantity: very-few
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: critical
+    justification_cia_rating: >
+      If the signing key leaks or is modified, attackers can forge tokens and bypass authorization.
+
+technical_assets:
+  Browser:
+    id: browser
+    description: End-user browser in the Internet trust boundary.
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: true
+    justification_out_of_scope: The browser is owned and controlled by the end user.
+    size: component
+    technology: browser
+    tags:
+      - browser
+    internet: true
+    machine: physical
+    encryption: none
+    owner: End User
+    confidentiality: internal
+    integrity: operational
+    availability: operational
+    justification_cia_rating: >
+      The browser submits credentials and stores the returned token, but it is outside server control.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - user-session-state
+      - admin-operation-requests
+    data_assets_stored:
+      - jwt-token
+      - user-session-state
+    data_formats_accepted:
+      - json
+    communication_links:
+      Login and Register:
+        target: auth-api
+        description: Browser sends login/register credentials and receives a JWT.
+        protocol: https
+        authentication: none
+        authorization: none
+        tags:
+          - auth
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+          - user-session-state
+      Protected API Calls with JWT:
+        target: auth-api
+        description: Browser calls protected user APIs with JWT in the Authorization header.
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags:
+          - jwt
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - user-session-state
+        data_assets_received:
+          - user-session-state
+      Admin Calls with JWT:
+        target: admin-api
+        description: Browser calls admin endpoints; server must require a valid JWT with admin role.
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags:
+          - admin
+          - jwt
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - admin-operation-requests
+        data_assets_received:
+          - admin-operation-requests
+
+  Auth API:
+    id: auth-api
+    description: Juice Shop authentication endpoint for login, registration, and protected user API requests.
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-server
+    tags:
+      - auth
+    internet: false
+    machine: container
+    encryption: none
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: >
+      Auth API decisions control account access and token issuance.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - user-session-state
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Credential Store Lookup:
+        target: user-db
+        description: Auth API reads credential hashes using parameterized queries / prepared statements.
+        protocol: jdbc-encrypted
+        authentication: credentials
+        authorization: technical-user
+        tags:
+          - database
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - credentials
+      Request JWT Issuance:
+        target: token-service
+        description: Auth API asks the token component to issue or validate a signed JWT.
+        protocol: https
+        authentication: token
+        authorization: technical-user
+        tags:
+          - jwt
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+          - user-session-state
+        data_assets_received:
+          - jwt-token
+
+  Token Service:
+    id: token-service
+    description: Component responsible for JWT signing and verification.
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-server
+    tags:
+      - jwt
+    internet: false
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    owner: Juice Shop
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: critical
+    justification_cia_rating: >
+      JWT signing and verification protects identity and authorization claims.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - jwt-signing-key
+    data_assets_stored:
+      - jwt-signing-key
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  User Credential Store:
+    id: user-db
+    description: Database storing user records and password hashes.
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: database
+    tags:
+      - database
+      - auth
+    internet: false
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    owner: Juice Shop
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: >
+      The credential store contains sensitive authentication material and must be protected at rest.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+    data_assets_stored:
+      - credentials
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Admin API:
+    id: admin-api
+    description: Admin-only endpoint requiring JWT verification and admin role authorization.
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-server
+    tags:
+      - admin
+    internet: false
+    machine: container
+    encryption: none
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: >
+      Admin endpoints can change sensitive state and must validate tokens and roles server-side.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - admin-operation-requests
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Verify JWT on Admin Request:
+        target: token-service
+        description: Admin API verifies JWT signature and admin-role claims before executing admin operations.
+        protocol: https
+        authentication: token
+        authorization: technical-user
+        tags:
+          - jwt
+          - admin
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - jwt-token
+
+trust_boundaries:
+  Internet:
+    id: internet
+    description: Public Internet and user-controlled client environment.
+    type: network-dedicated-hoster
+    technical_assets_inside:
+      - browser
+    trust_boundaries_nested: []
+
+  Juice Shop Container:
+    id: juice-shop-container
+    description: Application container/runtime boundary for Juice Shop auth components.
+    type: execution-environment
+    technical_assets_inside:
+      - auth-api
+      - token-service
+      - user-db
+      - admin-api
+    trust_boundaries_nested: []
+
+shared_runtimes: {}
+
+risk_tracking: {}
