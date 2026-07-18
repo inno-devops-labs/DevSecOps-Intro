@@ -1,0 +1,434 @@
+threagile_version: 1.0.0
+
+title: OWASP Juice Shop - Auth Flow Threat Model
+date: 2025-09-18
+
+author:
+  name: Roman Ivanov
+  homepage: https://github.com/rom-ivanov
+
+management_summary_comment: >
+  Focused threat model for the Juice Shop authentication flow: login, JWT
+  issuance, session handling, and access to privileged admin endpoints.
+
+business_criticality: important
+
+business_overview:
+  description: >
+    This focused model covers only the authentication and authorization path.
+    It is intentionally smaller than the baseline architecture model so that it
+    surfaces auth-specific threats around credentials, JWT handling, and
+    admin-route protection.
+  images: []
+
+technical_overview:
+  description: >
+    A browser sends login and registration requests to an authentication API.
+    The auth API validates credentials against the user database and asks a
+    token service to issue JWTs. The browser later sends JWTs to protected
+    endpoints, including an admin API path that requires elevated privileges.
+  images: []
+
+questions:
+  Are JWTs stored in browser-accessible storage?: ""
+  Are admin routes protected only by bearer tokens?: ""
+  Is multi-factor authentication enforced for privileged users?: ""
+
+abuse_cases:
+  Credential Stuffing: >
+    Attackers automate login attempts to guess usernames and passwords.
+  JWT Theft via XSS: >
+    Malicious script steals a JWT from browser-accessible storage and reuses it.
+  Privilege Escalation to Admin Routes: >
+    A non-admin user tampers with a token or abuses weak authorization checks to
+    reach admin-only functionality.
+
+security_requirements:
+  Strong authentication: Use strong password policy, rate limiting, and MFA for privileged actions.
+  Signed tokens: Use strong JWT signing with protected signing keys and strict validation of issuer, audience, and expiration.
+  Least privilege authorization: Enforce admin-only access on privileged endpoints on the server side.
+  Secret storage: Keep signing keys and database credentials in a dedicated secret store.
+
+tags_available:
+  - auth
+  - jwt
+  - pii
+  - admin
+  - browser
+  - api
+  - database
+  - tokens
+  - credentials
+
+data_assets:
+  Credentials:
+    id: credentials
+    description: "Username, password, and password hash material used during login and registration."
+    usage: business
+    tags: ["auth", "credentials", "pii"]
+    origin: user-supplied
+    owner: Security Team
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Credential compromise directly leads to account takeover, so
+      confidentiality and integrity are both critical.
+
+  JWT Tokens:
+    id: jwt-tokens
+    description: "Issued bearer tokens used to authenticate follow-up API calls."
+    usage: business
+    tags: ["auth", "jwt", "tokens"]
+    origin: application
+    owner: Security Team
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      If a bearer token is stolen or modified, an attacker can hijack or extend
+      a session.
+
+  User Session State:
+    id: user-session-state
+    description: "Logical session context such as account identity, active role, and security state."
+    usage: business
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Security Team
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      The session state defines what a user is allowed to do, so unauthorized
+      changes are security-relevant.
+
+  Admin Operation Requests:
+    id: admin-operation-requests
+    description: "Privileged requests to admin endpoints such as user management or challenge administration."
+    usage: business
+    tags: ["admin"]
+    origin: user-supplied
+    owner: Security Team
+    quantity: many
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Admin requests must not be forged or replayed by non-admin users.
+
+  JWT Signing Keys:
+    id: jwt-signing-keys
+    description: "Keys used by the token service to sign and validate JWTs."
+    usage: business
+    tags: ["auth", "jwt"]
+    origin: application
+    owner: Security Team
+    quantity: few
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: important
+    justification_cia_rating: >
+      Compromise of signing keys would allow forged tokens and complete loss of
+      trust in token validation.
+
+technical_assets:
+  Browser:
+    id: browser
+    description: "User-controlled browser used for login and authenticated application access."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    justification_out_of_scope:
+    size: system
+    technology: browser
+    tags: ["browser"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: End User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "The browser is outside direct defender control and may be a hostile client."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - jwt-tokens
+      - user-session-state
+      - admin-operation-requests
+    data_assets_stored:
+      - jwt-tokens
+    data_formats_accepted:
+      - json
+    communication_links:
+      To Auth API:
+        target: auth-api
+        description: "Login and registration requests from the browser to the authentication API over HTTPS."
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-tokens
+          - user-session-state
+      To Admin API:
+        target: admin-api
+        description: "Browser sends protected requests with a bearer JWT to admin endpoints over HTTPS."
+        protocol: https
+        authentication: session-id
+        authorization: enduser-identity-propagation
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-tokens
+          - admin-operation-requests
+        data_assets_received:
+          - user-session-state
+
+  Auth API:
+    id: auth-api
+    description: "Authentication endpoint handling login and registration."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-service-rest
+    tags: ["api", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Security Team
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "This service validates credentials and initiates token issuance."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-tokens
+      - user-session-state
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      To Credential Store:
+        target: credential-store
+        description: "The auth API verifies submitted credentials against the user database over an encrypted database channel using parameterized queries."
+        protocol: jdbc-encrypted
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - credentials
+      To Token Service:
+        target: token-service
+        description: "The auth API asks the token service to issue JWTs for authenticated users."
+        protocol: https
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - user-session-state
+        data_assets_received:
+          - jwt-tokens
+
+  Token Service:
+    id: token-service
+    description: "Component responsible for issuing and verifying JWTs."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-service-rest
+    tags: ["jwt", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Security Team
+    confidentiality: internal
+    integrity: mission-critical
+    availability: important
+    justification_cia_rating: "This service anchors JWT trust and should strongly protect signing operations."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-tokens
+      - user-session-state
+      - jwt-signing-keys
+    data_assets_stored:
+      - jwt-signing-keys
+    data_formats_accepted:
+      - json
+    communication_links:
+      To Credential Store:
+        target: credential-store
+        description: "The token service reads user role information when validating privileged requests."
+        protocol: jdbc-encrypted
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent: []
+        data_assets_received:
+          - credentials
+
+  Admin API:
+    id: admin-api
+    description: "Protected endpoint that executes privileged operations when a valid admin JWT is presented."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-service-rest
+    tags: ["api", "admin"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Security Team
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "This service must reject any request not backed by a valid admin context."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-tokens
+      - user-session-state
+      - admin-operation-requests
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      To Token Service:
+        target: token-service
+        description: "The admin API verifies JWTs and role claims before executing privileged operations."
+        protocol: https
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-tokens
+        data_assets_received:
+          - user-session-state
+      To Credential Store:
+        target: credential-store
+        description: "The admin API reads role information and account status before serving privileged actions."
+        protocol: jdbc-encrypted
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent: []
+        data_assets_received:
+          - credentials
+
+  Credential Store:
+    id: credential-store
+    description: "Datastore containing credential hashes, role information, and security-relevant account data."
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: database
+    tags: ["database", "auth"]
+    internet: false
+    machine: virtual
+    encryption: data-with-symmetric-shared-key
+    owner: Security Team
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: important
+    justification_cia_rating: "This datastore contains the core authentication material of the system."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - credentials
+      - user-session-state
+      - jwt-signing-keys
+    data_formats_accepted:
+      - file
+    communication_links: {}
+
+trust_boundaries:
+  Internet:
+    id: internet
+    description: "Untrusted public network where the browser operates."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - browser
+    trust_boundaries_nested:
+      - container-boundary
+
+  Container Boundary:
+    id: container-boundary
+    description: "Application runtime boundary containing the auth and admin services."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - auth-api
+      - token-service
+      - admin-api
+      - credential-store
+    trust_boundaries_nested: []
+
+shared_runtimes:
+  Auth Runtime:
+    id: auth-runtime
+    description: "Shared runtime for the authentication-related services."
+    tags: []
+    technical_assets_running:
+      - auth-api
+      - token-service
+      - admin-api
+
+individual_risk_categories: {}
