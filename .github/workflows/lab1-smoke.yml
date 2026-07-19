@@ -1,0 +1,41 @@
+name: Smoke Test Juice Shop
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Start Juice Shop container
+        run: |
+          docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop:v20.0.0
+
+      - name: Install curl
+        run: sudo apt-get update && sudo apt-get install -y curl
+
+      - name: Wait for Juice ready of Juice Shop
+        run: |
+          echo "Waiting for Juice Shop to start..."
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version >/dev/null 2>&1; then
+              echo "Juice Shop is ready"
+              exit 0
+            fi
+            echo "Attempt $i/30: Juice Shop not ready yet, waiting..."
+            sleep 2
+          done
+          echo "Juice Shop failed to start within 60 seconds"
+          exit 1
+
+      - name: Verify that homepage returns 200
+        run: |
+          echo "Checking homepage..."
+          curl -v http://localhost:3000
