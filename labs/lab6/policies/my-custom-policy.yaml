@@ -1,0 +1,19 @@
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure every S3 bucket has a lifecycle_configuration block"
+  category: "BACKUP_AND_RECOVERY"
+  severity: "MEDIUM"
+  guideline: "Define a lifecycle_configuration block to manage object transitions and expiration."
+
+definition:
+  and:
+    - cond_type: "filter"
+      attribute: "resource_type"
+      value:
+        - "aws_s3_bucket"
+      operator: "within"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "lifecycle_configuration"
+      operator: "exists"
