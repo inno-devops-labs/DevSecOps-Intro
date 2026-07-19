@@ -1,0 +1,12 @@
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure all RDS DB instances have storage encryption enabled"
+  category: "ENCRYPTION"
+  severity: "HIGH"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_db_instance"
+  attribute: "storage_encrypted"
+  operator: "equals"
+  value: true
