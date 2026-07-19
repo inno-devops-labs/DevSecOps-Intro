@@ -1,0 +1,242 @@
+threagile_version: 1.0.0
+title: Juice Shop Lab
+date: 2025-09-18
+business_criticality: important
+
+tags_available:
+  - auth
+  - pii
+  - tokens
+  - admin
+  - actor
+  - user
+  - app
+  - nodejs
+  - storage
+  - db
+# =========================
+# DATA ASSETS
+# =========================
+data_assets:
+  Credentials:
+    id: credentials
+    description: "Username and password (hashed in storage)"
+    usage: business
+    tags: [auth, pii]
+    confidentiality: restricted
+    integrity: critical
+    availability: important
+    quantity: many
+  JWT Token:
+    id: jwt-token
+    description: "Signed JSON Web Token"
+    usage: business
+    tags: [auth, tokens]
+    confidentiality: restricted
+    integrity: critical
+    availability: important
+    quantity: many
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: "Secret key used to sign and verify JWTs"
+    usage: business
+    tags: [auth, tokens]
+    confidentiality: restricted
+    integrity: critical
+    availability: important
+    quantity: few
+  User Session State:
+    id: session-state
+    description: "Server-side session tracking"
+    usage: business
+    tags: [auth]
+    confidentiality: confidential
+    integrity: important
+    availability: important
+    quantity: many
+  Admin Operation Request:
+    id: admin-op
+    description: "Request to perform admin action"
+    usage: business
+    tags: [auth, admin]
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    quantity: many
+
+# =========================
+# TECHNICAL ASSETS
+# =========================
+technical_assets:
+  User Browser:
+    id: browser
+    type: external-entity
+    description: "Web browser (client side)"
+    usage: business
+    size: component
+    technology: web-application
+    encryption: none
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    tags: [actor, user]
+    internet: true
+    machine: virtual
+
+  Juice Shop Auth API:
+    id: auth-api
+    type: process
+    description: "Login/register endpoint, issues JWT after credential validation"
+    usage: business
+    size: application
+    technology: web-application
+    encryption: none
+    confidentiality: internal
+    integrity: important
+    availability: important
+    tags: [app, nodejs, auth]
+    internet: false
+    machine: container
+
+  JWT Signer/Verifier:
+    id: jwt-signer
+    type: process
+    description: "Component that signs outgoing JWTs and verifies incoming ones"
+    usage: business
+    size: component
+    technology: web-application
+    encryption: none
+    confidentiality: internal
+    availability: important
+    integrity: important
+    tags: [app, nodejs, auth]
+    internet: false
+    machine: container
+
+  User DB (Credentials):
+    id: user-db
+    type: datastore
+    description: "Store for user hashes and salt"
+    usage: business
+    size: component
+    technology: database
+    integrity: critical
+    encryption: transparent
+    confidentiality: restricted
+    availability: important
+    tags: [storage, db]
+    internet: false
+    machine: container
+
+  Admin Endpoint:
+    id: admin-endpoint
+    type: process
+    description: "Admin-only functionality"
+    usage: business
+    size: component
+    technology: web-application
+    encryption: none
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    tags: [app, admin]
+    internet: false
+    machine: container
+
+# =========================
+# COMMUNICATION LINKS
+# =========================
+communication_links:
+  Browser to Auth API:
+    source: browser
+    target: auth-api
+    description: "User submits credentials to /login or /register"
+    protocol: https
+    authentication: credentials-in-body
+    data_assets_sent: [credentials]
+    data_assets_received: [jwt-token]
+
+  Auth API to JWT Signer:
+    source: auth-api
+    target: jwt-signer
+    description: "Internal call to sign a JWT"
+    protocol: http
+    authentication: none
+    data_assets_sent: [user-session-state]
+    data_assets_received: [jwt-token]
+
+  Auth API to User DB:
+    source: auth-api
+    target: user-db
+    description: "Validate credentials"
+    protocol: jdbc-encrypted
+    authentication: none
+    data_assets_received: [credentials]
+
+  Browser to Protected API:
+    source: browser
+    target: api-endpoint
+    description: "Access /api/* endpoints with JWT in Authorization header"
+    protocol: https
+    authentication: jwt-in-header
+    data_assets_sent: [jwt-token]
+    data_assets_received: [user-session-state]
+
+  Protected API to JWT Verifier:
+    source: api-endpoint
+    target: jwt-signer
+    description: "Verify JWT signature for every request"
+    protocol: http
+    authentication: none
+    data_assets_sent: [jwt-token]
+    data_assets_received: [user-session-state]
+
+  Browser to Admin Endpoint:
+    source: browser
+    target: admin-endpoint
+    description: "Access /admin with JWT (must have admin role)"
+    protocol: https
+    authentication: jwt-in-header
+    data_assets_sent: [admin-op, jwt-token]
+    data_assets_received: [admin-op]
+
+  Admin to JWT Verifier:
+    source: admin-endpoint
+    target: jwt-signer
+    description: "Verify JWT and extract role claim"
+    protocol: http
+    authentication: none
+    data_assets_sent: [jwt-token]
+    data_assets_received: [user-session-state]
+
+# =========================
+# TRUST BOUNDARIES
+# =========================
+trust_boundaries:
+  Internet:
+    id: internet
+    description: "Public network"
+    type: network-dedicated-hoster
+    technical_assets_inside: [browser]
+
+  Container Network:
+    id: container-net
+    description: "Internal Docker network"
+    type: network-dedicated-hoster
+    technical_assets_inside: [auth-api, jwt-signer, user-db, admin-endpoint]
+
+# =========================
+# ABUSE CASES
+# =========================
+abuse_cases:
+  "JWT Forgery": "Attacker without signing key crafts a valid-looking JWT to impersonate another user or elevate privilege."
+  "Privilege Escalation via /admin": "User with low-privilege JWT accesses admin endpoint due to missing role check."
+  "Credential Stuffing": "Attacker brute-forces login using stolen credential pairs."
+
+# =========================
+# SECURITY REQUIREMENTS
+# =========================
+security_requirements:
+  "JWT signing key protection": "Keep JWT signing key secret; never expose in logs or client-side code."
+  "Admin endpoint role check": "Every request to /admin must verify the 'role' claim inside the verified JWT."
+  "Short-lived JWTs": "Use short expiry and implement refresh tokens."
