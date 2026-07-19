@@ -1,0 +1,19 @@
+# Bonus: ModSecurity v3 + OWASP CRS sidecar in front of Juice Shop.
+# Exposes HTTP :8081 so the WAF can be tested without fighting the image's TLS.
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "8081:8080"
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      PARANOIA: "1"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsecurity/audit.log"
+    volumes:
+      - ./waf-logs:/var/log/modsecurity:rw
