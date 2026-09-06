@@ -1,0 +1,7 @@
+--- labs/lab12/results/runc-devs.txt	2026-07-13 19:00:55.429149851 +0300
++++ labs/lab12/results/kata-devs.txt	2026-07-14 03:07:43.404106322 +0300
+@@ -1,4 +1,3 @@
+-core
+ fd
+ full
+ mqueue

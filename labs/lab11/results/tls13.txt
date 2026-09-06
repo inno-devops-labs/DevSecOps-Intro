@@ -1,0 +1,12 @@
+Connecting to ::1
+depth=0 CN=juice.local
+verify error:num=18:self-signed certificate
+CONNECTION ESTABLISHED
+Protocol version: TLSv1.3
+Ciphersuite: TLS_AES_256_GCM_SHA384
+Peer certificate: CN=juice.local
+Hash used: SHA256
+Signature type: rsa_pss_rsae_sha256
+Verification error: self-signed certificate
+Peer Temp Key: X25519, 253 bits
+DONE

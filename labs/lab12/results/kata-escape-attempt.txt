@@ -1,0 +1,2 @@
+time="2026-07-14T03:15:51+03:00" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+time="2026-07-14T03:15:53+03:00" level=fatal msg="failed to create shim task: QMP command failed: Could not open '/dev/sdc': No medium found"

@@ -1,0 +1,1 @@
+Linux workpc 7.1.3-arch1-1 #1 SMP PREEMPT_DYNAMIC Tue, 07 Jul 2026 05:05:48 +0000 x86_64 GNU/Linux
