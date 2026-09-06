@@ -121,7 +121,7 @@ The course repo ships **only** lab specs, lecture notes, and plumbing files. Stu
 | `labs/lab10/imports/` — DefectDojo importer | ✅ | |
 | `labs/lab11/docker-compose.yml`, `labs/lab11/reverse-proxy/nginx.conf` | ✅ | |
 | `labs/lab12/scripts/` — Kata install/configure | ✅ | |
-| `tools/` — version manifest + drift and lab checkers | ✅ | |
+| `tools/` — version manifest, drift, consistency and lab checkers | ✅ | |
 | `.github/workflows/course-health.yml`, `.github/ISSUE_TEMPLATE/` | ✅ | |
 | `.github/PULL_REQUEST_TEMPLATE.md` — students write in Lab 1 | | ✅ |
 | `.github/workflows/*.yml` — students add from Lab 1 bonus onward | | ✅ |
@@ -291,6 +291,7 @@ DevSecOps-Intro/
 ├── tools/                         # Course maintenance (ships)
 │   ├── versions.yaml              #   every pinned tool version, one source of truth
 │   ├── check-versions.py          #   compares the pins with upstream releases
+│   ├── check-course.py            #   cross-lab handoffs, versions, structure, coverage
 │   └── verify-lab.sh              #   runs every shell block of a lab spec
 │
 ├── refs/                          # Instructor reference submissions (gitignored)

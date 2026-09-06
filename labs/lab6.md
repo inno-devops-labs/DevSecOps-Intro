@@ -70,6 +70,7 @@ Checkov 3.x has no Pulumi framework: it wants rendered state, not Python. KICS p
 
 ### 6.3 Scan both
 
+<!-- produces: labs/lab6/results/kics-ansible/results.json for lab 10 -->
 <!-- verify:nonzero-ok kics exits non-zero when it finds anything -->
 ```bash
 docker run --rm --user "$(id -u):$(id -g)" -v "$(pwd)/labs/lab6":/path \
@@ -77,6 +78,7 @@ docker run --rm --user "$(id -u):$(id -g)" -v "$(pwd)/labs/lab6":/path \
   -o /path/results/kics-ansible/ --report-formats json,sarif
 ```
 
+<!-- produces: labs/lab6/results/kics-pulumi/results.json for lab 10 -->
 <!-- verify:nonzero-ok kics exits non-zero when it finds anything -->
 ```bash
 docker run --rm --user "$(id -u):$(id -g)" -v "$(pwd)/labs/lab6":/path \

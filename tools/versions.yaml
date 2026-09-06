@@ -99,6 +99,7 @@ tools:
 
   k3d:
     pin: v5.9.0
+    k8s: "1.33"          # the k3s version lab 7 runs; checked by check-course.py
     labs: [7]
     github: k3d-io/k3d
     verified: recorded

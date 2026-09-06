@@ -51,6 +51,7 @@ Two to three minutes. It ends with a `FAIL-NEW / WARN-NEW / PASS` line and exits
 
 ### 5.2 Authenticated full scan
 
+<!-- produces: labs/lab5/results/auth-report.json for lab 10 -->
 <!-- verify:skip a 10-20 minute active scan; run it by hand -->
 ```bash
 docker run --rm --network lab5-net -e _JAVA_OPTIONS="-Xmx512m" \
@@ -91,6 +92,7 @@ Pin the clone to the container's tag: scanning `main` while attacking v20.0.0 ma
 
 ### 5.5 Scan
 
+<!-- produces: labs/lab5/results/semgrep.json for lab 10 -->
 <!-- verify:skip needs the clone from 5.4 and takes several minutes -->
 ```bash
 semgrep --config=p/owasp-top-ten --config=p/javascript --config=p/secrets \

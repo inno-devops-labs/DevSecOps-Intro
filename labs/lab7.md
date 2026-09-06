@@ -141,6 +141,8 @@ The namespace goes first on purpose. `kubectl apply -f <dir>` processes files in
 
 ### 7.6 Scan the running workload
 
+<!-- produces: labs/lab7/results/trivy-image.json for lab 10 -->
+<!-- produces: labs/lab7/results/trivy-k8s.json for lab 10 -->
 <!-- verify:skip needs the cluster and the deployment from 7.5 -->
 ```bash
 kubectl create ns juice-plain

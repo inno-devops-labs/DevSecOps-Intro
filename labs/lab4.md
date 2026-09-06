@@ -30,6 +30,8 @@ mkdir -p labs/lab4
 
 ### 4.1 Generate two SBOMs
 
+<!-- produces: labs/lab4/juice-shop.cdx.json for lab 8 and lab 10 -->
+<!-- produces: labs/lab4/grype-from-sbom.json for lab 10 -->
 ```bash
 syft bkimminich/juice-shop:v20.0.0 -o cyclonedx-json=labs/lab4/juice-shop.cdx.json
 syft bkimminich/juice-shop:v20.0.0 -o spdx-json=labs/lab4/juice-shop.spdx.json

@@ -90,12 +90,14 @@ while IFS="$(printf '\t')" read -r n start marker; do
   fi
   printf "  %2s  line %-5s RUN   %s\n" "$n" "$start" "$first"
   ran=$((ran + 1))
-  if ( cd "$ROOT" && bash -eo pipefail "$file" ) > "$WORK/out-$n.log" 2>&1; then
+  ( cd "$ROOT" && bash -eo pipefail "$file" ) > "$WORK/out-$n.log" 2>&1
+  status=$?
+  if [ "$status" -eq 0 ]; then
     printf "      ok\n"
   elif [ -n "$nonzero_ok" ]; then
-    printf "      ok (non-zero exit, expected)\n"
+    printf "      ok (non-zero exit %s, expected)\n" "$status"
   else
-    printf "      FAILED (exit %s), last lines:\n" "$?"
+    printf "      FAILED (exit %s), last lines:\n" "$status"
     tail -5 "$WORK/out-$n.log" | cut -c1-160 | sed 's/^/      | /'
     failed=$((failed + 1))
     break

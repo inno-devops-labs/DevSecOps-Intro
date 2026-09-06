@@ -111,6 +111,7 @@ Note the output directory is `labs/lab2/output-secure`, not a directory inside `
 
 Build a second, smaller model covering only Juice Shop's login path: browser, login endpoint, token issuing and verification, the credential store, an admin endpoint. Start from a skeleton, not from the baseline model:
 
+<!-- produces: labs/lab2/threagile-stub-model.yaml by threagile -create-stub-model -->
 ```bash
 mkdir -p labs/lab2/output-auth
 docker run --rm -v "$(pwd)/labs/lab2":/app/work \

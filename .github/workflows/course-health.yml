@@ -20,6 +20,11 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Shellcheck the shipped scripts
+        run: |
+          sudo apt-get install -y --no-install-recommends shellcheck >/dev/null
+          shellcheck -S warning $(git ls-files 'labs/**/*.sh' 'tools/*.sh')
+
       - name: Check pinned versions against upstream
         id: check
         env:
@@ -34,6 +39,9 @@ jobs:
           set -e
           cat report.txt
           echo "drift=$drift" >> "$GITHUB_OUTPUT"
+      - name: Course consistency checks
+        run: python3 tools/check-course.py
+
       - name: Open or update the drift issue
         if: steps.check.outputs.drift != '0'
         env:
