@@ -1,0 +1,34 @@
+name: Lab 1 Smoke Test
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Deploy Juice Shop Container
+        run: |
+          docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop:v20.0.0
+
+      - name: Poll Application Health
+        run: |
+          echo "Starting health check loop..."
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version >/dev/null; then
+              echo "Juice Shop v20.0.0 is successfully up and healthy!"
+              curl -I http://localhost:3000/rest/admin/application-version
+              exit 0
+            fi
+            echo "Attempt $i: Juice Shop is initializing, waiting 2 seconds..."
+            sleep 2
+          done
+          echo "Error: Juice Shop failed to respond within 60 seconds."
+          exit 1
