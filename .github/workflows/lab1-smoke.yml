@@ -1,0 +1,30 @@
+name: lab1-smoke
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v20.0.0
+        ports:
+          - 3000:3000
+    steps:
+      - name: Wait for Juice Shop and verify health
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version >/dev/null; then
+              echo "Juice Shop healthy after $((i * 2))s"
+              curl -i http://localhost:3000/rest/admin/application-version | head -20
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Juice Shop did not become healthy within 60s"
+          exit 1
