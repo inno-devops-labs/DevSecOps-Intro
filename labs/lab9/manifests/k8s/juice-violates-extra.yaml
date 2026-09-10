@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-violates
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-violates
+  template:
+    metadata:
+      labels:
+        app: juice-violates
+    spec:
+      containers:
+        - name: juice
+          image: bkimminich/juice-shop:v20.0.0
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]

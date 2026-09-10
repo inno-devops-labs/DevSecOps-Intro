@@ -1,0 +1,23 @@
+- rule: Write Below Tmp In Container
+  desc: Detect a write under /tmp inside a container (filesystem drift)
+  condition: >
+    open_write and container and container.id != "host"
+    and fd.name startswith /tmp/
+  output: >
+    Write under /tmp in container
+    (container=%container.name user=%user.name file=%fd.name
+     command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Suspected Cryptominer Activity
+  desc: Outbound connect to common mining pool ports with miner-like process
+  condition: >
+    evt.type=connect and evt.dir=< and container and container.id != "host"
+    and fd.sport in (3333, 4444, 5555, 7777, 14444)
+    and (proc.name in (xmrig, minerd, cpuminer, softirq, nc, busybox) or proc.name contains miner)
+  output: >
+    Suspected cryptomining connect
+    (container=%container.name process=%proc.name dest=%fd.rip:%fd.sport cmdline=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_command_and_control, network]
