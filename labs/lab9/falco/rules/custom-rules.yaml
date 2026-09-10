@@ -1,0 +1,59 @@
+# labs/lab9/falco/rules/custom-rules.yaml
+# Custom Falco rules for Lab 9 (Task 1 + Bonus)
+
+################################################################################
+# Task 1 — custom rule: writes to /tmp from INSIDE a container (host ignored)
+################################################################################
+- rule: Write to /tmp by container
+  desc: >
+    Detects any process writing a file under /tmp from inside a container.
+    Writes on the host are ignored. Container-drift indicator.
+  condition: >
+    open_write
+    and container
+    and fd.name startswith "/tmp/"
+  output: >
+    File written under /tmp inside a container
+    (user=%user.name container=%container.name file=%fd.name cmd=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+################################################################################
+# Bonus — cryptominer network / process detection (combines 2 indicators)
+################################################################################
+
+# List of known miner binaries (proc.name is a string field -> `in` list is safe)
+- list: crypto_miner_binaries
+  items: [xmrig, ethminer, cgminer, t-rex, claymore, minerd, xmr-stak]
+
+# Indicator 1 (NETWORK): outbound connect to a common mining-pool port.
+# Ports are compared explicitly (most robust across Falco versions).
+- macro: outbound_to_miner_port
+  condition: >
+    evt.type = connect and evt.dir = <
+    and fd.sockfamily = ip
+    and (fd.sport = 3333 or fd.sport = 4444 or fd.sport = 5555
+         or fd.sport = 7777 or fd.sport = 14444 or fd.sport = 19999
+         or fd.sport = 45700)
+
+# Indicator 2 (PROCESS): a known miner binary is launched inside a container.
+- macro: known_miner_process
+  condition: >
+    spawned_process
+    and proc.name in (crypto_miner_binaries)
+
+- rule: Possible Cryptominer Activity
+  desc: >
+    Fires when a container either connects out to a well-known mining-pool port
+    OR spawns a known cryptominer binary. Combines a network indicator and a
+    process indicator (Lab 9 bonus).
+  condition: >
+    container
+    and (outbound_to_miner_port or known_miner_process)
+  output: >
+    Possible cryptominer activity
+    (container=%container.name image=%container.image.repository
+     process=%proc.name cmd=%proc.cmdline
+     dest=%fd.name server_port=%fd.sport)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
