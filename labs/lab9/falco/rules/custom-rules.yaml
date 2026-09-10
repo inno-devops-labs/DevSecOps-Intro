@@ -1,0 +1,30 @@
+- list: custom_lab9_rules
+  items: [write_tmp_by_container, possible_cryptominer_activity]
+
+- rule: Write to /tmp by container
+  desc: Detect writes to /tmp inside containers
+  condition: >
+    open_write and
+    container and
+    container.id != host and
+    fd.name startswith /tmp/
+  output: >
+    Write to /tmp by container
+    (user=%user.name container=%container.name file=%fd.name cmdline=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Possible Cryptominer Activity
+  desc: Detect cryptominer network and process patterns
+  condition: >
+    container and
+    container.id != host and
+    (
+      (evt.type=connect and fd.dport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)) or
+      proc.name in (xmrig, ethminer, cgminer, t-rex, claymore)
+    )
+  output: >
+    Possible Cryptominer Activity
+    (container=%container.name process=%proc.name connection=%fd.name:%fd.dport target=%fd.cip name=%fd.cip.name)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
