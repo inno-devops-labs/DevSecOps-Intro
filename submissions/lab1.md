@@ -40,7 +40,7 @@
 
 ```
 NAMES        STATUS         PORTS
-juice-shop   Up (running)   127.0.0.1:3000->3000/tcp
+juice-shop   Up 2 minutes   127.0.0.1:3000->3000/tcp
 ```
 
 ### Surface (from 1.2)
@@ -146,24 +146,7 @@ Misconfiguration**.
   - PR title follows `feat(labN): <topic>`
   - No secrets, keys, or large temporary files committed
   - `submissions/labN.md` exists and every field holds an actual value (no placeholders)
-- **Auto-fill proof:** _fill after pushing_ — link to the draft PR whose description box shows
-  the template before any typing, e.g. `https://github.com/inno-devops-labs/DevSecOps-Intro/pull/<N>`
-  (or a screenshot committed under `submissions/`).
-
----
-
-## GitHub community
-
-- [ ] Starred [inno-devops-labs/DevSecOps-Intro](https://github.com/inno-devops-labs/DevSecOps-Intro) and [simple-container-com/api](https://github.com/simple-container-com/api)
-- [ ] Followed [@Cre-eD](https://github.com/Cre-eD), [@Naghme98](https://github.com/Naghme98), [@pierrepicaud](https://github.com/pierrepicaud)
-- [ ] Followed at least three classmates
-
-Stars are the closest thing open-source maintainers have to a usage signal: they are how a
-project shows up in search and trending, how a maintainer justifies spending time on it, and how
-a newcomer decides the project is alive and worth trusting. Following people turns a class into a
-network — you see teammates' commits and released projects in your feed, it is one click to find
-a collaborator's other work when you are forming a team, and your own contribution history
-becomes visible to people who might vouch for you later.
+- **Auto-fill proof:** ![proof](autofill.png)
 
 ---
 
@@ -176,18 +159,12 @@ becomes visible to people who might vouch for you later.
   `3000:3000`; the single step polls `curl --silent --fail
   http://localhost:3000/rest/admin/application-version` every 2s for up to 60s and fails the job
   (`::error::` + `exit 1`) if it never gets a 200.
-- **Run URL:** _fill after pushing_ — `https://github.com/<you>/DevSecOps-Intro/actions/runs/<id>`
-- **Run duration:** _fill after the first green run_
-- **curl output excerpt from the job log** (captured locally against the same image and endpoint
-  the job hits; the job log will show the same line):
+- **Run URL:** https://github.com/whynotgm/DevSecOps-Intro/actions/runs/34497391108/job/102939214191?pr=1
+- **Run duration:** 16 seconds (job `smoke`, status success)
+- **curl output excerpt from the job log:**
   ```
   $ curl --silent --fail http://localhost:3000/rest/admin/application-version
   {"version":"20.0.0"}
-  Juice Shop is up after ~24s
+  Juice Shop is up after ~4s
   ```
 
----
-
-## 1.4 — container kept
-
-`docker stop juice-shop` only (no `docker rm`) — Labs 4, 5, 7, 8 and 10 reuse this exact image.
