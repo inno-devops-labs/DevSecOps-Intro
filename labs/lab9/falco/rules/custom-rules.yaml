@@ -1,0 +1,29 @@
+- rule: Write to /tmp by container
+  desc: Detect file writes under /tmp performed from inside a container
+  condition: >
+    open_write and
+    container and
+    fd.name startswith /tmp/
+  output: >
+    Write to /tmp by container
+    (container=%container.name user=%user.name file=%fd.name cmd=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Possible Cryptominer Activity
+  desc: Detect miner-like activity in a container using process name and common mining-pool ports
+  condition: >
+    container and spawned_process and
+    proc.name in (xmrig, ethminer, cgminer, t-rex, claymore, nc, wget) and
+    (proc.cmdline contains " 3333" or
+     proc.cmdline contains " 4444" or
+     proc.cmdline contains " 5555" or
+     proc.cmdline contains " 7777" or
+     proc.cmdline contains " 14444" or
+     proc.cmdline contains " 19999" or
+     proc.cmdline contains " 45700")
+  output: >
+    Possible Cryptominer Activity
+    (container=%container.name proc=%proc.name cmd=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
