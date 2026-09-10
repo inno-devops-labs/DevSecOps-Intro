@@ -1,0 +1,18 @@
+# Bonus: CRS WAF beside the plain nginx proxy.
+# Compare: https://localhost (nginx) vs http://localhost:8080 (WAF).
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "8080:8080"
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "On"
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      TZ: "UTC"
