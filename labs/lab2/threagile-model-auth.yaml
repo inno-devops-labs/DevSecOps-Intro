@@ -4,8 +4,7 @@ title: Juice Shop Auth Flow Model
 date: 2026-09-10
 
 author:
-  name: Student Name
-  homepage: https://example.edu
+  name: Alex
 
 management_summary_comment: >
   Feature-level threat model of the OWASP Juice Shop authentication path only:
