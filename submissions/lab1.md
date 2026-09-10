@@ -1,6 +1,6 @@
 # Lab 1 — OWASP Juice Shop deployment and triage
 
-Date: 11.06.2026.
+Date: 11.09.2026.
 
 The browser inspection was completed using DevTools. Observations, screenshots, and the response body were recorded.
 
