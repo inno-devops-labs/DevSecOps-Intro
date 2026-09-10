@@ -1,0 +1,13 @@
+metadata:
+  id: "CKV_AWS_CUSTOM_S3_LIFECYCLE"
+  name: "Ensure every S3 bucket defines lifecycle_rule"
+  category: "GENERAL_SECURITY"
+  severity: "MEDIUM"
+scope:
+  provider: aws
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_s3_bucket"
+  attribute: "lifecycle_rule"
+  operator: "exists"
