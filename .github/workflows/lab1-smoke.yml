@@ -1,0 +1,37 @@
+name: lab1-smoke
+
+# Smoke-test OWASP Juice Shop on every PR: start the pinned image and prove the
+# app answers a real request before the branch merges. A preview of Lecture 4.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+
+    # Tag pin is accepted for this first workflow; Lecture 4 covers pinning by digest.
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v20.0.0
+        ports:
+          - 3000:3000
+
+    steps:
+      - name: Poll the application-version endpoint (up to 60s)
+        run: |
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version; then
+              echo
+              echo "Juice Shop is up after ~$((i * 2))s"
+              exit 0
+            fi
+            echo "attempt $i: not ready, retrying in 2s"
+            sleep 2
+          done
+          echo "::error::Juice Shop never returned HTTP 200 within 60s"
+          exit 1
