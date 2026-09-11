@@ -1,0 +1,209 @@
+title: "Juice Shop Auth Flow"
+version: "1.0"
+date: "2026-06-10"
+author:
+  name: "DevSecOps Student"
+management_summary: "Authentication and session management threat model for OWASP Juice Shop."
+business_criticality: "important"
+
+trust_boundaries:
+  internet:
+    id: "internet"
+    type: "network-dedicated-hoster"
+    description: "External public network"
+    technical_assets_inside:
+      - "browser"
+  container:
+    id: "container"
+    type: "network-dedicated-hoster"
+    description: "Docker environment"
+    technical_assets_inside:
+      - "auth-api"
+      - "token-signer"
+      - "admin-api"
+      - "user-db"
+
+data_assets:
+  credentials:
+    id: "credentials"
+    description: "User login credentials"
+    usage: "business"
+    owner: "users"
+    quantity: "many"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+  jwt-token:
+    id: "jwt-token"
+    description: "Signed JWT for session"
+    usage: "business"
+    owner: "system"
+    quantity: "many"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+  jwt-key:
+    id: "jwt-key"
+    description: "Secret key for signing JWTs"
+    usage: "business"
+    owner: "system"
+    quantity: "very-few"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+  admin-reqs:
+    id: "admin-reqs"
+    description: "Admin operation requests"
+    usage: "business"
+    owner: "system"
+    quantity: "few"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+
+technical_assets:
+  browser:
+    id: "browser"
+    type: "external-entity"
+    description: "End user browser"
+    usage: "business"
+    size: "component"
+    technology: "browser"
+    machine: "physical"
+    encryption: "none"
+    owner: "users"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: true
+    out_of_scope: false
+    data_assets_processed: []
+    data_assets_stored: []
+    communication_links:
+      login-request:
+        target: "auth-api"
+        description: "Login request"
+        protocol: "https"
+        authentication: "none"
+        authorization: "none"
+        usage: "business"
+        data_assets_sent:
+          - "credentials"
+        data_assets_received:
+          - "jwt-token"
+      admin-request:
+        target: "admin-api"
+        description: "Admin panel request"
+        protocol: "https"
+        authentication: "session-id"
+        authorization: "enduser-identity-propagation"
+        usage: "business"
+        data_assets_sent:
+          - "jwt-token"
+          - "admin-reqs"
+        data_assets_received: []
+
+  auth-api:
+    id: "auth-api"
+    type: "process"
+    description: "Auth API Server"
+    usage: "business"
+    size: "component"
+    technology: "web-server"
+    machine: "virtual"
+    encryption: "none"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_stored: []
+    data_assets_processed:
+      - "credentials"
+      - "jwt-token"
+    communication_links:
+      sign-token:
+        target: "token-signer"
+        description: "Sign the JWT"
+        protocol: "local-file-access"
+        authentication: "none"
+        authorization: "none"
+        usage: "business"
+        data_assets_sent:
+          - "credentials"
+        data_assets_received:
+          - "jwt-token"
+      db-query:
+        target: "user-db"
+        description: "DB Credentials Check"
+        protocol: "jdbc-encrypted"
+        authentication: "credentials"
+        authorization: "none"
+        usage: "business"
+        data_assets_sent:
+          - "credentials"
+        data_assets_received:
+          - "credentials"
+
+  token-signer:
+    id: "token-signer"
+    type: "process"
+    description: "Internal token signer library"
+    usage: "business"
+    size: "component"
+    technology: "library"
+    machine: "virtual"
+    encryption: "none"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_stored: []
+    data_assets_processed:
+      - "jwt-key"
+      - "jwt-token"
+    communication_links: {}
+
+  admin-api:
+    id: "admin-api"
+    type: "process"
+    description: "Admin API Server"
+    usage: "business"
+    size: "component"
+    technology: "web-server"
+    machine: "virtual"
+    encryption: "none"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_stored: []
+    data_assets_processed:
+      - "jwt-token"
+      - "admin-reqs"
+    communication_links: {}
+
+  user-db:
+    id: "user-db"
+    type: "datastore"
+    description: "Database for Users"
+    usage: "business"
+    size: "component"
+    technology: "database"
+    machine: "virtual"
+    encryption: "data-with-symmetric-shared-key"
+    owner: "system"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    used_as_client_by_human: false
+    out_of_scope: false
+    data_assets_processed: []
+    data_assets_stored:
+      - "credentials"
+    communication_links: {}
