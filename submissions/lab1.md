@@ -97,7 +97,8 @@ Missing: `Content-Security-Policy` and `Strict-Transport-Security`. The app is s
   - [ ] PR title follows `feat(labN): <topic>`
   - [ ] No secrets or large temporary files committed
   - [ ] `submissions/labN.md` exists
-- Draft PR with the auto-filled description: **TODO — add the link after opening the draft PR**
+- Draft PR with the auto-filled description: https://github.com/mobgun/DevSecOps-Intro/pull/1 (draft, `feature/lab1` → `mobgun:main`)
+- GitHub reads PR templates only from the base repository's default branch, so the template is also committed on `main` of my fork and the draft PR targets that branch. The description box opened already filled with the Goal / Changes / Testing / Artifacts & Screenshots / Checklist template.
 
 ## GitHub community
 
@@ -106,6 +107,12 @@ Stars are a cheap, public signal of use and trust. Maintainers cite them when th
 ## Bonus: CI smoke test
 
 - Workflow: `.github/workflows/lab1-smoke.yml` (`on: pull_request` to `main`, workflow-level `permissions: contents: read`, Juice Shop `v20.0.0` as a service container, `curl --silent --fail` polling with a 60-second deadline)
-- Run URL: **TODO — add after the first run**
-- Run duration: **TODO**
-- Curl output from the job log: **TODO**
+- Run URL: https://github.com/mobgun/DevSecOps-Intro/actions/runs/34598315606 (event `pull_request` on draft PR #1, conclusion **success**)
+- Run duration: 20 s (`run_duration_ms: 20000`). The `smoke` job ran from 12:19:21 to 12:19:38 UTC: "Initialize containers" (pull and start Juice Shop) took 11 s and "Wait for Juice Shop (up to 60 s)" took 4 s.
+- Curl output from the job log:
+
+```text
+not ready yet (1s), retrying...
+{"version":"20.0.0"}
+Juice Shop is up after 4s
+```
