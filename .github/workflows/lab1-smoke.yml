@@ -1,0 +1,29 @@
+name: Lab 1 Juice Shop smoke test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start OWASP Juice Shop
+        run: docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop:v20.0.0
+
+      - name: Wait for application version endpoint
+        run: |
+          for attempt in {1..12}; do
+            if response="$(curl --silent --show-error --fail http://localhost:3000/rest/admin/application-version)"; then
+              echo "Juice Shop is ready: ${response}"
+              exit 0
+            fi
+            echo "Attempt ${attempt}/12: Juice Shop is not ready yet"
+            sleep 5
+          done
+          echo "Juice Shop did not become ready within 60 seconds" >&2
+          exit 1
