@@ -1,0 +1,376 @@
+threagile_version: 1.0.0
+
+title: Juice Shop Auth Flow
+
+date: 2026-09-14
+
+author:
+  name: Ildar Mukhamadullin
+  homepage: https://example.edu
+
+management_summary_comment: >
+  Feature-level threat model of the OWASP Juice Shop authentication path only:
+  a browser submitting credentials to the login endpoint, a token service that
+  signs and verifies JWTs using a dedicated signing key, the credential store,
+  and an admin endpoint gated by an authorization check.
+
+business_criticality: critical
+
+business_overview:
+  description: Login and token-issuing flow of Juice Shop.
+  images: []
+
+technical_overview:
+  description: >
+    The browser posts credentials to the login endpoint, which verifies them
+    against the credential store and asks the token service to mint a signed JWT.
+    The browser then presents that JWT to the admin endpoint, which verifies it
+    with the token service before allowing any privileged action.
+  images: []
+
+questions:
+  Where is the JWT signing key stored?: ""
+
+abuse_cases:
+  JWT forgery: >
+    An attacker who obtains or brute-forces the signing key can mint valid admin tokens.
+  Credential stuffing: >
+    Automated login attempts against the login endpoint to guess valid credentials.
+
+security_requirements:
+  Signed tokens: JWTs must be signed with a strong, secret key and verified on every request.
+  AuthZ on admin: The admin endpoint must enforce a server-side role check.
+
+tags_available:
+  - nodejs
+  - auth
+  - tokens
+  - pii
+  - admin
+  - docker
+
+# =========================
+# DATA ASSETS
+# =========================
+data_assets:
+
+  User Credentials:
+    id: user-credentials
+    description: "Email + password submitted at login and the stored password hashes."
+    usage: business
+    tags: ["pii", "auth"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Authentication secrets; disclosure or tampering leads directly to account takeover.
+
+  JWT Token:
+    id: jwt-token
+    description: "Signed JSON Web Token carrying the authenticated session and role."
+    usage: business
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      A stolen or forged token grants an attacker the victim's session and privileges.
+
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: "Private/secret key used by the token service to sign and verify JWTs."
+    usage: devops
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: very-few
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: >
+      Compromise of this single key lets an attacker forge tokens for any user, including admin.
+
+  Admin Data:
+    id: admin-data
+    description: "Administrative resources (user list, feedback moderation, configuration)."
+    usage: business
+    tags: ["admin", "pii"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Privileged data whose exposure or modification affects every user of the system.
+
+# =========================
+# TECHNICAL ASSETS
+# =========================
+technical_assets:
+
+  User Browser:
+    id: user-browser
+    description: "End-user web browser performing login."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    size: system
+    technology: browser
+    tags: ["auth"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: External User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Untrusted client, possibly an attacker."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - user-credentials
+      - jwt-token
+    data_assets_stored:
+      - jwt-token
+    data_formats_accepted:
+      - json
+    communication_links:
+      Submit Login:
+        target: login-endpoint
+        description: "Browser posts credentials to the login endpoint over HTTPS."
+        protocol: https
+        authentication: credentials
+        authorization: enduser-identity-propagation
+        tags: ["auth"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - user-credentials
+        data_assets_received:
+          - jwt-token
+      Call Admin API:
+        target: admin-endpoint
+        description: "Browser calls the admin endpoint presenting its JWT."
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["admin"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - admin-data
+
+  Login Endpoint:
+    id: login-endpoint
+    description: "Juice Shop REST login route that verifies credentials and requests a token."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: service
+    technology: web-service-rest
+    tags: ["nodejs", "auth"]
+    internet: false
+    machine: container
+    encryption: transparent
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Handles raw credentials; a core trust-establishing component."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - user-credentials
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Verify Credentials:
+        target: credential-store
+        description: "Look up and compare the password hash."
+        protocol: sql-access-protocol-encrypted
+        authentication: credentials
+        authorization: technical-user
+        tags: ["auth"]
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent: []
+        data_assets_received:
+          - user-credentials
+      Issue Token:
+        target: token-service
+        description: "Ask the token service to mint a signed JWT for the authenticated user."
+        protocol: https
+        authentication: token
+        authorization: technical-user
+        tags: ["tokens"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: []
+        data_assets_received:
+          - jwt-token
+
+  Token Service:
+    id: token-service
+    description: "Signs and verifies JWTs; custodian of the JWT signing key."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: service
+    technology: identity-provider
+    tags: ["tokens", "auth"]
+    internet: false
+    machine: container
+    encryption: transparent
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: "Holds the signing key; compromise breaks all authentication."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - jwt-signing-key
+    data_assets_stored:
+      - jwt-signing-key
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Credential Store:
+    id: credential-store
+    description: "Database of user accounts and password hashes."
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: database
+    tags: ["auth", "pii"]
+    internet: false
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Stores authentication secrets for every user."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - user-credentials
+    data_assets_stored:
+      - user-credentials
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: "Privileged REST route; enforces a server-side role check before acting."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: service
+    technology: web-service-rest
+    tags: ["admin", "nodejs"]
+    internet: false
+    machine: container
+    encryption: transparent
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Exposes administrative data; must verify role from a valid token."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - admin-data
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Verify Token:
+        target: token-service
+        description: "Verify the presented JWT and its role claim before authorizing the action."
+        protocol: https
+        authentication: token
+        authorization: technical-user
+        tags: ["tokens"]
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received: []
+
+# =========================
+# TRUST BOUNDARIES
+# =========================
+trust_boundaries:
+
+  Internet:
+    id: internet
+    description: "Untrusted public network."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - user-browser
+    trust_boundaries_nested:
+      - app-network
+
+  Application Network:
+    id: app-network
+    description: "Container network hosting the auth services and store."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - login-endpoint
+      - token-service
+      - credential-store
+      - admin-endpoint
+    trust_boundaries_nested: []
+
+shared_runtimes:
+  Docker Host:
+    id: docker-host
+    description: "Docker Engine hosting the auth-flow containers."
+    tags: ["docker"]
+    technical_assets_running:
+      - login-endpoint
+      - token-service
+      - credential-store
+      - admin-endpoint
+
+individual_risk_categories: {}
+risk_tracking: {}
