@@ -68,7 +68,7 @@ Classification of the four headers:
 - **File path:** `.github/PULL_REQUEST_TEMPLATE.md`
 - **Sections:** Goal, Changes, Testing, Artifacts & Screenshots
 - **Checklist items:** title follows `feat(labN): <topic>`; no secrets or large temp files committed; `submissions/labN.md` exists.
-- **Draft PR:** <FILL IN — paste the draft PR link here after you push; the description box should be auto-filled from the template. Attach a screenshot if you prefer.>
+- **Draft PR:** https://github.com/darik1201/DevSecOps-Intro/pull/1 — opened inside my fork (`feature/lab1` → `main`); the description box auto-filled from `.github/PULL_REQUEST_TEMPLATE.md`. (The upstream PR is inno-devops-labs/DevSecOps-Intro#1712.)
 
 ## GitHub community
 Stars are the most visible signal of adoption for an open-source maintainer: they raise a project's ranking and discoverability, help justify continued maintenance, and act as social proof that attracts contributors and sponsors. Following classmates and instructors turns GitHub into a working notification graph — you see each other's PRs, forks, and activity in your feed, which makes finding reviewers, spotting who is working on the same lab, and coordinating on team projects far easier than chasing links manually.
@@ -80,9 +80,11 @@ Stars are the most visible signal of adoption for an open-source maintainer: the
 
 ## Bonus: CI smoke test
 - **Workflow path:** `.github/workflows/lab1-smoke.yml`
-- **Run URL:** <FILL IN — paste the Actions run URL from your PR>
-- **Run duration:** <FILL IN — e.g. ~45s>
+- **Run URL:** https://github.com/darik1201/DevSecOps-Intro/actions/runs/34873900922/job/104076226425
+- **Run duration:** ~15s (job `smoke-test`, succeeded)
 - **curl output excerpt from the job log:**
 ```
-<FILL IN — paste the line showing e.g. {"version":"20.0.0"} once the poll succeeds>
+info: Server listening on port 3000        # service container ready
+{"version":"20.0.0"}                        # curl --silent --fail /rest/admin/application-version -> HTTP 200
+Juice Shop is up after ~Ns
 ```
