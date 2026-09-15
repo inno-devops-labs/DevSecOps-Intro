@@ -1,0 +1,12 @@
+metadata:
+  id: "CKV_CUSTOM_1"
+  name: "Ensure RDS instance is not publicly accessible"
+  category: "NETWORKING"
+  severity: "HIGH"
+
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_db_instance"
+  attribute: "publicly_accessible"
+  operator: "is_false"
