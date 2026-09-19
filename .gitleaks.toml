@@ -1,0 +1,10 @@
+title = "gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Public SSH signing key fingerprint quoted in submissions/lab3.md — not a secret"
+regexes = [
+  '''utJtQllr1SnuooDnWQ5v07wCTRH4rpabSQJtx98vzZE''',
+]
