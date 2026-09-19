@@ -102,10 +102,10 @@ First 20 lines of the result:
     "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
     "bomFormat": "CycloneDX",
     "specVersion": "1.7",
-    "serialNumber": "urn:uuid:37193a2b-28e5-4fee-9390-179b9134a25e",
+    "serialNumber": "urn:uuid:2b740712-41c9-4202-83f9-f97cddfff8e6",
     "version": 1,
     "metadata": {
-      "timestamp": "2026-09-19T19:55:35Z",
+      "timestamp": "2026-09-19T20:05:10Z",
 ```
 
 **Digest signed over:** `sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0`, obtained via `docker inspect bkimminich/juice-shop:v20.0.0 --format '{{index .RepoDigests 0}}'`. The digest is used instead of the tag because a tag like `v20.0.0` is a mutable pointer — someone can push a different image under the same tag later — while the digest is a content hash of the exact bytes that were scanned, so the attestation stays true forever for that specific image, regardless of what the tag points to afterward.
