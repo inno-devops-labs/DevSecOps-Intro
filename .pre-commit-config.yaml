@@ -1,0 +1,18 @@
+# Pre-commit hooks for the DevSecOps course repo.
+# Runs gitleaks (secret scanning) plus a couple of hygiene hooks before every commit.
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: detect-private-key
+        # labs/lab6 ships a deliberately vulnerable IaC sample with a planted
+        # private key; it is course fixture data, not a real secret, so it is
+        # excluded from this hook rather than being purged.
+        exclude: ^labs/lab6/vulnerable-iac/
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
