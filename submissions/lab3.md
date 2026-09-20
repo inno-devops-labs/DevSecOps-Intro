@@ -27,7 +27,7 @@ Date:   Sun Sep 20 19:09:49 2026 +0300
 ```
 
 ### Verified badge on GitHub
-<FILL IN — link to a commit on github.com/darik1201/DevSecOps-Intro showing the green "Verified" badge, after registering the signing key (Settings → SSH and GPG keys → New SSH key → Key type: **Signing Key**).>
+Both commits on `feature/lab3` show the green **Verified** badge. Example: https://github.com/darik1201/DevSecOps-Intro/commit/2196fa214498f5efa1b64ef174af848c91491069 (GitHub API confirms `"verified": true`, `"reason": "valid"`).
 
 ### Repudiation (what the badge changes)
 Git takes the author line from local config, so anyone can run `git commit --author="Ildar Mukhamadullin <i.mukhamadullin@innopolis.university>"` and produce commits in this fork that *look* like mine — planting a backdoor or a leaked secret that I could later deny writing, and that a reviewer would attribute to me. The SSH signature binds each commit to my private key: the **Verified** badge means GitHub checked the signature against the signing key registered on my account, so a forged author line without my key shows **Unverified**. That removes the repudiation risk Lab 2 flagged — I can no longer plausibly deny a signed commit, and no one can convincingly forge one in my name.
