@@ -1,0 +1,23 @@
+---
+# Org rule: every RDS must use IAM database authentication.
+# Comes from our internal audit finding AUD-2025-14 / CIS-style control:
+# shared DB passwords in Terraform state are an incident waiting to happen.
+metadata:
+  id: "CKV_AWS_CUSTOM_RDS_IAM_AUTH"
+  name: "Ensure RDS instances enable IAM database authentication"
+  category: "IAM"
+  severity: "HIGH"
+
+definition:
+  and:
+    - cond_type: "filter"
+      attribute: "resource_type"
+      operator: "within"
+      value:
+        - "aws_db_instance"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_db_instance"
+      attribute: "iam_database_authentication_enabled"
+      operator: "equals"
+      value: true
