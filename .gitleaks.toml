@@ -1,0 +1,14 @@
+# Gitleaks config for this fork: the default rule set plus one narrow exception.
+[extend]
+useDefault = true
+
+# The Lab 3 write-up quotes `git log --show-signature`, whose line
+# "... with ED25519 key SHA256:<fingerprint>" trips `generic-api-key` on entropy.
+# An SSH *public* key fingerprint is published by design, so this allowlists that
+# one literal value — not the file, not the path, not the rule.
+[[allowlists]]
+description = "SSH signing key fingerprint of mobgun (public value, quoted in submissions/lab3.md)"
+regexTarget = "line"
+regexes = [
+  '''SHA256:xOEm0thbWW909lmTgA/Pe6UuGDytLYh3B/v/3hRrYc4''',
+]
