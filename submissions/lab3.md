@@ -36,7 +36,7 @@ Date:   Mon Sep 21 10:22:59 2026 +0300
 
 The commit was signed using the SSH signing key registered in GitHub.
 
-GitHub commit link: **to be added after pushing the branch**
+GitHub commit link: https://github.com/inno-devops-labs/DevSecOps-Intro/commit/6dcce2d049fe27cbfad38bbb067df63f0b1087ad
 
 ### Why signing is important
 
