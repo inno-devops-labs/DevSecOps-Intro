@@ -1,0 +1,440 @@
+threagile_version: 1.0.0
+
+title: Juice Shop Auth Flow
+date: 2026-09-21
+
+author:
+  name: Student Name
+  homepage: https://example.edu
+
+management_summary_comment: >
+  Feature-level threat model of Juice Shop's login path only: how a browser
+  exchanges credentials for a JWT, how that JWT is verified on later requests,
+  and how an admin-only endpoint is gated behind that verification.
+
+business_criticality: important # archive, operational, important, critical, mission-critical
+
+business_overview:
+  description: >
+    Covers only the authentication and authorization flow: submitting credentials,
+    issuing a signed session token, verifying that token on subsequent calls, and
+    protecting one admin-only route behind the verified identity.
+  images:
+
+technical_overview:
+  description: >
+    A browser posts credentials to a Login Endpoint, which checks them against a
+    Credential Store and asks a Token Service to mint a signed JWT using a
+    dedicated signing key. Later requests carry that JWT to a Token Verification
+    layer, which only forwards calls whose verified role claim is admin to the
+    Admin Endpoint, and writes an audit trail for every admin action.
+  images: []
+
+questions:
+  Is the JWT signing key rotated?: ""
+  Is there a lockout after repeated failed logins?: ""
+
+abuse_cases:
+  Credential Stuffing: >
+    Attackers replay leaked credential pairs against the Login Endpoint to find
+    reused passwords.
+  JWT Signing Key Theft: >
+    An attacker who obtains the signing key can forge tokens for any user,
+    including an admin role claim.
+  Privilege Escalation via Forged Claim: >
+    A regular user tampers with or forges a token to add an admin role claim and
+    reach the Admin Endpoint directly.
+
+security_requirements:
+  Password hashing: Store only salted, slow-hashed credentials, never plaintext or reversibly encrypted passwords.
+  Signing key isolation: Keep the JWT signing key out of application code and logs, readable only by the Token Service.
+  Server-side role check: Enforce the admin role check on every request at the Token Verification layer, never trust a client-supplied claim alone.
+  Rate limiting: Apply login rate limiting and lockouts to blunt credential stuffing.
+
+tags_available:
+  - auth
+  - tokens
+  - pii
+  - admin
+  - primary
+  - docker
+
+# =========================
+# DATA ASSETS
+# =========================
+data_assets:
+
+  Credentials:
+    id: credentials
+    description: "User-submitted email and password at login time."
+    usage: business
+    tags: ["pii", "auth"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: >
+      Raw credentials in transit and the stored hash must stay confidential; integrity
+      matters because a tampered hash could let an attacker log in as anyone.
+
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: "The symmetric key used to sign and verify issued JWTs."
+    usage: devops
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: very-few
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: >
+      Anyone holding this key can forge a token for any identity, including an admin
+      role claim, without ever touching the Credential Store. It is the single most
+      sensitive asset in this model.
+
+  Issued Tokens:
+    id: issued-tokens
+    description: "Signed JWTs handed to the browser after a successful login."
+    usage: business
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      A leaked token grants session hijacking; integrity is critical because a
+      tampered claim (e.g. role) inside the token must be caught by verification.
+
+  Admin Audit Log:
+    id: admin-audit-log
+    description: "Record of every action performed through the Admin Endpoint."
+    usage: devops
+    tags: ["admin"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Integrity is critical because this log is the evidence trail for any admin
+      action taken, including malicious ones performed with a forged or stolen token.
+
+# =========================
+# TECHNICAL ASSETS
+# =========================
+technical_assets:
+
+  User Browser:
+    id: user-browser
+    description: "End-user web browser (client)."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    justification_out_of_scope:
+    size: system
+    technology: browser
+    tags: ["auth"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: External User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Client controlled by end user (potentially an attacker)."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - issued-tokens
+    data_formats_accepted:
+      - json
+    communication_links:
+      Submit Credentials:
+        target: login-endpoint
+        description: "Browser posts email and password to the login endpoint."
+        protocol: https
+        authentication: credentials
+        authorization: enduser-identity-propagation
+        tags: ["primary"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - issued-tokens
+      Call Admin Endpoint:
+        target: token-verification
+        description: "Browser sends its JWT to reach an admin-only route."
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["admin"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - issued-tokens
+        data_assets_received: []
+
+  Login Endpoint:
+    id: login-endpoint
+    description: "Express route that validates submitted credentials."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Gatekeeper for every authenticated session; a bypass here compromises every downstream asset."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Check Credentials:
+        target: credential-store
+        description: "Looks up the stored password hash for the submitted email."
+        protocol: jdbc-encrypted
+        authentication: client-certificate
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received: []
+      Request Token Issuance:
+        target: token-service
+        description: "Asks the Token Service to mint a JWT after credentials check out."
+        protocol: https
+        authentication: client-certificate
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: []
+        data_assets_received:
+          - issued-tokens
+
+  Token Service:
+    id: token-service
+    description: "Signs and issues JWTs using the dedicated signing key."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["auth", "tokens"]
+    internet: false
+    machine: container
+    encryption: data-with-symmetric-shared-key
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Holds the signing key; a compromise here lets an attacker mint tokens for any identity."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - issued-tokens
+    data_assets_stored:
+      - jwt-signing-key
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Token Verification:
+    id: token-verification
+    description: "Middleware that verifies a JWT's signature and role claim on every request."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["auth", "tokens"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "The only checkpoint standing between a bearer of a token and the Admin Endpoint."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - issued-tokens
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Forward to Admin (role-checked):
+        target: admin-endpoint
+        description: >
+          Forwards the request only if the verified JWT's role claim equals
+          "admin"; this is the authorization check for the whole flow.
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["admin"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - issued-tokens
+        data_assets_received: []
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: "Administrative route reachable only via Token Verification's role check."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["admin"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Administrative functionality; compromise here is a full application takeover."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - issued-tokens
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Write Audit Entry:
+        target: credential-store
+        description: "Writes an audit record for every admin action performed."
+        protocol: jdbc-encrypted
+        authentication: client-certificate
+        authorization: technical-user
+        tags: ["admin"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - admin-audit-log
+        data_assets_received: []
+
+  Credential Store:
+    id: credential-store
+    description: "Database holding password hashes and the admin audit log."
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: database
+    tags: ["auth"]
+    internet: false
+    machine: virtual
+    encryption: data-with-symmetric-shared-key
+    owner: Lab Owner
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Stores password hashes and the audit trail; both must survive tampering intact."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - credentials
+      - admin-audit-log
+    data_formats_accepted:
+      - file
+    communication_links: {}
+
+# =========================
+# TRUST BOUNDARIES
+# =========================
+trust_boundaries:
+
+  Internet:
+    id: internet
+    description: "Untrusted public network."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - user-browser
+    trust_boundaries_nested:
+      - backend
+
+  Backend:
+    id: backend
+    description: "Internal service network hosting the auth flow components."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - login-endpoint
+      - token-service
+      - token-verification
+      - admin-endpoint
+      - credential-store
+    trust_boundaries_nested: []
+
+# =========================
+# SHARED RUNTIMES
+# =========================
+shared_runtimes:
+
+  Auth Services:
+    id: auth-services
+    description: "Containers running the login, token and admin services."
+    tags: ["docker"]
+    technical_assets_running:
+      - login-endpoint
+      - token-service
+      - token-verification
+      - admin-endpoint
+
+individual_risk_categories: {}
+risk_tracking: {}
