@@ -76,15 +76,8 @@ Keep-Alive: timeout=5
   - [ ] Title follows `feat(labN): <topic>`
   - [ ] No secrets or large temp files committed
   - [ ] `submissions/labN.md` exists
-- Draft PR showing the auto-filled description: https://github.com/AlexbittIT/DevSecOps-Intro/pull/1
+- Draft PR showing the auto-filled description: https://github.com/AlexbittIT/DevSecOps-Intro/pull/2
 
 ## GitHub community
 
 Stars matter to open-source maintainers because they are the simplest visible signal of reach and adoption — a maintainer (or their employer, or a grant committee) uses star counts to gauge whether a project is worth continued investment, and a rising star count on a new release is often the first evidence that something landed well. Following people matters in team projects because it keeps their activity (new repos, releases, issues they open) visible in your feed by default, which lowers the friction of noticing when a teammate ships something you need to review or build on, without having to remember to go check.
-
-## Bonus: CI smoke test
-
-- Workflow path: `.github/workflows/lab1-smoke.yml`
-- Run URL: https://github.com/AlexbittIT/DevSecOps-Intro/actions/runs/PLACEHOLDER
-- Run duration: PLACEHOLDER
-- curl output excerpt from the job log: PLACEHOLDER
