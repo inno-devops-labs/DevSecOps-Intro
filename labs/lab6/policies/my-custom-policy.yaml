@@ -1,0 +1,29 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: "Lab recovery standard: retain RDS automated backups for 14 to 35 days"
+  category: BACKUP_AND_RECOVERY
+  severity: HIGH
+definition:
+  and:
+    - cond_type: filter
+      attribute: resource_type
+      operator: within
+      value:
+        - aws_db_instance
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: backup_retention_period
+      operator: exists
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: backup_retention_period
+      operator: greater_than_or_equal
+      value: 14
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: backup_retention_period
+      operator: less_than_or_equal
+      value: 35
