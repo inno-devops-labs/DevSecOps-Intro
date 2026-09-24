@@ -1,0 +1,363 @@
+# Authored from output-auth/threagile-stub-model.yaml; not derived from the baseline.
+threagile_version: "1.0.0"
+title: "Juice Shop Login Flow"
+date: "2026-09-11"
+author:
+  name: "Lab 2 Student"
+management_summary_comment: "Feature-level teaching model authored from the generated Threagile stub. Logical components represent responsibilities within one Juice Shop process, not separately deployed services. Controls describe intended checks, not verified implementation security."
+business_criticality: "important"
+business_overview:
+  description: "Authenticate a shopper and authorize administrative access."
+  images: []
+technical_overview:
+  description: "The browser submits credentials to login. Login queries the embedded credential store and calls the JWT issuer only after a successful password check. The browser presents a JWT to verification middleware; only a verified administrator identity reaches the admin handler. Issuing, verification, login, the handler and SQLite share the application runtime. sql-access-protocol represents logical SQLite queries, not a remote database listener. The issuer uses a private signing key; the verifier uses a public verification key."
+  images: []
+questions:
+  Are signature algorithm, issuer, audience and expiry checks correctly implemented?: "Not verified; this is a threat-model exercise."
+  Is the admin role checked for every request before the handler?: "Required by the modeled guard; must be verified in application code and negative tests."
+abuse_cases:
+  Credential query injection: "Attacker-controlled login input changes a database query and bypasses authentication."
+  Token forgery: "An attacker steals the signing key or exploits incomplete JWT verification to impersonate an administrator."
+  Privilege escalation: "A non-admin attempts to reach the admin handler using an ordinary or modified JWT."
+security_requirements:
+  Credential validation: "Parameterize credential queries and verify the password before invoking the issuer."
+  JWT verification: "Pin the signature algorithm and trusted verification key; validate issuer, audience and expiry."
+  Admin authorization: "The Token Verifier to Admin Endpoint link must deny access unless the verified identity has the admin role; no browser-to-admin bypass is modeled."
+  Key protection: "Keep the private signing key accessible only to the issuer; never send it to the browser or verifier."
+tags_available: []
+data_assets:
+  Login Credentials:
+    id: "credentials"
+    description: "User-supplied username and password; disclosure enables account takeover."
+    usage: "business"
+    tags: []
+    origin: "Login flow"
+    owner: "Lab Owner"
+    quantity: "many"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "User-supplied username and password; disclosure enables account takeover."
+  Credential Records:
+    id: "credential-records"
+    description: "Stored password hashes and account identities; tampering can bypass authentication."
+    usage: "business"
+    tags: []
+    origin: "Login flow"
+    owner: "Lab Owner"
+    quantity: "many"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Stored password hashes and account identities; tampering can bypass authentication."
+  JWT Access Token:
+    id: "jwt"
+    description: "Bearer token returned after login; theft enables impersonation."
+    usage: "business"
+    tags: []
+    origin: "Login flow"
+    owner: "Lab Owner"
+    quantity: "many"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Bearer token returned after login; theft enables impersonation."
+  JWT Signing Key:
+    id: "jwt-signing-key"
+    description: "Private signing key, represented as an asset only; disclosure permits token forgery."
+    usage: "business"
+    tags: []
+    origin: "Login flow"
+    owner: "Lab Owner"
+    quantity: "many"
+    confidentiality: "strictly-confidential"
+    integrity: "mission-critical"
+    availability: "important"
+    justification_cia_rating: "Private signing key, represented as an asset only; disclosure permits token forgery."
+  JWT Verification Key:
+    id: "jwt-verification-key"
+    description: "Public verification key; integrity prevents substitution."
+    usage: "business"
+    tags: []
+    origin: "Login flow"
+    owner: "Lab Owner"
+    quantity: "many"
+    confidentiality: "public"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Public verification key; integrity prevents substitution."
+  Verified Identity and Role:
+    id: "identity-role"
+    description: "Identity and role checked by the verifier before invoking the admin handler."
+    usage: "business"
+    tags: []
+    origin: "Login flow"
+    owner: "Lab Owner"
+    quantity: "many"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Identity and role checked by the verifier before invoking the admin handler."
+  Admin Data:
+    id: "admin-data"
+    description: "Administrative user data readable only after the server-side admin role check."
+    usage: "business"
+    tags: []
+    origin: "Login flow"
+    owner: "Lab Owner"
+    quantity: "many"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Administrative user data readable only after the server-side admin role check."
+technical_assets:
+  Browser:
+    id: "browser"
+    description: "Untrusted user browser submits login data and bearer tokens."
+    type: "external-entity"
+    usage: "business"
+    used_as_client_by_human: true
+    out_of_scope: false
+    justification_out_of_scope: ""
+    size: "component"
+    technology: "browser"
+    tags: []
+    internet: true
+    machine: "virtual"
+    encryption: "none"
+    owner: "External User"
+    confidentiality: "public"
+    integrity: "operational"
+    availability: "important"
+    justification_cia_rating: "Untrusted user browser submits login data and bearer tokens."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: ["credentials", "jwt", "admin-data"]
+    data_assets_stored: []
+    data_formats_accepted: ["json"]
+    communication_links:
+      Submit Login:
+        target: "login"
+        description: "POST /rest/user/login; password validation occurs at the receiving endpoint."
+        protocol: "http"
+        authentication: "credentials"
+        authorization: "none"
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: "business"
+        data_assets_sent: ["credentials"]
+        data_assets_received: ["jwt"]
+      Request Admin Access:
+        target: "token-verifier"
+        description: "Protected admin request enters JWT verification middleware before the admin handler."
+        protocol: "http"
+        authentication: "token"
+        authorization: "enduser-identity-propagation"
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: "business"
+        data_assets_sent: ["jwt"]
+        data_assets_received: ["admin-data"]
+  Login Endpoint:
+    id: "login"
+    description: "Login handler validates supplied credentials before requesting a token."
+    type: "process"
+    usage: "business"
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope: ""
+    size: "component"
+    technology: "web-service-rest"
+    tags: []
+    internet: false
+    machine: "container"
+    encryption: "none"
+    owner: "Lab Owner"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Login handler validates supplied credentials before requesting a token."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: ["credentials", "credential-records", "identity-role", "jwt"]
+    data_assets_stored: []
+    data_formats_accepted: ["json"]
+    communication_links:
+      Check Credentials:
+        target: "credential-store"
+        description: "Logical query against embedded SQLite; untrusted login input reaches the query builder."
+        protocol: "sql-access-protocol"
+        authentication: "none"
+        authorization: "technical-user"
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: "business"
+        data_assets_sent: ["credentials"]
+        data_assets_received: ["credential-records", "identity-role"]
+      Issue After Password Check:
+        target: "token-issuer"
+        description: "In-process call allowed only after password verification; identity derives from the credential store."
+        protocol: "in-process-library-call"
+        authentication: "none"
+        authorization: "enduser-identity-propagation"
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: "business"
+        data_assets_sent: ["identity-role"]
+        data_assets_received: ["jwt"]
+  Token Issuer:
+    id: "token-issuer"
+    description: "Logical identity-provider responsibility in the application; signs JWTs using the private key."
+    type: "process"
+    usage: "business"
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope: ""
+    size: "component"
+    technology: "library"
+    tags: []
+    internet: false
+    machine: "container"
+    encryption: "none"
+    owner: "Lab Owner"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Logical identity-provider responsibility in the application; signs JWTs using the private key."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: ["identity-role", "jwt", "jwt-signing-key"]
+    data_assets_stored: ["jwt-signing-key"]
+    data_formats_accepted: ["json"]
+    communication_links: {}
+  Token Verifier:
+    id: "token-verifier"
+    description: "JWT middleware verifies the signature and claims, then checks the verified admin role before invoking Admin Endpoint."
+    type: "process"
+    usage: "business"
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope: ""
+    size: "component"
+    technology: "web-service-rest"
+    tags: []
+    internet: false
+    machine: "container"
+    encryption: "none"
+    owner: "Lab Owner"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "JWT middleware verifies the signature and claims, then checks the verified admin role before invoking Admin Endpoint."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: ["jwt", "jwt-verification-key", "identity-role"]
+    data_assets_stored: ["jwt-verification-key"]
+    data_formats_accepted: ["json"]
+    communication_links:
+      Authorized Admin Call:
+        target: "admin-endpoint"
+        description: "AUTHORIZATION GUARD: require a valid JWT and verified role == admin; deny otherwise. This is the only incoming edge to Admin Endpoint."
+        protocol: "in-process-library-call"
+        authentication: "token"
+        authorization: "enduser-identity-propagation"
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: "business"
+        data_assets_sent: ["identity-role"]
+        data_assets_received: ["admin-data"]
+  Credential Store:
+    id: "credential-store"
+    description: "Embedded SQLite identity store holding credential hashes and account roles; shares the application runtime."
+    type: "datastore"
+    usage: "business"
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope: ""
+    size: "component"
+    technology: "identity-store-database"
+    tags: []
+    internet: false
+    machine: "container"
+    encryption: "none"
+    owner: "Lab Owner"
+    confidentiality: "strictly-confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Embedded SQLite identity store holding credential hashes and account roles; shares the application runtime."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: ["credentials", "identity-role"]
+    data_assets_stored: ["credential-records", "identity-role", "admin-data"]
+    data_formats_accepted: ["json"]
+    communication_links: {}
+  Admin Endpoint:
+    id: "admin-endpoint"
+    description: "Administrative handler reachable only through Token Verifier and its admin role guard."
+    type: "process"
+    usage: "business"
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope: ""
+    size: "component"
+    technology: "library"
+    tags: []
+    internet: false
+    machine: "container"
+    encryption: "none"
+    owner: "Lab Owner"
+    confidentiality: "confidential"
+    integrity: "critical"
+    availability: "important"
+    justification_cia_rating: "Administrative handler reachable only through Token Verifier and its admin role guard."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: ["identity-role", "admin-data"]
+    data_assets_stored: []
+    data_formats_accepted: ["json"]
+    communication_links:
+      Read Administrative Data:
+        target: "credential-store"
+        description: "Authorized handler reads user administration data from embedded SQLite."
+        protocol: "sql-access-protocol"
+        authentication: "none"
+        authorization: "enduser-identity-propagation"
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: "business"
+        data_assets_sent: ["identity-role"]
+        data_assets_received: ["admin-data"]
+trust_boundaries:
+  Application Host:
+    id: "application-host"
+    description: "Server-side application boundary; the browser is outside. Logical auth components are deliberately co-located, without a separate identity network segment."
+    type: "network-dedicated-hoster"
+    tags: []
+    technical_assets_inside: ["login", "token-issuer", "token-verifier", "credential-store", "admin-endpoint"]
+    trust_boundaries_nested: []
+shared_runtimes:
+  Juice Shop Process:
+    id: "juice-shop-process"
+    description: "Logical handlers, token functions and embedded database share the Node.js application runtime; component boxes are not process isolation."
+    tags: []
+    technical_assets_running: ["login", "token-issuer", "token-verifier", "credential-store", "admin-endpoint"]
+individual_risk_categories: {}
+risk_tracking: {}
