@@ -1,0 +1,36 @@
+# Internal standard: every stateful data store must declare who owns it and
+# how sensitive the data is, so incident response and data-retention reviews
+# can route a finding to a human and apply the right handling rules.
+metadata:
+  id: "CKV_CUSTOM_AWS_1"
+  name: "Ensure stateful data stores carry Owner and DataClassification tags"
+  category: "GENERAL_SECURITY"
+  severity: "MEDIUM"
+definition:
+  and:
+    - cond_type: "filter"
+      attribute: "resource_type"
+      operator: "within"
+      value:
+        - "aws_s3_bucket"
+        - "aws_db_instance"
+        - "aws_dynamodb_table"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+        - "aws_db_instance"
+        - "aws_dynamodb_table"
+      attribute: "tags.Owner"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+        - "aws_db_instance"
+        - "aws_dynamodb_table"
+      attribute: "tags.DataClassification"
+      operator: "within"
+      value:
+        - "public"
+        - "internal"
+        - "confidential"
+        - "restricted"
