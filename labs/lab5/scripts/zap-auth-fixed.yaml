@@ -1,0 +1,129 @@
+env:
+  contexts:
+    - name: "Juice Shop Auth"
+      urls:
+        - "http://juice-shop:3000"
+      includePaths:
+        - "http://juice-shop:3000.*"
+      excludePaths:
+        - ".*\\.js$"
+        - ".*\\.css$"
+        - ".*\\.png$"
+        - ".*\\.jpg$"
+        - ".*\\.ico$"
+        - ".*\\.woff2?$"
+      authentication:
+        method: "json"
+        parameters:
+          loginPageUrl: "http://juice-shop:3000/rest/user/login"
+          loginRequestUrl: "http://juice-shop:3000/rest/user/login"
+          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+        verification:
+          method: "poll"
+          loggedInRegex: '\Q"status":"success"\E'
+          loggedOutRegex: '\QNo Authorization header was found\E'
+          pollFrequency: 60
+          pollUnits: "requests"
+          pollUrl: "http://juice-shop:3000/rest/user/authentication-details/"
+      sessionManagement:
+        method: "headers"
+        parameters:
+          Authorization: "Bearer {%json:authentication.token%}"
+          Cookie: "token={%json:authentication.token%}"
+      users:
+        - name: "admin"
+          credentials:
+            username: "admin@juice-sh.op"
+            password: "admin123"
+  parameters:
+    failOnError: false
+    progressToStdout: true
+
+jobs:
+  - type: "spider"
+    parameters:
+      maxDuration: 5
+      url: "http://juice-shop:3000"
+      user: "admin"
+
+  - type: "spiderAjax"
+    parameters:
+      maxDuration: 10
+      url: "http://juice-shop:3000"
+      user: "admin"
+
+  # The spiders only find what an anonymous crawl links to; the SPA calls these
+  # endpoints only after login, so seed them as the admin user. responseCode
+  # makes ZAP warn if the session header is not being applied (401 instead).
+  - type: "requestor"
+    parameters:
+      user: "admin"
+    requests:
+      - url: "http://juice-shop:3000/rest/user/whoami"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/rest/user/authentication-details/"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/api/Users"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/api/Users/1"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/rest/basket/1"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/api/BasketItems"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/api/Cards"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/api/Addresss"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/api/Complaints"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/rest/order-history"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/rest/wallet/balance"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/rest/2fa/status"
+        method: "GET"
+        responseCode: 200
+      - url: "http://juice-shop:3000/profile"
+        method: "GET"
+        responseCode: 200
+
+  - type: "passiveScan-config"
+    parameters:
+      maxAlertsPerRule: 10
+      enableTags: false
+
+  - type: "passiveScan-wait"
+    parameters:
+      maxDuration: 5
+
+  - type: "activeScan"
+    parameters:
+      user: "admin"
+      maxScanDurationInMins: 10
+      maxRuleDurationInMins: 2
+
+  - type: "report"
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk/results/"
+      reportFile: "auth-fixed-report.html"
+      reportTitle: "ZAP Authenticated Scan Report (header session)"
+
+  - type: "report"
+    parameters:
+      template: "traditional-json"
+      reportDir: "/zap/wrk/results/"
+      reportFile: "auth-fixed-report.json"
+      reportTitle: "ZAP Authenticated Scan (JSON, header session)"
