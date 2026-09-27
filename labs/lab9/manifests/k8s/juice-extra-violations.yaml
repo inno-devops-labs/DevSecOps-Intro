@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-extra-violations
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: juice }
+  template:
+    metadata:
+      labels: { app: juice }
+    spec:
+      containers:
+        - name: juice
+          image: bkimminich/juice-shop:v19.0.0  # Deliberate violation: a mutable tag.
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: "100m", memory: "256Mi" }
+            limits:   { cpu: "500m", memory: "512Mi" }
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet: { path: /, port: 3000 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /, port: 3000 }
+            initialDelaySeconds: 10
+            periodSeconds: 60  # Deliberate violation: slow liveness checks.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-extra-violations
+spec:
+  selector: { app: juice }
+  ports:
+    - port: 80
+      targetPort: 3000
