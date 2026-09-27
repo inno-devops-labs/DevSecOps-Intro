@@ -1,0 +1,23 @@
+metadata:
+  id: "CKV_CUSTOM_1"
+  name: "Ensure every S3 bucket carries Environment, Owner and CostCenter tags"
+  category: "CONVENTION"
+  severity: "MEDIUM"
+
+definition:
+  and:
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.Environment"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.Owner"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.CostCenter"
+      operator: "exists"
