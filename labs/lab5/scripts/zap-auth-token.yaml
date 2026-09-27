@@ -1,0 +1,76 @@
+# Run with run_auth_scan.py, which supplies a verified bearer token.
+env:
+  contexts:
+    - name: Juice Shop Auth
+      urls: ["http://juice-shop:3000"]
+      includePaths: ["http://juice-shop:3000/.*"]
+      excludePaths:
+        - ".*\\.(js|css|png|jpg|ico|woff2?)(\\?.*)?$"
+      authentication:
+        method: manual
+  parameters:
+    failOnError: true
+    progressToStdout: true
+jobs:
+  - type: replacer
+    rules:
+      - description: Lab session cookie for profile and whoami
+        url: "http://juice-shop:3000/.*"
+        matchType: req_header
+        matchString: Cookie
+        replacementString: "token=LAB_TOKEN_PLACEHOLDER"
+  - type: passiveScan-config
+    parameters:
+      maxAlertsPerRule: 10
+  - type: requestor
+    requests:
+      - url: http://juice-shop:3000/rest/user/whoami
+        responseCode: 200
+      - url: http://juice-shop:3000/rest/basket/1
+        responseCode: 200
+      - url: http://juice-shop:3000/api/Users/
+        responseCode: 200
+      - url: http://juice-shop:3000/rest/products/search?q=apple
+        responseCode: 200
+      - url: http://juice-shop:3000/profile
+        responseCode: 200
+  - type: spider
+    parameters:
+      context: Juice Shop Auth
+      url: http://juice-shop:3000
+      maxDuration: 5
+  - type: spiderAjax
+    parameters:
+      context: Juice Shop Auth
+      url: http://juice-shop:3000
+      maxDuration: 3
+      browserId: firefox-headless
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+  - type: activeScan
+    parameters:
+      context: Juice Shop Auth
+      maxScanDurationInMins: 10
+      maxRuleDurationInMins: 2
+      threadPerHost: 2
+    policyDefinition:
+      defaultStrength: Medium
+      defaultThreshold: Medium
+      rules:
+        - id: 40026
+          name: DOM XSS (excluded after browser memory exhaustion)
+          threshold: "Off"
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: /zap/wrk/results/
+      reportFile: auth-report.html
+  - type: report
+    parameters:
+      template: traditional-json
+      reportDir: /zap/wrk/results/
+      reportFile: auth-report.json
