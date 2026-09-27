@@ -1,18 +1,18 @@
 services:
   juice:
-    image: bkimminich/juice-shop:v20.0.0
+    image: bkimminich/juice-shop:v20.0.0@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
     restart: unless-stopped
     expose:
       - "3000"
 
   nginx:
-    image: nginx:stable-alpine
+    image: nginx:stable-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
     restart: unless-stopped
     depends_on:
       - juice
     ports:
-      - "80:80"     # HTTP (redirects to HTTPS)
-      - "443:443"   # HTTPS
+      - "127.0.0.1:80:80"     # Local lab only; HTTP redirects to HTTPS.
+      - "127.0.0.1:443:443"   # HTTPS
       # On rootless Docker or if 80/443 are taken, remap (e.g. "8080:80","8443:443")
       # and adjust the verification URLs accordingly.
     volumes:
