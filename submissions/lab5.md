@@ -195,7 +195,7 @@ row takes the same fix.
 The **product-search SQL injection**, first. It is the row where both tools agree independently —
 SAST points at the exact line, DAST returns a database error from a live unauthenticated request —
 so there is no "is it reachable?" argument to have; it is a confirmed High. The login-page SQLi is
-the same class and same fix, so it rides along in the same PR, but search leads because I already
+the same class and same fix, so it rides along in the same PR, but search leads because I
 have a working request that proves it against the running app.
 
 ## Cleanup
