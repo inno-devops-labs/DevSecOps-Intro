@@ -1,0 +1,29 @@
+# Org standard: every data store must declare how sensitive its data is.
+# DataClassification drives backup tier, KMS key choice, retention and who may be
+# granted read access, so an untagged or free-text value blocks all of that.
+metadata:
+  id: "CKV_CUSTOM_1"
+  name: "Ensure every data store carries a DataClassification tag from the approved list"
+  category: "CONVENTION"
+  severity: "HIGH"
+definition:
+  and:
+    - cond_type: filter
+      attribute: resource_type
+      operator: within
+      value:
+        - aws_s3_bucket
+        - aws_db_instance
+        - aws_dynamodb_table
+    - cond_type: attribute
+      resource_types:
+        - aws_s3_bucket
+        - aws_db_instance
+        - aws_dynamodb_table
+      attribute: tags.DataClassification
+      operator: within
+      value:
+        - public
+        - internal
+        - confidential
+        - restricted
