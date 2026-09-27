@@ -1,0 +1,26 @@
+# Custom Checkov policy: organisation mandatory-tagging standard for S3 buckets.
+# Our FinOps/ownership standard requires every S3 bucket to carry Owner,
+# Environment and CostCenter tags so spend and incident-response ownership can
+# be attributed. Checkov ships no generic "these three tag keys" rule, so it is ours.
+metadata:
+  id: "CKV_CUSTOM_1"
+  name: "S3 buckets must carry Owner, Environment and CostCenter tags (org tagging standard)"
+  category: "GENERAL_SECURITY"
+  severity: "MEDIUM"
+definition:
+  and:
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.Owner"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.Environment"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_s3_bucket"
+      attribute: "tags.CostCenter"
+      operator: "exists"
