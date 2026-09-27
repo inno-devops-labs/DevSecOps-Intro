@@ -1,0 +1,21 @@
+# labs/lab6/policies/my-custom-policy.yaml
+# Org standard (FinOps chargeback): every managed database must be attributable
+# to a cost centre. Neither Checkov nor KICS ships this — it is our internal rule,
+# not generic cloud hygiene.
+metadata:
+  id: "CKV_CUSTOM_1"
+  name: "Ensure every RDS instance carries a CostCenter tag for chargeback"
+  category: "GENERAL_SECURITY"
+  severity: "MEDIUM"
+definition:
+  and:
+    - cond_type: "filter"
+      attribute: "resource_type"
+      operator: "within"
+      value:
+        - "aws_db_instance"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_db_instance"
+      attribute: "tags.CostCenter"
+      operator: "exists"
