@@ -29,3 +29,11 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# lab4 regenerable scan outputs (not deliverables)
+labs/lab4/grype-from-sbom.json
+labs/lab4/grype-from-sbom.txt
+labs/lab4/trivy.json
+
+# session scratch — terminal screenshots in repo root
+/Screenshot from *.png
