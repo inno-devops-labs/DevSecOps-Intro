@@ -33,9 +33,9 @@ CommitDate: Tue Sep 29 12:32:31 2026 +0000
 
 GitHub also verified the commit signature. The commit is available at:
 
-https://github.com/rmcavalcante7/DevSecOps-Intro/commit/159338bc4ac3c3d6ae74a33ce699d4376076c39a
+https://github.com/rmcavalcante7/DevSecOps-Intro/commit/bc81e48dfd0aa2be9a0a2636f3a131d8bce2f56d
 
-The GitHub API reported `verified: true` and `reason: valid` for this commit signature.
+The GitHub API reported `verified: true` and `reason: valid` for the clean PR commit signature.
 
 **Evidence — GitHub Verified commit.**
 
