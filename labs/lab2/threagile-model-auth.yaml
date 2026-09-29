@@ -1,0 +1,449 @@
+threagile_version: 1.0.0
+
+title: Juice Shop Auth Flow
+date: 2026-09-29
+
+author:
+  name: Student Name
+  homepage: https://example.edu
+
+management_summary_comment: >
+  Feature-level threat model for the OWASP Juice Shop authentication and
+  authorization flow. The model focuses on login, credential validation,
+  JWT issuing and verification, and access to an administrative endpoint.
+
+business_criticality: important
+
+business_overview:
+  description: >
+    This model intentionally narrows the scope to authentication and
+    authorization. It does not model the complete Juice Shop architecture.
+  images: []
+
+technical_overview:
+  description: >
+    A user submits credentials from a browser to the login endpoint. The
+    login endpoint checks the credential store and requests a JWT from the
+    token issuer. For administrative access, the browser presents the JWT
+    to the token verification component, which validates it and propagates
+    the verified end-user identity and roles to the admin endpoint.
+  images: []
+
+questions:
+  Is the JWT signing key protected as a secret?: ""
+  Are administrator roles checked server-side?: ""
+  Are failed login attempts rate limited?: ""
+
+abuse_cases:
+  Credential Stuffing: >
+    An attacker repeatedly submits stolen or guessed credentials to the login endpoint.
+  Token Forgery: >
+    An attacker attempts to create a valid-looking JWT by obtaining or abusing the signing key.
+  Broken Admin Authorization: >
+    An authenticated non-admin user attempts to reach the admin endpoint without the required role.
+
+security_requirements:
+  Protect credentials in transit: Use HTTPS for browser-facing authentication traffic.
+  Protect JWT signing key: Keep the JWT signing key restricted and out of source code and logs.
+  Validate JWTs: Verify token integrity and validity before trusting identity claims.
+  Enforce admin authorization: Check the authenticated user's role before allowing admin access.
+
+tags_available:
+  - auth
+  - jwt
+  - browser
+  - endpoint
+  - datastore
+  - admin
+  - secret
+  - roles
+
+data_assets:
+
+  User Credentials:
+    id: user-credentials
+    description: Username/email and password material used during login.
+    usage: business
+    tags: ["auth"]
+    origin: user-supplied
+    owner: Juice Shop
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Credentials must remain confidential and intact because compromise can
+      directly lead to account takeover.
+
+  User Identity and Roles:
+    id: user-identity-roles
+    description: Authenticated user identity and role/permission information.
+    usage: business
+    tags: ["auth", "roles"]
+    origin: application
+    owner: Juice Shop
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      Role integrity is critical because incorrect or manipulated role data
+      can grant unauthorized administrative access.
+
+  JWT Access Token:
+    id: jwt-access-token
+    description: JWT representing an authenticated user session and identity claims.
+    usage: business
+    tags: ["auth", "jwt"]
+    origin: application
+    owner: Juice Shop
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      A stolen or modified token can be used to impersonate a user or alter
+      trusted identity claims.
+
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: Secret key used to sign and validate JWTs in this simplified model.
+    usage: devops
+    tags: ["jwt", "secret"]
+    origin: application
+    owner: Juice Shop
+    quantity: very-few
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: critical
+    justification_cia_rating: >
+      Compromise of the signing key can allow forged tokens to be accepted as legitimate.
+
+technical_assets:
+
+  User Browser:
+    id: user-browser
+    description: End-user browser used for login and subsequent authenticated requests.
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: browser
+    tags: ["browser", "auth"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: External User
+    confidentiality: internal
+    integrity: operational
+    availability: operational
+    justification_cia_rating: >
+      The browser is controlled by the end user and may also be controlled by an attacker.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - user-credentials
+      - jwt-access-token
+    data_assets_stored:
+      - jwt-access-token
+    data_formats_accepted:
+      - json
+    communication_links:
+
+      Submit Login:
+        target: login-endpoint
+        description: User submits credentials and receives a JWT after successful authentication.
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: ["auth"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - user-credentials
+        data_assets_received:
+          - jwt-access-token
+
+      Present Token:
+        target: token-verifier
+        description: Browser presents its JWT before requesting protected administrative access.
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["auth", "jwt"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-access-token
+        data_assets_received: []
+
+  Login Endpoint:
+    id: login-endpoint
+    description: Backend endpoint that receives login requests and coordinates credential validation.
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["auth", "endpoint"]
+    internet: false
+    machine: container
+    encryption: transparent
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: >
+      The login endpoint handles sensitive credentials and controls the transition
+      from an anonymous user to an authenticated identity.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - user-credentials
+      - user-identity-roles
+      - jwt-access-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+
+      Validate Credentials:
+        target: credential-store
+        description: Login endpoint checks the supplied credentials and obtains identity and role data.
+        protocol: jdbc-encrypted
+        authentication: credentials
+        authorization: technical-user
+        tags: ["auth"]
+        vpn: false
+        ip_filtered: true
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - user-credentials
+        data_assets_received:
+          - user-identity-roles
+
+      Request Token:
+        target: token-issuer
+        description: Login endpoint requests a JWT for the successfully authenticated identity.
+        protocol: in-process-library-call
+        authentication: none
+        authorization: none
+        tags: ["auth", "jwt"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - user-identity-roles
+        data_assets_received:
+          - jwt-access-token
+
+  Credential Store:
+    id: credential-store
+    description: Datastore containing credential verification material and user role information.
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: database
+    tags: ["auth", "datastore", "roles"]
+    internet: false
+    machine: virtual
+    encryption: data-with-symmetric-shared-key
+    owner: Juice Shop
+    confidentiality: strictly-confidential
+    integrity: mission-critical
+    availability: critical
+    justification_cia_rating: >
+      Credential and role data must be protected from disclosure and unauthorized modification.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - user-credentials
+      - user-identity-roles
+    data_assets_stored:
+      - user-credentials
+      - user-identity-roles
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Token Issuer:
+    id: token-issuer
+    description: Backend component that creates and signs JWTs after successful login.
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["auth", "jwt"]
+    internet: false
+    machine: container
+    encryption: transparent
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: mission-critical
+    availability: important
+    justification_cia_rating: >
+      Incorrect token issuance or signing-key compromise can create trusted tokens for unauthorized users.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - user-identity-roles
+      - jwt-signing-key
+      - jwt-access-token
+    data_assets_stored:
+      - jwt-signing-key
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Token Verification:
+    id: token-verifier
+    description: Backend component that validates JWT integrity and extracts trusted identity and role claims.
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["auth", "jwt", "roles"]
+    internet: false
+    machine: container
+    encryption: transparent
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: mission-critical
+    availability: important
+    justification_cia_rating: >
+      Token verification is a security gate for protected functionality and must not
+      trust forged or modified identity claims.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-access-token
+      - jwt-signing-key
+      - user-identity-roles
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+
+      Authorized Admin Access:
+        target: admin-endpoint
+        description: >
+          Explicit authorization gate: only a verified end-user identity whose propagated
+          role is authorized for administration is passed to the admin endpoint.
+        protocol: in-process-library-call
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["auth", "admin", "roles"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-access-token
+          - user-identity-roles
+        data_assets_received: []
+
+  Admin Endpoint:
+    id: admin-endpoint
+    description: Protected backend endpoint that requires a verified administrative identity.
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["admin", "endpoint", "auth"]
+    internet: false
+    machine: container
+    encryption: transparent
+    owner: Juice Shop
+    confidentiality: confidential
+    integrity: mission-critical
+    availability: important
+    justification_cia_rating: >
+      Unauthorized access to administrative functionality can affect the entire application.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - user-identity-roles
+      - jwt-access-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+trust_boundaries:
+
+  Client Zone:
+    id: client-zone
+    description: Untrusted user-controlled client environment.
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - user-browser
+    trust_boundaries_nested: []
+
+  Application Zone:
+    id: application-zone
+    description: Juice Shop backend authentication and authorization components.
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - login-endpoint
+      - token-issuer
+      - token-verifier
+      - admin-endpoint
+    trust_boundaries_nested: []
+
+  Data Zone:
+    id: data-zone
+    description: Protected persistence zone for credentials and role information.
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - credential-store
+    trust_boundaries_nested: []
+
+shared_runtimes:
+
+  Juice Shop Backend Runtime:
+    id: juice-shop-backend-runtime
+    description: >
+      The login, token issuing, token verification, and admin endpoint are modeled
+      separately for threat-analysis granularity even though they may run inside
+      the same backend application/runtime.
+    tags: ["auth"]
+    technical_assets_running:
+      - login-endpoint
+      - token-issuer
+      - token-verifier
+      - admin-endpoint
+
+individual_risk_categories: {}
+
+risk_tracking: {}
