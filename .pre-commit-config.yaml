@@ -1,0 +1,105 @@
+# .pre-commit-config.yaml
+#
+# This file configures the "pre-commit" framework.
+# pre-commit is a tool that runs automatic checks before Git completes a commit.
+#
+# The basic flow is:
+#
+#   git commit
+#       |
+#       v
+#   pre-commit runs the hooks configured here
+#       |
+#       +--> all hooks pass  -> the commit can be created
+#       |
+#       +--> any hook fails  -> the commit is blocked
+#
+# This allows problems to be detected BEFORE they enter the Git history.
+
+
+# "repos" starts the list of repositories that provide hooks.
+#
+# A hook is a program or script that runs automatically at a specific point
+# in the Git workflow. In this lab, we use pre-commit hooks.
+repos:
+
+  # First hook repository.
+  #
+  # The "-" character represents an item in a YAML list.
+  #
+  # Here we tell pre-commit:
+  # "retrieve hooks from the official Gitleaks repository".
+  - repo: https://github.com/gitleaks/gitleaks
+
+    # "rev" means revision.
+    #
+    # We pin a specific project version instead of always using the newest one.
+    # This makes the behavior reproducible and prevents unexpected changes when
+    # a newer release is published.
+    #
+    # Lab 3 requires a REAL tag from the 8.x series.
+    # Here we use the same Gitleaks version installed in the VM.
+    rev: v8.30.1
+
+    # "hooks" starts the list of hooks we want to use from this repository.
+    hooks:
+
+      # "id" identifies a specific hook provided by the project.
+      #
+      # The "gitleaks" hook searches for possible secrets in the content that
+      # is being prepared for a commit.
+      #
+      # Examples of secrets:
+      # - API tokens
+      # - GitHub Personal Access Tokens
+      # - cloud service credentials
+      # - passwords
+      # - other credentials with recognizable formats
+      #
+      # If Gitleaks detects something that looks like a secret, it exits with
+      # an error. Because the hook fails, Git does NOT complete the commit.
+      - id: gitleaks
+
+
+  # Second hook repository.
+  #
+  # This is the official "pre-commit-hooks" project, which provides several
+  # generic and reusable checks for Git repositories.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+
+    # Again, we pin a specific version.
+    #
+    # This prevents a future project update from changing the behavior of our
+    # commits unexpectedly.
+    rev: v6.0.0
+
+    # List of hooks enabled from this second repository.
+    hooks:
+
+      # This hook looks for files that appear to contain a PRIVATE key.
+      #
+      # Example:
+      # ~/.ssh/id_ed25519       -> private key
+      # ~/.ssh/id_ed25519.pub   -> public key
+      #
+      # A private key should never be committed to a repository.
+      #
+      # If someone accidentally copies a private key into the project and
+      # attempts to commit it, this hook tries to detect and block the commit.
+      - id: detect-private-key
+        exclude: ^labs/lab6/vulnerable-iac/ansible/configure\.yml$
+
+      # This hook checks whether very large files are being added to Git.
+      #
+      # Git stores file versions in its history. Large binary files can cause
+      # the repository to grow quickly and become difficult to manage.
+      #
+      # Examples of files that normally should not be committed directly:
+      # - virtual machine disks
+      # - large database dumps
+      # - videos
+      # - large ZIP archives
+      #
+      # When large files are actually needed, they are usually handled with
+      # dedicated solutions such as Git LFS or external storage.
+      - id: check-added-large-files
