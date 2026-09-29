@@ -1,0 +1,32 @@
+name: Lab 1 smoke test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  juice-shop:
+    runs-on: ubuntu-latest
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v20.0.0
+        ports:
+          - 3000:3000
+    steps:
+      - name: Wait for Juice Shop
+        run: |
+          for attempt in {1..12}; do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version; then
+              echo "Juice Shop is ready on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Waiting for Juice Shop (${attempt}/12)..."
+            sleep 5
+          done
+
+          echo "Juice Shop did not return HTTP 200 within 60 seconds."
+          exit 1
