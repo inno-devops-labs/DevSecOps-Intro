@@ -152,23 +152,22 @@ jq '[.[].results.failed_checks[]? | select(.check_id | startswith("CKV"))
 - The change to the Terraform that would make it pass, and confirmation that it then does.
 - Two or three sentences: what makes this rule yours rather than something Checkov should ship for everyone? Name the incident, audit finding or internal standard it comes from.
 
+## Acceptance criteria
+
+- Task 1 (6): scan completed; per-framework table matches the JSON; five rules with real descriptions; the highest-leverage fix names a file, a resource and a count; the severity answer engages with the null column.
+- Task 2 (4): both KICS scans completed; severity tables for each, labelled as queries or findings; top-five Ansible queries; one finding in each direction between the tools, explained by parsing ability; a pipeline decision with a plan for the gap.
+- Bonus (2): the policy file exists, is valid YAML, and fires against a real resource in the sample; the JSON evidence is included; the passing change is stated and confirmed.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add submissions/lab6.md
-git add labs/lab6/policies/my-custom-policy.yaml   # bonus only
+git add <proof of work + lab6.md> (submissions/lab6.md, bonus: labs/lab6/policies/my-custom-policy.yaml, ...)
 git commit -m "feat(lab6): checkov and kics findings, custom policy"
 git push -u origin feature/lab6
 ```
 
 Do not commit `labs/lab6/results/`.
 
-## Acceptance criteria
-
-- Task 1 (6): scan completed; per-framework table matches the JSON; five rules with real descriptions; the highest-leverage fix names a file, a resource and a count; the severity answer engages with the null column.
-- Task 2 (4): both KICS scans completed; severity tables for each, labelled as queries or findings; top-five Ansible queries; one finding in each direction between the tools, explained by parsing ability; a pipeline decision with a plan for the gap.
-- Bonus (2): the policy file exists, is valid YAML, and fires against a real resource in the sample; the JSON evidence is included; the passing change is stated and confirmed.
 
 ## Common pitfalls
 

@@ -178,22 +178,22 @@ Then play the attacker: change `/tmp/install.sh`, rebuild the tarball without re
 - The two files a consumer needs, and which of them may travel over the same channel as the artifact.
 - Three or four sentences: Codecov's uploader was signed by nobody and verified by nobody. Write the install instructions you would publish so that a user who follows them cannot be given a modified script, and name the step most projects skip.
 
+## Acceptance criteria
+
+- Task 1 (6): the signed digest is the local-registry one; `cosign verify` succeeds on it; the tag is overwritten and verification of the new digest fails with the error quoted; the original digest still verifies; the explanation states what the signature binds to.
+- Task 2 (4): both attestations attached and verified; the extracted SBOM has the same component count as Lab 4's; both `predicateType` values quoted from the payload; the statement fields explained by origin; the incident-response answer names a precondition, not just a benefit.
+- Bonus (2): `Verified OK` before and a signature failure after modification, both quoted; the distribution answer identifies the key-distribution problem.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add labs/lab8/keys/cosign.pub submissions/lab8.md
+git add <proof of work + lab8.md> (labs/lab8/keys/cosign.pub submissions/lab8.md, ...)
 git commit -m "feat(lab8): cosign signing, tamper demo, sbom attestation"
 git push -u origin feature/lab8
 ```
 
 Never commit `cosign.key`. Clean up with `docker rm -f lab8-registry`.
 
-## Acceptance criteria
-
-- Task 1 (6): the signed digest is the local-registry one; `cosign verify` succeeds on it; the tag is overwritten and verification of the new digest fails with the error quoted; the original digest still verifies; the explanation states what the signature binds to.
-- Task 2 (4): both attestations attached and verified; the extracted SBOM has the same component count as Lab 4's; both `predicateType` values quoted from the payload; the statement fields explained by origin; the incident-response answer names a precondition, not just a benefit.
-- Bonus (2): `Verified OK` before and a signature failure after modification, both quoted; the distribution answer identifies the key-distribution problem.
 
 ## Common pitfalls
 

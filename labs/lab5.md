@@ -135,22 +135,22 @@ jq -r '[.results[] | .check_id + " -> " + .path + ":" + (.start.line|tostring)] 
 - For your strongest row: the vulnerable source lines, the request ZAP used, and the fix you would open a PR with.
 - Two or three sentences: which finding would you put first in the PR description, and why?
 
+## Acceptance criteria
+
+- Task 1 (6): both reports exist; counts by risk level for each, taken from the JSON; the totals and the highest risk level compared across the two runs; two authenticated-only alerts with URLs and a reachability reason each; the CI answer addresses coverage, not tooling.
+- Task 2 (4): severity split, rule table and error count from the actual run; a workflow-file rule connected to Lecture 4; a false positive identified by file, line and rule with code-specific reasoning; a one-rule fix argued.
+- Bonus (2): at least one row where both tools point at the same behaviour, with the source lines, the request, and a concrete fix.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add submissions/lab5.md
+git add <proof of work + lab5.md> (submissions/lab5.md, ...)
 git commit -m "feat(lab5): zap baseline and authenticated, semgrep, correlation"
 git push -u origin feature/lab5
 ```
 
 Do not commit `labs/lab5/results/` or the source clone; paste the numbers instead. Clean up with `docker rm -f juice-shop && docker network rm lab5-net && rm -rf labs/lab5/semgrep/juice-shop`.
 
-## Acceptance criteria
-
-- Task 1 (6): both reports exist; counts by risk level for each, taken from the JSON; the totals and the highest risk level compared across the two runs; two authenticated-only alerts with URLs and a reachability reason each; the CI answer addresses coverage, not tooling.
-- Task 2 (4): severity split, rule table and error count from the actual run; a workflow-file rule connected to Lecture 4; a false positive identified by file, line and rule with code-specific reasoning; a one-rule fix argued.
-- Bonus (2): at least one row where both tools point at the same behaviour, with the source lines, the request, and a concrete fix.
 
 ## Common pitfalls
 

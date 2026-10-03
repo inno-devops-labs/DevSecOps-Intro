@@ -157,23 +157,22 @@ Nginx forwards `?q=' OR 1=1--` without comment. A WAF with the OWASP Core Rule S
 - One legitimate request the WAF blocks that it should not, or evidence you looked for one and found none.
 - Three or four sentences: CRS in blocking mode on day one is how teams end up turning the WAF off. Describe how you would roll this out in front of a real application.
 
+## Acceptance criteria
+
+- Task 1 (4): redirect proven with its status code; TLS 1.3 protocol and suite shown; a scanner's protocol table showing 1.0 and 1.1 not offered; all six headers present in the response; the CSP answer describes a path to enforcement.
+- Task 2 (4): the status-code sequence shows the rate limit engaging and returning 429; a per-address connection limit is configured; a cipher suite outside your list is refused; each timeout explained; the rotation runbook is ordered and includes verification; the bypass answer names two concrete techniques.
+- Bonus (2): the same payload compared through both paths with status codes; a real CRS rule id from the log; a false-positive hunt with a result either way; a rollout plan that does not start in blocking mode.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add labs/lab11/reverse-proxy/nginx.conf submissions/lab11.md
-git add labs/lab11/waf/   # bonus only
+git add <proof of work + lab11.md> (labs/lab11/reverse-proxy/nginx.conf submissions/lab11.md, bonus: labs/lab11/waf/, ...)
 git commit -m "feat(lab11): hardened reverse proxy + WAF"
 git push -u origin feature/lab11
 ```
 
 Do not commit `labs/lab11/reverse-proxy/certs/` or `labs/lab11/logs/`. Clean up with `docker compose -f labs/lab11/docker-compose.yml down -v`.
 
-## Acceptance criteria
-
-- Task 1 (4): redirect proven with its status code; TLS 1.3 protocol and suite shown; a scanner's protocol table showing 1.0 and 1.1 not offered; all six headers present in the response; the CSP answer describes a path to enforcement.
-- Task 2 (4): the status-code sequence shows the rate limit engaging and returning 429; a per-address connection limit is configured; a cipher suite outside your list is refused; each timeout explained; the rotation runbook is ordered and includes verification; the bypass answer names two concrete techniques.
-- Bonus (2): the same payload compared through both paths with status codes; a real CRS rule id from the log; a false-positive hunt with a result either way; a rollout plan that does not start in blocking mode.
 
 ## Common pitfalls
 

@@ -145,20 +145,20 @@ git log -p | grep -c 'REDACTED'    # 2
 - Rewriting history is only step one. Name the step that ends the incident, and why the rewrite alone is not enough.
 - Two things that surprised you: what did your terminal print that you did not expect?
 
-## Submit
-
-<!-- verify:skip student fork files -->
-```bash
-git add .pre-commit-config.yaml submissions/lab3.md
-git commit -m "feat(lab3): signed commits + gitleaks pre-commit hook"
-git push -u origin feature/lab3
-```
-
 ## Acceptance criteria
 
 - Task 1 (6): `gpg.format` is `ssh`; `git log --show-signature -1` shows a good signature; every commit on the PR is Verified on GitHub; the repudiation answer is specific to your repository.
 - Task 2 (4): config has a gitleaks hook at a real 8.x tag plus one more hook; the blocked-commit output names the rule; both tune-out options answered with the condition that makes each unsafe.
 - Bonus (2): counts go 2 to 0, with 2 for the marker; the refusal message quoted and explained; the second step named as **rotating the credential**; two specific surprises.
+## Submit
+
+<!-- verify:skip student fork files -->
+```bash
+git add <proof of work + lab3.md> (.pre-commit-config.yaml submissions/lab3.md, ...)
+git commit -m "feat(lab3): signed commits + gitleaks pre-commit hook"
+git push -u origin feature/lab3
+```
+
 
 ## Common pitfalls
 

@@ -178,22 +178,22 @@ docker logs falco 2>&1 | grep -c '"priority":"Critical"'
 - Why a refused connection is enough to detect this, and what that implies about where Falco sits.
 - Three or four sentences: an attacker who reads your rule picks another port. Which part of this detection is expensive to evade, which is free, and what would you add to catch the evasion?
 
+## Acceptance criteria
+
+- Task 1 (6): Falco running with both built-in rules triggered and quoted; a custom rule that fires, with its JSON; one incident-relevant JSON field named; a concrete false-positive scenario with a tuning plan.
+- Task 2 (4): both Kubernetes manifests and the Compose file tested with counts; two failures mapped to Rego rules; the Compose-versus-Kubernetes answer given; your own deny and warn rules passing the hardened manifest and failing a manifest you wrote; the CI-versus-runtime answer commits to a choice.
+- Bonus (2): a CRITICAL rule combining two signals, fired and quoted; the refused-connection explanation is correct; the evasion answer distinguishes cheap from expensive changes.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add labs/lab9/falco/rules/custom-rules.yaml labs/lab9/policies/extra/ submissions/lab9.md
+git add <proof of work + lab9.md> (labs/lab9/falco/rules/custom-rules.yaml labs/lab9/policies/extra/ submissions/lab9.md, ...)
 git commit -m "feat(lab9): falco custom rules + conftest policy"
 git push -u origin feature/lab9
 ```
 
 Clean up: `docker rm -f falco lab9-target`.
 
-## Acceptance criteria
-
-- Task 1 (6): Falco running with both built-in rules triggered and quoted; a custom rule that fires, with its JSON; one incident-relevant JSON field named; a concrete false-positive scenario with a tuning plan.
-- Task 2 (4): both Kubernetes manifests and the Compose file tested with counts; two failures mapped to Rego rules; the Compose-versus-Kubernetes answer given; your own deny and warn rules passing the hardened manifest and failing a manifest you wrote; the CI-versus-runtime answer commits to a choice.
-- Bonus (2): a CRITICAL rule combining two signals, fired and quoted; the refused-connection explanation is correct; the evasion answer distinguishes cheap from expensive changes.
 
 ## Common pitfalls
 

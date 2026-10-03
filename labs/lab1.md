@@ -121,24 +121,23 @@ Push, open the draft PR, and make the run green.
 
 **Submit:** a section `## Bonus: CI smoke test` with the workflow path, the run URL, the run duration, and the curl output excerpt from the job log.
 
-## Submit
-
-<!-- verify:skip student fork files -->
-```bash
-git add .github/PULL_REQUEST_TEMPLATE.md submissions/lab1.md
-git add .github/workflows/lab1-smoke.yml   # bonus only
-git commit -m "feat(lab1): juice shop deploy + PR template + triage report"
-git push -u origin feature/lab1
-```
-
-Open a PR from `your-fork:feature/lab1` to `course-repo:main`. The description should auto-fill from your template. Submit the PR URL in Moodle.
-
 ## Acceptance criteria
 
 - Task 1 (6): `docker ps` shows the v20.0.0 container bound to `127.0.0.1:3000`; version and product-count outputs pasted; digest is a `sha256:` value from `RepoDigests`; all six report items filled with actual values; at least three of the four headers correctly classified as present or missing; three risks, each mapped to an A01 to A10 category.
 - Task 2 (3): template file exists with the four sections and the three checklist items; auto-fill shown on a real PR.
 - Task 3 (1): stars and follows done; section written.
 - Bonus (2): workflow triggers on `pull_request`, sets `permissions: contents: read` at workflow level, polls with a timeout, and the run on the submitted PR is green.
+## Submit
+
+<!-- verify:skip student fork files -->
+```bash
+git add <proof of work + lab1.md> (.github/PULL_REQUEST_TEMPLATE.md submissions/lab1.md, bonus: .github/workflows/lab1-smoke.yml, ...)
+git commit -m "feat(lab1): juice shop deploy + PR template + triage report"
+git push -u origin feature/lab1
+```
+
+Open a PR from `your-fork:feature/lab1` to `course-repo:main`. The description should auto-fill from your template. Submit the PR URL in Moodle.
+
 
 ## Common pitfalls
 

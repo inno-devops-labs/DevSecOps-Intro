@@ -157,23 +157,22 @@ Constraints: five minutes spoken, roughly 700 words. It must cover what you buil
 
 **Submit**: the file, plus three or four sentences in `submissions/lab10.md` on which part of the semester was hardest to explain concisely, and what that tells you about how you would document the next project.
 
+## Acceptance criteria
+
+- Task 1 (6): DefectDojo running at the pinned version; every available report imported with its parser and count; severity totals from the API; two duplicate titles judged with reasoning; the which-lab-mattered answer names labs and reasons.
+- Task 2 (4): SLA numbers changed and defended against the defaults; findings broken down by severity and tool; median age, oldest age and SLA compliance each reported with the method used; the gap left by Labs 8 and 9 acknowledged; a risk acceptance with an expiry and a compensating control; a three-sentence summary that a manager could act on.
+- Bonus (2): the walkthrough exists, fits five minutes, and contains a traced finding and a failure, not a tool list.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add submissions/lab10.md
-git add submissions/lab10-walkthrough.md   # bonus only
+git add <proof of work + lab10.md> (submissions/lab10.md, bonus: submissions/lab10-walkthrough.md, ...)
 git commit -m "feat(lab10): defectdojo capstone + governance report"
 git push -u origin feature/lab10
 ```
 
 Do not commit `labs/lab10/work/` or the importer's response files. Clean up with `docker compose down -v` from inside `labs/lab10/work/dd`.
 
-## Acceptance criteria
-
-- Task 1 (6): DefectDojo running at the pinned version; every available report imported with its parser and count; severity totals from the API; two duplicate titles judged with reasoning; the which-lab-mattered answer names labs and reasons.
-- Task 2 (4): SLA numbers changed and defended against the defaults; findings broken down by severity and tool; median age, oldest age and SLA compliance each reported with the method used; the gap left by Labs 8 and 9 acknowledged; a risk acceptance with an expiry and a compensating control; a three-sentence summary that a manager could act on.
-- Bonus (2): the walkthrough exists, fits five minutes, and contains a traced finding and a failure, not a tool list.
 
 ## Common pitfalls
 

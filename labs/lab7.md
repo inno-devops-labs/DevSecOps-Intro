@@ -192,22 +192,22 @@ That crashes. Your task is to make the same container run with `readOnlyRootFile
 - The directory that could not simply be replaced with an empty volume, and how you solved it.
 - Proof: the pod Ready with `readOnlyRootFilesystem: true`, and an HTTP 200 through `kubectl port-forward`.
 
+## Acceptance criteria
+
+- Task 1 (6): image scan completed; severity counts and the fix-available split; the comparison against Lab 4's Grype totals, or an explicit statement that the numbers were not kept; ten fixable findings ranked; Dockerfile findings with `DS-*` ids and impact; the no-fix answer proposes something other than waiting.
+- Task 2 (4): namespace enforces `restricted`; the Deployment uses its own ServiceAccount with token mounting disabled, sets requests and limits, and pins the image by digest; a NetworkPolicy exists with both policy types; the pod runs and is Ready; `runAsUser` matches the image's real user; both Trivy summaries present with the misconfiguration difference explained; one blocked thing and one voluntary control named.
+- Bonus (2): pod Ready with `readOnlyRootFilesystem: true` and serving 200; the write paths come from `docker diff`, not from guessing; the seeded directory problem is described and solved.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add labs/lab7/k8s/ submissions/lab7.md
+git add <proof of work + lab7.md> (labs/lab7/k8s/ submissions/lab7.md, ...)
 git commit -m "feat(lab7): trivy scans + PSS restricted deployment"
 git push -u origin feature/lab7
 ```
 
 Clean up: `k3d cluster delete lab7`.
 
-## Acceptance criteria
-
-- Task 1 (6): image scan completed; severity counts and the fix-available split; the comparison against Lab 4's Grype totals, or an explicit statement that the numbers were not kept; ten fixable findings ranked; Dockerfile findings with `DS-*` ids and impact; the no-fix answer proposes something other than waiting.
-- Task 2 (4): namespace enforces `restricted`; the Deployment uses its own ServiceAccount with token mounting disabled, sets requests and limits, and pins the image by digest; a NetworkPolicy exists with both policy types; the pod runs and is Ready; `runAsUser` matches the image's real user; both Trivy summaries present with the misconfiguration difference explained; one blocked thing and one voluntary control named.
-- Bonus (2): pod Ready with `readOnlyRootFilesystem: true` and serving 200; the write paths come from `docker diff`, not from guessing; the seeded directory problem is described and solved.
 
 ## Common pitfalls
 

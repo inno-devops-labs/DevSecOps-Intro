@@ -126,23 +126,22 @@ Requirements: at least five technical assets, five communication links and four 
 - Three risks it surfaces that the baseline architecture model did not, each with the rule ID, the STRIDE letter, and a one-sentence mitigation.
 - Two sentences on what a feature-level model showed that the architecture-level one could not.
 
+## Acceptance criteria
+
+- Task 1 (6): both runs produce `risks.json`; the severity table matches the file; five top risks listed with rule ID and asset; each mapped to a STRIDE letter with a reason; one trust-boundary crossing named and explained.
+- Task 2 (4): `threagile-model-secure.yaml` in the PR with all three hardening changes; the secure run completes; diff table filled; three removed rule IDs each tied to a field; two remaining rules explained; the "what is left" answer names a risk no YAML edit can close.
+- Bonus (2): `threagile-model-auth.yaml` written from the stub with the required asset, link and data-asset counts; run completes; three auth-specific risks with rule ID, STRIDE letter and mitigation.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add labs/lab2/threagile-model-secure.yaml submissions/lab2.md
-git add labs/lab2/threagile-model-auth.yaml   # bonus only
+git add <proof of work + lab2.md> (labs/lab2/threagile-model-secure.yaml submissions/lab2.md, bonus: labs/lab2/threagile-model-auth.yaml, ...)
 git commit -m "feat(lab2): threat model, secure variant, auth flow"
 git push -u origin feature/lab2
 ```
 
 Do not commit `labs/lab2/output*/`: the reports are regenerated and already ignored.
 
-## Acceptance criteria
-
-- Task 1 (6): both runs produce `risks.json`; the severity table matches the file; five top risks listed with rule ID and asset; each mapped to a STRIDE letter with a reason; one trust-boundary crossing named and explained.
-- Task 2 (4): `threagile-model-secure.yaml` in the PR with all three hardening changes; the secure run completes; diff table filled; three removed rule IDs each tied to a field; two remaining rules explained; the "what is left" answer names a risk no YAML edit can close.
-- Bonus (2): `threagile-model-auth.yaml` written from the stub with the required asset, link and data-asset counts; run completes; three auth-specific risks with rule ID, STRIDE letter and mitigation.
 
 ## Common pitfalls
 

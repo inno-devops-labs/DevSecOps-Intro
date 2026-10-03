@@ -138,22 +138,22 @@ cat /tmp/lab12-target
 - Three or four sentences: explain the result in terms of what `--privileged` actually grants and to what. If the escape partly worked on Kata, say so and explain which part.
 - One sentence on the honest limit: name something Kata does not protect you from.
 
+## Acceptance criteria
+
+- Task 1 (4): both kernel versions with the host's for comparison; device counts and capability masks side by side; the what-an-attacker-learns answer is about the specific output, not general theory.
+- Task 2 (4): five timings per runtime with medians; I/O figures; a memory measurement with its method; three workloads judged with reasons; the order-of-magnitude answer names a workload class where it does not matter.
+- Bonus (2): both runs recorded with the host file's state; masks and device counts for both; an explanation in terms of what `--privileged` grants; one honest limitation of Kata.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add submissions/lab12.md
+git add <proof of work + lab12.md> (submissions/lab12.md, ...)
 git commit -m "feat(lab12): kata vs runc isolation, cost and escape"
 git push -u origin feature/lab12
 ```
 
 Undo the host changes when you are done: remove the `kata` runtime block from `/etc/containerd/config.toml`, restart containerd, and delete `/opt/kata`.
 
-## Acceptance criteria
-
-- Task 1 (4): both kernel versions with the host's for comparison; device counts and capability masks side by side; the what-an-attacker-learns answer is about the specific output, not general theory.
-- Task 2 (4): five timings per runtime with medians; I/O figures; a memory measurement with its method; three workloads judged with reasons; the order-of-magnitude answer names a workload class where it does not matter.
-- Bonus (2): both runs recorded with the host file's state; masks and device counts for both; an explanation in terms of what `--privileged` grants; one honest limitation of Kata.
 
 ## Common pitfalls
 

@@ -134,23 +134,22 @@ Lab 8 will attach this SBOM to the image as a signed attestation. Cosign wraps a
 - The digest you signed over, and one sentence on why the digest and not the tag.
 - Two or three sentences: what claim does this file make, who would check it, and what does it not prove?
 
+## Acceptance criteria
+
+- Task 1 (6): both SBOMs generated, counts and `specVersion` reported from the actual files; the format-difference answer names a concrete reason; severity table matches the JSON; ten findings listed with package, version and fix column; the triage answer uses both fix availability and severity.
+- Task 2 (4): Trivy scan present; side-by-side table with deltas; one divergent identifier in each direction with a plausible cause; the decoupled-versus-all-in-one answer refers to what Lab 8 does with the SBOM.
+- Bonus (2): `juice-shop-attestation.json` has the four required fields, a real digest, and the two type strings Cosign actually uses rather than invented ones; the answer says what the attestation does not prove.
 ## Submit
 
 <!-- verify:skip student fork files -->
 ```bash
-git add labs/lab4/juice-shop.cdx.json labs/lab4/juice-shop.spdx.json submissions/lab4.md
-git add labs/lab4/juice-shop-attestation.json   # bonus only
+git add <proof of work + lab4.md> (labs/lab4/juice-shop.cdx.json labs/lab4/juice-shop.spdx.json submissions/lab4.md, bonus: labs/lab4/juice-shop-attestation.json, ...)
 git commit -m "feat(lab4): juice shop SBOM + grype and trivy comparison"
 git push -u origin feature/lab4
 ```
 
 Both SBOMs are committed: Lab 8 signs the CycloneDX one, and the SPDX one is your evidence for the format-comparison answer. The scan outputs are not: leave `grype-from-sbom.*` and `trivy.json` out of the PR and paste the numbers instead.
 
-## Acceptance criteria
-
-- Task 1 (6): both SBOMs generated, counts and `specVersion` reported from the actual files; the format-difference answer names a concrete reason; severity table matches the JSON; ten findings listed with package, version and fix column; the triage answer uses both fix availability and severity.
-- Task 2 (4): Trivy scan present; side-by-side table with deltas; one divergent identifier in each direction with a plausible cause; the decoupled-versus-all-in-one answer refers to what Lab 8 does with the SBOM.
-- Bonus (2): `juice-shop-attestation.json` has the four required fields, a real digest, and the two type strings Cosign actually uses rather than invented ones; the answer says what the attestation does not prove.
 
 ## Common pitfalls
 
