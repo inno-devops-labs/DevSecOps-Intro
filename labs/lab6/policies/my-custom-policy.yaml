@@ -1,0 +1,26 @@
+# Lab-defined internal standard DB-01: retain RDS backups for 14–35 days.
+# This is a proposed organisation rule for the exercise, not a claimed incident.
+metadata:
+  id: CKV_CUSTOM_001
+  name: "RDS backup retention must meet the internal 14–35 day recovery window"
+  category: BACKUP_AND_RECOVERY
+  severity: HIGH
+definition:
+  and:
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: backup_retention_period
+      operator: exists
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: backup_retention_period
+      operator: greater_than_or_equal
+      value: 14
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: backup_retention_period
+      operator: less_than_or_equal
+      value: 35
