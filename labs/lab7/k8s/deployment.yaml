@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        # The image's own user. `docker inspect ... --format '{{.Config.User}}'`
+        # says 65532, not 1000: a wrong id starts and then cannot write.
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+
+      # Seed the emptyDir volumes that shadow directories shipping files in the
+      # image. The image is distroless -- no shell, no cp -- but it does carry a
+      # node binary, and node's fs.cpSync copies directories. Each volume is
+      # mounted here under /seed/... so the source path stays visible.
+      initContainers:
+        - name: seed-writable-dirs
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          command: ["/nodejs/bin/node"]
+          args:
+            - -e
+            - |
+              const fs = require('fs');
+              for (const [src, dst] of [
+                ['/juice-shop/ftp', '/seed/ftp'],
+                ['/juice-shop/data', '/seed/data'],
+                ['/juice-shop/.well-known', '/seed/well-known'],
+                ['/juice-shop/frontend/dist/frontend', '/seed/frontend']
+              ]) {
+                fs.cpSync(src, dst, { recursive: true });
+                console.log('seeded', src, '->', dst, fs.readdirSync(dst).length, 'entries');
+              }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits:   { cpu: 500m, memory: 256Mi }
+          volumeMounts:
+            - { name: ftp,        mountPath: /seed/ftp }
+            - { name: data,       mountPath: /seed/data }
+            - { name: well-known, mountPath: /seed/well-known }
+            - { name: frontend,   mountPath: /seed/frontend }
+
+      containers:
+        - name: juice-shop
+          # Pinned by digest, not by tag: a tag can be re-pushed, a digest cannot.
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false
+            # Not required by `restricted`; added anyway (lab bonus).
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: 100m, memory: 256Mi }
+            limits:   { cpu: "1",  memory: 768Mi }
+          readinessProbe:
+            httpGet: { path: /rest/admin/application-version, port: http }
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            failureThreshold: 12
+          livenessProbe:
+            httpGet: { path: /rest/admin/application-version, port: http }
+            initialDelaySeconds: 90
+            periodSeconds: 20
+          volumeMounts:
+            # Empty in the image; everything here is created at runtime.
+            - { name: logs,       mountPath: /juice-shop/logs }
+            - { name: i18n,       mountPath: /juice-shop/i18n }
+            # Ship files in the image AND are written to at runtime: seeded above.
+            - { name: ftp,        mountPath: /juice-shop/ftp }
+            - { name: data,       mountPath: /juice-shop/data }
+            - { name: well-known, mountPath: /juice-shop/.well-known }
+            - { name: frontend,   mountPath: /juice-shop/frontend/dist/frontend }
+            - { name: tmp,        mountPath: /tmp }
+
+      volumes:
+        - { name: logs,       emptyDir: {} }
+        - { name: i18n,       emptyDir: {} }
+        - { name: ftp,        emptyDir: {} }
+        - { name: data,       emptyDir: {} }
+        - { name: well-known, emptyDir: {} }
+        - { name: frontend,   emptyDir: {} }
+        - { name: tmp,        emptyDir: {} }
