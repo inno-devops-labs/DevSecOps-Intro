@@ -1,0 +1,99 @@
+# Juice Shop under the restricted PSS, hardened further with a read-only
+# root filesystem (the Lab 7 bonus; restricted itself does not require it).
+#
+# Every securityContext field is load-bearing: without them the restricted
+# namespace rejects the pod at admission naming the missing field. The
+# volumes exist because readOnlyRootFilesystem:true makes the whole image
+# read-only, so each path the process writes at runtime (found with
+# 'docker diff', not guessed) needs its own writable emptyDir.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532          # the image's real user; 1000 starts then cannot write
+        runAsGroup: 65532
+        fsGroup: 65532            # gives the non-root process group-write on the emptyDirs
+        seccompProfile:
+          type: RuntimeDefault
+      # data/ ships data/static/ (read at startup) and frontend/dist ships the
+      # served Angular app. An empty volume over either hides shipped files and
+      # the app exits, so this initContainer copies the image's originals into
+      # the volumes first. The image is distroless (no cp/sh), so node does it.
+      initContainers:
+        - name: seed-writable-dirs
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              fs.cpSync('/juice-shop/data', '/seed/data', { recursive: true });
+              fs.cpSync('/juice-shop/frontend/dist', '/seed/dist', { recursive: true });
+              fs.cpSync('/juice-shop/.well-known', '/seed/wellknown', { recursive: true });
+              console.log('seeded data, frontend/dist and .well-known');
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: 50m, memory: 128Mi }
+            limits:   { cpu: "1", memory: 512Mi }
+          volumeMounts:
+            - { name: data,     mountPath: /seed/data }
+            - { name: dist,     mountPath: /seed/dist }
+            - { name: wellknown, mountPath: /seed/wellknown }
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0       # pinned by digest, not tag
+          ports:
+            - containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: 100m, memory: 256Mi }
+            limits:   { cpu: "1", memory: 512Mi }
+          volumeMounts:
+            - { name: data, mountPath: /juice-shop/data }           # seeded: sqlite + static/
+            - { name: dist, mountPath: /juice-shop/frontend/dist }  # seeded: served frontend
+            - { name: ftp,  mountPath: /juice-shop/ftp }            # empty: legal.md copied in
+            - { name: logs, mountPath: /juice-shop/logs }           # empty: runtime logs
+            - { name: i18n, mountPath: /juice-shop/i18n }           # empty: generated translations
+            - { name: wellknown, mountPath: /juice-shop/.well-known } # seeded: csaf + security.txt, writes provider-metadata
+            - { name: tmp,  mountPath: /tmp }                       # empty: scratch
+          readinessProbe:
+            httpGet: { path: /rest/admin/application-version, port: 3000 }
+            initialDelaySeconds: 20
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /rest/admin/application-version, port: 3000 }
+            initialDelaySeconds: 40
+            periodSeconds: 10
+      volumes:
+        - { name: data, emptyDir: {} }
+        - { name: dist, emptyDir: {} }
+        - { name: ftp,  emptyDir: {} }
+        - { name: logs, emptyDir: {} }
+        - { name: i18n, emptyDir: {} }
+        - { name: wellknown, emptyDir: {} }
+        - { name: tmp,  emptyDir: {} }

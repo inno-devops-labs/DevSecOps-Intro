@@ -1,0 +1,16 @@
+# Namespace that enforces the restricted Pod Security Standard.
+# enforce = reject violating pods at admission; warn/audit = surface
+# violations for anything that somehow bypasses enforce (e.g. a future
+# relaxation). Pinning the version makes the policy reproducible: a newer
+# cluster cannot silently tighten "latest" under us.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: juice-shop
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/warn-version: latest
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/audit-version: latest
