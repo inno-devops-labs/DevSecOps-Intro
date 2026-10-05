@@ -29,3 +29,9 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# lab4 deliverables/outputs restored here only as lab8 inputs — belong to lab4's branch
+labs/lab4/
+
+# session scratch — terminal screenshots in repo root
+/Screenshot from *.png
