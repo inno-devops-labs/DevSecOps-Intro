@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-extra-policy-violation
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: juice-extra }
+  template:
+    metadata:
+      labels: { app: juice-extra }
+    spec:
+      automountServiceAccountToken: true
+      containers:
+        - name: juice
+          image: bkimminich/juice-shop:v20.0.0
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 100000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: "100m", memory: "256Mi" }
+            limits:   { cpu: "500m", memory: "512Mi" }
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet: { path: /, port: 3000 }
+          livenessProbe:
+            httpGet: { path: /, port: 3000 }
