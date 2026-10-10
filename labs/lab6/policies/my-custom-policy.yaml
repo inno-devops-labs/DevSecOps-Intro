@@ -1,0 +1,20 @@
+# Proposed internal standard for this exercise: LAB6-DB-014.
+# Retain RDS automated backups for exactly 14 days.
+metadata:
+  id: CKV_CUSTOM_1
+  name: "LAB6-DB-014: RDS automated backup retention must be exactly 14 days"
+  category: BACKUP_AND_RECOVERY
+  severity: MEDIUM
+definition:
+  and:
+    - cond_type: filter
+      attribute: resource_type
+      operator: within
+      value:
+        - aws_db_instance
+    - cond_type: attribute
+      resource_types:
+        - aws_db_instance
+      attribute: backup_retention_period
+      operator: equals
+      value: 14
