@@ -1,0 +1,13 @@
+metadata:
+  id: CKV_CUSTOM_1
+  name: Ensure S3 buckets use private ACLs
+  category: CONVENTION
+  severity: HIGH
+  guideline: Every S3 bucket in this organisation must use the private ACL; public access requires a separately reviewed exception.
+definition:
+  cond_type: attribute
+  resource_types:
+    - aws_s3_bucket
+  attribute: acl
+  operator: not_equals
+  value: public-read

@@ -1,0 +1,158 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: prepare-writable-files
+          image: busybox@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -eu
+              touch /work/ftp/legal.md
+              cp /seed/provider-metadata.json /work/csaf/provider-metadata.json
+              touch /work/assets/hackingInstructor.png /work/assets/ChatbotAvatar.png /work/assets/owasp_promo.vtt
+              cp /seed/index.html /work/frontend/index.html
+              touch /work/frontend/threejs-demo.html
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          volumeMounts:
+            - name: ftp-files
+              mountPath: /work/ftp
+            - name: csaf-files
+              mountPath: /work/csaf
+            - name: asset-files
+              mountPath: /work/assets
+            - name: frontend-files
+              mountPath: /work/frontend
+            - name: seed-files
+              mountPath: /seed
+              readOnly: true
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              (async () => {
+                const { default: validateDependencies } = require('/juice-shop/build/lib/startup/validateDependenciesBasic')
+                await validateDependencies()
+                const models = require('/juice-shop/build/models')
+                const seq = models.createSequelize({ inMemory: true })
+                models.initModels(seq)
+                models.setSequelize(seq)
+                const server = require('/juice-shop/build/server')
+                await server.start()
+              })().catch(err => { throw err })
+          ports:
+            - name: http
+              containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 1000m
+              memory: 768Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 24
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+          volumeMounts:
+            - name: ftp-files
+              mountPath: /juice-shop/ftp/legal.md
+              subPath: legal.md
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: csaf-files
+              mountPath: /juice-shop/.well-known/csaf/provider-metadata.json
+              subPath: provider-metadata.json
+            - name: asset-files
+              mountPath: /juice-shop/frontend/dist/frontend/assets/public/images/hackingInstructor.png
+              subPath: hackingInstructor.png
+            - name: asset-files
+              mountPath: /juice-shop/frontend/dist/frontend/assets/public/images/ChatbotAvatar.png
+              subPath: ChatbotAvatar.png
+            - name: asset-files
+              mountPath: /juice-shop/frontend/dist/frontend/assets/public/videos/owasp_promo.vtt
+              subPath: owasp_promo.vtt
+            - name: frontend-files
+              mountPath: /juice-shop/frontend/dist/frontend/index.html
+              subPath: index.html
+            - name: frontend-files
+              mountPath: /juice-shop/frontend/dist/frontend/assets/private/threejs-demo.html
+              subPath: threejs-demo.html
+            - name: logs
+              mountPath: /juice-shop/logs
+      volumes:
+        - name: ftp-files
+          emptyDir: {}
+        - name: i18n
+          emptyDir: {}
+        - name: csaf-files
+          emptyDir: {}
+        - name: asset-files
+          emptyDir: {}
+        - name: frontend-files
+          emptyDir: {}
+        - name: seed-files
+          configMap:
+            name: juice-shop-seed-files
+        - name: logs
+          emptyDir: {}
