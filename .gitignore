@@ -29,3 +29,7 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+labs/lab10/work/dd/
+labs/lab10/imports/import-*.json
+.DS_Store
