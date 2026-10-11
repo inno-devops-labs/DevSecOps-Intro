@@ -1,0 +1,16 @@
+metadata:
+  id: "CKV2_CUSTOM_1"
+  name: "Ensure RDS instances have deletion protection enabled"
+  category: "GENERAL_SECURITY"
+  severity: "HIGH"
+definition:
+  and:
+    - cond_type: "filter"
+      attribute: "resource_type"
+      value: ["aws_db_instance"]
+      operator: "within"
+    - cond_type: "attribute"
+      resource_types: ["aws_db_instance"]
+      attribute: "deletion_protection"
+      operator: "equals"
+      value: true
