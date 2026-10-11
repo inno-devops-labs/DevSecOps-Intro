@@ -1,0 +1,43 @@
+---
+# Custom Falco rules for Lab 9
+
+# 1) Detect writes to /tmp by a container (not the host)
+- rule: Write to /tmp by container
+  desc: Detect writes to /tmp performed by processes running inside containers
+  condition: container.id != host and open_write and fd.name startswith "/tmp/"
+  exceptions:
+    - name: common-loggers
+      condition: proc.name in ("nginx","node","java","fluentd","rsyslogd")
+      comment: "Ignore common logging/runtime processes that legitimately write to /tmp"
+  output: >-
+    Write to /tmp by container (user=%user.name container=%container.name fd=%fd.name cmd=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+## Network-based miner detection removed due to host tracepoint limitations.
+## Use process- and exec-based heuristics below instead.
+
+# Additional cryptominer detection that does not rely on the connect tracepoint
+- rule: Possible Cryptominer Process
+  desc: Detect known miner binaries executed inside containers
+  # Match exe path or commandline to catch renamed/obfuscated binaries executed from disk
+  condition: container.id!=host and (
+    proc.exepath contains "xmrig" or proc.exepath contains "ethminer" or proc.exepath contains "cgminer" or proc.exepath contains "t-rex" or proc.exepath contains "claymore"
+    or proc.cmdline contains "xmrig" or proc.cmdline contains "ethminer" or proc.cmdline contains "cgminer" or proc.cmdline contains "t-rex" or proc.cmdline contains "claymore"
+  )
+  output: >-
+    Possible Cryptominer Process (container=%container.name proc=%proc.name cmd=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
+
+# Heuristic: a newly executed binary whose commandline includes known miner ports
+# (useful where connect tracepoint is unavailable)
+- rule: Possible Cryptominer Exec Port Indicator
+  desc: Detect execution of binaries whose commandline contains known miner ports
+  condition: evt.type=execve and container.id!=host and (
+    proc.cmdline contains "3333" or proc.cmdline contains "4444" or proc.cmdline contains "5555" or proc.cmdline contains "7777" or proc.cmdline contains "14444" or proc.cmdline contains "19999" or proc.cmdline contains "45700"
+  )
+  output: >-
+    Possible Cryptominer Exec Port Indicator (container=%container.name proc=%proc.name cmd=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control, heuristic]
