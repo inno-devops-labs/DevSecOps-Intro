@@ -1,0 +1,455 @@
+threagile_version: 1.0.0
+
+title: OWASP Juice Shop — Auth Flow Threat Model
+date: 2026-06-05
+
+author:
+  name: prudenz1
+  homepage: https://github.com/prudenz1
+
+management_summary_comment: >
+  Focused threat model for Juice Shop authentication: login/register, JWT issuance,
+  token verification on protected routes, and admin-only endpoints.
+
+business_criticality: important
+
+business_overview:
+  description: >
+    Minimal auth-flow model for OWASP Juice Shop v20 running locally. Covers
+    credential submission, JWT signing, session token use, and admin elevation checks.
+  images: []
+
+technical_overview:
+  description: >
+    The browser posts credentials to the Auth API. On success the Auth API reads
+    password hashes from the credential store and asks the JWT service to sign a token.
+    Subsequent API calls and admin operations include the JWT in the Authorization header;
+    the JWT service verifies signature, expiry, and role claims before admin handlers run.
+  images: []
+
+questions:
+  Are JWT signing keys rotated?: ""
+  Is brute-force protection enabled on login?: ""
+
+abuse_cases:
+  Credential Stuffing: >
+    Attackers automate login attempts using leaked username/password pairs.
+  JWT Tampering: >
+    Attackers modify JWT payload claims (e.g., role=admin) and replay tokens.
+  Session Hijack: >
+    Stolen JWT or session material from browser storage enables impersonation.
+
+security_requirements:
+  Strong password hashing: Store only slow password hashes (bcrypt/scrypt) in the credential store.
+  JWT hardening: Use strong signing keys, short TTL, and validate alg/claims on every protected request.
+  Admin AuthZ: Enforce server-side role checks on all admin routes independent of client UI hiding.
+
+tags_available:
+  - docker
+  - nodejs
+  - auth
+  - tokens
+  - pii
+  - actor
+  - user
+  - app
+  - primary
+
+data_assets:
+
+  Credentials:
+    id: credentials
+    description: "Username and password submitted at login/register."
+    usage: business
+    tags: ["pii", "auth"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: "Direct account takeover if disclosed or tampered."
+
+  JWT Token:
+    id: jwt-token
+    description: "Signed bearer token returned after login and sent on protected requests."
+    usage: business
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Token forgery or theft grants authenticated access."
+
+  User Session State:
+    id: session-state
+    description: "Client-side session context (token in localStorage, basket linkage)."
+    usage: business
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: many
+    confidentiality: confidential
+    integrity: important
+    availability: operational
+    justification_cia_rating: "Session state in the browser is attacker-readable via XSS."
+
+  Admin Operation Requests:
+    id: admin-requests
+    description: "HTTP requests to admin-only routes (role=admin required)."
+    usage: business
+    tags: ["auth"]
+    origin: user-supplied
+    owner: Lab Owner
+    quantity: many
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Unauthorized admin requests can change application data."
+
+  JWT Signing Key:
+    id: jwt-signing-key
+    description: "Symmetric/asymmetric key material used to sign and verify JWTs."
+    usage: business
+    tags: ["auth", "tokens"]
+    origin: application
+    owner: Lab Owner
+    quantity: few
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Key compromise allows minting arbitrary tokens."
+
+technical_assets:
+
+  User Browser:
+    id: user-browser
+    description: "End-user browser submitting login forms and storing JWT in localStorage."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    justification_out_of_scope:
+    size: system
+    technology: browser
+    tags: ["actor", "user"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: External User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Untrusted client controlled by the user or an attacker."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - session-state
+      - jwt-token
+    data_formats_accepted:
+      - json
+    communication_links:
+      Login and Register:
+        target: auth-api
+        description: "POST /rest/user/login and /api/Users (register) with username/password."
+        protocol: http
+        authentication: none
+        authorization: none
+        tags: ["primary"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+          - session-state
+      Protected API with JWT:
+        target: protected-api
+        description: "Authenticated REST calls with Authorization Bearer JWT header."
+        protocol: http
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["primary"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - session-state
+      Admin Requests:
+        target: admin-api
+        description: "Admin routes (e.g. /rest/admin/*) requiring JWT with admin role."
+        protocol: http
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: ["primary"]
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - admin-requests
+        data_assets_received:
+          - admin-requests
+
+  Auth API:
+    id: auth-api
+    description: "Juice Shop login/register handlers validating credentials."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-server
+    tags: ["app", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Entry point for authentication; must reject invalid credentials."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Verify Credentials:
+        target: credential-store
+        description: "Lookup user record and compare password hash."
+        protocol: jdbc
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - credentials
+      Request JWT:
+        target: jwt-service
+        description: "Ask token service to sign JWT after successful authentication."
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - jwt-token
+
+  JWT Service:
+    id: jwt-service
+    description: "Signs JWTs at login and verifies tokens on protected/admin requests."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: web-service-rest
+    tags: ["auth", "tokens"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Central trust anchor for authentication tokens."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - jwt-signing-key
+    data_assets_stored:
+      - jwt-signing-key
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Credential Store:
+    id: credential-store
+    description: "SQLite Users table storing emails and password hashes."
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component
+    technology: database
+    tags: ["auth", "pii"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Contains password hashes and account metadata."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+    data_assets_stored:
+      - credentials
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  Protected API:
+    id: protected-api
+    description: "Authenticated Juice Shop REST endpoints gated by JWT verification."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-server
+    tags: ["app", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "Business APIs requiring valid JWT on each request."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - session-state
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Verify JWT:
+        target: jwt-service
+        description: "Validate JWT signature, expiry, and claims before handling request."
+        protocol: https
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - jwt-token
+
+  Admin API:
+    id: admin-api
+    description: "Admin-only Juice Shop routes requiring JWT role=admin."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application
+    technology: web-server
+    tags: ["app", "auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Lab Owner
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Privilege boundary for administrative operations."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - admin-requests
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      Verify Admin JWT:
+        target: jwt-service
+        description: "Verify JWT and enforce admin role claim before executing admin handler."
+        protocol: https
+        authentication: none
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - admin-requests
+        data_assets_received:
+          - jwt-token
+
+trust_boundaries:
+
+  Internet:
+    id: internet
+    description: "Untrusted network where the user browser runs."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - user-browser
+    trust_boundaries_nested:
+      - container-network
+
+  Container Network:
+    id: container-network
+    description: "Docker network hosting Juice Shop auth components."
+    type: network-dedicated-hoster
+    tags: ["docker"]
+    technical_assets_inside:
+      - auth-api
+      - jwt-service
+      - credential-store
+      - protected-api
+      - admin-api
+    trust_boundaries_nested: []
+
+shared_runtimes:
+
+  Docker Host:
+    id: docker-host
+    description: "Single Juice Shop container runtime for auth components."
+    tags: ["docker"]
+    technical_assets_running:
+      - auth-api
+      - jwt-service
+      - credential-store
+      - protected-api
+      - admin-api
+
+individual_risk_categories: {}
+risk_tracking: {}
