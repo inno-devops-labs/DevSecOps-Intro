@@ -1,0 +1,3 @@
+WARNING: Skipping tlog verification is an insecure practice that lacks transparency and auditability verification for the signature.
+Error: no signatures found
+error during command execution: no signatures found
