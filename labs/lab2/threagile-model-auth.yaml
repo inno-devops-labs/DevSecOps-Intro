@@ -1,0 +1,246 @@
+threagile_version: 1.0.0
+
+title: Juice Shop Auth Flow
+date: 2026-06-13
+
+author:
+  name: Gainutdinova Aliya
+  homepage: https://github.com/alileeeek
+
+management_summary_comment: >
+  Focused threat model for Juice Shop authentication flow.
+
+business_criticality: important
+
+data_assets:
+
+  credentials:
+    id: credentials
+    description: "User credentials (username + password)"
+    usage: business
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: "Credentials must be protected"
+
+  jwt-token:
+    id: jwt-token
+    description: "JWT token issued after authentication"
+    usage: business
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: "JWT tokens grant access"
+
+  session-state:
+    id: session-state
+    description: "User session state"
+    usage: business
+    quantity: many
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: "Session state must be protected"
+
+  admin-requests:
+    id: admin-requests
+    description: "Admin operation requests"
+    usage: business
+    quantity: few
+    confidentiality: confidential
+    integrity: critical
+    availability: operational
+    justification_cia_rating: "Admin operations are highly sensitive"
+
+technical_assets:
+
+  browser:
+    id: browser
+    description: "User's web browser"
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    size: system
+    technology: browser
+    internet: true
+    machine: virtual
+    encryption: none
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Client controlled by end user"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      browser-to-auth-api:
+        target: auth-api
+        description: "User submits credentials for login/register"
+        protocol: https
+        authentication: none
+        authorization: enduser-identity-propagation
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+      browser-to-admin:
+        target: admin-endpoint
+        description: "Admin requests requiring JWT with admin role"
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        usage: business
+        data_assets_sent:
+          - jwt-token
+          - admin-requests
+
+  auth-api:
+    id: auth-api
+    description: "Authentication API endpoint"
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-service-rest
+    internet: false
+    machine: container
+    encryption: none
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "Auth API handles credentials"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      auth-api-to-token-signer:
+        target: token-signer
+        description: "Request JWT token generation"
+        protocol: https
+        authentication: none
+        authorization: enduser-identity-propagation
+        usage: business
+        data_assets_sent:
+          - credentials
+      auth-api-to-user-db:
+        target: user-db
+        description: "Verify user credentials"
+        protocol: https
+        authentication: credentials
+        authorization: enduser-identity-propagation
+        usage: business
+        data_assets_sent:
+          - credentials
+
+  token-signer:
+    id: token-signer
+    description: "JWT token signing component"
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: web-service-rest
+    internet: false
+    machine: container
+    encryption: none
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Token signer issues JWTs"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+
+  user-db:
+    id: user-db
+    description: "User credentials database"
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: database
+    internet: false
+    machine: container
+    encryption: none
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Stores user credentials"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed:
+      - credentials
+    data_assets_stored:
+      - credentials
+    data_formats_accepted:
+      - json
+
+  admin-endpoint:
+    id: admin-endpoint
+    description: "Admin API endpoint"
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-service-rest
+    internet: false
+    machine: container
+    encryption: none
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Admin operations are sensitive"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - admin-requests
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+
+trust_boundaries:
+
+  internet:
+    id: internet
+    description: "Public internet"
+    type: network-dedicated-hoster
+    technical_assets_inside:
+      - browser
+
+  container:
+    id: container
+    description: "Docker container running Juice Shop"
+    type: network-dedicated-hoster
+    technical_assets_inside:
+      - auth-api
+      - token-signer
+      - user-db
+      - admin-endpoint
