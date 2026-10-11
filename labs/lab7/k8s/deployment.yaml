@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  juice-shop
+  namespace: juice-shop
+spec:
+  selector:
+    matchLabels:
+      app: juice-shop
+  
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        fsGroup: 0
+        seccompProfile:
+          type: RuntimeDefault
+
+      containers:
+        - name: app
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { memory: "128Mi", cpu: "50m" }
+            limits: { memory: "1Gi", cpu: "1000m" }
