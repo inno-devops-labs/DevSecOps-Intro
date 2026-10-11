@@ -29,3 +29,5 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+labs/lab7/results/
