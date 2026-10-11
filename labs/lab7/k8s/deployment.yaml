@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop-sa
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+      - name: init-data
+        image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+        command:
+        - /nodejs/bin/node
+        - -e
+        # Элегантный цикл клонирования всех нужных директорий
+        - "const fs=require('fs');['data','.well-known','frontend','i18n'].forEach(d=>fs.cpSync('/juice-shop/'+d,'/mnt/'+d,{recursive:true}));"
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+        - name: data-vol
+          mountPath: /mnt/data
+        - name: well-known-vol
+          mountPath: /mnt/.well-known
+        - name: frontend-vol
+          mountPath: /mnt/frontend
+        - name: i18n-vol
+          mountPath: /mnt/i18n
+      containers:
+      - name: juice-shop
+        image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+        - name: tmp-vol
+          mountPath: /tmp
+        - name: logs-vol
+          mountPath: /juice-shop/logs
+        - name: ftp-vol
+          mountPath: /juice-shop/ftp
+        - name: data-vol
+          mountPath: /juice-shop/data
+        - name: well-known-vol
+          mountPath: /juice-shop/.well-known
+        - name: frontend-vol
+          mountPath: /juice-shop/frontend
+        - name: i18n-vol
+          mountPath: /juice-shop/i18n
+      volumes:
+      - name: tmp-vol
+        emptyDir: {}
+      - name: logs-vol
+        emptyDir: {}
+      - name: ftp-vol
+        emptyDir: {}
+      - name: data-vol
+        emptyDir: {}
+      - name: well-known-vol
+        emptyDir: {}
+      - name: frontend-vol
+        emptyDir: {}
+      - name: i18n-vol
+        emptyDir: {}
