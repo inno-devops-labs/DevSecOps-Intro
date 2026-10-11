@@ -29,3 +29,4 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+labs/lab8/keys/cosign.key
