@@ -1,0 +1,17 @@
+# gitleaks config for DevSecOps-Intro coursework.
+# Extends the built-in v8 ruleset and adds ONE narrowly-scoped allowlist.
+title = "DevSecOps-Intro gitleaks config"
+
+[extend]
+useDefault = true
+
+# The `git log --show-signature` output pasted into submissions/lab3.md contains the
+# *public* SSH signing-key fingerprint (SHA256:Cm8l...). gitleaks scores its entropy as a
+# generic-api-key, but a public key fingerprint is not a secret. This is the "inline
+# allowlist, scoped to a provably-non-secret exact value" approach from Task 2 — it masks
+# only this one literal string, so no real high-entropy secret can hide behind it.
+[[allowlists]]
+description = "Public SSH signing-key fingerprint shown in show-signature output (not a secret)"
+regexes = [
+  '''Cm8lnomYhFB1PvTJDe/71/FO6BAmIBPjtFHuW\+lX18s''',
+]
