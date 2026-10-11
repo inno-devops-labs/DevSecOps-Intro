@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop-sa
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: seed-data
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          args:
+            - -e
+            - |
+              const fs = require("fs");
+              for (const name of fs.readdirSync("/juice-shop/.well-known")) fs.cpSync("/juice-shop/.well-known/" + name, "/well-known/" + name, { recursive: true, force: true });
+              for (const name of fs.readdirSync("/juice-shop/ftp")) fs.cpSync("/juice-shop/ftp/" + name, "/ftp/" + name, { recursive: true, force: true });
+              for (const name of fs.readdirSync("/juice-shop/frontend/dist/frontend")) fs.cpSync("/juice-shop/frontend/dist/frontend/" + name, "/frontend/" + name, { recursive: true, force: true });
+              for (const name of fs.readdirSync("/juice-shop/data")) {
+                fs.cpSync("/juice-shop/data/" + name, "/work/" + name, {
+                  recursive: true,
+                  force: true
+                });
+              }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: runtime-data
+              mountPath: /work
+            - name: runtime-well-known
+              mountPath: /well-known
+            - name: runtime-frontend
+              mountPath: /frontend
+            - name: runtime-ftp
+              mountPath: /ftp
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          ports:
+            - name: http
+              containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          volumeMounts:
+            - name: runtime-tmp
+              mountPath: /tmp
+            - name: runtime-logs
+              mountPath: /juice-shop/logs
+            - name: runtime-data
+              mountPath: /juice-shop/data
+            - name: runtime-well-known
+              mountPath: /juice-shop/.well-known
+            - name: runtime-frontend
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: runtime-ftp
+              mountPath: /juice-shop/ftp
+      volumes:
+        - name: runtime-tmp
+          emptyDir: {}
+        - name: runtime-logs
+          emptyDir: {}
+        - name: runtime-data
+          emptyDir: {}
+        - name: runtime-well-known
+          emptyDir: {}
+        - name: runtime-frontend
+          emptyDir: {}
+        - name: runtime-ftp
+          emptyDir: {}
