@@ -1,0 +1,11 @@
+- rule: Write to /tmp by container
+  desc: Container modifying system config under /tmp
+  condition: >
+    open_write and
+    container.id != host and
+    fd.name startswith /tmp/
+  output: >
+    Config write in container (container=%container.name user=%user.name 
+    file=%fd.name proc=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
