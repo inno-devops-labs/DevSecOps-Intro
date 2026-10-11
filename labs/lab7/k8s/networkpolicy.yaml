@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: juice-shop-default-deny
+  namespace: juice-shop
+spec:
+  podSelector: {}          # applies to all pods in the namespace
+  policyTypes:
+    - Ingress
+    - Egress
+  # No ingress/egress rules listed = deny all by default.
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: juice-shop-allow
+  namespace: juice-shop
+spec:
+  podSelector:
+    matchLabels:
+      app: juice-shop
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Allow inbound HTTP to the app port from anywhere (adjust to an ingress
+    # controller / specific namespace in production).
+    - ports:
+        - protocol: TCP
+          port: 3000
+  egress:
+    # DNS resolution.
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Outbound HTTPS (e.g. package/CDN calls the app may make).
+    - ports:
+        - protocol: TCP
+          port: 443
