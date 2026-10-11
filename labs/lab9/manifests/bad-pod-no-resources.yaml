@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad-pod-no-resources
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bad-pod-no-resources
+  template:
+    metadata:
+      labels:
+        app: bad-pod-no-resources
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+        - name: app
+          image: alpine@sha256:91ef0af9f435b5d41d6e8dac8e63f146d1c7b4a5f0a0c0e8e8e8e8e8e8e8e8e8e8
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]

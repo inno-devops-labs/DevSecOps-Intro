@@ -1,0 +1,29 @@
+# Lab 9 — custom Falco rules
+
+- rule: Write to /tmp by container
+  desc: Detect writes to /tmp inside any container (not host)
+  condition: >
+    open_write
+    and container
+    and fd.name startswith /tmp
+  output: >
+    Write to /tmp by container (container=%container.name user=%user.name
+    file=%fd.name command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Possible Cryptominer Activity
+  desc: Detect known cryptominer process names or mining-pool port connections
+  condition: >
+    spawned_process
+    and container
+    and (
+      proc.name in (xmrig, ethminer, cgminer, claymore)
+      or
+      (evt.type=connect and fd.sockfamily=ip and (fd.name endswith ":3333" or fd.name endswith ":4444" or fd.name endswith ":5555" or fd.name endswith ":7777"))
+    )
+  output: >
+    Possible Cryptominer Activity (container=%container.name process=%proc.name
+    user=%user.name cmdline=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
