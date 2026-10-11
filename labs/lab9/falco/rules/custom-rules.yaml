@@ -1,0 +1,30 @@
+- rule: Write to /tmp by container
+  desc: Detects any write to /tmp inside a container — common indicator of dropper activity or staging
+  condition: >
+    open_write
+    and container
+    and fd.directory = /tmp
+  output: >
+    Write to /tmp detected in container
+    (user=%user.name container=%container.name image=%container.image.repository
+     file=%fd.name cmd=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Possible Cryptominer Activity
+  desc: >
+    Detects a container connecting to well-known cryptomining pool ports or running
+    a known miner binary — maps to the Tesla 2018 K8s dashboard incident (Lecture 1)
+  condition: >
+    container
+    and (
+      (evt.type = connect and fd.rport in (3333, 4444, 5555, 7777, 14444, 19999, 45700))
+      or
+      (proc.name in (xmrig, ethminer, cgminer, t-rex, claymore, nbminer))
+    )
+  output: >
+    Possible cryptominer activity in container
+    (container=%container.name image=%container.image.repository
+     proc=%proc.name conn=%fd.name cmd=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
