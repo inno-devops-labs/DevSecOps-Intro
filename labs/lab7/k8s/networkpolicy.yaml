@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: juice-shop-netpol
+  namespace: juice-shop
+spec:
+  podSelector:
+    matchLabels:
+      app: juice-shop
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Allow ingress on port 3000 (for port-forwarding / ingress controllers)
+    - ports:
+        - protocol: TCP
+          port: 3000
+  egress:
+    # Allow DNS resolution to kube-system
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Allow HTTPS outbound (for external API calls/updates)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
+          port: 443
