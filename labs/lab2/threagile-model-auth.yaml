@@ -1,0 +1,318 @@
+threagile_version: 1.0.0
+title: Juice Shop Auth Flow
+date: 2026-06-12
+author:
+  name: DevSecOps Student
+business_criticality: important
+
+business_overview:
+  description: "Focused threat model on the authentication and authorization flow of OWASP Juice Shop."
+  images: []
+technical_overview:
+  description: "Models login, JWT generation, and protected admin endpoints to identify Spoofing and Elevation of Privilege risks."
+  images: []
+questions: {}
+abuse_cases: {}
+security_requirements: {}
+tags_available: ["auth", "web", "db", "jwt"]
+
+# =========================
+# DATA ASSETS
+# =========================
+data_assets:
+  credentials:
+    id: credentials
+    description: "User login credentials"
+    usage: business
+    tags: ["auth"]
+    origin: user-supplied
+    owner: User
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "High risk of account takeover."
+    
+  jwt-token:
+    id: jwt-token
+    description: "Issued JSON Web Token"
+    usage: business
+    tags: ["jwt"]
+    origin: application
+    owner: Application
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Used for authentication bypass."
+    
+  session-state:
+    id: session-state
+    description: "User session metadata and roles"
+    usage: business
+    tags: []
+    origin: application
+    owner: Application
+    quantity: many
+    confidentiality: confidential
+    integrity: important
+    availability: important
+    justification_cia_rating: "Required for state tracking."
+    
+  admin-ops:
+    id: admin-ops
+    description: "Requests to admin endpoints"
+    usage: business
+    tags: []
+    origin: user-supplied
+    owner: Admin
+    quantity: few
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Privileged operations."
+    
+  jwt-signing-key:
+    id: jwt-signing-key
+    description: "Cryptographic key used to sign and verify JWTs"
+    usage: business
+    tags: ["jwt"]
+    origin: application
+    owner: Application
+    quantity: very-few
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: "If compromised, attackers forge admin tokens."
+
+# =========================
+# TECHNICAL ASSETS
+# =========================
+technical_assets:
+  browser:
+    id: browser
+    description: "User web browser"
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    size: system
+    technology: browser
+    tags: ["web"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "Untrusted Client"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: ["credentials", "jwt-token", "admin-ops"]
+    data_assets_stored: ["jwt-token"]
+    data_formats_accepted: ["json"]
+    communication_links:
+      login-request:
+        target: auth-api
+        description: "Sends credentials to login"
+        protocol: https
+        authentication: session-id
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: ["credentials"]
+        data_assets_received: ["jwt-token"]
+      protected-api-request:
+        target: auth-api
+        description: "Access regular API with JWT"
+        protocol: https
+        authentication: session-id
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: ["jwt-token"]
+        data_assets_received: ["session-state"]
+      admin-request:
+        target: admin-endpoint
+        description: "Access admin functions"
+        protocol: https
+        authentication: session-id
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: ["jwt-token", "admin-ops"]
+        data_assets_received: ["admin-ops"]
+
+  auth-api:
+    id: auth-api
+    description: "Authentication API Endpoint"
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: web-server
+    tags: ["auth"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Application
+    confidentiality: internal
+    integrity: critical
+    availability: critical
+    justification_cia_rating: "Core auth logic"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: ["credentials", "jwt-token", "session-state"]
+    data_assets_stored: []
+    data_formats_accepted: ["json"]
+    communication_links:
+      request-jwt:
+        target: token-signer
+        description: "Request JWT generation"
+        protocol: in-process-library-call
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: ["session-state"]
+        data_assets_received: ["jwt-token"]
+      db-query:
+        target: user-db
+        description: "Validate user credentials"
+        protocol: jdbc
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: ["credentials"]
+        data_assets_received: ["credentials", "session-state"]
+
+  token-signer:
+    id: token-signer
+    description: "Component handling JWT signing"
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: library
+    tags: ["jwt"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Application
+    confidentiality: internal
+    integrity: critical
+    availability: critical
+    justification_cia_rating: "Cryptographic core"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: ["jwt-token", "session-state", "jwt-signing-key"]
+    data_assets_stored: ["jwt-signing-key"]
+    data_formats_accepted: ["json"]
+    communication_links: {}
+
+  user-db:
+    id: user-db
+    description: "Database storing credentials"
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: database
+    tags: ["db"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Application
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Stores credentials"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: ["credentials"]
+    data_assets_stored: ["credentials"]
+    data_formats_accepted: ["json"]
+    communication_links: {}
+
+  admin-endpoint:
+    id: admin-endpoint
+    description: "Administrative API functions"
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: web-server
+    tags: ["web"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: Admin
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: "Privileged"
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: ["jwt-token", "admin-ops"]
+    data_assets_stored: []
+    data_formats_accepted: ["json"]
+    communication_links:
+      verify-token:
+        target: token-signer
+        description: "Verify JWT signature"
+        protocol: in-process-library-call
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent: ["jwt-token"]
+        data_assets_received: ["session-state"]
+
+# =========================
+# TRUST BOUNDARIES
+# =========================
+trust_boundaries:
+  internet:
+    id: internet
+    description: "Public Internet"
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside: ["browser"]
+    trust_boundaries_nested: []
+    
+  container:
+    id: container
+    description: "Application Container"
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside: ["auth-api", "token-signer", "user-db", "admin-endpoint"]
+    trust_boundaries_nested: []
