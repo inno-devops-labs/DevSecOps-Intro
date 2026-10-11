@@ -1,0 +1,13 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    container_name: lab11-waf-1
+    ports:
+      - "8081:80"
+    environment:
+      - PARANOIA=1
+      - SEC_RULE_ENGINE=On
+      - BACKEND=http://juice:3000
+      - MODSEC_AUDIT_LOG_TYPE=Serial
+      - MODSEC_AUDIT_LOG_FORMAT=JSON
+      - MODSEC_AUDIT_LOG=/var/log/modsecurity/audit/audit.log
