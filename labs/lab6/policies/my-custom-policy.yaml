@@ -1,0 +1,12 @@
+metadata:
+  name: "Ensure S3 bucket has versioning enabled"
+  id: "CKV_CUSTOM_1"
+  category: "BACKUP_AND_RECOVERY"
+  severity: "MEDIUM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_s3_bucket"
+  attribute: "versioning/enabled"
+  operator: "equals"
+  value: true
