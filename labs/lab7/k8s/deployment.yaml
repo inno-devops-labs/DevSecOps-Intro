@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop-sa
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: init-data
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              fs.cpSync('/juice-shop/data', '/writable-data', { recursive: true });
+              fs.cpSync('/juice-shop/frontend/dist/frontend/assets/public/videos', '/writable-videos', { recursive: true });
+              fs.cpSync('/juice-shop/frontend/dist/frontend', '/writable-frontend', { recursive: true });
+              fs.cpSync('/juice-shop/i18n', '/writable-i18n', { recursive: true });
+              fs.cpSync('/juice-shop/.well-known', '/writable-well-known', { recursive: true });
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: data
+              mountPath: /writable-data
+            - name: videos
+              mountPath: /writable-videos
+            - name: frontend
+              mountPath: /writable-frontend
+            - name: i18n
+              mountPath: /writable-i18n
+            - name: well-known
+              mountPath: /writable-well-known
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              name: http
+          env:
+            - name: NODE_ENV
+              value: production
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: data
+              mountPath: /juice-shop/data
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: videos
+              mountPath: /juice-shop/frontend/dist/frontend/assets/public/videos
+            - name: frontend
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: well-known
+              mountPath: /juice-shop/.well-known
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 40
+            periodSeconds: 20
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
+        - name: videos
+          emptyDir: {}
+        - name: frontend
+          emptyDir: {}
+        - name: i18n
+          emptyDir: {}
+        - name: well-known
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+spec:
+  selector:
+    app: juice-shop
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
