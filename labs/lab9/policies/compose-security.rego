@@ -22,7 +22,7 @@ deny contains msg if {
 
 deny contains msg if {
   svc := containers[_]
-  not has_value(svc.cap_drop, "ALL")
+  not has_value(object.get(svc, "cap_drop", []), "ALL")
   msg := "services must drop ALL capabilities"
 }
 
