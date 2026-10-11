@@ -1,0 +1,24 @@
+- rule: Write to tmp by container
+  desc: Detects file writes under /tmp from inside any container
+  condition: >
+    open_write and
+    container.id != "host" and
+    fd.name startswith /tmp/
+  output: >
+    Write to /tmp inside container
+    (container=%container.name user=%user.name file=%fd.name command=%proc.cmdline image=%container.image.repository)
+  priority: WARNING
+  tags: [container, drift]
+
+- rule: Suspicious outbound miner port
+  desc: Detects outbound connections from containers to ports commonly used by mining pools
+  condition: >
+    evt.type=connect and
+    container.id != "host" and
+    fd.sockfamily=ip and
+    fd.sport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)
+  output: >
+    Suspicious outbound connection to miner port
+    (container=%container.name user=%user.name process=%proc.name destination=%fd.name port=%fd.sport command=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
