@@ -1,0 +1,26 @@
+{
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "subject": [
+    {
+      "name": "127.0.0.1:5000/juice-shop",
+      "digest": {
+        "sha256": "cbdfc00de875926f20ff603fac73c5b68577e37680cf2e0c324adda42ffc1113"
+      }
+    }
+  ],
+  "predicateType": "https://slsa.dev/provenance/v0.2",
+  "predicate": {
+    "buildType": "https://example.com/lab8/local-build",
+    "builder": {
+      "id": "https://localhost/lab8-gleb"
+    },
+    "invocation": {
+      "configSource": {
+        "digest": {
+          "sha1": "abc123"
+        },
+        "uri": "https://github.com/darkdevinvader/DevSecOps-Intro"
+      }
+    }
+  }
+}
