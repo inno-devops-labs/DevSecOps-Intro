@@ -9,6 +9,8 @@ refs/
 # These are large + regenerated each run; not student deliverables.
 labs/lab2/output/
 labs/lab2/output-*/
+labs/lab4/grype-from-sbom.*
+labs/lab4/trivy.*
 labs/lab5/results/
 labs/lab5/semgrep/juice-shop/
 labs/lab6/results/
