@@ -1,0 +1,22 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: "Ensure S3 buckets have required cost allocation tags (Environment, Owner, CostCenter)"
+  category: GENERAL_SECURITY
+  severity: MEDIUM
+definition:
+  and:
+    - cond_type: attribute
+      resource_types:
+        - aws_s3_bucket
+      attribute: tags.Environment
+      operator: exists
+    - cond_type: attribute
+      resource_types:
+        - aws_s3_bucket
+      attribute: tags.Owner
+      operator: exists
+    - cond_type: attribute
+      resource_types:
+        - aws_s3_bucket
+      attribute: tags.CostCenter
+      operator: exists
