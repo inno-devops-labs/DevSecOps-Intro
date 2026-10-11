@@ -1,0 +1,14 @@
+- rule: Possible Cryptominer Activity
+  desc: Detects process matching known miner/nc tooling OR outbound connection to a common mining-pool port
+  condition: >
+    container and
+    (
+      (proc.name in ("nc", "ncat", "socat", "xmrig", "ethminer", "cgminer", "t-rex", "claymore"))
+      or
+      (evt.type=connect and fd.typechar='4' and fd.rport in (3333, 4444, 5555, 7777, 14444, 19999, 45700))
+    )
+  output: >
+    Possible cryptominer activity (container=%container.name proc=%proc.name
+    cmdline=%proc.cmdline connection=%fd.name)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
