@@ -1,0 +1,2 @@
+﻿Elapsed: 10.01s
+Server closed connection (EOF / graceful FIN) - TIMEOUT WORKED
