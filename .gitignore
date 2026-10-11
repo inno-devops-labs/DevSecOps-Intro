@@ -29,3 +29,9 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+labs/lab10/analysis/
+labs/lab10/.env
+labs/lab10/imports/.env
+labs/lab10/imports/import-*.json
+labs/lab10/work/
+.venv-checkov/
