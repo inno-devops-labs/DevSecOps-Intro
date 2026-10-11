@@ -1,0 +1,95 @@
+{
+  "as_of": "2026-10-11",
+  "product_id": 1,
+  "raw_records": 766,
+  "duplicate_records": 248,
+  "active_total": 518,
+  "active_by_severity": {
+    "High": 189,
+    "Critical": 25,
+    "Medium": 241,
+    "Info": 12,
+    "Low": 51
+  },
+  "active_by_source": {
+    "Anchore Grype": 183,
+    "Trivy Scan": 190,
+    "Semgrep JSON Report": 27,
+    "Checkov Scan": 80,
+    "KICS Scan": 16,
+    "ZAP Scan": 22
+  },
+  "per_test": [
+    {
+      "id": 1,
+      "parser": "Anchore Grype",
+      "raw": 183,
+      "active": 183
+    },
+    {
+      "id": 2,
+      "parser": "Trivy Scan",
+      "raw": 177,
+      "active": 177
+    },
+    {
+      "id": 3,
+      "parser": "Semgrep JSON Report",
+      "raw": 27,
+      "active": 27
+    },
+    {
+      "id": 5,
+      "parser": "Checkov Scan",
+      "raw": 80,
+      "active": 80
+    },
+    {
+      "id": 6,
+      "parser": "KICS Scan",
+      "raw": 10,
+      "active": 10
+    },
+    {
+      "id": 7,
+      "parser": "KICS Scan",
+      "raw": 6,
+      "active": 6
+    },
+    {
+      "id": 8,
+      "parser": "Trivy Scan",
+      "raw": 87,
+      "active": 13
+    },
+    {
+      "id": 10,
+      "parser": "ZAP Scan",
+      "raw": 22,
+      "active": 22
+    },
+    {
+      "id": 11,
+      "parser": "Trivy Scan",
+      "raw": 174,
+      "active": 0
+    }
+  ],
+  "median_age_days": 20.0,
+  "oldest_age_days": 20,
+  "sla": {
+    "critical": 3,
+    "high": 14,
+    "medium": 45,
+    "low": 90
+  },
+  "inside_sla": 330,
+  "sla_eligible": 506,
+  "without_sla": 12,
+  "inside_sla_percent": 65.22,
+  "inside_sla_share_of_all_active_percent": 63.71,
+  "overdue_by_severity": {
+    "High": 151,
+    "Critical": 25
+  }
+}

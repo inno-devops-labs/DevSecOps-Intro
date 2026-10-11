@@ -98,10 +98,29 @@ echo "  KICS           = $SCAN_KICS"
 import_scan() {
   local scan_type="$1" file="$2"
   local rel="${file#"$repo_root"/}"
+  # Resume a failed import without creating new tests for successful reports.
+  if [[ -n "${DD_IMPORT_ONLY:-}" && "$(basename "$file")" != "$DD_IMPORT_ONLY" ]]; then
+    return 0
+  fi
   if [[ ! -f "$file" ]]; then
     echo "SKIP: $scan_type — file not found: $rel"
     return 0
   fi
+  # The pinned ZAP parser accepts XML only. Trivy CLI k8s output is not an
+  # Operator CRD; adapt its newer Findings key for the regular Trivy parser.
+  local source_file="$file"
+  case "$(basename "$file")" in
+    auth-report.json)
+      file="$repo_root/labs/lab10/work/converted/auth-report.xml"
+      python3 "$here_dir/prepare-report.py" zap "$source_file" "$file"
+      echo "Adapted $rel to ZAP XML (same alert evidence)"
+      ;;
+    trivy-k8s.json)
+      file="$repo_root/labs/lab10/work/converted/trivy-k8s.json"
+      python3 "$here_dir/prepare-report.py" trivy-k8s "$source_file" "$file"
+      echo "Adapted $rel: Findings -> Resources (same resource evidence)"
+      ;;
+  esac
   local tag base out
   tag="$(basename "$(dirname "$file")")"; tag="${tag//[^A-Za-z0-9_.-]/_}"
   base="$(basename "$file")";             base="${base//[^A-Za-z0-9_.-]/_}"
@@ -149,7 +168,7 @@ import_scan "$SCAN_KICS"     "$repo_root/labs/lab6/results/kics-ansible/results.
 import_scan "$SCAN_KICS"     "$repo_root/labs/lab6/results/kics-pulumi/results.json"
 # Lab 7 — Container image + K8s
 import_scan "$SCAN_TRIVY"    "$repo_root/labs/lab7/results/trivy-image.json"
-import_scan "$SCAN_TRIVY_OP" "$repo_root/labs/lab7/results/trivy-k8s.json"
+import_scan "$SCAN_TRIVY"    "$repo_root/labs/lab7/results/trivy-k8s.json"
 
 if [[ $failures -gt 0 ]]; then
   echo "Done with $failures failed import(s). Responses are under $out_dir" >&2
