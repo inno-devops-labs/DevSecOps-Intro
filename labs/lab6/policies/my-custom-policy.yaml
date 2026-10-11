@@ -1,0 +1,18 @@
+metadata:
+  id: CKV2_CUSTOM_1
+  name: Ensure S3 buckets define lifecycle configuration
+  category: BACKUP_AND_RECOVERY
+  severity: MEDIUM
+definition:
+  and:
+    - cond_type: filter
+      attribute: resource_type
+      operator: within
+      value:
+        - aws_s3_bucket
+    - cond_type: connection
+      resource_types:
+        - aws_s3_bucket
+      connected_resource_types:
+        - aws_s3_bucket_lifecycle_configuration
+      operator: exists
