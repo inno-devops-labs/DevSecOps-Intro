@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      # Pod-level securityContext (PSS restricted)
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000                     # makes the emptyDir volumes group-owned by 1000
+        seccompProfile:
+          type: RuntimeDefault
+
+      # readOnlyRootFilesystem: true breaks Juice Shop — at startup it writes across its own tree.
+      # Empirically (via `docker run --read-only`) the writable paths are: /tmp, /juice-shop/ftp,
+      # /juice-shop/logs, /juice-shop/.well-known, .../public/videos, and /juice-shop/data (which
+      # ALSO holds read-only seed files it needs). So all of those get a writable emptyDir; only
+      # /juice-shop/data must retain its baked seeds, so an initContainer copies just that dir
+      # (small — no node_modules) into its emptyDir. node_modules + build stay on the read-only
+      # image layer, so the app's dependency check still sees them.
+      initContainers:
+        - name: seed-data
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          # node lives at /nodejs/bin/node (not on PATH) in this distroless image — call it directly.
+          command: ["/nodejs/bin/node", "-e", "require('fs').cpSync('/juice-shop/data','/seed',{recursive:true})"]
+          volumeMounts:
+            - name: data
+              mountPath: /seed
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: "100m", memory: "128Mi" }
+            limits:   { cpu: "500m", memory: "256Mi" }
+
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          ports:
+            - containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: { cpu: "250m", memory: "512Mi" }
+            limits:   { cpu: "1",    memory: "1Gi" }
+          volumeMounts:
+            - name: data                   # seeded writable copy (static seeds + sqlite DB)
+              mountPath: /juice-shop/data
+            - name: ftp
+              mountPath: /juice-shop/ftp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: wellknown
+              mountPath: /juice-shop/.well-known
+            - name: videos
+              mountPath: /juice-shop/frontend/dist/frontend/assets/public/videos
+            - name: i18n
+              mountPath: /juice-shop/i18n
+            - name: tmp
+              mountPath: /tmp
+          readinessProbe:
+            httpGet: { path: /, port: 3000 }
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /, port: 3000 }
+            initialDelaySeconds: 90
+            periodSeconds: 20
+
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: wellknown
+          emptyDir: {}
+        - name: videos
+          emptyDir: {}
+        - name: i18n
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
