@@ -1,0 +1,124 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.20
+
+
+Preparing Scan Assets: Done
+
+
+
+
+[38;2;91;192;222mEC2 Not EBS Optimized[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 1
+[1mDescription:[0m It's considered a best practice for an EC2 instance to use an EBS optimized instance. This provides the best performance for your EBS volumes by minimizing contention between Amazon EBS I/O and other traffic from your instance
+[1mPlatform:[0m Pulumi
+[1mCWE:[0m 459
+[1mRisk Score:[0m 0.0
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/pulumi-queries/aws/d991e4ae-42ab-429b-ab43-d5e5fa9ca633
+
+	[38;2;91;192;222m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m157[0m
+
+		156:     type: aws:ec2:Instance
+[38;2;240;173;78m		157:     properties:
+[0m		158:       ami: ami-0c55b159cbfafe1f0
+
+
+[38;2;91;192;222mDynamoDB Table Point In Time Recovery Disabled[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 1
+[1mDescription:[0m It's considered a best practice to have point in time recovery enabled for DynamoDB Table
+[1mPlatform:[0m Pulumi
+[1mCWE:[0m 459
+[1mRisk Score:[0m 0.0
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/pulumi-queries/aws/327b0729-4c5c-4c44-8b5c-e476cd9c7290
+
+	[38;2;91;192;222m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m213[0m
+
+		212:       pointInTimeRecovery:
+[38;2;240;173;78m		213:         enabled: false  # SECURITY ISSUE #18 - No PITR
+[0m		214:       tags:
+
+
+[38;2;255;114;19mEC2 Instance Monitoring Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m EC2 Instance should have detailed monitoring enabled. With detailed monitoring enabled data is available in 1-minute periods
+[1mPlatform:[0m Pulumi
+[1mCWE:[0m 778
+[1mRisk Score:[0m 5.1
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/pulumi-queries/aws/daa581ef-731c-4121-832d-cf078f67759d
+
+	[38;2;255;114;19m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m157[0m
+
+		156:     type: aws:ec2:Instance
+[38;2;240;173;78m		157:     properties:
+[0m		158:       ami: ami-0c55b159cbfafe1f0
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mRisk Score:[0m 7.8
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m16[0m
+
+		015:   # SECURITY ISSUE #1 - Hardcoded database password
+[38;2;240;173;78m		016:   dbPassword: <SECRET-MASKED-ON-PURPOSE>
+[0m		017:   
+
+
+[38;2;187;33;36mDynamoDB Table Not Encrypted[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m AWS DynamoDB Tables should have serverSideEncryption enabled
+[1mPlatform:[0m Pulumi
+[1mCWE:[0m 311
+[1mRisk Score:[0m 7.1
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/pulumi-queries/aws/b6a7e0ae-aed8-4a19-a993-a95760bf8836
+
+	[38;2;187;33;36m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m205[0m
+
+		204:     type: aws:dynamodb:Table
+[38;2;240;173;78m		205:     properties:
+[0m		206:       name: my-table-pulumi-yaml
+
+
+[38;2;255;0;0mRDS DB Instance Publicly Accessible[0m, Severity: [38;2;255;0;0mCRITICAL[0m, Results: 1
+[1mDescription:[0m RDS must not be defined with public interface, which means the attribute 'PubliclyAccessible' must be set to false.
+[1mPlatform:[0m Pulumi
+[1mCWE:[0m 284
+[1mRisk Score:[0m 8.7
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/pulumi-queries/aws/647de8aa-5a42-41b5-9faf-22136f117380
+
+	[38;2;255;0;0m[1]:[0m ../../src/Pulumi-vulnerable.yaml:[38;2;34;187;51m104[0m
+
+		103:       storageEncrypted: false  # SECURITY ISSUE #7 - No encryption!
+[38;2;240;173;78m		104:       publiclyAccessible: true  # SECURITY ISSUE #8 - Public access!
+[0m		105:       skipFinalSnapshot: true
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 1
+[38;2;187;33;36mHIGH[0m: 2
+[38;2;255;114;19mMEDIUM[0m: 1
+[38;2;237;213;126mLOW[0m: 0
+[38;2;91;192;222mINFO[0m: 2
+TOTAL: 6
+
+Generating Reports: Done
