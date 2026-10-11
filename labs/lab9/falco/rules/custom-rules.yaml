@@ -1,0 +1,53 @@
+- rule: Write below tmp in container
+  desc: >
+    A file under /tmp was opened for writing from inside a container. Containers
+    built from an immutable image should not need scratch files; a write here is
+    often the first step of dropping a payload (container drift).
+  condition: >
+    open_write
+    and container.id != host
+    and fd.name startswith /tmp/
+  output: >
+    File below /tmp opened for writing in a container
+    (container=%container.name image=%container.image.repository:%container.image.tag
+    user=%user.name uid=%user.uid file=%fd.name command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+
+- list: mining_pool_ports
+  items: [3333, 4444, 5555, 7777, 14444]
+
+- list: miner_and_tunnel_procs
+  items: [xmrig, xmr-stak, minerd, cpuminer, cgminer, bfgminer, ethminer, t-rex, nbminer, nc, ncat, netcat, socat]
+
+- macro: mining_pool_destination
+  condition: >
+    (fd.sport in (mining_pool_ports)
+     or evt.arg.addr endswith ":3333"
+     or evt.arg.addr endswith ":4444"
+     or evt.arg.addr endswith ":5555"
+     or evt.arg.addr endswith ":7777"
+     or evt.arg.addr endswith ":14444")
+
+- rule: Possible cryptominer outbound connection
+  desc: >
+    A process in a container attempted a connection to a port typically used by
+    mining pools (stratum), and the process is either a known miner/tunnel binary
+    or carries stratum arguments on its command line. Matches the connect() exit
+    event whatever its result, so a refused or failed attempt still counts. The
+    port is read from the syscall's own addr argument as well as the socket
+    tuple, because a refused connect() leaves the tuple empty.
+  condition: >
+    evt.type = connect
+    and container.id != host
+    and mining_pool_destination
+    and (proc.name in (miner_and_tunnel_procs)
+         or proc.cmdline contains "stratum+tcp"
+         or proc.cmdline contains "--donate-level")
+  output: >
+    Possible cryptominer connection from container
+    (container=%container.name image=%container.image.repository:%container.image.tag
+    process=%proc.name exepath=%proc.exepath command=%proc.cmdline parent=%proc.pname
+    destination=%evt.arg.addr socket=%fd.name result=%evt.res user=%user.name)
+  priority: CRITICAL
+  tags: [container, network, mitre_command_and_control, mitre_impact, T1496]
