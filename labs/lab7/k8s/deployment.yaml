@@ -1,0 +1,133 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      # Pod-level securityContext (Juice Shop v20 runs as UID 65532, not 1000).
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      # Juice Shop writes into its own install dir (SQLite DB, logs, uploaded
+      # files, a re-rendered frontend). With readOnlyRootFilesystem: true those
+      # writes fail, so we hand it writable emptyDir volumes. Three of those dirs
+      # ship with seed content the app also reads (data/, .well-known/, the built
+      # frontend), so this initContainer copies the baked files into the empty
+      # volumes before the app starts. The image is distroless (no shell/cp), so
+      # we use the bundled node binary to copy.
+      initContainers:
+        - name: seed-writable-dirs
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              const dirs = [
+                ['/juice-shop/data', '/seed/data'],
+                ['/juice-shop/.well-known', '/seed/well-known'],
+                ['/juice-shop/frontend/dist/frontend', '/seed/frontend'],
+                ['/juice-shop/ftp', '/seed/ftp'],
+              ];
+              for (const [src, dst] of dirs) {
+                fs.cpSync(src, dst, { recursive: true });
+              }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          volumeMounts:
+            - name: data
+              mountPath: /seed/data
+            - name: well-known
+              mountPath: /seed/well-known
+            - name: frontend
+              mountPath: /seed/frontend
+            - name: ftp
+              mountPath: /seed/ftp
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          ports:
+            - name: http
+              containerPort: 3000
+          # Container-level securityContext for PSS restricted compliance.
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: data
+              mountPath: /juice-shop/data
+            - name: well-known
+              mountPath: /juice-shop/.well-known
+            - name: frontend
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: ftp
+              mountPath: /juice-shop/ftp
+      volumes:
+        # Born-empty writable paths.
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        # Seeded by the initContainer (they carry baked content the app reads).
+        - name: data
+          emptyDir: {}
+        - name: well-known
+          emptyDir: {}
+        - name: frontend
+          emptyDir: {}
+        - name: ftp
+          emptyDir: {}
