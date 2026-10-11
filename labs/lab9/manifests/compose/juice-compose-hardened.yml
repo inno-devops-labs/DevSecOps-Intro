@@ -1,0 +1,12 @@
+services:
+  juice:
+    image: bkimminich/juice-shop@sha256:2765a26de7647609099a338d5b7f61085d95903c8703bb70f03fcc4b12f0818d
+    ports: ["3006:3000"]
+    user: "10001:10001"
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: ["ALL"]
+    mem_limit: 512m
+    pids_limit: 100
