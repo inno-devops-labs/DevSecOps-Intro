@@ -1,0 +1,326 @@
+threagile_version: 1.0.0
+
+title: Juice Shop Auth Flow Threat Model
+date: 2026-06-12
+author:
+  name: Student
+  homepage: https://example.edu
+
+management_summary_comment: "Focused threat model for Juice Shop authentication flow."
+business_criticality: critical
+
+tags_available: ["auth", "admin", "crypto", "client", "api", "db"]
+business_overview:
+  description: "Authentication and authorization component modeling."
+  images: []
+
+data_assets:
+  credentials:
+    id: credentials
+    description: "User login credentials (username and password)."
+    usage: business
+    tags: ["auth"]
+    origin: user-supplied
+    owner: User
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Compromise leads to account takeover."
+  
+  jwt-token:
+    id: jwt-token
+    description: "Issued JWT token."
+    usage: business
+    tags: ["auth"]
+    origin: application
+    owner: System
+    quantity: many
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Compromise leads to session hijacking."
+
+  session-state:
+    id: session-state
+    description: "User session state."
+    usage: business
+    tags: ["auth"]
+    origin: application
+    owner: System
+    quantity: many
+    confidentiality: confidential
+    integrity: important
+    availability: important
+    justification_cia_rating: "Required for session management."
+
+  admin-ops:
+    id: admin-ops
+    description: "Admin operation requests."
+    usage: business
+    tags: ["admin"]
+    origin: user-supplied
+    owner: System
+    quantity: few
+    confidentiality: confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Privileged operations."
+
+  jwt-signing-keys:
+    id: jwt-signing-keys
+    description: "Cryptographic keys used to sign JWTs."
+    usage: business
+    tags: ["crypto"]
+    origin: application
+    owner: System
+    quantity: few
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: critical
+    justification_cia_rating: "If stolen, attacker can forge any JWT."
+
+technical_assets:
+  browser:
+    id: browser
+    description: "User browser."
+    type: external-entity
+    usage: business
+    used_as_client_by_human: true
+    out_of_scope: false
+    size: system
+    technology: browser
+    tags: ["client"]
+    internet: true
+    machine: virtual
+    encryption: none
+    owner: User
+    confidentiality: public
+    integrity: operational
+    availability: operational
+    justification_cia_rating: "External client."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - jwt-token
+    data_formats_accepted:
+      - json
+    communication_links:
+      to-auth-api:
+        target: auth-api
+        description: "Login request."
+        protocol: https
+        authentication: credentials
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - jwt-token
+      to-admin-api:
+        target: admin-api
+        description: "Admin request."
+        protocol: https
+        authentication: token
+        authorization: enduser-identity-propagation
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - admin-ops
+          - jwt-token
+        data_assets_received: []
+
+  auth-api:
+    id: auth-api
+    description: "Auth API Endpoint."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-server
+    tags: ["api"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: System
+    confidentiality: internal
+    integrity: important
+    availability: important
+    justification_cia_rating: "Core auth logic."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - credentials
+      - jwt-token
+      - session-state
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      to-token-signer:
+        target: token-signer
+        description: "Request JWT."
+        protocol: http
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business
+        data_assets_sent:
+          - session-state
+        data_assets_received:
+          - jwt-token
+      to-db:
+        target: user-db
+        description: "Verify credentials."
+        protocol: jdbc
+        authentication: credentials
+        authorization: technical-user
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - credentials
+        data_assets_received:
+          - credentials
+
+  token-signer:
+    id: token-signer
+    description: "Token signing and verification."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: library
+    tags: ["crypto"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: System
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Handles keys."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - jwt-token
+      - jwt-signing-keys
+    data_assets_stored:
+      - jwt-signing-keys
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  user-db:
+    id: user-db
+    description: "Credential store."
+    type: datastore
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: component
+    technology: database
+    tags: ["db"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: System
+    confidentiality: strictly-confidential
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Stores passwords."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: []
+    data_assets_stored:
+      - credentials
+    data_formats_accepted:
+      - json
+    communication_links: {}
+
+  admin-api:
+    id: admin-api
+    description: "Admin endpoint."
+    type: process
+    usage: business
+    used_as_client_by_human: false
+    out_of_scope: false
+    size: application
+    technology: web-server
+    tags: ["api"]
+    internet: false
+    machine: container
+    encryption: none
+    owner: System
+    confidentiality: internal
+    integrity: critical
+    availability: important
+    justification_cia_rating: "Admin functionality."
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed:
+      - admin-ops
+      - jwt-token
+    data_assets_stored: []
+    data_formats_accepted:
+      - json
+    communication_links:
+      to-token-verifier:
+        target: token-signer
+        description: "Verify JWT."
+        protocol: http
+        authentication: none
+        authorization: none
+        tags: []
+        vpn: false
+        ip_filtered: false
+        readonly: true
+        usage: business
+        data_assets_sent:
+          - jwt-token
+        data_assets_received:
+          - session-state
+
+trust_boundaries:
+  internet-boundary:
+    id: internet-boundary
+    description: "Internet."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - browser
+    trust_boundaries_nested: []
+
+  container-boundary:
+    id: container-boundary
+    description: "App Container."
+    type: network-dedicated-hoster
+    tags: []
+    technical_assets_inside:
+      - auth-api
+      - token-signer
+      - user-db
+      - admin-api
+    trust_boundaries_nested: []
+
+shared_runtimes: {}

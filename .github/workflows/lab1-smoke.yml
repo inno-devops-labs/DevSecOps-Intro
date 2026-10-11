@@ -1,0 +1,39 @@
+name: Lab 1 Smoke Test
+
+# start after opening or updating PR in main branch
+on:
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v20.0.0
+        ports:
+          - 3000:3000
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Wait for Juice Shop and verify health
+        # polling loop to see if the app accessable
+        run: |
+          echo "Waiting for Juice Shop to start..."
+          for i in $(seq 1 30); do
+            # check apps endpoint
+            curl --silent --fail http://localhost:3000/rest/admin/application-version > /dev/null && echo "Juice Shop is up!" && exit 0
+            echo "Attempt $i: Not ready yet. Waiting 3 seconds..."
+            sleep 3
+          done
+          echo "Juice Shop failed to start within the timeout limit."
+          exit 1
+
+      - name: Curl Homepage for Triage Output
+        # final  curl to see HTTP 200
+        run: curl -I http://localhost:3000
