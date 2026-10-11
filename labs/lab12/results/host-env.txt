@@ -1,0 +1,8 @@
+Darwin MacBook-Pro-8.local 23.6.0 Darwin Kernel Version 23.6.0: Wed Nov  5 21:50:23 PST 2025; root:xnu-10063.141.1.708.2~1/RELEASE_ARM64_T6030 arm64
+ProductName:		macOS
+ProductVersion:		14.8.3
+BuildVersion:		23J220
+--- CPU ---
+Apple M3 Pro
+--- Architecture ---
+arm64

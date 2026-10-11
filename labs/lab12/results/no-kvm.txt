@@ -1,0 +1,5 @@
+ls: /dev/kvm: No such file or directory
+---
+zsh: command not found: lsmod
+kata-runtime not found
+ls: /opt/kata: No such file or directory
