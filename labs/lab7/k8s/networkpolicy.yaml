@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+spec:
+  podSelector:
+    matchLabels:
+      app: juice-shop
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - ports:
+        - port: 3000
+          protocol: TCP
+  egress:
+    # DNS
+    - ports:
+        - port: 53
+          protocol: UDP
+        - port: 53
+          protocol: TCP
+    # HTTPS (npm registry, telemetry, etc.)
+    - ports:
+        - port: 443
+          protocol: TCP
