@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: juice-shop
+  labels:
+    # Pod Security Standards — restricted profile (Lecture 7 slide 11).
+    # All three modes set to restricted:
+    #   enforce -> rejects non-compliant pods at admission
+    #   warn    -> surfaces a kubectl warning
+    #   audit   -> records a violation in the audit log
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/warn-version: latest
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/audit-version: latest
