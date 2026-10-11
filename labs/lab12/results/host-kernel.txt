@@ -1,0 +1,1 @@
+Linux wyrox 6.17.0-40-generic #40~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Jun 23 16:32:02 UTC 2 aarch64 aarch64 aarch64 GNU/Linux

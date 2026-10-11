@@ -1,0 +1,5 @@
+time="2026-07-16T14:36:22+03:00" level=warning msg="cannot set cgroup manager to \"systemd\" for runtime \"io.containerd.kata.v2\""
+Linux c76bc17abc37 6.18.35 #1 SMP Mon Jun 15 12:55:03 UTC 2026 aarch64 Linux
+processor	: 0
+BogoMIPS	: 48.00
+Features	: fp asimd aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb dcpodp flagm2 frint i8mm bf16 afp

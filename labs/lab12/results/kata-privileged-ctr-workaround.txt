@@ -1,0 +1,8 @@
+Command:
+sudo ctr run --rm --runtime io.containerd.kata.v2 \
+  --privileged --privileged-without-host-devices \
+  docker.io/library/alpine:3.20 lab12-kata-privileged-test \
+  echo 'privileged kata works'
+
+Output:
+privileged kata works
