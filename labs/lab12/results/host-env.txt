@@ -1,0 +1,5 @@
+Linux runnervm3jd5f 6.17.0-1020-azure #20~24.04.1-Ubuntu SMP Fri Jun 19 20:09:14 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+crw-rw---- 1 root kvm 10, 232 Jul 17 20:23 /dev/kvm
+kvm_amd 237568 0 - Live 0x0000000000000000
+ccp 159744 1 kvm_amd, Live 0x0000000000000000
+kvm 1404928 1 kvm_amd, Live 0x0000000000000000

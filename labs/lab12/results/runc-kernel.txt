@@ -1,0 +1,4 @@
+Linux a5c1e1bbb8cf 6.17.0-1020-azure #20~24.04.1-Ubuntu SMP Fri Jun 19 20:09:14 UTC 2026 x86_64 Linux
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 25
