@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad-app
+  namespace: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bad-app
+  template:
+    metadata:
+      labels:
+        app: bad-app
+    spec:
+      containers:
+        - name: bad-app
+          image: bkimminich/juice-shop:latest
+          ports:
+            - containerPort: 3000

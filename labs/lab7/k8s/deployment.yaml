@@ -1,0 +1,125 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: seed-data
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          args:
+            - "-e"
+            - "const fs=require('fs'); for (const d of ['data','ftp','.well-known','i18n','frontend/dist']) { if (fs.existsSync('/juice-shop/'+d)) fs.cpSync('/juice-shop/'+d,'/seed/'+d,{recursive:true}); }"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: seed
+              mountPath: /seed
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          ports:
+            - name: http
+              containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            failureThreshold: 12
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 6
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: logs
+              mountPath: /juice-shop/logs
+            - name: seed
+              mountPath: /juice-shop/data
+              subPath: data
+            - name: seed
+              mountPath: /juice-shop/ftp
+              subPath: ftp
+            - name: seed
+              mountPath: /juice-shop/.well-known
+              subPath: .well-known
+            - name: seed
+              mountPath: /juice-shop/i18n
+              subPath: i18n
+            - name: seed
+              mountPath: /juice-shop/frontend/dist
+              subPath: frontend/dist
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: seed
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  selector:
+    app: juice-shop
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http
