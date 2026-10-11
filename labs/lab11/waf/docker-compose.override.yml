@@ -1,0 +1,19 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    ports:
+      - "8443:8443"
+    environment:
+      - PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+      - BACKEND=https://nginx:443
+      - PROXY_SSL_VERIFY=off
+      - MODSEC_RULE_ENGINE=On
+      - MODSEC_AUDIT_ENGINE=RelevantOnly
+      - MODSEC_AUDIT_LOG=/tmp/modsec_audit.log
+      - MODSEC_AUDIT_STORAGE_DIR=/tmp/modsec_audit/
+    depends_on:
+      - nginx
+    networks:
+      - default
