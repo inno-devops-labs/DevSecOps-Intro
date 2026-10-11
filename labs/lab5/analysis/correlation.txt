@@ -1,0 +1,6 @@
+=== SAST/DAST Correlation Report ===
+SAST findings (Semgrep): 26
+ZAP findings: 12 unique types / 87 instances
+Nuclei findings: 22
+Nikto findings: 14
+SQLmap: SQLi confirmed (see sqlmap/ output)

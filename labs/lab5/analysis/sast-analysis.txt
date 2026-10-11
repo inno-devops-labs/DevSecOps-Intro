@@ -1,0 +1,4 @@
+=== SAST Analysis Report ===
+Semgrep total findings: 26
+      8 ERROR
+     18 WARNING
