@@ -1,0 +1,78 @@
+name: Lab 1 - Juice Shop Smoke Test
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'submissions/lab1.md'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: Smoke Test - Juice Shop v20.0.0
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      
+      - name: Run Juice Shop container
+        run: |
+          docker run -d \
+            --name juice-shop \
+            -p 3000:3000 \
+            bkimminich/juice-shop:v20.0.0
+          docker ps
+      
+      - name: Wait for Juice Shop to be ready
+        run: |
+          echo "⏳ Waiting for Juice Shop to start (max 60 seconds)..."
+          for i in {1..30}; do
+            echo "Attempt $i/30..."
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version > /dev/null 2>&1; then
+              echo "✅ Juice Shop is ready!"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "❌ Juice Shop failed to start within 60 seconds"
+          docker logs juice-shop --tail 50
+          exit 1
+      
+      - name: Verify Juice Shop version
+        run: |
+          echo "🔍 Fetching Juice Shop version..."
+          VERSION=$(curl --silent http://localhost:3000/rest/admin/application-version)
+          echo "Version response: $VERSION"
+          if echo "$VERSION" | grep -q "20.0.0"; then
+            echo "✅ Correct version v20.0.0 detected"
+          fi
+      
+      - name: Verify products API
+        run: |
+          echo "📦 Fetching products..."
+          PRODUCTS=$(curl --silent http://localhost:3000/api/Products)
+          COUNT=$(echo "$PRODUCTS" | jq '.data | length')
+          echo "Found $COUNT products"
+          if [ "$COUNT" -gt 40 ]; then
+            echo "✅ Products API working correctly"
+          else
+            echo "❌ Products API returned only $COUNT items"
+            exit 1
+          fi
+      
+      - name: Check security headers
+        run: |
+          echo "🛡️ Security Headers:"
+          curl -I http://localhost:3000 2>&1 | head -15
+      
+      - name: Cleanup
+        if: always()
+        run: |
+          docker stop juice-shop
+          docker rm juice-shop
+          echo "🧹 Container removed"
