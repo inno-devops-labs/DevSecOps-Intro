@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop-sa
+      automountServiceAccountToken: false
+
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      
+      initContainers:
+        - name: seed-writable-dirs
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              fs.cpSync('/juice-shop/data', '/data-vol', { recursive: true });
+              fs.cpSync('/juice-shop/ftp', '/ftp-vol', { recursive: true });
+              fs.cpSync('/juice-shop/frontend/dist', '/frontend-dist-vol', { recursive: true });
+              fs.cpSync('/juice-shop/.well-known', '/well-known-vol', { recursive: true });
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: app-data
+              mountPath: /data-vol
+            - name: app-ftp
+              mountPath: /ftp-vol
+            - name: frontend-dist
+              mountPath: /frontend-dist-vol
+            - name: well-known
+              mountPath: /well-known-vol
+
+      containers:
+        - name: juice-shop
+          # Image pinned by digest (Lab 1 digest)
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+
+          # Juice Shop writes to /tmp and /usr/src/app/logs at runtime.
+          # readOnlyRootFilesystem=true would crash without these emptyDir mounts.
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: app-logs
+              mountPath: /juice-shop/logs
+            - name: app-data
+              mountPath: /juice-shop/data
+            - name: app-ftp
+              mountPath: /juice-shop/ftp
+            - name: frontend-dist
+              mountPath: /juice-shop/frontend/dist
+            - name: well-known
+              mountPath: /juice-shop/.well-known
+
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: app-logs
+          emptyDir: {}
+        - name: app-data
+          emptyDir: {}
+        - name: app-ftp
+          emptyDir: {}
+        - name: frontend-dist
+          emptyDir: {}
+        - name: well-known
+          emptyDir: {}
