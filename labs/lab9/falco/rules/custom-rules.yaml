@@ -1,0 +1,47 @@
+- rule: Write to /tmp by container
+  desc: Detect writes to /tmp from containers.
+  condition: >
+    open_write and
+    container.id != host and
+    fd.name startswith /tmp/
+  output: >
+    Write to /tmp by container
+    (container=%container.name user=%user.name file=%fd.name command=%proc.cmdline)
+  priority: WARNING
+  tags: [container, drift]
+  exceptions:
+    - name: allowed_tmp_writers
+      fields: [proc.name, container.name]
+      comps: [in, in]
+      values:
+        - [[apk], [lab9-target]]
+
+- rule: Possible Cryptominer Activity
+  desc: Detect container egress to common mining-pool ports from miner-like or suspicious tooling.
+  condition: >
+    container.id != host and
+    (
+      (
+        evt.type = connect and
+        (fd.sport in (3333, 4444, 5555, 7777, 14444, 19999, 45700) or
+         fd.rport in (3333, 4444, 5555, 7777, 14444, 19999, 45700)) and
+        (proc.name in (xmrig, ethminer, cgminer, t-rex, claymore, nc) or
+         proc.pname in (xmrig, ethminer, cgminer, t-rex, claymore) or
+         proc.cmdline contains "xmrig")
+      ) or (
+        evt.type = execve and
+        proc.name = nc and
+        (proc.cmdline contains " 3333" or
+         proc.cmdline contains " 4444" or
+         proc.cmdline contains " 5555" or
+         proc.cmdline contains " 7777" or
+         proc.cmdline contains " 14444" or
+         proc.cmdline contains " 19999" or
+         proc.cmdline contains " 45700")
+      )
+    )
+  output: >
+    Possible Cryptominer Activity
+    (container=%container.name process=%proc.name target=%proc.cmdline fd_target=%fd.sip:%fd.sport)
+  priority: CRITICAL
+  tags: [container, mitre_execution, mitre_command_and_control]
