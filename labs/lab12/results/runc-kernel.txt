@@ -1,0 +1,4 @@
+Linux b559366f1102 6.2.0-26-generic #26~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Jul 13 16:27:29 UTC 2 x86_64 Linux
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
