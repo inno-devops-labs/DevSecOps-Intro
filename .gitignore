@@ -29,3 +29,12 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# lab4 reports regenerated only as lab10 import inputs — belong to lab4's branch
+labs/lab4/
+
+# downloaded CLI checksum files
+/checksums.txt
+
+# session scratch — terminal screenshots in repo root
+/Screenshot from *.png

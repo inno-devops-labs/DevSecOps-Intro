@@ -1,0 +1,30 @@
+# Lab 3 — gitleaks tuning.
+#
+# Three fixed strings that the Lab 3 write-up has to quote in order to show its
+# own evidence. Each is pinned to its exact literal value, never to a pattern:
+# allowlisting `ghp_[A-Za-z0-9]{36}` or the `github-pat` rule id would forgive
+# every GitHub token in the repo, whereas these entries forgive exactly three
+# known-fake constants and nothing else. Any other token, in any file including
+# this one's neighbours, still fails the commit.
+#
+# Deliberately NOT scoped with `paths`: a path entry makes gitleaks skip the
+# file wholesale before it reads a byte (verified — the scan reports 0 bytes
+# scanned), which would leave submissions/lab3.md unguarded against a real
+# secret pasted there later.
+
+title = "DevSecOps-Intro"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Lab 3 write-up: the two fake PATs the lab text itself supplies, plus my own public SSH key fingerprint"
+regexTarget = "line"
+regexes = [
+  # 3.5 — the lab's own sample token, planted to prove the hook blocks it
+  '''ghp_16C7e42F292c6912E7710c838347Ae178B4a''',
+  # 3.6/3.7 — the lab's own sandbox token, the subject of the history rewrite
+  '''ghp_AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJ''',
+  # a public key fingerprint, not a credential: generic-api-key false positive
+  '''SHA256:PvSUGx9Q4pRVvbABRJV0foqPcFxlROFl6hxaCNHVr6k''',
+]
