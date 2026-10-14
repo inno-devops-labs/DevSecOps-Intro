@@ -1,0 +1,35 @@
+# Bonus: a CRS-enabled WAF alongside the plain proxy, so the two paths can be
+# compared with the same request.
+#
+#   https://localhost        -> nginx, hardened but rule-free
+#   http://localhost:8080    -> ModSecurity + OWASP CRS 4, blocking mode
+#
+# The juice service keeps `expose` only (no published port) in the base compose
+# file, so the app is reachable from outside through a proxy and no other way.
+#
+# Run with:
+#   docker compose -f docker-compose.yml -f waf/docker-compose.override.yml up -d
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      # Where CRS forwards what it allows through
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      # Blocking, not detection-only. One variable, and the whole point of the
+      # rollout question below: On is where you END UP, not where you start.
+      MODSEC_RULE_ENGINE: "On"
+      PARANOIA: "1"
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      MODSEC_AUDIT_LOG: "/var/log/modsecurity/audit.log"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../lab11/logs/waf:/var/log/modsecurity:rw
