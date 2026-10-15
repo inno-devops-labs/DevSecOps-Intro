@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset='utf-8'> 
+    <title>Error: Unexpected path: /rest/user/login</title>
+    <style>* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  padding: 80px 100px;
+  font: 13px "Helvetica Neue", "Lucida Grande", "Arial";
+  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));
+  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);
+  background-repeat: no-repeat;
+  color: #555;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2 {
+  font-size: 22px;
+  color: #343434;
+}
+h1 em, h2 em {
+  padding: 0 5px;
+  font-weight: normal;
+}
+h1 {
+  font-size: 60px;
+}
+h2 {
+  margin-top: 10px;
+}
+ul li {
+  list-style: none;
+}
+#stacktrace {
+  margin-left: 60px;
+}
+</style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>OWASP Juice Shop (Express ^4.22.1)</h1>
+      <h2><em>500</em> Error: Unexpected path: /rest/user/login</h2>
+      <ul id="stacktrace"><li> &nbsp; &nbsp;at /juice-shop/build/routes/angular.js:42:18</li><li> &nbsp; &nbsp;at /juice-shop/build/lib/utils.js:225:26</li><li> &nbsp; &nbsp;at Layer.handle [as handle_request] (/juice-shop/node_modules/express/lib/router/layer.js:95:5)</li><li> &nbsp; &nbsp;at trim_prefix (/juice-shop/node_modules/express/lib/router/index.js:328:13)</li><li> &nbsp; &nbsp;at /juice-shop/node_modules/express/lib/router/index.js:286:9</li><li> &nbsp; &nbsp;at router.process_params (/juice-shop/node_modules/express/lib/router/index.js:346:12)</li><li> &nbsp; &nbsp;at next (/juice-shop/node_modules/express/lib/router/index.js:280:10)</li><li> &nbsp; &nbsp;at /juice-shop/build/routes/verify.js:210:5</li><li> &nbsp; &nbsp;at Layer.handle [as handle_request] (/juice-shop/node_modules/express/lib/router/layer.js:95:5)</li><li> &nbsp; &nbsp;at trim_prefix (/juice-shop/node_modules/express/lib/router/index.js:328:13)</li><li> &nbsp; &nbsp;at /juice-shop/node_modules/express/lib/router/index.js:286:9</li><li> &nbsp; &nbsp;at router.process_params (/juice-shop/node_modules/express/lib/router/index.js:346:12)</li><li> &nbsp; &nbsp;at next (/juice-shop/node_modules/express/lib/router/index.js:280:10)</li><li> &nbsp; &nbsp;at /juice-shop/build/routes/verify.js:113:5</li><li> &nbsp; &nbsp;at Layer.handle [as handle_request] (/juice-shop/node_modules/express/lib/router/layer.js:95:5)</li><li> &nbsp; &nbsp;at trim_prefix (/juice-shop/node_modules/express/lib/router/index.js:328:13)</li><li> &nbsp; &nbsp;at /juice-shop/node_modules/express/lib/router/index.js:286:9</li><li> &nbsp; &nbsp;at router.process_params (/juice-shop/node_modules/express/lib/router/index.js:346:12)</li><li> &nbsp; &nbsp;at next (/juice-shop/node_modules/express/lib/router/index.js:280:10)</li><li> &nbsp; &nbsp;at logger (/juice-shop/node_modules/morgan/index.js:144:5)</li><li> &nbsp; &nbsp;at Layer.handle [as handle_request] (/juice-shop/node_modules/express/lib/router/layer.js:95:5)</li><li> &nbsp; &nbsp;at trim_prefix (/juice-shop/node_modules/express/lib/router/index.js:328:13)</li></ul>
+    </div>
+  </body>
+</html>

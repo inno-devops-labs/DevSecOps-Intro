@@ -1,0 +1,3 @@
+New, TLSv1/SSLv3, Cipher is AEAD-AES256-GCM-SHA384
+    Protocol  : TLSv1.3
+    Cipher    : AEAD-AES256-GCM-SHA384

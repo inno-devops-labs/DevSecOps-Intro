@@ -1,0 +1,4 @@
+unknown option -ciphersuites
+    [-cipher cipherlist] [-connect host[:port]] [-crl_check]
+ -cipher cipherlist Preferred cipher to use (see 'openssl ciphers')
+ -serverpref        Use server's cipher preferences
