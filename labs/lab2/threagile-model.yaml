@@ -14,7 +14,7 @@ management_summary_comment: >
   and writes data to a host-mounted volume (for database, uploads, logs).  
   Optional outbound notifications (e.g., a challenge-solution WebHook) can be configured for integrations.
 
-business_criticality: important  # archive, operational, important, critical, mission-critical
+business_criticality: important
 
 business_overview:
   description: >
@@ -22,7 +22,6 @@ business_overview:
     web application (OWASP Juice Shop) running locally in a Docker container. The focus is on a minimal architecture, STRIDE threat analysis, and actionable mitigations for the identified risks.
 
   images:
-    # - dfd.png: Data Flow Diagram (if exported from the tool)
 
 technical_overview:
   description: >
@@ -51,10 +50,8 @@ security_requirements:
   Secrets management: Protect secret keys and credentials (JWT signing keys, OAuth client secrets) – keep them out of code repos and avoid logging them.
 
 tags_available:
-  # Relevant technologies and environment tags
   - docker
   - nodejs
-  # Data and asset tags
   - pii
   - auth
   - tokens
@@ -69,14 +66,10 @@ tags_available:
   - volume
   - saas
   - webhook
-  # Communication tags
   - primary
   - direct
   - egress
 
-# =========================
-# DATA ASSETS
-# =========================
 data_assets:
 
   User Accounts:
@@ -149,9 +142,6 @@ data_assets:
     justification_cia_rating: >
       Logs are for internal use (troubleshooting, monitoring). They should not be exposed publicly, and sensitive data should be sanitized to protect confidentiality.
 
-# =========================
-# TECHNICAL ASSETS
-# =========================
 technical_assets:
 
   User Browser:
@@ -364,9 +354,6 @@ technical_assets:
       - json
     communication_links: {}
 
-# =========================
-# TRUST BOUNDARIES
-# =========================
 trust_boundaries:
 
   Internet:
@@ -400,9 +387,6 @@ trust_boundaries:
       - juice-shop
     trust_boundaries_nested: []
 
-# =========================
-# SHARED RUNTIMES
-# =========================
 shared_runtimes:
 
   Docker Host:
@@ -411,19 +395,7 @@ shared_runtimes:
     tags: ["docker"]
     technical_assets_running:
       - juice-shop
-      # If the reverse proxy is containerized, include it:
-      # - reverse-proxy
 
-# =========================
-# INDIVIDUAL RISK CATEGORIES (optional)
-# =========================
 individual_risk_categories: {}
 
-# =========================
-# RISK TRACKING (optional)
-# =========================
 risk_tracking: {}
-
-# (Optional diagram layout tweaks can be added here)
-#diagram_tweak_edge_layout: spline
-#diagram_tweak_layout_left_to_right: true

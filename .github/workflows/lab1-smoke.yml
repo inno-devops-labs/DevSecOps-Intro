@@ -1,0 +1,32 @@
+name: Lab 1 Smoke Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  juice-shop-smoke:
+    runs-on: ubuntu-latest
+    services:
+      juice-shop:
+        image: bkimminich/juice-shop:v20.0.0
+        ports:
+          - 3000:3000
+    steps:
+      - name: Wait for Juice Shop
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/rest/admin/application-version; then
+              echo
+              echo "Juice Shop is ready after attempt ${attempt}."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Juice Shop did not become ready within 60 seconds."
+          exit 1

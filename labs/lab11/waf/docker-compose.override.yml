@@ -1,0 +1,19 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      BACKEND: http://juice:3000
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: On
+      PARANOIA: "1"
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      SSL_PORT: "8443"
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./waf/logs:/var/log/modsecurity:rw
