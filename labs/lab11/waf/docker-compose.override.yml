@@ -1,0 +1,41 @@
+# Bonus: OWASP CRS WAF in front of Juice Shop, side by side with the plain proxy.
+#
+#   docker compose -f labs/lab11/docker-compose.yml \
+#                  -f labs/lab11/waf/docker-compose.override.yml up -d
+#
+#   plain proxy:  https://localhost/        (nginx, no WAF)
+#   WAF:          https://localhost:8443/   (ModSecurity v3 + CRS 4, blocking)
+#
+# Relative paths resolve against the first compose file's directory (labs/lab11).
+services:
+  waf:
+    image: owasp/modsecurity-crs:4.30.0-nginx-alpine-202610051210
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      BACKEND: http://juice:3000
+      PORT: "8080"
+      SSL_PORT: "8443"
+      # Blocking mode. Set to DetectionOnly to log matches without blocking.
+      MODSEC_RULE_ENGINE: "On"
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      # Serve the same certificate as the plain proxy
+      SSL_CERT_FILE: /etc/nginx/certs/localhost.crt
+      SSL_CERT_KEY_FILE: /etc/nginx/certs/localhost.key
+      # Self-signed: nothing to staple
+      SSL_OCSP_STAPLING: "off"
+      ACCESSLOG: /dev/stdout
+      ERRORLOG: /dev/stderr
+    ports:
+      - "8443:8443"   # HTTPS only; the container's plain-HTTP 8080 is not published
+    volumes:
+      - ./reverse-proxy/certs:/etc/nginx/certs:ro
+      # Path-scoped exclusions for the false positives found in the lab
+      - ./waf/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf:/etc/modsecurity.d/owasp-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf:ro
+
+  # The app stays unpublished: whatever the base file says, it gets no host port
+  juice:
+    ports: !reset []

@@ -1,0 +1,86 @@
+# Lab 9 custom Falco rules. Loaded from /etc/falco/rules.d/ after the shipped
+# falco_rules.yaml, so the shipped macros (open_write, container) are in scope.
+
+# Task 1 (9.3): container drift. Anything written below /tmp/ at runtime is
+# content the image did not ship, and /tmp is where droppers stage payloads.
+
+# open(O_TMPFILE) creates an unnamed file that can later be linkat()-ed into
+# place. Falco reports the fd as the directory (fd.name=/tmp, fd.typechar=d),
+# so open_write (which requires fd.typechar='f') never sees it.
+- macro: open_write_tmpfile
+  condition: >
+    (evt.type in (open,openat,openat2) and evt.is_open_write=true
+     and evt.arg.flags contains O_TMPFILE and fd.num>=0)
+
+- rule: Write below tmp in container
+  desc: >
+    A file under /tmp/ was opened for writing by a process inside a container
+    (not on the host), including unnamed O_TMPFILE files created in /tmp.
+    Every match is runtime drift from the image; tune with per-image
+    exceptions rather than by narrowing the path.
+  condition: >
+    container
+    and ((open_write and fd.name startswith /tmp/)
+         or (open_write_tmpfile and (fd.name = /tmp or fd.name startswith /tmp/)))
+  output: >
+    File below /tmp opened for writing in a container
+    (container=%container.name user=%user.name uid=%user.uid file=%fd.name
+    command=%proc.cmdline parent=%proc.pname flags=%evt.arg.flags)
+  priority: WARNING
+  tags: [container, drift]
+
+# Bonus: likely cryptomining. Two independent signals must both hold:
+#   1. a connect() from a container to a port mining pools commonly use, and
+#   2. the process looks like a miner: a known miner binary, a raw TCP client
+#      with no business talking to a pool port, a stratum URL on the command
+#      line, or a binary that was written into the container at runtime.
+# Falco 0.43 drops enter events, so every connect event is already the
+# completed attempt (evt.dir is deprecated). fd.sport is the server side, but
+# only when the kernel returns a socket tuple: on ECONNREFUSED the tuple is
+# NULL and fd.sport/fd.sip/fd.l4proto are <NA>. The destination the process
+# asked for is still in the syscall argument evt.arg.addr ("127.0.0.1:3333"),
+# so the port is matched there too. Falco's regex operator is a full match.
+# Keep the regex in sync with miner_pool_ports.
+# Loopback is deliberately not excluded: miners are often pointed at a local
+# stratum proxy, and the lab test connects to 127.0.0.1.
+- list: miner_pool_ports
+  items: [3333, 4444, 5555, 7777, 14444]
+
+- list: miner_binaries
+  items: [xmrig, xmr-stak, minerd, cpuminer, ccminer, cgminer, bfgminer,
+          ethminer, t-rex, nbminer, lolminer, nanominer, srbminer]
+
+- list: raw_tcp_clients
+  items: [nc, ncat, netcat, socat, telnet]
+
+- macro: connect_to_pool_port
+  condition: >
+    (evt.type = connect
+     and (fd.typechar = 4 or fd.typechar = 6)
+     and (fd.sport in (miner_pool_ports)
+          or evt.arg.addr regex ".*:(3333|4444|5555|7777|14444)"))
+
+- macro: miner_like_process
+  condition: >
+    (proc.name in (miner_binaries)
+     or proc.name in (raw_tcp_clients)
+     or proc.cmdline contains "stratum+tcp://"
+     or proc.cmdline contains "stratum+ssl://"
+     or proc.is_exe_upper_layer = true)
+
+- rule: Possible cryptominer connecting to mining pool port
+  desc: >
+    A container process that looks like a miner (known miner name, raw TCP
+    client, stratum URL in its arguments, or a binary dropped at runtime)
+    attempted a connection to a common mining-pool port. Fires on the
+    connect() result, so a refused or blocked attempt is reported too.
+  condition: container and miner_like_process and connect_to_pool_port
+  output: >
+    Possible cryptominer connecting to a mining-pool port
+    (container=%container.name container_id=%container.id
+    image=%container.image.repository:%container.image.tag
+    process=%proc.name exepath=%proc.exepath exe_upper_layer=%proc.is_exe_upper_layer
+    command=%proc.cmdline parent=%proc.pname user=%user.name
+    dest=%evt.arg.addr result=%evt.res connection=%fd.name)
+  priority: CRITICAL
+  tags: [container, network, mitre_command_and_control, mitre_impact, T1496]
