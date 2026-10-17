@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels:
+    app: juice-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juice-shop
+  template:
+    metadata:
+      labels:
+        app: juice-shop
+    spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      # The image is distroless (no sh, no cp), so the seed step uses the image's
+      # own node binary. It copies the directories that ship files in the image
+      # AND are written at runtime into emptyDirs, before the root fs goes read-only
+      # for the app container.
+      initContainers:
+        - name: seed-writable-dirs
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          command:
+            - /nodejs/bin/node
+            - -e
+            - |
+              const fs = require('fs');
+              for (const [src, dst] of [
+                ['/juice-shop/data', '/seed/data'],
+                ['/juice-shop/ftp', '/seed/ftp'],
+                ['/juice-shop/frontend/dist/frontend', '/seed/frontend'],
+                ['/juice-shop/.well-known/csaf', '/seed/csaf'],
+              ]) {
+                fs.cpSync(src, dst, { recursive: true });
+                console.log(`seeded ${dst} from ${src}: ${fs.readdirSync(dst).length} entries`);
+              }
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          volumeMounts:
+            - name: data
+              mountPath: /seed/data
+            - name: ftp
+              mountPath: /seed/ftp
+            - name: frontend
+              mountPath: /seed/frontend
+            - name: csaf
+              mountPath: /seed/csaf
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 250m
+              memory: 384Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          # Every path below comes from `docker diff` on a running container.
+          volumeMounts:
+            - name: data          # juiceshop.sqlite is created here; data/static ships in the image (seeded)
+              mountPath: /juice-shop/data
+            - name: ftp           # legal.md copied in at startup; challenge files ship in the image (seeded)
+              mountPath: /juice-shop/ftp
+            - name: i18n          # 43 locale files generated at startup; image ships only .gitkeep
+              mountPath: /juice-shop/i18n
+            - name: logs          # access log and audit.json written at runtime; empty in the image
+              mountPath: /juice-shop/logs
+            - name: frontend      # index.html and assets customised at startup; the built SPA ships in the image (seeded)
+              mountPath: /juice-shop/frontend/dist/frontend
+            - name: csaf          # provider-metadata.json rewritten at startup; other CSAF files ship in the image (seeded)
+              mountPath: /juice-shop/.well-known/csaf
+          readinessProbe:
+            httpGet:
+              path: /rest/admin/application-version
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /rest/admin/application-version
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 20
+      volumes:
+        - name: data
+          emptyDir:
+            sizeLimit: 64Mi
+        - name: ftp
+          emptyDir:
+            sizeLimit: 16Mi
+        - name: i18n
+          emptyDir:
+            sizeLimit: 16Mi
+        - name: logs
+          emptyDir:
+            sizeLimit: 64Mi
+        - name: frontend
+          emptyDir:
+            sizeLimit: 128Mi
+        - name: csaf
+          emptyDir:
+            sizeLimit: 4Mi
