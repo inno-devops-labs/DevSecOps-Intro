@@ -1,0 +1,15 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      PROXY_SSL: "off"
+      MODSEC_RULE_ENGINE: "On"          # blocking mode, not DetectionOnly
+      PARANOIA: "1"
+      BLOCKING_PARANOIA: "1"
+    ports:
+      - "8443:8080"   # WAF path, separate from the plain proxy's 443
