@@ -57,7 +57,7 @@ insert_or_update_kata() {
           print $0
           next
         }
-        if ($0 ~ /^\s*runtime_type\s*=\s*/){
+        if ($0 ~ /^[[:space:]]*runtime_type[[:space:]]*=[[:space:]]*/){
           print val; updated=1; next
         }
         print $0; next

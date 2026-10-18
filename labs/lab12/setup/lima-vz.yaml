@@ -1,0 +1,19 @@
+vmType: vz
+arch: aarch64
+nestedVirtualization: true
+cpus: 4
+memory: 4GiB
+disk: 12GiB
+images:
+  - location: https://cloud-images.ubuntu.com/minimal/releases/resolute/release-20261002/ubuntu-26.04-minimal-cloudimg-arm64.img
+    arch: aarch64
+    digest: sha256:768d6339844cb8a86c7287e9ac7b9d71ddc391531ad2521b72d22f0833660b01
+mounts: []
+containerd:
+  system: true
+  user: false
+ssh:
+  forwardAgent: false
+  loadDotSSHPubKeys: false
+param:
+  internal_netplanOptional: "true"
