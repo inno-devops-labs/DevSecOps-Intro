@@ -29,3 +29,15 @@ node_modules/
 .venv/
 .DS_Store
 *.swp
+
+# lab11 scratch command outputs (not deliverables)
+labs/lab11/results/
+
+# lab4 reports regenerated as lab10 inputs — belong to lab4's branch
+labs/lab4/
+
+# downloaded CLI checksum files
+/checksums.txt
+
+# session scratch — terminal screenshots in repo root
+/Screenshot from *.png

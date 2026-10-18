@@ -1,0 +1,25 @@
+# Lab 11 Bonus — a CRS-enabled WAF alongside the plain proxy, on a different
+# port, so the same request can be compared through both. Juice Shop stays
+# unpublished (only `expose: 3000` in the base compose), so it is reachable from
+# outside ONLY through a proxy.
+#
+# Run with both files:
+#   docker compose -f labs/lab11/docker-compose.yml \
+#                  -f labs/lab11/waf/docker-compose.override.yml up -d
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      - BACKEND=http://juice:3000
+      - PORT=8080
+      # Blocking mode (not DetectionOnly) is the single switch that turns CRS
+      # from "log it" into "block it".
+      - MODSEC_RULE_ENGINE=On
+      - BLOCKING_PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+    ports:
+      - "9081:8080"   # WAF on its own port, separate from the plain proxy (443)
