@@ -1,0 +1,2 @@
+status=504 time_total=30.045311s
+2026/10/18 18:34:48 [error] 33#33: *92 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 172.18.0.1, server: _, request: "GET /rest/products/search?q=x HTTP/1.1", upstream: "http://172.18.0.2:3000/rest/products/search?q=x", host: "localhost"

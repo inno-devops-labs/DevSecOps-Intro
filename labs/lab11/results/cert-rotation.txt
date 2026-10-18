@@ -1,0 +1,18 @@
+## before
+serial=64FCFEA06F4D202145C5972D276F6365B9EB6DD5
+notAfter=Nov 17 18:20:13 2026 GMT
+sha256 Fingerprint=75:3E:D9:F9:AB:9A:98:DD:78:9F:A5:DD:29:8F:06:4B:43:FF:4C:63:49:B6:B4:50:CF:C2:DC:EC:57:8F:53:93
+## 2. new pair matches (modulus hashes equal):
+SHA2-256(stdin)= e941bd8fec12b46ce46d62ee8cd7063e68e0a6fe98a4e2871548cbb70a14470d
+SHA2-256(stdin)= e941bd8fec12b46ce46d62ee8cd7063e68e0a6fe98a4e2871548cbb70a14470d
+## 4. config test + graceful reload
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+## 5. requests during rotation (status counts):
+    300 200
+## after
+serial=33429675BBFE458F0AFB9884A91FA99CE95D9107
+notAfter=Nov 17 18:37:26 2026 GMT
+sha256 Fingerprint=AE:EE:DD:CC:C6:62:CF:F4:8A:1B:A9:67:0A:AF:1C:E4:1F:BA:B0:B9:E6:AB:E7:AE:1F:0A:22:10:42:5C:14:EC
+## file on disk
+serial=33429675BBFE458F0AFB9884A91FA99CE95D9107

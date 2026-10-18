@@ -1,0 +1,3 @@
+      5 429
+     30 504
+2026/10/18 18:34:48 [warn] 35#35: *158 limiting connections by zone "perip", client: 172.18.0.1, server: _, request: "GET /rest/products/search?q=35 HTTP/1.1", host: "localhost"

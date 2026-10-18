@@ -1,0 +1,3 @@
+NAME            IMAGE                           COMMAND                  SERVICE   CREATED         STATUS         PORTS
+lab11-juice-1   bkimminich/juice-shop:v20.0.0   "/nodejs/bin/node /j…"   juice     5 minutes ago   Up 5 minutes   3000/tcp
+lab11-nginx-1   nginx:stable-alpine             "/docker-entrypoint.…"   nginx     8 seconds ago   Up 7 seconds   0.0.0.0:443->443/tcp, [::]:443->443/tcp, 0.0.0.0:8088->80/tcp, [::]:8088->80/tcp

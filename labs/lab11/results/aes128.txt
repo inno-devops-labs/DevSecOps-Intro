@@ -1,0 +1,2 @@
+Protocol version: TLSv1.3
+Ciphersuite: TLS_AES_128_GCM_SHA256

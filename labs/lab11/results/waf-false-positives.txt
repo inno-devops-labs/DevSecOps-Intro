@@ -1,0 +1,14 @@
+# legitimate traffic through the WAF (CRS 4, PL1, blocking)
+GET / (SPA shell)                                                      200
+GET /main.js                                                           200
+GET /api/Products                                                      200
+GET search q=O'Reilly                                                  500
+GET search q=apple juice (1000ml)                                      200
+GET search q=select                                                    200
+GET search q=drop table lamp                                           200
+POST login email o'brien@example.com                                   500
+POST login password with symbols P@ss'w0rd<>&;--                       401
+POST register password 'Or'1=1Strong!                                  403
+POST feedback comment: Select the best; or drop me a line -- thanks    500
+POST feedback comment with <b>html</b>                                 500
+plain proxy search q=O'Reilly -> 500

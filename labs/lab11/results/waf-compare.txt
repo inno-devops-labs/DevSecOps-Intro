@@ -1,0 +1,6 @@
+# GET /rest/products/search?q=%27%20OR%201%3D1--   (q=' OR 1=1--)
+plain proxy https://localhost      -> 500
+WAF         https://localhost:9443 -> 403
+# same request without payload
+plain proxy -> 200
+WAF         -> 200
