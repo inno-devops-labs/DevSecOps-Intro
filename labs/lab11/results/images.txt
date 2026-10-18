@@ -1,0 +1,4 @@
+[nginx:stable-alpine] [nginx@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5]
+[127.0.0.1:5000/juice-shop:v20.0.0 bkimminich/juice-shop:v20.0.0 localhost:5000/juice-shop:v20.0.0] [127.0.0.1:5000/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0 bkimminich/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0 localhost:5000/juice-shop@sha256:fd58bdc9745416afce8184ee0666278a436574633ea7880365153a63bfd418b0]
+[owasp/modsecurity-crs:nginx] [owasp/modsecurity-crs@sha256:7698c48a41a43138ae317feeec964d1515b861cc1d9e50617bc1cdfe9f314e1d]
+[drwetter/testssl.sh:3.2] [drwetter/testssl.sh@sha256:7b6a5ffed5e740c9cdc873be8638fc3c2d35e54fde585f83fbd72ebab184f958]

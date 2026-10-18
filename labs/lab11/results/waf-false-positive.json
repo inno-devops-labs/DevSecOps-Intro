@@ -1,0 +1,64 @@
+{
+  "request": {
+    "method": "GET",
+    "http_version": "1.1",
+    "hostname": "localhost",
+    "uri": "/rest/user/whoami",
+    "headers": {
+      "Host": "localhost:8081",
+      "User-Agent": "curl/8.7.1",
+      "Accept": "*/*"
+    }
+  },
+  "response_status": 403,
+  "messages": [
+    {
+      "message": "Remote Command Execution: Direct Unix Command Execution",
+      "details": {
+        "match": "Matched \"Operator `Rx' with parameter `(?i)(?:^(?:json\\.|\\x5c)?|b[\\\"'\\)\\[\\x5c]*(?:(?:(?:\\|\\||&&)[\\s\\x0b]*)?\\$[!#\\(\\*\\-0-9\\?@_a-\\{]*)?\\x5c?u[\\\"'\\)\\[\\x5c]*(?:(?:(?:\\|\\||&&)[\\s\\x0b]*)?\\$[!#\\(\\*\\-0-9\\?@_a-\\{]*)?\\x5c?s[\\\"'\\)\\[\\x5c]*(?:(?:(?:\\|\\ (6967 characters omitted)' against variable `REQUEST_FILENAME' (Value: `/rest/user/whoami' )",
+        "reference": "o0,17v4,17",
+        "ruleId": "932260",
+        "file": "/etc/modsecurity.d/owasp-crs/rules/REQUEST-932-APPLICATION-ATTACK-RCE.conf",
+        "lineNumber": "567",
+        "data": "Matched Data: /rest/user/whoami found within REQUEST_FILENAME: /rest/user/whoami",
+        "severity": "2",
+        "ver": "OWASP_CRS/4.30.0",
+        "rev": "",
+        "tags": [
+          "modsecurity",
+          "application-multi",
+          "language-shell",
+          "platform-unix",
+          "attack-rce",
+          "paranoia-level/1",
+          "OWASP_CRS",
+          "OWASP_CRS/ATTACK-RCE",
+          "capec/1000/152/248/88"
+        ],
+        "maturity": "0",
+        "accuracy": "0"
+      }
+    },
+    {
+      "message": "Inbound Anomaly Score Exceeded (Total Score: 5)",
+      "details": {
+        "match": "Matched \"Operator `Ge' with parameter `5' against variable `TX:BLOCKING_INBOUND_ANOMALY_SCORE' (Value: `5' )",
+        "reference": "",
+        "ruleId": "949110",
+        "file": "/etc/modsecurity.d/owasp-crs/rules/REQUEST-949-BLOCKING-EVALUATION.conf",
+        "lineNumber": "222",
+        "data": "",
+        "severity": "0",
+        "ver": "OWASP_CRS/4.30.0",
+        "rev": "",
+        "tags": [
+          "modsecurity",
+          "anomaly-evaluation",
+          "OWASP_CRS"
+        ],
+        "maturity": "0",
+        "accuracy": "0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "rate": "10r/m",
+  "burst": 5,
+  "nodelay": true,
+  "codes": [
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    429,
+    429,
+    429,
+    429,
+    429,
+    429,
+    429,
+    429
+  ],
+  "login_variants": {
+    "/REST/USER/LOGIN": 429,
+    "/rest/user/login/": 429
+  },
+  "non_login_14_requests": "all 200",
+  "headers_on_429": {
+    "Server": "nginx",
+    "Date": "Sun, 18 Oct 2026 10:29:17 GMT",
+    "Content-Type": "text/html",
+    "Content-Length": "162",
+    "Connection": "keep-alive",
+    "Strict-Transport-Security": "max-age=31536000",
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+    "Cross-Origin-Opener-Policy": "same-origin",
+    "Cross-Origin-Resource-Policy": "same-origin",
+    "Content-Security-Policy-Report-Only": "default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+  }
+}

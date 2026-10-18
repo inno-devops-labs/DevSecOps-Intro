@@ -1,0 +1,67 @@
+{
+  "success": {
+    "status": 200,
+    "headers": {
+      "server": "nginx",
+      "date": "Sun, 18 Oct 2026 10:28:40 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "content-length": "9903",
+      "connection": "keep-alive",
+      "feature-policy": "payment 'self'",
+      "x-recruiting": "/#/jobs",
+      "accept-ranges": "bytes",
+      "cache-control": "public, max-age=0",
+      "last-modified": "Sun, 18 Oct 2026 10:24:14 GMT",
+      "etag": "W/\"26af-1a14e8a622e\"",
+      "vary": "Accept-Encoding",
+      "strict-transport-security": "max-age=31536000",
+      "x-frame-options": "DENY",
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), geolocation=(), microphone=()",
+      "cross-origin-opener-policy": "same-origin",
+      "cross-origin-resource-policy": "same-origin",
+      "content-security-policy-report-only": "default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    }
+  },
+  "upstream401": {
+    "status": 401,
+    "headers": {
+      "server": "nginx",
+      "date": "Sun, 18 Oct 2026 10:28:40 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "content-length": "26",
+      "connection": "keep-alive",
+      "feature-policy": "payment 'self'",
+      "x-recruiting": "/#/jobs",
+      "etag": "W/\"1a-ARJvVK+smzAF3QQve2mDSG+3Eus\"",
+      "vary": "Accept-Encoding",
+      "strict-transport-security": "max-age=31536000",
+      "x-frame-options": "DENY",
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), geolocation=(), microphone=()",
+      "cross-origin-opener-policy": "same-origin",
+      "cross-origin-resource-policy": "same-origin",
+      "content-security-policy-report-only": "default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    }
+  },
+  "proxy413": {
+    "status": 413,
+    "headers": {
+      "server": "nginx",
+      "date": "Sun, 18 Oct 2026 10:28:40 GMT",
+      "content-type": "text/html",
+      "content-length": "176",
+      "connection": "close",
+      "strict-transport-security": "max-age=31536000",
+      "x-frame-options": "DENY",
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), geolocation=(), microphone=()",
+      "cross-origin-opener-policy": "same-origin",
+      "cross-origin-resource-policy": "same-origin",
+      "content-security-policy-report-only": "default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    }
+  }
+}

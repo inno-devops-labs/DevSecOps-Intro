@@ -1,0 +1,9 @@
+{
+  "old_serial": "serial=23BA3C43312CE954D39FFFBB7C9C54477BC7A65E",
+  "new_serial_on_disk": "serial=776A528598EB132777628EC24561C0218FD88119",
+  "live_serial_after_reload": "serial=776A528598EB132777628EC24561C0218FD88119",
+  "requests": 100,
+  "status_counts": {
+    "200": 100
+  }
+}

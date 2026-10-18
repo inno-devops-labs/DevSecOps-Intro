@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/",
+    "plain_status": 200,
+    "waf_status": 200
+  },
+  {
+    "path": "/rest/admin/application-version",
+    "plain_status": 200,
+    "waf_status": 200
+  },
+  {
+    "path": "/api/Products",
+    "plain_status": 200,
+    "waf_status": 200
+  },
+  {
+    "path": "/rest/user/whoami",
+    "plain_status": 200,
+    "waf_status": 403
+  },
+  {
+    "path": "/rest/products/search?q=apple",
+    "plain_status": 200,
+    "waf_status": 200
+  },
+  {
+    "path": "/rest/products/search?q=O%27Reilly",
+    "plain_status": 500,
+    "waf_status": 500
+  },
+  {
+    "path": "/rest/products/search?q=green+apple+%26+orange",
+    "plain_status": 200,
+    "waf_status": 200
+  },
+  {
+    "path": "/rest/products/search?q=%D1%8F%D0%B1%D0%BB%D0%BE%D0%BA%D0%BE",
+    "plain_status": 200,
+    "waf_status": 200
+  }
+]

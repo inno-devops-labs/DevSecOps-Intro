@@ -11,8 +11,8 @@ services:
     depends_on:
       - juice
     ports:
-      - "80:80"     # HTTP (redirects to HTTPS)
-      - "443:443"   # HTTPS
+      - "127.0.0.1:80:80"     # HTTP (redirects to HTTPS)
+      - "127.0.0.1:443:443"   # HTTPS
       # On rootless Docker or if 80/443 are taken, remap (e.g. "8080:80","8443:443")
       # and adjust the verification URLs accordingly.
     volumes:

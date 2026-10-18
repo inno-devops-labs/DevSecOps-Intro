@@ -1,0 +1,6 @@
+{
+  "command": "python3 labs/lab11/scripts/verify.py",
+  "elapsed_seconds": 10.015,
+  "response": "",
+  "access_log": "172.24.0.1 - - [18/Oct/2026:10:29:27 +0000] \"POST /rest/products/search HTTP/1.1\" 408 0 \"-\" \"-\" rt=10.012 uct=- urt=-"
+}

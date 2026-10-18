@@ -1,0 +1,5 @@
+{
+  "path": "/rest/products/search?q=%27+OR+1%3D1--",
+  "plain_status": 500,
+  "waf_status": 403
+}
