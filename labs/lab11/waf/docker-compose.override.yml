@@ -1,0 +1,11 @@
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    depends_on:
+      - juice
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "On"
+    ports:
+      - "8081:8080"
