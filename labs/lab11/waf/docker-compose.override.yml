@@ -1,0 +1,21 @@
+services:
+  nginx:
+    ports: !override
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:443:443"
+
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      SERVER_NAME: "localhost"
+      MODSEC_RULE_ENGINE: "On"
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
