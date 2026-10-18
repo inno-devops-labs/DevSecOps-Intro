@@ -1,0 +1,20 @@
+# Run from the repository root:
+# docker compose -f labs/lab11/docker-compose.yml -f labs/lab11/waf/docker-compose.override.yml up -d
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "127.0.0.1:8081:8080"
+    environment:
+      BACKEND: http://juice:3000
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "On"
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      MODSEC_AUDIT_ENGINE: RelevantOnly
+      MODSEC_AUDIT_LOG: /dev/stdout
+      MODSEC_AUDIT_LOG_FORMAT: JSON

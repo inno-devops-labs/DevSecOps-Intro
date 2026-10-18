@@ -1,0 +1,23 @@
+Connecting to ::1
+801DE9F601000000:error:0A000410:SSL routines:ssl3_read_bytes:tls alert handshake failure:ssl/record/rec_layer_s3.c:923:SSL alert number 40
+CONNECTED(00000005)
+---
+no peer certificate available
+---
+No client certificate CA names sent
+Negotiated TLS1.3 group NID: 0
+---
+SSL handshake has read 7 bytes and written 1465 bytes
+Verification: OK
+---
+New, (NONE), Cipher is (NONE)
+Protocol: TLSv1.3
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+ECH: NOT CONFIGURED: -103
+---

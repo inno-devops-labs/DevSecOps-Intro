@@ -1,0 +1,2 @@
+Sent 1 of 100 body bytes; closed after 10.018s
+192.168.65.1 - - [18/Oct/2026:13:52:12 +0000] "POST /rest/products/search HTTP/1.1" 408 0 "-" "-" rt=10.015 uct=- urt=-

@@ -1,0 +1,42 @@
+[
+  {
+    "query": "' OR 1=1--",
+    "plain": 500,
+    "waf": 403
+  },
+  {
+    "query": "apple",
+    "plain": 200,
+    "waf": 200
+  },
+  {
+    "query": "orange juice",
+    "plain": 200,
+    "waf": 200
+  },
+  {
+    "query": "O'Reilly",
+    "plain": 500,
+    "waf": 500
+  },
+  {
+    "query": "1 < 2",
+    "plain": 200,
+    "waf": 200
+  },
+  {
+    "query": "select a gift",
+    "plain": 200,
+    "waf": 200
+  },
+  {
+    "query": "union of fruits",
+    "plain": 200,
+    "waf": 200
+  },
+  {
+    "query": "<script>alert(1)</script>",
+    "plain": 200,
+    "waf": 403
+  }
+]
