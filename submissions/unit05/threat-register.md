@@ -1,0 +1,49 @@
+# Threat register
+
+System: GitHub Actions → container registry → Azure App Service, with Key Vault, Azure SQL, and an external payment API. The table follows STRIDE and records threats, controls, validation methods, evidence locations, and ownership. Threats without evidence remain open or unverified; a proposed mitigation is not treated as a validated control.
+
+| ID | STRIDE | Element / flow | Boundary | Threat | Mitigation / ADR | Validation method | Evidence | Status | Owner / review |
+|---|---|---|---|---|---|---|---|---|---|
+| T-01 | Information Disclosure | F1, basket/order endpoint | TB-1 → TB-4 | Authentication succeeds but resource ownership is not checked, allowing one user to read another user’s record. | Central resource-entitlement check; ADR-011; invariant I-1. | User A reads own record successfully; User A requests User B’s record and is denied. | `evidence/I-1/` | Open until negative test passes; known defect in worked example. | Application maintainer; review after authorization changes. |
+| T-02 | Tampering | F2, default branch | Workstation → TB-2 | Unreviewed code or code with failing tests reaches the default branch. | GitHub ruleset requiring PR and passing check; prohibit force-push/deletion; ADR-015; I-3. | Positive PR with passing check; negative direct push, force-push, and failing-check merge. | `evidence/T-02/` | Unverified on this repository until tests are run. | Repository maintainer; monthly ruleset review. |
+| T-03 | Spoofing | F3, workflow identity | TB-2 → TB-3 | A workflow from a fork or untrusted branch impersonates the production deployment identity. | Federated credential pinned to repository and production environment; ADR-014; I-2. | Request token from untrusted branch/context; token exchange must fail. | `evidence/T-07/` | Unverified until identity test. | Cloud/repository maintainer; review after workflow changes. |
+| T-04 | Tampering | F4, registry image | TB-7 → TB-3/TB-4 | An image is replaced between build and deployment or a mutable tag points to an unexpected artifact. | Restrict registry push permission and deploy by immutable digest; ADR-014; I-6. | Compare build digest and deployed digest; verify unauthorized push is denied. | `evidence/T-07/` | Open until digest evidence exists. | Deployment maintainer; review each release. |
+| T-05 | Repudiation | F5, Azure role changes | TB-3 | A sensitive role assignment changes without a durable record of actor and time. | Azure Activity Log retention and review; least-privilege change process. | Make a controlled test change in a lab resource group and confirm actor/time/action are recorded. | `evidence/` | Unverified. | Cloud resource owner; monthly review. |
+| T-06 | Information Disclosure | F5, secrets and logs | TB-4 → TB-3 | A connection string or secret is printed to logs or committed to source. | Key Vault references, secret masking, and secret scanning/push protection. | Use a harmless canary value and verify the configured control detects or blocks it; do not expose real credentials. | `evidence/` | Unverified until scanner/configuration evidence. | Repository maintainer; every workflow change. |
+| T-07 | Tampering | F3, production deployment | TB-2 → TB-3 | An untrusted workflow obtains deployment authority and pushes a modified image that production can run. | OIDC/federated identity subject pinned to production environment, narrow registry role, digest-based deployment; ADR-014. | Trusted production workflow obtains intended token; feature-branch or wrong-subject request is rejected. | `evidence/T-07/` | Unverified on actual environment; illustrative logs in supplied example are not this repository’s evidence. | Repository/cloud maintainer; each identity change. |
+| T-08 | Denial of Service | F1, authorization choke point | TB-1 → TB-4 | Middleware overload or dependency failure causes loss of service; fail-open behavior could also expose data. | Rate limiting, timeout, monitoring, and fail-closed authorization. | Simulate dependency failure locally and verify requests are denied rather than authorized; measure safe error response. | `evidence/` | Open; resilience test required. | Application maintainer; review monthly. |
+| T-09 | Elevation of Privilege | F5, App Service managed identity | TB-4/TB-5 → TB-3 | App Service identity has broad Contributor rights and can modify unrelated resources. | Least-privilege RBAC scoped to the specific vault/database/registry operation required. | Inspect role assignments; verify an out-of-scope write is denied in a lab resource group. | `evidence/` | Unverified until role export/test. | Cloud resource owner; review after permission changes. |
+| T-10 | Elevation of Privilege | Administrative routes | TB-1 → TB-4 | Administrative APIs are reachable from the public internet or accessible to ordinary users. | Separate admin authorization and private ingress/access restrictions; record decision in an ADR. | Unauthenticated external request to known admin route is denied; verify role checks separately. | `evidence/` | Open until route/configuration evidence. | Application maintainer; review each route change. |
+| T-11 | Spoofing | F6, payment callback | TB-3 → TB-6 | A forged callback claims a payment succeeded and changes order state. | Verify provider signature, timestamp, and replay protection before changing payment state. | Submit unsigned or invalid-signature callback to local test endpoint; expect 401/400 and no state change. | `evidence/` | Open until application test. | Payment integration owner; review after API changes. |
+| T-12 | Tampering / Information Disclosure | F6, payment payload | TB-6 → TB-3 | External payload is trusted without schema validation or rendered without output encoding. | Strict schema validation, safe parsing, output encoding, and bounded payload size. | Submit malformed and script-like payloads in local test; verify rejection/encoding and no execution. | `evidence/` | Open until application test. | Application maintainer; review after integration changes. |
+| T-13 | Information Disclosure | F1, `/ftp` | TB-1 → TB-4 | A public static directory exposes files or backup artifacts that were not intended to be public. | Remove the public route or move required files to authenticated storage; ADR-018. | Request `/ftp` on the local target; expected 404 after route removal. | `evidence/` | The supplied worked example reports exposure; verify on the actual local target before claiming it. | Application maintainer; review after route changes. |
+| T-14 | Elevation of Privilege | SCM/Kudu deployment endpoint | Internet/management plane → Azure App Service | Publishing credentials or an exposed SCM endpoint permit deployment outside the approved workflow. | Disable basic publishing credentials where supported; restrict SCM access; require approved pipeline. | Verify configuration and attempt only a permitted local/lab negative test; deployment outside pipeline must be denied. | `evidence/` | Open until configuration evidence. | Cloud resource owner; review monthly. |
+| T-15 | Information Disclosure | `/metrics` | TB-1 → TB-4 | Public metrics reveal internal runtime or operational information. | Move metrics behind internal ingress or authenticated monitoring; ADR-018. | External request to `/metrics` must be denied or unreachable after control is applied. | `evidence/` | Open until actual route/configuration test. | Application maintainer; review after monitoring changes. |
+
+## Threagile comparison and evidence-gap analysis
+
+The supplied worked example reports the following illustrative risk counts. These are reference values only; replace them with the baseline and hardened reports generated from the actual Lab 2 YAML models before submitting the final results.
+
+| Severity | Worked-example baseline | Worked-example hardened | Difference |
+|---|---:|---:|---:|
+| Critical | Not reported | Not reported | Not calculable |
+| High | 4 | 1 | -3 |
+| Elevated | 15 | 11 | -4 |
+| Medium | 21 | 19 | -2 |
+| Low | 6 | 6 | 0 |
+
+### Three modeled rules and their evidence gaps
+
+| Rule removed in worked example | Model change represented | What the hardened report claims | Evidence needed to support the claim | Negative test |
+|---|---|---|---|---|
+| `unencrypted-communication` | Set the user-to-proxy and proxy-to-app communication protocols to HTTPS. | The modeled communication path is encrypted. | Actual endpoint TLS scan and HTTPS-only configuration export. | Plain HTTP is redirected or refused; no sensitive content is served over HTTP. |
+| `missing-authentication` | Model token authentication on the proxy-to-application link. | Direct calls that bypass the proxy are not accepted without a token. | Application/proxy authentication configuration and local request log. | Direct request without the expected token returns 401/403. |
+| `unencrypted-asset` | Model encryption at rest for persistent storage. | Persistent data is encrypted at rest. | Storage encryption setting export and key-management configuration. | Where meaningful and safe, verify access without the required key is denied; do not attempt destructive tests on production data. |
+
+### Residual findings from the worked example
+
+- Cross-site scripting remained in the example because a model edit alone cannot prove application output encoding; application-level remediation and testing are needed.
+- `missing-waf` remained because the model did not include a WAF. Whether to add one is an architectural decision, not a cosmetic model change.
+- A rule disappearing from the hardened report is not proof that the control exists. The report must be paired with configuration evidence and a negative test.
+
+Do not report the illustrative counts above as actual execution results. Record the actual report paths, counts, changed fields, and remaining risks after running Threagile against the repository’s baseline and hardened YAML.
