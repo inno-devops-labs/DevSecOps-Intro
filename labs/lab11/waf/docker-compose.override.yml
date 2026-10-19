@@ -1,0 +1,26 @@
+# Bonus: OWASP ModSecurity + CRS 4 in front of Juice Shop, side by side with the plain proxy.
+# Use from labs/lab11:
+#   docker compose -f docker-compose.yml -f waf/docker-compose.override.yml up -d
+# Plain proxy: https://127.0.0.1/   WAF: http://127.0.0.1:8880/
+# juice still has no published port, so the app is only reachable through nginx or the WAF.
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    ports:
+      - "${LAB11_WAF_PORT:-8880}:8080"
+    environment:
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      SERVER_NAME: "localhost"
+      MODSEC_RULE_ENGINE: "On"        # blocking; "DetectionOnly" = log only
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/dev/stdout"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+      ERRORLOG: "/dev/stderr"
+      PROXY_TIMEOUT: "30s"
