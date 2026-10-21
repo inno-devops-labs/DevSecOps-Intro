@@ -1,0 +1,30 @@
+# Bonus: an OWASP Core Rule Set WAF in the same compose project, on a different
+# port than the plain proxy so the two can be compared on the same payload.
+#
+# Run with BOTH compose files so the WAF joins the existing network and can
+# reach the juice service:
+#   docker compose -f labs/lab11/docker-compose.yml \
+#                  -f labs/lab11/waf/docker-compose.override.yml up -d
+#
+# The app (juice) still publishes no host port, so it is reachable only through
+# a proxy: the plain nginx on 443 or the WAF on 8080.
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    restart: unless-stopped
+    depends_on:
+      - juice
+    environment:
+      # Upstream the WAF proxies to (same service the plain nginx fronts).
+      BACKEND: "http://juice:3000"
+      PORT: "8080"
+      SERVER_NAME: "localhost"
+      # Blocking mode, not DetectionOnly. This single switch is the difference
+      # between a WAF that refuses a request and one that only logs it.
+      MODSEC_RULE_ENGINE: "On"
+      # CRS anomaly scoring: block once the inbound score crosses the threshold.
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      BLOCKING_PARANOIA: "1"
+    ports:
+      - "8080:8080"
