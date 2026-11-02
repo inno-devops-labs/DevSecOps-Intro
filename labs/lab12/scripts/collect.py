@@ -3,7 +3,8 @@
 
 Run: sudo python3 labs/lab12/scripts/collect.py
 Writes raw results and submissions/lab12-measurements.md. Adds --bonus for the
-privileged write test, limited to a fresh temporary directory owned by this run.
+privileged write test. Both runtimes use --net=none for these offline workloads.
+The write test is limited to a fresh temporary directory owned by this run.
 """
 import argparse
 import datetime
@@ -25,7 +26,7 @@ RUNTIMES = {'runc': 'io.containerd.runc.v2', 'kata': 'io.containerd.kata.v2'}
 
 
 def command(args, check=True):
-    p = subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=180)
     record = {'command': args, 'exit': p.returncode, 'stdout': p.stdout, 'stderr': p.stderr}
     with (OUT / 'commands.jsonl').open('a') as f:
         f.write(json.dumps(record) + '\n')
@@ -35,7 +36,7 @@ def command(args, check=True):
 
 
 def run(rt, *args, check=True):
-    return command(['nerdctl', 'run', '--rm', '--runtime=' + RUNTIMES[rt], IMAGE, *args], check)
+    return command(['nerdctl', 'run', '--rm', '--net=none', '--runtime=' + RUNTIMES[rt], IMAGE, *args], check)
 
 
 def process_tree_pss(container_id):
@@ -90,16 +91,19 @@ def main():
     if (OUT / 'measurements.json').exists():
         raise SystemExit('Archive the previous results directory before collecting another run.')
     metadata = {'executed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                'host': preflight, 'image': IMAGE}
-    for tool in ['containerd', 'nerdctl', 'containerd-shim-kata-v2']:
+                'host': preflight, 'image': IMAGE, 'network': 'none'}
+    for tool in ['containerd', 'nerdctl', 'runc', 'containerd-shim-kata-v2']:
         metadata[tool] = command([tool, '--version'])['stdout'].strip()
     version_file = Path('/opt/kata/VERSION')
     metadata['kata_assets'] = version_file.read_text() if version_file.exists() else 'VERSION file missing; see shim version'
+    metadata['kata_configuration'] = Path('/etc/kata-containers/configuration.toml').read_text()
+    metadata['qemu_version'] = command(['/opt/kata/bin/qemu-system-aarch64', '--version'])['stdout'].strip()
     command(['nerdctl', 'pull', IMAGE])  # Excluded from timings.
     metadata['image_inspect'] = command(['nerdctl', 'image', 'inspect', IMAGE])['stdout']
     results = {'metadata': metadata, 'runtimes': {}}
     try:
         for rt in RUNTIMES:
+            print(f'Collecting {rt}: kernel, devices, capabilities, five startup samples, I/O, host PSS', flush=True)
             result = {}
             results['runtimes'][rt] = result
             result['kernel'] = run(rt, 'uname', '-r')['stdout'].strip()
@@ -116,7 +120,7 @@ def main():
             io = run(rt, 'sh', '-c', 'dd if=/dev/zero of=/tmp/bench bs=1M count=512 conv=fsync')
             result['io'] = io['stdout'] + io['stderr']
             name = f'lab12-memory-{rt}-{os.getpid()}'
-            cid = command(['nerdctl', 'run', '-d', '--name', name,
+            cid = command(['nerdctl', 'run', '-d', '--net=none', '--name', name,
                            '--runtime=' + RUNTIMES[rt], IMAGE, 'sleep', '120'])['stdout'].strip()
             try:
                 time.sleep(3)
@@ -136,11 +140,11 @@ def main():
                 target = Path(directory) / 'lab12-target'
                 for rt in RUNTIMES:
                     target.write_text('original\n')
-                    result = command(['nerdctl', 'run', '--rm', '--runtime=' + RUNTIMES[rt],
+                    result = command(['nerdctl', 'run', '--rm', '--net=none', '--runtime=' + RUNTIMES[rt],
                         '--privileged', '-v', directory + ':/host_tmp', IMAGE,
                         'sh', '-c', 'echo OVERWRITTEN > /host_tmp/lab12-target'], check=False)
                     result['host_file_after'] = target.read_text()
-                    info = command(['nerdctl', 'run', '--rm', '--runtime=' + RUNTIMES[rt],
+                    info = command(['nerdctl', 'run', '--rm', '--net=none', '--runtime=' + RUNTIMES[rt],
                         '--privileged', IMAGE, 'sh', '-c',
                         'ls -1 /dev | wc -l; grep ^CapEff /proc/1/status'], check=False)
                     result['privileged_devices_and_caps'] = info
@@ -155,6 +159,7 @@ def main():
     for rt, r in results['runtimes'].items():
         report.append(f'| {rt} | {r["kernel"]} | {r["devices"]} | {r["cap_eff"]} | '
                       f'{r["startup_median_seconds"]:.6f} | {r["median_host_pss_kib"]} |')
+    for rt, r in results['runtimes'].items():
         report += ['', f'## {rt} raw measurements', '', 'Five startup times (seconds): ' +
                    ', '.join(f'{v:.6f}' for v in r['startup_seconds']), '', '```text', r['io'].strip(), '```']
     for rt, r in results.get('bonus', {}).items():

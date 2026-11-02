@@ -1,0 +1,19 @@
+# Lima 2.2.1; Apple M3+ with macOS 15+ is required for nestedVirtualization.
+vmType: vz
+arch: aarch64
+nestedVirtualization: true
+cpus: 4
+memory: 6GiB
+disk: 25GiB
+mounts: []
+images:
+  - location: https://cloud-images.ubuntu.com/releases/resolute/release-20260927/ubuntu-26.04-server-cloudimg-arm64.img
+    arch: aarch64
+    digest: sha256:63a93bd5a8d76e33b15ceb5daa3657bd79be804748051ab178e643b0f5da22e7
+containerd:
+  system: true
+  user: false
+  archives:
+    - location: https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-full-2.4.1-linux-arm64.tar.gz
+      arch: aarch64
+      digest: sha256:2deffe14625f93866f90a8f265d0f59d6fa476c7dc54b98adb327b1b4613efd4
