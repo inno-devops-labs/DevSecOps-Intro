@@ -1,0 +1,519 @@
+{
+  "measurements": {
+    "metadata": {
+      "executed_utc": "2026-11-02T11:25:08.311606+00:00",
+      "host": {
+        "platform": "Linux-7.0.0-34-generic-aarch64-with-glibc2.43",
+        "host_kernel": "7.0.0-34-generic",
+        "kvm_exists": true,
+        "containerd": "/usr/local/bin/containerd",
+        "nerdctl": "/usr/local/bin/nerdctl"
+      },
+      "image": "alpine:3.20",
+      "network": "none",
+      "containerd": "containerd github.com/containerd/containerd/v2 v2.4.1 f2551031d7276a770f65f98c9b52e57e7dad07e8",
+      "nerdctl": "nerdctl version 2.4.1",
+      "containerd-shim-kata-v2": "Kata Containers containerd shim (Golang): id: \"io.containerd.kata.v2\", version: 4.1.0, commit: ddcb1ad8d23cbb4323f86c209f132b89592902df",
+      "kata_assets": "4.1.0\n",
+      "kata_configuration": "# Copyright (c) 2017-2019 Intel Corporation\n# Copyright (c) 2021 Adobe Inc.\n#\n# SPDX-License-Identifier: Apache-2.0\n#\n\n# XXX: WARNING: this file is auto-generated.\n# XXX:\n# XXX: Source file: \"config/configuration-qemu.toml.in\"\n# XXX: Project:\n# XXX:   Name: Kata Containers\n# XXX:   Type: kata\n\n[hypervisor.qemu]\npath = \"/opt/kata/bin/qemu-system-aarch64\"\nkernel = \"/opt/kata/share/kata-containers/vmlinux.container\"\nimage = \"/opt/kata/share/kata-containers/kata-containers.img\"\nmachine_type = \"virt\"\n\n# rootfs filesystem type:\n#   - ext4 (default)\n#   - xfs\n#   - erofs\nrootfs_type = \"ext4\"\n\n# Enable running QEMU VMM as a non-root user.\n# By default QEMU VMM run as root. When this is set to true, QEMU VMM process runs as\n# a non-root random user. See documentation for the limitations of this mode.\nrootless = false\n\n# List of valid annotation names for the hypervisor\n# Each member of the list is a regular expression, which is the base name\n# of the annotation, e.g. \"path\" for io.katacontainers.config.hypervisor.path\"\nenable_annotations = [\"enable_iommu\", \"kernel_params\", \"kernel_verity_params\"]\n\n# List of valid annotations values for the hypervisor\n# Each member of the list is a path pattern as described by glob(3).\n# The default if not set is empty (all annotations rejected.)\n# Your distribution recommends: [\"/opt/kata/bin/qemu-system-aarch64\"]\nvalid_hypervisor_paths = [\"/opt/kata/bin/qemu-system-aarch64\"]\n\n# Optional space-separated list of options to pass to the guest kernel.\n# For example, use `kernel_params = \"vsyscall=emulate\"` if you are having\n# trouble running pre-2.15 glibc.\n#\n# WARNING: - any parameter specified here will take priority over the default\n# parameter value of the same name used to start the virtual machine.\n# Do not set values here unless you understand the impact of doing so as you\n# may stop the virtual machine from booting.\n# To see the list of default parameters, enable hypervisor debug, create a\n# container and look for 'default-kernel-parameters' log entries.\nkernel_params = \"cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 pci=nomsi\"\n\n# Path to the firmware.\n# If you want that qemu uses the default firmware leave this option empty\nfirmware = \"\"\n\n# Path to the firmware volume.\n# firmware TDVF or OVMF can be split into FIRMWARE_VARS.fd (UEFI variables\n# as configuration) and FIRMWARE_CODE.fd (UEFI program image). UEFI variables\n# can be customized per each user while UEFI code is kept same.\nfirmware_volume = \"\"\n\n# Machine accelerators\n# comma-separated list of machine accelerators to pass to the hypervisor.\n# For example, `machine_accelerators = \"nosmm,nosmbus,nosata,nopit,static-prt,nofw\"`\nmachine_accelerators = \"highmem-mmio=off\"\n\n# Qemu seccomp sandbox feature\n# comma-separated list of seccomp sandbox features to control the syscall access.\n# For example, `seccompsandbox = \"on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny\"`\n# Another note: enabling this feature may reduce performance, you may enable\n# /proc/sys/net/core/bpf_jit_enable to reduce the impact. see https://man7.org/linux/man-pages/man8/bpfc.8.html\n# Recommended value when enabling: \"on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny\"\nseccompsandbox = \"\"\n\n# CPU features\n# comma-separated list of cpu features to pass to the cpu\n# For example, `cpu_features = \"pmu=off,vmx=off\"\ncpu_features = \"\"\n\n# Default number of vCPUs per SB/VM:\n# unspecified or 0                --> will be set to 1\n# < 0                             --> will be set to the actual number of physical cores\n# > 0 <= number of physical cores --> will be set to the specified number\n# > number of physical cores      --> will be set to the actual number of physical cores\ndefault_vcpus = 1\n\n# Default maximum number of vCPUs per SB/VM:\n# unspecified or == 0             --> will be set to the actual number of physical cores or to the maximum number\n#                                     of vCPUs supported by KVM if that number is exceeded\n# > 0 <= number of physical cores --> will be set to the specified number\n# > number of physical cores      --> will be set to the actual number of physical cores or to the maximum number\n#                                     of vCPUs supported by KVM if that number is exceeded\n# WARNING: Depending of the architecture, the maximum number of vCPUs supported by KVM is used when\n# the actual number of physical cores is greater than it.\n# WARNING: Be aware that this value impacts the virtual machine's memory footprint and CPU\n# the hotplug functionality. For example, `default_maxvcpus = 240` specifies that until 240 vCPUs\n# can be added to a SB/VM, but the memory footprint will be big. Another example, with\n# `default_maxvcpus = 8` the memory footprint will be small, but 8 will be the maximum number of\n# vCPUs supported by the SB/VM. In general, we recommend that you do not edit this variable,\n# unless you know what are you doing.\n# NOTICE: on arm platform with gicv2 interrupt controller, set it to 8.\ndefault_maxvcpus = 0\n\n# Bridges can be used to hot plug devices.\n# Limitations:\n# * Currently only pci bridges are supported\n# * Until 30 devices per bridge can be hot plugged.\n# * Until 5 PCI bridges can be cold plugged per VM.\n#   This limitation could be a bug in qemu or in the kernel\n# Default number of bridges per SB/VM:\n# unspecified or 0   --> will be set to 1\n# > 1 <= 5           --> will be set to the specified number\n# > 5                --> will be set to 5\ndefault_bridges = 1\n\n# Default memory size in MiB for SB/VM.\n# If unspecified then it will be set 2048 MiB.\ndefault_memory = 2048\n#\n# Default memory slots per SB/VM.\n# If unspecified then it will be set 10.\n# This is will determine the times that memory will be hotadded to sandbox/VM.\nmemory_slots = 10\n\n# Default maximum memory in MiB per SB / VM\n# unspecified or == 0           --> will be set to the actual amount of physical RAM\n# > 0 <= amount of physical RAM --> will be set to the specified number\n# > amount of physical RAM      --> will be set to the actual amount of physical RAM\ndefault_maxmemory = 0\n\n# The size in MiB will be plused to max memory of hypervisor.\n# It is the memory address space for the NVDIMM device.\n# If set block storage driver (block_device_driver) to \"nvdimm\",\n# should set memory_offset to the size of block device.\n# Default 0\nmemory_offset = 0\n\n# Specifies virtio-mem will be enabled or not.\n# Please note that this option should be used with the command\n# \"echo 1 > /proc/sys/vm/overcommit_memory\".\n# Default false\nenable_virtio_mem = false\n\n# Disable hotplugging host block devices to guest VMs for container rootfs.\n# In case of a storage driver like devicemapper where a container's\n# root file system is backed by a block device, the block device is passed\n# directly to the hypervisor for performance reasons.\n# This flag prevents the block device from being passed to the hypervisor,\n# virtio-fs is used instead to pass the rootfs.\n# WARNING:\n#   Don't set this flag to false if you don't understand well the behavior of\n#   your container runtime and image snapshotter. Some snapshotters might use\n#   container image storage devices that are not meant to be hotplugged into a\n#   guest VM - e.g., because they contain files used by the host or by other\n#   guests.\ndisable_block_device_use = true\n\n# Shared file system type:\n#   - virtio-fs (default)\n#   - virtio-9p\n#   - virtio-fs-nydus\n#   - none\nshared_fs = \"virtio-fs\"\n\n# Path to vhost-user-fs daemon.\nvirtio_fs_daemon = \"/opt/kata/libexec/virtiofsd\"\n\n# List of valid annotations values for the virtiofs daemon\n# The default if not set is empty (all annotations rejected.)\n# Your distribution recommends: [\"/opt/kata/libexec/virtiofsd\"]\nvalid_virtio_fs_daemon_paths = [\"/opt/kata/libexec/virtiofsd\"]\n\n# Default size of DAX cache in MiB\nvirtio_fs_cache_size = 0\n\n# Default size of virtqueues\nvirtio_fs_queue_size = 1024\n\n# Extra args for virtiofsd daemon\n#\n# Format example:\n#   [\"--arg1=xxx\", \"--arg2=yyy\"]\n# Examples:\n#   Set virtiofsd log level to debug : [\"--log-level=debug\"]\n#\n# see `virtiofsd -h` for possible options.\nvirtio_fs_extra_args = [\"--thread-pool-size=1\", \"--announce-submounts\"]\n\n# Cache mode:\n#\n#  - never\n#    Metadata, data, and pathname lookup are not cached in guest. They are\n#    always fetched from host and any changes are immediately pushed to host.\n#\n#  - metadata\n#    Metadata and pathname lookup are cached in guest and never expire.\n#    Data is never cached in guest.\n#\n#  - auto\n#    Metadata and pathname lookup cache expires after a configured amount of\n#    time (default is 1 second). Data is cached while the file is open (close\n#    to open consistency).\n#\n#  - always\n#    Metadata, data, and pathname lookup are cached in guest and never expire.\nvirtio_fs_cache = \"auto\"\n\n# Block storage driver to be used for the hypervisor in case the container\n# rootfs is backed by a block device. This is virtio-scsi, virtio-blk\n# or nvdimm.\nblock_device_driver = \"virtio-scsi\"\n\n# aio is the I/O mechanism used by qemu\n# Options:\n#\n#   - threads\n#     Pthread based disk I/O.\n#\n#   - native\n#     Native Linux I/O.\n#\n#   - io_uring\n#     Linux io_uring API. This provides the fastest I/O operations on Linux, requires kernel>5.1 and\n#     qemu >=5.0.\nblock_device_aio = \"io_uring\"\n\n# Specifies cache-related options will be set to block devices or not.\n# Default false\nblock_device_cache_set = false\n\n# Specifies cache-related options for block devices.\n# Denotes whether use of O_DIRECT (bypass the host page cache) is enabled.\n# Default false\nblock_device_cache_direct = false\n\n# Specifies cache-related options for block devices.\n# Denotes whether flush requests for the device are ignored.\n# Default false\nblock_device_cache_noflush = false\n\n# Specifies the logical sector size, in bytes, reported by block devices to the guest.\n# Common values are 512 and 4096. Set to 0 to use the QEMU/hypervisor default.\n# Default 0\nblock_device_logical_sector_size = 0\n\n# Specifies the physical sector size, in bytes, reported by block devices to the guest.\n# Common values are 512 and 4096. Set to 0 to use the QEMU/hypervisor default.\n# Default 0\nblock_device_physical_sector_size = 0\n\n# Enable iothreads (data-plane) to be used. This causes IO to be\n# handled in a separate IO thread. This is currently implemented\n# for virtio-scsi and virtio-blk.\n#\nenable_iothreads = false\n\n# Independent IOThreads enables IO to be processed in a separate thread, it is\n# for QEMU hotplug device attach to iothread, like virtio-blk.\nindep_iothreads = 0\n\n# Enable pre allocation of VM RAM, default false\n# Enabling this will result in lower container density\n# as all of the memory will be allocated and locked\n# This is useful when you want to reserve all the memory\n# upfront or in the cases where you want memory latencies\n# to be very predictable\n# Default false\nenable_mem_prealloc = false\n\n# Reclaim guest freed memory.\n# Enabling this will result in the VM balloon device having f_reporting=on set.\n# Then the hypervisor will use it to reclaim guest freed memory.\n# This is useful for reducing the amount of memory used by a VM.\n# Enabling this feature may sometimes reduce the speed of memory access in\n# the VM.\n#\n# Default false\nreclaim_guest_freed_memory = false\n\n# Enable huge pages for VM RAM, default false\n# Enabling this will result in the VM memory\n# being allocated using huge pages.\n# This is useful when you want to use vhost-user network\n# stacks within the container. This will automatically\n# result in memory pre allocation\nenable_hugepages = false\n\n# Enable vhost-user storage device, default false\n# Enabling this will result in some Linux reserved block type\n# major range 240-254 being chosen to represent vhost-user devices.\nenable_vhost_user_store = false\n\n# The base directory specifically used for vhost-user devices.\n# Its sub-path \"block\" is used for block devices; \"block/sockets\" is\n# where we expect vhost-user sockets to live; \"block/devices\" is where\n# simulated block device nodes for vhost-user devices to live.\nvhost_user_store_path = \"/var/run/kata-containers/vhost-user\"\n\n# Enable vIOMMU, default false\n# Enabling this will result in the VM having a vIOMMU device\n# This will also add the following options to the kernel's\n# command line: intel_iommu=on,iommu=pt\nenable_iommu = false\n\n# Enable IOMMU_PLATFORM, default false\n# Enabling this will result in the VM device having iommu_platform=on set\nenable_iommu_platform = false\n\n# Enable NUMA topology, default false\n# When enable_numa is enabled, the hypervisor will expose host NUMA topology\n# as is: map VM NUMA nodes to host 1:1 and bind vCPUs to related CPUs.\n# Note: To take proper advantage of NUMA, static_sandbox_resource_mgmt should\n# also be enabled for memory pre-allocation.\n#\n# When VFIO devices (e.g. GPUs) are cold-plugged and NUMA is enabled, the\n# runtime validates that each device's host NUMA node is covered by the guest\n# NUMA topology. A warning is logged if a device falls outside the configured\n# nodes, indicating potential cross-NUMA memory access overhead.\nenable_numa = false\n\n# NUMA node mapping allows customizing how VM NUMA nodes map to host NUMA nodes.\n# Each entry defines a VM NUMA node and the host NUMA node(s) it maps to.\n# Format: [\"<host_nodes>\", \"<host_nodes>\", ...]\n# Example: [\"0\", \"1\"] creates 2 VM NUMA nodes, mapping to host nodes 0 and 1\n# Example: [\"0-1\", \"2-3\"] creates 2 VM NUMA nodes, first maps to host 0-1, second to 2-3\n# If empty and enable_numa is true, VM NUMA nodes map 1:1 to host NUMA nodes.\nnuma_mapping = []\n\n# List of valid annotations values for the vhost user store path\n# The default if not set is empty (all annotations rejected.)\n# Your distribution recommends: [\"/var/run/kata-containers/vhost-user\"]\nvalid_vhost_user_store_paths = [\"/var/run/kata-containers/vhost-user\"]\n\n# The timeout for reconnecting on non-server spdk sockets when the remote end goes away.\n# qemu will delay this many seconds and then attempt to reconnect.\n# Zero disables reconnecting, and the default is zero.\nvhost_user_reconnect_timeout_sec = 0\n\n# -pflash can add image file to VM. The arguments of it should be in format\n# of [\"/path/to/flash0.img\", \"/path/to/flash1.img\"]\npflashes = []\n\n# This option changes the default hypervisor and kernel parameters\n# to enable debug output where available.\n#\n# Default false\nenable_debug = false\n\n# This option allows to add an extra HMP or QMP socket when `enable_debug = false`\n#\n# WARNING: Anyone with access to the extra socket can take full control of\n# Qemu. This is for debugging purpose only and must *NEVER* be used in\n# production.\n#\n# Valid values are :\n# - \"hmp\"\n# - \"qmp\"\n# - \"qmp-pretty\" (same as \"qmp\" with pretty json formatting)\n#\n# If set to the empty string \"\", no extra monitor socket is added. This is\n# the default.\nextra_monitor_socket = \"\"\n\n# Disable the customizations done in the runtime when it detects\n# that it is running on top a VMM. This will result in the runtime\n# behaving as it would when running on bare metal.\n#\ndisable_nesting_checks = false\n\n# This is the msize used for 9p shares. It is the number of bytes\n# used for 9p packet payload.\nmsize_9p = 8192\n\n# If false and nvdimm is supported, use nvdimm device to plug guest image.\n# Otherwise virtio-block device is used.\n#\n# nvdimm is not supported when `confidential_guest = true`.\ndisable_image_nvdimm = true\n\n# Enable hot-plugging of VFIO devices to a bridge-port,\n# root-port or switch-port.\n# The default setting is  \"no-port\"\nhot_plug_vfio = \"no-port\"\n\n# In a confidential compute environment hot-plugging can compromise\n# security.\n# Enable cold-plugging of VFIO devices to a bridge-port,\n# root-port or switch-port.\n# The default setting is  \"no-port\", which means disabled.\ncold_plug_vfio = \"no-port\"\n\n# Before hot plugging a PCIe device, you need to add a pcie_root_port device.\n# Use this parameter when using some large PCI bar devices, such as Nvidia GPU\n# The value means the number of pcie_root_port\n# Default 0\npcie_root_port = 0\n\n# If vhost-net backend for virtio-net is not desired, set to true. Default is false, which trades off\n# security (vhost-net runs ring0) for network I/O performance.\ndisable_vhost_net = false\n\n#\n# Default entropy source.\n# The path to a host source of entropy (including a real hardware RNG)\n# /dev/urandom and /dev/random are two main options.\n# Be aware that /dev/random is a blocking source of entropy.  If the host\n# runs out of entropy, the VMs boot time will increase leading to get startup\n# timeouts.\n# The source of entropy /dev/urandom is non-blocking and provides a\n# generally acceptable source of entropy. It should work well for pretty much\n# all practical purposes.\nentropy_source= \"/dev/urandom\"\n\n# List of valid annotations values for entropy_source\n# The default if not set is empty (all annotations rejected.)\n# Your distribution recommends: [\"/dev/urandom\",\"/dev/random\",\"\"]\nvalid_entropy_sources = [\"/dev/urandom\",\"/dev/random\",\"\"]\n\n# Path to OCI hook binaries in the *guest rootfs*.\n# This does not affect host-side hooks which must instead be added to\n# the OCI spec passed to the runtime.\n#\n# You can create a rootfs with hooks by customizing the osbuilder scripts:\n# https://github.com/kata-containers/kata-containers/tree/main/tools/osbuilder\n#\n# Hooks must be stored in a subdirectory of guest_hook_path according to their\n# hook type, i.e. \"guest_hook_path/{prestart,poststart,poststop}\".\n# The agent will scan these directories for executable files and add them, in\n# lexicographical order, to the lifecycle of the guest container.\n# Hooks are executed in the runtime namespace of the guest. See the official documentation:\n# https://github.com/opencontainers/runtime-spec/blob/v1.0.1/config.md#posix-platform-hooks\n# Warnings will be logged if any error is encountered while scanning for hooks,\n# but it will not abort container execution.\n# Recommended value when enabling: \"/usr/share/oci/hooks\"\nguest_hook_path = \"\"\n#\n# Use rx Rate Limiter to control network I/O inbound bandwidth(size in bits/sec for SB/VM).\n# In Qemu, we use classful qdiscs HTB(Hierarchy Token Bucket) to discipline traffic.\n# Default 0-sized value means unlimited rate.\nrx_rate_limiter_max_rate = 0\n# Use tx Rate Limiter to control network I/O outbound bandwidth(size in bits/sec for SB/VM).\n# In Qemu, we use classful qdiscs HTB(Hierarchy Token Bucket) and ifb(Intermediate Functional Block)\n# to discipline traffic.\n# Default 0-sized value means unlimited rate.\ntx_rate_limiter_max_rate = 0\n\n# Set where to save the guest memory dump file.\n# If set, when GUEST_PANICKED event occurred,\n# guest memeory will be dumped to host filesystem under guest_memory_dump_path,\n# This directory will be created automatically if it does not exist.\n#\n# The dumped file(also called vmcore) can be processed with crash or gdb.\n#\n# WARNING:\n#   Dump guest's memory can take very long depending on the amount of guest memory\n#   and use much disk space.\n# Recommended value when enabling: \"/var/crash/kata\"\nguest_memory_dump_path = \"\"\n\n# If enable paging.\n# Basically, if you want to use \"gdb\" rather than \"crash\",\n# or need the guest-virtual addresses in the ELF vmcore,\n# then you should enable paging.\n#\n# See: https://www.qemu.org/docs/master/qemu-qmp-ref.html#Dump-guest-memory for details\nguest_memory_dump_paging = false\n\n# Enable swap in the guest. Default false.\n# When enable_guest_swap is enabled, insert a raw file to the guest as the swap device\n# if the swappiness of a container (set by annotation \"io.katacontainers.container.resource.swappiness\")\n# is bigger than 0.\n# The size of the swap device should be\n# swap_in_bytes (set by annotation \"io.katacontainers.container.resource.swap_in_bytes\") - memory_limit_in_bytes.\n# If swap_in_bytes is not set, the size should be memory_limit_in_bytes.\n# If swap_in_bytes and memory_limit_in_bytes is not set, the size should\n# be default_memory.\nenable_guest_swap = false\n\n# use legacy serial for guest console if available and implemented for architecture. Default false\nuse_legacy_serial = false\n\n# disable applying SELinux on the VMM process (default false)\ndisable_selinux = false\n\n# disable applying SELinux on the container process\n# If set to false, the type `container_t` is applied to the container process by default.\n# Note: To enable guest SELinux, the guest rootfs must be CentOS that is created and built\n# with `SELINUX=yes`.\n# (default: true)\ndisable_guest_selinux = true\n\n\n[factory]\n# VM templating support. Once enabled, new VMs are created from template\n# using vm cloning. They will share the same initial kernel, initramfs and\n# agent memory by mapping it readonly. It helps speeding up new container\n# creation and saves a lot of memory if there are many kata containers running\n# on the same host.\n#\n# When disabled, new VMs are created from scratch.\n#\n# Note: Requires \"initrd=\" to be set (\"image=\" is not supported).\n#\n# Default false\nenable_template = false\n\n# Specifies the path of template.\n#\n# Default \"/run/vc/vm/template\"\ntemplate_path = \"/run/vc/vm/template\"\n\n# The number of caches of VMCache:\n# unspecified or == 0   --> VMCache is disabled\n# > 0                   --> will be set to the specified number\n#\n# VMCache is a function that creates VMs as caches before using it.\n# It helps speed up new container creation.\n# The function consists of a server and some clients communicating\n# through Unix socket.  The protocol is gRPC in protocols/cache/cache.proto.\n# The VMCache server will create some VMs and cache them by factory cache.\n# It will convert the VM to gRPC format and transport it when gets\n# requestion from clients.\n# Factory grpccache is the VMCache client.  It will request gRPC format\n# VM and convert it back to a VM.  If VMCache function is enabled,\n# kata-runtime will request VM from factory grpccache when it creates\n# a new sandbox.\n#\n# Default 0\nvm_cache_number = 0\n\n# Specify the address of the Unix socket that is used by VMCache.\n#\n# Default /var/run/kata-containers/cache.sock\nvm_cache_endpoint = \"/var/run/kata-containers/cache.sock\"\n\n[agent.kata]\n# If enabled, make the agent display debug-level messages.\n# (default: disabled)\nenable_debug = false\n\n# Enable agent tracing.\n#\n# If enabled, the agent will generate OpenTelemetry trace spans.\n#\n# Notes:\n#\n# - If the runtime also has tracing enabled, the agent spans will be\n#   associated with the appropriate runtime parent span.\n# - If enabled, the runtime will wait for the container to shutdown,\n#   increasing the container shutdown time slightly.\n#\n# (default: disabled)\nenable_tracing = false\n\n# Comma separated list of kernel modules and their parameters.\n# These modules will be loaded in the guest kernel using modprobe(8).\n# The following example can be used to load two kernel modules with parameters\n#  - kernel_modules=[\"e1000e InterruptThrottleRate=3000,3000,3000 EEE=1\", \"i915 enable_ppgtt=0\"]\n# The first word is considered as the module name and the rest as its parameters.\n# Container will not be started when:\n#  * A kernel module is specified and the modprobe command is not installed in the guest\n#    or it fails loading the module.\n#  * The module is not available in the guest or it doesn't met the guest kernel\n#    requirements, like architecture and version.\n#\nkernel_modules = []\n\n# Enable debug console.\n\n# If enabled, user can connect guest OS running inside hypervisor\n# through \"kata-runtime exec <sandbox-id>\" command\n\ndebug_console_enabled = false\n\n# Agent connection dialing timeout value in seconds\n# (default: 45)\ndial_timeout = 45\n\n# Confidential Data Hub API timeout value in seconds\n# (default: 50)\ncdh_api_timeout = 50\n\n[runtime]\n# If enabled, the runtime will log additional debug messages to the\n# system log\n# (default: disabled)\nenable_debug = false\n#\n# Internetworking model\n# Determines how the VM should be connected to the\n# the container network interface\n# Options:\n#\n#   - macvtap\n#     Used when the Container network interface can be bridged using\n#     macvtap.\n#\n#   - none\n#     Used when customize network. Only creates a tap device. No veth pair.\n#\n#   - tcfilter\n#     Uses tc filter rules to redirect traffic from the network interface\n#     provided by plugin to a tap interface connected to the VM.\n#\ninternetworking_model = \"tcfilter\"\n\n# disable guest seccomp\n# Determines whether container seccomp profiles are passed to the virtual\n# machine and applied by the kata agent. If set to true, seccomp is not applied\n# within the guest\n# (default: true)\ndisable_guest_seccomp = true\n\n# vCPUs pinning settings\n# if enabled, each vCPU thread will be scheduled to a fixed CPU\n# qualified condition: num(vCPU threads) == num(CPUs in sandbox's CPUSet)\nenable_vcpus_pinning = false\n\n# Apply a custom SELinux security policy to the container process inside the VM.\n# This is used when you want to apply a type other than the default `container_t`,\n# so general users should not uncomment and apply it.\n# (format: \"user:role:type\")\n# Note: You cannot specify MCS policy with the label because the sensitivity levels and\n# categories are determined automatically by high-level container runtimes such as containerd.\n# Example value when enabling: \"system_u:system_r:container_t\"\nguest_selinux_label = \"\"\n\n# If enabled, the runtime will create opentracing.io traces and spans.\n# (See https://www.jaegertracing.io/docs/getting-started).\n# (default: disabled)\nenable_tracing = false\n\n# Set the full url to the Jaeger HTTP Thrift collector.\n# The default if not set will be \"http://localhost:14268/api/traces\"\njaeger_endpoint = \"\"\n\n# Sets the username to be used if basic auth is required for Jaeger.\njaeger_user = \"\"\n\n# Sets the password to be used if basic auth is required for Jaeger.\njaeger_password = \"\"\n\n# If enabled, the runtime will not create a network namespace for shim and hypervisor processes.\n# This option may have some potential impacts to your host. It should only be used when you know what you're doing.\n# `disable_new_netns` only works with `internetworking_model=none`. The tap device will be in the host network namespace and can connect to a bridge\n# (like OVS) directly.\n# (default: false)\ndisable_new_netns = false\n\n# if enabled, the runtime will add all the kata processes inside one dedicated cgroup.\n# The container cgroups in the host are not created, just one single cgroup per sandbox.\n# The runtime caller is free to restrict or collect cgroup stats of the overall Kata sandbox.\n# The sandbox cgroup path is the parent cgroup of a container with the PodSandbox annotation.\n# The sandbox cgroup is constrained if there is no container type annotation.\n# See: https://pkg.go.dev/github.com/kata-containers/kata-containers/src/runtime/virtcontainers#ContainerType\nsandbox_cgroup_only = false\n\n# If enabled, the runtime will attempt to determine appropriate sandbox size (memory, CPU) before booting the virtual machine. In\n# this case, the runtime will not dynamically update the amount of memory and CPU in the virtual machine. This is generally helpful\n# when a hardware architecture or hypervisor solutions is utilized which does not support CPU and/or memory hotplug.\n# Compatibility for determining appropriate sandbox (VM) size:\n# - When running with pods, sandbox sizing information will only be available if using Kubernetes >= 1.23 and containerd >= 1.6. CRI-O\n#   does not yet support sandbox sizing annotations.\n# - When running single containers using a tool like ctr, container sizing information will be available.\nstatic_sandbox_resource_mgmt = true\n\n# If specified, sandbox_bind_mounts identifieds host paths to be mounted (ro) into the sandboxes shared path.\n# This is only valid if filesystem sharing is utilized. The provided path(s) will be bindmounted into the shared fs directory.\n# If defaults are utilized, these mounts should be available in the guest at `/run/kata-containers/shared/containers/sandbox-mounts`\n# These will not be exposed to the container workloads, and are only provided for potential guest services.\nsandbox_bind_mounts = []\n\n# VFIO Mode\n# Determines how VFIO devices should be be presented to the container.\n# Options:\n#\n#  - vfio\n#    Matches behaviour of OCI runtimes (e.g. runc) as much as\n#    possible.  VFIO devices will appear in the container as VFIO\n#    character devices under /dev/vfio.  The exact names may differ\n#    from the host (they need to match the VM's IOMMU group numbers\n#    rather than the host's)\n#\n#  - guest-kernel\n#    This is a Kata-specific behaviour that's useful in certain cases.\n#    The VFIO device is managed by whatever driver in the VM kernel\n#    claims it.  This means it will appear as one or more device nodes\n#    or network interfaces depending on the nature of the device.\n#    Using this mode requires specially built workloads that know how\n#    to locate the relevant device interfaces within the VM.\n#\nvfio_mode = \"guest-kernel\"\n\n# If enabled, the runtime will not create Kubernetes emptyDir mounts on the guest filesystem. Instead, emptyDir mounts will\n# be created on the host and shared via virtio-fs. This is potentially slower, but allows sharing of files from host to guest.\ndisable_guest_empty_dir = true\n\n# Specifies how Kubernetes emptyDir volumes are handled.\n# Options:\n#\n#   - shared-fs (default)\n#     Shares the emptyDir folder with the guest using the method given\n#     by the `shared_fs` setting.\n#\n#   - block-encrypted\n#     Plugs a block device to be encrypted in the guest.\n#\n#   - block-plain\n#     Plugs a block device to be mounted directly in the guest.\n#\nemptydir_mode = \"shared-fs\"\n\n# Enabled experimental feature list, format: [\"a\", \"b\"].\n# Experimental features are features not stable enough for production,\n# they may break compatibility, and are prepared for a big version bump.\n# Supported experimental features:\n# (default: [])\nexperimental = []\n\n# If enabled, user can run pprof tools with shim v2 process through kata-monitor.\n# (default: false)\nenable_pprof = false\n\n# Indicates the CreateContainer request timeout needed for the workload(s)\n# It using guest_pull this includes the time to pull the image inside the guest\n# Defaults to 60 second(s)\n# Note: The effective timeout is determined by the lesser of two values: runtime-request-timeout from kubelet config\n# (https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#:~:text=runtime%2Drequest%2Dtimeout) and create_container_timeout.\n# In essence, the timeout used for guest pull=runtime-request-timeout<create_container_timeout?runtime-request-timeout:create_container_timeout.\ncreate_container_timeout = 60\n\n# Base directory of directly attachable network config.\n# Network devices for VM-based containers are allowed to be placed in the\n# host netns to eliminate as many hops as possible, which is what we\n# called a \"Directly Attachable Network\". The config, set by special CNI\n# plugins, is used to tell the Kata containers what devices are attached\n# to the hypervisor.\n# (default: /run/kata-containers/dans)\ndan_conf = \"/run/kata-containers/dans\"\n\n# kubelet_root_dir is the kubelet root directory used to match ConfigMap/Secret\n# volume paths for propagation. Override for distros that use a different path\n# (e.g. k0s: /var/lib/k0s/kubelet).\nkubelet_root_dir = \"/var/lib/kubelet\"\n\n# pod_resource_api_sock specifies the unix socket for the Kubelet's\n# PodResource API endpoint. If empty, kubernetes based cold plug\n# will not be attempted. In order for this feature to work, the\n# KubeletPodResourcesGet featureGate must be enabled in Kubelet,\n# if using Kubelet older than 1.34.\n#\n# The pod resource API's socket is relative to the Kubelet's root-dir,\n# which is defined by the cluster admin, and its location is:\n# ${KubeletRootDir}/pod-resources/kubelet.sock\n#\n# cold_plug_vfio(see hypervisor config) acts as a feature gate:\n#      cold_plug_vfio = no_port (default) => no cold plug\n#      cold_plug_vfio != no_port AND pod_resource_api_sock = \"\" => need\n#              explicit CDI annotation for cold plug (applies mainly\n#              to non-k8s cases)\n#      cold_plug_vfio != no_port AND pod_resource_api_sock != \"\" => kubelet\n#              based cold plug.\npod_resource_api_sock = \"\"\n",
+      "qemu_version": "QEMU emulator version 11.0.1 (kata-static)\nCopyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers",
+      "image_inspect": "[\n    {\n        \"Id\": \"sha256:ab3fe4defd29ba6231229a4d41440ac8bde8218e85870e53876277faa24b35c4\",\n        \"RepoTags\": [\n            \"alpine:3.20\"\n        ],\n        \"RepoDigests\": [\n            \"alpine@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc\"\n        ],\n        \"Parent\": \"\",\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-04-16T23:53:24.896953537Z\",\n        \"DockerVersion\": \"\",\n        \"Author\": \"\",\n        \"Config\": {\n            \"AttachStdin\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"\n            ],\n            \"Cmd\": [\n                \"/bin/sh\"\n            ],\n            \"Image\": \"docker.io/library/alpine:3.20\",\n            \"WorkingDir\": \"/\"\n        },\n        \"Architecture\": \"arm64\",\n        \"Variant\": \"v8\",\n        \"Os\": \"linux\",\n        \"Size\": 9486336,\n        \"VirtualSize\": 9486336,\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:88b4fba61c4c714a2fc173ddf7e9324a257304696830bf41ad28ecc58c11c95f\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"0001-01-01T00:00:00Z\"\n        }\n    }\n]\n\n"
+    },
+    "runtimes": {
+      "runc": {
+        "kernel": "7.0.0-34-generic",
+        "devices": 15,
+        "cap_eff": "CapEff:\t00000000a80425fb",
+        "startup_seconds": [
+          0.1289249970000128,
+          0.12276058799994871,
+          0.11932072000001881,
+          0.11338112900000397,
+          0.12260960599996906
+        ],
+        "startup_median_seconds": 0.12260960599996906,
+        "io": "512+0 records in\n512+0 records out\n536870912 bytes (512.0MB) copied, 0.339183 seconds, 1.5GB/s\n",
+        "memory_samples": [
+          {
+            "total_pss_kib": 40896,
+            "processes": [
+              {
+                "pid": 5876,
+                "command": "/usr/local/bin/containerd-shim-runc-v2 -namespace default -id 608670f52a21c3d0f86bd5a9c2b167199e273fce5361b210b296d56373f905ab -address /run/containerd/containerd.sock ",
+                "pss_kib": 10252
+              },
+              {
+                "pid": 5888,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29784
+              },
+              {
+                "pid": 5913,
+                "command": "sleep 120 ",
+                "pss_kib": 860
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 40896,
+            "processes": [
+              {
+                "pid": 5876,
+                "command": "/usr/local/bin/containerd-shim-runc-v2 -namespace default -id 608670f52a21c3d0f86bd5a9c2b167199e273fce5361b210b296d56373f905ab -address /run/containerd/containerd.sock ",
+                "pss_kib": 10252
+              },
+              {
+                "pid": 5888,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29784
+              },
+              {
+                "pid": 5913,
+                "command": "sleep 120 ",
+                "pss_kib": 860
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 40896,
+            "processes": [
+              {
+                "pid": 5876,
+                "command": "/usr/local/bin/containerd-shim-runc-v2 -namespace default -id 608670f52a21c3d0f86bd5a9c2b167199e273fce5361b210b296d56373f905ab -address /run/containerd/containerd.sock ",
+                "pss_kib": 10252
+              },
+              {
+                "pid": 5888,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29784
+              },
+              {
+                "pid": 5913,
+                "command": "sleep 120 ",
+                "pss_kib": 860
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 40896,
+            "processes": [
+              {
+                "pid": 5876,
+                "command": "/usr/local/bin/containerd-shim-runc-v2 -namespace default -id 608670f52a21c3d0f86bd5a9c2b167199e273fce5361b210b296d56373f905ab -address /run/containerd/containerd.sock ",
+                "pss_kib": 10252
+              },
+              {
+                "pid": 5888,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29784
+              },
+              {
+                "pid": 5913,
+                "command": "sleep 120 ",
+                "pss_kib": 860
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 40896,
+            "processes": [
+              {
+                "pid": 5876,
+                "command": "/usr/local/bin/containerd-shim-runc-v2 -namespace default -id 608670f52a21c3d0f86bd5a9c2b167199e273fce5361b210b296d56373f905ab -address /run/containerd/containerd.sock ",
+                "pss_kib": 10252
+              },
+              {
+                "pid": 5888,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29784
+              },
+              {
+                "pid": 5913,
+                "command": "sleep 120 ",
+                "pss_kib": 860
+              }
+            ]
+          }
+        ],
+        "median_host_pss_kib": 40896
+      },
+      "kata": {
+        "kernel": "6.18.35",
+        "devices": 14,
+        "cap_eff": "CapEff:\t00000000a80425fb",
+        "startup_seconds": [
+          10.154782265999984,
+          12.08105682300004,
+          11.562750592000043,
+          10.646921537000026,
+          10.88694422499998
+        ],
+        "startup_median_seconds": 10.88694422499998,
+        "io": "time=\"2026-11-02T14:26:56+03:00\" level=warning msg=\"cannot set cgroup manager to \\\"systemd\\\" for runtime \\\"io.containerd.kata.v2\\\"\"\n512+0 records in\n512+0 records out\n536870912 bytes (512.0MB) copied, 7.413452 seconds, 69.1MB/s\n",
+        "memory_samples": [
+          {
+            "total_pss_kib": 240976,
+            "processes": [
+              {
+                "pid": 6815,
+                "command": "/opt/kata/bin/containerd-shim-kata-v2 -namespace default -address /run/containerd/containerd.sock -publish-binary  -id 623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 ",
+                "pss_kib": 22168
+              },
+              {
+                "pid": 6826,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1020
+              },
+              {
+                "pid": 6827,
+                "command": "/opt/kata/bin/qemu-system-aarch64 -name sandbox-623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 -uuid 42bf3b3b-b133-435d-9ca5-7e1a6e61319e -machine virt,usb=off,accel=kvm,gic-version=host,highmem-mmio=off -cpu host, -qmp unix:fd=3,server=on,wait=off -m 2048M,slots=10,maxmem=6925M -device pci-bridge,bus=pcie.0,id=pci-bridge-0,chassis_nr=1,shpc=off,addr=2,io-reserve=4k,mem-reserve=1m,pref64-reserve=1m -device virtio-serial-pci,disable-modern=false,id=serial0 -device virtconsole,chardev=charconsole0,id=console0 -chardev socket,id=charconsole0,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/console.sock,server=on,wait=off -device virtio-blk-pci,disable-modern=false,drive=image-450637ad910aab3d,config-wce=off,share-rw=on,serial=image-450637ad910aab3d -drive id=image-450637ad910aab3d,file=/opt/kata/share/kata-containers/kata-ubuntu-noble.image,aio=threads,format=raw,if=none,readonly=on -device virtio-scsi-pci,id=scsi0,disable-modern=false -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -device pcie-root-port,id=rp0,bus=pcie.0,chassis=0,slot=0,multifunction=off -device vhost-vsock-pci,disable-modern=false,vhostfd=4,id=vsock-2692387173,guest-cid=2692387173,bus=pcie.0 -chardev socket,id=char-94b74fdaf3419097,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/vhost-fs.sock -device vhost-user-fs-pci,chardev=char-94b74fdaf3419097,tag=kataShared,queue-size=1024,bus=pcie.0 -rtc base=utc,driftfix=slew,clock=host -global kvm-pit.lost_tick_policy=discard -vga none -no-user-config -nodefaults -nographic --no-reboot -object memory-backend-file,id=dimm1,size=2048M,mem-path=/dev/shm,share=on -numa node,memdev=dimm1 -kernel /opt/kata/share/kata-containers/vmlinux-6.18.35-202 -append iommu.passthrough=0 root=/dev/vda1 rootflags=data=ordered,errors=remount-ro ro rootfstype=ext4 console=hvc0 console=hvc1 quiet systemd.show_status=false panic=1 nr_cpus=1 selinux=0 systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket scsi_mod.scan=none agent.cdh_api_timeout=50 cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 pci=nomsi -pidfile /run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/pid -smp 1,cores=1,threads=1,sockets=1,maxcpus=1 ",
+                "pss_kib": 186204
+              },
+              {
+                "pid": 6830,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1976
+              },
+              {
+                "pid": 6848,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29608
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 241040,
+            "processes": [
+              {
+                "pid": 6815,
+                "command": "/opt/kata/bin/containerd-shim-kata-v2 -namespace default -address /run/containerd/containerd.sock -publish-binary  -id 623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 ",
+                "pss_kib": 22232
+              },
+              {
+                "pid": 6826,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1020
+              },
+              {
+                "pid": 6827,
+                "command": "/opt/kata/bin/qemu-system-aarch64 -name sandbox-623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 -uuid 42bf3b3b-b133-435d-9ca5-7e1a6e61319e -machine virt,usb=off,accel=kvm,gic-version=host,highmem-mmio=off -cpu host, -qmp unix:fd=3,server=on,wait=off -m 2048M,slots=10,maxmem=6925M -device pci-bridge,bus=pcie.0,id=pci-bridge-0,chassis_nr=1,shpc=off,addr=2,io-reserve=4k,mem-reserve=1m,pref64-reserve=1m -device virtio-serial-pci,disable-modern=false,id=serial0 -device virtconsole,chardev=charconsole0,id=console0 -chardev socket,id=charconsole0,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/console.sock,server=on,wait=off -device virtio-blk-pci,disable-modern=false,drive=image-450637ad910aab3d,config-wce=off,share-rw=on,serial=image-450637ad910aab3d -drive id=image-450637ad910aab3d,file=/opt/kata/share/kata-containers/kata-ubuntu-noble.image,aio=threads,format=raw,if=none,readonly=on -device virtio-scsi-pci,id=scsi0,disable-modern=false -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -device pcie-root-port,id=rp0,bus=pcie.0,chassis=0,slot=0,multifunction=off -device vhost-vsock-pci,disable-modern=false,vhostfd=4,id=vsock-2692387173,guest-cid=2692387173,bus=pcie.0 -chardev socket,id=char-94b74fdaf3419097,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/vhost-fs.sock -device vhost-user-fs-pci,chardev=char-94b74fdaf3419097,tag=kataShared,queue-size=1024,bus=pcie.0 -rtc base=utc,driftfix=slew,clock=host -global kvm-pit.lost_tick_policy=discard -vga none -no-user-config -nodefaults -nographic --no-reboot -object memory-backend-file,id=dimm1,size=2048M,mem-path=/dev/shm,share=on -numa node,memdev=dimm1 -kernel /opt/kata/share/kata-containers/vmlinux-6.18.35-202 -append iommu.passthrough=0 root=/dev/vda1 rootflags=data=ordered,errors=remount-ro ro rootfstype=ext4 console=hvc0 console=hvc1 quiet systemd.show_status=false panic=1 nr_cpus=1 selinux=0 systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket scsi_mod.scan=none agent.cdh_api_timeout=50 cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 pci=nomsi -pidfile /run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/pid -smp 1,cores=1,threads=1,sockets=1,maxcpus=1 ",
+                "pss_kib": 186204
+              },
+              {
+                "pid": 6830,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1976
+              },
+              {
+                "pid": 6848,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29608
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 240920,
+            "processes": [
+              {
+                "pid": 6815,
+                "command": "/opt/kata/bin/containerd-shim-kata-v2 -namespace default -address /run/containerd/containerd.sock -publish-binary  -id 623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 ",
+                "pss_kib": 22112
+              },
+              {
+                "pid": 6826,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1020
+              },
+              {
+                "pid": 6827,
+                "command": "/opt/kata/bin/qemu-system-aarch64 -name sandbox-623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 -uuid 42bf3b3b-b133-435d-9ca5-7e1a6e61319e -machine virt,usb=off,accel=kvm,gic-version=host,highmem-mmio=off -cpu host, -qmp unix:fd=3,server=on,wait=off -m 2048M,slots=10,maxmem=6925M -device pci-bridge,bus=pcie.0,id=pci-bridge-0,chassis_nr=1,shpc=off,addr=2,io-reserve=4k,mem-reserve=1m,pref64-reserve=1m -device virtio-serial-pci,disable-modern=false,id=serial0 -device virtconsole,chardev=charconsole0,id=console0 -chardev socket,id=charconsole0,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/console.sock,server=on,wait=off -device virtio-blk-pci,disable-modern=false,drive=image-450637ad910aab3d,config-wce=off,share-rw=on,serial=image-450637ad910aab3d -drive id=image-450637ad910aab3d,file=/opt/kata/share/kata-containers/kata-ubuntu-noble.image,aio=threads,format=raw,if=none,readonly=on -device virtio-scsi-pci,id=scsi0,disable-modern=false -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -device pcie-root-port,id=rp0,bus=pcie.0,chassis=0,slot=0,multifunction=off -device vhost-vsock-pci,disable-modern=false,vhostfd=4,id=vsock-2692387173,guest-cid=2692387173,bus=pcie.0 -chardev socket,id=char-94b74fdaf3419097,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/vhost-fs.sock -device vhost-user-fs-pci,chardev=char-94b74fdaf3419097,tag=kataShared,queue-size=1024,bus=pcie.0 -rtc base=utc,driftfix=slew,clock=host -global kvm-pit.lost_tick_policy=discard -vga none -no-user-config -nodefaults -nographic --no-reboot -object memory-backend-file,id=dimm1,size=2048M,mem-path=/dev/shm,share=on -numa node,memdev=dimm1 -kernel /opt/kata/share/kata-containers/vmlinux-6.18.35-202 -append iommu.passthrough=0 root=/dev/vda1 rootflags=data=ordered,errors=remount-ro ro rootfstype=ext4 console=hvc0 console=hvc1 quiet systemd.show_status=false panic=1 nr_cpus=1 selinux=0 systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket scsi_mod.scan=none agent.cdh_api_timeout=50 cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 pci=nomsi -pidfile /run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/pid -smp 1,cores=1,threads=1,sockets=1,maxcpus=1 ",
+                "pss_kib": 186204
+              },
+              {
+                "pid": 6830,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1976
+              },
+              {
+                "pid": 6848,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29608
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 240920,
+            "processes": [
+              {
+                "pid": 6815,
+                "command": "/opt/kata/bin/containerd-shim-kata-v2 -namespace default -address /run/containerd/containerd.sock -publish-binary  -id 623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 ",
+                "pss_kib": 22112
+              },
+              {
+                "pid": 6826,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1020
+              },
+              {
+                "pid": 6827,
+                "command": "/opt/kata/bin/qemu-system-aarch64 -name sandbox-623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 -uuid 42bf3b3b-b133-435d-9ca5-7e1a6e61319e -machine virt,usb=off,accel=kvm,gic-version=host,highmem-mmio=off -cpu host, -qmp unix:fd=3,server=on,wait=off -m 2048M,slots=10,maxmem=6925M -device pci-bridge,bus=pcie.0,id=pci-bridge-0,chassis_nr=1,shpc=off,addr=2,io-reserve=4k,mem-reserve=1m,pref64-reserve=1m -device virtio-serial-pci,disable-modern=false,id=serial0 -device virtconsole,chardev=charconsole0,id=console0 -chardev socket,id=charconsole0,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/console.sock,server=on,wait=off -device virtio-blk-pci,disable-modern=false,drive=image-450637ad910aab3d,config-wce=off,share-rw=on,serial=image-450637ad910aab3d -drive id=image-450637ad910aab3d,file=/opt/kata/share/kata-containers/kata-ubuntu-noble.image,aio=threads,format=raw,if=none,readonly=on -device virtio-scsi-pci,id=scsi0,disable-modern=false -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -device pcie-root-port,id=rp0,bus=pcie.0,chassis=0,slot=0,multifunction=off -device vhost-vsock-pci,disable-modern=false,vhostfd=4,id=vsock-2692387173,guest-cid=2692387173,bus=pcie.0 -chardev socket,id=char-94b74fdaf3419097,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/vhost-fs.sock -device vhost-user-fs-pci,chardev=char-94b74fdaf3419097,tag=kataShared,queue-size=1024,bus=pcie.0 -rtc base=utc,driftfix=slew,clock=host -global kvm-pit.lost_tick_policy=discard -vga none -no-user-config -nodefaults -nographic --no-reboot -object memory-backend-file,id=dimm1,size=2048M,mem-path=/dev/shm,share=on -numa node,memdev=dimm1 -kernel /opt/kata/share/kata-containers/vmlinux-6.18.35-202 -append iommu.passthrough=0 root=/dev/vda1 rootflags=data=ordered,errors=remount-ro ro rootfstype=ext4 console=hvc0 console=hvc1 quiet systemd.show_status=false panic=1 nr_cpus=1 selinux=0 systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket scsi_mod.scan=none agent.cdh_api_timeout=50 cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 pci=nomsi -pidfile /run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/pid -smp 1,cores=1,threads=1,sockets=1,maxcpus=1 ",
+                "pss_kib": 186204
+              },
+              {
+                "pid": 6830,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1976
+              },
+              {
+                "pid": 6848,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29608
+              }
+            ]
+          },
+          {
+            "total_pss_kib": 240924,
+            "processes": [
+              {
+                "pid": 6815,
+                "command": "/opt/kata/bin/containerd-shim-kata-v2 -namespace default -address /run/containerd/containerd.sock -publish-binary  -id 623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 ",
+                "pss_kib": 22112
+              },
+              {
+                "pid": 6826,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1020
+              },
+              {
+                "pid": 6827,
+                "command": "/opt/kata/bin/qemu-system-aarch64 -name sandbox-623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480 -uuid 42bf3b3b-b133-435d-9ca5-7e1a6e61319e -machine virt,usb=off,accel=kvm,gic-version=host,highmem-mmio=off -cpu host, -qmp unix:fd=3,server=on,wait=off -m 2048M,slots=10,maxmem=6925M -device pci-bridge,bus=pcie.0,id=pci-bridge-0,chassis_nr=1,shpc=off,addr=2,io-reserve=4k,mem-reserve=1m,pref64-reserve=1m -device virtio-serial-pci,disable-modern=false,id=serial0 -device virtconsole,chardev=charconsole0,id=console0 -chardev socket,id=charconsole0,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/console.sock,server=on,wait=off -device virtio-blk-pci,disable-modern=false,drive=image-450637ad910aab3d,config-wce=off,share-rw=on,serial=image-450637ad910aab3d -drive id=image-450637ad910aab3d,file=/opt/kata/share/kata-containers/kata-ubuntu-noble.image,aio=threads,format=raw,if=none,readonly=on -device virtio-scsi-pci,id=scsi0,disable-modern=false -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -device pcie-root-port,id=rp0,bus=pcie.0,chassis=0,slot=0,multifunction=off -device vhost-vsock-pci,disable-modern=false,vhostfd=4,id=vsock-2692387173,guest-cid=2692387173,bus=pcie.0 -chardev socket,id=char-94b74fdaf3419097,path=/run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/vhost-fs.sock -device vhost-user-fs-pci,chardev=char-94b74fdaf3419097,tag=kataShared,queue-size=1024,bus=pcie.0 -rtc base=utc,driftfix=slew,clock=host -global kvm-pit.lost_tick_policy=discard -vga none -no-user-config -nodefaults -nographic --no-reboot -object memory-backend-file,id=dimm1,size=2048M,mem-path=/dev/shm,share=on -numa node,memdev=dimm1 -kernel /opt/kata/share/kata-containers/vmlinux-6.18.35-202 -append iommu.passthrough=0 root=/dev/vda1 rootflags=data=ordered,errors=remount-ro ro rootfstype=ext4 console=hvc0 console=hvc1 quiet systemd.show_status=false panic=1 nr_cpus=1 selinux=0 systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket scsi_mod.scan=none agent.cdh_api_timeout=50 cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 pci=nomsi -pidfile /run/vc/vm/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/pid -smp 1,cores=1,threads=1,sockets=1,maxcpus=1 ",
+                "pss_kib": 186208
+              },
+              {
+                "pid": 6830,
+                "command": "/opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/623f372463a9a6de255849e969f7e1a65f2ded78574fbe4e88a6030d089ff480/shared --fd=3 --thread-pool-size=1 --announce-submounts ",
+                "pss_kib": 1976
+              },
+              {
+                "pid": 6848,
+                "command": "/usr/local/bin/nerdctl _NERDCTL_INTERNAL_LOGGING /var/lib/nerdctl/1935db59 ",
+                "pss_kib": 29608
+              }
+            ]
+          }
+        ],
+        "median_host_pss_kib": 240924
+      }
+    },
+    "bonus": {
+      "runc": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.runc.v2",
+          "--privileged",
+          "-v",
+          "/tmp/lab12-fsiubgzd:/host_tmp",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "echo OVERWRITTEN > /host_tmp/lab12-target"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "",
+        "host_file_after": "OVERWRITTEN\n",
+        "privileged_devices_and_caps": {
+          "command": [
+            "nerdctl",
+            "run",
+            "--rm",
+            "--net=none",
+            "--runtime=io.containerd.runc.v2",
+            "--privileged",
+            "alpine:3.20",
+            "sh",
+            "-c",
+            "ls -1 /dev | wc -l; grep ^CapEff /proc/1/status"
+          ],
+          "exit": 0,
+          "stdout": "193\nCapEff:\t000001ffffffffff\n",
+          "stderr": ""
+        }
+      },
+      "kata": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.kata.v2",
+          "--privileged",
+          "-v",
+          "/tmp/lab12-fsiubgzd:/host_tmp",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "echo OVERWRITTEN > /host_tmp/lab12-target"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "time=\"2026-11-02T14:27:32+03:00\" level=warning msg=\"cannot set cgroup manager to \\\"systemd\\\" for runtime \\\"io.containerd.kata.v2\\\"\"\ntime=\"2026-11-02T14:27:42+03:00\" level=fatal msg=\"failed to create shim task: Creating container device LinuxDevice { path: \\\"/dev/full\\\", typ: C, major: 1, minor: 7, file_mode: Some(438), uid: Some(0), gid: Some(0) }\\n\\nCaused by:\\n    EEXIST: File exists\\n\\nStack backtrace:\\n   0: <unknown>\\n   1: <unknown>\\n   2: <unknown>\\n   3: <unknown>\\n   4: <unknown>\\n   5: <unknown>\\n   6: <unknown>\\n   7: <unknown>\\n   8: <unknown>\\n   9: <unknown>\\n  10: <unknown>\\n  11: <unknown>\\n  12: <unknown>\\n  13: __libc_start_main\\n  14: <unknown>\\n\\nStack backtrace:\\n   0: <unknown>\\n   1: <unknown>\\n   2: <unknown>\\n   3: <unknown>\\n   4: <unknown>\\n   5: <unknown>\\n   6: <unknown>\\n   7: <unknown>\\n   8: <unknown>\\n   9: <unknown>\\n  10: <unknown>\\n  11: <unknown>\\n  12: <unknown>\\n  13: <unknown>\\n  14: <unknown>\\n  15: <unknown>\\n  16: <unknown>\\n  17: <unknown>\\n  18: <unknown>\\n  19: <unknown>\\n  20: <unknown>\\n  21: <unknown>\\n  22: <unknown>\\n  23: <unknown>\\n  24: <unknown>\\n  25: <unknown>\"\n",
+        "host_file_after": "original\n",
+        "privileged_devices_and_caps": {
+          "command": [
+            "nerdctl",
+            "run",
+            "--rm",
+            "--net=none",
+            "--runtime=io.containerd.kata.v2",
+            "--privileged",
+            "alpine:3.20",
+            "sh",
+            "-c",
+            "ls -1 /dev | wc -l; grep ^CapEff /proc/1/status"
+          ],
+          "exit": 1,
+          "stdout": "",
+          "stderr": "time=\"2026-11-02T14:27:42+03:00\" level=warning msg=\"cannot set cgroup manager to \\\"systemd\\\" for runtime \\\"io.containerd.kata.v2\\\"\"\ntime=\"2026-11-02T14:27:54+03:00\" level=fatal msg=\"failed to create shim task: Creating container device LinuxDevice { path: \\\"/dev/full\\\", typ: C, major: 1, minor: 7, file_mode: Some(438), uid: Some(0), gid: Some(0) }\\n\\nCaused by:\\n    EEXIST: File exists\\n\\nStack backtrace:\\n   0: <unknown>\\n   1: <unknown>\\n   2: <unknown>\\n   3: <unknown>\\n   4: <unknown>\\n   5: <unknown>\\n   6: <unknown>\\n   7: <unknown>\\n   8: <unknown>\\n   9: <unknown>\\n  10: <unknown>\\n  11: <unknown>\\n  12: <unknown>\\n  13: __libc_start_main\\n  14: <unknown>\\n\\nStack backtrace:\\n   0: <unknown>\\n   1: <unknown>\\n   2: <unknown>\\n   3: <unknown>\\n   4: <unknown>\\n   5: <unknown>\\n   6: <unknown>\\n   7: <unknown>\\n   8: <unknown>\\n   9: <unknown>\\n  10: <unknown>\\n  11: <unknown>\\n  12: <unknown>\\n  13: <unknown>\\n  14: <unknown>\\n  15: <unknown>\\n  16: <unknown>\\n  17: <unknown>\\n  18: <unknown>\\n  19: <unknown>\\n  20: <unknown>\\n  21: <unknown>\\n  22: <unknown>\\n  23: <unknown>\\n  24: <unknown>\\n  25: <unknown>\"\n"
+        }
+      }
+    }
+  },
+  "boundaries": {
+    "host_pid": {
+      "runc": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.runc.v2",
+          "--cap-add=SYS_PTRACE",
+          "--pid=host",
+          "--security-opt=apparmor=unconfined",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "echo OVERWRITTEN > /proc/1/root/tmp/lab12-boundary-gwjp6g8g/target"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "",
+        "host_file_before": "original\n",
+        "host_file_after": "OVERWRITTEN\n"
+      },
+      "kata": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.kata.v2",
+          "--cap-add=SYS_PTRACE",
+          "--pid=host",
+          "--security-opt=apparmor=unconfined",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "echo OVERWRITTEN > /proc/1/root/tmp/lab12-boundary-gwjp6g8g/target"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "time=\"2026-11-02T14:30:12+03:00\" level=warning msg=\"cannot set cgroup manager to \\\"systemd\\\" for runtime \\\"io.containerd.kata.v2\\\"\"\nsh: can't create /proc/1/root/tmp/lab12-boundary-gwjp6g8g/target: nonexistent directory\n",
+        "host_file_before": "original\n",
+        "host_file_after": "original\n"
+      }
+    },
+    "writable_bind": {
+      "runc": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.runc.v2",
+          "-v",
+          "/tmp/lab12-boundary-gwjp6g8g:/host_tmp",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "echo OVERWRITTEN > /host_tmp/target"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "",
+        "host_file_before": "original\n",
+        "host_file_after": "OVERWRITTEN\n"
+      },
+      "kata": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.kata.v2",
+          "-v",
+          "/tmp/lab12-boundary-gwjp6g8g:/host_tmp",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "echo OVERWRITTEN > /host_tmp/target"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "time=\"2026-11-02T14:30:23+03:00\" level=warning msg=\"cannot set cgroup manager to \\\"systemd\\\" for runtime \\\"io.containerd.kata.v2\\\"\"\n",
+        "host_file_before": "original\n",
+        "host_file_after": "OVERWRITTEN\n"
+      }
+    },
+    "all_caps": {
+      "runc": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.runc.v2",
+          "--cap-add=ALL",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "ls -1 /dev | wc -l; grep ^CapEff /proc/1/status"
+        ],
+        "exit": 0,
+        "stdout": "15\nCapEff:\t000001ffffffffff\n",
+        "stderr": ""
+      },
+      "kata": {
+        "command": [
+          "nerdctl",
+          "run",
+          "--rm",
+          "--net=none",
+          "--runtime=io.containerd.kata.v2",
+          "--cap-add=ALL",
+          "alpine:3.20",
+          "sh",
+          "-c",
+          "ls -1 /dev | wc -l; grep ^CapEff /proc/1/status"
+        ],
+        "exit": 0,
+        "stdout": "14\nCapEff:\t000001ffffffffff\n",
+        "stderr": "time=\"2026-11-02T14:30:33+03:00\" level=warning msg=\"cannot set cgroup manager to \\\"systemd\\\" for runtime \\\"io.containerd.kata.v2\\\"\"\n"
+      }
+    }
+  },
+  "installation": {
+    "lima_version": "2.2.1",
+    "outer_cpu": "Apple M4 Pro",
+    "outer_os": "macOS 26.5.2",
+    "linux_vm_cpus": 4,
+    "linux_vm_memory_bytes": 6442450944,
+    "kata_release_asset": "kata-go-static-4.1.0-arm64.tar.zst",
+    "kata_release_asset_sha256": "9008fa1acdc6e9f5c86e9f4fa0e22dbaf09106f8ddc62383bfcb7cfa0df42ff3",
+    "runc_version": "runc version 1.5.2; commit v1.5.2-0-g29dd3dc; spec 1.3.0; go1.26.8; libseccomp 2.6.0"
+  }
+}
