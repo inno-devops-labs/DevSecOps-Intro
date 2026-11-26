@@ -1,0 +1,89 @@
+{
+  "image": "alpine:3.20",
+  "runtimes": {
+    "runc": {
+      "kernel": {
+        "exit_code": 0,
+        "output": "6.8.0-39-generic"
+      },
+      "devices": {
+        "exit_code": 0,
+        "output": "15"
+      },
+      "capabilities": {
+        "exit_code": 0,
+        "output": "CapEff:\t00000000a80425fb"
+      },
+      "startup_seconds": [
+        2.38,
+        1.66,
+        3.02,
+        1.84,
+        1.74
+      ],
+      "startup_median_seconds": 1.84,
+      "io": {
+        "exit_code": 0,
+        "output": "512+0 records in\n512+0 records out\n536870912 bytes (512.0MB) copied, 5.872998 seconds, 87.2MB/s"
+      },
+      "bonus_before": "original",
+      "bonus_write": {
+        "exit_code": 0,
+        "output": ""
+      },
+      "bonus_after": "OVERWRITTEN",
+      "privileged_devices": {
+        "exit_code": 0,
+        "output": "195"
+      },
+      "privileged_capabilities": {
+        "exit_code": 0,
+        "output": "CapEff:\t000001ffffffffff"
+      }
+    },
+    "kata": {
+      "kernel": {
+        "exit_code": 0,
+        "output": "6.18.35"
+      },
+      "devices": {
+        "exit_code": 0,
+        "output": "14"
+      },
+      "capabilities": {
+        "exit_code": 0,
+        "output": "CapEff:\t00000000a80425fb"
+      },
+      "startup_seconds": [
+        29.2,
+        24.86,
+        26.47,
+        23.37,
+        28.49
+      ],
+      "startup_median_seconds": 26.47,
+      "io": {
+        "exit_code": 0,
+        "output": "512+0 records in\n512+0 records out\n536870912 bytes (512.0MB) copied, 29.403529 seconds, 17.4MB/s\ntime=\"2026-11-26T13:47:20Z\" level=error msg=\"forward signal child exited\" error=\"Others(\\\"failed to handle message handler TaskRequest\\\\n\\\\nCaused by:\\\\n    0: kill process\\\\n    1: failed to find container f7c40f0c45fd39a8c6b87d382efc225cacd70088471f842cf1433e98d079b065\\\\n\\\\nStack backtrace:\\\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\\\n   1: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}::{{closure}}\\\\n   2: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}\\\\n   3: runtimes::manager::RuntimeHandlerManager::handler_task_request::{{closure}}::{{closure}}\\\\n   4: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\\\n   5: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\\\n   6: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::kill::{{closure}}\\\\n   7: <containerd_shim_protos::shim::shim_ttrpc_async::KillMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\\\n   8: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\\\n   9: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\\\n  10: tokio::runtime::task::raw::poll\\\\n  11: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\\\n  12: tokio::runtime::task::raw::poll\\\\n  13: std::sys::backtrace::__rust_begin_short_backtrace\\\\n  14: core::ops::function::FnOnce::call_once{{vtable.shim}}\\\\n  15: <std::sys::thread::unix::Thread>::new::thread_start\\\")\""
+      },
+      "bonus_before": "original",
+      "bonus_write": {
+        "exit_code": 1,
+        "output": "time=\"2026-11-26T13:47:48Z\" level=fatal msg=\"failed to create shim task: Others(\\\"failed to handle message create container\\\\n\\\\nCaused by:\\\\n    0: get host path failed\\\\n    1: No such file or directory (os error 2)\\\\n\\\\nStack backtrace:\\\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\\\n   1: hypervisor::device::util::get_host_path\\\\n   2: resource::manager_inner::ResourceManagerInner::handler_devices::{{closure}}\\\\n   3: virt_container::container_manager::container::Container::create::{{closure}}\\\\n   4: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}::{{closure}}\\\\n   5: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}\\\\n   6: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\\\n   7: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\\\n   8: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::create::{{closure}}\\\\n   9: <containerd_shim_protos::shim::shim_ttrpc_async::CreateMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\\\n  10: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\\\n  11: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\\\n  12: tokio::runtime::task::raw::poll\\\\n  13: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\\\n  14: tokio::runtime::task::raw::poll\\\\n  15: std::sys::backtrace::__rust_begin_short_backtrace\\\\n  16: core::ops::function::FnOnce::call_once{{vtable.shim}}\\\\n  17: <std::sys::thread::unix::Thread>::new::thread_start\\\")\""
+      },
+      "bonus_after": "original",
+      "privileged_devices": {
+        "exit_code": 1,
+        "output": "time=\"2026-11-26T13:48:04Z\" level=fatal msg=\"failed to create shim task: Others(\\\"failed to handle message create container\\\\n\\\\nCaused by:\\\\n    0: get host path failed\\\\n    1: No such file or directory (os error 2)\\\\n\\\\nStack backtrace:\\\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\\\n   1: hypervisor::device::util::get_host_path\\\\n   2: resource::manager_inner::ResourceManagerInner::handler_devices::{{closure}}\\\\n   3: virt_container::container_manager::container::Container::create::{{closure}}\\\\n   4: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}::{{closure}}\\\\n   5: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}\\\\n   6: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\\\n   7: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\\\n   8: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::create::{{closure}}\\\\n   9: <containerd_shim_protos::shim::shim_ttrpc_async::CreateMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\\\n  10: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\\\n  11: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\\\n  12: tokio::runtime::task::raw::poll\\\\n  13: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\\\n  14: tokio::runtime::task::raw::poll\\\\n  15: std::sys::backtrace::__rust_begin_short_backtrace\\\\n  16: core::ops::function::FnOnce::call_once{{vtable.shim}}\\\\n  17: <std::sys::thread::unix::Thread>::new::thread_start\\\")\""
+      },
+      "privileged_capabilities": {
+        "exit_code": 1,
+        "output": "time=\"2026-11-26T13:48:25Z\" level=fatal msg=\"failed to create shim task: Others(\\\"failed to handle message create container\\\\n\\\\nCaused by:\\\\n    0: get host path failed\\\\n    1: No such file or directory (os error 2)\\\\n\\\\nStack backtrace:\\\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\\\n   1: hypervisor::device::util::get_host_path\\\\n   2: resource::manager_inner::ResourceManagerInner::handler_devices::{{closure}}\\\\n   3: virt_container::container_manager::container::Container::create::{{closure}}\\\\n   4: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}::{{closure}}\\\\n   5: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}\\\\n   6: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\\\n   7: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\\\n   8: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::create::{{closure}}\\\\n   9: <containerd_shim_protos::shim::shim_ttrpc_async::CreateMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\\\n  10: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\\\n  11: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\\\n  12: tokio::runtime::task::raw::poll\\\\n  13: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\\\n  14: tokio::runtime::task::raw::poll\\\\n  15: std::sys::backtrace::__rust_begin_short_backtrace\\\\n  16: core::ops::function::FnOnce::call_once{{vtable.shim}}\\\\n  17: <std::sys::thread::unix::Thread>::new::thread_start\\\")\""
+      }
+    }
+  },
+  "date_utc": "2026-11-26T13:41:18Z",
+  "host_kernel": "6.8.0-39-generic",
+  "image_inspect": "[\n    {\n        \"Id\": \"sha256:bf8527eb54c3680e728d5b4b383a8ba730d72dae7236fbc8dff97ed6b224a731\",\n        \"RepoTags\": [\n            \"alpine:3.20\"\n        ],\n        \"RepoDigests\": [\n            \"alpine@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc\"\n        ],\n        \"Parent\": \"\",\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-04-16T23:53:26.803599608Z\",\n        \"DockerVersion\": \"\",\n        \"Author\": \"\",\n        \"Config\": {\n            \"AttachStdin\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"\n            ],\n            \"Cmd\": [\n                \"/bin/sh\"\n            ],\n            \"Image\": \"docker.io/library/alpine:3.20\",\n            \"WorkingDir\": \"/\"\n        },\n        \"Architecture\": \"amd64\",\n        \"Os\": \"linux\",\n        \"Size\": 8470528,\n        \"VirtualSize\": 8470528,\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:08bc4e534116aa76b16015484b82eac51f9a593416feae9296c8a2d4bb7aa4a2\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"0001-01-01T00:00:00Z\"\n        }\n    }\n]",
+  "kata_version": "4.1.0"
+}

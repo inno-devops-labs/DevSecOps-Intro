@@ -1,0 +1,13 @@
+Lab daemon stopped: PASS
+/etc/containerd/config.toml: OK
+Existing application containers: 12; original IDs retained; start times and restart counts unchanged during cleanup
+Main containerd socket restored: PASS
+No Kata/QEMU/virtiofsd processes: PASS
+Kata assets, lab data, downloaded image, tools, and runtime directories removed: PASS
+Host test file absent: PASS
+Temporary SSH public-key entries removed: 1; PASS
+Final check: PASS
+Production services: active
+active
+Cleanup verified
+REMOTE_EXIT 0

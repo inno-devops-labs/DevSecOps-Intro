@@ -1,0 +1,52 @@
+{
+  "runc": {
+    "command": [
+      "ctr",
+      "--address",
+      "/var/tmp/lab12-alexbittit/containerd.sock",
+      "--namespace",
+      "lab12",
+      "run",
+      "--rm",
+      "--privileged",
+      "--privileged-without-host-devices",
+      "--mount",
+      "type=bind,src=/tmp,dst=/host_tmp,options=rbind:rw",
+      "docker.io/library/alpine:3.20",
+      "lab12-bonus-controlled",
+      "sh",
+      "-c",
+      "echo \"OVERWRITTEN\" > /host_tmp/lab12-target; printf \"devices=\"; ls /dev | wc -l; grep ^CapEff /proc/1/status; uname -r"
+    ],
+    "before": "original",
+    "exit_code": 0,
+    "output": "devices=15\nCapEff:\t000001ffffffffff\n6.8.0-39-generic",
+    "after": "OVERWRITTEN"
+  },
+  "kata": {
+    "command": [
+      "ctr",
+      "--address",
+      "/var/tmp/lab12-alexbittit/containerd.sock",
+      "--namespace",
+      "lab12",
+      "run",
+      "--rm",
+      "--privileged",
+      "--privileged-without-host-devices",
+      "--mount",
+      "type=bind,src=/tmp,dst=/host_tmp,options=rbind:rw",
+      "--runtime",
+      "io.containerd.kata.v2",
+      "docker.io/library/alpine:3.20",
+      "lab12-bonus-controlled",
+      "sh",
+      "-c",
+      "echo \"OVERWRITTEN\" > /host_tmp/lab12-target; printf \"devices=\"; ls /dev | wc -l; grep ^CapEff /proc/1/status; uname -r"
+    ],
+    "before": "original",
+    "exit_code": 0,
+    "output": "devices=14\nCapEff:\t000001ffffffffff\n6.18.35",
+    "after": "OVERWRITTEN"
+  }
+}

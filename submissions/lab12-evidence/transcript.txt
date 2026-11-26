@@ -1,0 +1,139 @@
+$ uname -r
+6.8.0-39-generic
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs image inspect alpine:3.20
+[
+    {
+        "Id": "sha256:bf8527eb54c3680e728d5b4b383a8ba730d72dae7236fbc8dff97ed6b224a731",
+        "RepoTags": [
+            "alpine:3.20"
+        ],
+        "RepoDigests": [
+            "alpine@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc"
+        ],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-04-16T23:53:26.803599608Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "AttachStdin": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "/bin/sh"
+            ],
+            "Image": "docker.io/library/alpine:3.20",
+            "WorkingDir": "/"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 8470528,
+        "VirtualSize": 8470528,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:08bc4e534116aa76b16015484b82eac51f9a593416feae9296c8a2d4bb7aa4a2"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]
+
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 uname -r
+6.8.0-39-generic
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 sh -c ls /dev | wc -l
+15
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 sh -c grep ^CapEff /proc/1/status
+CapEff:	00000000a80425fb
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 uname -r
+6.18.35
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 sh -c ls /dev | wc -l
+14
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 sh -c grep ^CapEff /proc/1/status
+CapEff:	00000000a80425fb
+
+=== Startup, I/O and literal privileged runs ===
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 true
+
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 true
+LAB12_SECONDS=2.38
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 true
+LAB12_SECONDS=1.66
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 true
+LAB12_SECONDS=3.02
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 true
+LAB12_SECONDS=1.84
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 true
+LAB12_SECONDS=1.74
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none alpine:3.20 sh -c dd if=/dev/zero of=/tmp/bench bs=1M count=512 conv=fsync 2>&1
+512+0 records in
+512+0 records out
+536870912 bytes (512.0MB) copied, 5.872998 seconds, 87.2MB/s
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 true
+
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 true
+LAB12_SECONDS=29.20
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 true
+time="2026-11-26T13:45:09Z" level=error msg="forward signal child exited" error="Others(\"failed to handle message handler TaskRequest\\n\\nCaused by:\\n    0: kill process\\n    1: failed to find container b64279388f1a31683d571691cacf75f7983533f4b2b9c6728700bac69a169a9a\\n\\nStack backtrace:\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\n   1: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}::{{closure}}\\n   2: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}\\n   3: runtimes::manager::RuntimeHandlerManager::handler_task_request::{{closure}}::{{closure}}\\n   4: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\n   5: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\n   6: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::kill::{{closure}}\\n   7: <containerd_shim_protos::shim::shim_ttrpc_async::KillMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\n   8: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\n   9: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\n  10: tokio::runtime::task::raw::poll\\n  11: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\n  12: tokio::runtime::task::raw::poll\\n  13: std::sys::backtrace::__rust_begin_short_backtrace\\n  14: core::ops::function::FnOnce::call_once{{vtable.shim}}\\n  15: <std::sys::thread::unix::Thread>::new::thread_start\")"
+LAB12_SECONDS=24.86
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 true
+time="2026-11-26T13:45:36Z" level=error msg="forward signal child exited" error="Others(\"failed to handle message handler TaskRequest\\n\\nCaused by:\\n    0: kill process\\n    1: failed to find container 49e9a9de66c1c091afa27a8977165de3c36dbc1632d93ba4f3c6b46d63944384\\n\\nStack backtrace:\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\n   1: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}::{{closure}}\\n   2: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}\\n   3: runtimes::manager::RuntimeHandlerManager::handler_task_request::{{closure}}::{{closure}}\\n   4: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\n   5: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\n   6: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::kill::{{closure}}\\n   7: <containerd_shim_protos::shim::shim_ttrpc_async::KillMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\n   8: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\n   9: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\n  10: tokio::runtime::task::raw::poll\\n  11: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\n  12: tokio::runtime::task::raw::poll\\n  13: std::sys::backtrace::__rust_begin_short_backtrace\\n  14: core::ops::function::FnOnce::call_once{{vtable.shim}}\\n  15: <std::sys::thread::unix::Thread>::new::thread_start\")"
+LAB12_SECONDS=26.47
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 true
+LAB12_SECONDS=23.37
+$ /var/tmp/lab12-alexbittit/time/usr/bin/time -f LAB12_SECONDS=%e /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 true
+LAB12_SECONDS=28.49
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 alpine:3.20 sh -c dd if=/dev/zero of=/tmp/bench bs=1M count=512 conv=fsync 2>&1
+512+0 records in
+512+0 records out
+536870912 bytes (512.0MB) copied, 29.403529 seconds, 17.4MB/s
+time="2026-11-26T13:47:20Z" level=error msg="forward signal child exited" error="Others(\"failed to handle message handler TaskRequest\\n\\nCaused by:\\n    0: kill process\\n    1: failed to find container f7c40f0c45fd39a8c6b87d382efc225cacd70088471f842cf1433e98d079b065\\n\\nStack backtrace:\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\n   1: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}::{{closure}}\\n   2: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::kill_process::{{closure}}\\n   3: runtimes::manager::RuntimeHandlerManager::handler_task_request::{{closure}}::{{closure}}\\n   4: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\n   5: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\n   6: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::kill::{{closure}}\\n   7: <containerd_shim_protos::shim::shim_ttrpc_async::KillMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\n   8: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\n   9: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\n  10: tokio::runtime::task::raw::poll\\n  11: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\n  12: tokio::runtime::task::raw::poll\\n  13: std::sys::backtrace::__rust_begin_short_backtrace\\n  14: core::ops::function::FnOnce::call_once{{vtable.shim}}\\n  15: <std::sys::thread::unix::Thread>::new::thread_start\")"
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --privileged -v /tmp:/host_tmp alpine:3.20 sh -c echo "OVERWRITTEN" > /host_tmp/lab12-target
+
+HOST FILE AFTER runc: OVERWRITTEN
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --privileged alpine:3.20 sh -c ls /dev | wc -l
+195
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --privileged alpine:3.20 sh -c grep ^CapEff /proc/1/status
+CapEff:	000001ffffffffff
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 --privileged -v /tmp:/host_tmp alpine:3.20 sh -c echo "OVERWRITTEN" > /host_tmp/lab12-target
+time="2026-11-26T13:47:48Z" level=fatal msg="failed to create shim task: Others(\"failed to handle message create container\\n\\nCaused by:\\n    0: get host path failed\\n    1: No such file or directory (os error 2)\\n\\nStack backtrace:\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\n   1: hypervisor::device::util::get_host_path\\n   2: resource::manager_inner::ResourceManagerInner::handler_devices::{{closure}}\\n   3: virt_container::container_manager::container::Container::create::{{closure}}\\n   4: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}::{{closure}}\\n   5: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}\\n   6: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\n   7: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\n   8: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::create::{{closure}}\\n   9: <containerd_shim_protos::shim::shim_ttrpc_async::CreateMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\n  10: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\n  11: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\n  12: tokio::runtime::task::raw::poll\\n  13: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\n  14: tokio::runtime::task::raw::poll\\n  15: std::sys::backtrace::__rust_begin_short_backtrace\\n  16: core::ops::function::FnOnce::call_once{{vtable.shim}}\\n  17: <std::sys::thread::unix::Thread>::new::thread_start\")"
+HOST FILE AFTER kata: original
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 --privileged alpine:3.20 sh -c ls /dev | wc -l
+time="2026-11-26T13:48:04Z" level=fatal msg="failed to create shim task: Others(\"failed to handle message create container\\n\\nCaused by:\\n    0: get host path failed\\n    1: No such file or directory (os error 2)\\n\\nStack backtrace:\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\n   1: hypervisor::device::util::get_host_path\\n   2: resource::manager_inner::ResourceManagerInner::handler_devices::{{closure}}\\n   3: virt_container::container_manager::container::Container::create::{{closure}}\\n   4: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}::{{closure}}\\n   5: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}\\n   6: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\n   7: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\n   8: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::create::{{closure}}\\n   9: <containerd_shim_protos::shim::shim_ttrpc_async::CreateMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\n  10: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\n  11: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\n  12: tokio::runtime::task::raw::poll\\n  13: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\n  14: tokio::runtime::task::raw::poll\\n  15: std::sys::backtrace::__rust_begin_short_backtrace\\n  16: core::ops::function::FnOnce::call_once{{vtable.shim}}\\n  17: <std::sys::thread::unix::Thread>::new::thread_start\")"
+$ /var/tmp/lab12-alexbittit/bin/nerdctl --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 --data-root /var/tmp/lab12-alexbittit/nerdctl-data --cgroup-manager cgroupfs run --rm --net=none --runtime=io.containerd.kata.v2 --privileged alpine:3.20 sh -c grep ^CapEff /proc/1/status
+time="2026-11-26T13:48:25Z" level=fatal msg="failed to create shim task: Others(\"failed to handle message create container\\n\\nCaused by:\\n    0: get host path failed\\n    1: No such file or directory (os error 2)\\n\\nStack backtrace:\\n   0: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\\n   1: hypervisor::device::util::get_host_path\\n   2: resource::manager_inner::ResourceManagerInner::handler_devices::{{closure}}\\n   3: virt_container::container_manager::container::Container::create::{{closure}}\\n   4: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}::{{closure}}\\n   5: <virt_container::container_manager::manager::VirtContainerManager as common::container_manager::ContainerManager>::create_container::{{closure}}\\n   6: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}::{{closure}}\\n   7: runtimes::manager::RuntimeHandlerManager::handler_task_message::{{closure}}\\n   8: <service::task_service::TaskService as containerd_shim_protos::shim::shim_ttrpc_async::Task>::create::{{closure}}\\n   9: <containerd_shim_protos::shim::shim_ttrpc_async::CreateMethod as ttrpc::asynchronous::utils::MethodHandler>::handler::{{closure}}\\n  10: ttrpc::asynchronous::server::HandlerContext::handle_request::{{closure}}\\n  11: <ttrpc::asynchronous::server::ServerReader as ttrpc::asynchronous::connection::ReaderDelegate>::handle_msg::{{closure}}::{{closure}}\\n  12: tokio::runtime::task::raw::poll\\n  13: tokio::runtime::scheduler::multi_thread::worker::Context::run_task\\n  14: tokio::runtime::task::raw::poll\\n  15: std::sys::backtrace::__rust_begin_short_backtrace\\n  16: core::ops::function::FnOnce::call_once{{vtable.shim}}\\n  17: <std::sys::thread::unix::Thread>::new::thread_start\")"
+MEASUREMENTS COMPLETE
+
+=== Idle memory ===
+Started runc 5a95feacfb86bd383eb38c51c1d1dbed91c9229b8dd67de19e7b27b42c7514b3
+runc sample 1 PSS KiB 35899
+runc sample 2 PSS KiB 35899
+runc sample 3 PSS KiB 35899
+runc sample 4 PSS KiB 35899
+runc sample 5 PSS KiB 35899
+5a95feacfb86bd383eb38c51c1d1dbed91c9229b8dd67de19e7b27b42c7514b3
+Started kata 1088f3fb5967516c1d5814e3c394648fa5269876eb0089ae3eb074baccd9889d
+kata sample 1 PSS KiB 314448
+kata sample 2 PSS KiB 314448
+kata sample 3 PSS KiB 314448
+kata sample 4 PSS KiB 314448
+kata sample 5 PSS KiB 314448
+1088f3fb5967516c1d5814e3c394648fa5269876eb0089ae3eb074baccd9889d
+{"runc": 35899, "kata": 314448}
+
+=== Controlled privileged comparison (no host-device passthrough) ===
+$ ctr --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 run --rm --privileged --privileged-without-host-devices --mount type=bind,src=/tmp,dst=/host_tmp,options=rbind:rw docker.io/library/alpine:3.20 lab12-bonus-controlled sh -c "echo \"OVERWRITTEN\" > /host_tmp/lab12-target; printf \"devices=\"; ls /dev | wc -l; grep ^CapEff /proc/1/status; uname -r"
+devices=15
+CapEff:	000001ffffffffff
+6.8.0-39-generic
+
+HOST FILE: OVERWRITTEN
+$ ctr --address /var/tmp/lab12-alexbittit/containerd.sock --namespace lab12 run --rm --privileged --privileged-without-host-devices --mount type=bind,src=/tmp,dst=/host_tmp,options=rbind:rw --runtime io.containerd.kata.v2 docker.io/library/alpine:3.20 lab12-bonus-controlled sh -c "echo \"OVERWRITTEN\" > /host_tmp/lab12-target; printf \"devices=\"; ls /dev | wc -l; grep ^CapEff /proc/1/status; uname -r"
+devices=14
+CapEff:	000001ffffffffff
+6.18.35
+
+HOST FILE: OVERWRITTEN
