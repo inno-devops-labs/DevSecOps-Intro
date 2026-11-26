@@ -1,0 +1,46 @@
+2026-11-26T13:44:14Z
+
+Host:
+6.8.0-39-generic
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+VERSION_ID="24.04"
+
+Resources:
+6
+               total        used        free      shared  buff/cache   available
+Mem:     12504539136  1839996928   677163008   342917120 10672603136 10664542208
+
+KVM:
+crw-rw---- 1 root kvm 10, 232 Nov 26 13:43 /dev/kvm
+vmx
+
+Versions:
+containerd containerd v2.4.2 b7a25261e029d68978bbf290df0a62fc819b3c51
+runc version 1.5.3
+commit: v1.5.3-0-g46365c62
+spec: 1.3.0
+go: go1.27.4
+libseccomp: 2.5.5
+nerdctl version 2.4.2
+4.1.0
+QEMU emulator version 11.0.1 (kata-static)
+
+Kata settings:
+[hypervisor.qemu]
+default_vcpus = 1
+default_memory = 2048
+shared_fs = "virtio-fs"
+enable_debug = false
+[hypervisor.qemu.factory]
+enable_debug = false
+reconnect_timeout_ms = 60000
+enable_debug = false
+
+Runtime registration:
+[plugins.'io.containerd.cri.v1.runtime'.containerd.runtimes.kata]
+  runtime_type = 'io.containerd.kata.v2'
+
+
+Release archive checksums:
+41a66995888043c0ba05f8061574eaba1b9e06b9b21c2a238215179df2728d3f  /var/tmp/lab12-alexbittit/nerdctl.tar.gz
+3dc6b69c4acb787b967b04b64599a20d02a8beb1a8eaab3084110df9d0b08c96  /var/tmp/lab12-alexbittit/kata.tar.zst
